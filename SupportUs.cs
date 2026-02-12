@@ -8,20 +8,20 @@ using System.Windows.Forms;
 
 namespace Fuentes_PrelimsP2
 {
-    public partial class Objectives : Form
+    public partial class SupportUs : Form
     {
-        public Objectives()
+        public SupportUs()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        // Back button closes the form (wired in designer)
+        private void supportBack_Click(object sender, EventArgs e)
         {
             Homepage homepage = new Homepage();
 
             homepage.Show();
-
-            this.Hide();
+            this.Close();
         }
     }
 }

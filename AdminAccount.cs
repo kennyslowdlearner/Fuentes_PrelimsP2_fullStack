@@ -28,5 +28,13 @@ namespace Fuentes_PrelimsP2
         {
             Application.Exit();
         }
+
+        private void contactDeveloperToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ContactDeveloper contactDeveloper = new ContactDeveloper();
+
+            contactDeveloper.Show();
+
+        }
     }
 }

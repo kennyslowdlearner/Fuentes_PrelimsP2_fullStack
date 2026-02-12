@@ -150,7 +150,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, toolStripMenuItem2 });
             menuStrip1.Location = new Point(703, 186);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(316, 32);
+            menuStrip1.Size = new Size(496, 32);
             menuStrip1.TabIndex = 8;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -180,6 +180,7 @@
             contactDeveloperToolStripMenuItem.Name = "contactDeveloperToolStripMenuItem";
             contactDeveloperToolStripMenuItem.Size = new Size(273, 34);
             contactDeveloperToolStripMenuItem.Text = "Contact Developer";
+            contactDeveloperToolStripMenuItem.Click += contactDeveloperToolStripMenuItem_Click;
             // 
             // toolStripMenuItem2
             // 
@@ -193,7 +194,7 @@
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(270, 34);
+            logoutToolStripMenuItem.Size = new Size(169, 34);
             logoutToolStripMenuItem.Text = "Logout";
             logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
             // 

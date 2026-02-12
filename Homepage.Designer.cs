@@ -44,9 +44,9 @@
             panel10 = new Panel();
             loginButton = new Button();
             button1 = new Button();
-            button12 = new Button();
-            button13 = new Button();
-            button5 = new Button();
+            Support = new Button();
+            MessageUs = new Button();
+            ContactDeveloper = new Button();
             button2 = new Button();
             button3 = new Button();
             panel1.SuspendLayout();
@@ -235,46 +235,58 @@
             button1.Size = new Size(202, 258);
             button1.TabIndex = 0;
             button1.UseVisualStyleBackColor = false;
-            button1.Click += this.button1_Click;
+            button1.Click += button1_Click;
             // 
-            // button12
+            // Support
             // 
-            button12.BackColor = Color.Transparent;
-            button12.FlatAppearance.BorderSize = 0;
-            button12.FlatStyle = FlatStyle.Flat;
-            button12.Font = new Font("Glacial Indifference", 10F);
-            button12.Location = new Point(32, 32);
-            button12.Name = "button12";
-            button12.Size = new Size(106, 43);
-            button12.TabIndex = 0;
-            button12.Text = "Support";
-            button12.UseVisualStyleBackColor = false;
+            Support.BackColor = Color.Transparent;
+            Support.FlatAppearance.BorderSize = 0;
+            Support.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            Support.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            Support.FlatStyle = FlatStyle.Flat;
+            Support.Font = new Font("Glacial Indifference", 10F);
+            Support.ForeColor = Color.DarkOliveGreen;
+            Support.Location = new Point(32, 32);
+            Support.Name = "Support";
+            Support.Size = new Size(106, 43);
+            Support.TabIndex = 0;
+            Support.Text = "Support";
+            Support.UseVisualStyleBackColor = false;
+            Support.Click += Support_Click;
             // 
-            // button13
+            // MessageUs
             // 
-            button13.BackColor = Color.Transparent;
-            button13.FlatAppearance.BorderSize = 0;
-            button13.FlatStyle = FlatStyle.Flat;
-            button13.Font = new Font("Glacial Indifference", 10F);
-            button13.Location = new Point(159, 32);
-            button13.Name = "button13";
-            button13.Size = new Size(142, 43);
-            button13.TabIndex = 0;
-            button13.Text = "Message Us!";
-            button13.UseVisualStyleBackColor = false;
+            MessageUs.BackColor = Color.Transparent;
+            MessageUs.FlatAppearance.BorderSize = 0;
+            MessageUs.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            MessageUs.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            MessageUs.FlatStyle = FlatStyle.Flat;
+            MessageUs.Font = new Font("Glacial Indifference", 10F);
+            MessageUs.ForeColor = Color.DarkOliveGreen;
+            MessageUs.Location = new Point(159, 32);
+            MessageUs.Name = "MessageUs";
+            MessageUs.Size = new Size(142, 43);
+            MessageUs.TabIndex = 0;
+            MessageUs.Text = "Message Us!";
+            MessageUs.UseVisualStyleBackColor = false;
+            MessageUs.Click += MessageUs_Click;
             // 
-            // button5
+            // ContactDeveloper
             // 
-            button5.BackColor = Color.Transparent;
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Glacial Indifference", 10F);
-            button5.Location = new Point(316, 32);
-            button5.Name = "button5";
-            button5.Size = new Size(185, 43);
-            button5.TabIndex = 0;
-            button5.Text = "Contact Developer";
-            button5.UseVisualStyleBackColor = false;
+            ContactDeveloper.BackColor = Color.Transparent;
+            ContactDeveloper.FlatAppearance.BorderSize = 0;
+            ContactDeveloper.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            ContactDeveloper.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            ContactDeveloper.FlatStyle = FlatStyle.Flat;
+            ContactDeveloper.Font = new Font("Glacial Indifference", 10F);
+            ContactDeveloper.ForeColor = Color.DarkOliveGreen;
+            ContactDeveloper.Location = new Point(316, 32);
+            ContactDeveloper.Name = "ContactDeveloper";
+            ContactDeveloper.Size = new Size(185, 43);
+            ContactDeveloper.TabIndex = 0;
+            ContactDeveloper.Text = "Contact Developer";
+            ContactDeveloper.UseVisualStyleBackColor = false;
+            ContactDeveloper.Click += ContactDeveloper_Click;
             // 
             // button2
             // 
@@ -315,9 +327,9 @@
             BackColor = Color.White;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1040, 650);
-            Controls.Add(button5);
-            Controls.Add(button13);
-            Controls.Add(button12);
+            Controls.Add(ContactDeveloper);
+            Controls.Add(MessageUs);
+            Controls.Add(Support);
             Controls.Add(button2);
             Controls.Add(button3);
             Controls.Add(button1);
@@ -358,9 +370,9 @@
         private Button button8;
         private Button signupButton;
         private Button loginButton;
-        private Button button12;
-        private Button button13;
-        private Button button5;
+        private Button Support;
+        private Button MessageUs;
+        private Button ContactDeveloper;
         private PictureBox pictureBox1;
         private Button button2;
         private Button button3;

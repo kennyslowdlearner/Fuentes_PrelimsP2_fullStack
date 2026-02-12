@@ -25,7 +25,7 @@ namespace Fuentes_PrelimsP2
 
         }
 
-        
+
 
         private void loginButton_Click(object sender, EventArgs e)
         {
@@ -76,6 +76,28 @@ namespace Fuentes_PrelimsP2
             VisionMission vm = new VisionMission();
             vm.Show();
 
+            this.Hide();
+        }
+
+        private void ContactDeveloper_Click(object sender, EventArgs e) 
+        {
+            ContactDeveloper contactDeveloper = new ContactDeveloper();
+
+            contactDeveloper.Show();
+            this.Hide();
+        }
+
+        private void MessageUs_Click(object sender, EventArgs e) 
+        {
+            MessageUs messageUs = new MessageUs();
+            messageUs.Show();
+            this.Hide();
+        }
+
+        private void Support_Click(object sender, EventArgs e) 
+        {
+            SupportUs support = new SupportUs();
+            support.Show();
             this.Hide();
         }
     }

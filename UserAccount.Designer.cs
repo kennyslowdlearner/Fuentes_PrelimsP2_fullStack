@@ -40,8 +40,8 @@
             toolStripMenuItem1 = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
             viewAccountToolStripMenuItem = new ToolStripMenuItem();
-            learnMoreToolStripMenuItem = new ToolStripMenuItem();
             contactDeveloperToolStripMenuItem = new ToolStripMenuItem();
+            supportToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem2 = new ToolStripMenuItem();
             logoutToolStripMenuItem = new ToolStripMenuItem();
             label1 = new Label();
@@ -162,14 +162,14 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, toolStripMenuItem2 });
             menuStrip1.Location = new Point(696, 246);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(316, 32);
+            menuStrip1.Size = new Size(496, 32);
             menuStrip1.TabIndex = 4;
             menuStrip1.Text = "menuStrip1";
             // 
             // toolStripMenuItem1
             // 
             toolStripMenuItem1.BackColor = Color.Transparent;
-            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { toolStripSeparator1, viewAccountToolStripMenuItem, learnMoreToolStripMenuItem, contactDeveloperToolStripMenuItem });
+            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { toolStripSeparator1, viewAccountToolStripMenuItem, contactDeveloperToolStripMenuItem, supportToolStripMenuItem });
             toolStripMenuItem1.Font = new Font("Glacial Indifference", 10F);
             toolStripMenuItem1.Name = "toolStripMenuItem1";
             toolStripMenuItem1.Size = new Size(143, 28);
@@ -187,17 +187,19 @@
             viewAccountToolStripMenuItem.Text = "View Account";
             viewAccountToolStripMenuItem.Click += viewAccountToolStripMenuItem_Click;
             // 
-            // learnMoreToolStripMenuItem
-            // 
-            learnMoreToolStripMenuItem.Name = "learnMoreToolStripMenuItem";
-            learnMoreToolStripMenuItem.Size = new Size(273, 34);
-            learnMoreToolStripMenuItem.Text = "Learn More";
-            // 
             // contactDeveloperToolStripMenuItem
             // 
             contactDeveloperToolStripMenuItem.Name = "contactDeveloperToolStripMenuItem";
             contactDeveloperToolStripMenuItem.Size = new Size(273, 34);
             contactDeveloperToolStripMenuItem.Text = "Contact Developer";
+            contactDeveloperToolStripMenuItem.Click += contactDeveloperToolStripMenuItem_Click;
+            // 
+            // supportToolStripMenuItem
+            // 
+            supportToolStripMenuItem.Name = "supportToolStripMenuItem";
+            supportToolStripMenuItem.Size = new Size(273, 34);
+            supportToolStripMenuItem.Text = "Support ";
+            supportToolStripMenuItem.Click += supportToolStripMenuItem_Click;
             // 
             // toolStripMenuItem2
             // 
@@ -211,7 +213,7 @@
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(270, 34);
+            logoutToolStripMenuItem.Size = new Size(169, 34);
             logoutToolStripMenuItem.Text = "Logout";
             logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
             // 
@@ -313,12 +315,12 @@
         private Label label1;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem viewAccountToolStripMenuItem;
-        private ToolStripMenuItem learnMoreToolStripMenuItem;
         private ToolStripMenuItem contactDeveloperToolStripMenuItem;
         private ToolStripMenuItem logoutToolStripMenuItem;
         private Label label3;
         private Label profileName;
         private Button button7;
         private Panel panel1;
+        private ToolStripMenuItem supportToolStripMenuItem;
     }
 }
