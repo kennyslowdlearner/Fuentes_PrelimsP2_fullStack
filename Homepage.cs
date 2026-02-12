@@ -25,10 +25,7 @@ namespace Fuentes_PrelimsP2
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void loginButton_Click(object sender, EventArgs e)
         {
@@ -44,6 +41,41 @@ namespace Fuentes_PrelimsP2
             UserSignUp userSignUp = new UserSignUp();
 
             userSignUp.Show();
+            this.Hide();
+        }
+
+        private void Homepage_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void AboutUs(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            AboutUs about = new AboutUs();
+            about.Show();
+
+            this.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Objectives objectives = new Objectives();
+
+            objectives.Show();
+
+            this.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            VisionMission vm = new VisionMission();
+            vm.Show();
+
             this.Hide();
         }
     }

@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserSignUp));
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
+            firstName = new TextBox();
+            middleName = new TextBox();
+            lastName = new TextBox();
+            birthDate = new TextBox();
+            address = new TextBox();
+            age = new TextBox();
             comboBox1 = new ComboBox();
             textBox8 = new TextBox();
             textBox9 = new TextBox();
@@ -42,9 +42,9 @@
             richTextBox1 = new RichTextBox();
             button1 = new Button();
             button2 = new Button();
-            textBox11 = new TextBox();
-            textBox12 = new TextBox();
-            textBox13 = new TextBox();
+            usernameSIGN = new TextBox();
+            passwordSIGN = new TextBox();
+            cpasswordSIGN = new TextBox();
             groupBox1 = new GroupBox();
             label8 = new Label();
             label7 = new Label();
@@ -65,7 +65,7 @@
             label11 = new Label();
             label9 = new Label();
             groupBox4 = new GroupBox();
-            radioButton1 = new RadioButton();
+            TCbutton = new RadioButton();
             label13 = new Label();
             label17 = new Label();
             groupBox1.SuspendLayout();
@@ -74,59 +74,59 @@
             groupBox4.SuspendLayout();
             SuspendLayout();
             // 
-            // textBox1
+            // firstName
             // 
-            textBox1.Font = new Font("Glacial Indifference", 10F);
-            textBox1.Location = new Point(182, 56);
-            textBox1.Margin = new Padding(4);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(285, 31);
-            textBox1.TabIndex = 0;
+            firstName.Font = new Font("Glacial Indifference", 10F);
+            firstName.Location = new Point(182, 56);
+            firstName.Margin = new Padding(4);
+            firstName.Name = "firstName";
+            firstName.Size = new Size(285, 31);
+            firstName.TabIndex = 0;
             // 
-            // textBox2
+            // middleName
             // 
-            textBox2.Font = new Font("Glacial Indifference", 10F);
-            textBox2.Location = new Point(182, 99);
-            textBox2.Margin = new Padding(4);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(285, 31);
-            textBox2.TabIndex = 0;
+            middleName.Font = new Font("Glacial Indifference", 10F);
+            middleName.Location = new Point(182, 99);
+            middleName.Margin = new Padding(4);
+            middleName.Name = "middleName";
+            middleName.Size = new Size(285, 31);
+            middleName.TabIndex = 0;
             // 
-            // textBox3
+            // lastName
             // 
-            textBox3.Font = new Font("Glacial Indifference", 10F);
-            textBox3.Location = new Point(182, 142);
-            textBox3.Margin = new Padding(4);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(285, 31);
-            textBox3.TabIndex = 0;
+            lastName.Font = new Font("Glacial Indifference", 10F);
+            lastName.Location = new Point(182, 142);
+            lastName.Margin = new Padding(4);
+            lastName.Name = "lastName";
+            lastName.Size = new Size(285, 31);
+            lastName.TabIndex = 0;
             // 
-            // textBox4
+            // birthDate
             // 
-            textBox4.Font = new Font("Glacial Indifference", 10F);
-            textBox4.Location = new Point(182, 185);
-            textBox4.Margin = new Padding(4);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(285, 31);
-            textBox4.TabIndex = 0;
+            birthDate.Font = new Font("Glacial Indifference", 10F);
+            birthDate.Location = new Point(182, 185);
+            birthDate.Margin = new Padding(4);
+            birthDate.Name = "birthDate";
+            birthDate.Size = new Size(285, 31);
+            birthDate.TabIndex = 0;
             // 
-            // textBox5
+            // address
             // 
-            textBox5.Font = new Font("Glacial Indifference", 10F);
-            textBox5.Location = new Point(182, 230);
-            textBox5.Margin = new Padding(4);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(285, 31);
-            textBox5.TabIndex = 0;
+            address.Font = new Font("Glacial Indifference", 10F);
+            address.Location = new Point(182, 230);
+            address.Margin = new Padding(4);
+            address.Name = "address";
+            address.Size = new Size(285, 31);
+            address.TabIndex = 0;
             // 
-            // textBox6
+            // age
             // 
-            textBox6.Font = new Font("Glacial Indifference", 10F);
-            textBox6.Location = new Point(182, 272);
-            textBox6.Margin = new Padding(4);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(285, 31);
-            textBox6.TabIndex = 0;
+            age.Font = new Font("Glacial Indifference", 10F);
+            age.Location = new Point(182, 272);
+            age.Margin = new Padding(4);
+            age.Name = "age";
+            age.Size = new Size(285, 31);
+            age.TabIndex = 0;
             // 
             // comboBox1
             // 
@@ -190,6 +190,7 @@
             button1.TabIndex = 4;
             button1.Text = "Sign In";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += signIn;
             // 
             // button2
             // 
@@ -207,32 +208,33 @@
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
-            // textBox11
+            // usernameSIGN
             // 
-            textBox11.Font = new Font("Glacial Indifference", 10F);
-            textBox11.Location = new Point(182, 47);
-            textBox11.Margin = new Padding(4);
-            textBox11.Name = "textBox11";
-            textBox11.Size = new Size(285, 31);
-            textBox11.TabIndex = 0;
+            usernameSIGN.Font = new Font("Glacial Indifference", 10F);
+            usernameSIGN.Location = new Point(182, 47);
+            usernameSIGN.Margin = new Padding(4);
+            usernameSIGN.Name = "usernameSIGN";
+            usernameSIGN.Size = new Size(285, 31);
+            usernameSIGN.TabIndex = 0;
             // 
-            // textBox12
+            // passwordSIGN
             // 
-            textBox12.Font = new Font("Glacial Indifference", 10F);
-            textBox12.Location = new Point(182, 90);
-            textBox12.Margin = new Padding(4);
-            textBox12.Name = "textBox12";
-            textBox12.Size = new Size(285, 31);
-            textBox12.TabIndex = 0;
+            passwordSIGN.Font = new Font("Glacial Indifference", 10F);
+            passwordSIGN.Location = new Point(182, 90);
+            passwordSIGN.Margin = new Padding(4);
+            passwordSIGN.Name = "passwordSIGN";
+            passwordSIGN.Size = new Size(285, 31);
+            passwordSIGN.TabIndex = 0;
             // 
-            // textBox13
+            // cpasswordSIGN
             // 
-            textBox13.Font = new Font("Glacial Indifference", 10F);
-            textBox13.Location = new Point(182, 133);
-            textBox13.Margin = new Padding(4);
-            textBox13.Name = "textBox13";
-            textBox13.Size = new Size(285, 31);
-            textBox13.TabIndex = 0;
+            cpasswordSIGN.Font = new Font("Glacial Indifference", 10F);
+            cpasswordSIGN.Location = new Point(182, 133);
+            cpasswordSIGN.Margin = new Padding(4);
+            cpasswordSIGN.Name = "cpasswordSIGN";
+            cpasswordSIGN.Size = new Size(285, 31);
+            cpasswordSIGN.TabIndex = 0;
+            cpasswordSIGN.TextChanged += cpasswordSIGN_TextChanged;
             // 
             // groupBox1
             // 
@@ -247,12 +249,12 @@
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(comboBox2);
             groupBox1.Controls.Add(comboBox1);
-            groupBox1.Controls.Add(textBox6);
-            groupBox1.Controls.Add(textBox3);
-            groupBox1.Controls.Add(textBox5);
-            groupBox1.Controls.Add(textBox4);
-            groupBox1.Controls.Add(textBox2);
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(age);
+            groupBox1.Controls.Add(lastName);
+            groupBox1.Controls.Add(address);
+            groupBox1.Controls.Add(birthDate);
+            groupBox1.Controls.Add(middleName);
+            groupBox1.Controls.Add(firstName);
             groupBox1.Font = new Font("Glacial Indifference", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(38, 102);
             groupBox1.Margin = new Padding(4);
@@ -367,10 +369,10 @@
             groupBox2.BackColor = Color.Transparent;
             groupBox2.Controls.Add(label16);
             groupBox2.Controls.Add(label15);
-            groupBox2.Controls.Add(textBox13);
-            groupBox2.Controls.Add(textBox12);
+            groupBox2.Controls.Add(cpasswordSIGN);
+            groupBox2.Controls.Add(passwordSIGN);
             groupBox2.Controls.Add(label14);
-            groupBox2.Controls.Add(textBox11);
+            groupBox2.Controls.Add(usernameSIGN);
             groupBox2.Font = new Font("Glacial Indifference", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox2.Location = new Point(38, 522);
             groupBox2.Margin = new Padding(4);
@@ -379,17 +381,17 @@
             groupBox2.Size = new Size(499, 178);
             groupBox2.TabIndex = 6;
             groupBox2.TabStop = false;
-            groupBox2.Text = "Role Information";
+            groupBox2.Text = "Account Details";
             // 
             // label16
             // 
             label16.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label16.Location = new Point(0, 126);
+            label16.Location = new Point(-16, 126);
             label16.Margin = new Padding(4, 0, 4, 0);
             label16.Name = "label16";
-            label16.Size = new Size(170, 48);
+            label16.Size = new Size(186, 48);
             label16.TabIndex = 8;
-            label16.Text = "Job Expectation : ";
+            label16.Text = "Confirm pass : ";
             label16.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label15
@@ -400,7 +402,7 @@
             label15.Name = "label15";
             label15.Size = new Size(162, 48);
             label15.TabIndex = 8;
-            label15.Text = "Years of Exp : ";
+            label15.Text = "Password : ";
             label15.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label14
@@ -411,7 +413,7 @@
             label14.Name = "label14";
             label14.Size = new Size(170, 48);
             label14.TabIndex = 8;
-            label14.Text = "Role : ";
+            label14.Text = "Username :";
             label14.TextAlign = ContentAlignment.MiddleRight;
             // 
             // groupBox3
@@ -495,18 +497,19 @@
             groupBox4.TabStop = false;
             groupBox4.Text = "Terms and Conditions";
             // 
-            // radioButton1
+            // TCbutton
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.BackColor = Color.Transparent;
-            radioButton1.Location = new Point(624, 552);
-            radioButton1.Margin = new Padding(4);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(416, 31);
-            radioButton1.TabIndex = 8;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "I agree on Terms and Conditions stated.";
-            radioButton1.UseVisualStyleBackColor = false;
+            TCbutton.AutoSize = true;
+            TCbutton.BackColor = Color.Transparent;
+            TCbutton.Location = new Point(624, 552);
+            TCbutton.Margin = new Padding(4);
+            TCbutton.Name = "TCbutton";
+            TCbutton.Size = new Size(416, 31);
+            TCbutton.TabIndex = 8;
+            TCbutton.TabStop = true;
+            TCbutton.Text = "I agree on Terms and Conditions stated.";
+            TCbutton.UseVisualStyleBackColor = false;
+            TCbutton.CheckedChanged += TCbutton_CheckedChanged;
             // 
             // label13
             // 
@@ -539,7 +542,7 @@
             ClientSize = new Size(1248, 702);
             Controls.Add(label17);
             Controls.Add(label13);
-            Controls.Add(radioButton1);
+            Controls.Add(TCbutton);
             Controls.Add(groupBox4);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
@@ -550,6 +553,7 @@
             Margin = new Padding(4);
             Name = "UserSignUp";
             Text = "Pananom : User Sign Up";
+            FormClosed += UserSignUp_FormClosed;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
@@ -563,12 +567,12 @@
 
         #endregion
 
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private TextBox textBox6;
+        private TextBox firstName;
+        private TextBox middleName;
+        private TextBox lastName;
+        private TextBox birthDate;
+        private TextBox address;
+        private TextBox age;
         private ComboBox comboBox1;
         private TextBox textBox8;
         private TextBox textBox9;
@@ -576,9 +580,9 @@
         private RichTextBox richTextBox1;
         private Button button1;
         private Button button2;
-        private TextBox textBox11;
-        private TextBox textBox12;
-        private TextBox textBox13;
+        private TextBox usernameSIGN;
+        private TextBox passwordSIGN;
+        private TextBox cpasswordSIGN;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
         private GroupBox groupBox3;
@@ -596,7 +600,7 @@
         private Label label12;
         private Label label11;
         private Label label9;
-        private RadioButton radioButton1;
+        private RadioButton TCbutton;
         private Label label13;
         private Label label16;
         private Label label15;

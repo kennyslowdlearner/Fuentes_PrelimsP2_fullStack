@@ -14,5 +14,29 @@ namespace Fuentes_PrelimsP2
         {
             InitializeComponent();
         }
+
+        private void loginADMIN_Click(object sender, EventArgs e)
+        {
+            string sampleAdminUserName, sampleAdminPassword;
+
+            sampleAdminUserName = ADMINusn.Text;
+            sampleAdminPassword = ADMINpass.Text;
+
+            if (sampleAdminUserName == "admin123" && sampleAdminPassword == "admin123")
+            {
+                AdminAccount adminAccount = new AdminAccount();
+
+                MessageBox.Show("Login Successful!");
+
+                adminAccount.Show();
+
+                this.Hide();
+            }
+        }
+
+        private void AdminLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

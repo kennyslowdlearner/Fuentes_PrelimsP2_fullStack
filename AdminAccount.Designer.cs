@@ -193,11 +193,13 @@
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(169, 34);
+            logoutToolStripMenuItem.Size = new Size(270, 34);
             logoutToolStripMenuItem.Text = "Logout";
+            logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
             // 
             // richTextBox1
             // 
+            richTextBox1.BackColor = Color.Silver;
             richTextBox1.Font = new Font("Glacial Indifference", 10F);
             richTextBox1.Location = new Point(350, 297);
             richTextBox1.Name = "richTextBox1";
@@ -207,6 +209,7 @@
             // 
             // richTextBox2
             // 
+            richTextBox2.BackColor = Color.Silver;
             richTextBox2.Font = new Font("Glacial Indifference", 10F);
             richTextBox2.Location = new Point(691, 297);
             richTextBox2.Name = "richTextBox2";
@@ -301,6 +304,7 @@
             Controls.Add(menuStrip1);
             Name = "AdminAccount";
             Text = "Pananom : Admin Login";
+            FormClosed += AdminAccount_FormClosed;
             groupBox1.ResumeLayout(false);
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

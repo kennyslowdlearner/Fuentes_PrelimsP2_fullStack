@@ -8,25 +8,18 @@ using System.Windows.Forms;
 
 namespace Fuentes_PrelimsP2
 {
-    public partial class AdminAccount : Form
+    public partial class VisionMission : Form
     {
-        public AdminAccount()
+        public VisionMission()
         {
             InitializeComponent();
         }
 
-        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void backButton2_Click_1(object sender, EventArgs e)
         {
             Homepage homepage = new Homepage();
-
             homepage.Show();
-
             this.Hide();
-        }
-
-        private void AdminAccount_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
         }
     }
 }

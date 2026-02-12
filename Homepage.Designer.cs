@@ -235,6 +235,7 @@
             button1.Size = new Size(202, 258);
             button1.TabIndex = 0;
             button1.UseVisualStyleBackColor = false;
+            button1.Click += this.button1_Click;
             // 
             // button12
             // 
@@ -305,6 +306,7 @@
             button3.Size = new Size(202, 258);
             button3.TabIndex = 0;
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // Homepage
             // 
@@ -328,6 +330,7 @@
             Controls.Add(panel1);
             Name = "Homepage";
             Text = "Pananom : Homepage";
+            FormClosed += Homepage_FormClosed;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel5.ResumeLayout(false);

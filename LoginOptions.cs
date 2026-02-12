@@ -30,5 +30,19 @@ namespace Fuentes_PrelimsP2
             userLogin.Show();
             this.Hide();
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            UserLogin userLogin = new UserLogin();
+
+            userLogin.Show();
+
+            this.Hide();
+        }
+
+        private void LoginOptions_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

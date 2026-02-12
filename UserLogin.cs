@@ -24,5 +24,30 @@ namespace Fuentes_PrelimsP2
         {
 
         }
+
+        private void loginUSER_Click(object sender, EventArgs e)
+        {
+            string sampleUser, samplePass;
+
+            sampleUser = USERusn.Text;
+            samplePass = USERpass.Text;
+
+            if (sampleUser == "user123" && samplePass == "user123")
+            {
+                UserAccount userAccount = new UserAccount(UserSignUp.FIRSTname, UserSignUp.MIDDLEname, UserSignUp.LASTname);
+
+                MessageBox.Show("Login Successful!");
+
+                userAccount.Show();
+
+                this.Hide();
+
+            }
+        }
+
+        private void UserLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

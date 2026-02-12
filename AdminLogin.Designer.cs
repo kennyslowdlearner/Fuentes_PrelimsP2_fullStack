@@ -135,6 +135,7 @@
             loginADMIN.TabIndex = 0;
             loginADMIN.Text = "Login";
             loginADMIN.UseVisualStyleBackColor = false;
+            loginADMIN.Click += loginADMIN_Click;
             // 
             // AdminLogin
             // 
@@ -145,6 +146,7 @@
             Controls.Add(panel1);
             Name = "AdminLogin";
             Text = "Pananom : Admin Login";
+            FormClosed += AdminLogin_FormClosed;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);

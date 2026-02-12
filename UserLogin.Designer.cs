@@ -136,6 +136,7 @@
             loginUSER.TabIndex = 0;
             loginUSER.Text = "Login";
             loginUSER.UseVisualStyleBackColor = false;
+            loginUSER.Click += loginUSER_Click;
             // 
             // UserLogin
             // 
@@ -146,6 +147,7 @@
             Controls.Add(panel1);
             Name = "UserLogin";
             Text = "Pananom : User Login";
+            FormClosed += UserLogin_FormClosed;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);

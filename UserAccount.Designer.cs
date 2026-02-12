@@ -46,7 +46,7 @@
             logoutToolStripMenuItem = new ToolStripMenuItem();
             label1 = new Label();
             label3 = new Label();
-            label5 = new Label();
+            profileName = new Label();
             button7 = new Button();
             panel1 = new Panel();
             groupBox1.SuspendLayout();
@@ -58,6 +58,7 @@
             // 
             button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
             button2.FlatAppearance.BorderSize = 0;
+            button2.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Glacial Indifference", 10F);
             button2.Location = new Point(19, 40);
@@ -70,6 +71,7 @@
             // 
             button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
             button1.FlatAppearance.BorderSize = 0;
+            button1.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Glacial Indifference", 10F);
             button1.Location = new Point(176, 40);
@@ -82,6 +84,7 @@
             // 
             button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
             button3.FlatAppearance.BorderSize = 0;
+            button3.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Glacial Indifference", 10F);
             button3.Location = new Point(333, 40);
@@ -94,6 +97,7 @@
             // 
             button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
             button4.FlatAppearance.BorderSize = 0;
+            button4.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Glacial Indifference", 10F);
             button4.Location = new Point(490, 40);
@@ -107,6 +111,7 @@
             // 
             button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
             button5.FlatAppearance.BorderSize = 0;
+            button5.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Glacial Indifference", 10F);
             button5.Location = new Point(647, 40);
@@ -120,6 +125,7 @@
             button6.BackColor = Color.Transparent;
             button6.BackgroundImage = (Image)resources.GetObject("button6.BackgroundImage");
             button6.FlatAppearance.BorderSize = 0;
+            button6.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Glacial Indifference", 10F);
             button6.ForeColor = SystemColors.ControlLightLight;
@@ -207,6 +213,7 @@
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
             logoutToolStripMenuItem.Size = new Size(270, 34);
             logoutToolStripMenuItem.Text = "Logout";
+            logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
             // 
             // label1
             // 
@@ -232,17 +239,18 @@
             label3.TabIndex = 5;
             label3.Text = "Hello there, ";
             // 
-            // label5
+            // profileName
             // 
-            label5.AutoSize = true;
-            label5.BackColor = Color.Transparent;
-            label5.Font = new Font("Glacial Indifference", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.ForeColor = Color.DarkOliveGreen;
-            label5.Location = new Point(188, 254);
-            label5.Name = "label5";
-            label5.Size = new Size(82, 34);
-            label5.TabIndex = 5;
-            label5.Text = "User!";
+            profileName.AutoSize = true;
+            profileName.BackColor = Color.Transparent;
+            profileName.Font = new Font("Glacial Indifference", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            profileName.ForeColor = Color.DarkOliveGreen;
+            profileName.Location = new Point(188, 254);
+            profileName.Name = "profileName";
+            profileName.Size = new Size(82, 34);
+            profileName.TabIndex = 5;
+            profileName.Text = "User!";
+            profileName.Click += profileName_Click;
             // 
             // button7
             // 
@@ -273,7 +281,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1040, 650);
-            Controls.Add(label5);
+            Controls.Add(profileName);
             Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(groupBox1);
@@ -282,6 +290,7 @@
             MainMenuStrip = menuStrip1;
             Name = "UserAccount";
             Text = "Pananom : User Account";
+            FormClosed += UserAccount_FormClosed;
             groupBox1.ResumeLayout(false);
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -308,7 +317,7 @@
         private ToolStripMenuItem contactDeveloperToolStripMenuItem;
         private ToolStripMenuItem logoutToolStripMenuItem;
         private Label label3;
-        private Label label5;
+        private Label profileName;
         private Button button7;
         private Panel panel1;
     }

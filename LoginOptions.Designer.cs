@@ -83,6 +83,7 @@
             button2.TabIndex = 0;
             button2.Text = "User Login";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click_1;
             // 
             // button1
             // 
@@ -108,6 +109,7 @@
             Controls.Add(panel1);
             Name = "LoginOptions";
             Text = "Pananom : Login Options";
+            FormClosed += LoginOptions_FormClosed;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);

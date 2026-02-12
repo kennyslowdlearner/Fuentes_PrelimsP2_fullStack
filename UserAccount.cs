@@ -10,9 +10,14 @@ namespace Fuentes_PrelimsP2
 {
     public partial class UserAccount : Form
     {
-        public UserAccount()
+        string FIRSTname, MIDDLEname, LASTname;
+        public UserAccount(string FIRSTname, string MIDDLEname, string LASTname)
         {
             InitializeComponent();
+
+            this.FIRSTname = FIRSTname;
+            this.MIDDLEname = MIDDLEname;
+            this.LASTname = LASTname;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -28,6 +33,29 @@ namespace Fuentes_PrelimsP2
         private void viewAccountToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void profileName_Click(object sender, EventArgs e)
+        {
+            string fullName;
+
+            fullName = FIRSTname + " " + MIDDLEname + " " + LASTname;
+
+            profileName.Text = fullName;
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Homepage homepage = new Homepage();
+
+            homepage.Show();
+
+            this.Hide();
+        }
+
+        private void UserAccount_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
