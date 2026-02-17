@@ -1,6 +1,6 @@
 ﻿namespace Fuentes_PrelimsP2
 {
-    partial class ContactDeveloper
+    partial class AccountContactUs
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContactDeveloper));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AccountContactUs));
             panel1 = new Panel();
             label6 = new Label();
             label5 = new Label();
@@ -65,7 +65,7 @@
             panel1.Location = new Point(31, 31);
             panel1.Name = "panel1";
             panel1.Size = new Size(806, 556);
-            panel1.TabIndex = 13;
+            panel1.TabIndex = 16;
             // 
             // label6
             // 
@@ -96,7 +96,6 @@
             label9.Size = new Size(38, 27);
             label9.TabIndex = 5;
             label9.Text = "911";
-            label9.Click += label4_Click;
             // 
             // label8
             // 
@@ -107,7 +106,6 @@
             label8.Size = new Size(120, 27);
             label8.TabIndex = 5;
             label8.Text = "email.com";
-            label8.Click += label4_Click;
             // 
             // label7
             // 
@@ -118,7 +116,6 @@
             label7.Size = new Size(152, 27);
             label7.TabIndex = 5;
             label7.Text = "0912 345 6789";
-            label7.Click += label4_Click;
             // 
             // label4
             // 
@@ -129,7 +126,6 @@
             label4.Size = new Size(194, 27);
             label4.TabIndex = 5;
             label4.Text = "Contact Number :";
-            label4.Click += label4_Click;
             // 
             // label2
             // 
@@ -149,11 +145,10 @@
             contactBack.ForeColor = Color.DarkOliveGreen;
             contactBack.Location = new Point(339, 421);
             contactBack.Name = "contactBack";
-            contactBack.Size = new Size(112, 34);
+            contactBack.Size = new Size(0, 0);
             contactBack.TabIndex = 2;
             contactBack.Text = "Back";
             contactBack.UseVisualStyleBackColor = false;
-            contactBack.Click += button2_Click;
             // 
             // pictureBox1
             // 
@@ -183,7 +178,7 @@
             pictureBox2.Location = new Point(287, 285);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(46, 49);
-            pictureBox2.TabIndex = 12;
+            pictureBox2.TabIndex = 15;
             pictureBox2.TabStop = false;
             // 
             // label3
@@ -193,7 +188,7 @@
             label3.Location = new Point(348, 300);
             label3.Name = "label3";
             label3.Size = new Size(234, 34);
-            label3.TabIndex = 11;
+            label3.TabIndex = 14;
             label3.Text = "kennyslowdlearner";
             // 
             // contextMenuStrip1
@@ -202,7 +197,7 @@
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(61, 4);
             // 
-            // ContactDeveloper
+            // AccountContactUs
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -211,8 +206,8 @@
             Controls.Add(panel1);
             Controls.Add(pictureBox2);
             Controls.Add(label3);
-            Name = "ContactDeveloper";
-            Text = "Form2";
+            Name = "AccountContactUs";
+            Text = "Pananom : Contact Us";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -226,6 +221,9 @@
         private Panel panel1;
         private Label label6;
         private Label label5;
+        private Label label9;
+        private Label label8;
+        private Label label7;
         private Label label4;
         private Label label2;
         private Button contactBack;
@@ -234,8 +232,5 @@
         private PictureBox pictureBox2;
         private Label label3;
         private ContextMenuStrip contextMenuStrip1;
-        private Label label7;
-        private Label label9;
-        private Label label8;
     }
 }

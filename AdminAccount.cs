@@ -31,7 +31,7 @@ namespace Fuentes_PrelimsP2
 
         private void contactDeveloperToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ContactDeveloper contactDeveloper = new ContactDeveloper();
+            ContactUs contactDeveloper = new ContactUs();
 
             contactDeveloper.Show();
 

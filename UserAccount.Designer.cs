@@ -162,7 +162,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, toolStripMenuItem2 });
             menuStrip1.Location = new Point(696, 246);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(496, 32);
+            menuStrip1.Size = new Size(316, 32);
             menuStrip1.TabIndex = 4;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -174,6 +174,7 @@
             toolStripMenuItem1.Name = "toolStripMenuItem1";
             toolStripMenuItem1.Size = new Size(143, 28);
             toolStripMenuItem1.Text = "More Options";
+            toolStripMenuItem1.Click += toolStripMenuItem1_Click;
             // 
             // toolStripSeparator1
             // 
@@ -291,7 +292,7 @@
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "UserAccount";
-            Text = "Pananom : User Account";
+            Text = "Pananom : User Dashboard";
             FormClosed += UserAccount_FormClosed;
             groupBox1.ResumeLayout(false);
             menuStrip1.ResumeLayout(false);

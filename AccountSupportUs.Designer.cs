@@ -1,6 +1,6 @@
 ﻿namespace Fuentes_PrelimsP2
 {
-    partial class VisionMission
+    partial class AccountSupportUs
     {
         /// <summary>
         /// Required designer variable.
@@ -29,68 +29,55 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VisionMission));
-            panel1 = new Panel();
-            backButton = new Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AccountSupportUs));
             label2 = new Label();
-            backButton2 = new Button();
+            panel1 = new Panel();
+            pictureBox3 = new PictureBox();
             pictureBox1 = new PictureBox();
             label1 = new Label();
             contextMenuStrip1 = new ContextMenuStrip(components);
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Glacial Indifference", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(118, 190);
+            label2.Name = "label2";
+            label2.Size = new Size(613, 29);
+            label2.TabIndex = 5;
+            label2.Text = "Support us by sending extra funds for the development! ^^";
             // 
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
-            panel1.Controls.Add(backButton);
+            panel1.Controls.Add(pictureBox3);
             panel1.Controls.Add(label2);
-            panel1.Controls.Add(backButton2);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(73, 36);
+            panel1.Location = new Point(31, 31);
             panel1.Name = "panel1";
-            panel1.Size = new Size(895, 579);
-            panel1.TabIndex = 3;
+            panel1.Size = new Size(806, 556);
+            panel1.TabIndex = 4;
             // 
-            // backButton
+            // pictureBox3
             // 
-            backButton.Font = new Font("Glacial Indifference", 10F);
-            backButton.Location = new Point(82, 317);
-            backButton.Name = "backButton";
-            backButton.Size = new Size(810, 128);
-            backButton.TabIndex = 4;
-            backButton.Text = resources.GetString("backButton.Text");
-            // 
-            // label2
-            // 
-            label2.Font = new Font("Glacial Indifference", 10F);
-            label2.Location = new Point(71, 189);
-            label2.Name = "label2";
-            label2.Size = new Size(810, 128);
-            label2.TabIndex = 4;
-            label2.Text = "Vision : To become a leading bridge between technical engineering and creative innovation, where complex logic is transformed into intuitive, beautiful, and accessible digital experiences.";
-            // 
-            // backButton2
-            // 
-            backButton2.BackColor = Color.LightGreen;
-            backButton2.FlatStyle = FlatStyle.Flat;
-            backButton2.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            backButton2.ForeColor = Color.DarkOliveGreen;
-            backButton2.Location = new Point(387, 523);
-            backButton2.Name = "backButton2";
-            backButton2.Size = new Size(112, 34);
-            backButton2.TabIndex = 2;
-            backButton2.Text = "Back";
-            backButton2.UseVisualStyleBackColor = false;
-            backButton2.Click += backButton2_Click_1;
+            pictureBox3.BackColor = Color.Transparent;
+            pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
+            pictureBox3.Location = new Point(274, 237);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(271, 248);
+            pictureBox3.TabIndex = 6;
+            pictureBox3.TabStop = false;
             // 
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.Location = new Point(316, 3);
+            pictureBox1.Location = new Point(286, 28);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(250, 76);
             pictureBox1.TabIndex = 3;
@@ -99,13 +86,13 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("League Spartan", 27.9999981F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("League Spartan", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.DarkOliveGreen;
-            label1.Location = new Point(199, 69);
+            label1.Location = new Point(221, 83);
             label1.Name = "label1";
-            label1.Size = new Size(495, 84);
+            label1.Size = new Size(395, 107);
             label1.TabIndex = 0;
-            label1.Text = "Vision and Mission";
+            label1.Text = "Support Us";
             // 
             // contextMenuStrip1
             // 
@@ -113,29 +100,29 @@
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(61, 4);
             // 
-            // VisionMission
+            // AccountSupportUs
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(1040, 650);
+            ClientSize = new Size(869, 619);
             Controls.Add(panel1);
-            Name = "VisionMission";
-            Text = "Pananom : Vission & Mission";
+            Name = "AccountSupportUs";
+            Text = "Pananom : Support Us";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
+        private Label label2;
         private Panel panel1;
-        private Button backButton2;
+        private PictureBox pictureBox3;
         private PictureBox pictureBox1;
         private Label label1;
         private ContextMenuStrip contextMenuStrip1;
-        private Label backButton;
-        private Label label2;
     }
 }

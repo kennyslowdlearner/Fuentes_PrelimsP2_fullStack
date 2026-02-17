@@ -60,16 +60,22 @@ namespace Fuentes_PrelimsP2
 
         private void contactDeveloperToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ContactDeveloper contactDeveloper = new ContactDeveloper();
+            AccountContactUs Acontactus = new AccountContactUs();
 
-            contactDeveloper.Show();
+            Acontactus.Show();
         }
 
         private void supportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SupportUs supportUs = new SupportUs();
+            AccountSupportUs AsupportUS = new AccountSupportUs();
 
-            supportUs.Show();
+            AsupportUS.Show();
+
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

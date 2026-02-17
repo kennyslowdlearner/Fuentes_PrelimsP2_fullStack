@@ -14,7 +14,7 @@ namespace Fuentes_PrelimsP2
         {
             InitializeComponent();
         }
-        // Back button closes the form (wired in designer)
+
         private void messageBack_Click(object sender, EventArgs e)
         {
 
@@ -24,7 +24,7 @@ namespace Fuentes_PrelimsP2
             this.Close();
         }
 
-        // Send button: show confirmation and clear the message box
+
         private void messageSend_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(richTextBox1.Text))
@@ -33,7 +33,7 @@ namespace Fuentes_PrelimsP2
                 return;
             }
 
-            // In this simple implementation just acknowledge and clear
+
             MessageBox.Show("Message sent. Thank you!", "Sent", MessageBoxButtons.OK, MessageBoxIcon.Information);
             richTextBox1.Clear();
         }

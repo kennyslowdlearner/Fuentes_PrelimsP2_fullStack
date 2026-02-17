@@ -74,7 +74,7 @@
             backButton.TabIndex = 2;
             backButton.Text = "Back";
             backButton.UseVisualStyleBackColor = false;
-            backButton.Click += this.backButton_Click;
+            backButton.Click += backButton_Click;
             // 
             // label1
             // 
@@ -112,7 +112,7 @@
             Controls.Add(pictureBox1);
             Controls.Add(panel1);
             Name = "AboutUs";
-            Text = "Form1";
+            Text = "Pananom : About Us";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

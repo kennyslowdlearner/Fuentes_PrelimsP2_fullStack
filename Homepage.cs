@@ -11,15 +11,15 @@ namespace Fuentes_PrelimsP2
         private void Homepage_Paint(object sender, PaintEventArgs e)
         {
 
-            // Define your two colors (use RGB from Canva)
-            Color color1 = Color.FromArgb(44, 62, 80);  // Dark Blue
-            Color color2 = Color.FromArgb(253, 116, 0); // AWS Orange
+         
+            Color color1 = Color.FromArgb(44, 62, 80);  
+            Color color2 = Color.FromArgb(253, 116, 0); 
 
-            // Create the brush
+           
             using (System.Drawing.Drawing2D.LinearGradientBrush brush =
                 new System.Drawing.Drawing2D.LinearGradientBrush(this.ClientRectangle, color1, color2, 45F))
             {
-                // Paint the background
+              
                 e.Graphics.FillRectangle(brush, this.ClientRectangle);
             }
 
@@ -81,7 +81,7 @@ namespace Fuentes_PrelimsP2
 
         private void ContactDeveloper_Click(object sender, EventArgs e) 
         {
-            ContactDeveloper contactDeveloper = new ContactDeveloper();
+            ContactUs contactDeveloper = new ContactUs();
 
             contactDeveloper.Show();
             this.Hide();

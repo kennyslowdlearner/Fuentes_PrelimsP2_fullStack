@@ -135,7 +135,7 @@
             messageSend.TabIndex = 2;
             messageSend.Text = "Send";
             messageSend.UseVisualStyleBackColor = false;
-            messageSend.Click += this.messageSend_Click;
+            messageSend.Click += messageSend_Click;
             // 
             // pictureBox1
             // 
@@ -174,7 +174,7 @@
             Controls.Add(pictureBox2);
             Controls.Add(label3);
             Name = "MessageUs";
-            Text = "Form1";
+            Text = "Pananom : Message Us";
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

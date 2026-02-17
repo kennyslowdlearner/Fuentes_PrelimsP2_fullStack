@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Homepage));
-            panel1 = new Panel();
-            pictureBox1 = new PictureBox();
             panel5 = new Panel();
             button4 = new Button();
             panel6 = new Panel();
@@ -49,8 +47,7 @@
             ContactDeveloper = new Button();
             button2 = new Button();
             button3 = new Button();
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            button5 = new Button();
             panel5.SuspendLayout();
             panel6.SuspendLayout();
             panel7.SuspendLayout();
@@ -58,24 +55,6 @@
             panel9.SuspendLayout();
             panel10.SuspendLayout();
             SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(pictureBox1);
-            panel1.Font = new Font("Glacial Indifference", 10F);
-            panel1.Location = new Point(32, 112);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(984, 259);
-            panel1.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(985, 259);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
             // 
             // panel5
             // 
@@ -320,13 +299,30 @@
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
+            // button5
+            // 
+            button5.BackColor = Color.Transparent;
+            button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
+            button5.FlatAppearance.BorderColor = Color.DarkOliveGreen;
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button5.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Location = new Point(32, 81);
+            button5.Name = "button5";
+            button5.Size = new Size(985, 290);
+            button5.TabIndex = 2;
+            button5.UseVisualStyleBackColor = false;
+            // 
             // Homepage
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            CancelButton = signupButton;
             ClientSize = new Size(1040, 650);
+            Controls.Add(button5);
             Controls.Add(ContactDeveloper);
             Controls.Add(MessageUs);
             Controls.Add(Support);
@@ -339,12 +335,9 @@
             Controls.Add(panel10);
             Controls.Add(panel9);
             Controls.Add(panel5);
-            Controls.Add(panel1);
             Name = "Homepage";
             Text = "Pananom : Homepage";
             FormClosed += Homepage_FormClosed;
-            panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel5.ResumeLayout(false);
             panel6.ResumeLayout(false);
             panel7.ResumeLayout(false);
@@ -355,8 +348,6 @@
         }
 
         #endregion
-
-        private Panel panel1;
         private Panel panel5;
         private Panel panel6;
         private Panel panel7;
@@ -373,8 +364,8 @@
         private Button Support;
         private Button MessageUs;
         private Button ContactDeveloper;
-        private PictureBox pictureBox1;
         private Button button2;
         private Button button3;
+        private Button button5;
     }
 }

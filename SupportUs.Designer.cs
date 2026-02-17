@@ -87,7 +87,7 @@
             supportBack.TabIndex = 2;
             supportBack.Text = "Back";
             supportBack.UseVisualStyleBackColor = false;
-            supportBack.Click += this.supportBack_Click;
+            supportBack.Click += supportBack_Click;
             // 
             // pictureBox1
             // 
@@ -124,7 +124,7 @@
             ClientSize = new Size(869, 619);
             Controls.Add(panel1);
             Name = "SupportUs";
-            Text = "Form1";
+            Text = "Pananom : Support Us";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();

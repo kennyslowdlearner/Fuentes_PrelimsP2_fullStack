@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace Fuentes_PrelimsP2
 {
-    public partial class ContactDeveloper : Form
+    public partial class ContactUs : Form
     {
-        public ContactDeveloper()
+        public ContactUs()
         {
             InitializeComponent();
         }

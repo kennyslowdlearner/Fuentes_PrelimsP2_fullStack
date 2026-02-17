@@ -38,6 +38,7 @@
             toolStripMenuItem1 = new ToolStripMenuItem();
             viewAccountToolStripMenuItem = new ToolStripMenuItem();
             contactDeveloperToolStripMenuItem = new ToolStripMenuItem();
+            supportToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem2 = new ToolStripMenuItem();
             logoutToolStripMenuItem = new ToolStripMenuItem();
             richTextBox1 = new RichTextBox();
@@ -47,7 +48,6 @@
             label1 = new Label();
             label7 = new Label();
             label8 = new Label();
-            supportToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
             groupBox1.SuspendLayout();
             menuStrip1.SuspendLayout();
@@ -153,6 +153,12 @@
             contactDeveloperToolStripMenuItem.Text = "Contact Developer";
             contactDeveloperToolStripMenuItem.Click += contactDeveloperToolStripMenuItem_Click;
             // 
+            // supportToolStripMenuItem
+            // 
+            supportToolStripMenuItem.Name = "supportToolStripMenuItem";
+            supportToolStripMenuItem.Size = new Size(273, 34);
+            supportToolStripMenuItem.Text = "Support";
+            // 
             // toolStripMenuItem2
             // 
             toolStripMenuItem2.BackColor = Color.Transparent;
@@ -246,12 +252,6 @@
             label8.Text = "Top Seller";
             label8.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // supportToolStripMenuItem
-            // 
-            supportToolStripMenuItem.Name = "supportToolStripMenuItem";
-            supportToolStripMenuItem.Size = new Size(273, 34);
-            supportToolStripMenuItem.Text = "Support";
-            // 
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.Transparent;
@@ -280,7 +280,7 @@
             Controls.Add(groupBox1);
             Controls.Add(menuStrip1);
             Name = "AdminAccount";
-            Text = "Pananom : Admin Login";
+            Text = "Pananom : Admin Dashboard";
             FormClosed += AdminAccount_FormClosed;
             groupBox1.ResumeLayout(false);
             menuStrip1.ResumeLayout(false);

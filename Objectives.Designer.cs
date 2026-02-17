@@ -155,7 +155,7 @@
             ClientSize = new Size(1040, 650);
             Controls.Add(panel1);
             Name = "Objectives";
-            Text = "Form1";
+            Text = "Pananom : Objectives";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
