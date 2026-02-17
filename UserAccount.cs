@@ -77,5 +77,13 @@ namespace Fuentes_PrelimsP2
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            productInventory productInventory = new productInventory();
+
+            productInventory.Show();
+            this.Hide();
+        }
     }
 }
