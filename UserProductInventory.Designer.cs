@@ -34,10 +34,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(productInventory));
             panel1 = new Panel();
             dataGridView1 = new DataGridView();
-            Number = new DataGridViewTextBoxColumn();
-            productName = new DataGridViewTextBoxColumn();
-            quantityProduct = new DataGridViewTextBoxColumn();
-            idProduct = new DataGridViewTextBoxColumn();
             pictureBox1 = new PictureBox();
             label1 = new Label();
             searchBoxPI = new TextBox();
@@ -55,6 +51,10 @@
             label2 = new Label();
             profileName = new Label();
             label3 = new Label();
+            Number = new DataGridViewTextBoxColumn();
+            productName = new DataGridViewTextBoxColumn();
+            quantityProduct = new DataGridViewTextBoxColumn();
+            idProduct = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -77,7 +77,6 @@
             // 
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            // Make header font regular and slightly smaller
             dataGridViewCellStyle1.Font = new Font("Verdana", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
@@ -88,7 +87,6 @@
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Number, productName, quantityProduct, idProduct });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            // Make row font regular and reduce size
             dataGridViewCellStyle2.Font = new Font("Verdana", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
@@ -104,46 +102,6 @@
             dataGridView1.Size = new Size(950, 416);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // Number
-            // 
-            Number.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Number.DataPropertyName = "numberPI";
-            Number.FillWeight = 181.818176F;
-            Number.HeaderText = "No.";
-            Number.MinimumWidth = 8;
-            Number.Name = "Number";
-            Number.ReadOnly = true;
-            // 
-            // productName
-            // 
-            productName.DataPropertyName = "productnamePI";
-            productName.FillWeight = 72.72727F;
-            productName.HeaderText = "Product Name";
-            productName.MinimumWidth = 8;
-            productName.Name = "productName";
-            productName.ReadOnly = true;
-            productName.Width = 350;
-            // 
-            // quantityProduct
-            // 
-            quantityProduct.DataPropertyName = "quantityPI";
-            quantityProduct.FillWeight = 72.72727F;
-            quantityProduct.HeaderText = "Quantity";
-            quantityProduct.MinimumWidth = 8;
-            quantityProduct.Name = "quantityProduct";
-            quantityProduct.ReadOnly = true;
-            quantityProduct.Width = 200;
-            // 
-            // idProduct
-            // 
-            idProduct.DataPropertyName = "productidPI";
-            idProduct.FillWeight = 72.72727F;
-            idProduct.HeaderText = "Product ID";
-            idProduct.MinimumWidth = 8;
-            idProduct.Name = "idProduct";
-            idProduct.ReadOnly = true;
-            idProduct.Width = 250;
             // 
             // pictureBox1
             // 
@@ -316,6 +274,46 @@
             label3.Text = "Welcome to your Product Inventory,";
             label3.Click += label3_Click;
             // 
+            // Number
+            // 
+            Number.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Number.DataPropertyName = "numberPI";
+            Number.FillWeight = 181.818176F;
+            Number.HeaderText = "No.";
+            Number.MinimumWidth = 8;
+            Number.Name = "Number";
+            Number.ReadOnly = true;
+            // 
+            // productName
+            // 
+            productName.DataPropertyName = "productnamePI";
+            productName.FillWeight = 72.72727F;
+            productName.HeaderText = "Product Name";
+            productName.MinimumWidth = 8;
+            productName.Name = "productName";
+            productName.ReadOnly = true;
+            productName.Width = 350;
+            // 
+            // quantityProduct
+            // 
+            quantityProduct.DataPropertyName = "quantityPI";
+            quantityProduct.FillWeight = 72.72727F;
+            quantityProduct.HeaderText = "Quantity (kg)";
+            quantityProduct.MinimumWidth = 8;
+            quantityProduct.Name = "quantityProduct";
+            quantityProduct.ReadOnly = true;
+            quantityProduct.Width = 200;
+            // 
+            // idProduct
+            // 
+            idProduct.DataPropertyName = "productidPI";
+            idProduct.FillWeight = 72.72727F;
+            idProduct.HeaderText = "Product ID";
+            idProduct.MinimumWidth = 8;
+            idProduct.Name = "idProduct";
+            idProduct.ReadOnly = true;
+            idProduct.Width = 250;
+            // 
             // productInventory
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -351,10 +349,6 @@
         private DataGridView dataGridView1;
         private PictureBox pictureBox1;
         private Label label1;
-        private DataGridViewTextBoxColumn Number;
-        private DataGridViewTextBoxColumn productName;
-        private DataGridViewTextBoxColumn quantityProduct;
-        private DataGridViewTextBoxColumn idProduct;
         private TextBox searchBoxPI;
         private Button searchbuttonPI;
         private MenuStrip usermenuPI;
@@ -370,5 +364,9 @@
         private Label label2;
         private Label profileName;
         private Label label3;
+        private DataGridViewTextBoxColumn Number;
+        private DataGridViewTextBoxColumn productName;
+        private DataGridViewTextBoxColumn quantityProduct;
+        private DataGridViewTextBoxColumn idProduct;
     }
 }

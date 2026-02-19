@@ -213,7 +213,6 @@
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Number, productnameFGP, priceFGP, idProduct, dateFGP });
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            // Reduce row font size and remove bold so data rows are smaller and regular weight
             dataGridViewCellStyle1.Font = new Font("Verdana", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
@@ -257,7 +256,7 @@
             // 
             Number.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Number.DataPropertyName = "numberPI";
-            Number.FillWeight = 181.818176F;
+            Number.FillWeight = 170.454529F;
             Number.HeaderText = "No.";
             Number.MinimumWidth = 8;
             Number.Name = "Number";
@@ -266,40 +265,37 @@
             // productnameFGP
             // 
             productnameFGP.DataPropertyName = "productnameFGP";
-            productnameFGP.FillWeight = 72.72727F;
+            productnameFGP.FillWeight = 75.32468F;
             productnameFGP.HeaderText = "Product Name";
             productnameFGP.MinimumWidth = 8;
             productnameFGP.Name = "productnameFGP";
-            productnameFGP.Width = 275;
             // 
             // priceFGP
             // 
             priceFGP.DataPropertyName = "priceFGP";
-            priceFGP.FillWeight = 72.72727F;
+            priceFGP.FillWeight = 75.32468F;
             priceFGP.HeaderText = "Farmgate Price (PHP)";
             priceFGP.MinimumWidth = 8;
             priceFGP.Name = "priceFGP";
             priceFGP.ReadOnly = true;
-            priceFGP.Width = 200;
             // 
             // idProduct
             // 
             idProduct.DataPropertyName = "productidFGP";
-            idProduct.FillWeight = 72.72727F;
+            idProduct.FillWeight = 75.32468F;
             idProduct.HeaderText = "Product ID";
             idProduct.MinimumWidth = 8;
             idProduct.Name = "idProduct";
             idProduct.ReadOnly = true;
-            idProduct.Width = 200;
             // 
             // dateFGP
             // 
             dateFGP.DataPropertyName = "dateFGP";
+            dateFGP.FillWeight = 103.571426F;
             dateFGP.HeaderText = "Date Published";
             dateFGP.MinimumWidth = 8;
             dateFGP.Name = "dateFGP";
             dateFGP.ReadOnly = true;
-            dateFGP.Width = 150;
             // 
             // farmgateUSER
             // 

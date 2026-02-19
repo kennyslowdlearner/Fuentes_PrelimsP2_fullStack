@@ -40,14 +40,14 @@ namespace Fuentes_PrelimsP2
             var row1 = ProductInventory.NewRow();
             row1["numberPI"] = ProductInventory.Rows.Count + 1;
             row1["productnamePI"] = "Ganador";
-            row1["quantityPI"] = 37.89; // must match column type (float)
+            row1["quantityPI"] = 378; // must match column type (float)
             row1["productidPI"] = "100-2026";
             ProductInventory.Rows.Add(row1);
 
             var row2 = ProductInventory.NewRow();
             row2["numberPI"] = ProductInventory.Rows.Count + 1;
             row2["productnamePI"] = "Ivory";
-            row2["quantityPI"] = 34.26; // must match column type (float)
+            row2["quantityPI"] = 326; // must match column type (float)
             row2["productidPI"] = "101-2026";
             ProductInventory.Rows.Add(row2);
 
@@ -55,6 +55,15 @@ namespace Fuentes_PrelimsP2
             // Make sure the grid uses the designer columns (keep header texts/widths)
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.ColumnHeadersVisible = true;
+
+            // Lock the "No." column so it doesn't stretch or shrink weirdly
+            dataGridView1.Columns["Number"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            // Alternatively, set a fixed width if you want it exactly like your designer
+            dataGridView1.Columns["Number"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataGridView1.Columns["Number"].Width = 86;
+
+
             // Ensure the grid fills the panel and columns use available space without shrinking
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
