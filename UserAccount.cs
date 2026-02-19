@@ -85,5 +85,13 @@ namespace Fuentes_PrelimsP2
             productInventory.Show();
             this.Hide();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            farmgateUSER userFarmGate = new farmgateUSER("", "", 0);
+
+            userFarmGate.Show();
+            this.Hide();
+        }
     }
 }

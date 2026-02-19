@@ -71,12 +71,14 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(950, 416);
             panel1.TabIndex = 1;
+            panel1.Paint += panel1_Paint;
             // 
             // dataGridView1
             // 
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Verdana", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            // Make header font regular and slightly smaller
+            dataGridViewCellStyle1.Font = new Font("Verdana", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
@@ -86,7 +88,8 @@
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Number, productName, quantityProduct, idProduct });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            // Make row font regular and reduce size
+            dataGridViewCellStyle2.Font = new Font("Verdana", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
@@ -151,6 +154,7 @@
             pictureBox1.Size = new Size(257, 76);
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // label1
             // 
@@ -163,6 +167,7 @@
             label1.Size = new Size(274, 48);
             label1.TabIndex = 3;
             label1.Text = "Product Inventory";
+            label1.Click += label1_Click;
             // 
             // searchBoxPI
             // 
@@ -173,6 +178,7 @@
             searchBoxPI.Size = new Size(252, 29);
             searchBoxPI.TabIndex = 5;
             searchBoxPI.Text = "Search product name or id";
+            searchBoxPI.TextChanged += searchBoxPI_TextChanged;
             // 
             // searchbuttonPI
             // 
@@ -186,6 +192,7 @@
             searchbuttonPI.TabIndex = 4;
             searchbuttonPI.Text = "Search";
             searchbuttonPI.UseVisualStyleBackColor = false;
+            searchbuttonPI.Click += searchbuttonPI_Click;
             // 
             // usermenuPI
             // 
@@ -196,9 +203,10 @@
             usermenuPI.Items.AddRange(new ToolStripItem[] { optionsToolStripMenuItem, activityToolStripMenuItem });
             usermenuPI.Location = new Point(409, 148);
             usermenuPI.Name = "usermenuPI";
-            usermenuPI.Size = new Size(458, 32);
+            usermenuPI.Size = new Size(278, 32);
             usermenuPI.TabIndex = 6;
             usermenuPI.Text = "menuStrip1";
+            usermenuPI.ItemClicked += usermenuPI_ItemClicked;
             // 
             // optionsToolStripMenuItem
             // 
@@ -208,24 +216,28 @@
             optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             optionsToolStripMenuItem.Size = new Size(137, 28);
             optionsToolStripMenuItem.Text = "User Options";
+            optionsToolStripMenuItem.Click += optionsToolStripMenuItem_Click;
             // 
             // addProductToolStripMenuItem
             // 
             addProductToolStripMenuItem.Name = "addProductToolStripMenuItem";
             addProductToolStripMenuItem.Size = new Size(317, 34);
             addProductToolStripMenuItem.Text = "Add Product";
+            addProductToolStripMenuItem.Click += addProductToolStripMenuItem_Click;
             // 
             // updatePrToolStripMenuItem
             // 
             updatePrToolStripMenuItem.Name = "updatePrToolStripMenuItem";
             updatePrToolStripMenuItem.Size = new Size(317, 34);
             updatePrToolStripMenuItem.Text = "Update Product";
+            updatePrToolStripMenuItem.Click += updatePrToolStripMenuItem_Click;
             // 
             // deleteRemoveProductToolStripMenuItem
             // 
             deleteRemoveProductToolStripMenuItem.Name = "deleteRemoveProductToolStripMenuItem";
             deleteRemoveProductToolStripMenuItem.Size = new Size(317, 34);
             deleteRemoveProductToolStripMenuItem.Text = "Delete/Remove Product";
+            deleteRemoveProductToolStripMenuItem.Click += deleteRemoveProductToolStripMenuItem_Click;
             // 
             // activityToolStripMenuItem
             // 
@@ -234,20 +246,21 @@
             activityToolStripMenuItem.Name = "activityToolStripMenuItem";
             activityToolStripMenuItem.Size = new Size(133, 28);
             activityToolStripMenuItem.Text = "User Activity";
+            activityToolStripMenuItem.Click += activityToolStripMenuItem_Click;
             // 
             // backoptionPI
             // 
             backoptionPI.Name = "backoptionPI";
-            backoptionPI.Size = new Size(270, 34);
+            backoptionPI.Size = new Size(169, 34);
             backoptionPI.Text = "Back";
-            backoptionPI.Click += this.backoptionPI_click;
+            backoptionPI.Click += backoptionPI_click;
             // 
             // logoutoptionPI
             // 
             logoutoptionPI.Name = "logoutoptionPI";
-            logoutoptionPI.Size = new Size(270, 34);
+            logoutoptionPI.Size = new Size(169, 34);
             logoutoptionPI.Text = "Logout";
-            logoutoptionPI.Click += this.logoutoptionPI_click;
+            logoutoptionPI.Click += logoutoptionPI_click;
             // 
             // contextMenuStrip1
             // 
@@ -255,12 +268,14 @@
             contextMenuStrip1.Items.AddRange(new ToolStripItem[] { refreshToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(143, 36);
+            contextMenuStrip1.Opening += contextMenuStrip1_Opening;
             // 
             // refreshToolStripMenuItem
             // 
             refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
             refreshToolStripMenuItem.Size = new Size(142, 32);
             refreshToolStripMenuItem.Text = "Refresh";
+            refreshToolStripMenuItem.Click += refreshToolStripMenuItem_Click;
             // 
             // label2
             // 
@@ -273,6 +288,7 @@
             label2.Size = new Size(148, 24);
             label2.TabIndex = 8;
             label2.Text = "[Time and Date]";
+            label2.Click += label2_Click;
             // 
             // profileName
             // 
@@ -285,6 +301,7 @@
             profileName.Size = new Size(58, 24);
             profileName.TabIndex = 9;
             profileName.Text = "User!";
+            profileName.Click += profileName_Click;
             // 
             // label3
             // 
@@ -297,6 +314,7 @@
             label3.Size = new Size(310, 24);
             label3.TabIndex = 10;
             label3.Text = "Welcome to your Product Inventory,";
+            label3.Click += label3_Click;
             // 
             // productInventory
             // 
@@ -316,6 +334,7 @@
             MainMenuStrip = usermenuPI;
             Name = "productInventory";
             Text = "Pananom : Product Inventory";
+            FormClosed += productInventory_FormClosed;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
