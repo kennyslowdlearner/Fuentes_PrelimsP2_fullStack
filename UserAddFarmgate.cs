@@ -10,9 +10,18 @@ namespace Fuentes_PrelimsP2
 {
     public partial class UserAddFarmgate : Form
     {
+        
+        private farmgateUSER mainGridForm;
+        public UserAddFarmgate(farmgateUSER parent)
+        {
+            InitializeComponent();
+            mainGridForm = parent;  
+        }
+
         public UserAddFarmgate()
         {
             InitializeComponent();
+           
         }
 
         private void UserAddFarmgate_FormClosed(object sender, FormClosedEventArgs e)
@@ -22,37 +31,30 @@ namespace Fuentes_PrelimsP2
 
         private void confirmFGP_Click(object sender, EventArgs e)
         {
-            string productname = addproductnameFPG.Text.Trim();
-            string productid = addproductidFGP.Text.Trim();
+            string Product = addproductnameFPG.Text;
+            string ID = addproductidFGP.Text;
+            float Price = 0f;
+            if (float.TryParse(addfarmgatepriceFGP.Text, out float price))
+            {
+                if (mainGridForm != null)
+                {
+                    mainGridForm.AddEntry(Product, ID, price);
+                }
+                else
+                {
+                    MessageBox.Show("Cannot add entry: parent form not available.");
+                }
+            }
+            else
+                MessageBox.Show("Please enter a valid price.");
 
-            if (string.IsNullOrEmpty(productname) || string.IsNullOrEmpty(productid))
-            {
-                MessageBox.Show("Please enter product name and product ID.", "Missing Data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (!float.TryParse(addfarmgatepriceFGP.Text, out float price))
-            {
-                MessageBox.Show("Please enter a valid numeric price.", "Invalid Price", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Instantiate target form and show it. If the parameterized constructor doesn't exist,
-            // fall back to the parameterless constructor.
-            try
-            {
-                var mainFPG = new farmgateUSER(productname, productid, price);
-                mainFPG.Show();
-                this.Close();
-            }
-            catch (MissingMethodException)
-            {
-                var mainFPG = new farmgateUSER();
-                mainFPG.Show();
-                this.Close();
-            }
+            this.Close();
 
         }
-            
+
+        private void searchbuttonFPG_Click(object? sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

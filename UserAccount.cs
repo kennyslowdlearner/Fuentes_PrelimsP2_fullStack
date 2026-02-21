@@ -80,7 +80,7 @@ namespace Fuentes_PrelimsP2
 
         private void button2_Click(object sender, EventArgs e)
         {
-            productInventory productInventory = new productInventory();
+            productInventory productInventory = new productInventory("", "", "", true);
 
             productInventory.Show();
             this.Hide();
@@ -88,7 +88,7 @@ namespace Fuentes_PrelimsP2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            farmgateUSER userFarmGate = new farmgateUSER("", "", 0);
+            farmgateUSER userFarmGate = new farmgateUSER();
 
             userFarmGate.Show();
             this.Hide();

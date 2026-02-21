@@ -11,23 +11,31 @@ namespace Fuentes_PrelimsP2
     public partial class productInventory : Form
     {
         DataTable ProductInventory = new DataTable();
-        
-        public productInventory()
+
+        string Product, ID, Quantity;
+        bool AddRow;
+        public productInventory(string productname, string productid, string quantity, bool addRow)
         {
             InitializeComponent();
-            // Initialize the DataTable and bind it to the grid when the form is created
+
+            this.Product = productname;
+            this.ID = productid;
+            this.Quantity = quantity;
+            this.AddRow = addRow;
+
             InitializeTableAndBind();
-        }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // Intentionally left blank. Do not initialize or add columns/rows here;
-            // this event fires when the user clicks a cell. Table is initialized on form creation.
+
+            if(addRow)
+            {
+                AddProductRow(productname, productid, quantity);
+            }
         }
 
-        // Initialize DataTable schema, add sample data and bind to the DataGridView
-        private void InitializeTableAndBind()
+        public void AddProductRow(string productname, string productid, string quantity)
         {
-            // Prevent adding columns multiple times
+            if (ProductInventory == null)
+                ProductInventory = new DataTable();
+
             if (!ProductInventory.Columns.Contains("numberPI"))
             {
                 ProductInventory.Columns.Add("numberPI", typeof(int));
@@ -36,38 +44,41 @@ namespace Fuentes_PrelimsP2
                 ProductInventory.Columns.Add("productidPI", typeof(string));
             }
 
-            // Add a sample row
-            var row1 = ProductInventory.NewRow();
-            row1["numberPI"] = ProductInventory.Rows.Count + 1;
-            row1["productnamePI"] = "Ganador";
-            row1["quantityPI"] = 378; // must match column type (float)
-            row1["productidPI"] = "100-2026";
-            ProductInventory.Rows.Add(row1);
+            var newRow = ProductInventory.NewRow();
+            newRow["numberPI"] = ProductInventory.Rows.Count + 1;
+            newRow["productnamePI"] = productname ?? string.Empty;
 
-            var row2 = ProductInventory.NewRow();
-            row2["numberPI"] = ProductInventory.Rows.Count + 1;
-            row2["productnamePI"] = "Ivory";
-            row2["quantityPI"] = 326; // must match column type (float)
-            row2["productidPI"] = "101-2026";
-            ProductInventory.Rows.Add(row2);
+            float quantityValue = 0f;
+            if (!string.IsNullOrWhiteSpace(quantity))
+                float.TryParse(quantity, out quantityValue);
 
-            // Bind the DataTable to the grid so rows appear in the UI
-            // Make sure the grid uses the designer columns (keep header texts/widths)
+            newRow["quantityPI"] = quantityValue;
+            newRow["productidPI"] = productid ?? string.Empty;
+            ProductInventory.Rows.Add(newRow);
+
+            if (dataGridView1 != null)
+            {
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = ProductInventory;
+                dataGridView1.Refresh();
+            }
+        }
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+
+        private void InitializeTableAndBind()
+        {
+            if (!ProductInventory.Columns.Contains("numberPI"))
+            {
+                ProductInventory.Columns.Add("numberPI", typeof(int));
+                ProductInventory.Columns.Add("productnamePI", typeof(string));
+                ProductInventory.Columns.Add("quantityPI", typeof(float));
+                ProductInventory.Columns.Add("productidPI", typeof(string));
+            }
+
             dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.ColumnHeadersVisible = true;
 
-            // Lock the "No." column so it doesn't stretch or shrink weirdly
-            dataGridView1.Columns["Number"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
-            // Alternatively, set a fixed width if you want it exactly like your designer
-            dataGridView1.Columns["Number"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridView1.Columns["Number"].Width = 86;
-
-
-            // Ensure the grid fills the panel and columns use available space without shrinking
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            // Make sure designer columns map to the table's column names
             if (dataGridView1.Columns.Contains("Number"))
                 dataGridView1.Columns["Number"].DataPropertyName = "numberPI";
             if (dataGridView1.Columns.Contains("productName"))
@@ -78,15 +89,8 @@ namespace Fuentes_PrelimsP2
                 dataGridView1.Columns["idProduct"].DataPropertyName = "productidPI";
 
             dataGridView1.DataSource = ProductInventory;
-
-            // Ensure headers are shown and the grid layout is refreshed
-            dataGridView1.ColumnHeadersVisible = true;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridView1.ColumnHeadersHeight = 40;
-            dataGridView1.Refresh();
         }
 
-        // Designer event handlers (stubs) ---------------------------------
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             // no-op
@@ -124,7 +128,8 @@ namespace Fuentes_PrelimsP2
 
         private void addProductToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Implement add product flow here when needed
+            UserAddProductInventory addproductinventory = new UserAddProductInventory(this);
+            addproductinventory.Show();
         }
 
         private void updatePrToolStripMenuItem_Click(object sender, EventArgs e)

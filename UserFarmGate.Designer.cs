@@ -47,17 +47,17 @@
             searchbuttonFPG = new Button();
             label1 = new Label();
             pictureBox1 = new PictureBox();
-            dataGridView1 = new DataGridView();
-            panel1 = new Panel();
-            usermenuPI = new MenuStrip();
-            Number = new DataGridViewTextBoxColumn();
+            displayFGPblock = new DataGridView();
+            numberFGP = new DataGridViewTextBoxColumn();
             productnameFGP = new DataGridViewTextBoxColumn();
             priceFGP = new DataGridViewTextBoxColumn();
-            idProduct = new DataGridViewTextBoxColumn();
+            productidFGP = new DataGridViewTextBoxColumn();
             dateFGP = new DataGridViewTextBoxColumn();
+            panel1 = new Panel();
+            usermenuPI = new MenuStrip();
             contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)displayFGPblock).BeginInit();
             panel1.SuspendLayout();
             usermenuPI.SuspendLayout();
             SuspendLayout();
@@ -102,16 +102,16 @@
             // logoutoptionFPG
             // 
             logoutoptionFPG.Name = "logoutoptionFPG";
-            logoutoptionFPG.Size = new Size(169, 34);
+            logoutoptionFPG.Size = new Size(270, 34);
             logoutoptionFPG.Text = "Logout";
-            logoutoptionFPG.Click += logoutoptionFPG_Click;
+            logoutoptionFPG.Click += logoutoptionFPG_Click_1;
             // 
             // backoptionFPG
             // 
             backoptionFPG.Name = "backoptionFPG";
-            backoptionFPG.Size = new Size(169, 34);
+            backoptionFPG.Size = new Size(270, 34);
             backoptionFPG.Text = "Back";
-            backoptionFPG.Click += backoptionFPG_Click;
+            backoptionFPG.Click += backoptionFPG_Click_1;
             // 
             // activityToolStripMenuItem
             // 
@@ -206,11 +206,12 @@
             pictureBox1.TabIndex = 12;
             pictureBox1.TabStop = false;
             // 
-            // dataGridView1
+            // displayFGPblock
             // 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.ColumnHeadersHeight = 40;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Number, productnameFGP, priceFGP, idProduct, dateFGP });
+            displayFGPblock.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            displayFGPblock.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            displayFGPblock.ColumnHeadersHeight = 40;
+            displayFGPblock.Columns.AddRange(new DataGridViewColumn[] { numberFGP, productnameFGP, priceFGP, productidFGP, dateFGP });
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Window;
             dataGridViewCellStyle1.Font = new Font("Verdana", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -218,21 +219,65 @@
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.GridColor = SystemColors.MenuText;
-            dataGridView1.Location = new Point(0, 0);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(950, 416);
-            dataGridView1.TabIndex = 0;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            displayFGPblock.DefaultCellStyle = dataGridViewCellStyle1;
+            displayFGPblock.GridColor = SystemColors.MenuText;
+            displayFGPblock.Location = new Point(0, 0);
+            displayFGPblock.Name = "displayFGPblock";
+            displayFGPblock.RowHeadersWidth = 62;
+            displayFGPblock.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            displayFGPblock.Size = new Size(950, 416);
+            displayFGPblock.TabIndex = 0;
+            displayFGPblock.CellContentClick += dateViewFGP;
+            // 
+            // numberFGP
+            // 
+            numberFGP.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            numberFGP.DataPropertyName = "numberFGP";
+            numberFGP.FillWeight = 227.272751F;
+            numberFGP.HeaderText = "No.";
+            numberFGP.MinimumWidth = 8;
+            numberFGP.Name = "numberFGP";
+            numberFGP.ReadOnly = true;
+            // 
+            // productnameFGP
+            // 
+            productnameFGP.DataPropertyName = "productnameFGP";
+            productnameFGP.FillWeight = 172.956528F;
+            productnameFGP.HeaderText = "Product Name";
+            productnameFGP.MinimumWidth = 8;
+            productnameFGP.Name = "productnameFGP";
+            // 
+            // priceFGP
+            // 
+            priceFGP.DataPropertyName = "priceFGP";
+            priceFGP.FillWeight = 29.5617085F;
+            priceFGP.HeaderText = "Farmgate Price (PHP)";
+            priceFGP.MinimumWidth = 8;
+            priceFGP.Name = "priceFGP";
+            priceFGP.ReadOnly = true;
+            // 
+            // productidFGP
+            // 
+            productidFGP.DataPropertyName = "productidFGP";
+            productidFGP.FillWeight = 29.5617085F;
+            productidFGP.HeaderText = "Product ID";
+            productidFGP.MinimumWidth = 8;
+            productidFGP.Name = "productidFGP";
+            productidFGP.ReadOnly = true;
+            // 
+            // dateFGP
+            // 
+            dateFGP.DataPropertyName = "dateFGP";
+            dateFGP.FillWeight = 40.6473465F;
+            dateFGP.HeaderText = "Date Published";
+            dateFGP.MinimumWidth = 8;
+            dateFGP.Name = "dateFGP";
+            dateFGP.ReadOnly = true;
             // 
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
-            panel1.Controls.Add(dataGridView1);
+            panel1.Controls.Add(displayFGPblock);
             panel1.Font = new Font("Glacial Indifference", 10F);
             panel1.Location = new Point(45, 212);
             panel1.Name = "panel1";
@@ -248,54 +293,9 @@
             usermenuPI.Items.AddRange(new ToolStripItem[] { optionsToolStripMenuItem, activityToolStripMenuItem });
             usermenuPI.Location = new Point(413, 159);
             usermenuPI.Name = "usermenuPI";
-            usermenuPI.Size = new Size(278, 32);
+            usermenuPI.Size = new Size(458, 32);
             usermenuPI.TabIndex = 16;
             usermenuPI.Text = "menuStrip1";
-            // 
-            // Number
-            // 
-            Number.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Number.DataPropertyName = "numberPI";
-            Number.FillWeight = 170.454529F;
-            Number.HeaderText = "No.";
-            Number.MinimumWidth = 8;
-            Number.Name = "Number";
-            Number.ReadOnly = true;
-            // 
-            // productnameFGP
-            // 
-            productnameFGP.DataPropertyName = "productnameFGP";
-            productnameFGP.FillWeight = 75.32468F;
-            productnameFGP.HeaderText = "Product Name";
-            productnameFGP.MinimumWidth = 8;
-            productnameFGP.Name = "productnameFGP";
-            // 
-            // priceFGP
-            // 
-            priceFGP.DataPropertyName = "priceFGP";
-            priceFGP.FillWeight = 75.32468F;
-            priceFGP.HeaderText = "Farmgate Price (PHP)";
-            priceFGP.MinimumWidth = 8;
-            priceFGP.Name = "priceFGP";
-            priceFGP.ReadOnly = true;
-            // 
-            // idProduct
-            // 
-            idProduct.DataPropertyName = "productidFGP";
-            idProduct.FillWeight = 75.32468F;
-            idProduct.HeaderText = "Product ID";
-            idProduct.MinimumWidth = 8;
-            idProduct.Name = "idProduct";
-            idProduct.ReadOnly = true;
-            // 
-            // dateFGP
-            // 
-            dateFGP.DataPropertyName = "dateFGP";
-            dateFGP.FillWeight = 103.571426F;
-            dateFGP.HeaderText = "Date Published";
-            dateFGP.MinimumWidth = 8;
-            dateFGP.Name = "dateFGP";
-            dateFGP.ReadOnly = true;
             // 
             // farmgateUSER
             // 
@@ -317,7 +317,7 @@
             FormClosed += farmgateUSER_FormClosed;
             contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)displayFGPblock).EndInit();
             panel1.ResumeLayout(false);
             usermenuPI.ResumeLayout(false);
             usermenuPI.PerformLayout();
@@ -343,13 +343,13 @@
         private Button searchbuttonFPG;
         private Label label1;
         private PictureBox pictureBox1;
-        private DataGridView dataGridView1;
+        private DataGridView displayFGPblock;
         private Panel panel1;
         private MenuStrip usermenuPI;
-        private DataGridViewTextBoxColumn Number;
+        private DataGridViewTextBoxColumn numberFGP;
         private DataGridViewTextBoxColumn productnameFGP;
         private DataGridViewTextBoxColumn priceFGP;
-        private DataGridViewTextBoxColumn idProduct;
+        private DataGridViewTextBoxColumn productidFGP;
         private DataGridViewTextBoxColumn dateFGP;
     }
 }

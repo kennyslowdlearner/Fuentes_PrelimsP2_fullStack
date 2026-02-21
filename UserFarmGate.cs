@@ -10,104 +10,103 @@ namespace Fuentes_PrelimsP2
 {
     public partial class farmgateUSER : Form
     {
-        // Strongly-typed entry for the farmgate list
-        private class FarmgateEntry
+        public class FarmGateEntry
         {
-            public int numberFGP { get; set; }
-            public string productnameFGP { get; set; }
-            public float priceFGP { get; set; }
-            public string productidFGP { get; set; }
-            public DateTime dateFGP { get; set; }
+            public string Product { get; set; }
+            public string ID { get; set; }
+            public float Price { get; set; }
+            public int Number { get; set; }
         }
 
-        string Product, ID;
-        float Price;
-
-        // Replace DataTable with a binding list for strongly-typed rows
-        private BindingList<FarmgateEntry> FGPentries;
+        private BindingList<FarmGateEntry> farmGateEntries = new BindingList<FarmGateEntry>();
+        public farmgateUSER()
+        {
+            InitializeComponent();
+            SetupDataGridView();
+        }
 
         public farmgateUSER(string productname, string productid, float price)
         {
             InitializeComponent();
-
-            Product = productname;
-            ID = productid;
-            Price = price;
-
-            // Initialize and populate the grid immediately so the newly added farmgate
-            // entry is visible as soon as this form is shown.
-            InitializeListAndBind();
+            SetupDataGridView();
+            AddEntry(productname, productid, price);
         }
 
-        // Parameterless constructor fallback
-        public farmgateUSER()
+
+        private void SetupDataGridView()
         {
-            InitializeComponent();
-            InitializeListAndBind();
+            displayFGPblock.AutoGenerateColumns = false;
+
+            if (displayFGPblock.Columns.Contains("numberFGP"))
+                displayFGPblock.Columns["numberFGP"].DataPropertyName = "Number";
+            if (displayFGPblock.Columns.Contains("productnameFGP"))
+                displayFGPblock.Columns["productnameFGP"].DataPropertyName = "Product";
+            if (displayFGPblock.Columns.Contains("priceFGP"))
+                displayFGPblock.Columns["priceFGP"].DataPropertyName = "Price";
+            if (displayFGPblock.Columns.Contains("productidFGP"))
+                displayFGPblock.Columns["productidFGP"].DataPropertyName = "ID";
+
+            displayFGPblock.DataSource = farmGateEntries;
+
+            if (displayFGPblock.Columns.Contains("dateFGP"))
+                displayFGPblock.Columns.Remove("dateFGP");
         }
 
-        private void InitializeListAndBind()
+        public void AddEntry(string productname, string productid, float price)
         {
-            // Create the binding list if needed
-            if (FGPentries == null)
-                FGPentries = new BindingList<FarmgateEntry>();
-
-            // If constructor provided values, add them as the first row
-            //ROW 1
-            if (!string.IsNullOrEmpty(Product) && !string.IsNullOrEmpty(ID) && Price != 0f)
+            if (this.InvokeRequired)
             {
-                FGPentries.Add(new FarmgateEntry
-                {
-                    numberFGP = FGPentries.Count + 1,
-                    productnameFGP = Product,
-                    priceFGP = Price,
-                    productidFGP = ID,
-                    dateFGP = DateTime.Now
-                });
+                this.BeginInvoke(new Action(() => AddEntry(productname, productid, price)));
+                return;
             }
-           
-            //ROW2
-            // Provide a sample first row so the grid isn't empty
-            FGPentries.Add(new FarmgateEntry
+
+            displayFGPblock.DataSource = null;
+
+            try
             {
-                numberFGP = 1,
-                productnameFGP = "Ganador",
-                priceFGP = 37.89f,
-                productidFGP = "100-2026",
-                dateFGP = DateTime.Now
-            });
+                farmGateEntries.Add(new FarmGateEntry
+                {
+                    Number = farmGateEntries.Count + 1,
+                    Product = productname,
+                    ID = productid,
+                    Price = price
+                });
 
-            //ROW3
-            FGPentries.Add(new FarmgateEntry
+                displayFGPblock.DataSource = farmGateEntries;
+                RebindColumns();
+            }
+
+            catch (Exception ex)
             {
-                numberFGP = 2,
-                productnameFGP = "Ivory",
-                priceFGP = 34.26f,
-                productidFGP = "101-2026",
-                dateFGP = DateTime.Now
-            });
+                MessageBox.Show("Error: " + ex.Message);
+            }
 
-
-
-
-            // Ensure the grid uses generated columns from the list's properties
-            dataGridView1.Columns.Clear();
-            dataGridView1.AutoGenerateColumns = true;
-            // Make the grid fill the panel and have columns stretch to use available space
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.DataSource = FGPentries;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void RebindColumns()
         {
-            // no-op: grid is bound to a list and rows should be added via code (Add dialog) or edit UI
+            if (displayFGPblock.Columns.Contains("numberFGP"))
+                displayFGPblock.Columns["numberFGP"].DataPropertyName = "Number";
+            if (displayFGPblock.Columns.Contains("productnameFGP"))
+                displayFGPblock.Columns["productnameFGP"].DataPropertyName = "Product";
+            if (displayFGPblock.Columns.Contains("priceFGP"))
+                displayFGPblock.Columns["priceFGP"].DataPropertyName = "Price";
+            if (displayFGPblock.Columns.Contains("productidFGP"))
+                displayFGPblock.Columns["productidFGP"].DataPropertyName = "ID";
+
+            if (displayFGPblock.Columns.Contains("numberFGP"))
+                displayFGPblock.Columns["numberFGP"].Width = 50;
+        }
+
+        private void addproductFGP_Click(object sender, EventArgs e)
+        {
+            using (UserAddFarmgate addFarmgate = new UserAddFarmgate(this))
+                addFarmgate.ShowDialog();
         }
 
         private void backoptionFPG_Click(object sender, EventArgs e)
         {
             UserAccount useraccount = new UserAccount("", "", "");
-
             useraccount.Show();
             this.Hide();
         }
@@ -115,21 +114,37 @@ namespace Fuentes_PrelimsP2
         private void logoutoptionFPG_Click(object sender, EventArgs e)
         {
             Homepage homepage = new Homepage();
-
             homepage.Show();
             this.Hide();
-        }
 
-        private void addproductFGP_Click(object sender, EventArgs e)
-        {
-            UserAddFarmgate addFarmgate = new UserAddFarmgate();
-
-            addFarmgate.Show();
         }
 
         private void farmgateUSER_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+
+        private void dateViewFGP(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void backoptionFPG_Click_1(object sender, EventArgs e)
+        {
+            UserAccount useraccount = new UserAccount("", "", "");
+            useraccount.Show();
+            this.Hide();
+        }
+
+        private void logoutoptionFPG_Click_1(object sender, EventArgs e)
+        {
+            Homepage homepage = new Homepage();
+            homepage.Show();
+            this.Hide();
         }
     }
 }

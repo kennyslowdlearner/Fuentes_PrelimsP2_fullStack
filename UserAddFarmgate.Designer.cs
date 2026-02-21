@@ -154,7 +154,7 @@
             confirmFGP.TabIndex = 20;
             confirmFGP.Text = "Confirm";
             confirmFGP.UseVisualStyleBackColor = false;
-            confirmFGP.Click += this.confirmFGP_Click;
+            confirmFGP.Click += confirmFGP_Click;
             // 
             // panel1
             // 
@@ -180,8 +180,8 @@
             ClientSize = new Size(454, 395);
             Controls.Add(panel1);
             Name = "UserAddFarmgate";
-            Text = "Form1";
-            FormClosed += UserAddFarmgate_FormClosed;
+            Text = "Pananom : Add Farmgate Price";
+       //     FormClosed += UserAddFarmgate_FormClosed;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
