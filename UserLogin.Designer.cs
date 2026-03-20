@@ -32,25 +32,23 @@
             panel1 = new Panel();
             USERpass = new TextBox();
             USERusn = new TextBox();
-            label3 = new Label();
             label4 = new Label();
-            label2 = new Label();
-            label5 = new Label();
-            label1 = new Label();
             loginUSER = new Button();
+            label1 = new Label();
+            label2 = new Label();
+            button1 = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(label2);
             panel1.Controls.Add(USERpass);
             panel1.Controls.Add(USERusn);
-            panel1.Controls.Add(label3);
             panel1.Controls.Add(label4);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(label5);
-            panel1.Controls.Add(label1);
+            panel1.Controls.Add(button1);
             panel1.Controls.Add(loginUSER);
             panel1.Font = new Font("Glacial Indifference", 10F);
             panel1.Location = new Point(88, 32);
@@ -60,83 +58,85 @@
             // 
             // USERpass
             // 
-            USERpass.Location = new Point(354, 351);
+            USERpass.BackColor = Color.LightGreen;
+            USERpass.BorderStyle = BorderStyle.FixedSingle;
+            USERpass.Location = new Point(506, 365);
             USERpass.Name = "USERpass";
-            USERpass.Size = new Size(364, 31);
+            USERpass.Size = new Size(239, 31);
             USERpass.TabIndex = 4;
+            USERpass.TextChanged += USERpass_TextChanged;
             // 
             // USERusn
             // 
-            USERusn.Location = new Point(354, 300);
+            USERusn.BackColor = Color.LightGreen;
+            USERusn.BorderStyle = BorderStyle.FixedSingle;
+            USERusn.Location = new Point(506, 326);
             USERusn.Name = "USERusn";
-            USERusn.Size = new Size(364, 31);
+            USERusn.Size = new Size(239, 31);
             USERusn.TabIndex = 4;
             USERusn.TextChanged += USERusn_TextChanged;
-            // 
-            // label3
-            // 
-            label3.Font = new Font("Glacial Indifference", 10.999999F);
-            label3.Location = new Point(29, 343);
-            label3.Name = "label3";
-            label3.Size = new Size(310, 44);
-            label3.TabIndex = 2;
-            label3.Text = "Password :";
-            label3.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label4
             // 
             label4.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(206, 228);
+            label4.Location = new Point(274, 245);
             label4.Name = "label4";
             label4.Size = new Size(516, 44);
             label4.TabIndex = 2;
             label4.Text = "Make sure to enter a valid credentials!";
             label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label2
-            // 
-            label2.Font = new Font("Glacial Indifference", 10.999999F);
-            label2.Location = new Point(38, 292);
-            label2.Name = "label2";
-            label2.Size = new Size(310, 44);
-            label2.TabIndex = 2;
-            label2.Text = "Username : ";
-            label2.TextAlign = ContentAlignment.MiddleRight;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("League Spartan", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(304, 35);
-            label5.Name = "label5";
-            label5.Size = new Size(340, 107);
-            label5.TabIndex = 3;
-            label5.Text = "Pananom";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Glacial Indifference", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(354, 180);
-            label1.Name = "label1";
-            label1.Size = new Size(215, 48);
-            label1.TabIndex = 3;
-            label1.Text = "User Login";
-            // 
             // loginUSER
             // 
-            loginUSER.BackColor = Color.LightGreen;
+            loginUSER.BackColor = Color.SeaGreen;
             loginUSER.FlatAppearance.BorderColor = Color.FromArgb(0, 192, 0);
             loginUSER.FlatStyle = FlatStyle.Flat;
-            loginUSER.Font = new Font("Glacial Indifference", 10F);
-            loginUSER.ForeColor = Color.DarkOliveGreen;
-            loginUSER.Location = new Point(337, 504);
+            loginUSER.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            loginUSER.ForeColor = Color.Gold;
+            loginUSER.Location = new Point(593, 469);
             loginUSER.Name = "loginUSER";
-            loginUSER.Size = new Size(187, 39);
+            loginUSER.Size = new Size(152, 39);
             loginUSER.TabIndex = 0;
             loginUSER.Text = "Login";
             loginUSER.UseVisualStyleBackColor = false;
             loginUSER.Click += loginUSER_Click;
+            // 
+            // label1
+            // 
+            label1.Font = new Font("League Spartan SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.ForestGreen;
+            label1.Location = new Point(355, 355);
+            label1.Name = "label1";
+            label1.Size = new Size(145, 44);
+            label1.TabIndex = 5;
+            label1.Text = "Password : ";
+            label1.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // label2
+            // 
+            label2.Font = new Font("League Spartan SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.ForestGreen;
+            label2.Location = new Point(355, 313);
+            label2.Name = "label2";
+            label2.Size = new Size(145, 44);
+            label2.TabIndex = 6;
+            label2.Text = "Username : ";
+            label2.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.SeaGreen;
+            button1.FlatAppearance.BorderColor = Color.FromArgb(0, 192, 0);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.Gold;
+            button1.Location = new Point(435, 469);
+            button1.Name = "button1";
+            button1.Size = new Size(152, 39);
+            button1.TabIndex = 0;
+            button1.Text = "Back";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += backHomepage_Click;
             // 
             // UserLogin
             // 
@@ -159,10 +159,9 @@
         private Button loginUSER;
         private TextBox USERpass;
         private TextBox USERusn;
-        private Label label3;
-        private Label label2;
-        private Label label1;
         private Label label4;
-        private Label label5;
+        private Label label1;
+        private Label label2;
+        private Button button1;
     }
 }

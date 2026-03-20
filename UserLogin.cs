@@ -10,6 +10,7 @@ namespace Fuentes_PrelimsP2
 {
     public partial class UserLogin : Form
     {
+        Homepage home;
         public UserLogin()
         {
             InitializeComponent();
@@ -48,6 +49,18 @@ namespace Fuentes_PrelimsP2
         private void UserLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void USERpass_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void backHomepage_Click(object sender, EventArgs e)
+        {
+            home = new Homepage();
+            this.Hide();
+            home.Show();
         }
     }
 }

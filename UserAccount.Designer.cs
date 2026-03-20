@@ -216,7 +216,7 @@
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(169, 34);
+            logoutToolStripMenuItem.Size = new Size(270, 34);
             logoutToolStripMenuItem.Text = "Logout";
             logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
             // 
@@ -263,7 +263,7 @@
             button7.FlatStyle = FlatStyle.Flat;
             button7.Font = new Font("Glacial Indifference", 10F);
             button7.ForeColor = Color.DarkOliveGreen;
-            button7.Location = new Point(407, 132);
+            button7.Location = new Point(420, 136);
             button7.Name = "button7";
             button7.Size = new Size(136, 30);
             button7.TabIndex = 0;
@@ -272,6 +272,7 @@
             // 
             // panel1
             // 
+            panel1.BackColor = Color.Transparent;
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
             panel1.Controls.Add(button7);
             panel1.Font = new Font("Glacial Indifference", 10F);

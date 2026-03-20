@@ -181,7 +181,6 @@
             Controls.Add(panel1);
             Name = "UserAddFarmgate";
             Text = "Pananom : Add Farmgate Price";
-       //     FormClosed += UserAddFarmgate_FormClosed;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

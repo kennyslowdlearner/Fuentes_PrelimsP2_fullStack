@@ -10,6 +10,7 @@ namespace Fuentes_PrelimsP2
 {
     public partial class AdminLogin : Form
     {
+        Homepage home;
         public AdminLogin()
         {
             InitializeComponent();
@@ -37,6 +38,13 @@ namespace Fuentes_PrelimsP2
         private void AdminLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void BackHomepage_Click(object sender, EventArgs e)
+        {
+            home = new Homepage();
+            this.Hide();
+            home.Show();
         }
     }
 }

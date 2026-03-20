@@ -102,14 +102,14 @@
             // logoutoptionFPG
             // 
             logoutoptionFPG.Name = "logoutoptionFPG";
-            logoutoptionFPG.Size = new Size(270, 34);
+            logoutoptionFPG.Size = new Size(169, 34);
             logoutoptionFPG.Text = "Logout";
             logoutoptionFPG.Click += logoutoptionFPG_Click_1;
             // 
             // backoptionFPG
             // 
             backoptionFPG.Name = "backoptionFPG";
-            backoptionFPG.Size = new Size(270, 34);
+            backoptionFPG.Size = new Size(169, 34);
             backoptionFPG.Text = "Back";
             backoptionFPG.Click += backoptionFPG_Click_1;
             // 
@@ -293,7 +293,7 @@
             usermenuPI.Items.AddRange(new ToolStripItem[] { optionsToolStripMenuItem, activityToolStripMenuItem });
             usermenuPI.Location = new Point(413, 159);
             usermenuPI.Name = "usermenuPI";
-            usermenuPI.Size = new Size(458, 32);
+            usermenuPI.Size = new Size(278, 32);
             usermenuPI.TabIndex = 16;
             usermenuPI.Text = "menuStrip1";
             // 
@@ -302,7 +302,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(1040, 650);
+            ClientSize = new Size(753, 726);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(profileName);

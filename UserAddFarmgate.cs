@@ -10,18 +10,18 @@ namespace Fuentes_PrelimsP2
 {
     public partial class UserAddFarmgate : Form
     {
-        
+
         private farmgateUSER mainGridForm;
         public UserAddFarmgate(farmgateUSER parent)
         {
             InitializeComponent();
-            mainGridForm = parent;  
+            mainGridForm = parent;
         }
 
         public UserAddFarmgate()
         {
             InitializeComponent();
-           
+
         }
 
         private void UserAddFarmgate_FormClosed(object sender, FormClosedEventArgs e)
@@ -55,6 +55,11 @@ namespace Fuentes_PrelimsP2
         private void searchbuttonFPG_Click(object? sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -67,7 +67,7 @@
             // 
             // button4
             // 
-            button4.BackColor = Color.PaleGreen;
+            button4.BackColor = Color.GreenYellow;
             button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
             button4.FlatAppearance.BorderColor = Color.FromArgb(0, 192, 0);
             button4.FlatStyle = FlatStyle.Flat;
@@ -77,7 +77,6 @@
             button4.Name = "button4";
             button4.Size = new Size(321, 52);
             button4.TabIndex = 0;
-            button4.Text = "Why Pananom?";
             button4.UseVisualStyleBackColor = false;
             // 
             // panel6
@@ -101,7 +100,6 @@
             button6.Name = "button6";
             button6.Size = new Size(321, 52);
             button6.TabIndex = 0;
-            button6.Text = "Significance of AgriBusiness";
             button6.UseVisualStyleBackColor = false;
             // 
             // panel7
@@ -125,7 +123,6 @@
             button7.Name = "button7";
             button7.Size = new Size(321, 52);
             button7.TabIndex = 0;
-            button7.Text = "Pananom benefits";
             button7.UseVisualStyleBackColor = false;
             // 
             // panel8
@@ -149,7 +146,6 @@
             button8.Name = "button8";
             button8.Size = new Size(321, 52);
             button8.TabIndex = 0;
-            button8.Text = "Pananom 101";
             button8.UseVisualStyleBackColor = false;
             // 
             // panel9
