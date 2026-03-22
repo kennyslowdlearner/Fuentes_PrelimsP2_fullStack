@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(User_SoilEvaluator));
             panel1 = new Panel();
+            dataGridView1 = new DataGridView();
             button9 = new Button();
             button7 = new Button();
             button4 = new Button();
@@ -98,8 +100,8 @@
             label46 = new Label();
             button6 = new Button();
             button5 = new Button();
-            dataGridView1 = new DataGridView();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
@@ -107,7 +109,6 @@
             ((System.ComponentModel.ISupportInitialize)numericUpDown3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -118,44 +119,53 @@
             panel1.Size = new Size(901, 292);
             panel1.TabIndex = 0;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(3, 3);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 62;
+            dataGridView1.Size = new Size(895, 286);
+            dataGridView1.TabIndex = 0;
+            // 
             // button9
             // 
             button9.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button9.ForeColor = Color.CornflowerBlue;
             button9.Location = new Point(1161, 497);
             button9.Name = "button9";
             button9.Size = new Size(254, 99);
             button9.TabIndex = 62;
-            button9.Text = "Continue";
             button9.UseVisualStyleBackColor = true;
             // 
             // button7
             // 
             button7.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button7.ForeColor = Color.CornflowerBlue;
             button7.Location = new Point(1161, 614);
             button7.Name = "button7";
             button7.Size = new Size(254, 99);
             button7.TabIndex = 63;
-            button7.Text = "Continue";
             button7.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
             button4.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button4.ForeColor = Color.CornflowerBlue;
             button4.Location = new Point(891, 614);
             button4.Name = "button4";
             button4.Size = new Size(254, 99);
             button4.TabIndex = 64;
-            button4.Text = "Continue";
             button4.UseVisualStyleBackColor = true;
             // 
             // button8
             // 
             button8.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button8.ForeColor = Color.CornflowerBlue;
             button8.Location = new Point(891, 497);
             button8.Name = "button8";
             button8.Size = new Size(254, 99);
             button8.TabIndex = 65;
-            button8.Text = "Continue";
             button8.UseVisualStyleBackColor = true;
             // 
             // label9
@@ -163,7 +173,7 @@
             label9.AutoSize = true;
             label9.BackColor = Color.Transparent;
             label9.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label9.ForeColor = SystemColors.ActiveCaptionText;
+            label9.ForeColor = Color.GreenYellow;
             label9.Location = new Point(891, 467);
             label9.Name = "label9";
             label9.Size = new Size(152, 27);
@@ -232,7 +242,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Glacial Indifference", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ActiveCaptionText;
+            label1.ForeColor = Color.GreenYellow;
             label1.Location = new Point(547, 97);
             label1.Name = "label1";
             label1.Size = new Size(138, 29);
@@ -244,7 +254,7 @@
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Glacial Indifference", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = SystemColors.ActiveCaptionText;
+            label2.ForeColor = Color.GreenYellow;
             label2.Location = new Point(48, 97);
             label2.Name = "label2";
             label2.Size = new Size(224, 34);
@@ -256,7 +266,7 @@
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Glacial Indifference", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = SystemColors.ActiveCaptionText;
+            label3.ForeColor = Color.GreenYellow;
             label3.Location = new Point(30, 574);
             label3.Name = "label3";
             label3.Size = new Size(108, 34);
@@ -269,7 +279,7 @@
             label4.AutoSize = true;
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label4.ForeColor = SystemColors.ActiveCaptionText;
+            label4.ForeColor = Color.Green;
             label4.Location = new Point(60, 145);
             label4.Name = "label4";
             label4.Size = new Size(268, 24);
@@ -281,7 +291,7 @@
             label7.AutoSize = true;
             label7.BackColor = Color.Transparent;
             label7.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.ForeColor = SystemColors.ActiveCaptionText;
+            label7.ForeColor = Color.LawnGreen;
             label7.Location = new Point(74, 182);
             label7.Name = "label7";
             label7.Size = new Size(140, 24);
@@ -293,7 +303,7 @@
             label5.AutoSize = true;
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.ForeColor = SystemColors.ActiveCaptionText;
+            label5.ForeColor = Color.LawnGreen;
             label5.Location = new Point(232, 182);
             label5.Name = "label5";
             label5.Size = new Size(15, 24);
@@ -305,7 +315,7 @@
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.ForeColor = SystemColors.ActiveCaptionText;
+            label6.ForeColor = Color.LawnGreen;
             label6.Location = new Point(74, 219);
             label6.Name = "label6";
             label6.Size = new Size(162, 24);
@@ -317,7 +327,7 @@
             label8.AutoSize = true;
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.ForeColor = SystemColors.ActiveCaptionText;
+            label8.ForeColor = Color.LawnGreen;
             label8.Location = new Point(232, 219);
             label8.Name = "label8";
             label8.Size = new Size(15, 24);
@@ -329,7 +339,7 @@
             label10.AutoSize = true;
             label10.BackColor = Color.Transparent;
             label10.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label10.ForeColor = SystemColors.ActiveCaptionText;
+            label10.ForeColor = Color.LawnGreen;
             label10.Location = new Point(74, 256);
             label10.Name = "label10";
             label10.Size = new Size(152, 24);
@@ -341,7 +351,7 @@
             label11.AutoSize = true;
             label11.BackColor = Color.Transparent;
             label11.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label11.ForeColor = SystemColors.ActiveCaptionText;
+            label11.ForeColor = Color.LawnGreen;
             label11.Location = new Point(232, 256);
             label11.Name = "label11";
             label11.Size = new Size(15, 24);
@@ -353,7 +363,7 @@
             label12.AutoSize = true;
             label12.BackColor = Color.Transparent;
             label12.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label12.ForeColor = SystemColors.ActiveCaptionText;
+            label12.ForeColor = Color.LawnGreen;
             label12.Location = new Point(73, 336);
             label12.Name = "label12";
             label12.Size = new Size(125, 24);
@@ -365,7 +375,7 @@
             label13.AutoSize = true;
             label13.BackColor = Color.Transparent;
             label13.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label13.ForeColor = SystemColors.ActiveCaptionText;
+            label13.ForeColor = Color.LawnGreen;
             label13.Location = new Point(231, 336);
             label13.Name = "label13";
             label13.Size = new Size(15, 24);
@@ -384,7 +394,7 @@
             label14.AutoSize = true;
             label14.BackColor = Color.Transparent;
             label14.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label14.ForeColor = SystemColors.ActiveCaptionText;
+            label14.ForeColor = Color.LawnGreen;
             label14.Location = new Point(73, 373);
             label14.Name = "label14";
             label14.Size = new Size(162, 48);
@@ -396,7 +406,7 @@
             label15.AutoSize = true;
             label15.BackColor = Color.Transparent;
             label15.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label15.ForeColor = SystemColors.ActiveCaptionText;
+            label15.ForeColor = Color.LawnGreen;
             label15.Location = new Point(231, 390);
             label15.Name = "label15";
             label15.Size = new Size(15, 24);
@@ -408,7 +418,7 @@
             label16.AutoSize = true;
             label16.BackColor = Color.Transparent;
             label16.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label16.ForeColor = SystemColors.ActiveCaptionText;
+            label16.ForeColor = Color.LawnGreen;
             label16.Location = new Point(74, 475);
             label16.Name = "label16";
             label16.Size = new Size(114, 48);
@@ -420,7 +430,7 @@
             label17.AutoSize = true;
             label17.BackColor = Color.Transparent;
             label17.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label17.ForeColor = SystemColors.ActiveCaptionText;
+            label17.ForeColor = Color.LawnGreen;
             label17.Location = new Point(232, 486);
             label17.Name = "label17";
             label17.Size = new Size(15, 24);
@@ -439,7 +449,7 @@
             label18.AutoSize = true;
             label18.BackColor = Color.Transparent;
             label18.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label18.ForeColor = SystemColors.ActiveCaptionText;
+            label18.ForeColor = Color.LawnGreen;
             label18.Location = new Point(74, 533);
             label18.Name = "label18";
             label18.Size = new Size(150, 24);
@@ -451,7 +461,7 @@
             label19.AutoSize = true;
             label19.BackColor = Color.Transparent;
             label19.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label19.ForeColor = SystemColors.ActiveCaptionText;
+            label19.ForeColor = Color.LawnGreen;
             label19.Location = new Point(232, 533);
             label19.Name = "label19";
             label19.Size = new Size(15, 24);
@@ -467,6 +477,7 @@
             // 
             // comboBox1
             // 
+            comboBox1.BackColor = Color.LightGreen;
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(243, 486);
             comboBox1.Name = "comboBox1";
@@ -475,6 +486,7 @@
             // 
             // trackBar1
             // 
+            trackBar1.BackColor = Color.LightGreen;
             trackBar1.Location = new Point(243, 525);
             trackBar1.Name = "trackBar1";
             trackBar1.Size = new Size(259, 69);
@@ -482,37 +494,52 @@
             // 
             // numericUpDown1
             // 
+            numericUpDown1.BackColor = Color.LightGreen;
+            numericUpDown1.BorderStyle = BorderStyle.None;
+            numericUpDown1.Font = new Font("Glacial Indifference", 8.999999F);
             numericUpDown1.Location = new Point(242, 333);
             numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(259, 31);
+            numericUpDown1.Size = new Size(259, 25);
             numericUpDown1.TabIndex = 71;
             // 
             // numericUpDown2
             // 
+            numericUpDown2.BackColor = Color.LightGreen;
+            numericUpDown2.BorderStyle = BorderStyle.None;
+            numericUpDown2.Font = new Font("Glacial Indifference", 8.999999F);
             numericUpDown2.Location = new Point(242, 387);
             numericUpDown2.Name = "numericUpDown2";
-            numericUpDown2.Size = new Size(259, 31);
+            numericUpDown2.Size = new Size(259, 25);
             numericUpDown2.TabIndex = 71;
             // 
             // numericUpDown3
             // 
+            numericUpDown3.BackColor = Color.LightGreen;
+            numericUpDown3.BorderStyle = BorderStyle.None;
+            numericUpDown3.Font = new Font("Glacial Indifference", 8.999999F);
             numericUpDown3.Location = new Point(242, 179);
             numericUpDown3.Name = "numericUpDown3";
-            numericUpDown3.Size = new Size(259, 31);
+            numericUpDown3.Size = new Size(259, 25);
             numericUpDown3.TabIndex = 71;
             // 
             // numericUpDown4
             // 
+            numericUpDown4.BackColor = Color.LightGreen;
+            numericUpDown4.BorderStyle = BorderStyle.None;
+            numericUpDown4.Font = new Font("Glacial Indifference", 8.999999F);
             numericUpDown4.Location = new Point(242, 216);
             numericUpDown4.Name = "numericUpDown4";
-            numericUpDown4.Size = new Size(259, 31);
+            numericUpDown4.Size = new Size(259, 25);
             numericUpDown4.TabIndex = 71;
             // 
             // numericUpDown5
             // 
+            numericUpDown5.BackColor = Color.LightGreen;
+            numericUpDown5.BorderStyle = BorderStyle.None;
+            numericUpDown5.Font = new Font("Glacial Indifference", 8.999999F);
             numericUpDown5.Location = new Point(243, 253);
             numericUpDown5.Name = "numericUpDown5";
-            numericUpDown5.Size = new Size(259, 31);
+            numericUpDown5.Size = new Size(259, 25);
             numericUpDown5.TabIndex = 71;
             // 
             // label20
@@ -520,7 +547,7 @@
             label20.AutoSize = true;
             label20.BackColor = Color.Transparent;
             label20.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label20.ForeColor = SystemColors.ActiveCaptionText;
+            label20.ForeColor = Color.ForestGreen;
             label20.Location = new Point(48, 608);
             label20.Name = "label20";
             label20.Size = new Size(155, 27);
@@ -532,7 +559,7 @@
             label21.AutoSize = true;
             label21.BackColor = Color.Transparent;
             label21.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label21.ForeColor = SystemColors.ActiveCaptionText;
+            label21.ForeColor = Color.Green;
             label21.Location = new Point(59, 306);
             label21.Name = "label21";
             label21.Size = new Size(224, 24);
@@ -544,7 +571,7 @@
             label22.AutoSize = true;
             label22.BackColor = Color.Transparent;
             label22.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label22.ForeColor = SystemColors.ActiveCaptionText;
+            label22.ForeColor = Color.Green;
             label22.Location = new Point(60, 450);
             label22.Name = "label22";
             label22.Size = new Size(337, 24);
@@ -556,7 +583,7 @@
             label23.AutoSize = true;
             label23.BackColor = Color.Transparent;
             label23.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label23.ForeColor = SystemColors.ActiveCaptionText;
+            label23.ForeColor = Color.ForestGreen;
             label23.Location = new Point(209, 610);
             label23.Name = "label23";
             label23.Size = new Size(16, 24);
@@ -568,7 +595,7 @@
             label24.AutoSize = true;
             label24.BackColor = Color.Transparent;
             label24.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label24.ForeColor = SystemColors.ActiveCaptionText;
+            label24.ForeColor = Color.Green;
             label24.Location = new Point(227, 668);
             label24.Name = "label24";
             label24.Size = new Size(15, 24);
@@ -580,7 +607,7 @@
             label25.AutoSize = true;
             label25.BackColor = Color.Transparent;
             label25.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label25.ForeColor = SystemColors.ActiveCaptionText;
+            label25.ForeColor = Color.Green;
             label25.Location = new Point(48, 644);
             label25.Name = "label25";
             label25.Size = new Size(134, 24);
@@ -593,7 +620,7 @@
             label26.AutoSize = true;
             label26.BackColor = Color.Transparent;
             label26.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label26.ForeColor = SystemColors.ActiveCaptionText;
+            label26.ForeColor = Color.LawnGreen;
             label26.Location = new Point(64, 673);
             label26.Name = "label26";
             label26.Size = new Size(150, 24);
@@ -605,7 +632,7 @@
             label27.AutoSize = true;
             label27.BackColor = Color.Transparent;
             label27.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label27.ForeColor = SystemColors.ActiveCaptionText;
+            label27.ForeColor = Color.LawnGreen;
             label27.Location = new Point(64, 697);
             label27.Name = "label27";
             label27.Size = new Size(150, 24);
@@ -617,7 +644,7 @@
             label28.AutoSize = true;
             label28.BackColor = Color.Transparent;
             label28.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label28.ForeColor = SystemColors.ActiveCaptionText;
+            label28.ForeColor = Color.LawnGreen;
             label28.Location = new Point(64, 721);
             label28.Name = "label28";
             label28.Size = new Size(150, 24);
@@ -629,7 +656,7 @@
             label29.AutoSize = true;
             label29.BackColor = Color.Transparent;
             label29.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label29.ForeColor = SystemColors.ActiveCaptionText;
+            label29.ForeColor = Color.Green;
             label29.Location = new Point(48, 762);
             label29.Name = "label29";
             label29.Size = new Size(165, 24);
@@ -641,7 +668,7 @@
             label30.AutoSize = true;
             label30.BackColor = Color.Transparent;
             label30.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label30.ForeColor = SystemColors.ActiveCaptionText;
+            label30.ForeColor = Color.Green;
             label30.Location = new Point(227, 697);
             label30.Name = "label30";
             label30.Size = new Size(15, 24);
@@ -653,7 +680,7 @@
             label31.AutoSize = true;
             label31.BackColor = Color.Transparent;
             label31.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label31.ForeColor = SystemColors.ActiveCaptionText;
+            label31.ForeColor = Color.Green;
             label31.Location = new Point(227, 721);
             label31.Name = "label31";
             label31.Size = new Size(15, 24);
@@ -665,7 +692,7 @@
             label32.AutoSize = true;
             label32.BackColor = Color.Transparent;
             label32.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label32.ForeColor = SystemColors.ActiveCaptionText;
+            label32.ForeColor = Color.Green;
             label32.Location = new Point(227, 762);
             label32.Name = "label32";
             label32.Size = new Size(15, 24);
@@ -677,7 +704,7 @@
             label33.AutoSize = true;
             label33.BackColor = Color.Transparent;
             label33.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label33.ForeColor = SystemColors.ActiveCaptionText;
+            label33.ForeColor = Color.Green;
             label33.Location = new Point(439, 644);
             label33.Name = "label33";
             label33.Size = new Size(92, 24);
@@ -689,7 +716,7 @@
             label34.AutoSize = true;
             label34.BackColor = Color.Transparent;
             label34.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label34.ForeColor = SystemColors.ActiveCaptionText;
+            label34.ForeColor = Color.Green;
             label34.Location = new Point(618, 644);
             label34.Name = "label34";
             label34.Size = new Size(15, 24);
@@ -701,7 +728,7 @@
             label35.AutoSize = true;
             label35.BackColor = Color.Transparent;
             label35.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label35.ForeColor = SystemColors.ActiveCaptionText;
+            label35.ForeColor = Color.Green;
             label35.Location = new Point(439, 668);
             label35.Name = "label35";
             label35.Size = new Size(150, 48);
@@ -713,7 +740,7 @@
             label36.AutoSize = true;
             label36.BackColor = Color.Transparent;
             label36.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label36.ForeColor = SystemColors.ActiveCaptionText;
+            label36.ForeColor = Color.Green;
             label36.Location = new Point(618, 668);
             label36.Name = "label36";
             label36.Size = new Size(15, 24);
@@ -725,7 +752,7 @@
             label37.AutoSize = true;
             label37.BackColor = Color.Transparent;
             label37.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label37.ForeColor = SystemColors.ActiveCaptionText;
+            label37.ForeColor = Color.Green;
             label37.Location = new Point(439, 721);
             label37.Name = "label37";
             label37.Size = new Size(174, 24);
@@ -737,7 +764,7 @@
             label38.AutoSize = true;
             label38.BackColor = Color.Transparent;
             label38.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label38.ForeColor = SystemColors.ActiveCaptionText;
+            label38.ForeColor = Color.Green;
             label38.Location = new Point(618, 721);
             label38.Name = "label38";
             label38.Size = new Size(15, 24);
@@ -749,7 +776,7 @@
             label39.AutoSize = true;
             label39.BackColor = Color.Transparent;
             label39.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label39.ForeColor = SystemColors.ActiveCaptionText;
+            label39.ForeColor = Color.Gold;
             label39.Location = new Point(227, 611);
             label39.Name = "label39";
             label39.Size = new Size(118, 24);
@@ -762,7 +789,7 @@
             label40.AutoSize = true;
             label40.BackColor = Color.Transparent;
             label40.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label40.ForeColor = SystemColors.ActiveCaptionText;
+            label40.ForeColor = Color.Gold;
             label40.Location = new Point(242, 668);
             label40.Name = "label40";
             label40.Size = new Size(118, 24);
@@ -774,7 +801,7 @@
             label41.AutoSize = true;
             label41.BackColor = Color.Transparent;
             label41.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label41.ForeColor = SystemColors.ActiveCaptionText;
+            label41.ForeColor = Color.Gold;
             label41.Location = new Point(242, 697);
             label41.Name = "label41";
             label41.Size = new Size(118, 24);
@@ -786,7 +813,7 @@
             label42.AutoSize = true;
             label42.BackColor = Color.Transparent;
             label42.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label42.ForeColor = SystemColors.ActiveCaptionText;
+            label42.ForeColor = Color.Gold;
             label42.Location = new Point(242, 721);
             label42.Name = "label42";
             label42.Size = new Size(118, 24);
@@ -798,7 +825,7 @@
             label43.AutoSize = true;
             label43.BackColor = Color.Transparent;
             label43.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label43.ForeColor = SystemColors.ActiveCaptionText;
+            label43.ForeColor = Color.Gold;
             label43.Location = new Point(243, 762);
             label43.Name = "label43";
             label43.Size = new Size(118, 24);
@@ -810,7 +837,7 @@
             label44.AutoSize = true;
             label44.BackColor = Color.Transparent;
             label44.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label44.ForeColor = SystemColors.ActiveCaptionText;
+            label44.ForeColor = Color.Gold;
             label44.Location = new Point(639, 644);
             label44.Name = "label44";
             label44.Size = new Size(118, 24);
@@ -822,7 +849,7 @@
             label45.AutoSize = true;
             label45.BackColor = Color.Transparent;
             label45.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label45.ForeColor = SystemColors.ActiveCaptionText;
+            label45.ForeColor = Color.Gold;
             label45.Location = new Point(639, 668);
             label45.Name = "label45";
             label45.Size = new Size(118, 24);
@@ -834,7 +861,7 @@
             label46.AutoSize = true;
             label46.BackColor = Color.Transparent;
             label46.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label46.ForeColor = SystemColors.ActiveCaptionText;
+            label46.ForeColor = Color.Gold;
             label46.Location = new Point(639, 721);
             label46.Name = "label46";
             label46.Size = new Size(118, 24);
@@ -843,32 +870,29 @@
             // 
             // button6
             // 
+            button6.BackColor = Color.Transparent;
+            button6.BackgroundImage = (Image)resources.GetObject("button6.BackgroundImage");
+            button6.FlatAppearance.BorderSize = 0;
+            button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button6.Location = new Point(1036, 746);
             button6.Name = "button6";
-            button6.Size = new Size(109, 40);
+            button6.Size = new Size(120, 41);
             button6.TabIndex = 73;
-            button6.Text = "Back";
-            button6.UseVisualStyleBackColor = true;
+            button6.UseVisualStyleBackColor = false;
             // 
             // button5
             // 
+            button5.BackColor = Color.Transparent;
+            button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button5.Location = new Point(1161, 744);
             button5.Name = "button5";
-            button5.Size = new Size(109, 40);
+            button5.Size = new Size(120, 41);
             button5.TabIndex = 74;
-            button5.Text = "Continue";
-            button5.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(895, 286);
-            dataGridView1.TabIndex = 0;
+            button5.UseVisualStyleBackColor = false;
             // 
             // User_SoilEvaluator
             // 
@@ -939,9 +963,11 @@
             Controls.Add(label9);
             Controls.Add(menuStrip1);
             Controls.Add(panel1);
+            ForeColor = Color.LawnGreen;
             Name = "User_SoilEvaluator";
             Text = "Form1";
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)trackBar1).EndInit();
@@ -950,7 +976,6 @@
             ((System.ComponentModel.ISupportInitialize)numericUpDown3).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown4).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }

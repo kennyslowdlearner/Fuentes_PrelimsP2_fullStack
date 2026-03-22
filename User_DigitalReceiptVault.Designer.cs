@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(User_DigitalReceiptVault));
             panel1 = new Panel();
             printPreviewControl1 = new PrintPreviewControl();
             dataGridView1 = new DataGridView();
@@ -92,7 +93,7 @@
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.ForeColor = SystemColors.ActiveCaptionText;
+            label6.ForeColor = Color.LawnGreen;
             label6.Location = new Point(73, 131);
             label6.Name = "label6";
             label6.Size = new Size(120, 27);
@@ -101,9 +102,11 @@
             // 
             // textBox2
             // 
+            textBox2.BackColor = Color.LightGreen;
+            textBox2.BorderStyle = BorderStyle.None;
             textBox2.Location = new Point(199, 131);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(259, 31);
+            textBox2.Size = new Size(259, 24);
             textBox2.TabIndex = 32;
             // 
             // menuStrip1
@@ -170,7 +173,6 @@
             button10.Name = "button10";
             button10.Size = new Size(464, 70);
             button10.TabIndex = 39;
-            button10.Text = "Continue";
             button10.UseVisualStyleBackColor = true;
             // 
             // button9
@@ -180,7 +182,6 @@
             button9.Name = "button9";
             button9.Size = new Size(464, 70);
             button9.TabIndex = 38;
-            button9.Text = "Continue";
             button9.UseVisualStyleBackColor = true;
             // 
             // button8
@@ -190,7 +191,6 @@
             button8.Name = "button8";
             button8.Size = new Size(464, 70);
             button8.TabIndex = 37;
-            button8.Text = "Continue";
             button8.UseVisualStyleBackColor = true;
             // 
             // label8
@@ -198,7 +198,7 @@
             label8.AutoSize = true;
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label8.ForeColor = SystemColors.ActiveCaptionText;
+            label8.ForeColor = Color.GreenYellow;
             label8.Location = new Point(1272, 460);
             label8.Name = "label8";
             label8.Size = new Size(152, 27);
@@ -207,37 +207,43 @@
             // 
             // button6
             // 
+            button6.BackColor = Color.Transparent;
+            button6.BackgroundImage = (Image)resources.GetObject("button6.BackgroundImage");
+            button6.FlatAppearance.BorderSize = 0;
+            button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button6.Location = new Point(1150, 732);
+            button6.Location = new Point(1164, 732);
             button6.Name = "button6";
             button6.Size = new Size(120, 41);
             button6.TabIndex = 40;
-            button6.Text = "Back";
-            button6.UseVisualStyleBackColor = true;
+            button6.UseVisualStyleBackColor = false;
             // 
             // button5
             // 
+            button5.BackColor = Color.Transparent;
+            button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button5.Location = new Point(1301, 732);
             button5.Name = "button5";
             button5.Size = new Size(120, 41);
             button5.TabIndex = 41;
-            button5.Text = "Continue";
-            button5.UseVisualStyleBackColor = true;
+            button5.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Glacial Indifference", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ActiveCaptionText;
+            label1.ForeColor = Color.GreenYellow;
             label1.Location = new Point(874, 138);
             label1.Name = "label1";
             label1.Size = new Size(189, 29);
             label1.TabIndex = 36;
             label1.Text = "Existing Receipt";
             // 
-            // Form1
+            // User_DigitalReceiptVault
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -255,7 +261,7 @@
             Controls.Add(textBox2);
             Controls.Add(dataGridView1);
             Controls.Add(panel1);
-            Name = "Form1";
+            Name = "User_DigitalReceiptVault";
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             menuStrip1.ResumeLayout(false);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(User_WeatherForecast));
             button3 = new Button();
             label6 = new Label();
             textBox2 = new TextBox();
@@ -65,7 +66,7 @@
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.ForeColor = SystemColors.ActiveCaptionText;
+            label6.ForeColor = Color.GreenYellow;
             label6.Location = new Point(43, 137);
             label6.Name = "label6";
             label6.Size = new Size(120, 27);
@@ -74,9 +75,13 @@
             // 
             // textBox2
             // 
+            textBox2.BackColor = Color.LightGreen;
+            textBox2.BorderStyle = BorderStyle.None;
+            textBox2.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox2.ForeColor = Color.Black;
             textBox2.Location = new Point(169, 137);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(259, 31);
+            textBox2.Size = new Size(259, 22);
             textBox2.TabIndex = 32;
             // 
             // panel1
@@ -96,21 +101,21 @@
             // button9
             // 
             button9.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button9.ForeColor = Color.CornflowerBlue;
             button9.Location = new Point(1180, 462);
             button9.Name = "button9";
             button9.Size = new Size(276, 99);
             button9.TabIndex = 85;
-            button9.Text = "Continue";
             button9.UseVisualStyleBackColor = true;
             // 
             // button8
             // 
             button8.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button8.ForeColor = Color.CornflowerBlue;
             button8.Location = new Point(892, 462);
             button8.Name = "button8";
             button8.Size = new Size(276, 99);
             button8.TabIndex = 88;
-            button8.Text = "Continue";
             button8.UseVisualStyleBackColor = true;
             // 
             // label9
@@ -118,7 +123,7 @@
             label9.AutoSize = true;
             label9.BackColor = Color.Transparent;
             label9.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label9.ForeColor = SystemColors.ActiveCaptionText;
+            label9.ForeColor = Color.GreenYellow;
             label9.Location = new Point(892, 432);
             label9.Name = "label9";
             label9.Size = new Size(152, 27);
@@ -185,44 +190,50 @@
             // button1
             // 
             button1.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.CornflowerBlue;
             button1.Location = new Point(892, 584);
             button1.Name = "button1";
             button1.Size = new Size(276, 99);
             button1.TabIndex = 88;
-            button1.Text = "Continue";
             button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
             button2.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button2.ForeColor = Color.CornflowerBlue;
             button2.Location = new Point(1180, 584);
             button2.Name = "button2";
             button2.Size = new Size(276, 99);
             button2.TabIndex = 85;
-            button2.Text = "Continue";
             button2.UseVisualStyleBackColor = true;
             // 
             // button6
             // 
+            button6.BackColor = Color.Transparent;
+            button6.BackgroundImage = (Image)resources.GetObject("button6.BackgroundImage");
+            button6.FlatAppearance.BorderSize = 0;
+            button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button6.Location = new Point(636, 720);
             button6.Name = "button6";
-            button6.Size = new Size(109, 40);
+            button6.Size = new Size(120, 41);
             button6.TabIndex = 89;
-            button6.Text = "Back";
-            button6.UseVisualStyleBackColor = true;
+            button6.UseVisualStyleBackColor = false;
             // 
             // button5
             // 
+            button5.BackColor = Color.Transparent;
+            button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button5.Location = new Point(768, 720);
             button5.Name = "button5";
-            button5.Size = new Size(109, 40);
+            button5.Size = new Size(120, 41);
             button5.TabIndex = 90;
-            button5.Text = "Continue";
-            button5.UseVisualStyleBackColor = true;
+            button5.UseVisualStyleBackColor = false;
             // 
-            // Form1
+            // User_WeatherForecast
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -240,7 +251,7 @@
             Controls.Add(button3);
             Controls.Add(label6);
             Controls.Add(textBox2);
-            Name = "Form1";
+            Name = "User_WeatherForecast";
             Text = "Form1";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

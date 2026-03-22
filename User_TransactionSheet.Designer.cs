@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(User_TransactionSheet));
             dataGridView1 = new DataGridView();
             dataGridView2 = new DataGridView();
             menuStrip1 = new MenuStrip();
@@ -142,16 +143,20 @@
             // 
             // textBox1
             // 
+            textBox1.BackColor = Color.LightGreen;
+            textBox1.BorderStyle = BorderStyle.None;
             textBox1.Location = new Point(320, 234);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(259, 31);
+            textBox1.Size = new Size(259, 24);
             textBox1.TabIndex = 3;
             // 
             // textBox2
             // 
+            textBox2.BackColor = Color.LightGreen;
+            textBox2.BorderStyle = BorderStyle.None;
             textBox2.Location = new Point(320, 197);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(259, 31);
+            textBox2.Size = new Size(259, 24);
             textBox2.TabIndex = 3;
             // 
             // label1
@@ -159,7 +164,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ActiveCaptionText;
+            label1.ForeColor = Color.LawnGreen;
             label1.Location = new Point(133, 197);
             label1.Name = "label1";
             label1.Size = new Size(176, 27);
@@ -171,7 +176,7 @@
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.ForeColor = SystemColors.ActiveCaptionText;
+            label2.ForeColor = Color.LawnGreen;
             label2.Location = new Point(138, 233);
             label2.Name = "label2";
             label2.Size = new Size(116, 27);
@@ -185,7 +190,7 @@
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.ForeColor = SystemColors.ActiveCaptionText;
+            label3.ForeColor = Color.LawnGreen;
             label3.Location = new Point(138, 272);
             label3.Name = "label3";
             label3.Size = new Size(132, 27);
@@ -197,7 +202,7 @@
             label4.AutoSize = true;
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.ForeColor = SystemColors.ActiveCaptionText;
+            label4.ForeColor = Color.LawnGreen;
             label4.Location = new Point(138, 311);
             label4.Name = "label4";
             label4.Size = new Size(165, 27);
@@ -209,7 +214,7 @@
             label5.AutoSize = true;
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.ForeColor = SystemColors.ActiveCaptionText;
+            label5.ForeColor = Color.LawnGreen;
             label5.Location = new Point(138, 348);
             label5.Name = "label5";
             label5.Size = new Size(143, 27);
@@ -221,7 +226,7 @@
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.ForeColor = SystemColors.ActiveCaptionText;
+            label6.ForeColor = Color.LawnGreen;
             label6.Location = new Point(138, 381);
             label6.Name = "label6";
             label6.Size = new Size(140, 27);
@@ -230,23 +235,29 @@
             // 
             // textBox3
             // 
+            textBox3.BackColor = Color.LightGreen;
+            textBox3.BorderStyle = BorderStyle.None;
             textBox3.Location = new Point(320, 307);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(259, 31);
+            textBox3.Size = new Size(259, 24);
             textBox3.TabIndex = 3;
             // 
             // textBox4
             // 
+            textBox4.BackColor = Color.LightGreen;
+            textBox4.BorderStyle = BorderStyle.None;
             textBox4.Location = new Point(320, 270);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(259, 31);
+            textBox4.Size = new Size(259, 24);
             textBox4.TabIndex = 3;
             // 
             // textBox6
             // 
+            textBox6.BackColor = Color.LightGreen;
+            textBox6.BorderStyle = BorderStyle.None;
             textBox6.Location = new Point(320, 344);
             textBox6.Name = "textBox6";
-            textBox6.Size = new Size(259, 31);
+            textBox6.Size = new Size(259, 24);
             textBox6.TabIndex = 3;
             textBox6.TextChanged += textBox6_TextChanged;
             // 
@@ -255,7 +266,7 @@
             label7.AutoSize = true;
             label7.BackColor = Color.Transparent;
             label7.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label7.ForeColor = SystemColors.ActiveCaptionText;
+            label7.ForeColor = Color.Gold;
             label7.Location = new Point(320, 381);
             label7.Name = "label7";
             label7.Size = new Size(140, 27);
@@ -264,74 +275,109 @@
             // 
             // button1
             // 
+            button1.BackColor = Color.Yellow;
+            button1.FlatAppearance.BorderColor = Color.Gold;
+            button1.FlatAppearance.BorderSize = 2;
+            button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.DarkGreen;
             button1.Location = new Point(138, 423);
             button1.Name = "button1";
             button1.Size = new Size(143, 38);
             button1.TabIndex = 5;
             button1.Text = "Insert";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             // 
             // button2
             // 
+            button2.BackColor = Color.Yellow;
+            button2.FlatAppearance.BorderColor = Color.Gold;
+            button2.FlatAppearance.BorderSize = 2;
+            button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button2.ForeColor = Color.DarkGreen;
             button2.Location = new Point(287, 423);
             button2.Name = "button2";
             button2.Size = new Size(143, 38);
             button2.TabIndex = 5;
             button2.Text = "Delete";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             // 
             // button3
             // 
+            button3.BackColor = Color.Yellow;
+            button3.FlatAppearance.BorderColor = Color.Gold;
+            button3.FlatAppearance.BorderSize = 2;
+            button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button3.ForeColor = Color.DarkGreen;
             button3.Location = new Point(436, 423);
             button3.Name = "button3";
             button3.Size = new Size(143, 38);
             button3.TabIndex = 5;
             button3.Text = "Update";
-            button3.UseVisualStyleBackColor = true;
+            button3.UseVisualStyleBackColor = false;
             // 
             // button4
             // 
+            button4.BackColor = Color.Yellow;
+            button4.FlatAppearance.BorderColor = Color.Gold;
+            button4.FlatAppearance.BorderSize = 2;
+            button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button4.ForeColor = Color.DarkGreen;
             button4.Location = new Point(98, 732);
             button4.Name = "button4";
             button4.Size = new Size(120, 41);
             button4.TabIndex = 5;
             button4.Text = "Load";
-            button4.UseVisualStyleBackColor = true;
+            button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
             // 
             // button5
             // 
+            button5.BackColor = Color.Transparent;
+            button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
+            button5.FlatAppearance.BorderColor = Color.Gold;
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button5.ForeColor = Color.DarkGreen;
             button5.Location = new Point(778, 732);
             button5.Name = "button5";
             button5.Size = new Size(120, 41);
             button5.TabIndex = 5;
-            button5.Text = "Continue";
-            button5.UseVisualStyleBackColor = true;
+            button5.UseVisualStyleBackColor = false;
             // 
             // button6
             // 
+            button6.BackColor = Color.Transparent;
+            button6.BackgroundImage = (Image)resources.GetObject("button6.BackgroundImage");
+            button6.FlatAppearance.BorderColor = Color.Gold;
+            button6.FlatAppearance.BorderSize = 0;
+            button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button6.ForeColor = Color.DarkGreen;
             button6.Location = new Point(649, 732);
             button6.Name = "button6";
             button6.Size = new Size(120, 41);
             button6.TabIndex = 5;
-            button6.Text = "Back";
-            button6.UseVisualStyleBackColor = true;
+            button6.UseVisualStyleBackColor = false;
             // 
             // button7
             // 
+            button7.BackColor = Color.Yellow;
+            button7.FlatAppearance.BorderColor = Color.Gold;
+            button7.FlatAppearance.BorderSize = 2;
+            button7.FlatStyle = FlatStyle.Flat;
             button7.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button7.ForeColor = Color.DarkGreen;
             button7.Location = new Point(224, 732);
             button7.Name = "button7";
             button7.Size = new Size(151, 41);
             button7.TabIndex = 5;
             button7.Text = "Print Receipt";
-            button7.UseVisualStyleBackColor = true;
+            button7.UseVisualStyleBackColor = false;
             // 
             // button8
             // 
@@ -340,7 +386,6 @@
             button8.Name = "button8";
             button8.Size = new Size(464, 70);
             button8.TabIndex = 5;
-            button8.Text = "Continue";
             button8.UseVisualStyleBackColor = true;
             // 
             // button9
@@ -350,7 +395,6 @@
             button9.Name = "button9";
             button9.Size = new Size(464, 70);
             button9.TabIndex = 5;
-            button9.Text = "Continue";
             button9.UseVisualStyleBackColor = true;
             button9.Click += button9_Click;
             // 
@@ -361,7 +405,6 @@
             button10.Name = "button10";
             button10.Size = new Size(464, 70);
             button10.TabIndex = 5;
-            button10.Text = "Continue";
             button10.UseVisualStyleBackColor = true;
             // 
             // label8
@@ -369,7 +412,7 @@
             label8.AutoSize = true;
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label8.ForeColor = SystemColors.ActiveCaptionText;
+            label8.ForeColor = Color.GreenYellow;
             label8.Location = new Point(983, 465);
             label8.Name = "label8";
             label8.Size = new Size(152, 27);
@@ -381,14 +424,14 @@
             label9.AutoSize = true;
             label9.BackColor = Color.Transparent;
             label9.Font = new Font("Glacial Indifference", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.ForeColor = SystemColors.ActiveCaptionText;
+            label9.ForeColor = Color.GreenYellow;
             label9.Location = new Point(98, 160);
             label9.Name = "label9";
             label9.Size = new Size(249, 34);
             label9.TabIndex = 4;
             label9.Text = "Transaction Sheet";
             // 
-            // UserTransactionSheet
+            // User_TransactionSheet
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -420,7 +463,8 @@
             Controls.Add(menuStrip1);
             Controls.Add(dataGridView2);
             Controls.Add(dataGridView1);
-            Name = "UserTransactionSheet";
+            ForeColor = Color.LawnGreen;
+            Name = "User_TransactionSheet";
             Text = "User Transactions";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
