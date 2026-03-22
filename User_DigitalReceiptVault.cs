@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+
+namespace Fuentes_PrelimsP2
+{
+    public partial class User_DigitalReceiptVault : Form
+    {
+        public User_DigitalReceiptVault()
+        {
+            InitializeComponent();
+        }
+
+        private void printPreviewDialog2_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
