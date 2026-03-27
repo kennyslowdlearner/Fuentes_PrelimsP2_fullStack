@@ -79,9 +79,9 @@
             // 
             panel1.Controls.Add(dataGridView1);
             panel1.Controls.Add(flowLayoutPanel1);
-            panel1.Location = new Point(72, 125);
+            panel1.Location = new Point(72, 186);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1341, 303);
+            panel1.Size = new Size(1341, 242);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
@@ -91,7 +91,7 @@
             dataGridView1.Location = new Point(3, 3);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(1335, 297);
+            dataGridView1.Size = new Size(1335, 236);
             dataGridView1.TabIndex = 1;
             // 
             // flowLayoutPanel1
@@ -521,6 +521,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
             Controls.Add(button9);
             Controls.Add(button7);

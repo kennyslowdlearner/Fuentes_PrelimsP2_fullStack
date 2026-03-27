@@ -114,9 +114,9 @@
             // panel1
             // 
             panel1.Controls.Add(dataGridView1);
-            panel1.Location = new Point(544, 129);
+            panel1.Location = new Point(544, 171);
             panel1.Name = "panel1";
-            panel1.Size = new Size(901, 292);
+            panel1.Size = new Size(901, 293);
             panel1.TabIndex = 0;
             // 
             // dataGridView1
@@ -125,7 +125,7 @@
             dataGridView1.Location = new Point(3, 3);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(895, 286);
+            dataGridView1.Size = new Size(895, 285);
             dataGridView1.TabIndex = 0;
             // 
             // button9
@@ -187,7 +187,7 @@
             menuStrip1.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             menuStrip1.ImageScalingSize = new Size(24, 24);
             menuStrip1.Items.AddRange(new ToolStripItem[] { sssssToolStripMenuItem, accountSettingsToolStripMenuItem });
-            menuStrip1.Location = new Point(1120, 427);
+            menuStrip1.Location = new Point(1119, 462);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(343, 32);
             menuStrip1.TabIndex = 60;
@@ -243,7 +243,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Glacial Indifference", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.GreenYellow;
-            label1.Location = new Point(547, 97);
+            label1.Location = new Point(1307, 139);
             label1.Name = "label1";
             label1.Size = new Size(138, 29);
             label1.TabIndex = 66;
@@ -898,6 +898,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 796);
             Controls.Add(button6);
             Controls.Add(button5);

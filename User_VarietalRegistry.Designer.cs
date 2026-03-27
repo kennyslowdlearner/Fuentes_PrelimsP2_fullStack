@@ -65,7 +65,7 @@
             // panel1
             // 
             panel1.Controls.Add(dataGridView1);
-            panel1.Location = new Point(107, 144);
+            panel1.Location = new Point(124, 169);
             panel1.Name = "panel1";
             panel1.Size = new Size(1297, 323);
             panel1.TabIndex = 0;
@@ -268,7 +268,7 @@
             menuStrip1.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             menuStrip1.ImageScalingSize = new Size(24, 24);
             menuStrip1.Items.AddRange(new ToolStripItem[] { sssssToolStripMenuItem, accountSettingsToolStripMenuItem });
-            menuStrip1.Location = new Point(1078, 470);
+            menuStrip1.Location = new Point(1095, 495);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(343, 32);
             menuStrip1.TabIndex = 54;
@@ -315,7 +315,7 @@
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(172, 34);
+            logoutToolStripMenuItem.Size = new Size(270, 34);
             logoutToolStripMenuItem.Text = "Logout";
             // 
             // label4
@@ -358,7 +358,8 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1500, 785);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            ClientSize = new Size(1500, 775);
             Controls.Add(button9);
             Controls.Add(button7);
             Controls.Add(button4);

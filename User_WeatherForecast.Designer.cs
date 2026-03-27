@@ -54,7 +54,7 @@
             // button3
             // 
             button3.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.Location = new Point(446, 132);
+            button3.Location = new Point(345, 127);
             button3.Name = "button3";
             button3.Size = new Size(86, 41);
             button3.TabIndex = 34;
@@ -81,7 +81,7 @@
             textBox2.ForeColor = Color.Black;
             textBox2.Location = new Point(169, 137);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(259, 22);
+            textBox2.Size = new Size(170, 22);
             textBox2.TabIndex = 32;
             // 
             // panel1
@@ -237,6 +237,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
             Controls.Add(button6);
             Controls.Add(button5);
