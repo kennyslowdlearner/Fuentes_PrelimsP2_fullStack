@@ -58,10 +58,10 @@
             button6 = new Button();
             button7 = new Button();
             button8 = new Button();
-            button9 = new Button();
-            button10 = new Button();
             label8 = new Label();
             label9 = new Label();
+            button9 = new Button();
+            button10 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             menuStrip1.SuspendLayout();
@@ -381,31 +381,16 @@
             // 
             // button8
             // 
+            button8.BackColor = Color.Transparent;
+            button8.BackgroundImage = (Image)resources.GetObject("button8.BackgroundImage");
+            button8.FlatAppearance.BorderSize = 0;
+            button8.FlatStyle = FlatStyle.Flat;
             button8.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button8.Location = new Point(983, 495);
             button8.Name = "button8";
-            button8.Size = new Size(464, 70);
+            button8.Size = new Size(418, 64);
             button8.TabIndex = 5;
-            button8.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            button9.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button9.Location = new Point(983, 571);
-            button9.Name = "button9";
-            button9.Size = new Size(464, 70);
-            button9.TabIndex = 5;
-            button9.UseVisualStyleBackColor = true;
-            button9.Click += button9_Click;
-            // 
-            // button10
-            // 
-            button10.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button10.Location = new Point(983, 647);
-            button10.Name = "button10";
-            button10.Size = new Size(464, 70);
-            button10.TabIndex = 5;
-            button10.UseVisualStyleBackColor = true;
+            button8.UseVisualStyleBackColor = false;
             // 
             // label8
             // 
@@ -430,6 +415,32 @@
             label9.Size = new Size(249, 34);
             label9.TabIndex = 4;
             label9.Text = "Transaction Sheet";
+            // 
+            // button9
+            // 
+            button9.BackColor = Color.Transparent;
+            button9.BackgroundImage = (Image)resources.GetObject("button9.BackgroundImage");
+            button9.FlatAppearance.BorderSize = 0;
+            button9.FlatStyle = FlatStyle.Flat;
+            button9.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button9.Location = new Point(983, 565);
+            button9.Name = "button9";
+            button9.Size = new Size(418, 64);
+            button9.TabIndex = 5;
+            button9.UseVisualStyleBackColor = false;
+            // 
+            // button10
+            // 
+            button10.BackColor = Color.Transparent;
+            button10.BackgroundImage = (Image)resources.GetObject("button10.BackgroundImage");
+            button10.FlatAppearance.BorderSize = 0;
+            button10.FlatStyle = FlatStyle.Flat;
+            button10.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button10.Location = new Point(983, 635);
+            button10.Name = "button10";
+            button10.Size = new Size(418, 64);
+            button10.TabIndex = 5;
+            button10.UseVisualStyleBackColor = false;
             // 
             // User_TransactionSheet
             // 
@@ -506,9 +517,9 @@
         private Button button6;
         private Button button7;
         private Button button8;
-        private Button button9;
-        private Button button10;
         private Label label8;
         private Label label9;
+        private Button button9;
+        private Button button10;
     }
 }

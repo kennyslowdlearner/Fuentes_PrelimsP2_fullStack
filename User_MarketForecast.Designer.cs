@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(User_MarketForecast));
-            button10 = new Button();
-            button9 = new Button();
             button8 = new Button();
             label8 = new Label();
             label6 = new Label();
@@ -47,36 +45,24 @@
             button3 = new Button();
             button6 = new Button();
             button5 = new Button();
+            button1 = new Button();
+            button2 = new Button();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
-            // button10
-            // 
-            button10.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button10.Location = new Point(961, 550);
-            button10.Name = "button10";
-            button10.Size = new Size(464, 70);
-            button10.TabIndex = 30;
-            button10.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            button9.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button9.Location = new Point(961, 474);
-            button9.Name = "button9";
-            button9.Size = new Size(464, 70);
-            button9.TabIndex = 29;
-            button9.UseVisualStyleBackColor = true;
-            // 
             // button8
             // 
+            button8.BackColor = Color.Transparent;
+            button8.BackgroundImage = (Image)resources.GetObject("button8.BackgroundImage");
+            button8.FlatAppearance.BorderSize = 0;
+            button8.FlatStyle = FlatStyle.Flat;
             button8.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button8.Location = new Point(961, 398);
             button8.Name = "button8";
-            button8.Size = new Size(464, 70);
+            button8.Size = new Size(418, 64);
             button8.TabIndex = 28;
-            button8.UseVisualStyleBackColor = true;
+            button8.UseVisualStyleBackColor = false;
             // 
             // label8
             // 
@@ -226,6 +212,32 @@
             button5.UseVisualStyleBackColor = true;
             button5.Click += button5_Click;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.Transparent;
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.Location = new Point(961, 468);
+            button1.Name = "button1";
+            button1.Size = new Size(418, 64);
+            button1.TabIndex = 28;
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.Transparent;
+            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button2.Location = new Point(961, 538);
+            button2.Name = "button2";
+            button2.Size = new Size(418, 64);
+            button2.TabIndex = 28;
+            button2.UseVisualStyleBackColor = false;
+            // 
             // User_MarketForecast
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -235,8 +247,8 @@
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(button3);
-            Controls.Add(button10);
-            Controls.Add(button9);
+            Controls.Add(button2);
+            Controls.Add(button1);
             Controls.Add(button8);
             Controls.Add(label8);
             Controls.Add(label6);
@@ -254,8 +266,6 @@
         }
 
         #endregion
-        private Button button10;
-        private Button button9;
         private Button button8;
         private Label label8;
         private Label label6;
@@ -272,5 +282,7 @@
         private Button button3;
         private Button button6;
         private Button button5;
+        private Button button1;
+        private Button button2;
     }
 }

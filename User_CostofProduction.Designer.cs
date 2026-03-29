@@ -68,11 +68,15 @@
             textBox6 = new TextBox();
             button7 = new Button();
             button9 = new Button();
+            dataGridView1 = new DataGridView();
+            panel1.SuspendLayout();
             menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(dataGridView1);
             panel1.Location = new Point(84, 241);
             panel1.Name = "panel1";
             panel1.Size = new Size(895, 465);
@@ -116,7 +120,7 @@
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Glacial Indifference", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.ForestGreen;
+            label2.ForeColor = Color.LightGreen;
             label2.Location = new Point(1004, 170);
             label2.Name = "label2";
             label2.Size = new Size(211, 29);
@@ -338,12 +342,16 @@
             // 
             // button8
             // 
+            button8.BackColor = Color.Transparent;
+            button8.BackgroundImage = (Image)resources.GetObject("button8.BackgroundImage");
+            button8.FlatAppearance.BorderSize = 0;
+            button8.FlatStyle = FlatStyle.Flat;
             button8.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button8.Location = new Point(1004, 550);
             button8.Name = "button8";
             button8.Size = new Size(418, 64);
             button8.TabIndex = 56;
-            button8.UseVisualStyleBackColor = true;
+            button8.UseVisualStyleBackColor = false;
             // 
             // label15
             // 
@@ -359,21 +367,29 @@
             // 
             // button4
             // 
+            button4.BackColor = Color.Transparent;
+            button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button4.Location = new Point(1004, 620);
             button4.Name = "button4";
             button4.Size = new Size(418, 64);
             button4.TabIndex = 56;
-            button4.UseVisualStyleBackColor = true;
+            button4.UseVisualStyleBackColor = false;
             // 
             // button5
             // 
+            button5.BackColor = Color.Transparent;
+            button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button5.Location = new Point(1004, 690);
             button5.Name = "button5";
             button5.Size = new Size(418, 64);
             button5.TabIndex = 56;
-            button5.UseVisualStyleBackColor = true;
+            button5.UseVisualStyleBackColor = false;
             // 
             // menuStrip1
             // 
@@ -489,10 +505,20 @@
             button9.TabIndex = 62;
             button9.UseVisualStyleBackColor = false;
             // 
-            // Form1
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(3, 3);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 62;
+            dataGridView1.Size = new Size(888, 459);
+            dataGridView1.TabIndex = 0;
+            // 
+            // User_CostofProduction
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
             Controls.Add(button7);
             Controls.Add(button9);
@@ -527,10 +553,13 @@
             Controls.Add(label1);
             Controls.Add(textBox2);
             Controls.Add(panel1);
-            Name = "Form1";
-            Text = "Form1";
+            MaximizeBox = false;
+            Name = "User_CostofProduction";
+            Text = "Cost of Production";
+            panel1.ResumeLayout(false);
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -576,5 +605,6 @@
         private TextBox textBox6;
         private Button button7;
         private Button button9;
+        private DataGridView dataGridView1;
     }
 }

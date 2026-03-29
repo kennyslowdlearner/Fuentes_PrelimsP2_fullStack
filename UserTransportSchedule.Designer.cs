@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserTransportSchedule));
             panel1 = new Panel();
             button6 = new Button();
             button5 = new Button();
@@ -74,7 +75,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Glacial Indifference", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ActiveCaptionText;
+            label1.ForeColor = Color.LawnGreen;
             label1.Location = new Point(65, 208);
             label1.Name = "label1";
             label1.Size = new Size(317, 29);
@@ -142,6 +143,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
             Controls.Add(menuStrip1);
             Controls.Add(label1);
@@ -149,7 +151,7 @@
             Controls.Add(button5);
             Controls.Add(panel1);
             Name = "UserTransportSchedule";
-            Text = "Form1";
+            Text = "Transport Schedule";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);

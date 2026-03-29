@@ -34,7 +34,6 @@
             textBox2 = new TextBox();
             panel1 = new Panel();
             panel2 = new Panel();
-            button9 = new Button();
             button8 = new Button();
             label9 = new Label();
             menuStrip1 = new MenuStrip();
@@ -44,10 +43,11 @@
             contactDeveloperToolStripMenuItem = new ToolStripMenuItem();
             accountSettingsToolStripMenuItem = new ToolStripMenuItem();
             logoutToolStripMenuItem = new ToolStripMenuItem();
-            button1 = new Button();
-            button2 = new Button();
             button6 = new Button();
             button5 = new Button();
+            button1 = new Button();
+            button2 = new Button();
+            button4 = new Button();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -98,25 +98,19 @@
             panel2.Size = new Size(834, 276);
             panel2.TabIndex = 35;
             // 
-            // button9
-            // 
-            button9.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button9.ForeColor = Color.CornflowerBlue;
-            button9.Location = new Point(1180, 462);
-            button9.Name = "button9";
-            button9.Size = new Size(276, 99);
-            button9.TabIndex = 85;
-            button9.UseVisualStyleBackColor = true;
-            // 
             // button8
             // 
+            button8.BackColor = Color.Transparent;
+            button8.BackgroundImage = (Image)resources.GetObject("button8.BackgroundImage");
+            button8.FlatAppearance.BorderSize = 0;
+            button8.FlatStyle = FlatStyle.Flat;
             button8.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button8.ForeColor = Color.CornflowerBlue;
             button8.Location = new Point(892, 462);
             button8.Name = "button8";
-            button8.Size = new Size(276, 99);
+            button8.Size = new Size(254, 99);
             button8.TabIndex = 88;
-            button8.UseVisualStyleBackColor = true;
+            button8.UseVisualStyleBackColor = false;
             // 
             // label9
             // 
@@ -187,26 +181,6 @@
             logoutToolStripMenuItem.Size = new Size(172, 34);
             logoutToolStripMenuItem.Text = "Logout";
             // 
-            // button1
-            // 
-            button1.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.CornflowerBlue;
-            button1.Location = new Point(892, 584);
-            button1.Name = "button1";
-            button1.Size = new Size(276, 99);
-            button1.TabIndex = 88;
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.CornflowerBlue;
-            button2.Location = new Point(1180, 584);
-            button2.Name = "button2";
-            button2.Size = new Size(276, 99);
-            button2.TabIndex = 85;
-            button2.UseVisualStyleBackColor = true;
-            // 
             // button6
             // 
             button6.BackColor = Color.Transparent;
@@ -233,6 +207,48 @@
             button5.TabIndex = 90;
             button5.UseVisualStyleBackColor = false;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.Transparent;
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.CornflowerBlue;
+            button1.Location = new Point(892, 567);
+            button1.Name = "button1";
+            button1.Size = new Size(254, 99);
+            button1.TabIndex = 88;
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.Transparent;
+            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button2.ForeColor = Color.CornflowerBlue;
+            button2.Location = new Point(1152, 567);
+            button2.Name = "button2";
+            button2.Size = new Size(254, 99);
+            button2.TabIndex = 88;
+            button2.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            button4.BackColor = Color.Transparent;
+            button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button4.ForeColor = Color.CornflowerBlue;
+            button4.Location = new Point(1152, 462);
+            button4.Name = "button4";
+            button4.Size = new Size(254, 99);
+            button4.TabIndex = 88;
+            button4.UseVisualStyleBackColor = false;
+            // 
             // User_WeatherForecast
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -241,8 +257,8 @@
             ClientSize = new Size(1500, 785);
             Controls.Add(button6);
             Controls.Add(button5);
+            Controls.Add(button4);
             Controls.Add(button2);
-            Controls.Add(button9);
             Controls.Add(button1);
             Controls.Add(button8);
             Controls.Add(label9);
@@ -267,7 +283,6 @@
         private TextBox textBox2;
         private Panel panel1;
         private Panel panel2;
-        private Button button9;
         private Button button8;
         private Label label9;
         private MenuStrip menuStrip1;
@@ -277,9 +292,10 @@
         private ToolStripMenuItem contactDeveloperToolStripMenuItem;
         private ToolStripMenuItem accountSettingsToolStripMenuItem;
         private ToolStripMenuItem logoutToolStripMenuItem;
-        private Button button1;
-        private Button button2;
         private Button button6;
         private Button button5;
+        private Button button1;
+        private Button button2;
+        private Button button4;
     }
 }

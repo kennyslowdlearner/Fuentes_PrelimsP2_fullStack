@@ -42,13 +42,13 @@
             contactDeveloperToolStripMenuItem = new ToolStripMenuItem();
             accountSettingsToolStripMenuItem = new ToolStripMenuItem();
             logoutToolStripMenuItem = new ToolStripMenuItem();
-            button10 = new Button();
-            button9 = new Button();
             button8 = new Button();
             label8 = new Label();
             button6 = new Button();
             button5 = new Button();
             label1 = new Label();
+            button1 = new Button();
+            button4 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             menuStrip1.SuspendLayout();
@@ -166,32 +166,18 @@
             logoutToolStripMenuItem.Size = new Size(172, 34);
             logoutToolStripMenuItem.Text = "Logout";
             // 
-            // button10
-            // 
-            button10.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button10.Location = new Point(960, 642);
-            button10.Name = "button10";
-            button10.Size = new Size(464, 70);
-            button10.TabIndex = 39;
-            button10.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            button9.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button9.Location = new Point(960, 566);
-            button9.Name = "button9";
-            button9.Size = new Size(464, 70);
-            button9.TabIndex = 38;
-            button9.UseVisualStyleBackColor = true;
-            // 
             // button8
             // 
+            button8.BackColor = Color.Transparent;
+            button8.BackgroundImage = (Image)resources.GetObject("button8.BackgroundImage");
+            button8.FlatAppearance.BorderSize = 0;
+            button8.FlatStyle = FlatStyle.Flat;
             button8.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button8.Location = new Point(960, 490);
+            button8.Location = new Point(1006, 490);
             button8.Name = "button8";
-            button8.Size = new Size(464, 70);
+            button8.Size = new Size(418, 64);
             button8.TabIndex = 37;
-            button8.UseVisualStyleBackColor = true;
+            button8.UseVisualStyleBackColor = false;
             // 
             // label8
             // 
@@ -243,15 +229,42 @@
             label1.TabIndex = 36;
             label1.Text = "Existing Receipt";
             // 
+            // button1
+            // 
+            button1.BackColor = Color.Transparent;
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.Location = new Point(1006, 560);
+            button1.Name = "button1";
+            button1.Size = new Size(418, 64);
+            button1.TabIndex = 37;
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            button4.BackColor = Color.Transparent;
+            button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button4.Location = new Point(1006, 630);
+            button4.Name = "button4";
+            button4.Size = new Size(418, 64);
+            button4.TabIndex = 37;
+            button4.UseVisualStyleBackColor = false;
+            // 
             // User_DigitalReceiptVault
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
             Controls.Add(button6);
             Controls.Add(button5);
-            Controls.Add(button10);
-            Controls.Add(button9);
+            Controls.Add(button4);
+            Controls.Add(button1);
             Controls.Add(button8);
             Controls.Add(label1);
             Controls.Add(label8);
@@ -284,12 +297,12 @@
         private ToolStripMenuItem contactDeveloperToolStripMenuItem;
         private ToolStripMenuItem accountSettingsToolStripMenuItem;
         private ToolStripMenuItem logoutToolStripMenuItem;
-        private Button button10;
-        private Button button9;
         private Button button8;
         private Label label8;
         private Button button6;
         private Button button5;
         private Label label1;
+        private Button button1;
+        private Button button4;
     }
 }

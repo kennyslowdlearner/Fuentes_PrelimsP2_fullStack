@@ -215,39 +215,55 @@
             // 
             // button9
             // 
+            button9.BackColor = Color.Transparent;
+            button9.BackgroundImage = (Image)resources.GetObject("button9.BackgroundImage");
+            button9.FlatAppearance.BorderSize = 0;
+            button9.FlatStyle = FlatStyle.Flat;
             button9.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button9.Location = new Point(1119, 540);
             button9.Name = "button9";
             button9.Size = new Size(254, 99);
             button9.TabIndex = 56;
-            button9.UseVisualStyleBackColor = true;
+            button9.UseVisualStyleBackColor = false;
             // 
             // button7
             // 
+            button7.BackColor = Color.Transparent;
+            button7.BackgroundImage = (Image)resources.GetObject("button7.BackgroundImage");
+            button7.FlatAppearance.BorderSize = 0;
+            button7.FlatStyle = FlatStyle.Flat;
             button7.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button7.Location = new Point(1119, 657);
             button7.Name = "button7";
             button7.Size = new Size(254, 99);
             button7.TabIndex = 57;
-            button7.UseVisualStyleBackColor = true;
+            button7.UseVisualStyleBackColor = false;
             // 
             // button4
             // 
+            button4.BackColor = Color.Transparent;
+            button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button4.Location = new Point(849, 657);
             button4.Name = "button4";
             button4.Size = new Size(254, 99);
             button4.TabIndex = 58;
-            button4.UseVisualStyleBackColor = true;
+            button4.UseVisualStyleBackColor = false;
             // 
             // button8
             // 
+            button8.BackColor = Color.Transparent;
+            button8.BackgroundImage = (Image)resources.GetObject("button8.BackgroundImage");
+            button8.FlatAppearance.BorderSize = 0;
+            button8.FlatStyle = FlatStyle.Flat;
             button8.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button8.Location = new Point(849, 540);
             button8.Name = "button8";
             button8.Size = new Size(254, 99);
             button8.TabIndex = 59;
-            button8.UseVisualStyleBackColor = true;
+            button8.UseVisualStyleBackColor = false;
             // 
             // label9
             // 
@@ -315,7 +331,7 @@
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(270, 34);
+            logoutToolStripMenuItem.Size = new Size(172, 34);
             logoutToolStripMenuItem.Text = "Logout";
             // 
             // label4
