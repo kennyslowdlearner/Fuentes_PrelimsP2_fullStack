@@ -38,14 +38,14 @@
             richTextBox2 = new RichTextBox();
             label7 = new Label();
             label8 = new Label();
-            menuStrip2 = new MenuStrip();
             sssssToolStripMenuItem = new ToolStripMenuItem();
             reloadToolStripMenuItem = new ToolStripMenuItem();
             learnMoreToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem3 = new ToolStripMenuItem();
+            viewAccountToolStripMenuItem1 = new ToolStripMenuItem();
             accountSettingsToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem4 = new ToolStripMenuItem();
-            viewAccountToolStripMenuItem1 = new ToolStripMenuItem();
+            menuStrip2 = new MenuStrip();
             groupBox1.SuspendLayout();
             menuStrip2.SuspendLayout();
             SuspendLayout();
@@ -62,6 +62,7 @@
             // 
             button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
             button2.FlatAppearance.BorderColor = Color.FromArgb(0, 192, 0);
+            button2.FlatAppearance.BorderSize = 0;
             button2.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button2.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button2.FlatStyle = FlatStyle.Flat;
@@ -90,6 +91,7 @@
             // 
             button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
             button3.FlatAppearance.BorderColor = Color.FromArgb(0, 192, 0);
+            button3.FlatAppearance.BorderSize = 0;
             button3.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button3.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button3.FlatStyle = FlatStyle.Flat;
@@ -104,6 +106,7 @@
             // 
             button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
             button1.FlatAppearance.BorderColor = Color.FromArgb(0, 192, 0);
+            button1.FlatAppearance.BorderSize = 0;
             button1.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button1.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button1.FlatStyle = FlatStyle.Flat;
@@ -158,18 +161,6 @@
             label8.Text = "Top Seller";
             label8.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // menuStrip2
-            // 
-            menuStrip2.BackColor = Color.Transparent;
-            menuStrip2.Dock = DockStyle.None;
-            menuStrip2.ImageScalingSize = new Size(24, 24);
-            menuStrip2.Items.AddRange(new ToolStripItem[] { sssssToolStripMenuItem, accountSettingsToolStripMenuItem });
-            menuStrip2.Location = new Point(669, 172);
-            menuStrip2.Name = "menuStrip2";
-            menuStrip2.Size = new Size(343, 32);
-            menuStrip2.TabIndex = 106;
-            menuStrip2.Text = "menuStrip2";
-            // 
             // sssssToolStripMenuItem
             // 
             sssssToolStripMenuItem.BackColor = Color.Transparent;
@@ -198,6 +189,12 @@
             toolStripMenuItem3.Size = new Size(281, 34);
             toolStripMenuItem3.Text = "Contact Developer";
             // 
+            // viewAccountToolStripMenuItem1
+            // 
+            viewAccountToolStripMenuItem1.Name = "viewAccountToolStripMenuItem1";
+            viewAccountToolStripMenuItem1.Size = new Size(281, 34);
+            viewAccountToolStripMenuItem1.Text = "View Account";
+            // 
             // accountSettingsToolStripMenuItem
             // 
             accountSettingsToolStripMenuItem.BackColor = Color.Transparent;
@@ -214,11 +211,17 @@
             toolStripMenuItem4.Size = new Size(270, 34);
             toolStripMenuItem4.Text = "Logout";
             // 
-            // viewAccountToolStripMenuItem1
+            // menuStrip2
             // 
-            viewAccountToolStripMenuItem1.Name = "viewAccountToolStripMenuItem1";
-            viewAccountToolStripMenuItem1.Size = new Size(281, 34);
-            viewAccountToolStripMenuItem1.Text = "View Account";
+            menuStrip2.BackColor = Color.Transparent;
+            menuStrip2.Dock = DockStyle.None;
+            menuStrip2.ImageScalingSize = new Size(24, 24);
+            menuStrip2.Items.AddRange(new ToolStripItem[] { sssssToolStripMenuItem, accountSettingsToolStripMenuItem });
+            menuStrip2.Location = new Point(669, 172);
+            menuStrip2.Name = "menuStrip2";
+            menuStrip2.Size = new Size(343, 32);
+            menuStrip2.TabIndex = 106;
+            menuStrip2.Text = "menuStrip2";
             // 
             // AdminAccount
             // 
@@ -254,13 +257,13 @@
         private RichTextBox richTextBox2;
         private Label label7;
         private Label label8;
-        private MenuStrip menuStrip2;
         private ToolStripMenuItem sssssToolStripMenuItem;
         private ToolStripMenuItem reloadToolStripMenuItem;
         private ToolStripMenuItem learnMoreToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItem3;
+        private ToolStripMenuItem viewAccountToolStripMenuItem1;
         private ToolStripMenuItem accountSettingsToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItem4;
-        private ToolStripMenuItem viewAccountToolStripMenuItem1;
+        private MenuStrip menuStrip2;
     }
 }
