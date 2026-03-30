@@ -34,32 +34,28 @@
             groupBox1 = new GroupBox();
             button3 = new Button();
             button1 = new Button();
-            menuStrip1 = new MenuStrip();
-            toolStripMenuItem1 = new ToolStripMenuItem();
-            viewAccountToolStripMenuItem = new ToolStripMenuItem();
-            contactDeveloperToolStripMenuItem = new ToolStripMenuItem();
-            supportToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem2 = new ToolStripMenuItem();
-            logoutToolStripMenuItem = new ToolStripMenuItem();
             richTextBox1 = new RichTextBox();
             richTextBox2 = new RichTextBox();
-            label5 = new Label();
-            label3 = new Label();
-            label1 = new Label();
             label7 = new Label();
             label8 = new Label();
-            pictureBox1 = new PictureBox();
+            menuStrip2 = new MenuStrip();
+            sssssToolStripMenuItem = new ToolStripMenuItem();
+            reloadToolStripMenuItem = new ToolStripMenuItem();
+            learnMoreToolStripMenuItem = new ToolStripMenuItem();
+            toolStripMenuItem3 = new ToolStripMenuItem();
+            accountSettingsToolStripMenuItem = new ToolStripMenuItem();
+            toolStripMenuItem4 = new ToolStripMenuItem();
+            viewAccountToolStripMenuItem1 = new ToolStripMenuItem();
             groupBox1.SuspendLayout();
-            menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            menuStrip2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.Font = new Font("Glacial Indifference", 10F);
-            panel1.Location = new Point(322, 34);
+            panel1.Location = new Point(31, 34);
             panel1.Name = "panel1";
-            panel1.Size = new Size(681, 135);
+            panel1.Size = new Size(972, 135);
             panel1.TabIndex = 6;
             // 
             // button2
@@ -118,70 +114,13 @@
             button1.TabIndex = 0;
             button1.UseVisualStyleBackColor = true;
             // 
-            // menuStrip1
-            // 
-            menuStrip1.BackColor = Color.Transparent;
-            menuStrip1.Dock = DockStyle.None;
-            menuStrip1.Font = new Font("Glacial Indifference", 10F);
-            menuStrip1.ImageScalingSize = new Size(24, 24);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, toolStripMenuItem2 });
-            menuStrip1.Location = new Point(703, 186);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(316, 32);
-            menuStrip1.TabIndex = 8;
-            menuStrip1.Text = "menuStrip1";
-            // 
-            // toolStripMenuItem1
-            // 
-            toolStripMenuItem1.BackColor = Color.Transparent;
-            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { viewAccountToolStripMenuItem, contactDeveloperToolStripMenuItem, supportToolStripMenuItem });
-            toolStripMenuItem1.Font = new Font("Glacial Indifference", 10F);
-            toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(143, 28);
-            toolStripMenuItem1.Text = "More Options";
-            // 
-            // viewAccountToolStripMenuItem
-            // 
-            viewAccountToolStripMenuItem.Name = "viewAccountToolStripMenuItem";
-            viewAccountToolStripMenuItem.Size = new Size(273, 34);
-            viewAccountToolStripMenuItem.Text = "View Account";
-            // 
-            // contactDeveloperToolStripMenuItem
-            // 
-            contactDeveloperToolStripMenuItem.Name = "contactDeveloperToolStripMenuItem";
-            contactDeveloperToolStripMenuItem.Size = new Size(273, 34);
-            contactDeveloperToolStripMenuItem.Text = "Contact Developer";
-            contactDeveloperToolStripMenuItem.Click += contactDeveloperToolStripMenuItem_Click;
-            // 
-            // supportToolStripMenuItem
-            // 
-            supportToolStripMenuItem.Name = "supportToolStripMenuItem";
-            supportToolStripMenuItem.Size = new Size(273, 34);
-            supportToolStripMenuItem.Text = "Support";
-            // 
-            // toolStripMenuItem2
-            // 
-            toolStripMenuItem2.BackColor = Color.Transparent;
-            toolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { logoutToolStripMenuItem });
-            toolStripMenuItem2.Font = new Font("Glacial Indifference", 10F);
-            toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.Size = new Size(165, 28);
-            toolStripMenuItem2.Text = "Account Control";
-            // 
-            // logoutToolStripMenuItem
-            // 
-            logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(169, 34);
-            logoutToolStripMenuItem.Text = "Logout";
-            logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
-            // 
             // richTextBox1
             // 
             richTextBox1.BackColor = Color.Silver;
             richTextBox1.Font = new Font("Glacial Indifference", 10F);
-            richTextBox1.Location = new Point(350, 297);
+            richTextBox1.Location = new Point(350, 285);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(312, 341);
+            richTextBox1.Size = new Size(312, 353);
             richTextBox1.TabIndex = 10;
             richTextBox1.Text = "";
             // 
@@ -189,51 +128,18 @@
             // 
             richTextBox2.BackColor = Color.Silver;
             richTextBox2.Font = new Font("Glacial Indifference", 10F);
-            richTextBox2.Location = new Point(691, 297);
+            richTextBox2.Location = new Point(691, 285);
             richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new Size(312, 341);
+            richTextBox2.Size = new Size(312, 353);
             richTextBox2.TabIndex = 10;
             richTextBox2.Text = "";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.BackColor = Color.Transparent;
-            label5.Font = new Font("Glacial Indifference", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(171, 125);
-            label5.Name = "label5";
-            label5.Size = new Size(107, 34);
-            label5.TabIndex = 11;
-            label5.Text = "Admin!";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Glacial Indifference", 14F);
-            label3.Location = new Point(22, 125);
-            label3.Name = "label3";
-            label3.Size = new Size(158, 34);
-            label3.TabIndex = 12;
-            label3.Text = "Hello there, ";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Glacial Indifference", 10F);
-            label1.Location = new Point(22, 164);
-            label1.Name = "label1";
-            label1.Size = new Size(148, 24);
-            label1.TabIndex = 13;
-            label1.Text = "[Time and Date]";
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.BackColor = Color.Transparent;
             label7.Font = new Font("Glacial Indifference", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(350, 257);
+            label7.Location = new Point(350, 235);
             label7.Name = "label7";
             label7.Size = new Size(265, 34);
             label7.TabIndex = 11;
@@ -245,22 +151,74 @@
             label8.AutoSize = true;
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Glacial Indifference", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(691, 257);
+            label8.Location = new Point(691, 235);
             label8.Name = "label8";
             label8.Size = new Size(144, 34);
             label8.TabIndex = 11;
             label8.Text = "Top Seller";
             label8.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // pictureBox1
+            // menuStrip2
             // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.Location = new Point(12, 21);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(292, 101);
-            pictureBox1.TabIndex = 14;
-            pictureBox1.TabStop = false;
+            menuStrip2.BackColor = Color.Transparent;
+            menuStrip2.Dock = DockStyle.None;
+            menuStrip2.ImageScalingSize = new Size(24, 24);
+            menuStrip2.Items.AddRange(new ToolStripItem[] { sssssToolStripMenuItem, accountSettingsToolStripMenuItem });
+            menuStrip2.Location = new Point(669, 172);
+            menuStrip2.Name = "menuStrip2";
+            menuStrip2.Size = new Size(343, 32);
+            menuStrip2.TabIndex = 106;
+            menuStrip2.Text = "menuStrip2";
+            // 
+            // sssssToolStripMenuItem
+            // 
+            sssssToolStripMenuItem.BackColor = Color.Transparent;
+            sssssToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { reloadToolStripMenuItem, learnMoreToolStripMenuItem, toolStripMenuItem3, viewAccountToolStripMenuItem1 });
+            sssssToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            sssssToolStripMenuItem.ForeColor = Color.DarkOliveGreen;
+            sssssToolStripMenuItem.Name = "sssssToolStripMenuItem";
+            sssssToolStripMenuItem.Size = new Size(151, 28);
+            sssssToolStripMenuItem.Text = "More Options";
+            // 
+            // reloadToolStripMenuItem
+            // 
+            reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
+            reloadToolStripMenuItem.Size = new Size(281, 34);
+            reloadToolStripMenuItem.Text = "Reload";
+            // 
+            // learnMoreToolStripMenuItem
+            // 
+            learnMoreToolStripMenuItem.Name = "learnMoreToolStripMenuItem";
+            learnMoreToolStripMenuItem.Size = new Size(281, 34);
+            learnMoreToolStripMenuItem.Text = "Learn More";
+            // 
+            // toolStripMenuItem3
+            // 
+            toolStripMenuItem3.Name = "toolStripMenuItem3";
+            toolStripMenuItem3.Size = new Size(281, 34);
+            toolStripMenuItem3.Text = "Contact Developer";
+            // 
+            // accountSettingsToolStripMenuItem
+            // 
+            accountSettingsToolStripMenuItem.BackColor = Color.Transparent;
+            accountSettingsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem4 });
+            accountSettingsToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            accountSettingsToolStripMenuItem.ForeColor = Color.DarkOliveGreen;
+            accountSettingsToolStripMenuItem.Name = "accountSettingsToolStripMenuItem";
+            accountSettingsToolStripMenuItem.Size = new Size(184, 28);
+            accountSettingsToolStripMenuItem.Text = "Account Settings";
+            // 
+            // toolStripMenuItem4
+            // 
+            toolStripMenuItem4.Name = "toolStripMenuItem4";
+            toolStripMenuItem4.Size = new Size(270, 34);
+            toolStripMenuItem4.Text = "Logout";
+            // 
+            // viewAccountToolStripMenuItem1
+            // 
+            viewAccountToolStripMenuItem1.Name = "viewAccountToolStripMenuItem1";
+            viewAccountToolStripMenuItem1.Size = new Size(281, 34);
+            viewAccountToolStripMenuItem1.Text = "View Account";
             // 
             // AdminAccount
             // 
@@ -268,24 +226,19 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1040, 650);
-            Controls.Add(pictureBox1);
+            Controls.Add(menuStrip2);
             Controls.Add(label8);
             Controls.Add(label7);
-            Controls.Add(label5);
-            Controls.Add(label3);
-            Controls.Add(label1);
             Controls.Add(richTextBox2);
             Controls.Add(richTextBox1);
             Controls.Add(panel1);
             Controls.Add(groupBox1);
-            Controls.Add(menuStrip1);
             Name = "AdminAccount";
             Text = "Pananom : Admin Dashboard";
             FormClosed += AdminAccount_FormClosed;
             groupBox1.ResumeLayout(false);
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            menuStrip2.ResumeLayout(false);
+            menuStrip2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -297,20 +250,17 @@
         private GroupBox groupBox1;
         private Button button3;
         private Button button1;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem toolStripMenuItem1;
-        private ToolStripMenuItem toolStripMenuItem2;
         private RichTextBox richTextBox1;
         private RichTextBox richTextBox2;
-        private Label label5;
-        private Label label3;
-        private Label label1;
         private Label label7;
         private Label label8;
-        private ToolStripMenuItem viewAccountToolStripMenuItem;
-        private ToolStripMenuItem contactDeveloperToolStripMenuItem;
-        private ToolStripMenuItem logoutToolStripMenuItem;
-        private ToolStripMenuItem supportToolStripMenuItem;
-        private PictureBox pictureBox1;
+        private MenuStrip menuStrip2;
+        private ToolStripMenuItem sssssToolStripMenuItem;
+        private ToolStripMenuItem reloadToolStripMenuItem;
+        private ToolStripMenuItem learnMoreToolStripMenuItem;
+        private ToolStripMenuItem toolStripMenuItem3;
+        private ToolStripMenuItem accountSettingsToolStripMenuItem;
+        private ToolStripMenuItem toolStripMenuItem4;
+        private ToolStripMenuItem viewAccountToolStripMenuItem1;
     }
 }

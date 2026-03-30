@@ -25,7 +25,7 @@ namespace Fuentes_PrelimsP2
 
             InitializeTableAndBind();
 
-            if(addRow)
+            if (addRow)
             {
                 AddProductRow(productname, productid, quantity);
             }
@@ -56,12 +56,12 @@ namespace Fuentes_PrelimsP2
             newRow["productidPI"] = productid ?? string.Empty;
             ProductInventory.Rows.Add(newRow);
 
-            if (dataGridView1 != null)
-            {
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = ProductInventory;
-                dataGridView1.Refresh();
-            }
+            //if (dataGridView1 != null)
+            //{
+            //    dataGridView1.DataSource = null;
+            //    dataGridView1.DataSource = ProductInventory;
+            //    dataGridView1.Refresh();
+            //}
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -77,18 +77,18 @@ namespace Fuentes_PrelimsP2
                 ProductInventory.Columns.Add("productidPI", typeof(string));
             }
 
-            dataGridView1.AutoGenerateColumns = false;
+            //dataGridView1.AutoGenerateColumns = false;
 
-            if (dataGridView1.Columns.Contains("Number"))
-                dataGridView1.Columns["Number"].DataPropertyName = "numberPI";
-            if (dataGridView1.Columns.Contains("productName"))
-                dataGridView1.Columns["productName"].DataPropertyName = "productnamePI";
-            if (dataGridView1.Columns.Contains("quantityProduct"))
-                dataGridView1.Columns["quantityProduct"].DataPropertyName = "quantityPI";
-            if (dataGridView1.Columns.Contains("idProduct"))
-                dataGridView1.Columns["idProduct"].DataPropertyName = "productidPI";
+            //if (dataGridView1.Columns.Contains("Number"))
+            //    dataGridView1.Columns["Number"].DataPropertyName = "numberPI";
+            //if (dataGridView1.Columns.Contains("productName"))
+            //    dataGridView1.Columns["productName"].DataPropertyName = "productnamePI";
+            //if (dataGridView1.Columns.Contains("quantityProduct"))
+            //    dataGridView1.Columns["quantityProduct"].DataPropertyName = "quantityPI";
+            //if (dataGridView1.Columns.Contains("idProduct"))
+            //    dataGridView1.Columns["idProduct"].DataPropertyName = "productidPI";
 
-            dataGridView1.DataSource = ProductInventory;
+            //dataGridView1.DataSource = ProductInventory;
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -189,6 +189,11 @@ namespace Fuentes_PrelimsP2
         private void productInventory_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -35,21 +35,21 @@ namespace Fuentes_PrelimsP2
 
         private void SetupDataGridView()
         {
-            displayFGPblock.AutoGenerateColumns = false;
+            //displayFGPblock.AutoGenerateColumns = false;
 
-            if (displayFGPblock.Columns.Contains("numberFGP"))
-                displayFGPblock.Columns["numberFGP"].DataPropertyName = "Number";
-            if (displayFGPblock.Columns.Contains("productnameFGP"))
-                displayFGPblock.Columns["productnameFGP"].DataPropertyName = "Product";
-            if (displayFGPblock.Columns.Contains("priceFGP"))
-                displayFGPblock.Columns["priceFGP"].DataPropertyName = "Price";
-            if (displayFGPblock.Columns.Contains("productidFGP"))
-                displayFGPblock.Columns["productidFGP"].DataPropertyName = "ID";
+            //if (displayFGPblock.Columns.Contains("numberFGP"))
+            //    displayFGPblock.Columns["numberFGP"].DataPropertyName = "Number";
+            //if (displayFGPblock.Columns.Contains("productnameFGP"))
+            //    displayFGPblock.Columns["productnameFGP"].DataPropertyName = "Product";
+            //if (displayFGPblock.Columns.Contains("priceFGP"))
+            //    displayFGPblock.Columns["priceFGP"].DataPropertyName = "Price";
+            //if (displayFGPblock.Columns.Contains("productidFGP"))
+            //    displayFGPblock.Columns["productidFGP"].DataPropertyName = "ID";
 
-            displayFGPblock.DataSource = farmGateEntries;
+            //displayFGPblock.DataSource = farmGateEntries;
 
-            if (displayFGPblock.Columns.Contains("dateFGP"))
-                displayFGPblock.Columns.Remove("dateFGP");
+            //if (displayFGPblock.Columns.Contains("dateFGP"))
+            //    displayFGPblock.Columns.Remove("dateFGP");
         }
 
         public void AddEntry(string productname, string productid, float price)
@@ -60,7 +60,7 @@ namespace Fuentes_PrelimsP2
                 return;
             }
 
-            displayFGPblock.DataSource = null;
+            //displayFGPblock.DataSource = null;
 
             try
             {
@@ -72,7 +72,7 @@ namespace Fuentes_PrelimsP2
                     Price = price
                 });
 
-                displayFGPblock.DataSource = farmGateEntries;
+                //displayFGPblock.DataSource = farmGateEntries;
                 RebindColumns();
             }
 
@@ -85,17 +85,17 @@ namespace Fuentes_PrelimsP2
 
         private void RebindColumns()
         {
-            if (displayFGPblock.Columns.Contains("numberFGP"))
-                displayFGPblock.Columns["numberFGP"].DataPropertyName = "Number";
-            if (displayFGPblock.Columns.Contains("productnameFGP"))
-                displayFGPblock.Columns["productnameFGP"].DataPropertyName = "Product";
-            if (displayFGPblock.Columns.Contains("priceFGP"))
-                displayFGPblock.Columns["priceFGP"].DataPropertyName = "Price";
-            if (displayFGPblock.Columns.Contains("productidFGP"))
-                displayFGPblock.Columns["productidFGP"].DataPropertyName = "ID";
+            //if (displayFGPblock.Columns.Contains("numberFGP"))
+            //    displayFGPblock.Columns["numberFGP"].DataPropertyName = "Number";
+            //if (displayFGPblock.Columns.Contains("productnameFGP"))
+            //    displayFGPblock.Columns["productnameFGP"].DataPropertyName = "Product";
+            //if (displayFGPblock.Columns.Contains("priceFGP"))
+            //    displayFGPblock.Columns["priceFGP"].DataPropertyName = "Price";
+            //if (displayFGPblock.Columns.Contains("productidFGP"))
+            //    displayFGPblock.Columns["productidFGP"].DataPropertyName = "ID";
 
-            if (displayFGPblock.Columns.Contains("numberFGP"))
-                displayFGPblock.Columns["numberFGP"].Width = 50;
+            //if (displayFGPblock.Columns.Contains("numberFGP"))
+            //    displayFGPblock.Columns["numberFGP"].Width = 50;
         }
 
         private void addproductFGP_Click(object sender, EventArgs e)

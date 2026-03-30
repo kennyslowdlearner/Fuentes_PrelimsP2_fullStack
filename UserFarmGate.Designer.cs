@@ -30,61 +30,342 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(farmgateUSER));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            label3 = new Label();
+            dataGridView1 = new DataGridView();
+            label5 = new Label();
+            logoutToolStripMenuItem = new ToolStripMenuItem();
+            accountSettingsToolStripMenuItem = new ToolStripMenuItem();
+            contactDeveloperToolStripMenuItem = new ToolStripMenuItem();
+            learnMoreToolStripMenuItem = new ToolStripMenuItem();
+            reloadToolStripMenuItem = new ToolStripMenuItem();
+            sssssToolStripMenuItem = new ToolStripMenuItem();
+            label6 = new Label();
+            menuStrip1 = new MenuStrip();
+            button8 = new Button();
+            button7 = new Button();
+            button4 = new Button();
+            button3 = new Button();
+            button2 = new Button();
+            button1 = new Button();
+            label4 = new Label();
             label2 = new Label();
+            textBox1 = new TextBox();
+            label3 = new Label();
+            label8 = new Label();
+            label1 = new Label();
+            textBox2 = new TextBox();
+            label9 = new Label();
+            button6 = new Button();
+            button5 = new Button();
             refreshToolStripMenuItem = new ToolStripMenuItem();
             contextMenuStrip1 = new ContextMenuStrip(components);
-            logoutoptionFPG = new ToolStripMenuItem();
-            backoptionFPG = new ToolStripMenuItem();
-            activityToolStripMenuItem = new ToolStripMenuItem();
-            deleteproductFGP = new ToolStripMenuItem();
-            updateproductFGP = new ToolStripMenuItem();
-            addproductFGP = new ToolStripMenuItem();
-            profileName = new Label();
-            optionsToolStripMenuItem = new ToolStripMenuItem();
+            textBox3 = new TextBox();
             searchBoxPI = new TextBox();
-            searchbuttonFPG = new Button();
-            label1 = new Label();
-            pictureBox1 = new PictureBox();
-            displayFGPblock = new DataGridView();
-            numberFGP = new DataGridViewTextBoxColumn();
-            productnameFGP = new DataGridViewTextBoxColumn();
-            priceFGP = new DataGridViewTextBoxColumn();
-            productidFGP = new DataGridViewTextBoxColumn();
-            dateFGP = new DataGridViewTextBoxColumn();
+            searchbuttonPI = new Button();
             panel1 = new Panel();
-            usermenuPI = new MenuStrip();
+            textBox4 = new TextBox();
+            label7 = new Label();
+            label10 = new Label();
+            label17 = new Label();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            menuStrip1.SuspendLayout();
             contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)displayFGPblock).BeginInit();
             panel1.SuspendLayout();
-            usermenuPI.SuspendLayout();
             SuspendLayout();
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(3, 3);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 62;
+            dataGridView1.Size = new Size(1368, 308);
+            dataGridView1.TabIndex = 0;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = Color.Transparent;
+            label5.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.LawnGreen;
+            label5.Location = new Point(64, 217);
+            label5.Name = "label5";
+            label5.Size = new Size(146, 27);
+            label5.TabIndex = 107;
+            label5.Text = "Product Name";
+            // 
+            // logoutToolStripMenuItem
+            // 
+            logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            logoutToolStripMenuItem.Size = new Size(172, 34);
+            logoutToolStripMenuItem.Text = "Logout";
+            // 
+            // accountSettingsToolStripMenuItem
+            // 
+            accountSettingsToolStripMenuItem.BackColor = Color.Transparent;
+            accountSettingsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { logoutToolStripMenuItem });
+            accountSettingsToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            accountSettingsToolStripMenuItem.ForeColor = Color.LawnGreen;
+            accountSettingsToolStripMenuItem.Name = "accountSettingsToolStripMenuItem";
+            accountSettingsToolStripMenuItem.Size = new Size(184, 28);
+            accountSettingsToolStripMenuItem.Text = "Account Settings";
+            // 
+            // contactDeveloperToolStripMenuItem
+            // 
+            contactDeveloperToolStripMenuItem.Name = "contactDeveloperToolStripMenuItem";
+            contactDeveloperToolStripMenuItem.Size = new Size(281, 34);
+            contactDeveloperToolStripMenuItem.Text = "Contact Developer";
+            // 
+            // learnMoreToolStripMenuItem
+            // 
+            learnMoreToolStripMenuItem.Name = "learnMoreToolStripMenuItem";
+            learnMoreToolStripMenuItem.Size = new Size(281, 34);
+            learnMoreToolStripMenuItem.Text = "Learn More";
+            // 
+            // reloadToolStripMenuItem
+            // 
+            reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
+            reloadToolStripMenuItem.Size = new Size(281, 34);
+            reloadToolStripMenuItem.Text = "Reload";
+            // 
+            // sssssToolStripMenuItem
+            // 
+            sssssToolStripMenuItem.BackColor = Color.Transparent;
+            sssssToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { reloadToolStripMenuItem, learnMoreToolStripMenuItem, contactDeveloperToolStripMenuItem });
+            sssssToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            sssssToolStripMenuItem.ForeColor = Color.LawnGreen;
+            sssssToolStripMenuItem.Name = "sssssToolStripMenuItem";
+            sssssToolStripMenuItem.Size = new Size(151, 28);
+            sssssToolStripMenuItem.Text = "More Options";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = Color.Transparent;
+            label6.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.LawnGreen;
+            label6.Location = new Point(211, 220);
+            label6.Name = "label6";
+            label6.Size = new Size(15, 24);
+            label6.TabIndex = 106;
+            label6.Text = ":";
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.BackColor = Color.Transparent;
+            menuStrip1.Dock = DockStyle.None;
+            menuStrip1.ImageScalingSize = new Size(24, 24);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { sssssToolStripMenuItem, accountSettingsToolStripMenuItem });
+            menuStrip1.Location = new Point(1117, 220);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(343, 32);
+            menuStrip1.TabIndex = 105;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // button8
+            // 
+            button8.BackColor = Color.Yellow;
+            button8.FlatAppearance.BorderColor = Color.Gold;
+            button8.FlatAppearance.BorderSize = 2;
+            button8.FlatStyle = FlatStyle.Flat;
+            button8.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button8.ForeColor = Color.DarkGreen;
+            button8.Location = new Point(1304, 578);
+            button8.Name = "button8";
+            button8.Size = new Size(143, 38);
+            button8.TabIndex = 102;
+            button8.Text = "Connect";
+            button8.UseVisualStyleBackColor = false;
+            // 
+            // button7
+            // 
+            button7.BackColor = Color.Yellow;
+            button7.FlatAppearance.BorderColor = Color.Gold;
+            button7.FlatAppearance.BorderSize = 2;
+            button7.FlatStyle = FlatStyle.Flat;
+            button7.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button7.ForeColor = Color.DarkGreen;
+            button7.Location = new Point(1155, 578);
+            button7.Name = "button7";
+            button7.Size = new Size(143, 38);
+            button7.TabIndex = 103;
+            button7.Text = "Load";
+            button7.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            button4.BackColor = Color.Yellow;
+            button4.FlatAppearance.BorderColor = Color.Gold;
+            button4.FlatAppearance.BorderSize = 2;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button4.ForeColor = Color.DarkGreen;
+            button4.Location = new Point(1006, 578);
+            button4.Name = "button4";
+            button4.Size = new Size(143, 38);
+            button4.TabIndex = 104;
+            button4.Text = "Refresh";
+            button4.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            button3.BackColor = Color.Yellow;
+            button3.FlatAppearance.BorderColor = Color.Gold;
+            button3.FlatAppearance.BorderSize = 2;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button3.ForeColor = Color.DarkGreen;
+            button3.Location = new Point(360, 722);
+            button3.Name = "button3";
+            button3.Size = new Size(143, 38);
+            button3.TabIndex = 99;
+            button3.Text = "Update";
+            button3.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.Yellow;
+            button2.FlatAppearance.BorderColor = Color.Gold;
+            button2.FlatAppearance.BorderSize = 2;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button2.ForeColor = Color.DarkGreen;
+            button2.Location = new Point(211, 722);
+            button2.Name = "button2";
+            button2.Size = new Size(143, 38);
+            button2.TabIndex = 100;
+            button2.Text = "Delete";
+            button2.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Yellow;
+            button1.FlatAppearance.BorderColor = Color.Gold;
+            button1.FlatAppearance.BorderSize = 2;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.DarkGreen;
+            button1.Location = new Point(62, 722);
+            button1.Name = "button1";
+            button1.Size = new Size(143, 38);
+            button1.TabIndex = 101;
+            button1.Text = "Insert";
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.LawnGreen;
+            label4.Location = new Point(80, 640);
+            label4.Name = "label4";
+            label4.Size = new Size(135, 27);
+            label4.TabIndex = 96;
+            label4.Text = "Quantity (Kg)";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.LawnGreen;
+            label2.Location = new Point(80, 613);
+            label2.Name = "label2";
+            label2.Size = new Size(110, 27);
+            label2.TabIndex = 98;
+            label2.Text = "Product ID";
+            // 
+            // textBox1
+            // 
+            textBox1.BackColor = Color.LightGreen;
+            textBox1.BorderStyle = BorderStyle.None;
+            textBox1.Location = new Point(283, 614);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(207, 24);
+            textBox1.TabIndex = 95;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.DarkOliveGreen;
-            label3.Location = new Point(45, 99);
+            label3.ForeColor = Color.LawnGreen;
+            label3.Location = new Point(262, 638);
             label3.Name = "label3";
-            label3.Size = new Size(290, 24);
-            label3.TabIndex = 19;
-            label3.Text = "Welcome to your farmgate price,";
+            label3.Size = new Size(15, 24);
+            label3.TabIndex = 92;
+            label3.Text = ":";
             // 
-            // label2
+            // label8
             // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Glacial Indifference", 10F);
-            label2.ForeColor = Color.DarkOliveGreen;
-            label2.Location = new Point(45, 123);
-            label2.Name = "label2";
-            label2.Size = new Size(148, 24);
-            label2.TabIndex = 17;
-            label2.Text = "[Time and Date]";
+            label8.AutoSize = true;
+            label8.BackColor = Color.Transparent;
+            label8.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.ForeColor = Color.LawnGreen;
+            label8.Location = new Point(80, 586);
+            label8.Name = "label8";
+            label8.Size = new Size(146, 27);
+            label8.TabIndex = 97;
+            label8.Text = "Product Name";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.LawnGreen;
+            label1.Location = new Point(262, 611);
+            label1.Name = "label1";
+            label1.Size = new Size(15, 24);
+            label1.TabIndex = 91;
+            label1.Text = ":";
+            // 
+            // textBox2
+            // 
+            textBox2.BackColor = Color.LightGreen;
+            textBox2.BorderStyle = BorderStyle.None;
+            textBox2.Location = new Point(283, 587);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(207, 24);
+            textBox2.TabIndex = 94;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.BackColor = Color.Transparent;
+            label9.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.ForeColor = Color.LawnGreen;
+            label9.Location = new Point(262, 584);
+            label9.Name = "label9";
+            label9.Size = new Size(15, 24);
+            label9.TabIndex = 90;
+            label9.Text = ":";
+            // 
+            // button6
+            // 
+            button6.BackColor = Color.Transparent;
+            button6.BackgroundImage = (Image)resources.GetObject("button6.BackgroundImage");
+            button6.FlatAppearance.BorderSize = 0;
+            button6.FlatStyle = FlatStyle.Flat;
+            button6.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button6.Location = new Point(622, 732);
+            button6.Name = "button6";
+            button6.Size = new Size(120, 41);
+            button6.TabIndex = 88;
+            button6.UseVisualStyleBackColor = false;
+            // 
+            // button5
+            // 
+            button5.BackColor = Color.Transparent;
+            button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button5.Location = new Point(754, 732);
+            button5.Name = "button5";
+            button5.Size = new Size(120, 41);
+            button5.TabIndex = 89;
+            button5.UseVisualStyleBackColor = false;
             // 
             // refreshToolStripMenuItem
             // 
@@ -99,257 +380,175 @@
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(143, 36);
             // 
-            // logoutoptionFPG
+            // textBox3
             // 
-            logoutoptionFPG.Name = "logoutoptionFPG";
-            logoutoptionFPG.Size = new Size(169, 34);
-            logoutoptionFPG.Text = "Logout";
-            logoutoptionFPG.Click += logoutoptionFPG_Click_1;
-            // 
-            // backoptionFPG
-            // 
-            backoptionFPG.Name = "backoptionFPG";
-            backoptionFPG.Size = new Size(169, 34);
-            backoptionFPG.Text = "Back";
-            backoptionFPG.Click += backoptionFPG_Click_1;
-            // 
-            // activityToolStripMenuItem
-            // 
-            activityToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { backoptionFPG, logoutoptionFPG });
-            activityToolStripMenuItem.ForeColor = Color.DarkGreen;
-            activityToolStripMenuItem.Name = "activityToolStripMenuItem";
-            activityToolStripMenuItem.Size = new Size(133, 28);
-            activityToolStripMenuItem.Text = "User Activity";
-            // 
-            // deleteproductFGP
-            // 
-            deleteproductFGP.Name = "deleteproductFGP";
-            deleteproductFGP.Size = new Size(382, 34);
-            deleteproductFGP.Text = "Delete/Remove Farmgate Price";
-            // 
-            // updateproductFGP
-            // 
-            updateproductFGP.Name = "updateproductFGP";
-            updateproductFGP.Size = new Size(382, 34);
-            updateproductFGP.Text = "Update Farmgate Price";
-            // 
-            // addproductFGP
-            // 
-            addproductFGP.Name = "addproductFGP";
-            addproductFGP.Size = new Size(382, 34);
-            addproductFGP.Text = "Add Farmgate Price";
-            addproductFGP.Click += addproductFGP_Click;
-            // 
-            // profileName
-            // 
-            profileName.AutoSize = true;
-            profileName.BackColor = Color.Transparent;
-            profileName.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            profileName.ForeColor = Color.DarkOliveGreen;
-            profileName.Location = new Point(331, 99);
-            profileName.Name = "profileName";
-            profileName.Size = new Size(58, 24);
-            profileName.TabIndex = 18;
-            profileName.Text = "User!";
-            // 
-            // optionsToolStripMenuItem
-            // 
-            optionsToolStripMenuItem.BackColor = Color.Transparent;
-            optionsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { addproductFGP, updateproductFGP, deleteproductFGP });
-            optionsToolStripMenuItem.ForeColor = Color.DarkGreen;
-            optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            optionsToolStripMenuItem.Size = new Size(137, 28);
-            optionsToolStripMenuItem.Text = "User Options";
+            textBox3.BackColor = Color.LightGreen;
+            textBox3.BorderStyle = BorderStyle.None;
+            textBox3.Location = new Point(283, 641);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(207, 24);
+            textBox3.TabIndex = 93;
             // 
             // searchBoxPI
             // 
             searchBoxPI.BackColor = Color.Gainsboro;
             searchBoxPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            searchBoxPI.Location = new Point(149, 162);
+            searchBoxPI.Location = new Point(232, 219);
             searchBoxPI.Name = "searchBoxPI";
             searchBoxPI.Size = new Size(252, 29);
-            searchBoxPI.TabIndex = 15;
+            searchBoxPI.TabIndex = 87;
             searchBoxPI.Text = "Search product name or id";
             // 
-            // searchbuttonFPG
+            // searchbuttonPI
             // 
-            searchbuttonFPG.BackColor = Color.LightGreen;
-            searchbuttonFPG.FlatStyle = FlatStyle.Flat;
-            searchbuttonFPG.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            searchbuttonFPG.ForeColor = Color.DarkOliveGreen;
-            searchbuttonFPG.Location = new Point(45, 157);
-            searchbuttonFPG.Name = "searchbuttonFPG";
-            searchbuttonFPG.Size = new Size(98, 34);
-            searchbuttonFPG.TabIndex = 14;
-            searchbuttonFPG.Text = "Search";
-            searchbuttonFPG.UseVisualStyleBackColor = false;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("League Spartan", 15.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.DarkOliveGreen;
-            label1.Location = new Point(45, 51);
-            label1.Name = "label1";
-            label1.Size = new Size(231, 48);
-            label1.TabIndex = 13;
-            label1.Text = "Farmgate Price";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.Location = new Point(413, 23);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(257, 76);
-            pictureBox1.TabIndex = 12;
-            pictureBox1.TabStop = false;
-            // 
-            // displayFGPblock
-            // 
-            displayFGPblock.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            displayFGPblock.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            displayFGPblock.ColumnHeadersHeight = 40;
-            displayFGPblock.Columns.AddRange(new DataGridViewColumn[] { numberFGP, productnameFGP, priceFGP, productidFGP, dateFGP });
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Verdana", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            displayFGPblock.DefaultCellStyle = dataGridViewCellStyle1;
-            displayFGPblock.GridColor = SystemColors.MenuText;
-            displayFGPblock.Location = new Point(0, 0);
-            displayFGPblock.Name = "displayFGPblock";
-            displayFGPblock.RowHeadersWidth = 62;
-            displayFGPblock.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            displayFGPblock.Size = new Size(950, 416);
-            displayFGPblock.TabIndex = 0;
-            displayFGPblock.CellContentClick += dateViewFGP;
-            // 
-            // numberFGP
-            // 
-            numberFGP.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            numberFGP.DataPropertyName = "numberFGP";
-            numberFGP.FillWeight = 227.272751F;
-            numberFGP.HeaderText = "No.";
-            numberFGP.MinimumWidth = 8;
-            numberFGP.Name = "numberFGP";
-            numberFGP.ReadOnly = true;
-            // 
-            // productnameFGP
-            // 
-            productnameFGP.DataPropertyName = "productnameFGP";
-            productnameFGP.FillWeight = 172.956528F;
-            productnameFGP.HeaderText = "Product Name";
-            productnameFGP.MinimumWidth = 8;
-            productnameFGP.Name = "productnameFGP";
-            // 
-            // priceFGP
-            // 
-            priceFGP.DataPropertyName = "priceFGP";
-            priceFGP.FillWeight = 29.5617085F;
-            priceFGP.HeaderText = "Farmgate Price (PHP)";
-            priceFGP.MinimumWidth = 8;
-            priceFGP.Name = "priceFGP";
-            priceFGP.ReadOnly = true;
-            // 
-            // productidFGP
-            // 
-            productidFGP.DataPropertyName = "productidFGP";
-            productidFGP.FillWeight = 29.5617085F;
-            productidFGP.HeaderText = "Product ID";
-            productidFGP.MinimumWidth = 8;
-            productidFGP.Name = "productidFGP";
-            productidFGP.ReadOnly = true;
-            // 
-            // dateFGP
-            // 
-            dateFGP.DataPropertyName = "dateFGP";
-            dateFGP.FillWeight = 40.6473465F;
-            dateFGP.HeaderText = "Date Published";
-            dateFGP.MinimumWidth = 8;
-            dateFGP.Name = "dateFGP";
-            dateFGP.ReadOnly = true;
+            searchbuttonPI.BackColor = Color.LightGreen;
+            searchbuttonPI.FlatStyle = FlatStyle.Flat;
+            searchbuttonPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            searchbuttonPI.ForeColor = Color.DarkOliveGreen;
+            searchbuttonPI.Location = new Point(491, 216);
+            searchbuttonPI.Name = "searchbuttonPI";
+            searchbuttonPI.Size = new Size(98, 34);
+            searchbuttonPI.TabIndex = 86;
+            searchbuttonPI.Text = "Search";
+            searchbuttonPI.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
-            panel1.Controls.Add(displayFGPblock);
+            panel1.Controls.Add(dataGridView1);
             panel1.Font = new Font("Glacial Indifference", 10F);
-            panel1.Location = new Point(45, 212);
+            panel1.Location = new Point(71, 255);
             panel1.Name = "panel1";
-            panel1.Size = new Size(950, 416);
-            panel1.TabIndex = 11;
+            panel1.Size = new Size(1374, 314);
+            panel1.TabIndex = 85;
             // 
-            // usermenuPI
+            // textBox4
             // 
-            usermenuPI.BackColor = Color.Transparent;
-            usermenuPI.Dock = DockStyle.None;
-            usermenuPI.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            usermenuPI.ImageScalingSize = new Size(24, 24);
-            usermenuPI.Items.AddRange(new ToolStripItem[] { optionsToolStripMenuItem, activityToolStripMenuItem });
-            usermenuPI.Location = new Point(413, 159);
-            usermenuPI.Name = "usermenuPI";
-            usermenuPI.Size = new Size(278, 32);
-            usermenuPI.TabIndex = 16;
-            usermenuPI.Text = "menuStrip1";
+            textBox4.BackColor = Color.LightGreen;
+            textBox4.BorderStyle = BorderStyle.None;
+            textBox4.Location = new Point(308, 671);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(182, 24);
+            textBox4.TabIndex = 93;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.BackColor = Color.Transparent;
+            label7.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.LawnGreen;
+            label7.Location = new Point(262, 668);
+            label7.Name = "label7";
+            label7.Size = new Size(15, 24);
+            label7.TabIndex = 92;
+            label7.Text = ":";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.BackColor = Color.Transparent;
+            label10.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label10.ForeColor = Color.LawnGreen;
+            label10.Location = new Point(80, 670);
+            label10.Name = "label10";
+            label10.Size = new Size(126, 27);
+            label10.TabIndex = 96;
+            label10.Text = "Price per Kg";
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.BackColor = Color.Transparent;
+            label17.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label17.ForeColor = Color.LawnGreen;
+            label17.Location = new Point(283, 670);
+            label17.Name = "label17";
+            label17.Size = new Size(28, 27);
+            label17.TabIndex = 108;
+            label17.Text = "₱";
             // 
             // farmgateUSER
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(753, 726);
-            Controls.Add(label3);
+            ClientSize = new Size(1500, 785);
+            Controls.Add(label17);
+            Controls.Add(label5);
+            Controls.Add(label6);
+            Controls.Add(menuStrip1);
+            Controls.Add(button8);
+            Controls.Add(button7);
+            Controls.Add(button4);
+            Controls.Add(button3);
+            Controls.Add(button2);
+            Controls.Add(button1);
+            Controls.Add(label10);
+            Controls.Add(label4);
             Controls.Add(label2);
-            Controls.Add(profileName);
-            Controls.Add(searchBoxPI);
-            Controls.Add(searchbuttonFPG);
+            Controls.Add(textBox1);
+            Controls.Add(label7);
+            Controls.Add(label3);
+            Controls.Add(label8);
             Controls.Add(label1);
-            Controls.Add(pictureBox1);
+            Controls.Add(textBox2);
+            Controls.Add(label9);
+            Controls.Add(button6);
+            Controls.Add(button5);
+            Controls.Add(textBox4);
+            Controls.Add(textBox3);
+            Controls.Add(searchBoxPI);
+            Controls.Add(searchbuttonPI);
             Controls.Add(panel1);
-            Controls.Add(usermenuPI);
             Name = "farmgateUSER";
             Text = "Pananom : Farmgate Price";
             FormClosed += farmgateUSER_FormClosed;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)displayFGPblock).EndInit();
             panel1.ResumeLayout(false);
-            usermenuPI.ResumeLayout(false);
-            usermenuPI.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label label3;
+        private DataGridView dataGridView1;
+        private Label label5;
+        private ToolStripMenuItem logoutToolStripMenuItem;
+        private ToolStripMenuItem accountSettingsToolStripMenuItem;
+        private ToolStripMenuItem contactDeveloperToolStripMenuItem;
+        private ToolStripMenuItem learnMoreToolStripMenuItem;
+        private ToolStripMenuItem reloadToolStripMenuItem;
+        private ToolStripMenuItem sssssToolStripMenuItem;
+        private Label label6;
+        private MenuStrip menuStrip1;
+        private Button button8;
+        private Button button7;
+        private Button button4;
+        private Button button3;
+        private Button button2;
+        private Button button1;
+        private Label label4;
         private Label label2;
+        private TextBox textBox1;
+        private Label label3;
+        private Label label8;
+        private Label label1;
+        private TextBox textBox2;
+        private Label label9;
+        private Button button6;
+        private Button button5;
         private ToolStripMenuItem refreshToolStripMenuItem;
         private ContextMenuStrip contextMenuStrip1;
-        private ToolStripMenuItem logoutoptionFPG;
-        private ToolStripMenuItem backoptionFPG;
-        private ToolStripMenuItem activityToolStripMenuItem;
-        private ToolStripMenuItem deleteproductFGP;
-        private ToolStripMenuItem updateproductFGP;
-        private ToolStripMenuItem addproductFGP;
-        private Label profileName;
-        private ToolStripMenuItem optionsToolStripMenuItem;
+        private TextBox textBox3;
         private TextBox searchBoxPI;
-        private Button searchbuttonFPG;
-        private Label label1;
-        private PictureBox pictureBox1;
-        private DataGridView displayFGPblock;
+        private Button searchbuttonPI;
         private Panel panel1;
-        private MenuStrip usermenuPI;
-        private DataGridViewTextBoxColumn numberFGP;
-        private DataGridViewTextBoxColumn productnameFGP;
-        private DataGridViewTextBoxColumn priceFGP;
-        private DataGridViewTextBoxColumn productidFGP;
-        private DataGridViewTextBoxColumn dateFGP;
+        private TextBox textBox4;
+        private Label label7;
+        private Label label10;
+        private Label label17;
     }
 }

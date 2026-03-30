@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(User_CostofProduction));
             panel1 = new Panel();
+            dataGridView1 = new DataGridView();
             label10 = new Label();
             label1 = new Label();
             textBox2 = new TextBox();
@@ -68,10 +69,10 @@
             textBox6 = new TextBox();
             button7 = new Button();
             button9 = new Button();
-            dataGridView1 = new DataGridView();
+            label17 = new Label();
             panel1.SuspendLayout();
-            menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -81,6 +82,15 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(895, 465);
             panel1.TabIndex = 0;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(3, 3);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 62;
+            dataGridView1.Size = new Size(888, 459);
+            dataGridView1.TabIndex = 0;
             // 
             // label10
             // 
@@ -185,9 +195,9 @@
             // 
             textBox4.BackColor = Color.LightGreen;
             textBox4.BorderStyle = BorderStyle.None;
-            textBox4.Location = new Point(1191, 296);
+            textBox4.Location = new Point(1215, 296);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(259, 24);
+            textBox4.Size = new Size(235, 24);
             textBox4.TabIndex = 49;
             // 
             // label6
@@ -505,14 +515,17 @@
             button9.TabIndex = 62;
             button9.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // label17
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(888, 459);
-            dataGridView1.TabIndex = 0;
+            label17.AutoSize = true;
+            label17.BackColor = Color.Transparent;
+            label17.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label17.ForeColor = Color.LawnGreen;
+            label17.Location = new Point(1187, 296);
+            label17.Name = "label17";
+            label17.Size = new Size(28, 27);
+            label17.TabIndex = 51;
+            label17.Text = "₱";
             // 
             // User_CostofProduction
             // 
@@ -535,6 +548,7 @@
             Controls.Add(button1);
             Controls.Add(label13);
             Controls.Add(label11);
+            Controls.Add(label17);
             Controls.Add(label8);
             Controls.Add(label4);
             Controls.Add(label7);
@@ -557,9 +571,9 @@
             Name = "User_CostofProduction";
             Text = "Cost of Production";
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -606,5 +620,6 @@
         private Button button7;
         private Button button9;
         private DataGridView dataGridView1;
+        private Label label17;
     }
 }
