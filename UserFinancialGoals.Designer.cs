@@ -46,21 +46,27 @@
             // 
             // button1
             // 
+            button1.BackColor = Color.Transparent;
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
             button1.Location = new Point(291, 316);
             button1.Name = "button1";
             button1.Size = new Size(202, 259);
             button1.TabIndex = 0;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             // 
             // button2
             // 
+            button2.BackColor = Color.Transparent;
+            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
             button2.Location = new Point(563, 316);
             button2.Name = "button2";
             button2.Size = new Size(202, 259);
             button2.TabIndex = 0;
-            button2.Text = "button1";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             // 
             // menuStrip1
             // 
@@ -116,7 +122,7 @@
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(270, 34);
+            logoutToolStripMenuItem.Size = new Size(172, 34);
             logoutToolStripMenuItem.Text = "Logout";
             // 
             // label1
@@ -158,7 +164,7 @@
             label3.Text = "[Time and Date]";
             label3.Click += label1_Click;
             // 
-            // Form1
+            // UserFinancialGoals
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -171,7 +177,7 @@
             Controls.Add(button1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            Name = "Form1";
+            Name = "UserFinancialGoals";
             Text = "Financial Goals";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
