@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace Fuentes_PrelimsP2
 {
-    public partial class Form1 : Form
+    public partial class Admin_InventoryManagement : Form
     {
-        public Form1()
+        public Admin_InventoryManagement()
         {
             InitializeComponent();
         }
