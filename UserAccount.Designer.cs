@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserAccount));
-            button2 = new Button();
-            button1 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
-            button6 = new Button();
+            ProductInventoryPage = new Button();
+            farmgatePricePage = new Button();
+            FinancialGoalsPage = new Button();
+            TradesandTransactionPage = new Button();
+            TransportSchedulePage = new Button();
+            RiceYieldEstimationandRegistryPage = new Button();
             groupBox1 = new GroupBox();
             menuStrip1 = new MenuStrip();
             toolStripMenuItem1 = new ToolStripMenuItem();
@@ -54,98 +54,101 @@
             panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // button2
+            // ProductInventoryPage
             // 
-            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Glacial Indifference", 10F);
-            button2.Location = new Point(19, 40);
-            button2.Name = "button2";
-            button2.Size = new Size(151, 227);
-            button2.TabIndex = 0;
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            ProductInventoryPage.BackgroundImage = (Image)resources.GetObject("ProductInventoryPage.BackgroundImage");
+            ProductInventoryPage.FlatAppearance.BorderSize = 0;
+            ProductInventoryPage.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            ProductInventoryPage.FlatStyle = FlatStyle.Flat;
+            ProductInventoryPage.Font = new Font("Glacial Indifference", 10F);
+            ProductInventoryPage.Location = new Point(19, 40);
+            ProductInventoryPage.Name = "ProductInventoryPage";
+            ProductInventoryPage.Size = new Size(151, 227);
+            ProductInventoryPage.TabIndex = 0;
+            ProductInventoryPage.UseVisualStyleBackColor = true;
+            ProductInventoryPage.Click += GoToProductInventoryPage;
             // 
-            // button1
+            // farmgatePricePage
             // 
-            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Glacial Indifference", 10F);
-            button1.Location = new Point(176, 40);
-            button1.Name = "button1";
-            button1.Size = new Size(151, 227);
-            button1.TabIndex = 0;
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            farmgatePricePage.BackgroundImage = (Image)resources.GetObject("farmgatePricePage.BackgroundImage");
+            farmgatePricePage.FlatAppearance.BorderSize = 0;
+            farmgatePricePage.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            farmgatePricePage.FlatStyle = FlatStyle.Flat;
+            farmgatePricePage.Font = new Font("Glacial Indifference", 10F);
+            farmgatePricePage.Location = new Point(176, 40);
+            farmgatePricePage.Name = "farmgatePricePage";
+            farmgatePricePage.Size = new Size(151, 227);
+            farmgatePricePage.TabIndex = 0;
+            farmgatePricePage.UseVisualStyleBackColor = true;
+            farmgatePricePage.Click += GoToFarmgatePricePage;
             // 
-            // button3
+            // FinancialGoalsPage
             // 
-            button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Glacial Indifference", 10F);
-            button3.Location = new Point(333, 40);
-            button3.Name = "button3";
-            button3.Size = new Size(151, 227);
-            button3.TabIndex = 0;
-            button3.UseVisualStyleBackColor = true;
+            FinancialGoalsPage.BackgroundImage = (Image)resources.GetObject("FinancialGoalsPage.BackgroundImage");
+            FinancialGoalsPage.FlatAppearance.BorderSize = 0;
+            FinancialGoalsPage.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            FinancialGoalsPage.FlatStyle = FlatStyle.Flat;
+            FinancialGoalsPage.Font = new Font("Glacial Indifference", 10F);
+            FinancialGoalsPage.Location = new Point(333, 40);
+            FinancialGoalsPage.Name = "FinancialGoalsPage";
+            FinancialGoalsPage.Size = new Size(151, 227);
+            FinancialGoalsPage.TabIndex = 0;
+            FinancialGoalsPage.UseVisualStyleBackColor = true;
+            FinancialGoalsPage.Click += GoToFinancialGoalsPage;
             // 
-            // button4
+            // TradesandTransactionPage
             // 
-            button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Glacial Indifference", 10F);
-            button4.Location = new Point(490, 40);
-            button4.Name = "button4";
-            button4.Size = new Size(151, 227);
-            button4.TabIndex = 0;
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
+            TradesandTransactionPage.BackgroundImage = (Image)resources.GetObject("TradesandTransactionPage.BackgroundImage");
+            TradesandTransactionPage.FlatAppearance.BorderSize = 0;
+            TradesandTransactionPage.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            TradesandTransactionPage.FlatStyle = FlatStyle.Flat;
+            TradesandTransactionPage.Font = new Font("Glacial Indifference", 10F);
+            TradesandTransactionPage.Location = new Point(490, 40);
+            TradesandTransactionPage.Name = "TradesandTransactionPage";
+            TradesandTransactionPage.Size = new Size(151, 227);
+            TradesandTransactionPage.TabIndex = 0;
+            TradesandTransactionPage.UseVisualStyleBackColor = true;
+            TradesandTransactionPage.Click += GoToTradesandTransactionsPage;
             // 
-            // button5
+            // TransportSchedulePage
             // 
-            button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Glacial Indifference", 10F);
-            button5.Location = new Point(647, 40);
-            button5.Name = "button5";
-            button5.Size = new Size(151, 227);
-            button5.TabIndex = 0;
-            button5.UseVisualStyleBackColor = true;
+            TransportSchedulePage.BackgroundImage = (Image)resources.GetObject("TransportSchedulePage.BackgroundImage");
+            TransportSchedulePage.FlatAppearance.BorderSize = 0;
+            TransportSchedulePage.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            TransportSchedulePage.FlatStyle = FlatStyle.Flat;
+            TransportSchedulePage.Font = new Font("Glacial Indifference", 10F);
+            TransportSchedulePage.Location = new Point(647, 40);
+            TransportSchedulePage.Name = "TransportSchedulePage";
+            TransportSchedulePage.Size = new Size(151, 227);
+            TransportSchedulePage.TabIndex = 0;
+            TransportSchedulePage.UseVisualStyleBackColor = true;
+            TransportSchedulePage.Click += GoToTransportSchedulePage;
             // 
-            // button6
+            // RiceYieldEstimationandRegistryPage
             // 
-            button6.BackColor = Color.Transparent;
-            button6.BackgroundImage = (Image)resources.GetObject("button6.BackgroundImage");
-            button6.FlatAppearance.BorderSize = 0;
-            button6.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.Font = new Font("Glacial Indifference", 10F);
-            button6.ForeColor = SystemColors.ControlLightLight;
-            button6.Location = new Point(804, 40);
-            button6.Name = "button6";
-            button6.Size = new Size(151, 227);
-            button6.TabIndex = 0;
-            button6.UseVisualStyleBackColor = false;
+            RiceYieldEstimationandRegistryPage.BackColor = Color.Transparent;
+            RiceYieldEstimationandRegistryPage.BackgroundImage = (Image)resources.GetObject("RiceYieldEstimationandRegistryPage.BackgroundImage");
+            RiceYieldEstimationandRegistryPage.FlatAppearance.BorderSize = 0;
+            RiceYieldEstimationandRegistryPage.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            RiceYieldEstimationandRegistryPage.FlatStyle = FlatStyle.Flat;
+            RiceYieldEstimationandRegistryPage.Font = new Font("Glacial Indifference", 10F);
+            RiceYieldEstimationandRegistryPage.ForeColor = SystemColors.ControlLightLight;
+            RiceYieldEstimationandRegistryPage.Location = new Point(804, 40);
+            RiceYieldEstimationandRegistryPage.Name = "RiceYieldEstimationandRegistryPage";
+            RiceYieldEstimationandRegistryPage.Size = new Size(151, 227);
+            RiceYieldEstimationandRegistryPage.TabIndex = 0;
+            RiceYieldEstimationandRegistryPage.UseVisualStyleBackColor = false;
+            RiceYieldEstimationandRegistryPage.Click += GoToRiceYieldEstimationandRegistryPage;
             // 
             // groupBox1
             // 
             groupBox1.BackColor = Color.Transparent;
-            groupBox1.Controls.Add(button6);
-            groupBox1.Controls.Add(button5);
-            groupBox1.Controls.Add(button4);
-            groupBox1.Controls.Add(button3);
-            groupBox1.Controls.Add(button1);
-            groupBox1.Controls.Add(button2);
+            groupBox1.Controls.Add(RiceYieldEstimationandRegistryPage);
+            groupBox1.Controls.Add(TransportSchedulePage);
+            groupBox1.Controls.Add(TradesandTransactionPage);
+            groupBox1.Controls.Add(FinancialGoalsPage);
+            groupBox1.Controls.Add(farmgatePricePage);
+            groupBox1.Controls.Add(ProductInventoryPage);
             groupBox1.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.ForeColor = Color.DarkOliveGreen;
             groupBox1.Location = new Point(31, 341);
@@ -216,7 +219,7 @@
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(270, 34);
+            logoutToolStripMenuItem.Size = new Size(169, 34);
             logoutToolStripMenuItem.Text = "Logout";
             logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
             // 
@@ -306,12 +309,12 @@
         }
 
         #endregion
-        private Button button2;
-        private Button button1;
-        private Button button3;
-        private Button button4;
-        private Button button5;
-        private Button button6;
+        private Button ProductInventoryPage;
+        private Button farmgatePricePage;
+        private Button FinancialGoalsPage;
+        private Button TradesandTransactionPage;
+        private Button TransportSchedulePage;
+        private Button RiceYieldEstimationandRegistryPage;
         private GroupBox groupBox1;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem toolStripMenuItem1;

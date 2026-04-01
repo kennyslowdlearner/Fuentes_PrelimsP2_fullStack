@@ -35,10 +35,10 @@
             birthDate = new TextBox();
             address = new TextBox();
             age = new TextBox();
-            comboBox1 = new ComboBox();
-            textBox8 = new TextBox();
-            textBox9 = new TextBox();
-            textBox10 = new TextBox();
+            genderDropdown = new ComboBox();
+            contactNumber = new TextBox();
+            emailAccount = new TextBox();
+            hotlineNumber = new TextBox();
             richTextBox1 = new RichTextBox();
             button1 = new Button();
             button2 = new Button();
@@ -54,7 +54,7 @@
             label5 = new Label();
             label1 = new Label();
             label2 = new Label();
-            comboBox2 = new ComboBox();
+            categoryDropdown = new ComboBox();
             groupBox2 = new GroupBox();
             label16 = new Label();
             label15 = new Label();
@@ -128,43 +128,43 @@
             age.Size = new Size(285, 31);
             age.TabIndex = 0;
             // 
-            // comboBox1
+            // genderDropdown
             // 
-            comboBox1.Font = new Font("Glacial Indifference", 10F);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Male", "Female", "Lesbian", "Gay", "Bisexual", "Transgender", "Queer", "Intersex", "Asexual", "Non-Binary", "Others" });
-            comboBox1.Location = new Point(182, 358);
-            comboBox1.Margin = new Padding(4);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(285, 32);
-            comboBox1.TabIndex = 2;
+            genderDropdown.Font = new Font("Glacial Indifference", 10F);
+            genderDropdown.FormattingEnabled = true;
+            genderDropdown.Items.AddRange(new object[] { "Male", "Female", "Lesbian", "Gay", "Bisexual", "Transgender", "Queer", "Intersex", "Asexual", "Non-Binary", "Others" });
+            genderDropdown.Location = new Point(182, 358);
+            genderDropdown.Margin = new Padding(4);
+            genderDropdown.Name = "genderDropdown";
+            genderDropdown.Size = new Size(285, 32);
+            genderDropdown.TabIndex = 2;
             // 
-            // textBox8
+            // contactNumber
             // 
-            textBox8.Font = new Font("Glacial Indifference", 10F);
-            textBox8.Location = new Point(230, 43);
-            textBox8.Margin = new Padding(4);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(285, 31);
-            textBox8.TabIndex = 0;
+            contactNumber.Font = new Font("Glacial Indifference", 10F);
+            contactNumber.Location = new Point(230, 43);
+            contactNumber.Margin = new Padding(4);
+            contactNumber.Name = "contactNumber";
+            contactNumber.Size = new Size(285, 31);
+            contactNumber.TabIndex = 0;
             // 
-            // textBox9
+            // emailAccount
             // 
-            textBox9.Font = new Font("Glacial Indifference", 10F);
-            textBox9.Location = new Point(230, 86);
-            textBox9.Margin = new Padding(4);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(285, 31);
-            textBox9.TabIndex = 0;
+            emailAccount.Font = new Font("Glacial Indifference", 10F);
+            emailAccount.Location = new Point(230, 86);
+            emailAccount.Margin = new Padding(4);
+            emailAccount.Name = "emailAccount";
+            emailAccount.Size = new Size(285, 31);
+            emailAccount.TabIndex = 0;
             // 
-            // textBox10
+            // hotlineNumber
             // 
-            textBox10.Font = new Font("Glacial Indifference", 10F);
-            textBox10.Location = new Point(230, 130);
-            textBox10.Margin = new Padding(4);
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(285, 31);
-            textBox10.TabIndex = 0;
+            hotlineNumber.Font = new Font("Glacial Indifference", 10F);
+            hotlineNumber.Location = new Point(230, 130);
+            hotlineNumber.Margin = new Padding(4);
+            hotlineNumber.Name = "hotlineNumber";
+            hotlineNumber.Size = new Size(285, 31);
+            hotlineNumber.TabIndex = 0;
             // 
             // richTextBox1
             // 
@@ -247,8 +247,8 @@
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(comboBox2);
-            groupBox1.Controls.Add(comboBox1);
+            groupBox1.Controls.Add(categoryDropdown);
+            groupBox1.Controls.Add(genderDropdown);
             groupBox1.Controls.Add(age);
             groupBox1.Controls.Add(lastName);
             groupBox1.Controls.Add(address);
@@ -353,16 +353,16 @@
             label2.Text = "First Name : ";
             label2.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // comboBox2
+            // categoryDropdown
             // 
-            comboBox2.Font = new Font("Glacial Indifference", 10F);
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "Kid", "Teen", "Middle-Aged", "Senior Citizen" });
-            comboBox2.Location = new Point(182, 314);
-            comboBox2.Margin = new Padding(4);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(285, 32);
-            comboBox2.TabIndex = 2;
+            categoryDropdown.Font = new Font("Glacial Indifference", 10F);
+            categoryDropdown.FormattingEnabled = true;
+            categoryDropdown.Items.AddRange(new object[] { "Kid", "Teen", "Middle-Aged", "Senior Citizen" });
+            categoryDropdown.Location = new Point(182, 314);
+            categoryDropdown.Margin = new Padding(4);
+            categoryDropdown.Name = "categoryDropdown";
+            categoryDropdown.Size = new Size(285, 32);
+            categoryDropdown.TabIndex = 2;
             // 
             // groupBox2
             // 
@@ -419,9 +419,9 @@
             // groupBox3
             // 
             groupBox3.BackColor = Color.Transparent;
-            groupBox3.Controls.Add(textBox10);
-            groupBox3.Controls.Add(textBox9);
-            groupBox3.Controls.Add(textBox8);
+            groupBox3.Controls.Add(hotlineNumber);
+            groupBox3.Controls.Add(emailAccount);
+            groupBox3.Controls.Add(contactNumber);
             groupBox3.Controls.Add(label10);
             groupBox3.Controls.Add(label12);
             groupBox3.Controls.Add(label11);
@@ -573,10 +573,10 @@
         private TextBox birthDate;
         private TextBox address;
         private TextBox age;
-        private ComboBox comboBox1;
-        private TextBox textBox8;
-        private TextBox textBox9;
-        private TextBox textBox10;
+        private ComboBox genderDropdown;
+        private TextBox contactNumber;
+        private TextBox emailAccount;
+        private TextBox hotlineNumber;
         private RichTextBox richTextBox1;
         private Button button1;
         private Button button2;
@@ -595,7 +595,7 @@
         private Label label6;
         private Label label3;
         private Label label5;
-        private ComboBox comboBox2;
+        private ComboBox categoryDropdown;
         private Label label10;
         private Label label12;
         private Label label11;

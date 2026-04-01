@@ -34,6 +34,22 @@ namespace Fuentes_PrelimsP2
 
         private void signIn(object sender, EventArgs e)
         {
+            //made changes here (1) [4/1/2026 | 10:29 PM]
+            UserSession.UserInstance.FirstName = firstName.Text;
+            UserSession.UserInstance.MiddleName = middleName.Text;
+            UserSession.UserInstance.LastName = lastName.Text;
+            UserSession.UserInstance.Birthdate = birthDate.Text;
+            UserSession.UserInstance.Address = address.Text;
+            UserSession.UserInstance.Age = Convert.ToInt32(age.Text);
+            UserSession.UserInstance.Category = categoryDropdown.Text;
+            UserSession.UserInstance.Gender = genderDropdown.Text;
+
+            UserSession.UserInstance.Username = usernameSIGN.Text;
+            UserSession.UserInstance.Password = cpasswordSIGN.Text;
+
+            UserSession.UserInstance.ContactNumber = Convert.ToInt64(contactNumber.Text);
+            UserSession.UserInstance.Email = emailAccount.Text;
+            UserSession.UserInstance.Hotline = hotlineNumber.Text;
 
             if (passwordSIGN != cpasswordSIGN)
             {
@@ -47,12 +63,7 @@ namespace Fuentes_PrelimsP2
                 return;
             }
 
-
-            FIRSTname = firstName.Text;
-            MIDDLEname = middleName.Text;
-            LASTname = lastName.Text;
-
-            UserAccount userAccount = new UserAccount(FIRSTname, MIDDLEname, LASTname);
+            UserAccount userAccount = new UserAccount();
 
             userAccount.Show();
             this.Hide();

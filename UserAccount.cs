@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Text;
 using System.Windows.Forms;
 
@@ -10,19 +11,11 @@ namespace Fuentes_PrelimsP2
 {
     public partial class UserAccount : Form
     {
-        string FIRSTname, MIDDLEname, LASTname;
-        public UserAccount(string FIRSTname, string MIDDLEname, string LASTname)
+        
+     
+        public UserAccount()
         {
             InitializeComponent();
-
-            this.FIRSTname = FIRSTname;
-            this.MIDDLEname = MIDDLEname;
-            this.LASTname = LASTname;
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -37,11 +30,9 @@ namespace Fuentes_PrelimsP2
 
         private void profileName_Click(object sender, EventArgs e)
         {
-            string fullName;
-
-            fullName = FIRSTname + " " + MIDDLEname + " " + LASTname;
-
-            profileName.Text = fullName;
+            //made changes here (2) [4/1/2026 | 10:41 PM]
+            string name_in_session = UserSession.UserInstance.FirstName + " " + UserSession.UserInstance.MiddleName + " " + UserSession.UserInstance.LastName;
+            profileName.Text = name_in_session;
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -92,6 +83,40 @@ namespace Fuentes_PrelimsP2
 
             userFarmGate.Show();
             this.Hide();
+        }
+
+        private void GoToProductInventoryPage(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void GoToFarmgatePricePage(object sender, EventArgs e)
+        {
+            //farmgateUSER.UserInstance.Show();
+
+            this.Hide();
+        }
+
+    
+
+        private void GoToFinancialGoalsPage(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GoToTradesandTransactionsPage(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GoToTransportSchedulePage(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GoToRiceYieldEstimationandRegistryPage(object sender, EventArgs e)
+        {
+
         }
     }
 }
