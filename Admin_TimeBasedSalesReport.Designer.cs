@@ -30,8 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin_TimeBasedSalesReport));
             panel1 = new Panel();
+            dataGridView1 = new DataGridView();
             panel2 = new Panel();
+            dataGridView2 = new DataGridView();
             panel3 = new Panel();
+            dataGridView3 = new DataGridView();
             menuStrip2 = new MenuStrip();
             sssssToolStripMenuItem = new ToolStripMenuItem();
             reloadToolStripMenuItem = new ToolStripMenuItem();
@@ -51,48 +54,73 @@
             label2 = new Label();
             label1 = new Label();
             label7 = new Label();
-            label8 = new Label();
             label9 = new Label();
-            label10 = new Label();
             label11 = new Label();
             label12 = new Label();
             label13 = new Label();
             label14 = new Label();
-            dataGridView1 = new DataGridView();
-            dataGridView2 = new DataGridView();
-            dataGridView3 = new DataGridView();
+            label15 = new Label();
+            label16 = new Label();
+            label17 = new Label();
             panel1.SuspendLayout();
-            panel2.SuspendLayout();
-            panel3.SuspendLayout();
-            menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
+            menuStrip2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.Controls.Add(dataGridView1);
-            panel1.Location = new Point(49, 188);
+            panel1.Location = new Point(48, 242);
             panel1.Name = "panel1";
             panel1.Size = new Size(671, 179);
             panel1.TabIndex = 0;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(3, 3);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 62;
+            dataGridView1.Size = new Size(665, 173);
+            dataGridView1.TabIndex = 0;
+            // 
             // panel2
             // 
             panel2.Controls.Add(dataGridView2);
-            panel2.Location = new Point(49, 405);
+            panel2.Location = new Point(48, 483);
             panel2.Name = "panel2";
             panel2.Size = new Size(671, 179);
             panel2.TabIndex = 0;
             // 
+            // dataGridView2
+            // 
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new Point(3, 3);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.RowHeadersWidth = 62;
+            dataGridView2.Size = new Size(665, 173);
+            dataGridView2.TabIndex = 0;
+            // 
             // panel3
             // 
             panel3.Controls.Add(dataGridView3);
-            panel3.Location = new Point(752, 188);
+            panel3.Location = new Point(742, 245);
             panel3.Name = "panel3";
-            panel3.Size = new Size(692, 131);
+            panel3.Size = new Size(711, 152);
             panel3.TabIndex = 0;
+            // 
+            // dataGridView3
+            // 
+            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView3.Location = new Point(3, 3);
+            dataGridView3.Name = "dataGridView3";
+            dataGridView3.RowHeadersWidth = 62;
+            dataGridView3.Size = new Size(705, 146);
+            dataGridView3.TabIndex = 0;
             // 
             // menuStrip2
             // 
@@ -164,7 +192,7 @@
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button4.ForeColor = Color.DarkGreen;
-            button4.Location = new Point(50, 591);
+            button4.Location = new Point(49, 669);
             button4.Name = "button4";
             button4.Size = new Size(143, 38);
             button4.TabIndex = 120;
@@ -179,7 +207,7 @@
             button8.FlatStyle = FlatStyle.Flat;
             button8.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button8.ForeColor = Color.DarkGreen;
-            button8.Location = new Point(199, 590);
+            button8.Location = new Point(198, 668);
             button8.Name = "button8";
             button8.Size = new Size(143, 38);
             button8.TabIndex = 119;
@@ -203,19 +231,21 @@
             // 
             label40.AutoSize = true;
             label40.BackColor = Color.Transparent;
-            label40.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label40.Font = new Font("Glacial Indifference", 11F, FontStyle.Italic);
             label40.ForeColor = Color.Gold;
-            label40.Location = new Point(1043, 414);
+            label40.Location = new Point(1110, 439);
             label40.Name = "label40";
-            label40.Size = new Size(111, 24);
+            label40.Size = new Size(126, 27);
             label40.TabIndex = 125;
             label40.Text = "(Label Only)";
             // 
             // label3
             // 
             label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
             label3.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(1018, 411);
+            label3.ForeColor = Color.PaleGreen;
+            label3.Location = new Point(1035, 439);
             label3.Name = "label3";
             label3.Size = new Size(19, 27);
             label3.TabIndex = 123;
@@ -224,48 +254,58 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(773, 508);
+            label6.BackColor = Color.Transparent;
+            label6.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold);
+            label6.ForeColor = Color.PaleGreen;
+            label6.Location = new Point(742, 531);
             label6.Name = "label6";
-            label6.Size = new Size(187, 22);
+            label6.Size = new Size(231, 27);
             label6.TabIndex = 126;
             label6.Text = "Performance Rate (%)";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(773, 476);
+            label5.BackColor = Color.Transparent;
+            label5.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold);
+            label5.ForeColor = Color.PaleGreen;
+            label5.Location = new Point(742, 499);
             label5.Name = "label5";
-            label5.Size = new Size(161, 22);
+            label5.Size = new Size(199, 27);
             label5.TabIndex = 127;
             label5.Text = "Total Transactions";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(773, 446);
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold);
+            label4.ForeColor = Color.PaleGreen;
+            label4.Location = new Point(742, 469);
             label4.Name = "label4";
-            label4.Size = new Size(218, 22);
+            label4.Size = new Size(270, 27);
             label4.TabIndex = 128;
             label4.Text = "Lowest Performing Seller";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(773, 414);
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold);
+            label2.ForeColor = Color.PaleGreen;
+            label2.Location = new Point(742, 437);
             label2.Name = "label2";
-            label2.Size = new Size(189, 22);
+            label2.Size = new Size(234, 27);
             label2.TabIndex = 129;
             label2.Text = "Top Performing Seller";
             // 
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
             label1.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(1018, 441);
+            label1.ForeColor = Color.PaleGreen;
+            label1.Location = new Point(987, 464);
             label1.Name = "label1";
             label1.Size = new Size(19, 27);
             label1.TabIndex = 123;
@@ -275,119 +315,115 @@
             // 
             label7.AutoSize = true;
             label7.BackColor = Color.Transparent;
-            label7.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label7.Font = new Font("Glacial Indifference", 11F, FontStyle.Italic);
             label7.ForeColor = Color.Gold;
-            label7.Location = new Point(1043, 444);
+            label7.Location = new Point(1110, 469);
             label7.Name = "label7";
-            label7.Size = new Size(111, 24);
+            label7.Size = new Size(126, 27);
             label7.TabIndex = 125;
             label7.Text = "(Label Only)";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(1018, 471);
-            label8.Name = "label8";
-            label8.Size = new Size(19, 27);
-            label8.TabIndex = 123;
-            label8.Text = ":";
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.BackColor = Color.Transparent;
-            label9.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label9.Font = new Font("Glacial Indifference", 11F, FontStyle.Italic);
             label9.ForeColor = Color.Gold;
-            label9.Location = new Point(1043, 474);
+            label9.Location = new Point(1110, 499);
             label9.Name = "label9";
-            label9.Size = new Size(111, 24);
+            label9.Size = new Size(126, 27);
             label9.TabIndex = 125;
             label9.Text = "(Label Only)";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(1018, 503);
-            label10.Name = "label10";
-            label10.Size = new Size(19, 27);
-            label10.TabIndex = 123;
-            label10.Text = ":";
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.BackColor = Color.Transparent;
-            label11.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label11.Font = new Font("Glacial Indifference", 11F, FontStyle.Italic);
             label11.ForeColor = Color.Gold;
-            label11.Location = new Point(1043, 506);
+            label11.Location = new Point(1110, 531);
             label11.Name = "label11";
-            label11.Size = new Size(111, 24);
+            label11.Size = new Size(126, 27);
             label11.TabIndex = 125;
             label11.Text = "(Label Only)";
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label12.Location = new Point(49, 161);
+            label12.BackColor = Color.Transparent;
+            label12.Font = new Font("Glacial Indifference", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label12.ForeColor = Color.DarkGreen;
+            label12.Location = new Point(48, 215);
             label12.Name = "label12";
-            label12.Size = new Size(103, 24);
+            label12.Size = new Size(125, 29);
             label12.TabIndex = 130;
             label12.Text = "Per Month";
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.Location = new Point(752, 161);
+            label13.BackColor = Color.Transparent;
+            label13.Font = new Font("Glacial Indifference", 12F, FontStyle.Bold);
+            label13.ForeColor = Color.DarkGreen;
+            label13.Location = new Point(761, 215);
             label13.Name = "label13";
-            label13.Size = new Size(86, 24);
+            label13.Size = new Size(105, 29);
             label13.TabIndex = 130;
             label13.Text = "Per Year";
             // 
             // label14
             // 
             label14.AutoSize = true;
-            label14.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label14.Location = new Point(50, 378);
+            label14.BackColor = Color.Transparent;
+            label14.Font = new Font("Glacial Indifference", 12F, FontStyle.Bold);
+            label14.ForeColor = Color.DarkGreen;
+            label14.Location = new Point(49, 456);
             label14.Name = "label14";
-            label14.Size = new Size(96, 24);
+            label14.Size = new Size(118, 29);
             label14.TabIndex = 130;
             label14.Text = "Per Week";
             // 
-            // dataGridView1
+            // label15
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(665, 173);
-            dataGridView1.TabIndex = 0;
+            label15.AutoSize = true;
+            label15.BackColor = Color.Transparent;
+            label15.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label15.ForeColor = Color.PaleGreen;
+            label15.Location = new Point(1035, 469);
+            label15.Name = "label15";
+            label15.Size = new Size(19, 27);
+            label15.TabIndex = 123;
+            label15.Text = ":";
             // 
-            // dataGridView2
+            // label16
             // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(3, 3);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowHeadersWidth = 62;
-            dataGridView2.Size = new Size(665, 173);
-            dataGridView2.TabIndex = 0;
+            label16.AutoSize = true;
+            label16.BackColor = Color.Transparent;
+            label16.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label16.ForeColor = Color.PaleGreen;
+            label16.Location = new Point(1035, 501);
+            label16.Name = "label16";
+            label16.Size = new Size(19, 27);
+            label16.TabIndex = 123;
+            label16.Text = ":";
             // 
-            // dataGridView3
+            // label17
             // 
-            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Location = new Point(3, 3);
-            dataGridView3.Name = "dataGridView3";
-            dataGridView3.RowHeadersWidth = 62;
-            dataGridView3.Size = new Size(686, 125);
-            dataGridView3.TabIndex = 0;
+            label17.AutoSize = true;
+            label17.BackColor = Color.Transparent;
+            label17.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label17.ForeColor = Color.PaleGreen;
+            label17.Location = new Point(1035, 531);
+            label17.Name = "label17";
+            label17.Size = new Size(19, 27);
+            label17.TabIndex = 123;
+            label17.Text = ":";
             // 
             // Admin_TimeBasedSalesReport
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
             Controls.Add(label14);
             Controls.Add(label13);
@@ -397,12 +433,13 @@
             Controls.Add(label4);
             Controls.Add(label2);
             Controls.Add(label11);
-            Controls.Add(label10);
             Controls.Add(label9);
-            Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label1);
             Controls.Add(label40);
+            Controls.Add(label17);
+            Controls.Add(label16);
+            Controls.Add(label15);
             Controls.Add(label3);
             Controls.Add(button6);
             Controls.Add(menuStrip2);
@@ -414,13 +451,13 @@
             Name = "Admin_TimeBasedSalesReport";
             Text = "Form1";
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             menuStrip2.ResumeLayout(false);
             menuStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -449,9 +486,7 @@
         private Label label2;
         private Label label1;
         private Label label7;
-        private Label label8;
         private Label label9;
-        private Label label10;
         private Label label11;
         private Label label12;
         private Label label13;
@@ -459,5 +494,8 @@
         private DataGridView dataGridView1;
         private DataGridView dataGridView2;
         private DataGridView dataGridView3;
+        private Label label15;
+        private Label label16;
+        private Label label17;
     }
 }

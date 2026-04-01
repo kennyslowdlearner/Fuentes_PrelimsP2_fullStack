@@ -56,7 +56,7 @@
             menuStrip2.Dock = DockStyle.None;
             menuStrip2.ImageScalingSize = new Size(24, 24);
             menuStrip2.Items.AddRange(new ToolStripItem[] { sssssToolStripMenuItem, accountSettingsToolStripMenuItem });
-            menuStrip2.Location = new Point(1133, 154);
+            menuStrip2.Location = new Point(1134, 225);
             menuStrip2.Name = "menuStrip2";
             menuStrip2.Size = new Size(343, 32);
             menuStrip2.TabIndex = 126;
@@ -67,7 +67,7 @@
             sssssToolStripMenuItem.BackColor = Color.Transparent;
             sssssToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { reloadToolStripMenuItem, learnMoreToolStripMenuItem, toolStripMenuItem3, viewAccountToolStripMenuItem1 });
             sssssToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            sssssToolStripMenuItem.ForeColor = Color.DarkOliveGreen;
+            sssssToolStripMenuItem.ForeColor = Color.Chartreuse;
             sssssToolStripMenuItem.Name = "sssssToolStripMenuItem";
             sssssToolStripMenuItem.Size = new Size(151, 28);
             sssssToolStripMenuItem.Text = "More Options";
@@ -101,7 +101,7 @@
             accountSettingsToolStripMenuItem.BackColor = Color.Transparent;
             accountSettingsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem4 });
             accountSettingsToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            accountSettingsToolStripMenuItem.ForeColor = Color.DarkOliveGreen;
+            accountSettingsToolStripMenuItem.ForeColor = Color.Chartreuse;
             accountSettingsToolStripMenuItem.Name = "accountSettingsToolStripMenuItem";
             accountSettingsToolStripMenuItem.Size = new Size(184, 28);
             accountSettingsToolStripMenuItem.Text = "Account Settings";
@@ -114,7 +114,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(359, 154);
+            button1.Location = new Point(373, 222);
             button1.Name = "button1";
             button1.Size = new Size(97, 35);
             button1.TabIndex = 125;
@@ -123,7 +123,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(121, 155);
+            textBox1.Location = new Point(135, 223);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(232, 31);
             textBox1.TabIndex = 124;
@@ -131,10 +131,12 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(34, 160);
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.DarkGreen;
+            label1.Location = new Point(31, 222);
             label1.Name = "label1";
-            label1.Size = new Size(81, 24);
+            label1.Size = new Size(98, 27);
             label1.TabIndex = 123;
             label1.Text = "Product:";
             // 
@@ -184,9 +186,9 @@
             // panel1
             // 
             panel1.Controls.Add(dataGridView1);
-            panel1.Location = new Point(32, 194);
+            panel1.Location = new Point(32, 260);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1434, 475);
+            panel1.Size = new Size(1434, 409);
             panel1.TabIndex = 119;
             // 
             // dataGridView1
@@ -195,13 +197,14 @@
             dataGridView1.Location = new Point(3, 3);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(1428, 469);
+            dataGridView1.Size = new Size(1428, 501);
             dataGridView1.TabIndex = 0;
             // 
             // Admin_InventoryManagement
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
             Controls.Add(menuStrip2);
             Controls.Add(button1);

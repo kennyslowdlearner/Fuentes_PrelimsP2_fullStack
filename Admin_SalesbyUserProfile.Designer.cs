@@ -67,10 +67,12 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(477, 175);
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.PaleGreen;
+            label1.Location = new Point(479, 202);
             label1.Name = "label1";
-            label1.Size = new Size(81, 24);
+            label1.Size = new Size(98, 27);
             label1.TabIndex = 124;
             label1.Text = "Product:";
             // 
@@ -79,7 +81,7 @@
             sssssToolStripMenuItem.BackColor = Color.Transparent;
             sssssToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { reloadToolStripMenuItem, learnMoreToolStripMenuItem, toolStripMenuItem3, viewAccountToolStripMenuItem1 });
             sssssToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            sssssToolStripMenuItem.ForeColor = Color.DarkOliveGreen;
+            sssssToolStripMenuItem.ForeColor = Color.Chartreuse;
             sssssToolStripMenuItem.Name = "sssssToolStripMenuItem";
             sssssToolStripMenuItem.Size = new Size(151, 28);
             sssssToolStripMenuItem.Text = "More Options";
@@ -160,6 +162,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.PaleGreen;
             label6.Location = new Point(25, 216);
             label6.Name = "label6";
             label6.Size = new Size(187, 22);
@@ -170,6 +173,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label12.ForeColor = Color.PaleGreen;
             label12.Location = new Point(229, 211);
             label12.Name = "label12";
             label12.Size = new Size(19, 27);
@@ -180,6 +184,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.PaleGreen;
             label5.Location = new Point(25, 138);
             label5.Name = "label5";
             label5.Size = new Size(161, 22);
@@ -190,6 +195,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label10.ForeColor = Color.PaleGreen;
             label10.Location = new Point(229, 133);
             label10.Name = "label10";
             label10.Size = new Size(19, 27);
@@ -200,6 +206,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.ForeColor = Color.PaleGreen;
             label8.Location = new Point(229, 103);
             label8.Name = "label8";
             label8.Size = new Size(19, 27);
@@ -212,7 +219,7 @@
             menuStrip2.Dock = DockStyle.None;
             menuStrip2.ImageScalingSize = new Size(24, 24);
             menuStrip2.Items.AddRange(new ToolStripItem[] { sssssToolStripMenuItem, accountSettingsToolStripMenuItem });
-            menuStrip2.Location = new Point(1095, 170);
+            menuStrip2.Location = new Point(1096, 203);
             menuStrip2.Name = "menuStrip2";
             menuStrip2.Size = new Size(343, 32);
             menuStrip2.TabIndex = 127;
@@ -223,7 +230,7 @@
             accountSettingsToolStripMenuItem.BackColor = Color.Transparent;
             accountSettingsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem4 });
             accountSettingsToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            accountSettingsToolStripMenuItem.ForeColor = Color.DarkOliveGreen;
+            accountSettingsToolStripMenuItem.ForeColor = Color.Chartreuse;
             accountSettingsToolStripMenuItem.Name = "accountSettingsToolStripMenuItem";
             accountSettingsToolStripMenuItem.Size = new Size(184, 28);
             accountSettingsToolStripMenuItem.Text = "Account Settings";
@@ -231,13 +238,14 @@
             // toolStripMenuItem4
             // 
             toolStripMenuItem4.Name = "toolStripMenuItem4";
-            toolStripMenuItem4.Size = new Size(172, 34);
+            toolStripMenuItem4.Size = new Size(270, 34);
             toolStripMenuItem4.Text = "Logout";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.PaleGreen;
             label4.Location = new Point(25, 108);
             label4.Name = "label4";
             label4.Size = new Size(193, 22);
@@ -248,6 +256,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.PaleGreen;
             label2.Location = new Point(25, 76);
             label2.Name = "label2";
             label2.Size = new Size(189, 22);
@@ -256,7 +265,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(802, 169);
+            button1.Location = new Point(821, 202);
             button1.Name = "button1";
             button1.Size = new Size(97, 35);
             button1.TabIndex = 126;
@@ -284,7 +293,7 @@
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button4.ForeColor = Color.DarkGreen;
-            button4.Location = new Point(1135, 634);
+            button4.Location = new Point(1133, 680);
             button4.Name = "button4";
             button4.Size = new Size(143, 38);
             button4.TabIndex = 122;
@@ -299,7 +308,7 @@
             button8.FlatStyle = FlatStyle.Flat;
             button8.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button8.ForeColor = Color.DarkGreen;
-            button8.Location = new Point(1284, 633);
+            button8.Location = new Point(1282, 679);
             button8.Name = "button8";
             button8.Size = new Size(143, 38);
             button8.TabIndex = 121;
@@ -310,6 +319,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.PaleGreen;
             label3.Location = new Point(229, 73);
             label3.Name = "label3";
             label3.Size = new Size(19, 27);
@@ -318,13 +328,14 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(564, 170);
+            textBox1.Location = new Point(583, 203);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(232, 31);
             textBox1.TabIndex = 125;
             // 
             // panel2
             // 
+            panel2.BackColor = Color.Transparent;
             panel2.Controls.Add(label13);
             panel2.Controls.Add(label11);
             panel2.Controls.Add(label9);
@@ -337,7 +348,7 @@
             panel2.Controls.Add(label8);
             panel2.Controls.Add(label2);
             panel2.Controls.Add(label3);
-            panel2.Location = new Point(52, 240);
+            panel2.Location = new Point(52, 292);
             panel2.Name = "panel2";
             panel2.Size = new Size(409, 329);
             panel2.TabIndex = 119;
@@ -345,9 +356,9 @@
             // panel1
             // 
             panel1.Controls.Add(dataGridView1);
-            panel1.Location = new Point(481, 210);
+            panel1.Location = new Point(481, 240);
             panel1.Name = "panel1";
-            panel1.Size = new Size(947, 409);
+            panel1.Size = new Size(947, 433);
             panel1.TabIndex = 120;
             // 
             // dataGridView1
@@ -356,13 +367,14 @@
             dataGridView1.Location = new Point(3, 3);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(941, 403);
+            dataGridView1.Size = new Size(941, 457);
             dataGridView1.TabIndex = 0;
             // 
             // Admin_SalesbyUserProfile
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
             Controls.Add(label1);
             Controls.Add(menuStrip2);

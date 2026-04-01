@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminTransportSchedule));
             panel1 = new Panel();
+            dataGridView1 = new DataGridView();
             label8 = new Label();
             textBox2 = new TextBox();
             label9 = new Label();
@@ -69,10 +70,9 @@
             viewAccountToolStripMenuItem1 = new ToolStripMenuItem();
             accountSettingsToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem4 = new ToolStripMenuItem();
-            dataGridView1 = new DataGridView();
             panel1.SuspendLayout();
-            menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            menuStrip2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -82,6 +82,15 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1345, 288);
             panel1.TabIndex = 0;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(3, 3);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 62;
+            dataGridView1.Size = new Size(1339, 282);
+            dataGridView1.TabIndex = 0;
             // 
             // label8
             // 
@@ -518,19 +527,11 @@
             toolStripMenuItem4.Size = new Size(172, 34);
             toolStripMenuItem4.Text = "Logout";
             // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(1339, 282);
-            dataGridView1.TabIndex = 0;
-            // 
             // AdminTransportSchedule
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
             Controls.Add(menuStrip2);
             Controls.Add(button6);
@@ -568,9 +569,9 @@
             Name = "AdminTransportSchedule";
             Text = "Form1";
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             menuStrip2.ResumeLayout(false);
             menuStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
