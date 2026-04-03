@@ -13,10 +13,6 @@ namespace Fuentes_PrelimsP2
     {
 
         private string initialPassword, confirmPassword;
-        public UserSignUp()
-        {
-            InitializeComponent();
-        }
 
         OleDbConnection? connection;
         OleDbDataAdapter? adapter;
@@ -24,6 +20,28 @@ namespace Fuentes_PrelimsP2
         DataSet? dataSet;
         int indexRow;
 
+        public UserSignUp()
+        {
+            //made changes here (6) [4/3/2026 | 1:41 PM]
+            InitializeComponent();
+
+            connectionDB();
+
+            adapter = new OleDbDataAdapter("SELECT * FROM [User Account Information]", connection);
+
+            dataSet = new DataSet();
+
+            try
+            {
+                adapter.Fill(dataSet, "User Account Information");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while connecting to the database: " + ex.Message);
+            }
+        }
+
+        
         private void connectionDB()
         { 
             string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Y:\second year college\SECOND SEM Jan 20, 2026\CPE262 OOP2\Project Proposal\Project Pananom.accdb";
@@ -64,6 +82,18 @@ namespace Fuentes_PrelimsP2
                 return;
             }
 
+            if(string.IsNullOrWhiteSpace(age.Text))
+            {
+                MessageBox.Show("Please enter your age.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(contactNumber.Text))
+            {
+                MessageBox.Show("Please enter your valid contact number.");
+                return;
+            }
+
             UserSession.UserInstance.FirstName = firstName.Text;
             UserSession.UserInstance.MiddleName = middleName.Text;
             UserSession.UserInstance.LastName = lastName.Text;
@@ -72,7 +102,6 @@ namespace Fuentes_PrelimsP2
             UserSession.UserInstance.Age = Convert.ToInt32(age.Text);
             UserSession.UserInstance.Category = categoryDropdown.Text;
             UserSession.UserInstance.Gender = genderDropdown.Text;
-
             UserSession.UserInstance.Username = usernameSIGN.Text;
             UserSession.UserInstance.Password = cpasswordSIGN.Text;
 
@@ -83,6 +112,16 @@ namespace Fuentes_PrelimsP2
             try
             {
                 DataRow newRow = dataSet.Tables["User Account Information"].NewRow();
+
+                //made changes here (7) [4/3/2026 | 1:54 PM]
+                OleDbCommandBuilder builder = new OleDbCommandBuilder(adapter);
+
+                builder.QuotePrefix = "[";
+                builder.QuoteSuffix = "]";
+
+                adapter.Update(dataSet, "User Account Information");
+
+                //----------------------------------------------------------------
 
                 newRow["Username"] = UserSession.UserInstance.Username;
                 newRow["Password"] = UserSession.UserInstance.Password;
@@ -99,9 +138,6 @@ namespace Fuentes_PrelimsP2
                 newRow["Hotline"] = UserSession.UserInstance.Hotline;
 
                 dataSet.Tables["User Account Information"].Rows.Add(newRow);
-
-                OleDbCommandBuilder builder = new OleDbCommandBuilder(adapter);
-                adapter.Update(dataSet, "User Account Information");
 
 
                 UserAccount.Instance.Show();
