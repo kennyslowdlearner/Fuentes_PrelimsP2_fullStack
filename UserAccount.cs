@@ -11,13 +11,22 @@ namespace Fuentes_PrelimsP2
 {
     public partial class UserAccount : Form
     {
-        
+        private static UserAccount instance;
      
         public UserAccount()
         {
             InitializeComponent();
         }
 
+        internal static UserAccount Instance
+        {
+            get
+            {
+                if (instance == null || instance.IsDisposed)
+                    instance = new UserAccount();
+                return instance;
+            }
+        }
         private void label2_Click(object sender, EventArgs e)
         {
 

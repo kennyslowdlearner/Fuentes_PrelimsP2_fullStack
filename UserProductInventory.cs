@@ -128,8 +128,7 @@ namespace Fuentes_PrelimsP2
 
         private void addProductToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UserAddProductInventory addproductinventory = new UserAddProductInventory(this);
-            addproductinventory.Show();
+      
         }
 
         private void updatePrToolStripMenuItem_Click(object sender, EventArgs e)
@@ -174,9 +173,7 @@ namespace Fuentes_PrelimsP2
 
         private void backoptionPI_click(object sender, EventArgs e)
         {
-            UserAccount userAccount = new UserAccount("", "", "");
-            userAccount.Show();
-            this.Hide();
+          
         }
 
         private void logoutoptionPI_click(object sender, EventArgs e)

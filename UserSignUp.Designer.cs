@@ -32,7 +32,6 @@
             firstName = new TextBox();
             middleName = new TextBox();
             lastName = new TextBox();
-            birthDate = new TextBox();
             address = new TextBox();
             age = new TextBox();
             genderDropdown = new ComboBox();
@@ -68,6 +67,7 @@
             TCbutton = new RadioButton();
             label13 = new Label();
             label17 = new Label();
+            birthDate = new DateTimePicker();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -100,15 +100,6 @@
             lastName.Name = "lastName";
             lastName.Size = new Size(285, 31);
             lastName.TabIndex = 0;
-            // 
-            // birthDate
-            // 
-            birthDate.Font = new Font("Glacial Indifference", 10F);
-            birthDate.Location = new Point(182, 185);
-            birthDate.Margin = new Padding(4);
-            birthDate.Name = "birthDate";
-            birthDate.Size = new Size(285, 31);
-            birthDate.TabIndex = 0;
             // 
             // address
             // 
@@ -239,6 +230,7 @@
             // groupBox1
             // 
             groupBox1.BackColor = Color.Transparent;
+            groupBox1.Controls.Add(birthDate);
             groupBox1.Controls.Add(label8);
             groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(label4);
@@ -252,7 +244,6 @@
             groupBox1.Controls.Add(age);
             groupBox1.Controls.Add(lastName);
             groupBox1.Controls.Add(address);
-            groupBox1.Controls.Add(birthDate);
             groupBox1.Controls.Add(middleName);
             groupBox1.Controls.Add(firstName);
             groupBox1.Font = new Font("Glacial Indifference", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -534,6 +525,13 @@
             label17.TabIndex = 10;
             label17.Text = "User Sign Up";
             // 
+            // birthDate
+            // 
+            birthDate.Location = new Point(182, 182);
+            birthDate.Name = "birthDate";
+            birthDate.Size = new Size(285, 41);
+            birthDate.TabIndex = 11;
+            // 
             // UserSignUp
             // 
             AutoScaleDimensions = new SizeF(12F, 27F);
@@ -570,7 +568,6 @@
         private TextBox firstName;
         private TextBox middleName;
         private TextBox lastName;
-        private TextBox birthDate;
         private TextBox address;
         private TextBox age;
         private ComboBox genderDropdown;
@@ -606,5 +603,6 @@
         private Label label15;
         private Label label14;
         private Label label17;
+        private DateTimePicker birthDate;
     }
 }

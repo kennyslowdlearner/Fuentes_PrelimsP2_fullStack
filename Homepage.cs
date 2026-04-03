@@ -2,11 +2,14 @@ namespace Fuentes_PrelimsP2
 {
     public partial class Homepage : Form
     {
+
         public Homepage()
         {
             InitializeComponent();
+
         }
 
+    
 
         private void Homepage_Paint(object sender, PaintEventArgs e)
         {

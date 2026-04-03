@@ -13,7 +13,7 @@ namespace Fuentes_PrelimsP2
         internal string FirstName { get; set; }
         internal string MiddleName { get; set; }
         internal string LastName { get; set; }
-        internal string Birthdate { get; set; }
+        internal DateTime Birthdate { get; set; }
         internal string Address { get; set; }
         internal int Age { get; set; }
         internal string Category { get; set; }
