@@ -10,11 +10,23 @@ namespace Fuentes_PrelimsP2
 {
     public partial class User_MarketForecast : Form
     {
+        private static User_MarketForecast instance;
         public User_MarketForecast()
         {
             InitializeComponent();
         }
 
+        //(Global User Session) Component
+        internal static User_MarketForecast Instance
+        {
+            get
+            {
+                if (instance == null || instance.IsDisposed)
+                    instance = new User_MarketForecast();
+
+                return instance;
+            }
+        }
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 

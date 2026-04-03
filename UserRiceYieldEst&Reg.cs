@@ -8,11 +8,25 @@ using System.Windows.Forms;
 
 namespace Fuentes_PrelimsP2
 {
-    public partial class Form3 : Form
+    public partial class RiceYieldEstimationandRegistry : Form
     {
-        public Form3()
+
+        private static RiceYieldEstimationandRegistry instance;
+        public RiceYieldEstimationandRegistry()
         {
             InitializeComponent();
+        }
+
+        //(Global User Session) Component
+        private static RiceYieldEstimationandRegistry Instance
+        {
+            get
+            {
+                if (instance == null || instance.IsDisposed)
+                    instance = new RiceYieldEstimationandRegistry();
+
+                return instance;
+            }
         }
     }
 }

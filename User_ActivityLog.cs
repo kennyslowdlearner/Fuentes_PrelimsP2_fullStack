@@ -10,9 +10,22 @@ namespace Fuentes_PrelimsP2
 {
     public partial class User_ActivityLog : Form
     {
+        private static User_ActivityLog instance;
         public User_ActivityLog()
         {
             InitializeComponent();
+        }
+
+        //(Global User Session) Component
+        internal static User_ActivityLog Instance
+        {
+            get
+            {
+                if(instance  == null || instance.IsDisposed)
+                    instance = new User_ActivityLog();
+
+                return instance;
+            }
         }
     }
 }

@@ -8,11 +8,27 @@ using System.Windows.Forms;
 
 namespace Fuentes_PrelimsP2
 {
-    public partial class Form2 : Form
+    public partial class UserTradesandTransactions : Form
     {
-        public Form2()
+
+        private static UserTradesandTransactions instance;
+        public UserTradesandTransactions()
         {
             InitializeComponent();
+        }
+
+        //(Global User Session) Component
+        private static UserTradesandTransactions Instance
+        {
+            get
+            {
+                if(instance == null || instance.IsDisposed)
+                {
+                    instance = new UserTradesandTransactions();
+                }
+
+                return instance;
+            }
         }
     }
 }

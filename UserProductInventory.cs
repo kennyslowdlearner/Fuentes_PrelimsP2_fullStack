@@ -10,58 +10,29 @@ namespace Fuentes_PrelimsP2
 {
     public partial class productInventory : Form
     {
-        DataTable ProductInventory = new DataTable();
-
-        string Product, ID, Quantity;
-        bool AddRow;
-        public productInventory(string productname, string productid, string quantity, bool addRow)
+        private static productInventory instance;
+        public productInventory()
         {
             InitializeComponent();
+        }
 
-            this.Product = productname;
-            this.ID = productid;
-            this.Quantity = quantity;
-            this.AddRow = addRow;
-
-            InitializeTableAndBind();
-
-            if (addRow)
+        internal static productInventory Instance
+        {
+            //made changes here (5) [4/3/2026 | 12:24 PM]
+            get
             {
-                AddProductRow(productname, productid, quantity);
+                if(instance == null || instance.IsDisposed)
+                {
+                    instance = new productInventory();
+                }
+
+                return instance;
             }
         }
 
         public void AddProductRow(string productname, string productid, string quantity)
         {
-            if (ProductInventory == null)
-                ProductInventory = new DataTable();
-
-            if (!ProductInventory.Columns.Contains("numberPI"))
-            {
-                ProductInventory.Columns.Add("numberPI", typeof(int));
-                ProductInventory.Columns.Add("productnamePI", typeof(string));
-                ProductInventory.Columns.Add("quantityPI", typeof(float));
-                ProductInventory.Columns.Add("productidPI", typeof(string));
-            }
-
-            var newRow = ProductInventory.NewRow();
-            newRow["numberPI"] = ProductInventory.Rows.Count + 1;
-            newRow["productnamePI"] = productname ?? string.Empty;
-
-            float quantityValue = 0f;
-            if (!string.IsNullOrWhiteSpace(quantity))
-                float.TryParse(quantity, out quantityValue);
-
-            newRow["quantityPI"] = quantityValue;
-            newRow["productidPI"] = productid ?? string.Empty;
-            ProductInventory.Rows.Add(newRow);
-
-            //if (dataGridView1 != null)
-            //{
-            //    dataGridView1.DataSource = null;
-            //    dataGridView1.DataSource = ProductInventory;
-            //    dataGridView1.Refresh();
-            //}
+           
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -69,26 +40,7 @@ namespace Fuentes_PrelimsP2
 
         private void InitializeTableAndBind()
         {
-            if (!ProductInventory.Columns.Contains("numberPI"))
-            {
-                ProductInventory.Columns.Add("numberPI", typeof(int));
-                ProductInventory.Columns.Add("productnamePI", typeof(string));
-                ProductInventory.Columns.Add("quantityPI", typeof(float));
-                ProductInventory.Columns.Add("productidPI", typeof(string));
-            }
-
-            //dataGridView1.AutoGenerateColumns = false;
-
-            //if (dataGridView1.Columns.Contains("Number"))
-            //    dataGridView1.Columns["Number"].DataPropertyName = "numberPI";
-            //if (dataGridView1.Columns.Contains("productName"))
-            //    dataGridView1.Columns["productName"].DataPropertyName = "productnamePI";
-            //if (dataGridView1.Columns.Contains("quantityProduct"))
-            //    dataGridView1.Columns["quantityProduct"].DataPropertyName = "quantityPI";
-            //if (dataGridView1.Columns.Contains("idProduct"))
-            //    dataGridView1.Columns["idProduct"].DataPropertyName = "productidPI";
-
-            //dataGridView1.DataSource = ProductInventory;
+           
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

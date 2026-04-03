@@ -80,9 +80,7 @@ namespace Fuentes_PrelimsP2
 
         private void button2_Click(object sender, EventArgs e)
         {
-            productInventory productInventory = new productInventory("", "", "", true);
-
-            productInventory.Show();
+            productInventory.Instance.Show();
             this.Hide();
         }
 

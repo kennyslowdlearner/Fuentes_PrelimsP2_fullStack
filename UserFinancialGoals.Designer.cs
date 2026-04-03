@@ -55,6 +55,7 @@
             button1.Size = new Size(202, 259);
             button1.TabIndex = 0;
             button1.UseVisualStyleBackColor = false;
+            button1.Click += GoToSetGoals;
             // 
             // button2
             // 
@@ -67,6 +68,7 @@
             button2.Size = new Size(202, 259);
             button2.TabIndex = 0;
             button2.UseVisualStyleBackColor = false;
+            button2.Click += GoToStatisticalProgress;
             // 
             // menuStrip1
             // 
