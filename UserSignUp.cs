@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Data.OleDb;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.OleDb;
@@ -139,6 +141,7 @@ namespace Fuentes_PrelimsP2
 
                 dataSet.Tables["User Account Information"].Rows.Add(newRow);
 
+                MessageBox.Show("DB Path: " + connection.ConnectionString);
 
                 UserAccount.Instance.Show();
 
