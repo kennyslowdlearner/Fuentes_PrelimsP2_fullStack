@@ -87,7 +87,7 @@
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.LawnGreen;
-            label5.Location = new Point(64, 217);
+            label5.Location = new Point(64, 212);
             label5.Name = "label5";
             label5.Size = new Size(146, 27);
             label5.TabIndex = 107;
@@ -393,7 +393,7 @@
             // 
             searchBoxPI.BackColor = Color.Gainsboro;
             searchBoxPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            searchBoxPI.Location = new Point(232, 219);
+            searchBoxPI.Location = new Point(232, 214);
             searchBoxPI.Name = "searchBoxPI";
             searchBoxPI.Size = new Size(252, 29);
             searchBoxPI.TabIndex = 87;
@@ -401,15 +401,16 @@
             // 
             // searchbuttonPI
             // 
-            searchbuttonPI.BackColor = Color.LightGreen;
+            searchbuttonPI.BackColor = Color.Transparent;
+            searchbuttonPI.BackgroundImage = (Image)resources.GetObject("searchbuttonPI.BackgroundImage");
+            searchbuttonPI.FlatAppearance.BorderSize = 0;
             searchbuttonPI.FlatStyle = FlatStyle.Flat;
             searchbuttonPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             searchbuttonPI.ForeColor = Color.DarkOliveGreen;
-            searchbuttonPI.Location = new Point(491, 216);
+            searchbuttonPI.Location = new Point(490, 208);
             searchbuttonPI.Name = "searchbuttonPI";
-            searchbuttonPI.Size = new Size(98, 34);
+            searchbuttonPI.Size = new Size(120, 41);
             searchbuttonPI.TabIndex = 86;
-            searchbuttonPI.Text = "Search";
             searchbuttonPI.UseVisualStyleBackColor = false;
             // 
             // panel1

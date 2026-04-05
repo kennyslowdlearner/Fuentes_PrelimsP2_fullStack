@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(User_WeatherForecast));
-            button3 = new Button();
             label6 = new Label();
-            textBox2 = new TextBox();
             panel1 = new Panel();
             panel2 = new Panel();
             button8 = new Button();
@@ -48,18 +46,10 @@
             button1 = new Button();
             button2 = new Button();
             button4 = new Button();
+            searchBoxPI = new TextBox();
+            searchbuttonPI = new Button();
             menuStrip1.SuspendLayout();
             SuspendLayout();
-            // 
-            // button3
-            // 
-            button3.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.Location = new Point(345, 127);
-            button3.Name = "button3";
-            button3.Size = new Size(86, 41);
-            button3.TabIndex = 34;
-            button3.Text = "Search";
-            button3.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -67,28 +57,17 @@
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.GreenYellow;
-            label6.Location = new Point(43, 137);
+            label6.Location = new Point(42, 172);
             label6.Name = "label6";
             label6.Size = new Size(120, 27);
             label6.TabIndex = 33;
             label6.Text = "Place/City:";
             // 
-            // textBox2
-            // 
-            textBox2.BackColor = Color.LightGreen;
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox2.ForeColor = Color.Black;
-            textBox2.Location = new Point(169, 137);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(170, 22);
-            textBox2.TabIndex = 32;
-            // 
             // panel1
             // 
-            panel1.Location = new Point(43, 174);
+            panel1.Location = new Point(43, 223);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1413, 227);
+            panel1.Size = new Size(1413, 178);
             panel1.TabIndex = 35;
             // 
             // panel2
@@ -116,11 +95,11 @@
             // 
             label9.AutoSize = true;
             label9.BackColor = Color.Transparent;
-            label9.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label9.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.GreenYellow;
             label9.Location = new Point(892, 432);
             label9.Name = "label9";
-            label9.Size = new Size(152, 27);
+            label9.Size = new Size(164, 27);
             label9.TabIndex = 84;
             label9.Text = "Other Options:";
             // 
@@ -249,12 +228,38 @@
             button4.TabIndex = 88;
             button4.UseVisualStyleBackColor = false;
             // 
+            // searchBoxPI
+            // 
+            searchBoxPI.BackColor = Color.Gainsboro;
+            searchBoxPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            searchBoxPI.Location = new Point(168, 173);
+            searchBoxPI.Name = "searchBoxPI";
+            searchBoxPI.Size = new Size(252, 29);
+            searchBoxPI.TabIndex = 113;
+            searchBoxPI.Text = "Search product name or id";
+            // 
+            // searchbuttonPI
+            // 
+            searchbuttonPI.BackColor = Color.Transparent;
+            searchbuttonPI.BackgroundImage = (Image)resources.GetObject("searchbuttonPI.BackgroundImage");
+            searchbuttonPI.FlatAppearance.BorderSize = 0;
+            searchbuttonPI.FlatStyle = FlatStyle.Flat;
+            searchbuttonPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            searchbuttonPI.ForeColor = Color.DarkOliveGreen;
+            searchbuttonPI.Location = new Point(426, 167);
+            searchbuttonPI.Name = "searchbuttonPI";
+            searchbuttonPI.Size = new Size(120, 41);
+            searchbuttonPI.TabIndex = 112;
+            searchbuttonPI.UseVisualStyleBackColor = false;
+            // 
             // User_WeatherForecast
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
+            Controls.Add(searchBoxPI);
+            Controls.Add(searchbuttonPI);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(button4);
@@ -265,9 +270,7 @@
             Controls.Add(menuStrip1);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            Controls.Add(button3);
             Controls.Add(label6);
-            Controls.Add(textBox2);
             Name = "User_WeatherForecast";
             Text = "Form1";
             menuStrip1.ResumeLayout(false);
@@ -277,10 +280,7 @@
         }
 
         #endregion
-
-        private Button button3;
         private Label label6;
-        private TextBox textBox2;
         private Panel panel1;
         private Panel panel2;
         private Button button8;
@@ -297,5 +297,7 @@
         private Button button1;
         private Button button2;
         private Button button4;
+        private TextBox searchBoxPI;
+        private Button searchbuttonPI;
     }
 }

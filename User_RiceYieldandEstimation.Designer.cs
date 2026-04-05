@@ -365,11 +365,11 @@
             // 
             label9.AutoSize = true;
             label9.BackColor = Color.Transparent;
-            label9.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label9.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.GreenYellow;
             label9.Location = new Point(828, 490);
             label9.Name = "label9";
-            label9.Size = new Size(152, 27);
+            label9.Size = new Size(164, 27);
             label9.TabIndex = 52;
             label9.Text = "Other Options:";
             // 

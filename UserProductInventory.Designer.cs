@@ -30,8 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(productInventory));
             panel1 = new Panel();
-            searchBoxPI = new TextBox();
-            searchbuttonPI = new Button();
+            dataGridView1 = new DataGridView();
             button6 = new Button();
             button5 = new Button();
             label8 = new Label();
@@ -49,9 +48,10 @@
             button8 = new Button();
             button7 = new Button();
             button4 = new Button();
-            label5 = new Label();
             label6 = new Label();
-            dataGridView1 = new DataGridView();
+            label5 = new Label();
+            searchBoxPI = new TextBox();
+            searchbuttonPI = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -67,30 +67,14 @@
             panel1.TabIndex = 1;
             panel1.Paint += panel1_Paint;
             // 
-            // searchBoxPI
+            // dataGridView1
             // 
-            searchBoxPI.BackColor = Color.Gainsboro;
-            searchBoxPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            searchBoxPI.Location = new Point(215, 199);
-            searchBoxPI.Name = "searchBoxPI";
-            searchBoxPI.Size = new Size(252, 29);
-            searchBoxPI.TabIndex = 5;
-            searchBoxPI.Text = "Search product name or id";
-            searchBoxPI.TextChanged += searchBoxPI_TextChanged;
-            // 
-            // searchbuttonPI
-            // 
-            searchbuttonPI.BackColor = Color.LightGreen;
-            searchbuttonPI.FlatStyle = FlatStyle.Flat;
-            searchbuttonPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            searchbuttonPI.ForeColor = Color.DarkOliveGreen;
-            searchbuttonPI.Location = new Point(474, 196);
-            searchbuttonPI.Name = "searchbuttonPI";
-            searchbuttonPI.Size = new Size(98, 34);
-            searchbuttonPI.TabIndex = 4;
-            searchbuttonPI.Text = "Search";
-            searchbuttonPI.UseVisualStyleBackColor = false;
-            searchbuttonPI.Click += searchbuttonPI_Click;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(3, 3);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 62;
+            dataGridView1.Size = new Size(1368, 308);
+            dataGridView1.TabIndex = 0;
             // 
             // button6
             // 
@@ -308,38 +292,53 @@
             button4.Text = "Refresh";
             button4.UseVisualStyleBackColor = false;
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.BackColor = Color.Transparent;
-            label5.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.ForeColor = Color.LawnGreen;
-            label5.Location = new Point(47, 197);
-            label5.Name = "label5";
-            label5.Size = new Size(146, 27);
-            label5.TabIndex = 84;
-            label5.Text = "Product Name";
-            // 
             // label6
             // 
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.LawnGreen;
-            label6.Location = new Point(194, 200);
+            label6.Location = new Point(201, 191);
             label6.Name = "label6";
             label6.Size = new Size(15, 24);
             label6.TabIndex = 83;
             label6.Text = ":";
             // 
-            // dataGridView1
+            // label5
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(1368, 308);
-            dataGridView1.TabIndex = 0;
+            label5.AutoSize = true;
+            label5.BackColor = Color.Transparent;
+            label5.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.LawnGreen;
+            label5.Location = new Point(54, 188);
+            label5.Name = "label5";
+            label5.Size = new Size(146, 27);
+            label5.TabIndex = 110;
+            label5.Text = "Product Name";
+            // 
+            // searchBoxPI
+            // 
+            searchBoxPI.BackColor = Color.Gainsboro;
+            searchBoxPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            searchBoxPI.Location = new Point(222, 190);
+            searchBoxPI.Name = "searchBoxPI";
+            searchBoxPI.Size = new Size(252, 29);
+            searchBoxPI.TabIndex = 109;
+            searchBoxPI.Text = "Search product name or id";
+            // 
+            // searchbuttonPI
+            // 
+            searchbuttonPI.BackColor = Color.Transparent;
+            searchbuttonPI.BackgroundImage = (Image)resources.GetObject("searchbuttonPI.BackgroundImage");
+            searchbuttonPI.FlatAppearance.BorderSize = 0;
+            searchbuttonPI.FlatStyle = FlatStyle.Flat;
+            searchbuttonPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            searchbuttonPI.ForeColor = Color.DarkOliveGreen;
+            searchbuttonPI.Location = new Point(480, 184);
+            searchbuttonPI.Name = "searchbuttonPI";
+            searchbuttonPI.Size = new Size(120, 41);
+            searchbuttonPI.TabIndex = 108;
+            searchbuttonPI.UseVisualStyleBackColor = false;
             // 
             // productInventory
             // 
@@ -348,6 +347,8 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
             Controls.Add(label5);
+            Controls.Add(searchBoxPI);
+            Controls.Add(searchbuttonPI);
             Controls.Add(label6);
             Controls.Add(button8);
             Controls.Add(button7);
@@ -366,8 +367,6 @@
             Controls.Add(label9);
             Controls.Add(button6);
             Controls.Add(button5);
-            Controls.Add(searchBoxPI);
-            Controls.Add(searchbuttonPI);
             Controls.Add(panel1);
             Name = "productInventory";
             Text = "Pananom : Product Inventory";
@@ -381,8 +380,6 @@
         #endregion
 
         private Panel panel1;
-        private TextBox searchBoxPI;
-        private Button searchbuttonPI;
         private Button button6;
         private Button button5;
         private Label label8;
@@ -401,7 +398,9 @@
         private Button button7;
         private Button button4;
         private DataGridView dataGridView1;
-        private Label label5;
         private Label label6;
+        private Label label5;
+        private TextBox searchBoxPI;
+        private Button searchbuttonPI;
     }
 }

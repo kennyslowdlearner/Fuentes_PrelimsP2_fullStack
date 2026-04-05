@@ -46,6 +46,7 @@
             button5 = new Button();
             button6 = new Button();
             label4 = new Label();
+            button7 = new Button();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -147,7 +148,7 @@
             button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
-            button2.Location = new Point(282, 309);
+            button2.Location = new Point(283, 277);
             button2.Name = "button2";
             button2.Size = new Size(245, 104);
             button2.TabIndex = 10;
@@ -159,7 +160,7 @@
             button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Location = new Point(282, 419);
+            button1.Location = new Point(283, 387);
             button1.Name = "button1";
             button1.Size = new Size(245, 104);
             button1.TabIndex = 10;
@@ -171,7 +172,7 @@
             button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
             button3.FlatAppearance.BorderSize = 0;
             button3.FlatStyle = FlatStyle.Flat;
-            button3.Location = new Point(282, 529);
+            button3.Location = new Point(283, 497);
             button3.Name = "button3";
             button3.Size = new Size(245, 104);
             button3.TabIndex = 10;
@@ -183,7 +184,7 @@
             button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatStyle = FlatStyle.Flat;
-            button4.Location = new Point(545, 309);
+            button4.Location = new Point(546, 277);
             button4.Name = "button4";
             button4.Size = new Size(245, 104);
             button4.TabIndex = 10;
@@ -195,7 +196,7 @@
             button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
             button5.FlatAppearance.BorderSize = 0;
             button5.FlatStyle = FlatStyle.Flat;
-            button5.Location = new Point(545, 419);
+            button5.Location = new Point(546, 387);
             button5.Name = "button5";
             button5.Size = new Size(245, 104);
             button5.TabIndex = 10;
@@ -207,7 +208,7 @@
             button6.BackgroundImage = (Image)resources.GetObject("button6.BackgroundImage");
             button6.FlatAppearance.BorderSize = 0;
             button6.FlatStyle = FlatStyle.Flat;
-            button6.Location = new Point(545, 529);
+            button6.Location = new Point(546, 497);
             button6.Name = "button6";
             button6.Size = new Size(245, 104);
             button6.TabIndex = 10;
@@ -217,20 +218,34 @@
             // 
             label4.AutoSize = true;
             label4.BackColor = Color.Transparent;
-            label4.Font = new Font("Microsoft Sans Serif", 8.25F);
+            label4.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.Yellow;
-            label4.Location = new Point(417, 253);
+            label4.Location = new Point(429, 237);
             label4.Name = "label4";
-            label4.Size = new Size(166, 20);
+            label4.Size = new Size(208, 24);
             label4.TabIndex = 8;
             label4.Text = "Select activity below:";
             // 
-            // Form3
+            // button7
+            // 
+            button7.BackColor = Color.Transparent;
+            button7.BackgroundImage = (Image)resources.GetObject("button7.BackgroundImage");
+            button7.FlatAppearance.BorderSize = 0;
+            button7.FlatStyle = FlatStyle.Flat;
+            button7.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button7.Location = new Point(468, 642);
+            button7.Name = "button7";
+            button7.Size = new Size(120, 41);
+            button7.TabIndex = 124;
+            button7.UseVisualStyleBackColor = false;
+            // 
+            // RiceYieldEstimationandRegistry
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1061, 704);
+            Controls.Add(button7);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(button3);
@@ -242,7 +257,7 @@
             Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(menuStrip1);
-            Name = "Form3";
+            Name = "RiceYieldEstimationandRegistry";
             Text = "Form3";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -269,5 +284,6 @@
         private Button button5;
         private Button button6;
         private Label label4;
+        private Button button7;
     }
 }

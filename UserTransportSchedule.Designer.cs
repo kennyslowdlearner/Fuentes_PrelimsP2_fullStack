@@ -52,23 +52,29 @@
             // 
             // button6
             // 
+            button6.BackColor = Color.Transparent;
+            button6.BackgroundImage = (Image)resources.GetObject("button6.BackgroundImage");
+            button6.FlatAppearance.BorderSize = 0;
+            button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button6.Location = new Point(647, 691);
             button6.Name = "button6";
             button6.Size = new Size(120, 41);
             button6.TabIndex = 42;
-            button6.Text = "Back";
-            button6.UseVisualStyleBackColor = true;
+            button6.UseVisualStyleBackColor = false;
             // 
             // button5
             // 
+            button5.BackColor = Color.Transparent;
+            button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button5.Location = new Point(798, 691);
             button5.Name = "button5";
             button5.Size = new Size(120, 41);
             button5.TabIndex = 43;
-            button5.Text = "Continue";
-            button5.UseVisualStyleBackColor = true;
+            button5.UseVisualStyleBackColor = false;
             // 
             // label1
             // 

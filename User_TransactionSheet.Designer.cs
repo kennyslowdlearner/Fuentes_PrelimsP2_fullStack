@@ -396,11 +396,11 @@
             // 
             label8.AutoSize = true;
             label8.BackColor = Color.Transparent;
-            label8.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label8.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.GreenYellow;
             label8.Location = new Point(983, 465);
             label8.Name = "label8";
-            label8.Size = new Size(152, 27);
+            label8.Size = new Size(164, 27);
             label8.TabIndex = 4;
             label8.Text = "Other Options:";
             // 

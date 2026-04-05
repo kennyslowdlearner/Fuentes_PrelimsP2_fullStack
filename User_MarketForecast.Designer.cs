@@ -33,7 +33,6 @@
             label8 = new Label();
             label6 = new Label();
             label9 = new Label();
-            textBox2 = new TextBox();
             logoutToolStripMenuItem = new ToolStripMenuItem();
             accountSettingsToolStripMenuItem = new ToolStripMenuItem();
             contactDeveloperToolStripMenuItem = new ToolStripMenuItem();
@@ -42,11 +41,13 @@
             sssssToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1 = new MenuStrip();
             dataGridView2 = new DataGridView();
-            button3 = new Button();
             button6 = new Button();
             button5 = new Button();
             button1 = new Button();
             button2 = new Button();
+            searchBoxPI = new TextBox();
+            searchbuttonPI = new Button();
+            label1 = new Label();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
@@ -68,11 +69,11 @@
             // 
             label8.AutoSize = true;
             label8.BackColor = Color.Transparent;
-            label8.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label8.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.GreenYellow;
             label8.Location = new Point(961, 368);
             label8.Name = "label8";
-            label8.Size = new Size(152, 27);
+            label8.Size = new Size(164, 27);
             label8.TabIndex = 21;
             label8.Text = "Other Options:";
             // 
@@ -99,16 +100,6 @@
             label9.Size = new Size(182, 34);
             label9.TabIndex = 15;
             label9.Text = "Market Price";
-            // 
-            // textBox2
-            // 
-            textBox2.BackColor = Color.LightGreen;
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Location = new Point(1088, 290);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(259, 24);
-            textBox2.TabIndex = 11;
-            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // logoutToolStripMenuItem
             // 
@@ -175,16 +166,6 @@
             dataGridView2.Size = new Size(834, 516);
             dataGridView2.TabIndex = 7;
             // 
-            // button3
-            // 
-            button3.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.Location = new Point(1364, 284);
-            button3.Name = "button3";
-            button3.Size = new Size(86, 41);
-            button3.TabIndex = 31;
-            button3.Text = "Search";
-            button3.UseVisualStyleBackColor = true;
-            // 
             // button6
             // 
             button6.BackgroundImage = (Image)resources.GetObject("button6.BackgroundImage");
@@ -238,22 +219,59 @@
             button2.TabIndex = 28;
             button2.UseVisualStyleBackColor = false;
             // 
+            // searchBoxPI
+            // 
+            searchBoxPI.BackColor = Color.Gainsboro;
+            searchBoxPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            searchBoxPI.Location = new Point(1095, 290);
+            searchBoxPI.Name = "searchBoxPI";
+            searchBoxPI.Size = new Size(252, 29);
+            searchBoxPI.TabIndex = 113;
+            searchBoxPI.Text = "Search product name or id";
+            // 
+            // searchbuttonPI
+            // 
+            searchbuttonPI.BackColor = Color.Transparent;
+            searchbuttonPI.BackgroundImage = (Image)resources.GetObject("searchbuttonPI.BackgroundImage");
+            searchbuttonPI.FlatAppearance.BorderSize = 0;
+            searchbuttonPI.FlatStyle = FlatStyle.Flat;
+            searchbuttonPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            searchbuttonPI.ForeColor = Color.DarkOliveGreen;
+            searchbuttonPI.Location = new Point(1353, 284);
+            searchbuttonPI.Name = "searchbuttonPI";
+            searchbuttonPI.Size = new Size(120, 41);
+            searchbuttonPI.TabIndex = 112;
+            searchbuttonPI.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.LawnGreen;
+            label1.Location = new Point(1074, 291);
+            label1.Name = "label1";
+            label1.Size = new Size(15, 24);
+            label1.TabIndex = 111;
+            label1.Text = ":";
+            // 
             // User_MarketForecast
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
+            Controls.Add(searchBoxPI);
+            Controls.Add(searchbuttonPI);
+            Controls.Add(label1);
             Controls.Add(button6);
             Controls.Add(button5);
-            Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(button8);
             Controls.Add(label8);
             Controls.Add(label6);
             Controls.Add(label9);
-            Controls.Add(textBox2);
             Controls.Add(menuStrip1);
             Controls.Add(dataGridView2);
             Name = "User_MarketForecast";
@@ -270,7 +288,6 @@
         private Label label8;
         private Label label6;
         private Label label9;
-        private TextBox textBox2;
         private ToolStripMenuItem logoutToolStripMenuItem;
         private ToolStripMenuItem accountSettingsToolStripMenuItem;
         private ToolStripMenuItem contactDeveloperToolStripMenuItem;
@@ -279,10 +296,12 @@
         private ToolStripMenuItem sssssToolStripMenuItem;
         private MenuStrip menuStrip1;
         private DataGridView dataGridView2;
-        private Button button3;
         private Button button6;
         private Button button5;
         private Button button1;
         private Button button2;
+        private TextBox searchBoxPI;
+        private Button searchbuttonPI;
+        private Label label1;
     }
 }

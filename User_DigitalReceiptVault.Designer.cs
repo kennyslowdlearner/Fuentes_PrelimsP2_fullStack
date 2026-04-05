@@ -32,9 +32,6 @@
             panel1 = new Panel();
             printPreviewControl1 = new PrintPreviewControl();
             dataGridView1 = new DataGridView();
-            button3 = new Button();
-            label6 = new Label();
-            textBox2 = new TextBox();
             menuStrip1 = new MenuStrip();
             sssssToolStripMenuItem = new ToolStripMenuItem();
             reloadToolStripMenuItem = new ToolStripMenuItem();
@@ -49,6 +46,10 @@
             label1 = new Label();
             button1 = new Button();
             button4 = new Button();
+            label5 = new Label();
+            searchBoxPI = new TextBox();
+            searchbuttonPI = new Button();
+            label6 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             menuStrip1.SuspendLayout();
@@ -57,9 +58,9 @@
             // panel1
             // 
             panel1.Controls.Add(printPreviewControl1);
-            panel1.Location = new Point(77, 168);
+            panel1.Location = new Point(77, 192);
             panel1.Name = "panel1";
-            panel1.Size = new Size(780, 590);
+            panel1.Size = new Size(780, 566);
             panel1.TabIndex = 0;
             // 
             // printPreviewControl1
@@ -77,37 +78,6 @@
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.Size = new Size(550, 253);
             dataGridView1.TabIndex = 1;
-            // 
-            // button3
-            // 
-            button3.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.Location = new Point(476, 126);
-            button3.Name = "button3";
-            button3.Size = new Size(86, 41);
-            button3.TabIndex = 34;
-            button3.Text = "Search";
-            button3.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.BackColor = Color.Transparent;
-            label6.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.ForeColor = Color.LawnGreen;
-            label6.Location = new Point(73, 131);
-            label6.Name = "label6";
-            label6.Size = new Size(120, 27);
-            label6.TabIndex = 33;
-            label6.Text = "Place/City:";
-            // 
-            // textBox2
-            // 
-            textBox2.BackColor = Color.LightGreen;
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Location = new Point(199, 131);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(259, 24);
-            textBox2.TabIndex = 32;
             // 
             // menuStrip1
             // 
@@ -183,11 +153,11 @@
             // 
             label8.AutoSize = true;
             label8.BackColor = Color.Transparent;
-            label8.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label8.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.GreenYellow;
             label8.Location = new Point(1272, 460);
             label8.Name = "label8";
-            label8.Size = new Size(152, 27);
+            label8.Size = new Size(164, 27);
             label8.TabIndex = 36;
             label8.Text = "Other Options:";
             // 
@@ -255,12 +225,64 @@
             button4.TabIndex = 37;
             button4.UseVisualStyleBackColor = false;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = Color.Transparent;
+            label5.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.LawnGreen;
+            label5.Location = new Point(74, 139);
+            label5.Name = "label5";
+            label5.Size = new Size(146, 27);
+            label5.TabIndex = 114;
+            label5.Text = "Product Name";
+            // 
+            // searchBoxPI
+            // 
+            searchBoxPI.BackColor = Color.Gainsboro;
+            searchBoxPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            searchBoxPI.Location = new Point(242, 141);
+            searchBoxPI.Name = "searchBoxPI";
+            searchBoxPI.Size = new Size(252, 29);
+            searchBoxPI.TabIndex = 113;
+            searchBoxPI.Text = "Search product name or id";
+            // 
+            // searchbuttonPI
+            // 
+            searchbuttonPI.BackColor = Color.Transparent;
+            searchbuttonPI.BackgroundImage = (Image)resources.GetObject("searchbuttonPI.BackgroundImage");
+            searchbuttonPI.FlatAppearance.BorderSize = 0;
+            searchbuttonPI.FlatStyle = FlatStyle.Flat;
+            searchbuttonPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            searchbuttonPI.ForeColor = Color.DarkOliveGreen;
+            searchbuttonPI.Location = new Point(500, 135);
+            searchbuttonPI.Name = "searchbuttonPI";
+            searchbuttonPI.Size = new Size(120, 41);
+            searchbuttonPI.TabIndex = 112;
+            searchbuttonPI.UseVisualStyleBackColor = false;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = Color.Transparent;
+            label6.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.LawnGreen;
+            label6.Location = new Point(221, 142);
+            label6.Name = "label6";
+            label6.Size = new Size(15, 24);
+            label6.TabIndex = 111;
+            label6.Text = ":";
+            // 
             // User_DigitalReceiptVault
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
+            Controls.Add(label5);
+            Controls.Add(searchBoxPI);
+            Controls.Add(searchbuttonPI);
+            Controls.Add(label6);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(button4);
@@ -269,9 +291,6 @@
             Controls.Add(label1);
             Controls.Add(label8);
             Controls.Add(menuStrip1);
-            Controls.Add(button3);
-            Controls.Add(label6);
-            Controls.Add(textBox2);
             Controls.Add(dataGridView1);
             Controls.Add(panel1);
             Name = "User_DigitalReceiptVault";
@@ -287,9 +306,6 @@
         private Panel panel1;
         private PrintPreviewControl printPreviewControl1;
         private DataGridView dataGridView1;
-        private Button button3;
-        private Label label6;
-        private TextBox textBox2;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem sssssToolStripMenuItem;
         private ToolStripMenuItem reloadToolStripMenuItem;
@@ -304,5 +320,9 @@
         private Label label1;
         private Button button1;
         private Button button4;
+        private Label label5;
+        private TextBox searchBoxPI;
+        private Button searchbuttonPI;
+        private Label label6;
     }
 }

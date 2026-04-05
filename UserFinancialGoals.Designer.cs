@@ -41,6 +41,8 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
+            button6 = new Button();
+            label4 = new Label();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -50,7 +52,7 @@
             button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Location = new Point(291, 316);
+            button1.Location = new Point(284, 351);
             button1.Name = "button1";
             button1.Size = new Size(202, 259);
             button1.TabIndex = 0;
@@ -63,7 +65,7 @@
             button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
-            button2.Location = new Point(563, 316);
+            button2.Location = new Point(556, 351);
             button2.Name = "button2";
             button2.Size = new Size(202, 259);
             button2.TabIndex = 0;
@@ -166,12 +168,39 @@
             label3.Text = "[Time and Date]";
             label3.Click += label1_Click;
             // 
+            // button6
+            // 
+            button6.BackColor = Color.Transparent;
+            button6.BackgroundImage = (Image)resources.GetObject("button6.BackgroundImage");
+            button6.FlatAppearance.BorderSize = 0;
+            button6.FlatStyle = FlatStyle.Flat;
+            button6.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button6.Location = new Point(447, 657);
+            button6.Name = "button6";
+            button6.Size = new Size(120, 41);
+            button6.TabIndex = 124;
+            button6.UseVisualStyleBackColor = false;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.Gold;
+            label4.Location = new Point(423, 294);
+            label4.Name = "label4";
+            label4.Size = new Size(237, 27);
+            label4.TabIndex = 125;
+            label4.Text = "Select your next step:";
+            // 
             // UserFinancialGoals
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(1063, 701);
+            ClientSize = new Size(1063, 710);
+            Controls.Add(label4);
+            Controls.Add(button6);
             Controls.Add(label2);
             Controls.Add(label3);
             Controls.Add(label1);
@@ -201,5 +230,7 @@
         private Label label1;
         private Label label2;
         private Label label3;
+        private Button button6;
+        private Label label4;
     }
 }

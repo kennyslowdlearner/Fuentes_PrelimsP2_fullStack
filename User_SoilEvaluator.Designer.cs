@@ -188,11 +188,11 @@
             // 
             label9.AutoSize = true;
             label9.BackColor = Color.Transparent;
-            label9.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label9.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.GreenYellow;
             label9.Location = new Point(891, 467);
             label9.Name = "label9";
-            label9.Size = new Size(152, 27);
+            label9.Size = new Size(145, 24);
             label9.TabIndex = 61;
             label9.Text = "Other Options:";
             // 
@@ -294,11 +294,11 @@
             // 
             label4.AutoSize = true;
             label4.BackColor = Color.Transparent;
-            label4.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.Green;
+            label4.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.Chartreuse;
             label4.Location = new Point(60, 145);
             label4.Name = "label4";
-            label4.Size = new Size(268, 24);
+            label4.Size = new Size(327, 27);
             label4.TabIndex = 61;
             label4.Text = "Soil Nutrient Levels Collection:";
             // 
@@ -306,11 +306,11 @@
             // 
             label7.AutoSize = true;
             label7.BackColor = Color.Transparent;
-            label7.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.ForeColor = Color.LawnGreen;
+            label7.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.Yellow;
             label7.Location = new Point(74, 182);
             label7.Name = "label7";
-            label7.Size = new Size(140, 24);
+            label7.Size = new Size(151, 24);
             label7.TabIndex = 67;
             label7.Text = "Nitrogen Levels";
             // 
@@ -330,11 +330,11 @@
             // 
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
-            label6.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.ForeColor = Color.LawnGreen;
+            label6.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold);
+            label6.ForeColor = Color.Yellow;
             label6.Location = new Point(74, 219);
             label6.Name = "label6";
-            label6.Size = new Size(162, 24);
+            label6.Size = new Size(178, 24);
             label6.TabIndex = 67;
             label6.Text = "Phosphorus Levels";
             // 
@@ -354,11 +354,11 @@
             // 
             label10.AutoSize = true;
             label10.BackColor = Color.Transparent;
-            label10.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label10.ForeColor = Color.LawnGreen;
+            label10.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold);
+            label10.ForeColor = Color.Yellow;
             label10.Location = new Point(74, 256);
             label10.Name = "label10";
-            label10.Size = new Size(152, 24);
+            label10.Size = new Size(167, 24);
             label10.TabIndex = 67;
             label10.Text = "Potassium Levels";
             // 
@@ -378,11 +378,11 @@
             // 
             label12.AutoSize = true;
             label12.BackColor = Color.Transparent;
-            label12.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label12.ForeColor = Color.LawnGreen;
+            label12.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold);
+            label12.ForeColor = Color.Yellow;
             label12.Location = new Point(73, 336);
             label12.Name = "label12";
-            label12.Size = new Size(125, 24);
+            label12.Size = new Size(137, 24);
             label12.TabIndex = 67;
             label12.Text = "Soil pH Levels";
             // 
@@ -409,11 +409,11 @@
             // 
             label14.AutoSize = true;
             label14.BackColor = Color.Transparent;
-            label14.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label14.ForeColor = Color.LawnGreen;
+            label14.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold);
+            label14.ForeColor = Color.Yellow;
             label14.Location = new Point(73, 373);
             label14.Name = "label14";
-            label14.Size = new Size(162, 48);
+            label14.Size = new Size(169, 48);
             label14.TabIndex = 67;
             label14.Text = "Electrical \r\nConductivity (EC)";
             // 
@@ -433,11 +433,11 @@
             // 
             label16.AutoSize = true;
             label16.BackColor = Color.Transparent;
-            label16.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label16.ForeColor = Color.LawnGreen;
+            label16.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold);
+            label16.ForeColor = Color.Yellow;
             label16.Location = new Point(74, 475);
             label16.Name = "label16";
-            label16.Size = new Size(114, 48);
+            label16.Size = new Size(123, 48);
             label16.TabIndex = 67;
             label16.Text = "Soil\r\nConsistency\r\n";
             // 
@@ -464,11 +464,11 @@
             // 
             label18.AutoSize = true;
             label18.BackColor = Color.Transparent;
-            label18.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label18.ForeColor = Color.LawnGreen;
+            label18.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold);
+            label18.ForeColor = Color.Yellow;
             label18.Location = new Point(74, 533);
             label18.Name = "label18";
-            label18.Size = new Size(150, 24);
+            label18.Size = new Size(159, 24);
             label18.TabIndex = 67;
             label18.Text = "Water Depth (m)";
             // 
@@ -563,7 +563,7 @@
             label20.AutoSize = true;
             label20.BackColor = Color.Transparent;
             label20.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label20.ForeColor = Color.ForestGreen;
+            label20.ForeColor = Color.Chartreuse;
             label20.Location = new Point(48, 608);
             label20.Name = "label20";
             label20.Size = new Size(155, 27);
@@ -574,11 +574,11 @@
             // 
             label21.AutoSize = true;
             label21.BackColor = Color.Transparent;
-            label21.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label21.ForeColor = Color.Green;
+            label21.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold | FontStyle.Italic);
+            label21.ForeColor = Color.Chartreuse;
             label21.Location = new Point(59, 306);
             label21.Name = "label21";
-            label21.Size = new Size(224, 24);
+            label21.Size = new Size(274, 27);
             label21.TabIndex = 61;
             label21.Text = "Soil Chemical Properties:";
             // 
@@ -586,11 +586,11 @@
             // 
             label22.AutoSize = true;
             label22.BackColor = Color.Transparent;
-            label22.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label22.ForeColor = Color.Green;
+            label22.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold | FontStyle.Italic);
+            label22.ForeColor = Color.Chartreuse;
             label22.Location = new Point(60, 450);
             label22.Name = "label22";
-            label22.Size = new Size(337, 24);
+            label22.Size = new Size(412, 27);
             label22.TabIndex = 61;
             label22.Text = "Physical and Environmental Properties:";
             // 
@@ -622,11 +622,11 @@
             // 
             label25.AutoSize = true;
             label25.BackColor = Color.Transparent;
-            label25.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label25.ForeColor = Color.Green;
+            label25.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label25.ForeColor = Color.LightGreen;
             label25.Location = new Point(48, 644);
             label25.Name = "label25";
-            label25.Size = new Size(134, 24);
+            label25.Size = new Size(144, 24);
             label25.TabIndex = 67;
             label25.Text = "Nutrient Result";
             label25.Click += label25_Click;
@@ -635,47 +635,47 @@
             // 
             label26.AutoSize = true;
             label26.BackColor = Color.Transparent;
-            label26.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label26.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold);
             label26.ForeColor = Color.LawnGreen;
             label26.Location = new Point(64, 673);
             label26.Name = "label26";
-            label26.Size = new Size(150, 24);
+            label26.Size = new Size(89, 24);
             label26.TabIndex = 67;
-            label26.Text = "Water Depth (m)";
+            label26.Text = "Nitrogen";
             // 
             // label27
             // 
             label27.AutoSize = true;
             label27.BackColor = Color.Transparent;
-            label27.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label27.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold);
             label27.ForeColor = Color.LawnGreen;
             label27.Location = new Point(64, 697);
             label27.Name = "label27";
-            label27.Size = new Size(150, 24);
+            label27.Size = new Size(116, 24);
             label27.TabIndex = 67;
-            label27.Text = "Water Depth (m)";
+            label27.Text = "Phosphorus";
             // 
             // label28
             // 
             label28.AutoSize = true;
             label28.BackColor = Color.Transparent;
-            label28.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label28.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold);
             label28.ForeColor = Color.LawnGreen;
             label28.Location = new Point(64, 721);
             label28.Name = "label28";
-            label28.Size = new Size(150, 24);
+            label28.Size = new Size(105, 24);
             label28.TabIndex = 67;
-            label28.Text = "Water Depth (m)";
+            label28.Text = "Potassium";
             // 
             // label29
             // 
             label29.AutoSize = true;
             label29.BackColor = Color.Transparent;
-            label29.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label29.ForeColor = Color.Green;
-            label29.Location = new Point(48, 762);
+            label29.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label29.ForeColor = Color.Chartreuse;
+            label29.Location = new Point(48, 750);
             label29.Name = "label29";
-            label29.Size = new Size(165, 24);
+            label29.Size = new Size(178, 24);
             label29.TabIndex = 67;
             label29.Text = "pH (Acidity) Result";
             // 
@@ -709,7 +709,7 @@
             label32.BackColor = Color.Transparent;
             label32.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label32.ForeColor = Color.Green;
-            label32.Location = new Point(227, 762);
+            label32.Location = new Point(227, 750);
             label32.Name = "label32";
             label32.Size = new Size(15, 24);
             label32.TabIndex = 67;
@@ -719,11 +719,11 @@
             // 
             label33.AutoSize = true;
             label33.BackColor = Color.Transparent;
-            label33.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label33.ForeColor = Color.Green;
+            label33.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic);
+            label33.ForeColor = Color.Chartreuse;
             label33.Location = new Point(439, 644);
             label33.Name = "label33";
-            label33.Size = new Size(92, 24);
+            label33.Size = new Size(95, 24);
             label33.TabIndex = 67;
             label33.Text = "EC Result";
             // 
@@ -743,11 +743,11 @@
             // 
             label35.AutoSize = true;
             label35.BackColor = Color.Transparent;
-            label35.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label35.ForeColor = Color.Green;
+            label35.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic);
+            label35.ForeColor = Color.Chartreuse;
             label35.Location = new Point(439, 668);
             label35.Name = "label35";
-            label35.Size = new Size(150, 48);
+            label35.Size = new Size(163, 48);
             label35.TabIndex = 67;
             label35.Text = "Soil Consistency\r\nResult";
             // 
@@ -767,11 +767,11 @@
             // 
             label37.AutoSize = true;
             label37.BackColor = Color.Transparent;
-            label37.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label37.ForeColor = Color.Green;
+            label37.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic);
+            label37.ForeColor = Color.Chartreuse;
             label37.Location = new Point(439, 721);
             label37.Name = "label37";
-            label37.Size = new Size(174, 24);
+            label37.Size = new Size(185, 24);
             label37.TabIndex = 67;
             label37.Text = "Water Depth Result";
             // 
@@ -842,7 +842,7 @@
             label43.BackColor = Color.Transparent;
             label43.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label43.ForeColor = Color.Gold;
-            label43.Location = new Point(243, 762);
+            label43.Location = new Point(243, 750);
             label43.Name = "label43";
             label43.Size = new Size(118, 24);
             label43.TabIndex = 67;
@@ -891,7 +891,7 @@
             button6.FlatAppearance.BorderSize = 0;
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button6.Location = new Point(1036, 746);
+            button6.Location = new Point(1036, 733);
             button6.Name = "button6";
             button6.Size = new Size(120, 41);
             button6.TabIndex = 73;
@@ -904,7 +904,7 @@
             button5.FlatAppearance.BorderSize = 0;
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.Location = new Point(1161, 744);
+            button5.Location = new Point(1161, 731);
             button5.Name = "button5";
             button5.Size = new Size(120, 41);
             button5.TabIndex = 74;
@@ -915,7 +915,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(1500, 796);
+            ClientSize = new Size(1500, 789);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(label20);
