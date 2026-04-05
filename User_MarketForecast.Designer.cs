@@ -64,6 +64,7 @@
             button8.Size = new Size(418, 64);
             button8.TabIndex = 28;
             button8.UseVisualStyleBackColor = false;
+            button8.Click += shortcut_DigitalReceiptVault;
             // 
             // label8
             // 
@@ -178,6 +179,7 @@
             button6.Size = new Size(120, 41);
             button6.TabIndex = 32;
             button6.UseVisualStyleBackColor = true;
+            button6.Click += backbutton;
             // 
             // button5
             // 
@@ -205,6 +207,7 @@
             button1.Size = new Size(418, 64);
             button1.TabIndex = 28;
             button1.UseVisualStyleBackColor = false;
+            button1.Click += shortcut_CostOfProduction;
             // 
             // button2
             // 
@@ -218,6 +221,7 @@
             button2.Size = new Size(418, 64);
             button2.TabIndex = 28;
             button2.UseVisualStyleBackColor = false;
+            button2.Click += shortcut_Transactions;
             // 
             // searchBoxPI
             // 

@@ -148,6 +148,7 @@
             button8.Size = new Size(418, 64);
             button8.TabIndex = 37;
             button8.UseVisualStyleBackColor = false;
+            button8.Click += shortcut_Transactions;
             // 
             // label8
             // 
@@ -173,6 +174,7 @@
             button6.Size = new Size(120, 41);
             button6.TabIndex = 40;
             button6.UseVisualStyleBackColor = false;
+            button6.Click += backbutton;
             // 
             // button5
             // 
@@ -211,6 +213,7 @@
             button1.Size = new Size(418, 64);
             button1.TabIndex = 37;
             button1.UseVisualStyleBackColor = false;
+            button1.Click += shortcut_CostOfProduction;
             // 
             // button4
             // 
@@ -224,16 +227,17 @@
             button4.Size = new Size(418, 64);
             button4.TabIndex = 37;
             button4.UseVisualStyleBackColor = false;
+            button4.Click += shortcut_MarketForecasting;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.BackColor = Color.Transparent;
-            label5.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.LawnGreen;
             label5.Location = new Point(74, 139);
             label5.Name = "label5";
-            label5.Size = new Size(146, 27);
+            label5.Size = new Size(157, 27);
             label5.TabIndex = 114;
             label5.Text = "Product Name";
             // 

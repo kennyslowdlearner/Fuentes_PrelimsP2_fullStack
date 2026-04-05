@@ -180,6 +180,7 @@
             button6.Size = new Size(120, 41);
             button6.TabIndex = 124;
             button6.UseVisualStyleBackColor = false;
+            button6.Click += bbackButton;
             // 
             // label4
             // 

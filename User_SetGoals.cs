@@ -8,27 +8,31 @@ using System.Windows.Forms;
 
 namespace Fuentes_PrelimsP2
 {
-    public partial class User_StatisticalProgress : Form
+    public partial class User_SetGoals : Form
     {
-        internal static User_StatisticalProgress instance;
-        public User_StatisticalProgress()
+        private static User_SetGoals instance;
+        public User_SetGoals()
         {
             InitializeComponent();
         }
 
-        //(Global User Session) Component
-        internal static User_StatisticalProgress Instance
+        internal static User_SetGoals Instance
         {
             get
             {
                 if (instance == null || instance.IsDisposed)
-                    instance = new User_StatisticalProgress();
-
+                {
+                    instance = new User_SetGoals();
+                }
                 return instance;
             }
         }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
-        private void bbackButton(object sender, EventArgs e)
+        }
+
+        private void backButton(object sender, EventArgs e)
         {
             try
             {

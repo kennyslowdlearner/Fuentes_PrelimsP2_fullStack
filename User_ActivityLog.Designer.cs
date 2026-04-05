@@ -49,7 +49,7 @@
             button2 = new Button();
             button1 = new Button();
             button3 = new Button();
-            button6 = new Button();
+            back = new Button();
             button5 = new Button();
             button9 = new Button();
             button7 = new Button();
@@ -295,18 +295,19 @@
             button3.Text = "Insert";
             button3.UseVisualStyleBackColor = false;
             // 
-            // button6
+            // back
             // 
-            button6.BackColor = Color.Transparent;
-            button6.BackgroundImage = (Image)resources.GetObject("button6.BackgroundImage");
-            button6.FlatAppearance.BorderSize = 0;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button6.Location = new Point(227, 723);
-            button6.Name = "button6";
-            button6.Size = new Size(120, 41);
-            button6.TabIndex = 75;
-            button6.UseVisualStyleBackColor = false;
+            back.BackColor = Color.Transparent;
+            back.BackgroundImage = (Image)resources.GetObject("back.BackgroundImage");
+            back.FlatAppearance.BorderSize = 0;
+            back.FlatStyle = FlatStyle.Flat;
+            back.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            back.Location = new Point(227, 723);
+            back.Name = "back";
+            back.Size = new Size(120, 41);
+            back.TabIndex = 75;
+            back.UseVisualStyleBackColor = false;
+            back.Click += backButton;
             // 
             // button5
             // 
@@ -333,6 +334,7 @@
             button9.Size = new Size(254, 99);
             button9.TabIndex = 79;
             button9.UseVisualStyleBackColor = false;
+            button9.Click += shortcut_ProductInventory;
             // 
             // button7
             // 
@@ -346,6 +348,7 @@
             button7.Size = new Size(254, 99);
             button7.TabIndex = 80;
             button7.UseVisualStyleBackColor = false;
+            button7.Click += shortcut_SoilEvaluator;
             // 
             // button4
             // 
@@ -359,6 +362,7 @@
             button4.Size = new Size(254, 99);
             button4.TabIndex = 81;
             button4.UseVisualStyleBackColor = false;
+            button4.Click += shortcut_WeatherForecasting;
             // 
             // button8
             // 
@@ -372,6 +376,7 @@
             button8.Size = new Size(254, 99);
             button8.TabIndex = 82;
             button8.UseVisualStyleBackColor = false;
+            button8.Click += shortcut_RiceYieldandEstimation;
             // 
             // label9
             // 
@@ -454,7 +459,7 @@
             Controls.Add(button8);
             Controls.Add(label9);
             Controls.Add(menuStrip1);
-            Controls.Add(button6);
+            Controls.Add(back);
             Controls.Add(button5);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -506,7 +511,7 @@
         private Button button2;
         private Button button1;
         private Button button3;
-        private Button button6;
+        private Button back;
         private Button button5;
         private Button button9;
         private Button button7;

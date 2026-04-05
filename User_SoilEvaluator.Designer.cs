@@ -141,6 +141,7 @@
             button9.Size = new Size(254, 99);
             button9.TabIndex = 62;
             button9.UseVisualStyleBackColor = false;
+            button9.Click += shortcut_ProductInventory;
             // 
             // button7
             // 
@@ -155,6 +156,7 @@
             button7.Size = new Size(254, 99);
             button7.TabIndex = 63;
             button7.UseVisualStyleBackColor = false;
+            button7.Click += shortcut_ActivityLog;
             // 
             // button4
             // 
@@ -169,6 +171,7 @@
             button4.Size = new Size(254, 99);
             button4.TabIndex = 64;
             button4.UseVisualStyleBackColor = false;
+            button4.Click += shortcut_WeatherForecast;
             // 
             // button8
             // 
@@ -183,6 +186,7 @@
             button8.Size = new Size(254, 99);
             button8.TabIndex = 65;
             button8.UseVisualStyleBackColor = false;
+            button8.Click += shortcut_RiceYieldandEstimation;
             // 
             // label9
             // 
@@ -896,6 +900,7 @@
             button6.Size = new Size(120, 41);
             button6.TabIndex = 73;
             button6.UseVisualStyleBackColor = false;
+            button6.Click += backButton;
             // 
             // button5
             // 

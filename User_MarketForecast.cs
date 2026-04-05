@@ -36,5 +36,61 @@ namespace Fuentes_PrelimsP2
         {
 
         }
+
+        private void shortcut_DigitalReceiptVault(object sender, EventArgs e)
+        {
+            try
+            {
+                User_DigitalReceiptVault.Instance.Show();
+                this.Hide();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to open Digitall Receipt Vault page:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void shortcut_CostOfProduction(object sender, EventArgs e)
+        {
+            try
+            {
+                User_CostofProduction.Instance.Show();
+                this.Hide();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to open cost of Production page:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void shortcut_Transactions(object sender, EventArgs e)
+        {
+            try
+            {
+                User_TransactionSheet.Instance.Show();
+                this.Hide();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to open Transaction page:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void backbutton(object sender, EventArgs e)
+        {
+            try
+            {
+                UserTradesandTransactions.Instance.Show();
+                this.Hide();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to open page:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

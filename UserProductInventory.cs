@@ -21,7 +21,7 @@ namespace Fuentes_PrelimsP2
             //made changes here (5) [4/3/2026 | 12:24 PM]
             get
             {
-                if(instance == null || instance.IsDisposed)
+                if (instance == null || instance.IsDisposed)
                 {
                     instance = new productInventory();
                 }
@@ -32,7 +32,7 @@ namespace Fuentes_PrelimsP2
 
         public void AddProductRow(string productname, string productid, string quantity)
         {
-           
+
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -40,7 +40,7 @@ namespace Fuentes_PrelimsP2
 
         private void InitializeTableAndBind()
         {
-           
+
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -80,7 +80,7 @@ namespace Fuentes_PrelimsP2
 
         private void addProductToolStripMenuItem_Click(object sender, EventArgs e)
         {
-      
+
         }
 
         private void updatePrToolStripMenuItem_Click(object sender, EventArgs e)
@@ -125,7 +125,7 @@ namespace Fuentes_PrelimsP2
 
         private void backoptionPI_click(object sender, EventArgs e)
         {
-          
+
         }
 
         private void logoutoptionPI_click(object sender, EventArgs e)
@@ -143,6 +143,17 @@ namespace Fuentes_PrelimsP2
         private void label8_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void backButton(object sender, EventArgs e)
+        {
+            UserAccount.Instance.Show();
+            this.Hide();
+        }
+
+        private void Close_Form_After_Run(object sender, FormClosingEventArgs e)
+        {
+           
         }
     }
 }

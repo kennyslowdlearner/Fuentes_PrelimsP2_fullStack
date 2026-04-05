@@ -17,7 +17,7 @@ namespace Fuentes_PrelimsP2
         }
 
         //(Global User Session) Component
-        private static UserTransportSchedule Instance
+        internal static UserTransportSchedule Instance
         {
             get
             {
@@ -26,6 +26,12 @@ namespace Fuentes_PrelimsP2
 
                 return instance;
             }
+        }
+
+        private void backButton(object sender, EventArgs e)
+        {
+            UserAccount.Instance.Show();
+            this.Hide();
         }
     }
 }

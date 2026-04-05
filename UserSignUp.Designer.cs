@@ -45,6 +45,7 @@
             passwordSIGN = new TextBox();
             cpasswordSIGN = new TextBox();
             groupBox1 = new GroupBox();
+            birthDate = new DateTimePicker();
             label8 = new Label();
             label7 = new Label();
             label4 = new Label();
@@ -67,7 +68,6 @@
             TCbutton = new RadioButton();
             label13 = new Label();
             label17 = new Label();
-            birthDate = new DateTimePicker();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -255,6 +255,14 @@
             groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
             groupBox1.Text = "Personal Information";
+            // 
+            // birthDate
+            // 
+            birthDate.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            birthDate.Location = new Point(182, 182);
+            birthDate.Name = "birthDate";
+            birthDate.Size = new Size(285, 31);
+            birthDate.TabIndex = 11;
             // 
             // label8
             // 
@@ -525,13 +533,6 @@
             label17.TabIndex = 10;
             label17.Text = "User Sign Up";
             // 
-            // birthDate
-            // 
-            birthDate.Location = new Point(182, 182);
-            birthDate.Name = "birthDate";
-            birthDate.Size = new Size(285, 41);
-            birthDate.TabIndex = 11;
-            // 
             // UserSignUp
             // 
             AutoScaleDimensions = new SizeF(12F, 27F);
@@ -551,6 +552,7 @@
             Margin = new Padding(4);
             Name = "UserSignUp";
             Text = "Pananom : User Sign Up";
+            FormClosing += Close_Form_After_Run;
             FormClosed += UserSignUp_FormClosed;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

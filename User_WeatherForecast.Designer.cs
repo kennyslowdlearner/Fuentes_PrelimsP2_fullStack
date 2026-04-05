@@ -90,6 +90,7 @@
             button8.Size = new Size(254, 99);
             button8.TabIndex = 88;
             button8.UseVisualStyleBackColor = false;
+            button8.Click += shortcut_SoilEvaluator;
             // 
             // label9
             // 
@@ -172,6 +173,7 @@
             button6.Size = new Size(120, 41);
             button6.TabIndex = 89;
             button6.UseVisualStyleBackColor = false;
+            button6.Click += backButton;
             // 
             // button5
             // 
@@ -199,6 +201,7 @@
             button1.Size = new Size(254, 99);
             button1.TabIndex = 88;
             button1.UseVisualStyleBackColor = false;
+            button1.Click += shortcut_ActivityLog;
             // 
             // button2
             // 
@@ -213,6 +216,7 @@
             button2.Size = new Size(254, 99);
             button2.TabIndex = 88;
             button2.UseVisualStyleBackColor = false;
+            button2.Click += shortcut_WeatherForecasting;
             // 
             // button4
             // 
@@ -227,6 +231,7 @@
             button4.Size = new Size(254, 99);
             button4.TabIndex = 88;
             button4.UseVisualStyleBackColor = false;
+            button4.Click += shortcut_RiceYieldandEstimation;
             // 
             // searchBoxPI
             // 

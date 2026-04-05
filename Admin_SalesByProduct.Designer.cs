@@ -50,9 +50,6 @@
             button6 = new Button();
             button4 = new Button();
             button8 = new Button();
-            button1 = new Button();
-            textBox1 = new TextBox();
-            label1 = new Label();
             menuStrip2 = new MenuStrip();
             sssssToolStripMenuItem = new ToolStripMenuItem();
             reloadToolStripMenuItem = new ToolStripMenuItem();
@@ -61,6 +58,9 @@
             viewAccountToolStripMenuItem1 = new ToolStripMenuItem();
             accountSettingsToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem4 = new ToolStripMenuItem();
+            label1 = new Label();
+            searchBoxPI = new TextBox();
+            searchbuttonPI = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel2.SuspendLayout();
@@ -320,32 +320,6 @@
             button8.Text = "Connect";
             button8.UseVisualStyleBackColor = false;
             // 
-            // button1
-            // 
-            button1.Location = new Point(852, 206);
-            button1.Name = "button1";
-            button1.Size = new Size(97, 35);
-            button1.TabIndex = 117;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(614, 207);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(232, 31);
-            textBox1.TabIndex = 116;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(527, 212);
-            label1.Name = "label1";
-            label1.Size = new Size(81, 24);
-            label1.TabIndex = 115;
-            label1.Text = "Product:";
-            // 
             // menuStrip2
             // 
             menuStrip2.BackColor = Color.Transparent;
@@ -408,16 +382,53 @@
             toolStripMenuItem4.Size = new Size(172, 34);
             toolStripMenuItem4.Text = "Logout";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.PaleGreen;
+            label1.Location = new Point(529, 208);
+            label1.Name = "label1";
+            label1.Size = new Size(157, 27);
+            label1.TabIndex = 121;
+            label1.Text = "Product Name";
+            // 
+            // searchBoxPI
+            // 
+            searchBoxPI.BackColor = Color.Gainsboro;
+            searchBoxPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            searchBoxPI.ForeColor = Color.SeaGreen;
+            searchBoxPI.Location = new Point(697, 210);
+            searchBoxPI.Name = "searchBoxPI";
+            searchBoxPI.Size = new Size(252, 29);
+            searchBoxPI.TabIndex = 120;
+            searchBoxPI.Text = "Search product name or id";
+            // 
+            // searchbuttonPI
+            // 
+            searchbuttonPI.BackColor = Color.Transparent;
+            searchbuttonPI.BackgroundImage = (Image)resources.GetObject("searchbuttonPI.BackgroundImage");
+            searchbuttonPI.FlatAppearance.BorderSize = 0;
+            searchbuttonPI.FlatStyle = FlatStyle.Flat;
+            searchbuttonPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            searchbuttonPI.ForeColor = Color.SeaGreen;
+            searchbuttonPI.Location = new Point(955, 204);
+            searchbuttonPI.Name = "searchbuttonPI";
+            searchbuttonPI.Size = new Size(120, 41);
+            searchbuttonPI.TabIndex = 119;
+            searchbuttonPI.UseVisualStyleBackColor = false;
+            // 
             // Admin_SalesByProduct
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
-            Controls.Add(menuStrip2);
-            Controls.Add(button1);
-            Controls.Add(textBox1);
             Controls.Add(label1);
+            Controls.Add(searchBoxPI);
+            Controls.Add(searchbuttonPI);
+            Controls.Add(menuStrip2);
             Controls.Add(button6);
             Controls.Add(button4);
             Controls.Add(button8);
@@ -442,9 +453,6 @@
         private Button button6;
         private Button button4;
         private Button button8;
-        private Button button1;
-        private TextBox textBox1;
-        private Label label1;
         private MenuStrip menuStrip2;
         private ToolStripMenuItem sssssToolStripMenuItem;
         private ToolStripMenuItem reloadToolStripMenuItem;
@@ -469,5 +477,8 @@
         private Label label10;
         private Label label8;
         private DataGridView dataGridView1;
+        private Label label1;
+        private TextBox searchBoxPI;
+        private Button searchbuttonPI;
     }
 }

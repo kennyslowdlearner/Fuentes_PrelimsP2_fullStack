@@ -17,7 +17,7 @@ namespace Fuentes_PrelimsP2
         }
 
         //(Global User Session) Component
-        private static UserFinancialGoals Instance
+        internal static UserFinancialGoals Instance
         {
             get
             {
@@ -42,12 +42,19 @@ namespace Fuentes_PrelimsP2
 
         private void GoToSetGoals(object sender, EventArgs e)
         {
-
+            User_SetGoals.Instance.Show();
+            this.Hide();
         }
 
         private void GoToStatisticalProgress(object sender, EventArgs e)
         {
             User_StatisticalProgress.Instance.Show();
+            this.Hide();
+        }
+
+        private void bbackButton(object sender, EventArgs e)
+        {
+            UserAccount.Instance.Show();
             this.Hide();
         }
     }

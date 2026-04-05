@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Data.OleDb;
+// using System.Data.OleDb; (duplicate removed)
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
@@ -29,6 +29,12 @@ namespace Fuentes_PrelimsP2
 
             connectionDB();
 
+            if (connection == null)
+            {
+                MessageBox.Show("Database connection was not established. Sign-up functionality will be disabled.");
+                return;
+            }
+
             adapter = new OleDbDataAdapter("SELECT * FROM [User Account Information]", connection);
 
             dataSet = new DataSet();
@@ -43,11 +49,44 @@ namespace Fuentes_PrelimsP2
             }
         }
 
-        
+
         private void connectionDB()
-        { 
-            string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Y:\second year college\SECOND SEM Jan 20, 2026\CPE262 OOP2\Project Proposal\Project Pananom.accdb";
-            connection = new OleDbConnection(connectionString);
+        {
+            // Attempt to find a provider that can open the database and report diagnostics.
+            string dbPath = @"C:\Pananom Database\Prooject Pananom Data.accdb";
+            string[] providersToTry = new[] { "Microsoft.ACE.OLEDB.16.0", "Microsoft.ACE.OLEDB.12.0" };
+
+            MessageBox.Show($"Attempting DB path: {dbPath}\nIs64BitProcess: {Environment.Is64BitProcess}");
+
+            Exception lastEx = null;
+
+            foreach (var provider in providersToTry)
+            {
+                try
+                {
+                    string connectionString = $"Provider={provider};Data Source={dbPath};Persist Security Info=False;";
+                    using (var testConn = new OleDbConnection(connectionString))
+                    {
+                        testConn.Open();
+                        testConn.Close();
+                    }
+
+                    // success - store connection to use later
+                    connection = new OleDbConnection($"Provider={provider};Data Source={dbPath};Persist Security Info=False;");
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    lastEx = ex;
+                    // try next provider
+                }
+            }
+
+            // If we reach here no provider worked
+            if (lastEx != null)
+            {
+                MessageBox.Show("Failed to open Access database.\n" + lastEx.ToString(), "Database connection error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -84,7 +123,7 @@ namespace Fuentes_PrelimsP2
                 return;
             }
 
-            if(string.IsNullOrWhiteSpace(age.Text))
+            if (string.IsNullOrWhiteSpace(age.Text))
             {
                 MessageBox.Show("Please enter your age.");
                 return;
@@ -115,15 +154,6 @@ namespace Fuentes_PrelimsP2
             {
                 DataRow newRow = dataSet.Tables["User Account Information"].NewRow();
 
-                //made changes here (7) [4/3/2026 | 1:54 PM]
-                OleDbCommandBuilder builder = new OleDbCommandBuilder(adapter);
-
-                builder.QuotePrefix = "[";
-                builder.QuoteSuffix = "]";
-
-                adapter.Update(dataSet, "User Account Information");
-
-                //----------------------------------------------------------------
 
                 newRow["Username"] = UserSession.UserInstance.Username;
                 newRow["Password"] = UserSession.UserInstance.Password;
@@ -141,13 +171,23 @@ namespace Fuentes_PrelimsP2
 
                 dataSet.Tables["User Account Information"].Rows.Add(newRow);
 
+                //made changes here (7) [4/3/2026 | 1:54 PM]
+                OleDbCommandBuilder builder = new OleDbCommandBuilder(adapter);
+
+                builder.QuotePrefix = "[";
+                builder.QuoteSuffix = "]";
+
+                adapter.Update(dataSet, "User Account Information");
+
+                //----------------------------------------------------------------
+
                 MessageBox.Show("DB Path: " + connection.ConnectionString);
 
                 UserAccount.Instance.Show();
 
                 this.Hide();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("An error occurred while signing up: " + ex.Message);
             }
@@ -160,12 +200,24 @@ namespace Fuentes_PrelimsP2
 
         private void cpasswordSIGN_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void UserSignUp_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void Close_Form_After_Run(object sender, FormClosingEventArgs e)
+        {
+            if (connection != null && connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+                connection.Dispose();
+            }
+
+            // Force the entire environment to shut down
+            Environment.Exit(0);
         }
     }
 }

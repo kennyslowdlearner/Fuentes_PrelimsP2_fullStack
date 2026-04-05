@@ -31,8 +31,7 @@ namespace Fuentes_PrelimsP2
         }
         private void backoptionFPG_Click(object sender, EventArgs e)
         {
-            //UserAccount.UserSession.Show();
-            //useraccount.Show();
+            UserAccount.Instance.Show();
             this.Hide();
         }
 

@@ -80,50 +80,108 @@ namespace Fuentes_PrelimsP2
 
         private void button2_Click(object sender, EventArgs e)
         {
-            productInventory.Instance.Show();
-            this.Hide();
+            try
+            {
+                productInventory.Instance.Show();
+                this.Hide();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to open Product Inventory:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            farmgateUSER userFarmGate = new farmgateUSER();
-
-            userFarmGate.Show();
-            this.Hide();
+            try
+            {
+                farmgateUSER userFarmGate = new farmgateUSER();
+                userFarmGate.Show();
+                this.Hide();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to open Farmgate page:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void GoToProductInventoryPage(object sender, EventArgs e)
         {
-            
+            try
+            {
+                productInventory.Instance.Show();
+                this.Hide();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to open Product Inventory:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void GoToFarmgatePricePage(object sender, EventArgs e)
         {
-            //farmgateUSER.UserInstance.Show();
-
-            this.Hide();
+            try
+            {
+                farmgateUSER.Instance.Show();
+                //this.Hide();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to open Farmgate page:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
-    
 
         private void GoToFinancialGoalsPage(object sender, EventArgs e)
         {
-
+            try
+            {
+                UserFinancialGoals.Instance.Show();
+                this.Hide();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to open Financial Goals page:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void GoToTradesandTransactionsPage(object sender, EventArgs e)
         {
-
+            try
+            {
+                UserTradesandTransactions.Instance.Show();
+                this.Hide();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to open Trades & Transactions page:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void GoToTransportSchedulePage(object sender, EventArgs e)
         {
-
+            try
+            {
+                UserTransportSchedule.Instance.Show();
+                this.Hide();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to open Transport Schedule page:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void GoToRiceYieldEstimationandRegistryPage(object sender, EventArgs e)
         {
+            try
+            {
+                RiceYieldEstimationandRegistry.Instance.Show();
+                this.Hide();
+            }
 
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to open Rice Yield Estimation & Registry page:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

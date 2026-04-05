@@ -39,12 +39,12 @@
             contactDeveloperToolStripMenuItem = new ToolStripMenuItem();
             accountSettingsToolStripMenuItem = new ToolStripMenuItem();
             logoutToolStripMenuItem = new ToolStripMenuItem();
-            button2 = new Button();
-            button1 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
-            button6 = new Button();
+            AddRiceYieldandEstimation = new Button();
+            WeatherForecasting = new Button();
+            SoilEvaluator = new Button();
+            ViewRiceYieldandEstimation = new Button();
+            VarietalRegistry = new Button();
+            ActivityLog = new Button();
             label4 = new Label();
             button7 = new Button();
             menuStrip1.SuspendLayout();
@@ -142,77 +142,83 @@
             logoutToolStripMenuItem.Size = new Size(172, 34);
             logoutToolStripMenuItem.Text = "Logout";
             // 
-            // button2
+            // AddRiceYieldandEstimation
             // 
-            button2.BackColor = Color.Transparent;
-            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Location = new Point(283, 277);
-            button2.Name = "button2";
-            button2.Size = new Size(245, 104);
-            button2.TabIndex = 10;
-            button2.UseVisualStyleBackColor = false;
+            AddRiceYieldandEstimation.BackColor = Color.Transparent;
+            AddRiceYieldandEstimation.BackgroundImage = (Image)resources.GetObject("AddRiceYieldandEstimation.BackgroundImage");
+            AddRiceYieldandEstimation.FlatAppearance.BorderSize = 0;
+            AddRiceYieldandEstimation.FlatStyle = FlatStyle.Flat;
+            AddRiceYieldandEstimation.Location = new Point(283, 277);
+            AddRiceYieldandEstimation.Name = "AddRiceYieldandEstimation";
+            AddRiceYieldandEstimation.Size = new Size(245, 104);
+            AddRiceYieldandEstimation.TabIndex = 10;
+            AddRiceYieldandEstimation.UseVisualStyleBackColor = false;
+            AddRiceYieldandEstimation.Click += GoToAddRiceYieldandEstimation;
             // 
-            // button1
+            // WeatherForecasting
             // 
-            button1.BackColor = Color.Transparent;
-            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Location = new Point(283, 387);
-            button1.Name = "button1";
-            button1.Size = new Size(245, 104);
-            button1.TabIndex = 10;
-            button1.UseVisualStyleBackColor = false;
+            WeatherForecasting.BackColor = Color.Transparent;
+            WeatherForecasting.BackgroundImage = (Image)resources.GetObject("WeatherForecasting.BackgroundImage");
+            WeatherForecasting.FlatAppearance.BorderSize = 0;
+            WeatherForecasting.FlatStyle = FlatStyle.Flat;
+            WeatherForecasting.Location = new Point(283, 387);
+            WeatherForecasting.Name = "WeatherForecasting";
+            WeatherForecasting.Size = new Size(245, 104);
+            WeatherForecasting.TabIndex = 10;
+            WeatherForecasting.UseVisualStyleBackColor = false;
+            WeatherForecasting.Click += GoToWeatherForecasting;
             // 
-            // button3
+            // SoilEvaluator
             // 
-            button3.BackColor = Color.Transparent;
-            button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Location = new Point(283, 497);
-            button3.Name = "button3";
-            button3.Size = new Size(245, 104);
-            button3.TabIndex = 10;
-            button3.UseVisualStyleBackColor = false;
+            SoilEvaluator.BackColor = Color.Transparent;
+            SoilEvaluator.BackgroundImage = (Image)resources.GetObject("SoilEvaluator.BackgroundImage");
+            SoilEvaluator.FlatAppearance.BorderSize = 0;
+            SoilEvaluator.FlatStyle = FlatStyle.Flat;
+            SoilEvaluator.Location = new Point(283, 497);
+            SoilEvaluator.Name = "SoilEvaluator";
+            SoilEvaluator.Size = new Size(245, 104);
+            SoilEvaluator.TabIndex = 10;
+            SoilEvaluator.UseVisualStyleBackColor = false;
+            SoilEvaluator.Click += GoToSoilEvaluator;
             // 
-            // button4
+            // ViewRiceYieldandEstimation
             // 
-            button4.BackColor = Color.Transparent;
-            button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Location = new Point(546, 277);
-            button4.Name = "button4";
-            button4.Size = new Size(245, 104);
-            button4.TabIndex = 10;
-            button4.UseVisualStyleBackColor = false;
+            ViewRiceYieldandEstimation.BackColor = Color.Transparent;
+            ViewRiceYieldandEstimation.BackgroundImage = (Image)resources.GetObject("ViewRiceYieldandEstimation.BackgroundImage");
+            ViewRiceYieldandEstimation.FlatAppearance.BorderSize = 0;
+            ViewRiceYieldandEstimation.FlatStyle = FlatStyle.Flat;
+            ViewRiceYieldandEstimation.Location = new Point(546, 277);
+            ViewRiceYieldandEstimation.Name = "ViewRiceYieldandEstimation";
+            ViewRiceYieldandEstimation.Size = new Size(245, 104);
+            ViewRiceYieldandEstimation.TabIndex = 10;
+            ViewRiceYieldandEstimation.UseVisualStyleBackColor = false;
+            ViewRiceYieldandEstimation.Click += GoToViewRiceYieldandEstimation;
             // 
-            // button5
+            // VarietalRegistry
             // 
-            button5.BackColor = Color.Transparent;
-            button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Location = new Point(546, 387);
-            button5.Name = "button5";
-            button5.Size = new Size(245, 104);
-            button5.TabIndex = 10;
-            button5.UseVisualStyleBackColor = false;
+            VarietalRegistry.BackColor = Color.Transparent;
+            VarietalRegistry.BackgroundImage = (Image)resources.GetObject("VarietalRegistry.BackgroundImage");
+            VarietalRegistry.FlatAppearance.BorderSize = 0;
+            VarietalRegistry.FlatStyle = FlatStyle.Flat;
+            VarietalRegistry.Location = new Point(546, 387);
+            VarietalRegistry.Name = "VarietalRegistry";
+            VarietalRegistry.Size = new Size(245, 104);
+            VarietalRegistry.TabIndex = 10;
+            VarietalRegistry.UseVisualStyleBackColor = false;
+            VarietalRegistry.Click += GoToVarietalRegistry;
             // 
-            // button6
+            // ActivityLog
             // 
-            button6.BackColor = Color.Transparent;
-            button6.BackgroundImage = (Image)resources.GetObject("button6.BackgroundImage");
-            button6.FlatAppearance.BorderSize = 0;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.Location = new Point(546, 497);
-            button6.Name = "button6";
-            button6.Size = new Size(245, 104);
-            button6.TabIndex = 10;
-            button6.UseVisualStyleBackColor = false;
+            ActivityLog.BackColor = Color.Transparent;
+            ActivityLog.BackgroundImage = (Image)resources.GetObject("ActivityLog.BackgroundImage");
+            ActivityLog.FlatAppearance.BorderSize = 0;
+            ActivityLog.FlatStyle = FlatStyle.Flat;
+            ActivityLog.Location = new Point(546, 497);
+            ActivityLog.Name = "ActivityLog";
+            ActivityLog.Size = new Size(245, 104);
+            ActivityLog.TabIndex = 10;
+            ActivityLog.UseVisualStyleBackColor = false;
+            ActivityLog.Click += GoToActivityLog;
             // 
             // label4
             // 
@@ -238,6 +244,7 @@
             button7.Size = new Size(120, 41);
             button7.TabIndex = 124;
             button7.UseVisualStyleBackColor = false;
+            button7.Click += button7_Click;
             // 
             // RiceYieldEstimationandRegistry
             // 
@@ -246,12 +253,12 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1061, 704);
             Controls.Add(button7);
-            Controls.Add(button6);
-            Controls.Add(button5);
-            Controls.Add(button3);
-            Controls.Add(button4);
-            Controls.Add(button1);
-            Controls.Add(button2);
+            Controls.Add(ActivityLog);
+            Controls.Add(VarietalRegistry);
+            Controls.Add(SoilEvaluator);
+            Controls.Add(ViewRiceYieldandEstimation);
+            Controls.Add(WeatherForecasting);
+            Controls.Add(AddRiceYieldandEstimation);
             Controls.Add(label2);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -277,12 +284,12 @@
         private ToolStripMenuItem contactDeveloperToolStripMenuItem;
         private ToolStripMenuItem accountSettingsToolStripMenuItem;
         private ToolStripMenuItem logoutToolStripMenuItem;
-        private Button button2;
-        private Button button1;
-        private Button button3;
-        private Button button4;
-        private Button button5;
-        private Button button6;
+        private Button AddRiceYieldandEstimation;
+        private Button WeatherForecasting;
+        private Button SoilEvaluator;
+        private Button ViewRiceYieldandEstimation;
+        private Button VarietalRegistry;
+        private Button ActivityLog;
         private Label label4;
         private Button button7;
     }

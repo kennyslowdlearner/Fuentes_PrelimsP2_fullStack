@@ -31,9 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin_TotalSalesReport));
             flowLayoutPanel1 = new FlowLayoutPanel();
             dataGridView1 = new DataGridView();
-            label1 = new Label();
-            textBox1 = new TextBox();
-            button1 = new Button();
             menuStrip2 = new MenuStrip();
             sssssToolStripMenuItem = new ToolStripMenuItem();
             reloadToolStripMenuItem = new ToolStripMenuItem();
@@ -75,6 +72,9 @@
             button4 = new Button();
             button8 = new Button();
             button6 = new Button();
+            label1 = new Label();
+            searchBoxPI = new TextBox();
+            searchbuttonPI = new Button();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             menuStrip2.SuspendLayout();
@@ -96,34 +96,6 @@
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.Size = new Size(1341, 266);
             dataGridView1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.DarkGreen;
-            label1.Location = new Point(82, 215);
-            label1.Name = "label1";
-            label1.Size = new Size(98, 27);
-            label1.TabIndex = 1;
-            label1.Text = "Product:";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(186, 211);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(232, 31);
-            textBox1.TabIndex = 2;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(424, 210);
-            button1.Name = "button1";
-            button1.Size = new Size(97, 35);
-            button1.TabIndex = 3;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
             // 
             // menuStrip2
             // 
@@ -590,12 +562,52 @@
             button6.TabIndex = 111;
             button6.UseVisualStyleBackColor = false;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.DarkOliveGreen;
+            label1.Location = new Point(84, 210);
+            label1.Name = "label1";
+            label1.Size = new Size(157, 27);
+            label1.TabIndex = 124;
+            label1.Text = "Product Name";
+            // 
+            // searchBoxPI
+            // 
+            searchBoxPI.BackColor = Color.Gainsboro;
+            searchBoxPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            searchBoxPI.ForeColor = Color.SeaGreen;
+            searchBoxPI.Location = new Point(252, 212);
+            searchBoxPI.Name = "searchBoxPI";
+            searchBoxPI.Size = new Size(252, 29);
+            searchBoxPI.TabIndex = 123;
+            searchBoxPI.Text = "Search product name or id";
+            // 
+            // searchbuttonPI
+            // 
+            searchbuttonPI.BackColor = Color.Transparent;
+            searchbuttonPI.BackgroundImage = (Image)resources.GetObject("searchbuttonPI.BackgroundImage");
+            searchbuttonPI.FlatAppearance.BorderSize = 0;
+            searchbuttonPI.FlatStyle = FlatStyle.Flat;
+            searchbuttonPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            searchbuttonPI.ForeColor = Color.SeaGreen;
+            searchbuttonPI.Location = new Point(510, 206);
+            searchbuttonPI.Name = "searchbuttonPI";
+            searchbuttonPI.Size = new Size(120, 41);
+            searchbuttonPI.TabIndex = 122;
+            searchbuttonPI.UseVisualStyleBackColor = false;
+            // 
             // Admin_TotalSalesReport
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
+            Controls.Add(label1);
+            Controls.Add(searchBoxPI);
+            Controls.Add(searchbuttonPI);
             Controls.Add(button6);
             Controls.Add(button4);
             Controls.Add(button8);
@@ -612,8 +624,6 @@
             Controls.Add(label24);
             Controls.Add(label40);
             Controls.Add(menuStrip2);
-            Controls.Add(button1);
-            Controls.Add(textBox1);
             Controls.Add(label11);
             Controls.Add(label10);
             Controls.Add(label9);
@@ -632,7 +642,6 @@
             Controls.Add(label13);
             Controls.Add(label12);
             Controls.Add(label2);
-            Controls.Add(label1);
             Controls.Add(flowLayoutPanel1);
             Name = "Admin_TotalSalesReport";
             Text = "Form1";
@@ -647,9 +656,6 @@
         #endregion
 
         private FlowLayoutPanel flowLayoutPanel1;
-        private Label label1;
-        private TextBox textBox1;
-        private Button button1;
         private MenuStrip menuStrip2;
         private ToolStripMenuItem sssssToolStripMenuItem;
         private ToolStripMenuItem reloadToolStripMenuItem;
@@ -692,5 +698,8 @@
         private Button button8;
         private Button button6;
         private DataGridView dataGridView1;
+        private Label label1;
+        private TextBox searchBoxPI;
+        private Button searchbuttonPI;
     }
 }

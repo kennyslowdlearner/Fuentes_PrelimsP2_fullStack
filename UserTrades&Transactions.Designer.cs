@@ -39,11 +39,11 @@
             label2 = new Label();
             label3 = new Label();
             label1 = new Label();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
+            addTransaction = new Button();
+            viewTransaction = new Button();
+            digitalVaultReceipt = new Button();
+            costOfProduction = new Button();
+            marketForecasting = new Button();
             label4 = new Label();
             button6 = new Button();
             menuStrip1.SuspendLayout();
@@ -102,7 +102,7 @@
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(270, 34);
+            logoutToolStripMenuItem.Size = new Size(172, 34);
             logoutToolStripMenuItem.Text = "Logout";
             // 
             // label2
@@ -141,65 +141,70 @@
             label1.TabIndex = 5;
             label1.Text = "Hello there,";
             // 
-            // button1
+            // addTransaction
             // 
-            button1.BackColor = Color.Transparent;
-            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Location = new Point(78, 310);
-            button1.Name = "button1";
-            button1.Size = new Size(165, 285);
-            button1.TabIndex = 6;
-            button1.UseVisualStyleBackColor = false;
+            addTransaction.BackColor = Color.Transparent;
+            addTransaction.BackgroundImage = (Image)resources.GetObject("addTransaction.BackgroundImage");
+            addTransaction.FlatAppearance.BorderSize = 0;
+            addTransaction.FlatStyle = FlatStyle.Flat;
+            addTransaction.Location = new Point(78, 310);
+            addTransaction.Name = "addTransaction";
+            addTransaction.Size = new Size(165, 285);
+            addTransaction.TabIndex = 6;
+            addTransaction.UseVisualStyleBackColor = false;
+            addTransaction.Click += GoToAddTransaction;
             // 
-            // button2
+            // viewTransaction
             // 
-            button2.BackColor = Color.Transparent;
-            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Location = new Point(262, 310);
-            button2.Name = "button2";
-            button2.Size = new Size(165, 285);
-            button2.TabIndex = 6;
-            button2.UseVisualStyleBackColor = false;
+            viewTransaction.BackColor = Color.Transparent;
+            viewTransaction.BackgroundImage = (Image)resources.GetObject("viewTransaction.BackgroundImage");
+            viewTransaction.FlatAppearance.BorderSize = 0;
+            viewTransaction.FlatStyle = FlatStyle.Flat;
+            viewTransaction.Location = new Point(262, 310);
+            viewTransaction.Name = "viewTransaction";
+            viewTransaction.Size = new Size(165, 285);
+            viewTransaction.TabIndex = 6;
+            viewTransaction.UseVisualStyleBackColor = false;
+            viewTransaction.Click += GoToViewTransaction;
             // 
-            // button3
+            // digitalVaultReceipt
             // 
-            button3.BackColor = Color.Transparent;
-            button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Location = new Point(446, 310);
-            button3.Name = "button3";
-            button3.Size = new Size(165, 285);
-            button3.TabIndex = 6;
-            button3.UseVisualStyleBackColor = false;
+            digitalVaultReceipt.BackColor = Color.Transparent;
+            digitalVaultReceipt.BackgroundImage = (Image)resources.GetObject("digitalVaultReceipt.BackgroundImage");
+            digitalVaultReceipt.FlatAppearance.BorderSize = 0;
+            digitalVaultReceipt.FlatStyle = FlatStyle.Flat;
+            digitalVaultReceipt.Location = new Point(446, 310);
+            digitalVaultReceipt.Name = "digitalVaultReceipt";
+            digitalVaultReceipt.Size = new Size(165, 285);
+            digitalVaultReceipt.TabIndex = 6;
+            digitalVaultReceipt.UseVisualStyleBackColor = false;
+            digitalVaultReceipt.Click += GoToDigitalVaultReceipt;
             // 
-            // button4
+            // costOfProduction
             // 
-            button4.BackColor = Color.Transparent;
-            button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Location = new Point(630, 310);
-            button4.Name = "button4";
-            button4.Size = new Size(165, 285);
-            button4.TabIndex = 6;
-            button4.UseVisualStyleBackColor = false;
+            costOfProduction.BackColor = Color.Transparent;
+            costOfProduction.BackgroundImage = (Image)resources.GetObject("costOfProduction.BackgroundImage");
+            costOfProduction.FlatAppearance.BorderSize = 0;
+            costOfProduction.FlatStyle = FlatStyle.Flat;
+            costOfProduction.Location = new Point(630, 310);
+            costOfProduction.Name = "costOfProduction";
+            costOfProduction.Size = new Size(165, 285);
+            costOfProduction.TabIndex = 6;
+            costOfProduction.UseVisualStyleBackColor = false;
+            costOfProduction.Click += GoToCostOfProduction;
             // 
-            // button5
+            // marketForecasting
             // 
-            button5.BackColor = Color.Transparent;
-            button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Location = new Point(815, 310);
-            button5.Name = "button5";
-            button5.Size = new Size(165, 285);
-            button5.TabIndex = 6;
-            button5.UseVisualStyleBackColor = false;
+            marketForecasting.BackColor = Color.Transparent;
+            marketForecasting.BackgroundImage = (Image)resources.GetObject("marketForecasting.BackgroundImage");
+            marketForecasting.FlatAppearance.BorderSize = 0;
+            marketForecasting.FlatStyle = FlatStyle.Flat;
+            marketForecasting.Location = new Point(815, 310);
+            marketForecasting.Name = "marketForecasting";
+            marketForecasting.Size = new Size(165, 285);
+            marketForecasting.TabIndex = 6;
+            marketForecasting.UseVisualStyleBackColor = false;
+            marketForecasting.Click += GoToMarketForecasting;
             // 
             // label4
             // 
@@ -225,6 +230,7 @@
             button6.Size = new Size(120, 41);
             button6.TabIndex = 124;
             button6.UseVisualStyleBackColor = false;
+            button6.Click += back_Button;
             // 
             // UserTradesandTransactions
             // 
@@ -234,11 +240,11 @@
             ClientSize = new Size(1064, 710);
             Controls.Add(button6);
             Controls.Add(label4);
-            Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(button2);
-            Controls.Add(button3);
-            Controls.Add(button1);
+            Controls.Add(marketForecasting);
+            Controls.Add(costOfProduction);
+            Controls.Add(viewTransaction);
+            Controls.Add(digitalVaultReceipt);
+            Controls.Add(addTransaction);
             Controls.Add(label2);
             Controls.Add(label3);
             Controls.Add(label1);
@@ -263,11 +269,11 @@
         private Label label2;
         private Label label3;
         private Label label1;
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private Button button5;
+        private Button addTransaction;
+        private Button viewTransaction;
+        private Button digitalVaultReceipt;
+        private Button costOfProduction;
+        private Button marketForecasting;
         private Label label4;
         private Button button6;
     }

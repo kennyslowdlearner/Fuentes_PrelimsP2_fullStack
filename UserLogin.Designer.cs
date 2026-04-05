@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserLogin));
             panel1 = new Panel();
+            label1 = new Label();
+            label2 = new Label();
             USERpass = new TextBox();
             USERusn = new TextBox();
             label4 = new Label();
-            loginUSER = new Button();
-            label1 = new Label();
-            label2 = new Label();
             button1 = new Button();
+            loginUSER = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -55,6 +55,28 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(855, 589);
             panel1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.Font = new Font("League Spartan SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.ForestGreen;
+            label1.Location = new Point(355, 355);
+            label1.Name = "label1";
+            label1.Size = new Size(145, 44);
+            label1.TabIndex = 5;
+            label1.Text = "Password : ";
+            label1.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // label2
+            // 
+            label2.Font = new Font("League Spartan SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.ForestGreen;
+            label2.Location = new Point(355, 313);
+            label2.Name = "label2";
+            label2.Size = new Size(145, 44);
+            label2.TabIndex = 6;
+            label2.Text = "Username : ";
+            label2.TextAlign = ContentAlignment.MiddleRight;
             // 
             // USERpass
             // 
@@ -86,43 +108,6 @@
             label4.Text = "Make sure to enter a valid credentials!";
             label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // loginUSER
-            // 
-            loginUSER.BackColor = Color.SeaGreen;
-            loginUSER.FlatAppearance.BorderColor = Color.FromArgb(0, 192, 0);
-            loginUSER.FlatStyle = FlatStyle.Flat;
-            loginUSER.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            loginUSER.ForeColor = Color.Gold;
-            loginUSER.Location = new Point(593, 469);
-            loginUSER.Name = "loginUSER";
-            loginUSER.Size = new Size(152, 39);
-            loginUSER.TabIndex = 0;
-            loginUSER.Text = "Login";
-            loginUSER.UseVisualStyleBackColor = false;
-            loginUSER.Click += loginUSER_Click;
-            // 
-            // label1
-            // 
-            label1.Font = new Font("League Spartan SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.ForestGreen;
-            label1.Location = new Point(355, 355);
-            label1.Name = "label1";
-            label1.Size = new Size(145, 44);
-            label1.TabIndex = 5;
-            label1.Text = "Password : ";
-            label1.TextAlign = ContentAlignment.MiddleRight;
-            // 
-            // label2
-            // 
-            label2.Font = new Font("League Spartan SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.ForestGreen;
-            label2.Location = new Point(355, 313);
-            label2.Name = "label2";
-            label2.Size = new Size(145, 44);
-            label2.TabIndex = 6;
-            label2.Text = "Username : ";
-            label2.TextAlign = ContentAlignment.MiddleRight;
-            // 
             // button1
             // 
             button1.BackColor = Color.SeaGreen;
@@ -138,6 +123,21 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += backHomepage_Click;
             // 
+            // loginUSER
+            // 
+            loginUSER.BackColor = Color.SeaGreen;
+            loginUSER.FlatAppearance.BorderColor = Color.FromArgb(0, 192, 0);
+            loginUSER.FlatStyle = FlatStyle.Flat;
+            loginUSER.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            loginUSER.ForeColor = Color.Gold;
+            loginUSER.Location = new Point(593, 469);
+            loginUSER.Name = "loginUSER";
+            loginUSER.Size = new Size(152, 39);
+            loginUSER.TabIndex = 0;
+            loginUSER.Text = "Login";
+            loginUSER.UseVisualStyleBackColor = false;
+            loginUSER.Click += loginUSER_Click;
+            // 
             // UserLogin
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -147,6 +147,7 @@
             Controls.Add(panel1);
             Name = "UserLogin";
             Text = "Pananom : User Login";
+            FormClosing += Close_Form_After_Run;
             FormClosed += UserLogin_FormClosed;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

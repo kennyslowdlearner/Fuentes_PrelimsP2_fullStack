@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin_SalesbyUserProfile));
-            label1 = new Label();
             sssssToolStripMenuItem = new ToolStripMenuItem();
             reloadToolStripMenuItem = new ToolStripMenuItem();
             learnMoreToolStripMenuItem = new ToolStripMenuItem();
@@ -49,32 +48,21 @@
             toolStripMenuItem4 = new ToolStripMenuItem();
             label4 = new Label();
             label2 = new Label();
-            button1 = new Button();
             button6 = new Button();
             button4 = new Button();
             button8 = new Button();
             label3 = new Label();
-            textBox1 = new TextBox();
             panel2 = new Panel();
             panel1 = new Panel();
             dataGridView1 = new DataGridView();
+            label1 = new Label();
+            searchBoxPI = new TextBox();
+            searchbuttonPI = new Button();
             menuStrip2.SuspendLayout();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.PaleGreen;
-            label1.Location = new Point(479, 202);
-            label1.Name = "label1";
-            label1.Size = new Size(98, 27);
-            label1.TabIndex = 124;
-            label1.Text = "Product:";
             // 
             // sssssToolStripMenuItem
             // 
@@ -238,7 +226,7 @@
             // toolStripMenuItem4
             // 
             toolStripMenuItem4.Name = "toolStripMenuItem4";
-            toolStripMenuItem4.Size = new Size(270, 34);
+            toolStripMenuItem4.Size = new Size(172, 34);
             toolStripMenuItem4.Text = "Logout";
             // 
             // label4
@@ -262,15 +250,6 @@
             label2.Size = new Size(189, 22);
             label2.TabIndex = 120;
             label2.Text = "Top Performing Seller";
-            // 
-            // button1
-            // 
-            button1.Location = new Point(821, 202);
-            button1.Name = "button1";
-            button1.Size = new Size(97, 35);
-            button1.TabIndex = 126;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
             // 
             // button6
             // 
@@ -326,13 +305,6 @@
             label3.TabIndex = 119;
             label3.Text = ":";
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(583, 203);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(232, 31);
-            textBox1.TabIndex = 125;
-            // 
             // panel2
             // 
             panel2.BackColor = Color.Transparent;
@@ -370,6 +342,43 @@
             dataGridView1.Size = new Size(941, 457);
             dataGridView1.TabIndex = 0;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.PaleGreen;
+            label1.Location = new Point(484, 193);
+            label1.Name = "label1";
+            label1.Size = new Size(157, 27);
+            label1.TabIndex = 130;
+            label1.Text = "Product Name";
+            // 
+            // searchBoxPI
+            // 
+            searchBoxPI.BackColor = Color.Gainsboro;
+            searchBoxPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            searchBoxPI.ForeColor = Color.SeaGreen;
+            searchBoxPI.Location = new Point(652, 195);
+            searchBoxPI.Name = "searchBoxPI";
+            searchBoxPI.Size = new Size(252, 29);
+            searchBoxPI.TabIndex = 129;
+            searchBoxPI.Text = "Search product name or id";
+            // 
+            // searchbuttonPI
+            // 
+            searchbuttonPI.BackColor = Color.Transparent;
+            searchbuttonPI.BackgroundImage = (Image)resources.GetObject("searchbuttonPI.BackgroundImage");
+            searchbuttonPI.FlatAppearance.BorderSize = 0;
+            searchbuttonPI.FlatStyle = FlatStyle.Flat;
+            searchbuttonPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            searchbuttonPI.ForeColor = Color.SeaGreen;
+            searchbuttonPI.Location = new Point(910, 189);
+            searchbuttonPI.Name = "searchbuttonPI";
+            searchbuttonPI.Size = new Size(120, 41);
+            searchbuttonPI.TabIndex = 128;
+            searchbuttonPI.UseVisualStyleBackColor = false;
+            // 
             // Admin_SalesbyUserProfile
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -377,12 +386,12 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
             Controls.Add(label1);
+            Controls.Add(searchBoxPI);
+            Controls.Add(searchbuttonPI);
             Controls.Add(menuStrip2);
-            Controls.Add(button1);
             Controls.Add(button6);
             Controls.Add(button4);
             Controls.Add(button8);
-            Controls.Add(textBox1);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "Admin_SalesbyUserProfile";
@@ -398,8 +407,6 @@
         }
 
         #endregion
-
-        private Label label1;
         private ToolStripMenuItem sssssToolStripMenuItem;
         private ToolStripMenuItem reloadToolStripMenuItem;
         private ToolStripMenuItem learnMoreToolStripMenuItem;
@@ -419,14 +426,15 @@
         private ToolStripMenuItem toolStripMenuItem4;
         private Label label4;
         private Label label2;
-        private Button button1;
         private Button button6;
         private Button button4;
         private Button button8;
         private Label label3;
-        private TextBox textBox1;
         private Panel panel2;
         private Panel panel1;
         private DataGridView dataGridView1;
+        private Label label1;
+        private TextBox searchBoxPI;
+        private Button searchbuttonPI;
     }
 }

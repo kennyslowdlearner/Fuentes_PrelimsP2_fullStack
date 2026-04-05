@@ -363,6 +363,7 @@
             button6.Size = new Size(120, 41);
             button6.TabIndex = 5;
             button6.UseVisualStyleBackColor = false;
+            button6.Click += backButton;
             // 
             // button7
             // 
@@ -391,6 +392,7 @@
             button8.Size = new Size(418, 64);
             button8.TabIndex = 5;
             button8.UseVisualStyleBackColor = false;
+            button8.Click += shortcut_DigitalReceiptVault;
             // 
             // label8
             // 
@@ -428,6 +430,7 @@
             button9.Size = new Size(418, 64);
             button9.TabIndex = 5;
             button9.UseVisualStyleBackColor = false;
+            button9.Click += shortcut_CostOfProduction;
             // 
             // button10
             // 
@@ -441,6 +444,7 @@
             button10.Size = new Size(418, 64);
             button10.TabIndex = 5;
             button10.UseVisualStyleBackColor = false;
+            button10.Click += shortcut_MarketForecasting;
             // 
             // User_TransactionSheet
             // 

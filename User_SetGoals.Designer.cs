@@ -1,6 +1,6 @@
 ﻿namespace Fuentes_PrelimsP2
 {
-    partial class UserSetGoals
+    partial class User_SetGoals
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserSetGoals));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(User_SetGoals));
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -255,6 +255,7 @@
             button6.Size = new Size(120, 41);
             button6.TabIndex = 75;
             button6.UseVisualStyleBackColor = false;
+            button6.Click += backButton;
             // 
             // button5
             // 
@@ -296,7 +297,7 @@
             panel1.Size = new Size(655, 454);
             panel1.TabIndex = 77;
             // 
-            // UserSetGoals
+            // User_SetGoals
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -305,7 +306,7 @@
             Controls.Add(panel1);
             Controls.Add(button6);
             Controls.Add(button5);
-            Name = "UserSetGoals";
+            Name = "User_SetGoals";
             Text = "Form1";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

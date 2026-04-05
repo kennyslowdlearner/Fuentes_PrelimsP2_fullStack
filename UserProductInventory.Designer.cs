@@ -88,6 +88,7 @@
             button6.Size = new Size(120, 41);
             button6.TabIndex = 54;
             button6.UseVisualStyleBackColor = false;
+            button6.Click += backButton;
             // 
             // button5
             // 
@@ -370,6 +371,7 @@
             Controls.Add(panel1);
             Name = "productInventory";
             Text = "Pananom : Product Inventory";
+            FormClosing += Close_Form_After_Run;
             FormClosed += productInventory_FormClosed;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

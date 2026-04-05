@@ -25,7 +25,7 @@ namespace Fuentes_PrelimsP2
 
 
             //made changes here (4) [4/3/2026 | 11:11 AM]
-            string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Y:\second year college\SECOND SEM Jan 20, 2026\CPE262 OOP2\Project Proposal\Project Pananom.accdb";
+            string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Pananom Database\Prooject Pananom Data.accdb";
             connection = new OleDbConnection(connectionString);
 
             adapter = new OleDbDataAdapter("SELECT * FROM [User Account Information]", connection);
@@ -35,7 +35,7 @@ namespace Fuentes_PrelimsP2
             try
             {
                 adapter.Fill(dataSet, "User Account Information");
-            
+
             }
             catch (Exception ex)
             {
@@ -51,7 +51,7 @@ namespace Fuentes_PrelimsP2
 
         private void USERusn_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void loginUSER_Click(object sender, EventArgs e)
@@ -120,6 +120,18 @@ namespace Fuentes_PrelimsP2
             home = new Homepage();
             this.Hide();
             home.Show();
+        }
+
+        private void Close_Form_After_Run(object sender, FormClosingEventArgs e)
+        {
+            if (connection != null && connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+                connection.Dispose();
+            }
+
+            // Force the entire environment to shut down
+            Environment.Exit(0);
         }
     }
 }
