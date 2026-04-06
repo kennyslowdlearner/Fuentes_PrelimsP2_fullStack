@@ -30,36 +30,36 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(productInventory));
             panel1 = new Panel();
-            dataGridView1 = new DataGridView();
+            Product_Inventory_Grid = new DataGridView();
             button6 = new Button();
             button5 = new Button();
             label8 = new Label();
-            textBox2 = new TextBox();
+            fill_productname_pi = new TextBox();
             label9 = new Label();
             label1 = new Label();
-            textBox1 = new TextBox();
+            fill_productid_pi = new TextBox();
             label2 = new Label();
             label3 = new Label();
-            textBox3 = new TextBox();
+            fill_quantity_pi = new TextBox();
             label4 = new Label();
-            button3 = new Button();
-            button2 = new Button();
-            button1 = new Button();
-            button8 = new Button();
-            button7 = new Button();
-            button4 = new Button();
+            press_update_pi = new Button();
+            press_delete_pi = new Button();
+            press_insert_pi = new Button();
+            press_connect_pi = new Button();
+            press_load_pi = new Button();
+            press_refresh_pi = new Button();
             label6 = new Label();
             label5 = new Label();
-            searchBoxPI = new TextBox();
-            searchbuttonPI = new Button();
+            fill_search_pi = new TextBox();
+            press_search_pi = new Button();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Product_Inventory_Grid).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
-            panel1.Controls.Add(dataGridView1);
+            panel1.Controls.Add(Product_Inventory_Grid);
             panel1.Font = new Font("Glacial Indifference", 10F);
             panel1.Location = new Point(54, 235);
             panel1.Name = "panel1";
@@ -67,14 +67,15 @@
             panel1.TabIndex = 1;
             panel1.Paint += panel1_Paint;
             // 
-            // dataGridView1
+            // Product_Inventory_Grid
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(1368, 308);
-            dataGridView1.TabIndex = 0;
+            Product_Inventory_Grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Product_Inventory_Grid.Location = new Point(3, 3);
+            Product_Inventory_Grid.Name = "Product_Inventory_Grid";
+            Product_Inventory_Grid.RowHeadersWidth = 62;
+            Product_Inventory_Grid.Size = new Size(1368, 308);
+            Product_Inventory_Grid.TabIndex = 0;
+            Product_Inventory_Grid.CellClick += datagrid_cellclick;
             // 
             // button6
             // 
@@ -116,14 +117,14 @@
             label8.Text = "Product Name";
             label8.Click += label8_Click;
             // 
-            // textBox2
+            // fill_productname_pi
             // 
-            textBox2.BackColor = Color.LightGreen;
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Location = new Point(266, 567);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(207, 24);
-            textBox2.TabIndex = 74;
+            fill_productname_pi.BackColor = Color.LightGreen;
+            fill_productname_pi.BorderStyle = BorderStyle.None;
+            fill_productname_pi.Location = new Point(266, 567);
+            fill_productname_pi.Name = "fill_productname_pi";
+            fill_productname_pi.Size = new Size(207, 24);
+            fill_productname_pi.TabIndex = 74;
             // 
             // label9
             // 
@@ -149,14 +150,14 @@
             label1.TabIndex = 73;
             label1.Text = ":";
             // 
-            // textBox1
+            // fill_productid_pi
             // 
-            textBox1.BackColor = Color.LightGreen;
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Location = new Point(266, 594);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(207, 24);
-            textBox1.TabIndex = 74;
+            fill_productid_pi.BackColor = Color.LightGreen;
+            fill_productid_pi.BorderStyle = BorderStyle.None;
+            fill_productid_pi.Location = new Point(266, 594);
+            fill_productid_pi.Name = "fill_productid_pi";
+            fill_productid_pi.Size = new Size(207, 24);
+            fill_productid_pi.TabIndex = 74;
             // 
             // label2
             // 
@@ -182,14 +183,14 @@
             label3.TabIndex = 73;
             label3.Text = ":";
             // 
-            // textBox3
+            // fill_quantity_pi
             // 
-            textBox3.BackColor = Color.LightGreen;
-            textBox3.BorderStyle = BorderStyle.None;
-            textBox3.Location = new Point(266, 621);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(207, 24);
-            textBox3.TabIndex = 74;
+            fill_quantity_pi.BackColor = Color.LightGreen;
+            fill_quantity_pi.BorderStyle = BorderStyle.None;
+            fill_quantity_pi.Location = new Point(266, 621);
+            fill_quantity_pi.Name = "fill_quantity_pi";
+            fill_quantity_pi.Size = new Size(207, 24);
+            fill_quantity_pi.TabIndex = 74;
             // 
             // label4
             // 
@@ -203,95 +204,101 @@
             label4.TabIndex = 75;
             label4.Text = "Quantity (Kg)";
             // 
-            // button3
+            // press_update_pi
             // 
-            button3.BackColor = Color.Yellow;
-            button3.FlatAppearance.BorderColor = Color.Gold;
-            button3.FlatAppearance.BorderSize = 2;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.ForeColor = Color.DarkGreen;
-            button3.Location = new Point(348, 669);
-            button3.Name = "button3";
-            button3.Size = new Size(143, 38);
-            button3.TabIndex = 76;
-            button3.Text = "Update";
-            button3.UseVisualStyleBackColor = false;
+            press_update_pi.BackColor = Color.Yellow;
+            press_update_pi.FlatAppearance.BorderColor = Color.Gold;
+            press_update_pi.FlatAppearance.BorderSize = 2;
+            press_update_pi.FlatStyle = FlatStyle.Flat;
+            press_update_pi.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            press_update_pi.ForeColor = Color.DarkGreen;
+            press_update_pi.Location = new Point(348, 669);
+            press_update_pi.Name = "press_update_pi";
+            press_update_pi.Size = new Size(143, 38);
+            press_update_pi.TabIndex = 76;
+            press_update_pi.Text = "Update";
+            press_update_pi.UseVisualStyleBackColor = false;
+            press_update_pi.Click += press_updatepi;
             // 
-            // button2
+            // press_delete_pi
             // 
-            button2.BackColor = Color.Yellow;
-            button2.FlatAppearance.BorderColor = Color.Gold;
-            button2.FlatAppearance.BorderSize = 2;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.DarkGreen;
-            button2.Location = new Point(199, 669);
-            button2.Name = "button2";
-            button2.Size = new Size(143, 38);
-            button2.TabIndex = 77;
-            button2.Text = "Delete";
-            button2.UseVisualStyleBackColor = false;
+            press_delete_pi.BackColor = Color.Yellow;
+            press_delete_pi.FlatAppearance.BorderColor = Color.Gold;
+            press_delete_pi.FlatAppearance.BorderSize = 2;
+            press_delete_pi.FlatStyle = FlatStyle.Flat;
+            press_delete_pi.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            press_delete_pi.ForeColor = Color.DarkGreen;
+            press_delete_pi.Location = new Point(199, 669);
+            press_delete_pi.Name = "press_delete_pi";
+            press_delete_pi.Size = new Size(143, 38);
+            press_delete_pi.TabIndex = 77;
+            press_delete_pi.Text = "Delete";
+            press_delete_pi.UseVisualStyleBackColor = false;
+            press_delete_pi.Click += press_deletepi;
             // 
-            // button1
+            // press_insert_pi
             // 
-            button1.BackColor = Color.Yellow;
-            button1.FlatAppearance.BorderColor = Color.Gold;
-            button1.FlatAppearance.BorderSize = 2;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.DarkGreen;
-            button1.Location = new Point(50, 669);
-            button1.Name = "button1";
-            button1.Size = new Size(143, 38);
-            button1.TabIndex = 78;
-            button1.Text = "Insert";
-            button1.UseVisualStyleBackColor = false;
+            press_insert_pi.BackColor = Color.Yellow;
+            press_insert_pi.FlatAppearance.BorderColor = Color.Gold;
+            press_insert_pi.FlatAppearance.BorderSize = 2;
+            press_insert_pi.FlatStyle = FlatStyle.Flat;
+            press_insert_pi.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            press_insert_pi.ForeColor = Color.DarkGreen;
+            press_insert_pi.Location = new Point(50, 669);
+            press_insert_pi.Name = "press_insert_pi";
+            press_insert_pi.Size = new Size(143, 38);
+            press_insert_pi.TabIndex = 78;
+            press_insert_pi.Text = "Insert";
+            press_insert_pi.UseVisualStyleBackColor = false;
+            press_insert_pi.Click += press_insertpi;
             // 
-            // button8
+            // press_connect_pi
             // 
-            button8.BackColor = Color.Yellow;
-            button8.FlatAppearance.BorderColor = Color.Gold;
-            button8.FlatAppearance.BorderSize = 2;
-            button8.FlatStyle = FlatStyle.Flat;
-            button8.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button8.ForeColor = Color.DarkGreen;
-            button8.Location = new Point(1287, 558);
-            button8.Name = "button8";
-            button8.Size = new Size(143, 38);
-            button8.TabIndex = 79;
-            button8.Text = "Connect";
-            button8.UseVisualStyleBackColor = false;
+            press_connect_pi.BackColor = Color.Yellow;
+            press_connect_pi.FlatAppearance.BorderColor = Color.Gold;
+            press_connect_pi.FlatAppearance.BorderSize = 2;
+            press_connect_pi.FlatStyle = FlatStyle.Flat;
+            press_connect_pi.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            press_connect_pi.ForeColor = Color.DarkGreen;
+            press_connect_pi.Location = new Point(1287, 558);
+            press_connect_pi.Name = "press_connect_pi";
+            press_connect_pi.Size = new Size(143, 38);
+            press_connect_pi.TabIndex = 79;
+            press_connect_pi.Text = "Connect";
+            press_connect_pi.UseVisualStyleBackColor = false;
+            press_connect_pi.Click += press_connectpi;
             // 
-            // button7
+            // press_load_pi
             // 
-            button7.BackColor = Color.Yellow;
-            button7.FlatAppearance.BorderColor = Color.Gold;
-            button7.FlatAppearance.BorderSize = 2;
-            button7.FlatStyle = FlatStyle.Flat;
-            button7.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button7.ForeColor = Color.DarkGreen;
-            button7.Location = new Point(1138, 558);
-            button7.Name = "button7";
-            button7.Size = new Size(143, 38);
-            button7.TabIndex = 80;
-            button7.Text = "Load";
-            button7.UseVisualStyleBackColor = false;
+            press_load_pi.BackColor = Color.Yellow;
+            press_load_pi.FlatAppearance.BorderColor = Color.Gold;
+            press_load_pi.FlatAppearance.BorderSize = 2;
+            press_load_pi.FlatStyle = FlatStyle.Flat;
+            press_load_pi.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            press_load_pi.ForeColor = Color.DarkGreen;
+            press_load_pi.Location = new Point(1138, 558);
+            press_load_pi.Name = "press_load_pi";
+            press_load_pi.Size = new Size(143, 38);
+            press_load_pi.TabIndex = 80;
+            press_load_pi.Text = "Load";
+            press_load_pi.UseVisualStyleBackColor = false;
+            press_load_pi.Click += press_loadpi;
             // 
-            // button4
+            // press_refresh_pi
             // 
-            button4.BackColor = Color.Yellow;
-            button4.FlatAppearance.BorderColor = Color.Gold;
-            button4.FlatAppearance.BorderSize = 2;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button4.ForeColor = Color.DarkGreen;
-            button4.Location = new Point(989, 558);
-            button4.Name = "button4";
-            button4.Size = new Size(143, 38);
-            button4.TabIndex = 81;
-            button4.Text = "Refresh";
-            button4.UseVisualStyleBackColor = false;
+            press_refresh_pi.BackColor = Color.Yellow;
+            press_refresh_pi.FlatAppearance.BorderColor = Color.Gold;
+            press_refresh_pi.FlatAppearance.BorderSize = 2;
+            press_refresh_pi.FlatStyle = FlatStyle.Flat;
+            press_refresh_pi.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            press_refresh_pi.ForeColor = Color.DarkGreen;
+            press_refresh_pi.Location = new Point(989, 558);
+            press_refresh_pi.Name = "press_refresh_pi";
+            press_refresh_pi.Size = new Size(143, 38);
+            press_refresh_pi.TabIndex = 81;
+            press_refresh_pi.Text = "Refresh";
+            press_refresh_pi.UseVisualStyleBackColor = false;
+            press_refresh_pi.Click += press_refreshpi;
             // 
             // label6
             // 
@@ -317,29 +324,30 @@
             label5.TabIndex = 110;
             label5.Text = "Product Name";
             // 
-            // searchBoxPI
+            // fill_search_pi
             // 
-            searchBoxPI.BackColor = Color.Gainsboro;
-            searchBoxPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            searchBoxPI.Location = new Point(222, 190);
-            searchBoxPI.Name = "searchBoxPI";
-            searchBoxPI.Size = new Size(252, 29);
-            searchBoxPI.TabIndex = 109;
-            searchBoxPI.Text = "Search product name or id";
+            fill_search_pi.BackColor = Color.Gainsboro;
+            fill_search_pi.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            fill_search_pi.Location = new Point(222, 190);
+            fill_search_pi.Name = "fill_search_pi";
+            fill_search_pi.Size = new Size(252, 29);
+            fill_search_pi.TabIndex = 109;
+            fill_search_pi.Text = "Search product name or id";
+            fill_search_pi.TextChanged += fill_searchpi;
             // 
-            // searchbuttonPI
+            // press_search_pi
             // 
-            searchbuttonPI.BackColor = Color.Transparent;
-            searchbuttonPI.BackgroundImage = (Image)resources.GetObject("searchbuttonPI.BackgroundImage");
-            searchbuttonPI.FlatAppearance.BorderSize = 0;
-            searchbuttonPI.FlatStyle = FlatStyle.Flat;
-            searchbuttonPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            searchbuttonPI.ForeColor = Color.DarkOliveGreen;
-            searchbuttonPI.Location = new Point(480, 184);
-            searchbuttonPI.Name = "searchbuttonPI";
-            searchbuttonPI.Size = new Size(120, 41);
-            searchbuttonPI.TabIndex = 108;
-            searchbuttonPI.UseVisualStyleBackColor = false;
+            press_search_pi.BackColor = Color.Transparent;
+            press_search_pi.BackgroundImage = (Image)resources.GetObject("press_search_pi.BackgroundImage");
+            press_search_pi.FlatAppearance.BorderSize = 0;
+            press_search_pi.FlatStyle = FlatStyle.Flat;
+            press_search_pi.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            press_search_pi.ForeColor = Color.DarkOliveGreen;
+            press_search_pi.Location = new Point(480, 184);
+            press_search_pi.Name = "press_search_pi";
+            press_search_pi.Size = new Size(120, 41);
+            press_search_pi.TabIndex = 108;
+            press_search_pi.UseVisualStyleBackColor = false;
             // 
             // productInventory
             // 
@@ -348,23 +356,23 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
             Controls.Add(label5);
-            Controls.Add(searchBoxPI);
-            Controls.Add(searchbuttonPI);
+            Controls.Add(fill_search_pi);
+            Controls.Add(press_search_pi);
             Controls.Add(label6);
-            Controls.Add(button8);
-            Controls.Add(button7);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(press_connect_pi);
+            Controls.Add(press_load_pi);
+            Controls.Add(press_refresh_pi);
+            Controls.Add(press_update_pi);
+            Controls.Add(press_delete_pi);
+            Controls.Add(press_insert_pi);
             Controls.Add(label4);
-            Controls.Add(textBox3);
+            Controls.Add(fill_quantity_pi);
             Controls.Add(label2);
-            Controls.Add(textBox1);
+            Controls.Add(fill_productid_pi);
             Controls.Add(label3);
             Controls.Add(label8);
             Controls.Add(label1);
-            Controls.Add(textBox2);
+            Controls.Add(fill_productname_pi);
             Controls.Add(label9);
             Controls.Add(button6);
             Controls.Add(button5);
@@ -374,7 +382,7 @@
             FormClosing += Close_Form_After_Run;
             FormClosed += productInventory_FormClosed;
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Product_Inventory_Grid).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -385,24 +393,24 @@
         private Button button6;
         private Button button5;
         private Label label8;
-        private TextBox textBox2;
+        private TextBox fill_productname_pi;
         private Label label9;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox fill_productid_pi;
         private Label label2;
         private Label label3;
-        private TextBox textBox3;
+        private TextBox fill_quantity_pi;
         private Label label4;
-        private Button button3;
-        private Button button2;
-        private Button button1;
-        private Button button8;
-        private Button button7;
-        private Button button4;
-        private DataGridView dataGridView1;
+        private Button press_update_pi;
+        private Button press_delete_pi;
+        private Button press_insert_pi;
+        private Button press_connect_pi;
+        private Button press_load_pi;
+        private Button press_refresh_pi;
+        private DataGridView Product_Inventory_Grid;
         private Label label6;
         private Label label5;
-        private TextBox searchBoxPI;
-        private Button searchbuttonPI;
+        private TextBox fill_search_pi;
+        private Button press_search_pi;
     }
 }
