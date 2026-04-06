@@ -1,6 +1,6 @@
 ﻿namespace Fuentes_PrelimsP2
 {
-    partial class Admin_SalesReport
+    partial class AdminSalesReport
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin_SalesReport));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminSalesReport));
             button1 = new Button();
             button7 = new Button();
             panel1 = new Panel();
@@ -50,6 +50,7 @@
             button1.Size = new Size(268, 111);
             button1.TabIndex = 0;
             button1.UseVisualStyleBackColor = true;
+            button1.Click += GoToAdminSalesReport;
             // 
             // button7
             // 
@@ -63,6 +64,7 @@
             button7.Size = new Size(120, 41);
             button7.TabIndex = 96;
             button7.UseVisualStyleBackColor = false;
+            button7.Click += backButton;
             // 
             // panel1
             // 
@@ -88,6 +90,7 @@
             button6.Size = new Size(268, 111);
             button6.TabIndex = 0;
             button6.UseVisualStyleBackColor = true;
+            button6.Click += GoToInventoryManagement;
             // 
             // button3
             // 
@@ -99,6 +102,7 @@
             button3.Size = new Size(268, 111);
             button3.TabIndex = 0;
             button3.UseVisualStyleBackColor = true;
+            button3.Click += GoToTotalTransactions;
             // 
             // button5
             // 
@@ -110,6 +114,7 @@
             button5.Size = new Size(268, 111);
             button5.TabIndex = 0;
             button5.UseVisualStyleBackColor = true;
+            button5.Click += GoToTimeBasedSalesReport;
             // 
             // button4
             // 
@@ -121,6 +126,7 @@
             button4.Size = new Size(268, 111);
             button4.TabIndex = 0;
             button4.UseVisualStyleBackColor = true;
+            button4.Click += GoToSalesByProduct;
             // 
             // button2
             // 
@@ -132,8 +138,9 @@
             button2.Size = new Size(268, 111);
             button2.TabIndex = 0;
             button2.UseVisualStyleBackColor = true;
+            button2.Click += GoToSaleByUserProfile;
             // 
-            // Admin_SalesReport
+            // AdminSalesReport
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -141,7 +148,7 @@
             ClientSize = new Size(1063, 753);
             Controls.Add(panel1);
             Controls.Add(button7);
-            Name = "Admin_SalesReport";
+            Name = "AdminSalesReport";
             Text = "Form1";
             panel1.ResumeLayout(false);
             ResumeLayout(false);

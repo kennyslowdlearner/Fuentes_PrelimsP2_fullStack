@@ -2,6 +2,7 @@ namespace Fuentes_PrelimsP2
 {
     public partial class Homepage : Form
     {
+        private static Homepage instance;
 
         public Homepage()
         {
@@ -9,7 +10,18 @@ namespace Fuentes_PrelimsP2
 
         }
 
-    
+        internal static Homepage Instance
+        {
+            get
+            {
+                if (instance == null || instance.IsDisposed)
+                {
+                    instance = new Homepage();
+                }
+
+                return instance;
+            }
+        }
 
         private void Homepage_Paint(object sender, PaintEventArgs e)
         {

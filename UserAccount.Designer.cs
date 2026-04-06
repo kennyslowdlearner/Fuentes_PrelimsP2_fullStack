@@ -167,7 +167,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, toolStripMenuItem2 });
             menuStrip1.Location = new Point(696, 246);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(316, 32);
+            menuStrip1.Size = new Size(496, 32);
             menuStrip1.TabIndex = 4;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -218,10 +218,11 @@
             // 
             // logoutToolStripMenuItem
             // 
+            logoutToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(169, 34);
+            logoutToolStripMenuItem.Size = new Size(270, 34);
             logoutToolStripMenuItem.Text = "Logout";
-            logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
+            logoutToolStripMenuItem.Click += logoutUser;
             // 
             // label1
             // 

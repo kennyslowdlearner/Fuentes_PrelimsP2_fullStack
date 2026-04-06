@@ -451,6 +451,7 @@
             button6.Size = new Size(120, 41);
             button6.TabIndex = 87;
             button6.UseVisualStyleBackColor = false;
+            button6.Click += backButton;
             // 
             // button5
             // 

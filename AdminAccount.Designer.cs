@@ -72,6 +72,7 @@
             button2.Size = new Size(288, 113);
             button2.TabIndex = 0;
             button2.UseVisualStyleBackColor = true;
+            button2.Click += GoToTransportSchedule;
             // 
             // groupBox1
             // 
@@ -101,6 +102,7 @@
             button3.Size = new Size(288, 113);
             button3.TabIndex = 0;
             button3.UseVisualStyleBackColor = true;
+            button3.Click += GoToSalesReport;
             // 
             // button1
             // 
@@ -116,6 +118,7 @@
             button1.Size = new Size(288, 113);
             button1.TabIndex = 0;
             button1.UseVisualStyleBackColor = true;
+            button1.Click += GoToAccountControl;
             // 
             // richTextBox1
             // 
@@ -210,6 +213,7 @@
             toolStripMenuItem4.Name = "toolStripMenuItem4";
             toolStripMenuItem4.Size = new Size(270, 34);
             toolStripMenuItem4.Text = "Logout";
+            toolStripMenuItem4.Click += logoutAdmin;
             // 
             // menuStrip2
             // 
@@ -219,7 +223,7 @@
             menuStrip2.Items.AddRange(new ToolStripItem[] { sssssToolStripMenuItem, accountSettingsToolStripMenuItem });
             menuStrip2.Location = new Point(669, 172);
             menuStrip2.Name = "menuStrip2";
-            menuStrip2.Size = new Size(343, 32);
+            menuStrip2.Size = new Size(523, 32);
             menuStrip2.TabIndex = 106;
             menuStrip2.Text = "menuStrip2";
             // 

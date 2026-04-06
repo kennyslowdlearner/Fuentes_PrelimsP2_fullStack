@@ -12,7 +12,7 @@ namespace Fuentes_PrelimsP2
     public partial class UserAccount : Form
     {
         private static UserAccount instance;
-     
+
         public UserAccount()
         {
             InitializeComponent();
@@ -181,6 +181,20 @@ namespace Fuentes_PrelimsP2
             catch (Exception ex)
             {
                 MessageBox.Show("Failed to open Rice Yield Estimation & Registry page:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void logoutUser(object sender, EventArgs e)
+        {
+            try
+            {
+                Homepage.Instance.Show();
+                this.Hide();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to logging out:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
