@@ -30,26 +30,24 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(User_CostofProduction));
             panel1 = new Panel();
-            dataGridView1 = new DataGridView();
+            Cost_Of_Production_Grid = new DataGridView();
             label10 = new Label();
             label1 = new Label();
-            textBox2 = new TextBox();
+            fill_itemname_cop = new TextBox();
             label2 = new Label();
-            textBox1 = new TextBox();
+            fill_unit_cop = new TextBox();
             label3 = new Label();
             label4 = new Label();
-            textBox3 = new TextBox();
+            fill_quantity_cop = new TextBox();
             label5 = new Label();
-            textBox4 = new TextBox();
+            fill_priceperunit_cop = new TextBox();
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
-            textBox5 = new TextBox();
             label9 = new Label();
             label11 = new Label();
             label12 = new Label();
             label13 = new Label();
-            label14 = new Label();
             button3 = new Button();
             button2 = new Button();
             button1 = new Button();
@@ -68,30 +66,33 @@
             button9 = new Button();
             label17 = new Label();
             label18 = new Label();
-            searchBoxPI = new TextBox();
+            fill_search_cop = new TextBox();
             searchbuttonPI = new Button();
             label19 = new Label();
+            fill_date_cop = new DateTimePicker();
+            fill_status_cop = new ComboBox();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Cost_Of_Production_Grid).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.Controls.Add(dataGridView1);
+            panel1.Controls.Add(Cost_Of_Production_Grid);
             panel1.Location = new Point(84, 241);
             panel1.Name = "panel1";
             panel1.Size = new Size(895, 465);
             panel1.TabIndex = 0;
             // 
-            // dataGridView1
+            // Cost_Of_Production_Grid
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(888, 459);
-            dataGridView1.TabIndex = 0;
+            Cost_Of_Production_Grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Cost_Of_Production_Grid.Location = new Point(3, 3);
+            Cost_Of_Production_Grid.Name = "Cost_Of_Production_Grid";
+            Cost_Of_Production_Grid.RowHeadersWidth = 62;
+            Cost_Of_Production_Grid.Size = new Size(888, 459);
+            Cost_Of_Production_Grid.TabIndex = 0;
+            Cost_Of_Production_Grid.CellClick += dataGridCellClick;
             // 
             // label10
             // 
@@ -117,14 +118,14 @@
             label1.TabIndex = 50;
             label1.Text = "Item Name";
             // 
-            // textBox2
+            // fill_itemname_cop
             // 
-            textBox2.BackColor = Color.LightGreen;
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Location = new Point(1191, 213);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(259, 24);
-            textBox2.TabIndex = 49;
+            fill_itemname_cop.BackColor = Color.LightGreen;
+            fill_itemname_cop.BorderStyle = BorderStyle.None;
+            fill_itemname_cop.Location = new Point(1191, 213);
+            fill_itemname_cop.Name = "fill_itemname_cop";
+            fill_itemname_cop.Size = new Size(259, 24);
+            fill_itemname_cop.TabIndex = 49;
             // 
             // label2
             // 
@@ -138,14 +139,14 @@
             label2.TabIndex = 50;
             label2.Text = "Information Sheet";
             // 
-            // textBox1
+            // fill_unit_cop
             // 
-            textBox1.BackColor = Color.LightGreen;
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Location = new Point(1191, 241);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(259, 24);
-            textBox1.TabIndex = 49;
+            fill_unit_cop.BackColor = Color.LightGreen;
+            fill_unit_cop.BorderStyle = BorderStyle.None;
+            fill_unit_cop.Location = new Point(1191, 241);
+            fill_unit_cop.Name = "fill_unit_cop";
+            fill_unit_cop.Size = new Size(259, 24);
+            fill_unit_cop.TabIndex = 49;
             // 
             // label3
             // 
@@ -171,14 +172,14 @@
             label4.TabIndex = 51;
             label4.Text = ":";
             // 
-            // textBox3
+            // fill_quantity_cop
             // 
-            textBox3.BackColor = Color.LightGreen;
-            textBox3.BorderStyle = BorderStyle.None;
-            textBox3.Location = new Point(1191, 268);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(259, 24);
-            textBox3.TabIndex = 49;
+            fill_quantity_cop.BackColor = Color.LightGreen;
+            fill_quantity_cop.BorderStyle = BorderStyle.None;
+            fill_quantity_cop.Location = new Point(1191, 268);
+            fill_quantity_cop.Name = "fill_quantity_cop";
+            fill_quantity_cop.Size = new Size(259, 24);
+            fill_quantity_cop.TabIndex = 49;
             // 
             // label5
             // 
@@ -192,14 +193,14 @@
             label5.TabIndex = 50;
             label5.Text = "Quantity";
             // 
-            // textBox4
+            // fill_priceperunit_cop
             // 
-            textBox4.BackColor = Color.LightGreen;
-            textBox4.BorderStyle = BorderStyle.None;
-            textBox4.Location = new Point(1215, 296);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(235, 24);
-            textBox4.TabIndex = 49;
+            fill_priceperunit_cop.BackColor = Color.LightGreen;
+            fill_priceperunit_cop.BorderStyle = BorderStyle.None;
+            fill_priceperunit_cop.Location = new Point(1215, 296);
+            fill_priceperunit_cop.Name = "fill_priceperunit_cop";
+            fill_priceperunit_cop.Size = new Size(235, 24);
+            fill_priceperunit_cop.TabIndex = 49;
             // 
             // label6
             // 
@@ -236,15 +237,6 @@
             label8.Size = new Size(19, 27);
             label8.TabIndex = 51;
             label8.Text = ":";
-            // 
-            // textBox5
-            // 
-            textBox5.BackColor = Color.LightGreen;
-            textBox5.BorderStyle = BorderStyle.None;
-            textBox5.Location = new Point(1191, 344);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(259, 24);
-            textBox5.TabIndex = 49;
             // 
             // label9
             // 
@@ -294,18 +286,6 @@
             label13.TabIndex = 51;
             label13.Text = ":";
             // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.BackColor = Color.Transparent;
-            label14.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label14.ForeColor = Color.Gold;
-            label14.Location = new Point(1191, 398);
-            label14.Name = "label14";
-            label14.Size = new Size(64, 27);
-            label14.TabIndex = 50;
-            label14.Text = "Label";
-            // 
             // button3
             // 
             button3.BackColor = Color.Yellow;
@@ -320,6 +300,7 @@
             button3.TabIndex = 52;
             button3.Text = "Delete";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += press_deletecop;
             // 
             // button2
             // 
@@ -335,6 +316,7 @@
             button2.TabIndex = 53;
             button2.Text = "Update";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += press_updatecop;
             // 
             // button1
             // 
@@ -350,6 +332,7 @@
             button1.TabIndex = 54;
             button1.Text = "Insert";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += press_insertcop;
             // 
             // button8
             // 
@@ -513,15 +496,15 @@
             label18.TabIndex = 114;
             label18.Text = "Product Name";
             // 
-            // searchBoxPI
+            // fill_search_cop
             // 
-            searchBoxPI.BackColor = Color.Gainsboro;
-            searchBoxPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            searchBoxPI.Location = new Point(246, 199);
-            searchBoxPI.Name = "searchBoxPI";
-            searchBoxPI.Size = new Size(252, 29);
-            searchBoxPI.TabIndex = 113;
-            searchBoxPI.Text = "Search product name or id";
+            fill_search_cop.BackColor = Color.Gainsboro;
+            fill_search_cop.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            fill_search_cop.Location = new Point(246, 199);
+            fill_search_cop.Name = "fill_search_cop";
+            fill_search_cop.Size = new Size(252, 29);
+            fill_search_cop.TabIndex = 113;
+            fill_search_cop.Text = "Search product name or id";
             // 
             // searchbuttonPI
             // 
@@ -549,14 +532,39 @@
             label19.TabIndex = 111;
             label19.Text = ":";
             // 
+            // fill_date_cop
+            // 
+            fill_date_cop.CalendarForeColor = Color.PaleGreen;
+            fill_date_cop.CalendarMonthBackground = Color.PaleGreen;
+            fill_date_cop.CalendarTitleBackColor = Color.PaleGreen;
+            fill_date_cop.CalendarTitleForeColor = Color.PaleGreen;
+            fill_date_cop.CalendarTrailingForeColor = Color.PaleGreen;
+            fill_date_cop.Location = new Point(1191, 344);
+            fill_date_cop.Name = "fill_date_cop";
+            fill_date_cop.Size = new Size(259, 31);
+            fill_date_cop.TabIndex = 115;
+            // 
+            // fill_status_cop
+            // 
+            fill_status_cop.BackColor = Color.PaleGreen;
+            fill_status_cop.ForeColor = SystemColors.Window;
+            fill_status_cop.FormattingEnabled = true;
+            fill_status_cop.Items.AddRange(new object[] { "Reserved and Paid", "Reserved and Unpaid", "Pending and Paid", "Pending and Unpaid", "Delivered and Paid", "Delivered and Credit", "Cancelled and Paid", "Cancelled and Unpaid", "Delayed and Paid", "Delayed and Unpaid" });
+            fill_status_cop.Location = new Point(1191, 392);
+            fill_status_cop.Name = "fill_status_cop";
+            fill_status_cop.Size = new Size(259, 33);
+            fill_status_cop.TabIndex = 116;
+            // 
             // User_CostofProduction
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
+            Controls.Add(fill_status_cop);
+            Controls.Add(fill_date_cop);
             Controls.Add(label18);
-            Controls.Add(searchBoxPI);
+            Controls.Add(fill_search_cop);
             Controls.Add(searchbuttonPI);
             Controls.Add(label19);
             Controls.Add(button7);
@@ -577,24 +585,22 @@
             Controls.Add(label7);
             Controls.Add(label10);
             Controls.Add(label2);
-            Controls.Add(label14);
             Controls.Add(label12);
             Controls.Add(label9);
             Controls.Add(label6);
-            Controls.Add(textBox5);
             Controls.Add(label3);
-            Controls.Add(textBox4);
-            Controls.Add(textBox1);
+            Controls.Add(fill_priceperunit_cop);
+            Controls.Add(fill_unit_cop);
             Controls.Add(label5);
-            Controls.Add(textBox3);
+            Controls.Add(fill_quantity_cop);
             Controls.Add(label1);
-            Controls.Add(textBox2);
+            Controls.Add(fill_itemname_cop);
             Controls.Add(panel1);
             MaximizeBox = false;
             Name = "User_CostofProduction";
             Text = "Cost of Production";
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Cost_Of_Production_Grid).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -606,23 +612,21 @@
         private Panel panel1;
         private Label label10;
         private Label label1;
-        private TextBox textBox2;
+        private TextBox fill_itemname_cop;
         private Label label2;
-        private TextBox textBox1;
+        private TextBox fill_unit_cop;
         private Label label3;
         private Label label4;
-        private TextBox textBox3;
+        private TextBox fill_quantity_cop;
         private Label label5;
-        private TextBox textBox4;
+        private TextBox fill_priceperunit_cop;
         private Label label6;
         private Label label7;
         private Label label8;
-        private TextBox textBox5;
         private Label label9;
         private Label label11;
         private Label label12;
         private Label label13;
-        private Label label14;
         private Button button3;
         private Button button2;
         private Button button1;
@@ -639,11 +643,13 @@
         private ToolStripMenuItem logoutToolStripMenuItem;
         private Button button7;
         private Button button9;
-        private DataGridView dataGridView1;
+        private DataGridView Cost_Of_Production_Grid;
         private Label label17;
         private Label label18;
-        private TextBox searchBoxPI;
+        private TextBox fill_search_cop;
         private Button searchbuttonPI;
         private Label label19;
+        private DateTimePicker fill_date_cop;
+        private ComboBox fill_status_cop;
     }
 }

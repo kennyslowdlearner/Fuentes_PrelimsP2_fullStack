@@ -30,25 +30,23 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(User_ActivityLog));
             panel1 = new Panel();
-            dataGridView1 = new DataGridView();
+            Activity_Log_Grid = new DataGridView();
             label4 = new Label();
             label1 = new Label();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            fill_time_al = new TextBox();
             label2 = new Label();
             label3 = new Label();
-            textBox3 = new TextBox();
+            fill_activity_al = new TextBox();
             label5 = new Label();
             label6 = new Label();
-            textBox4 = new TextBox();
+            fill_duration_al = new TextBox();
             label7 = new Label();
-            textBox5 = new TextBox();
             label8 = new Label();
             label10 = new Label();
             label11 = new Label();
-            button2 = new Button();
-            button1 = new Button();
-            button3 = new Button();
+            press_delete_al = new Button();
+            press_update_al = new Button();
+            press_insert_al = new Button();
             back = new Button();
             button5 = new Button();
             button9 = new Button();
@@ -63,27 +61,31 @@
             contactDeveloperToolStripMenuItem = new ToolStripMenuItem();
             accountSettingsToolStripMenuItem = new ToolStripMenuItem();
             logoutToolStripMenuItem = new ToolStripMenuItem();
+            fill_status_al = new ComboBox();
+            press_refreshreload_al = new Button();
+            fill_date_al = new DateTimePicker();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Activity_Log_Grid).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.Controls.Add(dataGridView1);
+            panel1.Controls.Add(Activity_Log_Grid);
             panel1.Location = new Point(75, 173);
             panel1.Name = "panel1";
             panel1.Size = new Size(1386, 323);
             panel1.TabIndex = 1;
             // 
-            // dataGridView1
+            // Activity_Log_Grid
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(1380, 317);
-            dataGridView1.TabIndex = 0;
+            Activity_Log_Grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Activity_Log_Grid.Location = new Point(3, 3);
+            Activity_Log_Grid.Name = "Activity_Log_Grid";
+            Activity_Log_Grid.RowHeadersWidth = 62;
+            Activity_Log_Grid.Size = new Size(1380, 317);
+            Activity_Log_Grid.TabIndex = 0;
+            Activity_Log_Grid.CellClick += dataGridCellClick;
             // 
             // label4
             // 
@@ -109,23 +111,14 @@
             label1.TabIndex = 52;
             label1.Text = "Date";
             // 
-            // textBox2
+            // fill_time_al
             // 
-            textBox2.BackColor = Color.LightGreen;
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Location = new Point(315, 519);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(259, 24);
-            textBox2.TabIndex = 51;
-            // 
-            // textBox1
-            // 
-            textBox1.BackColor = Color.LightGreen;
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Location = new Point(315, 556);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(259, 24);
-            textBox1.TabIndex = 51;
+            fill_time_al.BackColor = Color.LightGreen;
+            fill_time_al.BorderStyle = BorderStyle.None;
+            fill_time_al.Location = new Point(315, 556);
+            fill_time_al.Name = "fill_time_al";
+            fill_time_al.Size = new Size(259, 24);
+            fill_time_al.TabIndex = 51;
             // 
             // label2
             // 
@@ -151,14 +144,14 @@
             label3.TabIndex = 53;
             label3.Text = ":";
             // 
-            // textBox3
+            // fill_activity_al
             // 
-            textBox3.BackColor = Color.LightGreen;
-            textBox3.BorderStyle = BorderStyle.None;
-            textBox3.Location = new Point(315, 596);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(259, 24);
-            textBox3.TabIndex = 51;
+            fill_activity_al.BackColor = Color.LightGreen;
+            fill_activity_al.BorderStyle = BorderStyle.None;
+            fill_activity_al.Location = new Point(315, 596);
+            fill_activity_al.Name = "fill_activity_al";
+            fill_activity_al.Size = new Size(259, 24);
+            fill_activity_al.TabIndex = 51;
             // 
             // label5
             // 
@@ -184,14 +177,14 @@
             label6.TabIndex = 53;
             label6.Text = ":";
             // 
-            // textBox4
+            // fill_duration_al
             // 
-            textBox4.BackColor = Color.LightGreen;
-            textBox4.BorderStyle = BorderStyle.None;
-            textBox4.Location = new Point(315, 632);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(259, 24);
-            textBox4.TabIndex = 51;
+            fill_duration_al.BackColor = Color.LightGreen;
+            fill_duration_al.BorderStyle = BorderStyle.None;
+            fill_duration_al.Location = new Point(315, 632);
+            fill_duration_al.Name = "fill_duration_al";
+            fill_duration_al.Size = new Size(259, 24);
+            fill_duration_al.TabIndex = 51;
             // 
             // label7
             // 
@@ -204,15 +197,6 @@
             label7.Size = new Size(99, 27);
             label7.TabIndex = 52;
             label7.Text = "Duration";
-            // 
-            // textBox5
-            // 
-            textBox5.BackColor = Color.LightGreen;
-            textBox5.BorderStyle = BorderStyle.None;
-            textBox5.Location = new Point(315, 669);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(259, 24);
-            textBox5.TabIndex = 51;
             // 
             // label8
             // 
@@ -250,50 +234,53 @@
             label11.TabIndex = 53;
             label11.Text = ":";
             // 
-            // button2
+            // press_delete_al
             // 
-            button2.BackColor = Color.Yellow;
-            button2.FlatAppearance.BorderColor = Color.Gold;
-            button2.FlatAppearance.BorderSize = 2;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.DarkGreen;
-            button2.Location = new Point(591, 598);
-            button2.Name = "button2";
-            button2.Size = new Size(154, 34);
-            button2.TabIndex = 54;
-            button2.Text = "Delete";
-            button2.UseVisualStyleBackColor = false;
+            press_delete_al.BackColor = Color.Yellow;
+            press_delete_al.FlatAppearance.BorderColor = Color.Gold;
+            press_delete_al.FlatAppearance.BorderSize = 2;
+            press_delete_al.FlatStyle = FlatStyle.Flat;
+            press_delete_al.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            press_delete_al.ForeColor = Color.DarkGreen;
+            press_delete_al.Location = new Point(591, 598);
+            press_delete_al.Name = "press_delete_al";
+            press_delete_al.Size = new Size(154, 34);
+            press_delete_al.TabIndex = 54;
+            press_delete_al.Text = "Delete";
+            press_delete_al.UseVisualStyleBackColor = false;
+            press_delete_al.Click += press_deleteal;
             // 
-            // button1
+            // press_update_al
             // 
-            button1.BackColor = Color.Yellow;
-            button1.FlatAppearance.BorderColor = Color.Gold;
-            button1.FlatAppearance.BorderSize = 2;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.DarkGreen;
-            button1.Location = new Point(591, 558);
-            button1.Name = "button1";
-            button1.Size = new Size(154, 34);
-            button1.TabIndex = 55;
-            button1.Text = "Update";
-            button1.UseVisualStyleBackColor = false;
+            press_update_al.BackColor = Color.Yellow;
+            press_update_al.FlatAppearance.BorderColor = Color.Gold;
+            press_update_al.FlatAppearance.BorderSize = 2;
+            press_update_al.FlatStyle = FlatStyle.Flat;
+            press_update_al.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            press_update_al.ForeColor = Color.DarkGreen;
+            press_update_al.Location = new Point(591, 558);
+            press_update_al.Name = "press_update_al";
+            press_update_al.Size = new Size(154, 34);
+            press_update_al.TabIndex = 55;
+            press_update_al.Text = "Update";
+            press_update_al.UseVisualStyleBackColor = false;
+            press_update_al.Click += press_updateal;
             // 
-            // button3
+            // press_insert_al
             // 
-            button3.BackColor = Color.Yellow;
-            button3.FlatAppearance.BorderColor = Color.Gold;
-            button3.FlatAppearance.BorderSize = 2;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.ForeColor = Color.DarkGreen;
-            button3.Location = new Point(591, 519);
-            button3.Name = "button3";
-            button3.Size = new Size(154, 34);
-            button3.TabIndex = 56;
-            button3.Text = "Insert";
-            button3.UseVisualStyleBackColor = false;
+            press_insert_al.BackColor = Color.Yellow;
+            press_insert_al.FlatAppearance.BorderColor = Color.Gold;
+            press_insert_al.FlatAppearance.BorderSize = 2;
+            press_insert_al.FlatStyle = FlatStyle.Flat;
+            press_insert_al.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            press_insert_al.ForeColor = Color.DarkGreen;
+            press_insert_al.Location = new Point(591, 519);
+            press_insert_al.Name = "press_insert_al";
+            press_insert_al.Size = new Size(154, 34);
+            press_insert_al.TabIndex = 56;
+            press_insert_al.Text = "Insert";
+            press_insert_al.UseVisualStyleBackColor = false;
+            press_insert_al.Click += press_insertal;
             // 
             // back
             // 
@@ -447,12 +434,51 @@
             logoutToolStripMenuItem.Size = new Size(172, 34);
             logoutToolStripMenuItem.Text = "Logout";
             // 
+            // fill_status_al
+            // 
+            fill_status_al.BackColor = Color.LightGreen;
+            fill_status_al.FormattingEnabled = true;
+            fill_status_al.Items.AddRange(new object[] { "Success", "Failed", "Postponed", "Delayed" });
+            fill_status_al.Location = new Point(315, 663);
+            fill_status_al.Name = "fill_status_al";
+            fill_status_al.Size = new Size(259, 33);
+            fill_status_al.TabIndex = 83;
+            // 
+            // press_refreshreload_al
+            // 
+            press_refreshreload_al.BackColor = Color.Yellow;
+            press_refreshreload_al.FlatAppearance.BorderColor = Color.Gold;
+            press_refreshreload_al.FlatAppearance.BorderSize = 2;
+            press_refreshreload_al.FlatStyle = FlatStyle.Flat;
+            press_refreshreload_al.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            press_refreshreload_al.ForeColor = Color.DarkGreen;
+            press_refreshreload_al.Location = new Point(591, 663);
+            press_refreshreload_al.Name = "press_refreshreload_al";
+            press_refreshreload_al.Size = new Size(154, 34);
+            press_refreshreload_al.TabIndex = 54;
+            press_refreshreload_al.Text = "Refresh/Reload";
+            press_refreshreload_al.UseVisualStyleBackColor = false;
+            press_refreshreload_al.Click += press_refreshreloadal;
+            // 
+            // fill_date_al
+            // 
+            fill_date_al.CalendarMonthBackground = Color.PaleGreen;
+            fill_date_al.CalendarTitleBackColor = Color.PaleGreen;
+            fill_date_al.CalendarTitleForeColor = Color.PaleGreen;
+            fill_date_al.CalendarTrailingForeColor = Color.PaleGreen;
+            fill_date_al.Location = new Point(315, 515);
+            fill_date_al.Name = "fill_date_al";
+            fill_date_al.Size = new Size(259, 31);
+            fill_date_al.TabIndex = 84;
+            // 
             // User_ActivityLog
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 783);
+            Controls.Add(fill_date_al);
+            Controls.Add(fill_status_al);
             Controls.Add(button9);
             Controls.Add(button7);
             Controls.Add(button4);
@@ -461,29 +487,29 @@
             Controls.Add(menuStrip1);
             Controls.Add(back);
             Controls.Add(button5);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(button3);
+            Controls.Add(press_refreshreload_al);
+            Controls.Add(press_delete_al);
+            Controls.Add(press_update_al);
+            Controls.Add(press_insert_al);
             Controls.Add(label6);
             Controls.Add(label11);
             Controls.Add(label3);
             Controls.Add(label10);
             Controls.Add(label4);
             Controls.Add(label5);
-            Controls.Add(textBox3);
+            Controls.Add(fill_activity_al);
             Controls.Add(label8);
             Controls.Add(label2);
-            Controls.Add(textBox5);
-            Controls.Add(textBox1);
+            Controls.Add(fill_time_al);
             Controls.Add(label7);
-            Controls.Add(textBox4);
+            Controls.Add(fill_duration_al);
             Controls.Add(label1);
-            Controls.Add(textBox2);
             Controls.Add(panel1);
             Name = "User_ActivityLog";
             Text = "Form1";
+            FormClosed += endOperation;
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Activity_Log_Grid).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -495,22 +521,20 @@
         private Panel panel1;
         private Label label4;
         private Label label1;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox fill_time_al;
         private Label label2;
         private Label label3;
-        private TextBox textBox3;
+        private TextBox fill_activity_al;
         private Label label5;
         private Label label6;
-        private TextBox textBox4;
+        private TextBox fill_duration_al;
         private Label label7;
-        private TextBox textBox5;
         private Label label8;
         private Label label10;
         private Label label11;
-        private Button button2;
-        private Button button1;
-        private Button button3;
+        private Button press_delete_al;
+        private Button press_update_al;
+        private Button press_insert_al;
         private Button back;
         private Button button5;
         private Button button9;
@@ -525,6 +549,9 @@
         private ToolStripMenuItem contactDeveloperToolStripMenuItem;
         private ToolStripMenuItem accountSettingsToolStripMenuItem;
         private ToolStripMenuItem logoutToolStripMenuItem;
-        private DataGridView dataGridView1;
+        private DataGridView Activity_Log_Grid;
+        private ComboBox fill_status_al;
+        private Button press_refreshreload_al;
+        private DateTimePicker fill_date_al;
     }
 }

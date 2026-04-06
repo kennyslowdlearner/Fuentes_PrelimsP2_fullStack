@@ -51,7 +51,6 @@
             label6 = new Label();
             label5 = new Label();
             fill_search_pi = new TextBox();
-            press_search_pi = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Product_Inventory_Grid).BeginInit();
             SuspendLayout();
@@ -335,20 +334,6 @@
             fill_search_pi.Text = "Search product name or id";
             fill_search_pi.TextChanged += fill_searchpi;
             // 
-            // press_search_pi
-            // 
-            press_search_pi.BackColor = Color.Transparent;
-            press_search_pi.BackgroundImage = (Image)resources.GetObject("press_search_pi.BackgroundImage");
-            press_search_pi.FlatAppearance.BorderSize = 0;
-            press_search_pi.FlatStyle = FlatStyle.Flat;
-            press_search_pi.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            press_search_pi.ForeColor = Color.DarkOliveGreen;
-            press_search_pi.Location = new Point(480, 184);
-            press_search_pi.Name = "press_search_pi";
-            press_search_pi.Size = new Size(120, 41);
-            press_search_pi.TabIndex = 108;
-            press_search_pi.UseVisualStyleBackColor = false;
-            // 
             // productInventory
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -357,7 +342,6 @@
             ClientSize = new Size(1500, 785);
             Controls.Add(label5);
             Controls.Add(fill_search_pi);
-            Controls.Add(press_search_pi);
             Controls.Add(label6);
             Controls.Add(press_connect_pi);
             Controls.Add(press_load_pi);
@@ -411,6 +395,5 @@
         private Label label6;
         private Label label5;
         private TextBox fill_search_pi;
-        private Button press_search_pi;
     }
 }
