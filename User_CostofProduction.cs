@@ -36,6 +36,7 @@ namespace Fuentes_PrelimsP2
         int indexRow;
 
         string currentSelectedRollNumber = " ";
+        double quantity, price, product = 0;
         private void shortcut_DigitalReceiptVault(object sender, EventArgs e)
         {
             try
@@ -95,15 +96,26 @@ namespace Fuentes_PrelimsP2
         private void press_insertcop(object sender, EventArgs e)
         {
             connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
-            string query = "INSERT INTO [User T&T Cost of Production] ([Item Name], [Unit], [Quantity], [Price per unit], [Date of purchase], [Status]) VALUES (@P1, @P2, @P3, @P4, @P5, @P6)";
+            string query = "INSERT INTO [User T&T Cost of Production] ([Item Name], [Unit], [Quantity], [Price per unit], [Total], [Date of purchase], [Status], [Serial Number]) VALUES (@P1, @P2, @P3, @P4, @P5, @P6, @P7, @P8)";
+
+
+            price = Convert.ToDouble(fill_priceperunit_cop.Text);
+            quantity = Convert.ToDouble(fill_quantity_cop.Text);
+
+            product = price * quantity;
 
             command = new OleDbCommand(query, connection);
-            command.Parameters.AddWithValue("@P1", fill_itemname_cop.Text);
-            command.Parameters.AddWithValue("@P2", fill_unit_cop.Text);
-            command.Parameters.AddWithValue("@P3", Convert.ToInt32(fill_quantity_cop.Text));
-            command.Parameters.AddWithValue("@P4", Convert.ToDecimal(fill_priceperunit_cop.Text));
-            command.Parameters.AddWithValue("@P5", fill_date_cop.Value);
-            command.Parameters.AddWithValue("@P6", fill_status_cop.Text);
+            command.Parameters.Add("@P1", OleDbType.VarWChar).Value = fill_itemname_cop.Text;
+            command.Parameters.Add("@P2", OleDbType.VarWChar).Value = fill_unit_cop.Text;
+            command.Parameters.Add("@P3", OleDbType.Integer).Value = Convert.ToInt32(fill_quantity_cop.Text);
+            command.Parameters.Add("@P4", OleDbType.Currency).Value = Convert.ToDecimal(fill_priceperunit_cop.Text);
+
+            command.Parameters.Add("@P5", OleDbType.Currency).Value = Convert.ToDecimal(product);
+
+            command.Parameters.Add("@P6", OleDbType.Date).Value = fill_date_cop.Text;
+            command.Parameters.Add("@P7", OleDbType.VarWChar).Value = fill_status_cop.Text;
+            command.Parameters.Add("@P8", OleDbType.VarWChar).Value = serialIDgenerator();
+
 
             try
             {
@@ -114,13 +126,13 @@ namespace Fuentes_PrelimsP2
                 MessageBox.Show("Item added successfully!");
 
                 fill_itemname_cop.Clear();
-                fill_unit_cop.Clear();
+                fill_unit_cop.SelectedIndex = -1;
                 fill_quantity_cop.Clear();
                 fill_priceperunit_cop.Clear();
                 fill_date_cop.Value = DateTime.Now;
                 fill_status_cop.SelectedIndex = -1;
 
-                press_insertcop(sender, e);
+                refreshreload();
 
             }
 
@@ -133,18 +145,28 @@ namespace Fuentes_PrelimsP2
         private void press_updatecop(object sender, EventArgs e)
         {
             connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
-            string query = "UPDATE [User T&T Cost of Production] SET [Item Name] = @P1, [Unit] = @P2, [Quantity] = @P3, [Price per unit] = @P4, [Date of purchase] = @P5, [Status] = @P6 WHERE [Item Number] = @P7";
+
+            // SQL ORDER: 1:Item Name, 2:Unit, 3:Quantity, 4:Price, 5:Total, 6:Date, 7:Status WHERE 8:ID
+            string query = "UPDATE [User T&T Cost of Production] SET [Item Name] = @P1, [Unit] = @P2, [Quantity] = @P3, [Price per unit] = @P4, [Total] = @P5, [Date of purchase] = @P6, [Status] = @P7 WHERE [Item Number] = @P8";
+
+            // Recalculate to ensure the Total is fresh for the update
+            double upQty = Convert.ToDouble(fill_quantity_cop.Text);
+            double upPrice = Convert.ToDouble(fill_priceperunit_cop.Text);
+            double upTotal = upQty * upPrice;
 
             command = new OleDbCommand(query, connection);
-            command.Parameters.AddWithValue("@P1", fill_itemname_cop.Text);
-            command.Parameters.AddWithValue("@P2", fill_unit_cop.Text);
-            command.Parameters.AddWithValue("@P3", Convert.ToInt32(fill_quantity_cop.Text));
-            command.Parameters.AddWithValue("@P4", Convert.ToDecimal(fill_priceperunit_cop.Text));
-            command.Parameters.AddWithValue("@P5", fill_date_cop.Value);
-            command.Parameters.AddWithValue("@P6", fill_status_cop.Text);
 
-            command.Parameters.AddWithValue("@P7", currentSelectedRollNumber);
+            // Use UNIQUE parameter names and follow the SQL order exactly
+            command.Parameters.Add("@P1", OleDbType.VarWChar).Value = fill_itemname_cop.Text;
+            command.Parameters.Add("@P2", OleDbType.VarWChar).Value = fill_unit_cop.Text;
+            command.Parameters.Add("@P3", OleDbType.Integer).Value = Convert.ToInt32(fill_quantity_cop.Text);
+            command.Parameters.Add("@P4", OleDbType.Currency).Value = Convert.ToDecimal(fill_priceperunit_cop.Text);
+            command.Parameters.Add("@P5", OleDbType.Currency).Value = Convert.ToDecimal(upTotal); // The fixed Total
+            command.Parameters.Add("@P6", OleDbType.Date).Value = fill_date_cop.Value;
+            command.Parameters.Add("@P7", OleDbType.VarWChar).Value = fill_status_cop.Text;
 
+            // The WHERE clause parameter must be last
+            command.Parameters.Add("@P8", OleDbType.Integer).Value = Convert.ToInt32(currentSelectedRollNumber);
 
             try
             {
@@ -153,10 +175,8 @@ namespace Fuentes_PrelimsP2
                 connection.Close();
 
                 MessageBox.Show("Item updated successfully!");
-
                 refreshreload();
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show("Failed to update item. Error: " + ex.Message);
@@ -201,14 +221,19 @@ namespace Fuentes_PrelimsP2
                 //connection.Close();
 
                 Cost_Of_Production_Grid.DataSource = dataSet.Tables["[User T&T Cost of Production]"];
+                Cost_Of_Production_Grid.AutoGenerateColumns = true;
 
-                Cost_Of_Production_Grid.Columns["Item Number"].Visible = false;
-                Cost_Of_Production_Grid.Columns["Unit"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                foreach(DataGridViewColumn col in Cost_Of_Production_Grid.Columns) { col.AutoSizeMode = DataGridViewAutoSizeColumnMode.None; }
+                if (Cost_Of_Production_Grid.Columns.Contains("Item Number")) Cost_Of_Production_Grid.Columns["Item number"].Visible = false;
                 Cost_Of_Production_Grid.Columns["Item Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                Cost_Of_Production_Grid.Columns["Status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+                Cost_Of_Production_Grid.Columns["Unit"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 Cost_Of_Production_Grid.Columns["Quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                Cost_Of_Production_Grid.Columns["Status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 Cost_Of_Production_Grid.Columns["Price per unit"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                Cost_Of_Production_Grid.Columns["Total"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 Cost_Of_Production_Grid.Columns["Date of purchase"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                Cost_Of_Production_Grid.Columns["Serial Number"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             }
 
@@ -220,7 +245,7 @@ namespace Fuentes_PrelimsP2
 
         private void press_deletecop(object sender, EventArgs e)
         {
-            if(string.IsNullOrEmpty(currentSelectedRollNumber))
+            if (string.IsNullOrEmpty(currentSelectedRollNumber))
             {
                 MessageBox.Show("Please select an item to delete.");
                 return;
@@ -247,7 +272,7 @@ namespace Fuentes_PrelimsP2
                     refreshreload();
 
                     fill_itemname_cop.Clear();
-                    fill_unit_cop.Clear();
+                    fill_unit_cop.SelectedIndex = -1;
                     fill_quantity_cop.Clear();
                     fill_priceperunit_cop.Clear();
                     fill_date_cop.Value = DateTime.Now;
@@ -262,6 +287,61 @@ namespace Fuentes_PrelimsP2
             }
         }
 
-        //NEED TO ADD SEARCH FUNCTIONALITY IN THIS PART
+        private void searchcop(object sender, EventArgs e)
+        {
+            string connect = "Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb";
+
+            string query = "SELECT * FROM [User T&T Cost of Production] WHERE [Item Name] LIKE @S1 OR [Date of purchase] LIKE @S2 OR [Serial Number] LIKE @S3";
+
+            using (OleDbConnection connected = new OleDbConnection(connect))
+            {
+                OleDbDataAdapter searchAdapter = new OleDbDataAdapter(query, connected);
+
+                string searchTerm = "%" + fill_search_cop.Text + "%";
+                searchAdapter.SelectCommand.Parameters.AddWithValue("@S1", searchTerm);
+                searchAdapter.SelectCommand.Parameters.AddWithValue("@S2", searchTerm);
+                searchAdapter.SelectCommand.Parameters.AddWithValue("@S3", searchTerm);
+
+                DataSet searchNow = new DataSet();
+
+                try
+                {
+                    connected.Open();
+                    searchAdapter.Fill(searchNow, "[User T&T Cost of Production]");
+
+                    Cost_Of_Production_Grid.DataSource = searchNow.Tables["[User T&T Cost of Production]"];
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Search failed. Error: " + ex.Message);
+                }
+            }
+        }
+
+        private string serialIDgenerator()
+        {
+            Random reference = new Random();
+
+            string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            int size = 8;
+            string randomString = "";
+
+            for (int a = 0; a < size; a++)
+            {
+                int index = reference.Next(characters.Length);
+                randomString += characters[index];
+
+                if (a == 3)
+                {
+                    randomString += "-";
+                }
+
+            }
+
+            return "PPSN-" + randomString;
+        }
+
+        //issues with data grid displauy
     }
 }

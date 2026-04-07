@@ -147,7 +147,7 @@ namespace Fuentes_PrelimsP2
         private void productInventory_FormClosed(object sender, FormClosedEventArgs e)
         {
             //made changes here (10) [4/6/2026 | 12:46 PM]
-            Application.Exit();
+            //Application.Exit();
         }
 
         private void label8_Click(object sender, EventArgs e)

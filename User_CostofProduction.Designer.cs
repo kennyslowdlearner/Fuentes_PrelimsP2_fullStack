@@ -35,7 +35,6 @@
             label1 = new Label();
             fill_itemname_cop = new TextBox();
             label2 = new Label();
-            fill_unit_cop = new TextBox();
             label3 = new Label();
             label4 = new Label();
             fill_quantity_cop = new TextBox();
@@ -71,6 +70,7 @@
             label19 = new Label();
             fill_date_cop = new DateTimePicker();
             fill_status_cop = new ComboBox();
+            fill_unit_cop = new ComboBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Cost_Of_Production_Grid).BeginInit();
             menuStrip1.SuspendLayout();
@@ -100,7 +100,7 @@
             label10.BackColor = Color.Transparent;
             label10.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label10.ForeColor = Color.LawnGreen;
-            label10.Location = new Point(1166, 213);
+            label10.Location = new Point(1166, 200);
             label10.Name = "label10";
             label10.Size = new Size(19, 27);
             label10.TabIndex = 51;
@@ -112,7 +112,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.LawnGreen;
-            label1.Location = new Point(1004, 213);
+            label1.Location = new Point(1004, 200);
             label1.Name = "label1";
             label1.Size = new Size(114, 27);
             label1.TabIndex = 50;
@@ -122,7 +122,7 @@
             // 
             fill_itemname_cop.BackColor = Color.LightGreen;
             fill_itemname_cop.BorderStyle = BorderStyle.None;
-            fill_itemname_cop.Location = new Point(1191, 213);
+            fill_itemname_cop.Location = new Point(1191, 200);
             fill_itemname_cop.Name = "fill_itemname_cop";
             fill_itemname_cop.Size = new Size(259, 24);
             fill_itemname_cop.TabIndex = 49;
@@ -139,22 +139,13 @@
             label2.TabIndex = 50;
             label2.Text = "Information Sheet";
             // 
-            // fill_unit_cop
-            // 
-            fill_unit_cop.BackColor = Color.LightGreen;
-            fill_unit_cop.BorderStyle = BorderStyle.None;
-            fill_unit_cop.Location = new Point(1191, 241);
-            fill_unit_cop.Name = "fill_unit_cop";
-            fill_unit_cop.Size = new Size(259, 24);
-            fill_unit_cop.TabIndex = 49;
-            // 
             // label3
             // 
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.LawnGreen;
-            label3.Location = new Point(1004, 241);
+            label3.Location = new Point(1004, 228);
             label3.Name = "label3";
             label3.Size = new Size(49, 27);
             label3.TabIndex = 50;
@@ -166,7 +157,7 @@
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.LawnGreen;
-            label4.Location = new Point(1166, 241);
+            label4.Location = new Point(1166, 228);
             label4.Name = "label4";
             label4.Size = new Size(19, 27);
             label4.TabIndex = 51;
@@ -176,7 +167,7 @@
             // 
             fill_quantity_cop.BackColor = Color.LightGreen;
             fill_quantity_cop.BorderStyle = BorderStyle.None;
-            fill_quantity_cop.Location = new Point(1191, 268);
+            fill_quantity_cop.Location = new Point(1191, 271);
             fill_quantity_cop.Name = "fill_quantity_cop";
             fill_quantity_cop.Size = new Size(259, 24);
             fill_quantity_cop.TabIndex = 49;
@@ -197,7 +188,7 @@
             // 
             fill_priceperunit_cop.BackColor = Color.LightGreen;
             fill_priceperunit_cop.BorderStyle = BorderStyle.None;
-            fill_priceperunit_cop.Location = new Point(1215, 296);
+            fill_priceperunit_cop.Location = new Point(1215, 299);
             fill_priceperunit_cop.Name = "fill_priceperunit_cop";
             fill_priceperunit_cop.Size = new Size(235, 24);
             fill_priceperunit_cop.TabIndex = 49;
@@ -478,7 +469,7 @@
             label17.BackColor = Color.Transparent;
             label17.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label17.ForeColor = Color.LawnGreen;
-            label17.Location = new Point(1187, 296);
+            label17.Location = new Point(1187, 299);
             label17.Name = "label17";
             label17.Size = new Size(28, 27);
             label17.TabIndex = 51;
@@ -505,6 +496,7 @@
             fill_search_cop.Size = new Size(252, 29);
             fill_search_cop.TabIndex = 113;
             fill_search_cop.Text = "Search product name or id";
+            fill_search_cop.TextChanged += searchcop;
             // 
             // searchbuttonPI
             // 
@@ -547,7 +539,7 @@
             // fill_status_cop
             // 
             fill_status_cop.BackColor = Color.PaleGreen;
-            fill_status_cop.ForeColor = SystemColors.Window;
+            fill_status_cop.ForeColor = SystemColors.InactiveCaptionText;
             fill_status_cop.FormattingEnabled = true;
             fill_status_cop.Items.AddRange(new object[] { "Reserved and Paid", "Reserved and Unpaid", "Pending and Paid", "Pending and Unpaid", "Delivered and Paid", "Delivered and Credit", "Cancelled and Paid", "Cancelled and Unpaid", "Delayed and Paid", "Delayed and Unpaid" });
             fill_status_cop.Location = new Point(1191, 392);
@@ -555,12 +547,24 @@
             fill_status_cop.Size = new Size(259, 33);
             fill_status_cop.TabIndex = 116;
             // 
+            // fill_unit_cop
+            // 
+            fill_unit_cop.BackColor = Color.PaleGreen;
+            fill_unit_cop.ForeColor = SystemColors.InactiveCaptionText;
+            fill_unit_cop.FormattingEnabled = true;
+            fill_unit_cop.Items.AddRange(new object[] { "pc / pcs", "unit", "set", "pack/packet", "bag/sack", "gram", "kilogram", "pound", "metric ton", "Liter", "milliLiter", "gallon", "bottle", "Hectare", "Square meter", "Meter" });
+            fill_unit_cop.Location = new Point(1191, 228);
+            fill_unit_cop.Name = "fill_unit_cop";
+            fill_unit_cop.Size = new Size(259, 33);
+            fill_unit_cop.TabIndex = 116;
+            // 
             // User_CostofProduction
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
+            Controls.Add(fill_unit_cop);
             Controls.Add(fill_status_cop);
             Controls.Add(fill_date_cop);
             Controls.Add(label18);
@@ -590,7 +594,6 @@
             Controls.Add(label6);
             Controls.Add(label3);
             Controls.Add(fill_priceperunit_cop);
-            Controls.Add(fill_unit_cop);
             Controls.Add(label5);
             Controls.Add(fill_quantity_cop);
             Controls.Add(label1);
@@ -614,7 +617,6 @@
         private Label label1;
         private TextBox fill_itemname_cop;
         private Label label2;
-        private TextBox fill_unit_cop;
         private Label label3;
         private Label label4;
         private TextBox fill_quantity_cop;
@@ -651,5 +653,6 @@
         private Label label19;
         private DateTimePicker fill_date_cop;
         private ComboBox fill_status_cop;
+        private ComboBox fill_unit_cop;
     }
 }

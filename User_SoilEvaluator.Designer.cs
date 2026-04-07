@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(User_SoilEvaluator));
             panel1 = new Panel();
-            dataGridView1 = new DataGridView();
+            Soil_Evaluator_Grid = new DataGridView();
             button9 = new Button();
             button7 = new Button();
             button4 = new Button();
@@ -64,13 +64,13 @@
             label18 = new Label();
             label19 = new Label();
             textBox7 = new TextBox();
-            comboBox1 = new ComboBox();
-            trackBar1 = new TrackBar();
-            numericUpDown1 = new NumericUpDown();
-            numericUpDown2 = new NumericUpDown();
-            numericUpDown3 = new NumericUpDown();
-            numericUpDown4 = new NumericUpDown();
-            numericUpDown5 = new NumericUpDown();
+            fill_soilconsistency_se = new ComboBox();
+            fill_waterdepth_se = new TrackBar();
+            fill_soilphlevels_se = new NumericUpDown();
+            fill_ec_se = new NumericUpDown();
+            fill_nitrogenlevels_se = new NumericUpDown();
+            fill_phosphoruslevels_Se = new NumericUpDown();
+            fill_potassiumlevels_se = new NumericUpDown();
             label20 = new Label();
             label21 = new Label();
             label22 = new Label();
@@ -90,43 +90,43 @@
             label36 = new Label();
             label37 = new Label();
             label38 = new Label();
-            label39 = new Label();
-            label40 = new Label();
-            label41 = new Label();
-            label42 = new Label();
-            label43 = new Label();
-            label44 = new Label();
-            label45 = new Label();
-            label46 = new Label();
+            display_overallresult_se = new Label();
+            display_nitrogenresult_se = new Label();
+            display_phosphorusresult_se = new Label();
+            display_potassiumresult_se = new Label();
+            display_phresult_se = new Label();
+            display_ecresult_se = new Label();
+            display_soilconsistencyresult_se = new Label();
+            display_waterdepthresult_se = new Label();
             button6 = new Button();
             button5 = new Button();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Soil_Evaluator_Grid).BeginInit();
             menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)fill_waterdepth_se).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)fill_soilphlevels_se).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)fill_ec_se).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)fill_nitrogenlevels_se).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)fill_phosphoruslevels_Se).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)fill_potassiumlevels_se).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.Controls.Add(dataGridView1);
+            panel1.Controls.Add(Soil_Evaluator_Grid);
             panel1.Location = new Point(544, 171);
             panel1.Name = "panel1";
             panel1.Size = new Size(901, 293);
             panel1.TabIndex = 0;
             // 
-            // dataGridView1
+            // Soil_Evaluator_Grid
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(895, 285);
-            dataGridView1.TabIndex = 0;
+            Soil_Evaluator_Grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Soil_Evaluator_Grid.Location = new Point(3, 3);
+            Soil_Evaluator_Grid.Name = "Soil_Evaluator_Grid";
+            Soil_Evaluator_Grid.RowHeadersWidth = 62;
+            Soil_Evaluator_Grid.Size = new Size(895, 285);
+            Soil_Evaluator_Grid.TabIndex = 0;
             // 
             // button9
             // 
@@ -495,72 +495,72 @@
             textBox7.Size = new Size(0, 31);
             textBox7.TabIndex = 68;
             // 
-            // comboBox1
+            // fill_soilconsistency_se
             // 
-            comboBox1.BackColor = Color.LightGreen;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(243, 486);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(259, 33);
-            comboBox1.TabIndex = 69;
+            fill_soilconsistency_se.BackColor = Color.LightGreen;
+            fill_soilconsistency_se.FormattingEnabled = true;
+            fill_soilconsistency_se.Location = new Point(243, 486);
+            fill_soilconsistency_se.Name = "fill_soilconsistency_se";
+            fill_soilconsistency_se.Size = new Size(259, 33);
+            fill_soilconsistency_se.TabIndex = 69;
             // 
-            // trackBar1
+            // fill_waterdepth_se
             // 
-            trackBar1.BackColor = Color.LightGreen;
-            trackBar1.Location = new Point(243, 525);
-            trackBar1.Name = "trackBar1";
-            trackBar1.Size = new Size(259, 69);
-            trackBar1.TabIndex = 70;
+            fill_waterdepth_se.BackColor = Color.LightGreen;
+            fill_waterdepth_se.Location = new Point(243, 525);
+            fill_waterdepth_se.Name = "fill_waterdepth_se";
+            fill_waterdepth_se.Size = new Size(259, 69);
+            fill_waterdepth_se.TabIndex = 70;
             // 
-            // numericUpDown1
+            // fill_soilphlevels_se
             // 
-            numericUpDown1.BackColor = Color.LightGreen;
-            numericUpDown1.BorderStyle = BorderStyle.None;
-            numericUpDown1.Font = new Font("Glacial Indifference", 8.999999F);
-            numericUpDown1.Location = new Point(242, 333);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(259, 25);
-            numericUpDown1.TabIndex = 71;
+            fill_soilphlevels_se.BackColor = Color.LightGreen;
+            fill_soilphlevels_se.BorderStyle = BorderStyle.None;
+            fill_soilphlevels_se.Font = new Font("Glacial Indifference", 8.999999F);
+            fill_soilphlevels_se.Location = new Point(242, 333);
+            fill_soilphlevels_se.Name = "fill_soilphlevels_se";
+            fill_soilphlevels_se.Size = new Size(259, 25);
+            fill_soilphlevels_se.TabIndex = 71;
             // 
-            // numericUpDown2
+            // fill_ec_se
             // 
-            numericUpDown2.BackColor = Color.LightGreen;
-            numericUpDown2.BorderStyle = BorderStyle.None;
-            numericUpDown2.Font = new Font("Glacial Indifference", 8.999999F);
-            numericUpDown2.Location = new Point(242, 387);
-            numericUpDown2.Name = "numericUpDown2";
-            numericUpDown2.Size = new Size(259, 25);
-            numericUpDown2.TabIndex = 71;
+            fill_ec_se.BackColor = Color.LightGreen;
+            fill_ec_se.BorderStyle = BorderStyle.None;
+            fill_ec_se.Font = new Font("Glacial Indifference", 8.999999F);
+            fill_ec_se.Location = new Point(242, 387);
+            fill_ec_se.Name = "fill_ec_se";
+            fill_ec_se.Size = new Size(259, 25);
+            fill_ec_se.TabIndex = 71;
             // 
-            // numericUpDown3
+            // fill_nitrogenlevels_se
             // 
-            numericUpDown3.BackColor = Color.LightGreen;
-            numericUpDown3.BorderStyle = BorderStyle.None;
-            numericUpDown3.Font = new Font("Glacial Indifference", 8.999999F);
-            numericUpDown3.Location = new Point(242, 179);
-            numericUpDown3.Name = "numericUpDown3";
-            numericUpDown3.Size = new Size(259, 25);
-            numericUpDown3.TabIndex = 71;
+            fill_nitrogenlevels_se.BackColor = Color.LightGreen;
+            fill_nitrogenlevels_se.BorderStyle = BorderStyle.None;
+            fill_nitrogenlevels_se.Font = new Font("Glacial Indifference", 8.999999F);
+            fill_nitrogenlevels_se.Location = new Point(242, 179);
+            fill_nitrogenlevels_se.Name = "fill_nitrogenlevels_se";
+            fill_nitrogenlevels_se.Size = new Size(259, 25);
+            fill_nitrogenlevels_se.TabIndex = 71;
             // 
-            // numericUpDown4
+            // fill_phosphoruslevels_Se
             // 
-            numericUpDown4.BackColor = Color.LightGreen;
-            numericUpDown4.BorderStyle = BorderStyle.None;
-            numericUpDown4.Font = new Font("Glacial Indifference", 8.999999F);
-            numericUpDown4.Location = new Point(242, 216);
-            numericUpDown4.Name = "numericUpDown4";
-            numericUpDown4.Size = new Size(259, 25);
-            numericUpDown4.TabIndex = 71;
+            fill_phosphoruslevels_Se.BackColor = Color.LightGreen;
+            fill_phosphoruslevels_Se.BorderStyle = BorderStyle.None;
+            fill_phosphoruslevels_Se.Font = new Font("Glacial Indifference", 8.999999F);
+            fill_phosphoruslevels_Se.Location = new Point(242, 216);
+            fill_phosphoruslevels_Se.Name = "fill_phosphoruslevels_Se";
+            fill_phosphoruslevels_Se.Size = new Size(259, 25);
+            fill_phosphoruslevels_Se.TabIndex = 71;
             // 
-            // numericUpDown5
+            // fill_potassiumlevels_se
             // 
-            numericUpDown5.BackColor = Color.LightGreen;
-            numericUpDown5.BorderStyle = BorderStyle.None;
-            numericUpDown5.Font = new Font("Glacial Indifference", 8.999999F);
-            numericUpDown5.Location = new Point(243, 253);
-            numericUpDown5.Name = "numericUpDown5";
-            numericUpDown5.Size = new Size(259, 25);
-            numericUpDown5.TabIndex = 71;
+            fill_potassiumlevels_se.BackColor = Color.LightGreen;
+            fill_potassiumlevels_se.BorderStyle = BorderStyle.None;
+            fill_potassiumlevels_se.Font = new Font("Glacial Indifference", 8.999999F);
+            fill_potassiumlevels_se.Location = new Point(243, 253);
+            fill_potassiumlevels_se.Name = "fill_potassiumlevels_se";
+            fill_potassiumlevels_se.Size = new Size(259, 25);
+            fill_potassiumlevels_se.TabIndex = 71;
             // 
             // label20
             // 
@@ -791,102 +791,102 @@
             label38.TabIndex = 67;
             label38.Text = ":";
             // 
-            // label39
+            // display_overallresult_se
             // 
-            label39.AutoSize = true;
-            label39.BackColor = Color.Transparent;
-            label39.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label39.ForeColor = Color.Gold;
-            label39.Location = new Point(227, 611);
-            label39.Name = "label39";
-            label39.Size = new Size(118, 24);
-            label39.TabIndex = 67;
-            label39.Text = "(Label Only)";
-            label39.Click += label25_Click;
+            display_overallresult_se.AutoSize = true;
+            display_overallresult_se.BackColor = Color.Transparent;
+            display_overallresult_se.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            display_overallresult_se.ForeColor = Color.Gold;
+            display_overallresult_se.Location = new Point(227, 611);
+            display_overallresult_se.Name = "display_overallresult_se";
+            display_overallresult_se.Size = new Size(118, 24);
+            display_overallresult_se.TabIndex = 67;
+            display_overallresult_se.Text = "(Label Only)";
+            display_overallresult_se.Click += label25_Click;
             // 
-            // label40
+            // display_nitrogenresult_se
             // 
-            label40.AutoSize = true;
-            label40.BackColor = Color.Transparent;
-            label40.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label40.ForeColor = Color.Gold;
-            label40.Location = new Point(242, 668);
-            label40.Name = "label40";
-            label40.Size = new Size(118, 24);
-            label40.TabIndex = 67;
-            label40.Text = "(Label Only)";
+            display_nitrogenresult_se.AutoSize = true;
+            display_nitrogenresult_se.BackColor = Color.Transparent;
+            display_nitrogenresult_se.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_nitrogenresult_se.ForeColor = Color.Gold;
+            display_nitrogenresult_se.Location = new Point(242, 668);
+            display_nitrogenresult_se.Name = "display_nitrogenresult_se";
+            display_nitrogenresult_se.Size = new Size(118, 24);
+            display_nitrogenresult_se.TabIndex = 67;
+            display_nitrogenresult_se.Text = "(Label Only)";
             // 
-            // label41
+            // display_phosphorusresult_se
             // 
-            label41.AutoSize = true;
-            label41.BackColor = Color.Transparent;
-            label41.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label41.ForeColor = Color.Gold;
-            label41.Location = new Point(242, 697);
-            label41.Name = "label41";
-            label41.Size = new Size(118, 24);
-            label41.TabIndex = 67;
-            label41.Text = "(Label Only)";
+            display_phosphorusresult_se.AutoSize = true;
+            display_phosphorusresult_se.BackColor = Color.Transparent;
+            display_phosphorusresult_se.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_phosphorusresult_se.ForeColor = Color.Gold;
+            display_phosphorusresult_se.Location = new Point(242, 697);
+            display_phosphorusresult_se.Name = "display_phosphorusresult_se";
+            display_phosphorusresult_se.Size = new Size(118, 24);
+            display_phosphorusresult_se.TabIndex = 67;
+            display_phosphorusresult_se.Text = "(Label Only)";
             // 
-            // label42
+            // display_potassiumresult_se
             // 
-            label42.AutoSize = true;
-            label42.BackColor = Color.Transparent;
-            label42.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label42.ForeColor = Color.Gold;
-            label42.Location = new Point(242, 721);
-            label42.Name = "label42";
-            label42.Size = new Size(118, 24);
-            label42.TabIndex = 67;
-            label42.Text = "(Label Only)";
+            display_potassiumresult_se.AutoSize = true;
+            display_potassiumresult_se.BackColor = Color.Transparent;
+            display_potassiumresult_se.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_potassiumresult_se.ForeColor = Color.Gold;
+            display_potassiumresult_se.Location = new Point(242, 721);
+            display_potassiumresult_se.Name = "display_potassiumresult_se";
+            display_potassiumresult_se.Size = new Size(118, 24);
+            display_potassiumresult_se.TabIndex = 67;
+            display_potassiumresult_se.Text = "(Label Only)";
             // 
-            // label43
+            // display_phresult_se
             // 
-            label43.AutoSize = true;
-            label43.BackColor = Color.Transparent;
-            label43.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label43.ForeColor = Color.Gold;
-            label43.Location = new Point(243, 750);
-            label43.Name = "label43";
-            label43.Size = new Size(118, 24);
-            label43.TabIndex = 67;
-            label43.Text = "(Label Only)";
+            display_phresult_se.AutoSize = true;
+            display_phresult_se.BackColor = Color.Transparent;
+            display_phresult_se.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_phresult_se.ForeColor = Color.Gold;
+            display_phresult_se.Location = new Point(243, 750);
+            display_phresult_se.Name = "display_phresult_se";
+            display_phresult_se.Size = new Size(118, 24);
+            display_phresult_se.TabIndex = 67;
+            display_phresult_se.Text = "(Label Only)";
             // 
-            // label44
+            // display_ecresult_se
             // 
-            label44.AutoSize = true;
-            label44.BackColor = Color.Transparent;
-            label44.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label44.ForeColor = Color.Gold;
-            label44.Location = new Point(639, 644);
-            label44.Name = "label44";
-            label44.Size = new Size(118, 24);
-            label44.TabIndex = 67;
-            label44.Text = "(Label Only)";
+            display_ecresult_se.AutoSize = true;
+            display_ecresult_se.BackColor = Color.Transparent;
+            display_ecresult_se.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_ecresult_se.ForeColor = Color.Gold;
+            display_ecresult_se.Location = new Point(639, 644);
+            display_ecresult_se.Name = "display_ecresult_se";
+            display_ecresult_se.Size = new Size(118, 24);
+            display_ecresult_se.TabIndex = 67;
+            display_ecresult_se.Text = "(Label Only)";
             // 
-            // label45
+            // display_soilconsistencyresult_se
             // 
-            label45.AutoSize = true;
-            label45.BackColor = Color.Transparent;
-            label45.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label45.ForeColor = Color.Gold;
-            label45.Location = new Point(639, 668);
-            label45.Name = "label45";
-            label45.Size = new Size(118, 24);
-            label45.TabIndex = 67;
-            label45.Text = "(Label Only)";
+            display_soilconsistencyresult_se.AutoSize = true;
+            display_soilconsistencyresult_se.BackColor = Color.Transparent;
+            display_soilconsistencyresult_se.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_soilconsistencyresult_se.ForeColor = Color.Gold;
+            display_soilconsistencyresult_se.Location = new Point(639, 668);
+            display_soilconsistencyresult_se.Name = "display_soilconsistencyresult_se";
+            display_soilconsistencyresult_se.Size = new Size(118, 24);
+            display_soilconsistencyresult_se.TabIndex = 67;
+            display_soilconsistencyresult_se.Text = "(Label Only)";
             // 
-            // label46
+            // display_waterdepthresult_se
             // 
-            label46.AutoSize = true;
-            label46.BackColor = Color.Transparent;
-            label46.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label46.ForeColor = Color.Gold;
-            label46.Location = new Point(639, 721);
-            label46.Name = "label46";
-            label46.Size = new Size(118, 24);
-            label46.TabIndex = 67;
-            label46.Text = "(Label Only)";
+            display_waterdepthresult_se.AutoSize = true;
+            display_waterdepthresult_se.BackColor = Color.Transparent;
+            display_waterdepthresult_se.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_waterdepthresult_se.ForeColor = Color.Gold;
+            display_waterdepthresult_se.Location = new Point(639, 721);
+            display_waterdepthresult_se.Name = "display_waterdepthresult_se";
+            display_waterdepthresult_se.Size = new Size(118, 24);
+            display_waterdepthresult_se.TabIndex = 67;
+            display_waterdepthresult_se.Text = "(Label Only)";
             // 
             // button6
             // 
@@ -924,13 +924,13 @@
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(label20);
-            Controls.Add(numericUpDown2);
-            Controls.Add(numericUpDown5);
-            Controls.Add(numericUpDown4);
-            Controls.Add(numericUpDown3);
-            Controls.Add(numericUpDown1);
-            Controls.Add(trackBar1);
-            Controls.Add(comboBox1);
+            Controls.Add(fill_ec_se);
+            Controls.Add(fill_potassiumlevels_se);
+            Controls.Add(fill_phosphoruslevels_Se);
+            Controls.Add(fill_nitrogenlevels_se);
+            Controls.Add(fill_soilphlevels_se);
+            Controls.Add(fill_waterdepth_se);
+            Controls.Add(fill_soilconsistency_se);
             Controls.Add(textBox7);
             Controls.Add(label38);
             Controls.Add(label36);
@@ -953,19 +953,19 @@
             Controls.Add(label35);
             Controls.Add(label33);
             Controls.Add(label29);
-            Controls.Add(label39);
+            Controls.Add(display_overallresult_se);
             Controls.Add(label25);
             Controls.Add(label18);
             Controls.Add(label16);
             Controls.Add(label11);
             Controls.Add(label14);
-            Controls.Add(label46);
-            Controls.Add(label45);
-            Controls.Add(label44);
-            Controls.Add(label43);
-            Controls.Add(label42);
-            Controls.Add(label41);
-            Controls.Add(label40);
+            Controls.Add(display_waterdepthresult_se);
+            Controls.Add(display_soilconsistencyresult_se);
+            Controls.Add(display_ecresult_se);
+            Controls.Add(display_phresult_se);
+            Controls.Add(display_potassiumresult_se);
+            Controls.Add(display_phosphorusresult_se);
+            Controls.Add(display_nitrogenresult_se);
             Controls.Add(label12);
             Controls.Add(label8);
             Controls.Add(label10);
@@ -989,15 +989,15 @@
             Name = "User_SoilEvaluator";
             Text = "Form1";
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Soil_Evaluator_Grid).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)trackBar1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)fill_waterdepth_se).EndInit();
+            ((System.ComponentModel.ISupportInitialize)fill_soilphlevels_se).EndInit();
+            ((System.ComponentModel.ISupportInitialize)fill_ec_se).EndInit();
+            ((System.ComponentModel.ISupportInitialize)fill_nitrogenlevels_se).EndInit();
+            ((System.ComponentModel.ISupportInitialize)fill_phosphoruslevels_Se).EndInit();
+            ((System.ComponentModel.ISupportInitialize)fill_potassiumlevels_se).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1038,13 +1038,13 @@
         private Label label18;
         private Label label19;
         private TextBox textBox7;
-        private ComboBox comboBox1;
-        private TrackBar trackBar1;
-        private NumericUpDown numericUpDown1;
-        private NumericUpDown numericUpDown2;
-        private NumericUpDown numericUpDown3;
-        private NumericUpDown numericUpDown4;
-        private NumericUpDown numericUpDown5;
+        private ComboBox fill_soilconsistency_se;
+        private TrackBar fill_waterdepth_se;
+        private NumericUpDown fill_soilphlevels_se;
+        private NumericUpDown fill_ec_se;
+        private NumericUpDown fill_nitrogenlevels_se;
+        private NumericUpDown fill_phosphoruslevels_Se;
+        private NumericUpDown fill_potassiumlevels_se;
         private Label label20;
         private Label label21;
         private Label label22;
@@ -1064,16 +1064,16 @@
         private Label label36;
         private Label label37;
         private Label label38;
-        private Label label39;
-        private Label label40;
-        private Label label41;
-        private Label label42;
-        private Label label43;
-        private Label label44;
-        private Label label45;
-        private Label label46;
+        private Label display_overallresult_se;
+        private Label display_nitrogenresult_se;
+        private Label display_phosphorusresult_se;
+        private Label display_potassiumresult_se;
+        private Label display_phresult_se;
+        private Label display_ecresult_se;
+        private Label display_soilconsistencyresult_se;
+        private Label display_waterdepthresult_se;
         private Button button6;
         private Button button5;
-        private DataGridView dataGridView1;
+        private DataGridView Soil_Evaluator_Grid;
     }
 }

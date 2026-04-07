@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -27,6 +28,15 @@ namespace Fuentes_PrelimsP2
                 return instance;
             }
         }
+
+        OleDbConnection? connection;
+        OleDbDataAdapter? adapter;
+        OleDbCommand? command;
+        DataSet? dataSet;
+        int indexRow;
+
+        string currentSelectedRollNumber = " ";
+
         private void label3_Click(object sender, EventArgs e)
         {
 
@@ -105,6 +115,11 @@ namespace Fuentes_PrelimsP2
             {
                 MessageBox.Show("Failed to open page:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void initial_data_to_database()
+        {
+
         }
     }
 }

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(User_TransactionSheet));
-            dataGridView1 = new DataGridView();
-            dataGridView2 = new DataGridView();
+            Transaction_Sheet_Grid = new DataGridView();
+            Product_Inventory_Grid = new DataGridView();
             menuStrip1 = new MenuStrip();
             sssssToolStripMenuItem = new ToolStripMenuItem();
             reloadToolStripMenuItem = new ToolStripMenuItem();
@@ -38,18 +38,17 @@
             contactDeveloperToolStripMenuItem = new ToolStripMenuItem();
             accountSettingsToolStripMenuItem = new ToolStripMenuItem();
             logoutToolStripMenuItem = new ToolStripMenuItem();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            fill_productid_ts = new TextBox();
+            fill_customername_ts = new TextBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox6 = new TextBox();
-            label7 = new Label();
+            fill_quantity_ts = new TextBox();
+            fill_priceperkg_ts = new TextBox();
+            display_referenceid_ts = new Label();
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
@@ -62,28 +61,31 @@
             label9 = new Label();
             button9 = new Button();
             button10 = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            fill_date_ts = new DateTimePicker();
+            ((System.ComponentModel.ISupportInitialize)Transaction_Sheet_Grid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Product_Inventory_Grid).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
-            // dataGridView1
+            // Transaction_Sheet_Grid
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(649, 197);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(798, 251);
-            dataGridView1.TabIndex = 0;
+            Transaction_Sheet_Grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Transaction_Sheet_Grid.Location = new Point(649, 197);
+            Transaction_Sheet_Grid.Name = "Transaction_Sheet_Grid";
+            Transaction_Sheet_Grid.RowHeadersWidth = 62;
+            Transaction_Sheet_Grid.Size = new Size(798, 251);
+            Transaction_Sheet_Grid.TabIndex = 0;
+            Transaction_Sheet_Grid.CellClick += tradsactionsheetCellClick;
             // 
-            // dataGridView2
+            // Product_Inventory_Grid
             // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(98, 481);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowHeadersWidth = 62;
-            dataGridView2.Size = new Size(800, 236);
-            dataGridView2.TabIndex = 0;
+            Product_Inventory_Grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Product_Inventory_Grid.Location = new Point(98, 481);
+            Product_Inventory_Grid.Name = "Product_Inventory_Grid";
+            Product_Inventory_Grid.RowHeadersWidth = 62;
+            Product_Inventory_Grid.Size = new Size(800, 236);
+            Product_Inventory_Grid.TabIndex = 0;
+            Product_Inventory_Grid.CellClick += productinventoryCellClick;
             // 
             // menuStrip1
             // 
@@ -141,23 +143,23 @@
             logoutToolStripMenuItem.Size = new Size(172, 34);
             logoutToolStripMenuItem.Text = "Logout";
             // 
-            // textBox1
+            // fill_productid_ts
             // 
-            textBox1.BackColor = Color.LightGreen;
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Location = new Point(320, 234);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(259, 24);
-            textBox1.TabIndex = 3;
+            fill_productid_ts.BackColor = Color.LightGreen;
+            fill_productid_ts.BorderStyle = BorderStyle.None;
+            fill_productid_ts.Location = new Point(320, 234);
+            fill_productid_ts.Name = "fill_productid_ts";
+            fill_productid_ts.Size = new Size(259, 24);
+            fill_productid_ts.TabIndex = 3;
             // 
-            // textBox2
+            // fill_customername_ts
             // 
-            textBox2.BackColor = Color.LightGreen;
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Location = new Point(320, 197);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(259, 24);
-            textBox2.TabIndex = 3;
+            fill_customername_ts.BackColor = Color.LightGreen;
+            fill_customername_ts.BorderStyle = BorderStyle.None;
+            fill_customername_ts.Location = new Point(320, 197);
+            fill_customername_ts.Name = "fill_customername_ts";
+            fill_customername_ts.Size = new Size(259, 24);
+            fill_customername_ts.TabIndex = 3;
             // 
             // label1
             // 
@@ -233,45 +235,35 @@
             label6.TabIndex = 4;
             label6.Text = "Reference ID:";
             // 
-            // textBox3
+            // fill_quantity_ts
             // 
-            textBox3.BackColor = Color.LightGreen;
-            textBox3.BorderStyle = BorderStyle.None;
-            textBox3.Location = new Point(320, 307);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(259, 24);
-            textBox3.TabIndex = 3;
+            fill_quantity_ts.BackColor = Color.LightGreen;
+            fill_quantity_ts.BorderStyle = BorderStyle.None;
+            fill_quantity_ts.Location = new Point(320, 307);
+            fill_quantity_ts.Name = "fill_quantity_ts";
+            fill_quantity_ts.Size = new Size(259, 24);
+            fill_quantity_ts.TabIndex = 3;
             // 
-            // textBox4
+            // fill_priceperkg_ts
             // 
-            textBox4.BackColor = Color.LightGreen;
-            textBox4.BorderStyle = BorderStyle.None;
-            textBox4.Location = new Point(320, 270);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(259, 24);
-            textBox4.TabIndex = 3;
+            fill_priceperkg_ts.BackColor = Color.LightGreen;
+            fill_priceperkg_ts.BorderStyle = BorderStyle.None;
+            fill_priceperkg_ts.Location = new Point(320, 270);
+            fill_priceperkg_ts.Name = "fill_priceperkg_ts";
+            fill_priceperkg_ts.Size = new Size(259, 24);
+            fill_priceperkg_ts.TabIndex = 3;
             // 
-            // textBox6
+            // display_referenceid_ts
             // 
-            textBox6.BackColor = Color.LightGreen;
-            textBox6.BorderStyle = BorderStyle.None;
-            textBox6.Location = new Point(320, 344);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(259, 24);
-            textBox6.TabIndex = 3;
-            textBox6.TextChanged += textBox6_TextChanged;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.BackColor = Color.Transparent;
-            label7.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label7.ForeColor = Color.Gold;
-            label7.Location = new Point(320, 381);
-            label7.Name = "label7";
-            label7.Size = new Size(140, 27);
-            label7.TabIndex = 4;
-            label7.Text = "Reference ID:";
+            display_referenceid_ts.AutoSize = true;
+            display_referenceid_ts.BackColor = Color.Transparent;
+            display_referenceid_ts.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_referenceid_ts.ForeColor = Color.Gold;
+            display_referenceid_ts.Location = new Point(320, 381);
+            display_referenceid_ts.Name = "display_referenceid_ts";
+            display_referenceid_ts.Size = new Size(140, 27);
+            display_referenceid_ts.TabIndex = 4;
+            display_referenceid_ts.Text = "Reference ID:";
             // 
             // button1
             // 
@@ -287,6 +279,7 @@
             button1.TabIndex = 5;
             button1.Text = "Insert";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += press_insertts;
             // 
             // button2
             // 
@@ -302,6 +295,7 @@
             button2.TabIndex = 5;
             button2.Text = "Delete";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += press_deletets;
             // 
             // button3
             // 
@@ -317,6 +311,7 @@
             button3.TabIndex = 5;
             button3.Text = "Update";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += press_updatets;
             // 
             // button4
             // 
@@ -332,7 +327,7 @@
             button4.TabIndex = 5;
             button4.Text = "Load";
             button4.UseVisualStyleBackColor = false;
-            button4.Click += button4_Click;
+            button4.Click += loadButton;
             // 
             // button5
             // 
@@ -446,12 +441,20 @@
             button10.UseVisualStyleBackColor = false;
             button10.Click += shortcut_MarketForecasting;
             // 
+            // fill_date_ts
+            // 
+            fill_date_ts.Location = new Point(320, 344);
+            fill_date_ts.Name = "fill_date_ts";
+            fill_date_ts.Size = new Size(259, 31);
+            fill_date_ts.TabIndex = 6;
+            // 
             // User_TransactionSheet
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
+            Controls.Add(fill_date_ts);
             Controls.Add(button7);
             Controls.Add(button6);
             Controls.Add(button10);
@@ -463,7 +466,7 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label8);
-            Controls.Add(label7);
+            Controls.Add(display_referenceid_ts);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -471,19 +474,18 @@
             Controls.Add(label2);
             Controls.Add(label9);
             Controls.Add(label1);
-            Controls.Add(textBox6);
-            Controls.Add(textBox4);
-            Controls.Add(textBox2);
-            Controls.Add(textBox3);
-            Controls.Add(textBox1);
+            Controls.Add(fill_priceperkg_ts);
+            Controls.Add(fill_customername_ts);
+            Controls.Add(fill_quantity_ts);
+            Controls.Add(fill_productid_ts);
             Controls.Add(menuStrip1);
-            Controls.Add(dataGridView2);
-            Controls.Add(dataGridView1);
+            Controls.Add(Product_Inventory_Grid);
+            Controls.Add(Transaction_Sheet_Grid);
             ForeColor = Color.LawnGreen;
             Name = "User_TransactionSheet";
             Text = "User Transactions";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Transaction_Sheet_Grid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Product_Inventory_Grid).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -492,8 +494,8 @@
 
         #endregion
 
-        private DataGridView dataGridView1;
-        private DataGridView dataGridView2;
+        private DataGridView Transaction_Sheet_Grid;
+        private DataGridView Product_Inventory_Grid;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem sssssToolStripMenuItem;
         private ToolStripMenuItem reloadToolStripMenuItem;
@@ -501,18 +503,17 @@
         private ToolStripMenuItem contactDeveloperToolStripMenuItem;
         private ToolStripMenuItem accountSettingsToolStripMenuItem;
         private ToolStripMenuItem logoutToolStripMenuItem;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox fill_productid_ts;
+        private TextBox fill_customername_ts;
         private Label label1;
         private Label label2;
         private Label label3;
         private Label label4;
         private Label label5;
         private Label label6;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox6;
-        private Label label7;
+        private TextBox fill_quantity_ts;
+        private TextBox fill_priceperkg_ts;
+        private Label display_referenceid_ts;
         private Button button1;
         private Button button2;
         private Button button3;
@@ -525,5 +526,6 @@
         private Label label9;
         private Button button9;
         private Button button10;
+        private DateTimePicker fill_date_ts;
     }
 }

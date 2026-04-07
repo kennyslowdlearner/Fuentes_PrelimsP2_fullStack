@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(User_VarietalRegistry));
             panel1 = new Panel();
-            dataGridView1 = new DataGridView();
+            Varietal_Registry_Grid = new DataGridView();
             label1 = new Label();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            fill_ricetype_vr = new TextBox();
             label2 = new Label();
-            textBox3 = new TextBox();
+            fill_quantity_vr = new TextBox();
             label3 = new Label();
             button3 = new Button();
             button1 = new Button();
@@ -57,27 +57,35 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
+            label7 = new Label();
+            fill_search_vr = new TextBox();
+            label8 = new Label();
+            fill_date_vr = new DateTimePicker();
+            Refresh = new ContextMenuStrip(components);
+            toolStripComboBox1 = new ToolStripComboBox();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Varietal_Registry_Grid).BeginInit();
             menuStrip1.SuspendLayout();
+            Refresh.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.Controls.Add(dataGridView1);
-            panel1.Location = new Point(124, 169);
+            panel1.Controls.Add(Varietal_Registry_Grid);
+            panel1.Location = new Point(124, 207);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1297, 323);
+            panel1.Size = new Size(1297, 285);
             panel1.TabIndex = 0;
             // 
-            // dataGridView1
+            // Varietal_Registry_Grid
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(1291, 317);
-            dataGridView1.TabIndex = 0;
+            Varietal_Registry_Grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Varietal_Registry_Grid.Location = new Point(3, 3);
+            Varietal_Registry_Grid.Name = "Varietal_Registry_Grid";
+            Varietal_Registry_Grid.RowHeadersWidth = 62;
+            Varietal_Registry_Grid.Size = new Size(1291, 279);
+            Varietal_Registry_Grid.TabIndex = 0;
+            Varietal_Registry_Grid.CellClick += datagridCellClick;
             // 
             // label1
             // 
@@ -91,23 +99,14 @@
             label1.TabIndex = 50;
             label1.Text = "Rice Type";
             // 
-            // textBox2
+            // fill_ricetype_vr
             // 
-            textBox2.BackColor = Color.LightGreen;
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Location = new Point(336, 524);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(259, 24);
-            textBox2.TabIndex = 49;
-            // 
-            // textBox1
-            // 
-            textBox1.BackColor = Color.LightGreen;
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Location = new Point(336, 563);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(259, 24);
-            textBox1.TabIndex = 49;
+            fill_ricetype_vr.BackColor = Color.LightGreen;
+            fill_ricetype_vr.BorderStyle = BorderStyle.None;
+            fill_ricetype_vr.Location = new Point(336, 524);
+            fill_ricetype_vr.Name = "fill_ricetype_vr";
+            fill_ricetype_vr.Size = new Size(259, 24);
+            fill_ricetype_vr.TabIndex = 49;
             // 
             // label2
             // 
@@ -121,14 +120,14 @@
             label2.TabIndex = 50;
             label2.Text = "Date Stored";
             // 
-            // textBox3
+            // fill_quantity_vr
             // 
-            textBox3.BackColor = Color.LightGreen;
-            textBox3.BorderStyle = BorderStyle.None;
-            textBox3.Location = new Point(336, 603);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(259, 24);
-            textBox3.TabIndex = 49;
+            fill_quantity_vr.BackColor = Color.LightGreen;
+            fill_quantity_vr.BorderStyle = BorderStyle.None;
+            fill_quantity_vr.Location = new Point(336, 603);
+            fill_quantity_vr.Name = "fill_quantity_vr";
+            fill_quantity_vr.Size = new Size(259, 24);
+            fill_quantity_vr.TabIndex = 49;
             // 
             // label3
             // 
@@ -138,9 +137,9 @@
             label3.ForeColor = Color.LawnGreen;
             label3.Location = new Point(149, 597);
             label3.Name = "label3";
-            label3.Size = new Size(100, 27);
+            label3.Size = new Size(158, 27);
             label3.TabIndex = 50;
-            label3.Text = "Quantity";
+            label3.Text = "Quantity in Kg";
             // 
             // button3
             // 
@@ -156,6 +155,7 @@
             button3.TabIndex = 51;
             button3.Text = "Insert";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += press_insertvr;
             // 
             // button1
             // 
@@ -171,6 +171,7 @@
             button1.TabIndex = 51;
             button1.Text = "Update";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += press_updatevr;
             // 
             // button2
             // 
@@ -186,6 +187,7 @@
             button2.TabIndex = 51;
             button2.Text = "Delete";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += press_deletevr;
             // 
             // button6
             // 
@@ -375,12 +377,72 @@
             label6.TabIndex = 50;
             label6.Text = ":";
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.BackColor = Color.Transparent;
+            label7.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.LawnGreen;
+            label7.Location = new Point(130, 170);
+            label7.Name = "label7";
+            label7.Size = new Size(146, 27);
+            label7.TabIndex = 113;
+            label7.Text = "Product Name";
+            // 
+            // fill_search_vr
+            // 
+            fill_search_vr.BackColor = Color.Gainsboro;
+            fill_search_vr.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            fill_search_vr.Location = new Point(298, 172);
+            fill_search_vr.Name = "fill_search_vr";
+            fill_search_vr.Size = new Size(252, 29);
+            fill_search_vr.TabIndex = 112;
+            fill_search_vr.Text = "Search product name or id";
+            fill_search_vr.TextChanged += searchvr;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.BackColor = Color.Transparent;
+            label8.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.ForeColor = Color.LawnGreen;
+            label8.Location = new Point(277, 173);
+            label8.Name = "label8";
+            label8.Size = new Size(15, 24);
+            label8.TabIndex = 111;
+            label8.Text = ":";
+            // 
+            // fill_date_vr
+            // 
+            fill_date_vr.Location = new Point(336, 562);
+            fill_date_vr.Name = "fill_date_vr";
+            fill_date_vr.Size = new Size(259, 31);
+            fill_date_vr.TabIndex = 114;
+            // 
+            // Refresh
+            // 
+            Refresh.ImageScalingSize = new Size(24, 24);
+            Refresh.Items.AddRange(new ToolStripItem[] { toolStripComboBox1 });
+            Refresh.Name = "Refresh";
+            Refresh.Size = new Size(182, 43);
+            Refresh.Opening += Refresh_Opening;
+            // 
+            // toolStripComboBox1
+            // 
+            toolStripComboBox1.Name = "toolStripComboBox1";
+            toolStripComboBox1.Size = new Size(121, 33);
+            toolStripComboBox1.Click += refresh;
+            // 
             // User_VarietalRegistry
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 775);
+            Controls.Add(fill_date_vr);
+            Controls.Add(label7);
+            Controls.Add(fill_search_vr);
+            Controls.Add(label8);
             Controls.Add(button9);
             Controls.Add(button7);
             Controls.Add(button4);
@@ -396,19 +458,20 @@
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(textBox3);
+            Controls.Add(fill_quantity_vr);
             Controls.Add(label2);
-            Controls.Add(textBox1);
             Controls.Add(label1);
-            Controls.Add(textBox2);
+            Controls.Add(fill_ricetype_vr);
             Controls.Add(panel1);
             ForeColor = Color.LawnGreen;
             Name = "User_VarietalRegistry";
             Text = "Form1";
+            FormClosed += endoperation;
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Varietal_Registry_Grid).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            Refresh.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -417,10 +480,9 @@
 
         private Panel panel1;
         private Label label1;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox fill_ricetype_vr;
         private Label label2;
-        private TextBox textBox3;
+        private TextBox fill_quantity_vr;
         private Label label3;
         private Button button3;
         private Button button1;
@@ -439,9 +501,15 @@
         private ToolStripMenuItem contactDeveloperToolStripMenuItem;
         private ToolStripMenuItem accountSettingsToolStripMenuItem;
         private ToolStripMenuItem logoutToolStripMenuItem;
-        private DataGridView dataGridView1;
+        private DataGridView Varietal_Registry_Grid;
         private Label label4;
         private Label label5;
         private Label label6;
+        private Label label7;
+        private TextBox fill_search_vr;
+        private Label label8;
+        private DateTimePicker fill_date_vr;
+        private ContextMenuStrip Refresh;
+        private ToolStripComboBox toolStripComboBox1;
     }
 }
