@@ -69,7 +69,7 @@
             fill_soilphlevels_se = new NumericUpDown();
             fill_ec_se = new NumericUpDown();
             fill_nitrogenlevels_se = new NumericUpDown();
-            fill_phosphoruslevels_Se = new NumericUpDown();
+            fill_phosphoruslevels_se = new NumericUpDown();
             fill_potassiumlevels_se = new NumericUpDown();
             label20 = new Label();
             label21 = new Label();
@@ -100,6 +100,7 @@
             display_waterdepthresult_se = new Label();
             button6 = new Button();
             button5 = new Button();
+            display_watermeasure_se = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Soil_Evaluator_Grid).BeginInit();
             menuStrip1.SuspendLayout();
@@ -107,7 +108,7 @@
             ((System.ComponentModel.ISupportInitialize)fill_soilphlevels_se).BeginInit();
             ((System.ComponentModel.ISupportInitialize)fill_ec_se).BeginInit();
             ((System.ComponentModel.ISupportInitialize)fill_nitrogenlevels_se).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)fill_phosphoruslevels_Se).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)fill_phosphoruslevels_se).BeginInit();
             ((System.ComponentModel.ISupportInitialize)fill_potassiumlevels_se).BeginInit();
             SuspendLayout();
             // 
@@ -499,10 +500,12 @@
             // 
             fill_soilconsistency_se.BackColor = Color.LightGreen;
             fill_soilconsistency_se.FormattingEnabled = true;
+            fill_soilconsistency_se.Items.AddRange(new object[] { "Loose", "Friable", "Firm", "Extremely Firm", "Soft", "Sticky/Plastic" });
             fill_soilconsistency_se.Location = new Point(243, 486);
             fill_soilconsistency_se.Name = "fill_soilconsistency_se";
             fill_soilconsistency_se.Size = new Size(259, 33);
             fill_soilconsistency_se.TabIndex = 69;
+            fill_soilconsistency_se.SelectedIndexChanged += numeric_data_send_database;
             // 
             // fill_waterdepth_se
             // 
@@ -511,6 +514,7 @@
             fill_waterdepth_se.Name = "fill_waterdepth_se";
             fill_waterdepth_se.Size = new Size(259, 69);
             fill_waterdepth_se.TabIndex = 70;
+            fill_waterdepth_se.Scroll += numeric_data_send_database;
             // 
             // fill_soilphlevels_se
             // 
@@ -521,6 +525,7 @@
             fill_soilphlevels_se.Name = "fill_soilphlevels_se";
             fill_soilphlevels_se.Size = new Size(259, 25);
             fill_soilphlevels_se.TabIndex = 71;
+            fill_soilphlevels_se.ValueChanged += numeric_data_send_database;
             // 
             // fill_ec_se
             // 
@@ -531,6 +536,7 @@
             fill_ec_se.Name = "fill_ec_se";
             fill_ec_se.Size = new Size(259, 25);
             fill_ec_se.TabIndex = 71;
+            fill_ec_se.ValueChanged += numeric_data_send_database;
             // 
             // fill_nitrogenlevels_se
             // 
@@ -541,16 +547,18 @@
             fill_nitrogenlevels_se.Name = "fill_nitrogenlevels_se";
             fill_nitrogenlevels_se.Size = new Size(259, 25);
             fill_nitrogenlevels_se.TabIndex = 71;
+            fill_nitrogenlevels_se.ValueChanged += numeric_data_send_database;
             // 
-            // fill_phosphoruslevels_Se
+            // fill_phosphoruslevels_se
             // 
-            fill_phosphoruslevels_Se.BackColor = Color.LightGreen;
-            fill_phosphoruslevels_Se.BorderStyle = BorderStyle.None;
-            fill_phosphoruslevels_Se.Font = new Font("Glacial Indifference", 8.999999F);
-            fill_phosphoruslevels_Se.Location = new Point(242, 216);
-            fill_phosphoruslevels_Se.Name = "fill_phosphoruslevels_Se";
-            fill_phosphoruslevels_Se.Size = new Size(259, 25);
-            fill_phosphoruslevels_Se.TabIndex = 71;
+            fill_phosphoruslevels_se.BackColor = Color.LightGreen;
+            fill_phosphoruslevels_se.BorderStyle = BorderStyle.None;
+            fill_phosphoruslevels_se.Font = new Font("Glacial Indifference", 8.999999F);
+            fill_phosphoruslevels_se.Location = new Point(242, 216);
+            fill_phosphoruslevels_se.Name = "fill_phosphoruslevels_se";
+            fill_phosphoruslevels_se.Size = new Size(259, 25);
+            fill_phosphoruslevels_se.TabIndex = 71;
+            fill_phosphoruslevels_se.ValueChanged += numeric_data_send_database;
             // 
             // fill_potassiumlevels_se
             // 
@@ -561,6 +569,7 @@
             fill_potassiumlevels_se.Name = "fill_potassiumlevels_se";
             fill_potassiumlevels_se.Size = new Size(259, 25);
             fill_potassiumlevels_se.TabIndex = 71;
+            fill_potassiumlevels_se.ValueChanged += numeric_data_send_database;
             // 
             // label20
             // 
@@ -915,6 +924,18 @@
             button5.TabIndex = 74;
             button5.UseVisualStyleBackColor = false;
             // 
+            // display_watermeasure_se
+            // 
+            display_watermeasure_se.AutoSize = true;
+            display_watermeasure_se.BackColor = Color.Transparent;
+            display_watermeasure_se.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold);
+            display_watermeasure_se.ForeColor = Color.Yellow;
+            display_watermeasure_se.Location = new Point(508, 555);
+            display_watermeasure_se.Name = "display_watermeasure_se";
+            display_watermeasure_se.Size = new Size(106, 24);
+            display_watermeasure_se.TabIndex = 67;
+            display_watermeasure_se.Text = "Label Only";
+            // 
             // User_SoilEvaluator
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -926,7 +947,7 @@
             Controls.Add(label20);
             Controls.Add(fill_ec_se);
             Controls.Add(fill_potassiumlevels_se);
-            Controls.Add(fill_phosphoruslevels_Se);
+            Controls.Add(fill_phosphoruslevels_se);
             Controls.Add(fill_nitrogenlevels_se);
             Controls.Add(fill_soilphlevels_se);
             Controls.Add(fill_waterdepth_se);
@@ -955,6 +976,7 @@
             Controls.Add(label29);
             Controls.Add(display_overallresult_se);
             Controls.Add(label25);
+            Controls.Add(display_watermeasure_se);
             Controls.Add(label18);
             Controls.Add(label16);
             Controls.Add(label11);
@@ -996,7 +1018,7 @@
             ((System.ComponentModel.ISupportInitialize)fill_soilphlevels_se).EndInit();
             ((System.ComponentModel.ISupportInitialize)fill_ec_se).EndInit();
             ((System.ComponentModel.ISupportInitialize)fill_nitrogenlevels_se).EndInit();
-            ((System.ComponentModel.ISupportInitialize)fill_phosphoruslevels_Se).EndInit();
+            ((System.ComponentModel.ISupportInitialize)fill_phosphoruslevels_se).EndInit();
             ((System.ComponentModel.ISupportInitialize)fill_potassiumlevels_se).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -1043,7 +1065,7 @@
         private NumericUpDown fill_soilphlevels_se;
         private NumericUpDown fill_ec_se;
         private NumericUpDown fill_nitrogenlevels_se;
-        private NumericUpDown fill_phosphoruslevels_Se;
+        private NumericUpDown fill_phosphoruslevels_se;
         private NumericUpDown fill_potassiumlevels_se;
         private Label label20;
         private Label label21;
@@ -1075,5 +1097,6 @@
         private Button button6;
         private Button button5;
         private DataGridView Soil_Evaluator_Grid;
+        private Label display_watermeasure_se;
     }
 }
