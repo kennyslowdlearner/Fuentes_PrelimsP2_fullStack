@@ -128,6 +128,7 @@
             Soil_Evaluator_Grid.RowHeadersWidth = 62;
             Soil_Evaluator_Grid.Size = new Size(895, 285);
             Soil_Evaluator_Grid.TabIndex = 0;
+            Soil_Evaluator_Grid.CellClick += datagridCellClick;
             // 
             // button9
             // 
