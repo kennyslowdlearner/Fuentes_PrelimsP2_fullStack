@@ -36,12 +36,12 @@
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            textBox1 = new TextBox();
-            richTextBox1 = new RichTextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            comboBox1 = new ComboBox();
+            fill_date_usg_fg = new DateTimePicker();
+            fill_sales_usg_fg = new TextBox();
+            fill_goals_usg_fg = new RichTextBox();
+            fill_savings_usg_fg = new TextBox();
+            fill_income_usg_fg = new TextBox();
+            fill_status_usg_fg = new ComboBox();
             label9 = new Label();
             label8 = new Label();
             label10 = new Label();
@@ -51,6 +51,7 @@
             button6 = new Button();
             button5 = new Button();
             panel1 = new Panel();
+            display_savingstatus_usg_fg = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -131,51 +132,61 @@
             label7.TabIndex = 0;
             label7.Text = "Enter status for the goal";
             // 
-            // dateTimePicker1
+            // fill_date_usg_fg
             // 
-            dateTimePicker1.Location = new Point(335, 80);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(291, 31);
-            dateTimePicker1.TabIndex = 1;
+            fill_date_usg_fg.Location = new Point(335, 80);
+            fill_date_usg_fg.Name = "fill_date_usg_fg";
+            fill_date_usg_fg.Size = new Size(291, 31);
+            fill_date_usg_fg.TabIndex = 1;
             // 
-            // textBox1
+            // fill_sales_usg_fg
             // 
-            textBox1.Location = new Point(335, 281);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(291, 31);
-            textBox1.TabIndex = 2;
+            fill_sales_usg_fg.BackColor = Color.PaleGreen;
+            fill_sales_usg_fg.Location = new Point(335, 281);
+            fill_sales_usg_fg.Name = "fill_sales_usg_fg";
+            fill_sales_usg_fg.Size = new Size(291, 31);
+            fill_sales_usg_fg.TabIndex = 2;
+            fill_sales_usg_fg.TextChanged += GoalInputChanged;
             // 
-            // richTextBox1
+            // fill_goals_usg_fg
             // 
-            richTextBox1.BorderStyle = BorderStyle.FixedSingle;
-            richTextBox1.Location = new Point(335, 117);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(291, 158);
-            richTextBox1.TabIndex = 3;
-            richTextBox1.Text = "";
+            fill_goals_usg_fg.BackColor = Color.PaleGreen;
+            fill_goals_usg_fg.BorderStyle = BorderStyle.FixedSingle;
+            fill_goals_usg_fg.Location = new Point(335, 117);
+            fill_goals_usg_fg.Name = "fill_goals_usg_fg";
+            fill_goals_usg_fg.Size = new Size(291, 158);
+            fill_goals_usg_fg.TabIndex = 3;
+            fill_goals_usg_fg.Text = "";
+            fill_goals_usg_fg.TextChanged += GoalInputChanged;
             // 
-            // textBox2
+            // fill_savings_usg_fg
             // 
-            textBox2.Location = new Point(335, 318);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(291, 31);
-            textBox2.TabIndex = 2;
+            fill_savings_usg_fg.BackColor = Color.PaleGreen;
+            fill_savings_usg_fg.Location = new Point(335, 318);
+            fill_savings_usg_fg.Name = "fill_savings_usg_fg";
+            fill_savings_usg_fg.Size = new Size(291, 31);
+            fill_savings_usg_fg.TabIndex = 2;
+            fill_savings_usg_fg.TextChanged += GoalInputChanged;
             // 
-            // textBox3
+            // fill_income_usg_fg
             // 
-            textBox3.Location = new Point(335, 355);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(291, 31);
-            textBox3.TabIndex = 2;
+            fill_income_usg_fg.BackColor = Color.PaleGreen;
+            fill_income_usg_fg.Location = new Point(335, 355);
+            fill_income_usg_fg.Name = "fill_income_usg_fg";
+            fill_income_usg_fg.Size = new Size(291, 31);
+            fill_income_usg_fg.TabIndex = 2;
+            fill_income_usg_fg.TextChanged += GoalInputChanged;
             // 
-            // comboBox1
+            // fill_status_usg_fg
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(335, 392);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(291, 33);
-            comboBox1.TabIndex = 4;
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            fill_status_usg_fg.BackColor = Color.PaleGreen;
+            fill_status_usg_fg.FormattingEnabled = true;
+            fill_status_usg_fg.Items.AddRange(new object[] { "Ongoing goal", "Goal achieved", "Cancelled goal" });
+            fill_status_usg_fg.Location = new Point(335, 392);
+            fill_status_usg_fg.Name = "fill_status_usg_fg";
+            fill_status_usg_fg.Size = new Size(291, 33);
+            fill_status_usg_fg.TabIndex = 4;
+            fill_status_usg_fg.SelectedIndexChanged += GoalInputChanged;
             // 
             // label9
             // 
@@ -273,13 +284,13 @@
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
-            panel1.Controls.Add(comboBox1);
-            panel1.Controls.Add(richTextBox1);
-            panel1.Controls.Add(textBox3);
+            panel1.Controls.Add(fill_status_usg_fg);
+            panel1.Controls.Add(fill_goals_usg_fg);
+            panel1.Controls.Add(fill_income_usg_fg);
             panel1.Controls.Add(label1);
-            panel1.Controls.Add(textBox2);
-            panel1.Controls.Add(textBox1);
-            panel1.Controls.Add(dateTimePicker1);
+            panel1.Controls.Add(fill_savings_usg_fg);
+            panel1.Controls.Add(fill_sales_usg_fg);
+            panel1.Controls.Add(fill_date_usg_fg);
             panel1.Controls.Add(label13);
             panel1.Controls.Add(label12);
             panel1.Controls.Add(label11);
@@ -297,6 +308,18 @@
             panel1.Size = new Size(655, 454);
             panel1.TabIndex = 77;
             // 
+            // display_savingstatus_usg_fg
+            // 
+            display_savingstatus_usg_fg.BackColor = Color.Transparent;
+            display_savingstatus_usg_fg.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            display_savingstatus_usg_fg.ForeColor = Color.Yellow;
+            display_savingstatus_usg_fg.Location = new Point(169, 681);
+            display_savingstatus_usg_fg.Name = "display_savingstatus_usg_fg";
+            display_savingstatus_usg_fg.Size = new Size(421, 27);
+            display_savingstatus_usg_fg.TabIndex = 0;
+            display_savingstatus_usg_fg.Text = "-----";
+            display_savingstatus_usg_fg.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // User_SetGoals
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -306,6 +329,7 @@
             Controls.Add(panel1);
             Controls.Add(button6);
             Controls.Add(button5);
+            Controls.Add(display_savingstatus_usg_fg);
             Name = "User_SetGoals";
             Text = "Form1";
             panel1.ResumeLayout(false);
@@ -322,12 +346,12 @@
         private Label label5;
         private Label label6;
         private Label label7;
-        private DateTimePicker dateTimePicker1;
-        private TextBox textBox1;
-        private RichTextBox richTextBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private ComboBox comboBox1;
+        private DateTimePicker fill_date_usg_fg;
+        private TextBox fill_sales_usg_fg;
+        private RichTextBox fill_goals_usg_fg;
+        private TextBox fill_savings_usg_fg;
+        private TextBox fill_income_usg_fg;
+        private ComboBox fill_status_usg_fg;
         private Label label9;
         private Label label8;
         private Label label10;
@@ -337,5 +361,6 @@
         private Button button6;
         private Button button5;
         private Panel panel1;
+        private Label display_savingstatus_usg_fg;
     }
 }

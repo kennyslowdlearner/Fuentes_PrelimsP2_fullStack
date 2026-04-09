@@ -131,7 +131,7 @@
             Soil_Evaluator_Grid.RowHeadersWidth = 62;
             Soil_Evaluator_Grid.Size = new Size(895, 285);
             Soil_Evaluator_Grid.TabIndex = 0;
-            Soil_Evaluator_Grid.CellClick += datagridCellClick;
+            Soil_Evaluator_Grid.CellClick += auto_datagridCellClick;
             // 
             // button9
             // 
@@ -508,7 +508,7 @@
             fill_soilconsistency_se.Name = "fill_soilconsistency_se";
             fill_soilconsistency_se.Size = new Size(259, 33);
             fill_soilconsistency_se.TabIndex = 69;
-            fill_soilconsistency_se.SelectedIndexChanged += inputChanged_handler;
+            fill_soilconsistency_se.SelectedIndexChanged += auto_inputChanged_handler;
             // 
             // fill_soilphlevels_se
             // 
@@ -519,7 +519,7 @@
             fill_soilphlevels_se.Name = "fill_soilphlevels_se";
             fill_soilphlevels_se.Size = new Size(259, 25);
             fill_soilphlevels_se.TabIndex = 71;
-            fill_soilphlevels_se.ValueChanged += inputChanged_handler;
+            fill_soilphlevels_se.ValueChanged += auto_inputChanged_handler;
             // 
             // fill_ec_se
             // 
@@ -530,7 +530,7 @@
             fill_ec_se.Name = "fill_ec_se";
             fill_ec_se.Size = new Size(259, 25);
             fill_ec_se.TabIndex = 71;
-            fill_ec_se.ValueChanged += inputChanged_handler;
+            fill_ec_se.ValueChanged += auto_inputChanged_handler;
             // 
             // fill_nitrogenlevels_se
             // 
@@ -541,7 +541,7 @@
             fill_nitrogenlevels_se.Name = "fill_nitrogenlevels_se";
             fill_nitrogenlevels_se.Size = new Size(259, 25);
             fill_nitrogenlevels_se.TabIndex = 71;
-            fill_nitrogenlevels_se.ValueChanged += inputChanged_handler;
+            fill_nitrogenlevels_se.ValueChanged += auto_inputChanged_handler;
             // 
             // fill_phosphoruslevels_se
             // 
@@ -552,7 +552,7 @@
             fill_phosphoruslevels_se.Name = "fill_phosphoruslevels_se";
             fill_phosphoruslevels_se.Size = new Size(259, 25);
             fill_phosphoruslevels_se.TabIndex = 71;
-            fill_phosphoruslevels_se.ValueChanged += inputChanged_handler;
+            fill_phosphoruslevels_se.ValueChanged += auto_inputChanged_handler;
             // 
             // fill_potassiumlevels_se
             // 
@@ -563,7 +563,7 @@
             fill_potassiumlevels_se.Name = "fill_potassiumlevels_se";
             fill_potassiumlevels_se.Size = new Size(259, 25);
             fill_potassiumlevels_se.TabIndex = 71;
-            fill_potassiumlevels_se.ValueChanged += inputChanged_handler;
+            fill_potassiumlevels_se.ValueChanged += auto_inputChanged_handler;
             // 
             // label20
             // 
@@ -937,7 +937,7 @@
             fill_waterdepth_se.Name = "fill_waterdepth_se";
             fill_waterdepth_se.Size = new Size(259, 69);
             fill_waterdepth_se.TabIndex = 75;
-            fill_waterdepth_se.Scroll += fill_waterdepth_se_Scroll;
+            fill_waterdepth_se.Scroll += auto_fill_waterdepth_se_Scroll;
             // 
             // display_savingstatus_se
             // 

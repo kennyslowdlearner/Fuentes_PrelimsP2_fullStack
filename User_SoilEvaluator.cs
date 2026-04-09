@@ -53,7 +53,7 @@ namespace Fuentes_PrelimsP2
             {
                 autosaveTimer.Stop();
                 isAlreadySaved = true; // "Lock" the save so it only happens once
-                SaveToDatabaseImmediately();
+                auto_SaveToDatabaseImmediately();
             }
         }
 
@@ -133,12 +133,12 @@ namespace Fuentes_PrelimsP2
         }
 
 
-        private void numeric_data_send_database(object sender, EventArgs e)
+        private void auto_numeric_data_send_database(object sender, EventArgs e)
         {
             // ensure latest values are read and results are computed
             try
             {
-                inputChanged_handler(sender, e);
+                auto_inputChanged_handler(sender, e);
             }
             catch (Exception ex)
             {
@@ -210,12 +210,12 @@ namespace Fuentes_PrelimsP2
             }
 
             isAlreadySaved = true; // optional flag
-            refreshreload();
+            auto_refreshreload();
             MessageBox.Show("Saved successfully.");
         }
 
         // Handler for input changes: update local fields and recompute results without saving
-        private void inputChanged_handler(object? sender, EventArgs e)
+        private void auto_inputChanged_handler(object? sender, EventArgs e)
         {
             try
             {
@@ -232,10 +232,10 @@ namespace Fuentes_PrelimsP2
                 // ignore parse errors; results_and_calculation will validate
             }
 
-            results_and_calculation();
+            auto_results_and_calculation();
         }
 
-        private void refreshreload()
+        private void auto_refreshreload()
         {
             connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
             adapter = new OleDbDataAdapter("SELECT * FROM [User Soil Evaluator Query]", connection);
@@ -309,7 +309,7 @@ namespace Fuentes_PrelimsP2
             }
         }
 
-        private void results_and_calculation()
+        private void auto_results_and_calculation()
         {
             connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
             adapter = new OleDbDataAdapter("SELECT * FROM [User Soil Evaluator Query]", connection);
@@ -411,7 +411,7 @@ namespace Fuentes_PrelimsP2
             }
         }
 
-        private void SaveToDatabaseImmediately()
+        private void auto_SaveToDatabaseImmediately()
         {
             using (OleDbConnection connected = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb"))
             {
@@ -468,7 +468,7 @@ namespace Fuentes_PrelimsP2
                         cmdOut.ExecuteNonQuery();
                     }
 
-                    refreshreload();
+                    auto_refreshreload();
                     MessageBox.Show("Evaluation Saved to Pananom History!");
                 }
                 catch (Exception ex)
@@ -479,7 +479,7 @@ namespace Fuentes_PrelimsP2
             }
         }
 
-        private void datagridCellClick(object sender, DataGridViewCellEventArgs e)
+        private void auto_datagridCellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -516,11 +516,11 @@ namespace Fuentes_PrelimsP2
                 display_waterdepthresult_se.Text = row.Cells["Water Depth Result"].Value.ToString();
                 display_overallresult_se.Text = row.Cells["Overall Result"].Value.ToString();
 
-                MakeResultsVisible();
+                auto_MakeResultsVisible();
             }
         }
 
-        private void MakeResultsVisible()
+        private void auto_MakeResultsVisible()
         {
             display_nitrogenresult_se.Visible = true;
             display_phosphorusresult_se.Visible = true;
@@ -532,10 +532,10 @@ namespace Fuentes_PrelimsP2
             display_overallresult_se.Visible = true;
         }
 
-        private void fill_waterdepth_se_Scroll(object sender, EventArgs e)
+        private void auto_fill_waterdepth_se_Scroll(object sender, EventArgs e)
         {
             display_watermeasure_se.Text = fill_waterdepth_se.Value + " cm";
-            inputChanged_handler(sender, e);
+            auto_inputChanged_handler(sender, e);
         }
 
         // Add this new handler to the form class
