@@ -16,6 +16,9 @@ namespace Fuentes_PrelimsP2
         public User_SoilEvaluator()
         {
             InitializeComponent();
+
+            autosaveTimer.Interval = 5000;
+            autosaveTimer.Tick += autosaveTimer_tick;
         }
 
         //(Global User Session) Component
@@ -30,6 +33,8 @@ namespace Fuentes_PrelimsP2
             }
         }
 
+        System.Windows.Forms.Timer autosaveTimer = new System.Windows.Forms.Timer();
+
         OleDbConnection? connection;
         OleDbDataAdapter? adapter;
         OleDbCommand? command;
@@ -42,9 +47,14 @@ namespace Fuentes_PrelimsP2
         string soil_consistency;
         bool isAlreadySaved = false;
 
-        private void label3_Click(object sender, EventArgs e)
+        private void autosaveTimer_tick(object sender, EventArgs e)
         {
-
+            if (!isAlreadySaved)
+            {
+                autosaveTimer.Stop();
+                isAlreadySaved = true; // "Lock" the save so it only happens once
+                SaveToDatabaseImmediately();
+            }
         }
 
         private void label25_Click(object sender, EventArgs e)
@@ -126,14 +136,22 @@ namespace Fuentes_PrelimsP2
         private void numeric_data_send_database(object sender, EventArgs e)
         {
             // ensure latest values are read and results are computed
-            inputChanged_handler(sender, e);
+            try
+            {
+                inputChanged_handler(sender, e);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error reading inputs before save: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             // validate required data
             if (!(nitrogen_levels > 0 && phosphorus_levels > 0 && potassium_levels > 0
                   && soil_pH > 0 && electrical_conductivity > 0 && !string.IsNullOrEmpty(soil_consistency) && water > 0))
             {
                 //MessageBox.Show("Please complete all required inputs before saving.", "Incomplete Data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //return; 
+                return;
             }
 
             // insert inputs and outputs together (use your existing connection string & table names)
@@ -142,30 +160,50 @@ namespace Fuentes_PrelimsP2
                 conn.Open();
 
                 var inputSql = "INSERT INTO [User RYR Soil Evaluator Inputs] ([Nitrogen Levels], [Phosphorus Levels], [Potassium Levels], [Soil pH Levels], [Electrical Conductivity (EC)], [Soil Consistency], [Water Depth]) VALUES (?, ?, ?, ?, ?, ?, ?)";
-                using (var cmdIn = new OleDbCommand(inputSql, conn))
-                {
-                    cmdIn.Parameters.AddWithValue("?", nitrogen_levels);
-                    cmdIn.Parameters.AddWithValue("?", phosphorus_levels);
-                    cmdIn.Parameters.AddWithValue("?", potassium_levels);
-                    cmdIn.Parameters.AddWithValue("?", soil_pH);
-                    cmdIn.Parameters.AddWithValue("?", electrical_conductivity);
-                    cmdIn.Parameters.AddWithValue("?", soil_consistency);
-                    cmdIn.Parameters.AddWithValue("?", water);
-                    cmdIn.ExecuteNonQuery();
-                }
 
-                var outputSql = "INSERT INTO [User RYR Soil Evaluator Outputs] ([Nitrogen Levels Result], [Phosphorus Levels Result], [Potassium Levels Result], [Soil pH Levels Result], [Electrical Conductivity (EC) Result], [Soil Consistency Result], [Water Depth Result], [Overall Result]) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-                using (var cmdOut = new OleDbCommand(outputSql, conn))
+                try
                 {
-                    cmdOut.Parameters.AddWithValue("?", display_nitrogenresult_se.Text);
-                    cmdOut.Parameters.AddWithValue("?", display_phosphorusresult_se.Text);
-                    cmdOut.Parameters.AddWithValue("?", display_potassiumresult_se.Text);
-                    cmdOut.Parameters.AddWithValue("?", display_phresult_se.Text);
-                    cmdOut.Parameters.AddWithValue("?", display_ecresult_se.Text);
-                    cmdOut.Parameters.AddWithValue("?", display_soilconsistencyresult_se.Text);
-                    cmdOut.Parameters.AddWithValue("?", display_waterdepthresult_se.Text);
-                    cmdOut.Parameters.AddWithValue("?", display_overallresult_se.Text);
-                    cmdOut.ExecuteNonQuery();
+                    int insertedId = -1;
+                    using (var cmdIn = new OleDbCommand(inputSql, conn))
+                    {
+                        cmdIn.Parameters.AddWithValue("?", nitrogen_levels);
+                        cmdIn.Parameters.AddWithValue("?", phosphorus_levels);
+                        cmdIn.Parameters.AddWithValue("?", potassium_levels);
+                        cmdIn.Parameters.AddWithValue("?", soil_pH);
+                        cmdIn.Parameters.AddWithValue("?", electrical_conductivity);
+                        cmdIn.Parameters.AddWithValue("?", soil_consistency ?? string.Empty);
+                        cmdIn.Parameters.AddWithValue("?", water);
+                        cmdIn.ExecuteNonQuery();
+                    }
+
+                    // Retrieve the autonumber / identity value for the just-inserted input record
+                    using (var idCmd = new OleDbCommand("SELECT @@IDENTITY", conn))
+                    {
+                        var idObj = idCmd.ExecuteScalar();
+                        if (idObj != null && int.TryParse(idObj.ToString(), out int tmp))
+                            insertedId = tmp;
+                    }
+
+                    // Ensure we include the foreign key to the input record when inserting outputs
+                    var outputSql = "INSERT INTO [User RYR Soil Evaluator Outputs] ([Roll Number], [Nitrogen Levels Result], [Phosphorus Levels Result], [Potassium Levels Result], [Soil pH Levels Result], [Electrical Conductivity (EC) Result], [Soil Consistency Result], [Water Depth Result], [Overall Result]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    using (var cmdOut = new OleDbCommand(outputSql, conn))
+                    {
+                        // first parameter is the FK to inputs table
+                        cmdOut.Parameters.AddWithValue("?", insertedId);
+                        cmdOut.Parameters.AddWithValue("?", display_nitrogenresult_se.Text);
+                        cmdOut.Parameters.AddWithValue("?", display_phosphorusresult_se.Text);
+                        cmdOut.Parameters.AddWithValue("?", display_potassiumresult_se.Text);
+                        cmdOut.Parameters.AddWithValue("?", display_phresult_se.Text);
+                        cmdOut.Parameters.AddWithValue("?", display_ecresult_se.Text);
+                        cmdOut.Parameters.AddWithValue("?", display_soilconsistencyresult_se.Text);
+                        cmdOut.Parameters.AddWithValue("?", display_waterdepthresult_se.Text);
+                        cmdOut.Parameters.AddWithValue("?", display_overallresult_se.Text);
+                        cmdOut.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Unable to save data. Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 conn.Close();
@@ -174,6 +212,27 @@ namespace Fuentes_PrelimsP2
             isAlreadySaved = true; // optional flag
             refreshreload();
             MessageBox.Show("Saved successfully.");
+        }
+
+        // Handler for input changes: update local fields and recompute results without saving
+        private void inputChanged_handler(object? sender, EventArgs e)
+        {
+            try
+            {
+                nitrogen_levels = Convert.ToInt32(fill_nitrogenlevels_se.Value);
+                phosphorus_levels = Convert.ToInt32(fill_phosphoruslevels_se.Value);
+                potassium_levels = Convert.ToInt32(fill_potassiumlevels_se.Value);
+                soil_pH = Convert.ToDouble(fill_soilphlevels_se.Value);
+                electrical_conductivity = Convert.ToDouble(fill_ec_se.Value);
+                soil_consistency = fill_soilconsistency_se.Text ?? string.Empty;
+                water = Convert.ToInt32(fill_waterdepth_se.Value);
+            }
+            catch
+            {
+                // ignore parse errors; results_and_calculation will validate
+            }
+
+            results_and_calculation();
         }
 
         private void refreshreload()
@@ -192,10 +251,19 @@ namespace Fuentes_PrelimsP2
                 Soil_Evaluator_Grid.DataSource = dataSet.Tables["[User Soil Evaluator Query]"];
                 Soil_Evaluator_Grid.AutoGenerateColumns = true;
 
+                Soil_Evaluator_Grid.DefaultCellStyle.ForeColor = Color.Black;
+
                 foreach (DataGridViewColumn col in Soil_Evaluator_Grid.Columns) { col.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells; }
                 if (Soil_Evaluator_Grid.Columns.Contains("Roll Number")) Soil_Evaluator_Grid.Columns["Roll Number"].Visible = false;
 
                 //set .Fill if .AllCells is not working for some columns
+                if (Soil_Evaluator_Grid.Columns.Contains("Date and Time"))
+                {
+                    Soil_Evaluator_Grid.Columns["Date and Time"].DefaultCellStyle.Format = "MMM dd, yyyy hh:mm tt";
+                    Soil_Evaluator_Grid.Columns["Date and Time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                    Soil_Evaluator_Grid.Columns["Date and Time"].DisplayIndex = 0; // Move it to the first column so it's easy to see
+                }
+
                 Soil_Evaluator_Grid.Columns["Nitrogen Levels"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 Soil_Evaluator_Grid.Columns["Nitrogen Levels Result"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 Soil_Evaluator_Grid.Columns["Phosphorus Levels"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -210,10 +278,29 @@ namespace Fuentes_PrelimsP2
                 Soil_Evaluator_Grid.Columns["Soil Consistency Result"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 Soil_Evaluator_Grid.Columns["Water Depth"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 Soil_Evaluator_Grid.Columns["Water Depth Result"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Soil_Evaluator_Grid.Columns["Overall Result"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                Soil_Evaluator_Grid.Columns["Overall Result"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
                 if (Soil_Evaluator_Grid.Columns.Contains("Roll Number")) Soil_Evaluator_Grid.Columns["Roll Number"].Visible = false;
 
+                fill_nitrogenlevels_se.Value = 0;
+                fill_phosphoruslevels_se.Value = 0;
+                fill_potassiumlevels_se.Value = 0;
+                fill_soilphlevels_se.Value = 0;
+                fill_ec_se.Value = 0;
+                fill_soilconsistency_se.SelectedIndex = -1;
+                fill_waterdepth_se.Value = 0;
+
+                isAlreadySaved = false; // reset save flag on reload
+                display_watermeasure_se.Text = "0 cm";
+
+                display_nitrogenresult_se.Visible = false;
+                display_phosphorusresult_se.Visible = false;
+                display_potassiumresult_se.Visible = false;
+                display_phresult_se.Visible = false;
+                display_ecresult_se.Visible = false;
+                display_soilconsistencyresult_se.Visible = false;
+                display_waterdepthresult_se.Visible = false;
+                display_overallresult_se.Text = "Results will appear here";
             }
 
             catch (Exception ex)
@@ -272,9 +359,9 @@ namespace Fuentes_PrelimsP2
 
             //pH and EC
 
-            if (soil_pH < 5.5) display_phresult_se.Text = "Acidic";
-            else if (soil_pH >= 5.5 && soil_pH <= 6.5) display_phresult_se.Text = "Optimal";
-            else if (soil_pH > 6.5) display_phresult_se.Text = "Alkaline";
+            if (soil_pH < 6) display_phresult_se.Text = "Acidic";
+            else if (soil_pH >= 6 && soil_pH <= 7) display_phresult_se.Text = "Optimal";
+            else if (soil_pH > 7) display_phresult_se.Text = "Alkaline";
 
             if (electrical_conductivity < 0.8) display_ecresult_se.Text = "Low";
             else if (electrical_conductivity >= 0.8 && electrical_conductivity <= 2.0) display_ecresult_se.Text = "Optimal";
@@ -306,62 +393,95 @@ namespace Fuentes_PrelimsP2
                                && water > 0;
 
             // button5 is the Save button in Designer; ensure it's disabled by default in InitializeComponent or form load
-            if (button5 != null) button5.Enabled = readyToSave;
+            //if (button5 != null) button5.Enabled = readyToSave;
+
+            if (readyToSave && !isAlreadySaved)
+            {
+                // If the user changes something, STOP the old timer and START a fresh 5s countdown
+                autosaveTimer.Stop();
+                autosaveTimer.Start();
+
+                display_savingstatus_se.Text = "Data Complete! Saving in 5s...";
+            }
+            else if (!readyToSave)
+            {
+                // If they change a value to 0 or empty, kill the timer entirely
+                autosaveTimer.Stop();
+                isAlreadySaved = false;
+            }
         }
 
         private void SaveToDatabaseImmediately()
         {
-            connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
-            string inputquery = "INSERT INTO [User RYR Soil Evaluator Inputs] ([Nitrogen Levels], [Phosphorus Levels], [Potassium Levels], [Soil pH Levels], [Electrical Conductivity (EC)], [Soil Consistency], [Water Depth]) VALUES (@P1, @P2, @P3, @P4, @P5, @P6, @P7)";
-            string outputquery = "INSERT INTO [User RYR Soil Evaluator Outputs] ([Nitrogen Levels Result], [Phosphorus Levels Result], [Potassium Levels Result], [Soil pH Levels Result], [Electrical Conductivity (EC) Result], [Soil Consistency Result], [Water Depth Result], [Overall Result]) VALUES (@Q1, @Q2, @Q3, @Q4, @Q5, @Q6, @Q7, @Q8)";
-
-            using (OleDbConnection connected = connection)
+            using (OleDbConnection connected = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb"))
             {
                 try
                 {
                     connected.Open();
+                    int insertedId = -1;
 
-                    using (OleDbCommand commandInput = new OleDbCommand(inputquery, connected))
+                    // 1. INPUTS: Double check these 7 columns match your 'Inputs' table exactly
+                    string inputquery = "INSERT INTO [User RYR Soil Evaluator Inputs] " +
+                                        "([Nitrogen Levels], [Phosphorus Levels], [Potassium Levels], [Soil pH Levels], [Electrical Conductivity (EC)], [Soil Consistency], [Water Depth]) " +
+                                        "VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+                    using (OleDbCommand cmdIn = new OleDbCommand(inputquery, connected))
                     {
-                        commandInput.Parameters.Add("@P1", OleDbType.Integer).Value = nitrogen_levels;
-                        commandInput.Parameters.Add("@P2", OleDbType.Integer).Value = phosphorus_levels;
-                        commandInput.Parameters.Add("@P3", OleDbType.Integer).Value = potassium_levels;
-                        commandInput.Parameters.Add("@P4", OleDbType.Double).Value = soil_pH;
-                        commandInput.Parameters.Add("@P5", OleDbType.Double).Value = electrical_conductivity;
-                        commandInput.Parameters.Add("@P6", OleDbType.VarWChar).Value = soil_consistency;
-                        commandInput.Parameters.Add("@P7", OleDbType.Integer).Value = water;
-                        commandInput.ExecuteNonQuery();
+                        cmdIn.Parameters.AddWithValue("?", nitrogen_levels);
+                        cmdIn.Parameters.AddWithValue("?", phosphorus_levels);
+                        cmdIn.Parameters.AddWithValue("?", potassium_levels);
+                        cmdIn.Parameters.AddWithValue("?", soil_pH);
+                        cmdIn.Parameters.AddWithValue("?", electrical_conductivity);
+                        cmdIn.Parameters.AddWithValue("?", soil_consistency);
+                        cmdIn.Parameters.AddWithValue("?", water);
+                        cmdIn.ExecuteNonQuery();
                     }
 
-                    using (OleDbCommand commandOutput = new OleDbCommand(outputquery, connected))
+                    // 2. GET THE IDENTITY
+                    using (OleDbCommand idCmd = new OleDbCommand("SELECT @@IDENTITY", connected))
                     {
-                        commandOutput.Parameters.Add("@Q1", OleDbType.VarWChar).Value = display_nitrogenresult_se.Text;
-                        commandOutput.Parameters.Add("@Q2", OleDbType.VarWChar).Value = display_phosphorusresult_se.Text;
-                        commandOutput.Parameters.Add("@Q3", OleDbType.VarWChar).Value = display_potassiumresult_se.Text;
-                        commandOutput.Parameters.Add("@Q4", OleDbType.VarWChar).Value = display_phresult_se.Text;
-                        commandOutput.Parameters.Add("@Q5", OleDbType.VarWChar).Value = display_ecresult_se.Text;
-                        commandOutput.Parameters.Add("@Q6", OleDbType.VarWChar).Value = display_soilconsistencyresult_se.Text;
-                        commandOutput.Parameters.Add("@Q7", OleDbType.VarWChar).Value = display_waterdepthresult_se.Text;
-                        commandOutput.Parameters.Add("@Q8", OleDbType.VarWChar).Value = display_overallresult_se.Text;
-                        commandOutput.ExecuteNonQuery();
+                        insertedId = (int)idCmd.ExecuteScalar();
+                    }
+
+                    // 3. OUTPUTS: This is where the 10 parameters must be in perfect order
+                    // I've added brackets to every column to prevent Access from getting confused
+                    string outputquery = "INSERT INTO [User RYR Soil Evaluator Outputs] " +
+                                        "([Roll Number], [Nitrogen Levels Result], [Phosphorus Levels Result], [Potassium Levels Result], [Soil pH Levels Result], [Electrical Conductivity (EC) Result], [Soil Consistency Result], [Water Depth Result], [Overall Result], [Date and Time]) " +
+                                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+                    using (OleDbCommand cmdOut = new OleDbCommand(outputquery, connected))
+                    {
+                        // Order is: Roll, N_Res, P_Res, K_Res, pH_Res, EC_Res, Cons_Res, Water_Res, Overall, Date
+                        cmdOut.Parameters.AddWithValue("?", insertedId);
+                        cmdOut.Parameters.AddWithValue("?", display_nitrogenresult_se.Text);
+                        cmdOut.Parameters.AddWithValue("?", display_phosphorusresult_se.Text);
+                        cmdOut.Parameters.AddWithValue("?", display_potassiumresult_se.Text);
+                        cmdOut.Parameters.AddWithValue("?", display_phresult_se.Text);
+                        cmdOut.Parameters.AddWithValue("?", display_ecresult_se.Text);
+                        cmdOut.Parameters.AddWithValue("?", display_soilconsistencyresult_se.Text);
+                        cmdOut.Parameters.AddWithValue("?", display_waterdepthresult_se.Text);
+                        cmdOut.Parameters.AddWithValue("?", display_overallresult_se.Text);
+
+                        // Force specify this as a Date to avoid mismatch
+                        cmdOut.Parameters.Add("?", OleDbType.Date).Value = DateTime.Now;
+
+                        cmdOut.ExecuteNonQuery();
                     }
 
                     refreshreload();
-                    MessageBox.Show("Result records SAVED succesfully!");
-
+                    MessageBox.Show("Evaluation Saved to Pananom History!");
                 }
-
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Failed to save result records. Error: " + ex.Message);
-                    }
-
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Final troubleshooting error: " + ex.Message);
+                    isAlreadySaved = false;
                 }
             }
+        }
 
         private void datagridCellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex >= 0)
+            if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = Soil_Evaluator_Grid.Rows[e.RowIndex];
 
@@ -371,7 +491,7 @@ namespace Fuentes_PrelimsP2
                 fill_soilphlevels_se.Value = Convert.ToDecimal(row.Cells["Soil pH Levels"].Value);
                 fill_ec_se.Value = Convert.ToDecimal(row.Cells["Electrical Conductivity (EC)"].Value);
                 fill_soilconsistency_se.Text = (row.Cells["Soil Consistency"].Value).ToString();
-                
+
 
                 // 2. Update the Result Labels (The Output Table side)
                 display_nitrogenresult_se.Text = row.Cells["Nitrogen Levels Result"].Value.ToString();
@@ -412,20 +532,26 @@ namespace Fuentes_PrelimsP2
             display_overallresult_se.Visible = true;
         }
 
-        // Add this new handler to the form class
-        private void inputChanged_handler(object? sender, EventArgs e)
+        private void fill_waterdepth_se_Scroll(object sender, EventArgs e)
         {
-            // read current inputs into fields (safe parse)
-            nitrogen_levels = Convert.ToInt32(fill_nitrogenlevels_se.Value);
-            phosphorus_levels = Convert.ToInt32(fill_phosphoruslevels_se.Value);
-            potassium_levels = Convert.ToInt32(fill_potassiumlevels_se.Value);
-            soil_pH = Convert.ToDouble(fill_soilphlevels_se.Value);
-            electrical_conductivity = Convert.ToDouble(fill_ec_se.Value);
-            soil_consistency = fill_soilconsistency_se.Text ?? string.Empty;
-            water = Convert.ToInt32(fill_waterdepth_se.Value);
-
-            // recompute UI results but DO NOT save here
-            results_and_calculation();
+            display_watermeasure_se.Text = fill_waterdepth_se.Value + " cm";
+            inputChanged_handler(sender, e);
         }
+
+        // Add this new handler to the form class
+        //private void inputChanged_handler(object? sender, EventArgs e)
+        //{
+        //    // read current inputs into fields (safe parse)
+        //    nitrogen_levels = Convert.ToInt32(fill_nitrogenlevels_se.Value);
+        //    phosphorus_levels = Convert.ToInt32(fill_phosphoruslevels_se.Value);
+        //    potassium_levels = Convert.ToInt32(fill_potassiumlevels_se.Value);
+        //    soil_pH = Convert.ToDouble(fill_soilphlevels_se.Value);
+        //    electrical_conductivity = Convert.ToDouble(fill_ec_se.Value);
+        //    soil_consistency = fill_soilconsistency_se.Text ?? string.Empty;
+        //    water = Convert.ToInt32(fill_waterdepth_se.Value);
+
+        //    // recompute UI results but DO NOT save here
+        //    results_and_calculation();
+        //}
     }
 }

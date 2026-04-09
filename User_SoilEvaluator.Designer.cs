@@ -65,7 +65,6 @@
             label19 = new Label();
             textBox7 = new TextBox();
             fill_soilconsistency_se = new ComboBox();
-            fill_waterdepth_se = new TrackBar();
             fill_soilphlevels_se = new NumericUpDown();
             fill_ec_se = new NumericUpDown();
             fill_nitrogenlevels_se = new NumericUpDown();
@@ -101,15 +100,19 @@
             button6 = new Button();
             button5 = new Button();
             display_watermeasure_se = new Label();
+            fill_waterdepth_se = new TrackBar();
+            display_savingstatus_se = new Label();
+            label42 = new Label();
+            label43 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Soil_Evaluator_Grid).BeginInit();
             menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)fill_waterdepth_se).BeginInit();
             ((System.ComponentModel.ISupportInitialize)fill_soilphlevels_se).BeginInit();
             ((System.ComponentModel.ISupportInitialize)fill_ec_se).BeginInit();
             ((System.ComponentModel.ISupportInitialize)fill_nitrogenlevels_se).BeginInit();
             ((System.ComponentModel.ISupportInitialize)fill_phosphoruslevels_se).BeginInit();
             ((System.ComponentModel.ISupportInitialize)fill_potassiumlevels_se).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)fill_waterdepth_se).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -294,7 +297,6 @@
             label3.Size = new Size(108, 34);
             label3.TabIndex = 66;
             label3.Text = "Results";
-            label3.Click += label3_Click;
             // 
             // label4
             // 
@@ -474,9 +476,9 @@
             label18.ForeColor = Color.Yellow;
             label18.Location = new Point(74, 533);
             label18.Name = "label18";
-            label18.Size = new Size(159, 24);
+            label18.Size = new Size(130, 24);
             label18.TabIndex = 67;
-            label18.Text = "Water Depth (m)";
+            label18.Text = "Water Depth ";
             // 
             // label19
             // 
@@ -506,16 +508,7 @@
             fill_soilconsistency_se.Name = "fill_soilconsistency_se";
             fill_soilconsistency_se.Size = new Size(259, 33);
             fill_soilconsistency_se.TabIndex = 69;
-            fill_soilconsistency_se.SelectedIndexChanged += numeric_data_send_database;
-            // 
-            // fill_waterdepth_se
-            // 
-            fill_waterdepth_se.BackColor = Color.LightGreen;
-            fill_waterdepth_se.Location = new Point(243, 525);
-            fill_waterdepth_se.Name = "fill_waterdepth_se";
-            fill_waterdepth_se.Size = new Size(259, 69);
-            fill_waterdepth_se.TabIndex = 70;
-            fill_waterdepth_se.Scroll += numeric_data_send_database;
+            fill_soilconsistency_se.SelectedIndexChanged += inputChanged_handler;
             // 
             // fill_soilphlevels_se
             // 
@@ -526,7 +519,7 @@
             fill_soilphlevels_se.Name = "fill_soilphlevels_se";
             fill_soilphlevels_se.Size = new Size(259, 25);
             fill_soilphlevels_se.TabIndex = 71;
-            fill_soilphlevels_se.ValueChanged += numeric_data_send_database;
+            fill_soilphlevels_se.ValueChanged += inputChanged_handler;
             // 
             // fill_ec_se
             // 
@@ -537,7 +530,7 @@
             fill_ec_se.Name = "fill_ec_se";
             fill_ec_se.Size = new Size(259, 25);
             fill_ec_se.TabIndex = 71;
-            fill_ec_se.ValueChanged += numeric_data_send_database;
+            fill_ec_se.ValueChanged += inputChanged_handler;
             // 
             // fill_nitrogenlevels_se
             // 
@@ -548,7 +541,7 @@
             fill_nitrogenlevels_se.Name = "fill_nitrogenlevels_se";
             fill_nitrogenlevels_se.Size = new Size(259, 25);
             fill_nitrogenlevels_se.TabIndex = 71;
-            fill_nitrogenlevels_se.ValueChanged += numeric_data_send_database;
+            fill_nitrogenlevels_se.ValueChanged += inputChanged_handler;
             // 
             // fill_phosphoruslevels_se
             // 
@@ -559,7 +552,7 @@
             fill_phosphoruslevels_se.Name = "fill_phosphoruslevels_se";
             fill_phosphoruslevels_se.Size = new Size(259, 25);
             fill_phosphoruslevels_se.TabIndex = 71;
-            fill_phosphoruslevels_se.ValueChanged += numeric_data_send_database;
+            fill_phosphoruslevels_se.ValueChanged += inputChanged_handler;
             // 
             // fill_potassiumlevels_se
             // 
@@ -570,7 +563,7 @@
             fill_potassiumlevels_se.Name = "fill_potassiumlevels_se";
             fill_potassiumlevels_se.Size = new Size(259, 25);
             fill_potassiumlevels_se.TabIndex = 71;
-            fill_potassiumlevels_se.ValueChanged += numeric_data_send_database;
+            fill_potassiumlevels_se.ValueChanged += inputChanged_handler;
             // 
             // label20
             // 
@@ -937,12 +930,59 @@
             display_watermeasure_se.TabIndex = 67;
             display_watermeasure_se.Text = "Label Only";
             // 
+            // fill_waterdepth_se
+            // 
+            fill_waterdepth_se.BackColor = Color.PaleGreen;
+            fill_waterdepth_se.Location = new Point(243, 527);
+            fill_waterdepth_se.Name = "fill_waterdepth_se";
+            fill_waterdepth_se.Size = new Size(259, 69);
+            fill_waterdepth_se.TabIndex = 75;
+            fill_waterdepth_se.Scroll += fill_waterdepth_se_Scroll;
+            // 
+            // display_savingstatus_se
+            // 
+            display_savingstatus_se.AutoSize = true;
+            display_savingstatus_se.BackColor = Color.Transparent;
+            display_savingstatus_se.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            display_savingstatus_se.ForeColor = Color.Gold;
+            display_savingstatus_se.Location = new Point(544, 483);
+            display_savingstatus_se.Name = "display_savingstatus_se";
+            display_savingstatus_se.Size = new Size(118, 24);
+            display_savingstatus_se.TabIndex = 67;
+            display_savingstatus_se.Text = "(Label Only)";
+            display_savingstatus_se.Click += label25_Click;
+            // 
+            // label42
+            // 
+            label42.AutoSize = true;
+            label42.BackColor = Color.Transparent;
+            label42.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label42.ForeColor = Color.ForestGreen;
+            label42.Location = new Point(704, 483);
+            label42.Name = "label42";
+            label42.Size = new Size(16, 24);
+            label42.TabIndex = 67;
+            label42.Text = ":";
+            // 
+            // label43
+            // 
+            label43.AutoSize = true;
+            label43.BackColor = Color.Transparent;
+            label43.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label43.ForeColor = Color.ForestGreen;
+            label43.Location = new Point(704, 555);
+            label43.Name = "label43";
+            label43.Size = new Size(16, 24);
+            label43.TabIndex = 67;
+            label43.Text = ":";
+            // 
             // User_SoilEvaluator
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 789);
+            Controls.Add(fill_waterdepth_se);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(label20);
@@ -951,7 +991,6 @@
             Controls.Add(fill_phosphoruslevels_se);
             Controls.Add(fill_nitrogenlevels_se);
             Controls.Add(fill_soilphlevels_se);
-            Controls.Add(fill_waterdepth_se);
             Controls.Add(fill_soilconsistency_se);
             Controls.Add(textBox7);
             Controls.Add(label38);
@@ -961,6 +1000,8 @@
             Controls.Add(label31);
             Controls.Add(label30);
             Controls.Add(label24);
+            Controls.Add(label43);
+            Controls.Add(label42);
             Controls.Add(label23);
             Controls.Add(label19);
             Controls.Add(textBox6);
@@ -974,6 +1015,7 @@
             Controls.Add(label37);
             Controls.Add(label35);
             Controls.Add(label33);
+            Controls.Add(display_savingstatus_se);
             Controls.Add(label29);
             Controls.Add(display_overallresult_se);
             Controls.Add(label25);
@@ -1015,12 +1057,12 @@
             ((System.ComponentModel.ISupportInitialize)Soil_Evaluator_Grid).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)fill_waterdepth_se).EndInit();
             ((System.ComponentModel.ISupportInitialize)fill_soilphlevels_se).EndInit();
             ((System.ComponentModel.ISupportInitialize)fill_ec_se).EndInit();
             ((System.ComponentModel.ISupportInitialize)fill_nitrogenlevels_se).EndInit();
             ((System.ComponentModel.ISupportInitialize)fill_phosphoruslevels_se).EndInit();
             ((System.ComponentModel.ISupportInitialize)fill_potassiumlevels_se).EndInit();
+            ((System.ComponentModel.ISupportInitialize)fill_waterdepth_se).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1062,7 +1104,6 @@
         private Label label19;
         private TextBox textBox7;
         private ComboBox fill_soilconsistency_se;
-        private TrackBar fill_waterdepth_se;
         private NumericUpDown fill_soilphlevels_se;
         private NumericUpDown fill_ec_se;
         private NumericUpDown fill_nitrogenlevels_se;
@@ -1099,5 +1140,9 @@
         private Button button5;
         private DataGridView Soil_Evaluator_Grid;
         private Label display_watermeasure_se;
+        private TrackBar fill_waterdepth_se;
+        private Label display_savingstatus_se;
+        private Label label42;
+        private Label label43;
     }
 }
