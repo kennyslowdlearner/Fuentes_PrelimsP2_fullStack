@@ -95,9 +95,9 @@ namespace Fuentes_PrelimsP2
         {
             try
             {
-                farmgateUSER userFarmGate = new farmgateUSER();
-                userFarmGate.Show();
-                this.Hide();
+                //farmgateUSER userFarmGate = new farmgateUSER();
+                //userFarmGate.Show();
+                //this.Hide();
             }
             catch (Exception ex)
             {
