@@ -47,6 +47,8 @@ namespace Fuentes_PrelimsP2
         private async void MessageUs_Send(object sender, EventArgs e)
         {
             string reverseTimestamp = (DateTime.MaxValue.Ticks - DateTime.UtcNow.Ticks).ToString("d19");
+
+
             if (client == null)
                 client = new FireSharp.FirebaseClient(config);
 

@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(User_WeatherForecast));
             label6 = new Label();
-            panel1 = new Panel();
-            panel2 = new Panel();
+            Weather_Information = new Panel();
+            Weather_Chart_Information = new Panel();
             button8 = new Button();
             label9 = new Label();
             menuStrip1 = new MenuStrip();
@@ -46,8 +47,9 @@
             button1 = new Button();
             button2 = new Button();
             button4 = new Button();
-            searchBoxPI = new TextBox();
+            fill_search_wf = new TextBox();
             searchbuttonPI = new Button();
+            function_timer_wf = new System.Windows.Forms.Timer(components);
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -63,19 +65,19 @@
             label6.TabIndex = 33;
             label6.Text = "Place/City:";
             // 
-            // panel1
+            // Weather_Information
             // 
-            panel1.Location = new Point(43, 223);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1413, 178);
-            panel1.TabIndex = 35;
+            Weather_Information.Location = new Point(43, 223);
+            Weather_Information.Name = "Weather_Information";
+            Weather_Information.Size = new Size(1413, 178);
+            Weather_Information.TabIndex = 35;
             // 
-            // panel2
+            // Weather_Chart_Information
             // 
-            panel2.Location = new Point(43, 407);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(834, 276);
-            panel2.TabIndex = 35;
+            Weather_Chart_Information.Location = new Point(43, 407);
+            Weather_Chart_Information.Name = "Weather_Chart_Information";
+            Weather_Chart_Information.Size = new Size(834, 276);
+            Weather_Chart_Information.TabIndex = 35;
             // 
             // button8
             // 
@@ -216,7 +218,6 @@
             button2.Size = new Size(254, 99);
             button2.TabIndex = 88;
             button2.UseVisualStyleBackColor = false;
-            button2.Click += shortcut_WeatherForecasting;
             // 
             // button4
             // 
@@ -233,15 +234,16 @@
             button4.UseVisualStyleBackColor = false;
             button4.Click += shortcut_RiceYieldandEstimation;
             // 
-            // searchBoxPI
+            // fill_search_wf
             // 
-            searchBoxPI.BackColor = Color.Gainsboro;
-            searchBoxPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            searchBoxPI.Location = new Point(168, 173);
-            searchBoxPI.Name = "searchBoxPI";
-            searchBoxPI.Size = new Size(252, 29);
-            searchBoxPI.TabIndex = 113;
-            searchBoxPI.Text = "Search product name or id";
+            fill_search_wf.BackColor = Color.Gainsboro;
+            fill_search_wf.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            fill_search_wf.Location = new Point(168, 173);
+            fill_search_wf.Name = "fill_search_wf";
+            fill_search_wf.Size = new Size(252, 29);
+            fill_search_wf.TabIndex = 113;
+            fill_search_wf.Text = "Search product name or id";
+            fill_search_wf.TextChanged += fill_search_wf_TextChanged;
             // 
             // searchbuttonPI
             // 
@@ -257,13 +259,17 @@
             searchbuttonPI.TabIndex = 112;
             searchbuttonPI.UseVisualStyleBackColor = false;
             // 
+            // function_timer_wf
+            // 
+            function_timer_wf.Interval = 1000;
+            // 
             // User_WeatherForecast
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
-            Controls.Add(searchBoxPI);
+            Controls.Add(fill_search_wf);
             Controls.Add(searchbuttonPI);
             Controls.Add(button6);
             Controls.Add(button5);
@@ -273,8 +279,8 @@
             Controls.Add(button8);
             Controls.Add(label9);
             Controls.Add(menuStrip1);
-            Controls.Add(panel2);
-            Controls.Add(panel1);
+            Controls.Add(Weather_Chart_Information);
+            Controls.Add(Weather_Information);
             Controls.Add(label6);
             Name = "User_WeatherForecast";
             Text = "Form1";
@@ -286,8 +292,8 @@
 
         #endregion
         private Label label6;
-        private Panel panel1;
-        private Panel panel2;
+        private Panel Weather_Information;
+        private Panel Weather_Chart_Information;
         private Button button8;
         private Label label9;
         private MenuStrip menuStrip1;
@@ -302,7 +308,8 @@
         private Button button1;
         private Button button2;
         private Button button4;
-        private TextBox searchBoxPI;
+        private TextBox fill_search_wf;
         private Button searchbuttonPI;
+        private System.Windows.Forms.Timer function_timer_wf;
     }
 }
