@@ -14,7 +14,7 @@ namespace Fuentes_PrelimsP2
 {
     public partial class MessageUs : Form
     {
-
+        //this is for Firebase connection for feedback purposes
         IFirebaseConfig config = new FirebaseConfig
         {
             AuthSecret = "pYlcicIZWqHhoKha9CYpVH8lml5cEpmJDhLkaIEw",
