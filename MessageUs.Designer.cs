@@ -33,7 +33,7 @@
             pictureBox2 = new PictureBox();
             label3 = new Label();
             panel1 = new Panel();
-            richTextBox1 = new RichTextBox();
+            messageFeedback = new RichTextBox();
             label4 = new Label();
             label2 = new Label();
             messageBack = new Button();
@@ -69,7 +69,7 @@
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
-            panel1.Controls.Add(richTextBox1);
+            panel1.Controls.Add(messageFeedback);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(messageBack);
@@ -81,13 +81,13 @@
             panel1.Size = new Size(806, 556);
             panel1.TabIndex = 10;
             // 
-            // richTextBox1
+            // messageFeedback
             // 
-            richTextBox1.Location = new Point(174, 287);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(425, 156);
-            richTextBox1.TabIndex = 6;
-            richTextBox1.Text = "";
+            messageFeedback.Location = new Point(174, 287);
+            messageFeedback.Name = "messageFeedback";
+            messageFeedback.Size = new Size(425, 156);
+            messageFeedback.TabIndex = 6;
+            messageFeedback.Text = "";
             // 
             // label4
             // 
@@ -135,7 +135,7 @@
             messageSend.TabIndex = 2;
             messageSend.Text = "Send";
             messageSend.UseVisualStyleBackColor = false;
-            messageSend.Click += messageSend_Click;
+            messageSend.Click += MessageUs_Send;
             // 
             // pictureBox1
             // 
@@ -193,7 +193,7 @@
         private PictureBox pictureBox1;
         private Label label1;
         private ContextMenuStrip contextMenuStrip1;
-        private RichTextBox richTextBox1;
+        private RichTextBox messageFeedback;
         private Label label4;
         private Button messageBack;
     }
