@@ -40,7 +40,7 @@
             reloadToolStripMenuItem = new ToolStripMenuItem();
             sssssToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1 = new MenuStrip();
-            dataGridView2 = new DataGridView();
+            Market_Forecast_Grid = new DataGridView();
             button6 = new Button();
             button5 = new Button();
             button1 = new Button();
@@ -49,7 +49,7 @@
             searchbuttonPI = new Button();
             label1 = new Label();
             menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Market_Forecast_Grid).BeginInit();
             SuspendLayout();
             // 
             // button8
@@ -158,14 +158,14 @@
             menuStrip1.TabIndex = 8;
             menuStrip1.Text = "menuStrip1";
             // 
-            // dataGridView2
+            // Market_Forecast_Grid
             // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(76, 219);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowHeadersWidth = 62;
-            dataGridView2.Size = new Size(834, 516);
-            dataGridView2.TabIndex = 7;
+            Market_Forecast_Grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Market_Forecast_Grid.Location = new Point(76, 219);
+            Market_Forecast_Grid.Name = "Market_Forecast_Grid";
+            Market_Forecast_Grid.RowHeadersWidth = 62;
+            Market_Forecast_Grid.Size = new Size(834, 516);
+            Market_Forecast_Grid.TabIndex = 7;
             // 
             // button6
             // 
@@ -232,6 +232,7 @@
             searchBoxPI.Size = new Size(252, 29);
             searchBoxPI.TabIndex = 113;
             searchBoxPI.Text = "Search product name or id";
+            searchBoxPI.TextChanged += fillSearchBox_TextChanged;
             // 
             // searchbuttonPI
             // 
@@ -277,12 +278,13 @@
             Controls.Add(label6);
             Controls.Add(label9);
             Controls.Add(menuStrip1);
-            Controls.Add(dataGridView2);
+            Controls.Add(Market_Forecast_Grid);
             Name = "User_MarketForecast";
             Text = "Form1";
+            Load += User_MarketForecast_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Market_Forecast_Grid).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -299,7 +301,7 @@
         private ToolStripMenuItem reloadToolStripMenuItem;
         private ToolStripMenuItem sssssToolStripMenuItem;
         private MenuStrip menuStrip1;
-        private DataGridView dataGridView2;
+        private DataGridView Market_Forecast_Grid;
         private Button button6;
         private Button button5;
         private Button button1;
