@@ -386,7 +386,7 @@ namespace Fuentes_PrelimsP2
 
         private void press_viewanalytics_pi(object sender, EventArgs e)
         {
-            var analytics = UserProductInventory_AnalyticsForm.Instance;
+            var analytics = UserProductInventory_Analytics.Instance;
             analytics.Show();
             //this.Hide();
 

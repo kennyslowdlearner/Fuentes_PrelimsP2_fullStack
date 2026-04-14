@@ -1,6 +1,6 @@
 ﻿namespace Fuentes_PrelimsP2
 {
-    partial class UserProductInventory_AnalyticsForm
+    partial class UserProductInventory_Analytics
     {
         /// <summary>
         /// Required designer variable.

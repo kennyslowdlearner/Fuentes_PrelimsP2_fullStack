@@ -21,23 +21,23 @@ namespace Fuentes_PrelimsP2
 {
     //need further polishing for this one.
 
-    public partial class UserProductInventory_AnalyticsForm : Form
+    public partial class UserProductInventory_Analytics : Form
     {
         private CartesianChart dataChart;
-        private static UserProductInventory_AnalyticsForm instance;
-        public UserProductInventory_AnalyticsForm()
+        private static UserProductInventory_Analytics instance;
+        public UserProductInventory_Analytics()
         {
             InitializeComponent();
             fetch_data_from_database();
         }
 
-        internal static UserProductInventory_AnalyticsForm Instance
+        internal static UserProductInventory_Analytics Instance
         {
             get
             {
                 if (instance == null || instance.IsDisposed)
                 {
-                    instance = new UserProductInventory_AnalyticsForm();
+                    instance = new UserProductInventory_Analytics();
                 }
                 return instance;
             }

@@ -39,7 +39,6 @@
             accountSettingsToolStripMenuItem = new ToolStripMenuItem();
             logoutToolStripMenuItem = new ToolStripMenuItem();
             fill_productid_ts = new TextBox();
-            fill_customername_ts = new TextBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -58,10 +57,12 @@
             button7 = new Button();
             button8 = new Button();
             label8 = new Label();
-            label9 = new Label();
             button9 = new Button();
             button10 = new Button();
             fill_date_ts = new DateTimePicker();
+            fill_customername_ts = new TextBox();
+            label7 = new Label();
+            fill_ricetype_ts = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)Transaction_Sheet_Grid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Product_Inventory_Grid).BeginInit();
             menuStrip1.SuspendLayout();
@@ -152,26 +153,17 @@
             fill_productid_ts.Size = new Size(259, 24);
             fill_productid_ts.TabIndex = 3;
             // 
-            // fill_customername_ts
-            // 
-            fill_customername_ts.BackColor = Color.LightGreen;
-            fill_customername_ts.BorderStyle = BorderStyle.None;
-            fill_customername_ts.Location = new Point(320, 197);
-            fill_customername_ts.Name = "fill_customername_ts";
-            fill_customername_ts.Size = new Size(259, 24);
-            fill_customername_ts.TabIndex = 3;
-            // 
             // label1
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.LawnGreen;
-            label1.Location = new Point(133, 197);
+            label1.Location = new Point(138, 196);
             label1.Name = "label1";
-            label1.Size = new Size(176, 27);
+            label1.Size = new Size(100, 27);
             label1.TabIndex = 4;
-            label1.Text = " Customer Name:";
+            label1.Text = "Rice Type";
             // 
             // label2
             // 
@@ -181,9 +173,9 @@
             label2.ForeColor = Color.LawnGreen;
             label2.Location = new Point(138, 233);
             label2.Name = "label2";
-            label2.Size = new Size(116, 27);
+            label2.Size = new Size(110, 27);
             label2.TabIndex = 4;
-            label2.Text = "Product ID:";
+            label2.Text = "Product ID";
             label2.TextAlign = ContentAlignment.MiddleLeft;
             label2.Click += label2_Click;
             // 
@@ -195,9 +187,9 @@
             label3.ForeColor = Color.LawnGreen;
             label3.Location = new Point(138, 272);
             label3.Name = "label3";
-            label3.Size = new Size(132, 27);
+            label3.Size = new Size(126, 27);
             label3.TabIndex = 4;
-            label3.Text = "Price per Kg:";
+            label3.Text = "Price per Kg";
             // 
             // label4
             // 
@@ -207,9 +199,9 @@
             label4.ForeColor = Color.LawnGreen;
             label4.Location = new Point(138, 311);
             label4.Name = "label4";
-            label4.Size = new Size(165, 27);
+            label4.Size = new Size(159, 27);
             label4.TabIndex = 4;
-            label4.Text = "Quantity per Kg:";
+            label4.Text = "Quantity per Kg";
             // 
             // label5
             // 
@@ -219,9 +211,9 @@
             label5.ForeColor = Color.LawnGreen;
             label5.Location = new Point(138, 348);
             label5.Name = "label5";
-            label5.Size = new Size(143, 27);
+            label5.Size = new Size(137, 27);
             label5.TabIndex = 4;
-            label5.Text = "Delivery Date:";
+            label5.Text = "Delivery Date";
             // 
             // label6
             // 
@@ -231,9 +223,9 @@
             label6.ForeColor = Color.LawnGreen;
             label6.Location = new Point(138, 381);
             label6.Name = "label6";
-            label6.Size = new Size(140, 27);
+            label6.Size = new Size(134, 27);
             label6.TabIndex = 4;
-            label6.Text = "Reference ID:";
+            label6.Text = "Reference ID";
             // 
             // fill_quantity_ts
             // 
@@ -401,18 +393,6 @@
             label8.TabIndex = 4;
             label8.Text = "Other Options:";
             // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.BackColor = Color.Transparent;
-            label9.Font = new Font("Glacial Indifference", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.ForeColor = Color.GreenYellow;
-            label9.Location = new Point(98, 160);
-            label9.Name = "label9";
-            label9.Size = new Size(249, 34);
-            label9.TabIndex = 4;
-            label9.Text = "Transaction Sheet";
-            // 
             // button9
             // 
             button9.BackColor = Color.Transparent;
@@ -448,12 +428,43 @@
             fill_date_ts.Size = new Size(259, 31);
             fill_date_ts.TabIndex = 6;
             // 
+            // fill_customername_ts
+            // 
+            fill_customername_ts.BackColor = Color.LightGreen;
+            fill_customername_ts.BorderStyle = BorderStyle.None;
+            fill_customername_ts.Location = new Point(320, 162);
+            fill_customername_ts.Name = "fill_customername_ts";
+            fill_customername_ts.Size = new Size(259, 24);
+            fill_customername_ts.TabIndex = 3;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.BackColor = Color.Transparent;
+            label7.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.LawnGreen;
+            label7.Location = new Point(133, 162);
+            label7.Name = "label7";
+            label7.Size = new Size(170, 27);
+            label7.TabIndex = 4;
+            label7.Text = " Customer Name";
+            // 
+            // fill_ricetype_ts
+            // 
+            fill_ricetype_ts.FormattingEnabled = true;
+            fill_ricetype_ts.Location = new Point(320, 192);
+            fill_ricetype_ts.Name = "fill_ricetype_ts";
+            fill_ricetype_ts.Size = new Size(259, 33);
+            fill_ricetype_ts.TabIndex = 7;
+            fill_ricetype_ts.SelectedIndex = -1;
+            // 
             // User_TransactionSheet
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
+            Controls.Add(fill_ricetype_ts);
             Controls.Add(fill_date_ts);
             Controls.Add(button7);
             Controls.Add(button6);
@@ -472,10 +483,10 @@
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(label9);
+            Controls.Add(label7);
             Controls.Add(label1);
-            Controls.Add(fill_priceperkg_ts);
             Controls.Add(fill_customername_ts);
+            Controls.Add(fill_priceperkg_ts);
             Controls.Add(fill_quantity_ts);
             Controls.Add(fill_productid_ts);
             Controls.Add(menuStrip1);
@@ -504,7 +515,6 @@
         private ToolStripMenuItem accountSettingsToolStripMenuItem;
         private ToolStripMenuItem logoutToolStripMenuItem;
         private TextBox fill_productid_ts;
-        private TextBox fill_customername_ts;
         private Label label1;
         private Label label2;
         private Label label3;
@@ -523,9 +533,11 @@
         private Button button7;
         private Button button8;
         private Label label8;
-        private Label label9;
         private Button button9;
         private Button button10;
         private DateTimePicker fill_date_ts;
+        private TextBox fill_customername_ts;
+        private Label label7;
+        private ComboBox fill_ricetype_ts;
     }
 }

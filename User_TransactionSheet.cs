@@ -16,6 +16,7 @@ namespace Fuentes_PrelimsP2
         public User_TransactionSheet()
         {
             InitializeComponent();
+            choices_from_database();
         }
 
         //(Global User Session) Component
@@ -117,15 +118,16 @@ namespace Fuentes_PrelimsP2
         {
             string ReferenceID = referenceID();
             connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
-            string query = "INSERT INTO [User T&T Transaction] ([Customer Name], [Product ID], [Price per Kilogram], [Quantity in Kilogram], [Delivery Date], [Rference ID]) VALUES (@P1, @P2, @P3, @P4, @P5, @P6)";
+            string query = "INSERT INTO [User T&T Transaction] ([Customer Name], [Rice Type], [Product ID], [Price per Kilogram], [Quantity in Kilogram], [Delivery Date], [Reference ID]) VALUES (@P1, @P2, @P3, @P4, @P5, @P6, @P7)";
 
             command = new OleDbCommand(query, connection);
             command.Parameters.Add("@P1", OleDbType.VarWChar).Value = fill_customername_ts.Text;
-            command.Parameters.Add("@P2", OleDbType.VarWChar).Value = fill_productid_ts.Text;
-            command.Parameters.Add("@P3", OleDbType.Currency).Value = Convert.ToDecimal(fill_priceperkg_ts.Text);
-            command.Parameters.Add("@P4", OleDbType.Integer).Value = Convert.ToInt32(fill_quantity_ts.Text);
-            command.Parameters.Add("@P5", OleDbType.Date).Value = fill_date_ts.Text;
-            command.Parameters.Add("@P6", OleDbType.VarWChar).Value = referenceID();
+            command.Parameters.Add("@P2", OleDbType.VarWChar).Value = fill_ricetype_ts.Text;
+            command.Parameters.Add("@P3", OleDbType.VarWChar).Value = fill_productid_ts.Text;
+            command.Parameters.Add("@P4", OleDbType.Currency).Value = Convert.ToDecimal(fill_priceperkg_ts.Text);
+            command.Parameters.Add("@P5", OleDbType.Integer).Value = Convert.ToInt32(fill_quantity_ts.Text);
+            command.Parameters.Add("@P6", OleDbType.Date).Value = fill_date_ts.Text;
+            command.Parameters.Add("@P7", OleDbType.VarWChar).Value = ReferenceID;
 
 
             try
@@ -137,6 +139,7 @@ namespace Fuentes_PrelimsP2
                 MessageBox.Show("Product added successfully! Ref ID: " + referenceID);
 
                 fill_customername_ts.Clear();
+                fill_ricetype_ts.SelectedIndex = -1;
                 fill_productid_ts.Clear();
                 fill_quantity_ts.Clear();
                 fill_priceperkg_ts.Clear();
@@ -182,6 +185,7 @@ namespace Fuentes_PrelimsP2
                     refreshreload();
 
                     fill_customername_ts.Clear();
+                    fill_ricetype_ts.SelectedIndex = -1;
                     fill_productid_ts.Clear();
                     fill_quantity_ts.Clear();
                     fill_priceperkg_ts.Clear();
@@ -202,14 +206,15 @@ namespace Fuentes_PrelimsP2
             connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
 
             // SQL ORDER: 1:Item Name, 2:Unit, 3:Quantity, 4:Price, 5:Total, 6:Date, 7:Status WHERE 8:ID
-            string query = "UPDATE [User T&T Transaction] SET [Customer Name] = @P1, [Product ID] = @P2, [Price per Kilogram] = @P3, [Quantity in Kilogram] = @P4, [Delivery Date] = @P5, [Reference ID] = @P6 WHERE [Item Number] = @P7";
+            string query = "UPDATE [User T&T Transaction] SET [Customer Name] = @P1, [Rice Type] = @P2, [Product ID] = @P3, [Price per Kilogram] = @P4, [Quantity in Kilogram] = @P5, [Delivery Date] = @P6, [Reference ID] = @P7 WHERE [Item Number] = @P8";
 
 
             // Use UNIQUE parameter names and follow the SQL order exactly
             command.Parameters.Add("@P1", OleDbType.VarWChar).Value = fill_customername_ts.Text;
-            command.Parameters.Add("@P2", OleDbType.VarWChar).Value = fill_productid_ts.Text;
+            command.Parameters.Add("@P2", OleDbType.VarWChar).Value = fill_ricetype_ts.Text;
+            command.Parameters.Add("@P3", OleDbType.VarWChar).Value = fill_productid_ts.Text;
             command.Parameters.Add("@P4", OleDbType.Currency).Value = Convert.ToDecimal(fill_priceperkg_ts.Text);
-            command.Parameters.Add("@P3", OleDbType.Integer).Value = Convert.ToInt32(fill_quantity_ts.Text);
+            command.Parameters.Add("@P5", OleDbType.Integer).Value = Convert.ToInt32(fill_quantity_ts.Text);
             command.Parameters.Add("@P6", OleDbType.Date).Value = fill_date_ts.Value;
 
             try
@@ -262,6 +267,7 @@ namespace Fuentes_PrelimsP2
 
                 Transaction_Sheet_Grid.Columns["Item Number"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 Transaction_Sheet_Grid.Columns["Customer Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                Transaction_Sheet_Grid.Columns["Rice Type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 Transaction_Sheet_Grid.Columns["Product ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 Transaction_Sheet_Grid.Columns["Price per Kilogram"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 Transaction_Sheet_Grid.Columns["Quantity in Kilogram"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -308,6 +314,7 @@ namespace Fuentes_PrelimsP2
                 currentSelectedRollNumber = row.Cells["Item Number"].Value?.ToString() ?? "";
 
                 fill_customername_ts.Text = row.Cells["Customer Name"].Value?.ToString();
+                fill_ricetype_ts.Text = row.Cells["Rice Type"].Value?.ToString();
                 fill_productid_ts.Text = row.Cells["Product ID"].Value?.ToString();
                 fill_priceperkg_ts.Text = row.Cells["Price per Kilogram"].Value?.ToString();
                 fill_quantity_ts.Text = row.Cells["Quantity in Kilogram"].Value?.ToString();
@@ -359,6 +366,7 @@ namespace Fuentes_PrelimsP2
 
                 Transaction_Sheet_Grid.Columns["Item Number"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 Transaction_Sheet_Grid.Columns["Customer Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                Transaction_Sheet_Grid.Columns["Rice Type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 Transaction_Sheet_Grid.Columns["Product ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 Transaction_Sheet_Grid.Columns["Price per Kilogram"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 Transaction_Sheet_Grid.Columns["Quantity in Kilogram"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -370,6 +378,35 @@ namespace Fuentes_PrelimsP2
             catch (Exception ex)
             {
                 MessageBox.Show("Failed to load data. Error: " + ex.Message);
+            }
+        }
+
+        private void choices_from_database()
+        {
+            string connection = "Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb";
+            string query = "SELECT [Product ID], [Product Name] & ' ' & [Product ID] AS FullDisplay FROM [User PI Product Inventory]";
+
+            using (OleDbConnection connected = new OleDbConnection(connection))
+            {
+                OleDbDataAdapter newAdapter = new OleDbDataAdapter(query, connection);
+                DataTable newTable = new DataTable();
+
+                try
+                {
+                    connected.Open();
+                    newAdapter.Fill(newTable);
+
+                    fill_ricetype_ts.DataSource = newTable;
+                    fill_ricetype_ts.DisplayMember = "FullDisplay";
+                    fill_ricetype_ts.ValueMember = "Product ID";
+
+                    fill_ricetype_ts.SelectedIndex = -1;
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error occured: " + ex.Message);
+                }
             }
         }
     }
