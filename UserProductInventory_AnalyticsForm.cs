@@ -6,100 +6,128 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.OleDb;
-using LiveCharts;
-using LiveCharts.WinForms;
-using LiveCharts.Wpf;
-using System.Windows.Media;
+using LiveChartsCore;
+using LiveChartsCore.VisualStates;
+
+using LiveChartsCore.SkiaSharpView;
+using LiveChartsCore.SkiaSharpView.Drawing;
+using LiveChartsCore.SkiaSharpView.WinForms;
+using LiveChartsCore.SkiaSharpView.Painting;
+using SkiaSharp;
+
+
 
 namespace Fuentes_PrelimsP2
 {
     //need further polishing for this one.
-    
+
     public partial class UserProductInventory_AnalyticsForm : Form
     {
-        private CartesianChart inventoryChart;
-
+        private CartesianChart dataChart;
+        private static UserProductInventory_AnalyticsForm instance;
         public UserProductInventory_AnalyticsForm()
         {
             InitializeComponent();
-            InitializeLiveChart();
+            fetch_data_from_database();
         }
 
-        private void InitializeLiveChart()
+        internal static UserProductInventory_AnalyticsForm Instance
         {
-            inventoryChart = new CartesianChart();
-            inventoryChart.Dock = DockStyle.Fill;
-
-            display_panelchart_pi.Controls.Add(inventoryChart);
-            inventoryChart.BackColor = Color.Transparent;
-
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void load_productInventoryAnalytics()
-        {
-            var values = new ChartValues<double>();
-            var labels = new List<string>();
-
-            string connString = "Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb";
-            string query = "SELECT [Product Name], [Quantity in Kilograms] FROM [User PI Product Inventory]";
-
-            using (OleDbConnection conn = new OleDbConnection(connString))
+            get
             {
-                OleDbCommand cmd = new OleDbCommand(query, conn);
+                if (instance == null || instance.IsDisposed)
+                {
+                    instance = new UserProductInventory_AnalyticsForm();
+                }
+                return instance;
+            }
+        }
+
+
+        private void fetch_data_from_database()
+        {
+            string connection = "Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb";
+
+            List<string> productName = new List<string>();
+            List<double> quantities = new List<double>();
+
+            using (OleDbConnection reader = new OleDbConnection(connection))
+            {
+
+                string query = "SELECT [Product Name], [Quantity in Kilograms] FROM [User PI Product Inventory]";
+                OleDbCommand command = new OleDbCommand(query, reader);
+
                 try
                 {
-                    conn.Open();
-                    OleDbDataReader reader = cmd.ExecuteReader();
+                    reader.Open();
+                    OleDbDataReader scanner = command.ExecuteReader();
 
-                    while (reader.Read())
+                    while (scanner.Read())
                     {
-                        labels.Add(reader["Product Name"].ToString());
-                        values.Add(Convert.ToDouble(reader["Quantity in Kilograms"]));
+                        productName.Add(scanner["Product Name"].ToString());
+                        quantities.Add(Convert.ToDouble(scanner["Quantity in Kilograms"]));
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Analytics Error: " + ex.Message);
+                    MessageBox.Show("Error fetching data: " + ex.Message);
                 }
             }
 
-            // 3. Create the Bar Series
-            inventoryChart.Series = new SeriesCollection
-            {
-                new ColumnSeries
-                {
-                    Title = "Stock Level",
-                    Values = values,
-                    DataLabels = true,
-                    Fill = Brushes.SeaGreen // Modern 2026 aesthetic
-                }
-            };
-
-            // 4. Setup the X-Axis (Rice Names)
-            inventoryChart.AxisX.Clear();
-            inventoryChart.AxisX.Add(new Axis
-            {
-                Title = "Rice Varieties",
-                Labels = labels,
-                Separator = new Separator { Step = 1, IsEnabled = false }
-            });
-
-            // 5. Setup the Y-Axis (Quantity)
-            inventoryChart.AxisY.Clear();
-            inventoryChart.AxisY.Add(new Axis
-            {
-                Title = "Kilograms (kg)",
-                LabelFormatter = value => value.ToString("N0") + " kg"
-            });
+            if (quantities.Count > 0) UpdateCharts(productName, quantities);
         }
 
-        private void chart1_Click(object sender, EventArgs e)
+        private void UpdateCharts(List<string> productName, List<double> quantities)
         {
+            var barChart = new CartesianChart
+            {
+                Dock = DockStyle.Fill,
 
+                Series = new ISeries[]
+                {
+                    new ColumnSeries<double>
+                    {
+                        Name = "Current Stock Level (Kg)",
+                        Values = quantities.ToArray(),
+                        Fill = new SolidColorPaint(SKColors.ForestGreen.WithAlpha(150))
+                    },
+
+                },
+
+                XAxes = new Axis[]
+                    {
+                        new Axis
+                        {
+                            Labels = productName.ToArray(),
+                            LabelsRotation = 30
+
+                        }
+                    }
+            };
+
+            var pieSeries = new List<ISeries>();
+            for(int a = 0; a < productName.Count; a++)
+            {
+                pieSeries.Add(new PieSeries<double>
+                {
+                    Name = productName[a],
+                    Values = new double[] { quantities[a] },
+                });
+            }
+
+            var pieChart = new PieChart
+            {
+                Dock = DockStyle.Fill,
+                Series = pieSeries.ToArray(),
+                LegendPosition = LiveChartsCore.Measure.LegendPosition.Right
+            };
+
+
+            display_bargraph_panel.Controls.Clear();
+            display_bargraph_panel.Controls.Add(barChart);
+
+            display_piechart_panel.Controls.Clear();
+            display_piechart_panel.Controls.Add(pieChart);
         }
     }
 }

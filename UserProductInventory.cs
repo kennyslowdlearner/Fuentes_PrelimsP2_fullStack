@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 
 
+
 namespace Fuentes_PrelimsP2
 {
     public partial class productInventory : Form
@@ -38,6 +39,7 @@ namespace Fuentes_PrelimsP2
                 return instance;
             }
         }
+
 
         public void AddProductRow(string productname, string productid, string quantity)
         {
@@ -375,11 +377,19 @@ namespace Fuentes_PrelimsP2
                     Product_Inventory_Grid.DataSource = searchNow.Tables["[User PI Product Inventory]"];
                 }
 
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("Search failed. Error: " + ex.Message);
                 }
             }
+        }
+
+        private void press_viewanalytics_pi(object sender, EventArgs e)
+        {
+            var analytics = UserProductInventory_AnalyticsForm.Instance;
+            analytics.Show();
+            //this.Hide();
+
         }
     }
 }

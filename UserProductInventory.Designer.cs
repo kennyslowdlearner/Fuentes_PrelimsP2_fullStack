@@ -51,6 +51,7 @@
             label6 = new Label();
             label5 = new Label();
             fill_search_pi = new TextBox();
+            button1 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Product_Inventory_Grid).BeginInit();
             SuspendLayout();
@@ -334,17 +335,34 @@
             fill_search_pi.Text = "Search product name or id";
             fill_search_pi.TextChanged += fill_searchpi;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.Yellow;
+            button1.FlatAppearance.BorderColor = Color.Gold;
+            button1.FlatAppearance.BorderSize = 2;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.DarkGreen;
+            button1.Location = new Point(840, 558);
+            button1.Name = "button1";
+            button1.Size = new Size(143, 38);
+            button1.TabIndex = 81;
+            button1.Text = "View Analytics";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += press_viewanalytics_pi;
+            // 
             // productInventory
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(1500, 785);
+            ClientSize = new Size(1478, 729);
             Controls.Add(label5);
             Controls.Add(fill_search_pi);
             Controls.Add(label6);
             Controls.Add(press_connect_pi);
             Controls.Add(press_load_pi);
+            Controls.Add(button1);
             Controls.Add(press_refresh_pi);
             Controls.Add(press_update_pi);
             Controls.Add(press_delete_pi);
@@ -363,8 +381,6 @@
             Controls.Add(panel1);
             Name = "productInventory";
             Text = "Pananom : Product Inventory";
-            FormClosing += Close_Form_After_Run;
-            FormClosed += productInventory_FormClosed;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)Product_Inventory_Grid).EndInit();
             ResumeLayout(false);
@@ -395,5 +411,6 @@
         private Label label6;
         private Label label5;
         private TextBox fill_search_pi;
+        private Button button1;
     }
 }
