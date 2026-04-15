@@ -63,6 +63,7 @@
             fill_customername_ts = new TextBox();
             label7 = new Label();
             fill_ricetype_ts = new ComboBox();
+            button11 = new Button();
             ((System.ComponentModel.ISupportInitialize)Transaction_Sheet_Grid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Product_Inventory_Grid).BeginInit();
             menuStrip1.SuspendLayout();
@@ -456,7 +457,22 @@
             fill_ricetype_ts.Name = "fill_ricetype_ts";
             fill_ricetype_ts.Size = new Size(259, 33);
             fill_ricetype_ts.TabIndex = 7;
-            fill_ricetype_ts.SelectedIndex = -1;
+            // 
+            // button11
+            // 
+            button11.BackColor = Color.Yellow;
+            button11.FlatAppearance.BorderColor = Color.Gold;
+            button11.FlatAppearance.BorderSize = 2;
+            button11.FlatStyle = FlatStyle.Flat;
+            button11.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button11.ForeColor = Color.DarkGreen;
+            button11.Location = new Point(381, 732);
+            button11.Name = "button11";
+            button11.Size = new Size(151, 41);
+            button11.TabIndex = 5;
+            button11.Text = "View Analytics";
+            button11.UseVisualStyleBackColor = false;
+            button11.Click += GoToUserTransactionAnalytics;
             // 
             // User_TransactionSheet
             // 
@@ -466,6 +482,7 @@
             ClientSize = new Size(1500, 785);
             Controls.Add(fill_ricetype_ts);
             Controls.Add(fill_date_ts);
+            Controls.Add(button11);
             Controls.Add(button7);
             Controls.Add(button6);
             Controls.Add(button10);
@@ -539,5 +556,6 @@
         private TextBox fill_customername_ts;
         private Label label7;
         private ComboBox fill_ricetype_ts;
+        private Button button11;
     }
 }

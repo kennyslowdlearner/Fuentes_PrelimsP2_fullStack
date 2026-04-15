@@ -409,5 +409,11 @@ namespace Fuentes_PrelimsP2
                 }
             }
         }
+
+        private void GoToUserTransactionAnalytics(object sender, EventArgs e)
+        {
+            var analyticsForm = User_TransactionSheetAnalytics.Instance;
+            analyticsForm.Show();
+        }
     }
 }

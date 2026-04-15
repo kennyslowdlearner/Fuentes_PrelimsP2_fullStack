@@ -76,6 +76,7 @@
             Controls.Add(display_piechart_analyticsTandT);
             Name = "User_TransactionSheetAnalytics";
             Text = "Form1";
+            Load += User_TransactionSheetAnalytics_Load;
             ResumeLayout(false);
         }
 
