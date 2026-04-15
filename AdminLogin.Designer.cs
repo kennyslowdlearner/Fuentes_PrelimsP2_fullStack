@@ -36,8 +36,8 @@
             label1 = new Label();
             label2 = new Label();
             label5 = new Label();
-            loginADMIN = new Button();
             button1 = new Button();
+            loginADMIN = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -118,21 +118,6 @@
             label5.Size = new Size(0, 107);
             label5.TabIndex = 3;
             // 
-            // loginADMIN
-            // 
-            loginADMIN.BackColor = Color.SeaGreen;
-            loginADMIN.FlatAppearance.BorderColor = Color.Green;
-            loginADMIN.FlatStyle = FlatStyle.Flat;
-            loginADMIN.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            loginADMIN.ForeColor = Color.Gold;
-            loginADMIN.Location = new Point(621, 486);
-            loginADMIN.Name = "loginADMIN";
-            loginADMIN.Size = new Size(152, 39);
-            loginADMIN.TabIndex = 0;
-            loginADMIN.Text = "Login";
-            loginADMIN.UseVisualStyleBackColor = false;
-            loginADMIN.Click += loginADMIN_Click;
-            // 
             // button1
             // 
             button1.BackColor = Color.SeaGreen;
@@ -148,6 +133,21 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += BackHomepage_Click;
             // 
+            // loginADMIN
+            // 
+            loginADMIN.BackColor = Color.SeaGreen;
+            loginADMIN.FlatAppearance.BorderColor = Color.Green;
+            loginADMIN.FlatStyle = FlatStyle.Flat;
+            loginADMIN.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            loginADMIN.ForeColor = Color.Gold;
+            loginADMIN.Location = new Point(621, 486);
+            loginADMIN.Name = "loginADMIN";
+            loginADMIN.Size = new Size(152, 39);
+            loginADMIN.TabIndex = 0;
+            loginADMIN.Text = "Login";
+            loginADMIN.UseVisualStyleBackColor = false;
+            loginADMIN.Click += loginADMIN_Click;
+            // 
             // AdminLogin
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -156,6 +156,7 @@
             ClientSize = new Size(1040, 650);
             Controls.Add(panel1);
             Name = "AdminLogin";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Pananom : Admin Login";
             FormClosed += AdminLogin_FormClosed;
             panel1.ResumeLayout(false);

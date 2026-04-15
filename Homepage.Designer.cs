@@ -1,6 +1,6 @@
 ﻿namespace Fuentes_PrelimsP2
 {
-    partial class Homepage
+    partial class Homepageee
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Homepage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Homepageee));
             panel5 = new Panel();
             button4 = new Button();
             panel6 = new Panel();
@@ -48,12 +48,14 @@
             button2 = new Button();
             button3 = new Button();
             button5 = new Button();
+            Homepage_panel = new Panel();
             panel5.SuspendLayout();
             panel6.SuspendLayout();
             panel7.SuspendLayout();
             panel8.SuspendLayout();
             panel9.SuspendLayout();
             panel10.SuspendLayout();
+            Homepage_panel.SuspendLayout();
             SuspendLayout();
             // 
             // panel5
@@ -152,7 +154,7 @@
             // 
             panel9.Controls.Add(signupButton);
             panel9.Font = new Font("Glacial Indifference", 10F);
-            panel9.Location = new Point(888, 32);
+            panel9.Location = new Point(882, 22);
             panel9.Name = "panel9";
             panel9.Size = new Size(129, 43);
             panel9.TabIndex = 1;
@@ -176,7 +178,7 @@
             // 
             panel10.Controls.Add(loginButton);
             panel10.Font = new Font("Glacial Indifference", 10F);
-            panel10.Location = new Point(728, 32);
+            panel10.Location = new Point(722, 22);
             panel10.Name = "panel10";
             panel10.Size = new Size(129, 43);
             panel10.TabIndex = 1;
@@ -221,7 +223,7 @@
             Support.FlatStyle = FlatStyle.Flat;
             Support.Font = new Font("Glacial Indifference", 10F);
             Support.ForeColor = Color.DarkOliveGreen;
-            Support.Location = new Point(32, 32);
+            Support.Location = new Point(26, 22);
             Support.Name = "Support";
             Support.Size = new Size(106, 43);
             Support.TabIndex = 0;
@@ -238,7 +240,7 @@
             MessageUs.FlatStyle = FlatStyle.Flat;
             MessageUs.Font = new Font("Glacial Indifference", 10F);
             MessageUs.ForeColor = Color.DarkOliveGreen;
-            MessageUs.Location = new Point(159, 32);
+            MessageUs.Location = new Point(153, 22);
             MessageUs.Name = "MessageUs";
             MessageUs.Size = new Size(142, 43);
             MessageUs.TabIndex = 0;
@@ -255,7 +257,7 @@
             ContactDeveloper.FlatStyle = FlatStyle.Flat;
             ContactDeveloper.Font = new Font("Glacial Indifference", 10F);
             ContactDeveloper.ForeColor = Color.DarkOliveGreen;
-            ContactDeveloper.Location = new Point(316, 32);
+            ContactDeveloper.Location = new Point(310, 22);
             ContactDeveloper.Name = "ContactDeveloper";
             ContactDeveloper.Size = new Size(185, 43);
             ContactDeveloper.TabIndex = 0;
@@ -304,13 +306,27 @@
             button5.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button5.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button5.FlatStyle = FlatStyle.Flat;
-            button5.Location = new Point(32, 81);
+            button5.Location = new Point(26, 71);
             button5.Name = "button5";
             button5.Size = new Size(985, 290);
             button5.TabIndex = 2;
             button5.UseVisualStyleBackColor = false;
             // 
-            // Homepage
+            // Homepage_panel
+            // 
+            Homepage_panel.BackColor = Color.Transparent;
+            Homepage_panel.Controls.Add(button5);
+            Homepage_panel.Controls.Add(ContactDeveloper);
+            Homepage_panel.Controls.Add(MessageUs);
+            Homepage_panel.Controls.Add(Support);
+            Homepage_panel.Controls.Add(panel10);
+            Homepage_panel.Controls.Add(panel9);
+            Homepage_panel.Location = new Point(6, 10);
+            Homepage_panel.Name = "Homepage_panel";
+            Homepage_panel.Size = new Size(1028, 641);
+            Homepage_panel.TabIndex = 3;
+            // 
+            // Homepageee
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -318,20 +334,16 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             CancelButton = signupButton;
             ClientSize = new Size(1040, 650);
-            Controls.Add(button5);
-            Controls.Add(ContactDeveloper);
-            Controls.Add(MessageUs);
-            Controls.Add(Support);
             Controls.Add(button2);
             Controls.Add(button3);
             Controls.Add(button1);
             Controls.Add(panel8);
             Controls.Add(panel7);
             Controls.Add(panel6);
-            Controls.Add(panel10);
-            Controls.Add(panel9);
             Controls.Add(panel5);
-            Name = "Homepage";
+            Controls.Add(Homepage_panel);
+            Name = "Homepageee";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Pananom : Homepage";
             FormClosed += Homepage_FormClosed;
             panel5.ResumeLayout(false);
@@ -340,6 +352,7 @@
             panel8.ResumeLayout(false);
             panel9.ResumeLayout(false);
             panel10.ResumeLayout(false);
+            Homepage_panel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -363,5 +376,6 @@
         private Button button2;
         private Button button3;
         private Button button5;
+        private Panel Homepage_panel;
     }
 }

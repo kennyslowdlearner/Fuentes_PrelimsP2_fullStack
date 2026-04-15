@@ -225,6 +225,7 @@
             Controls.Add(button8);
             Controls.Add(panel1);
             Name = "Admin_InventoryManagement";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             menuStrip2.ResumeLayout(false);
             menuStrip2.PerformLayout();

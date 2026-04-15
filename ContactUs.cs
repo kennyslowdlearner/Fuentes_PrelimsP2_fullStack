@@ -24,7 +24,7 @@ namespace Fuentes_PrelimsP2
         // Back button closes the form
         private void button2_Click(object sender, EventArgs e)
         {
-            Homepage homepage = new Homepage(); 
+            Homepageee homepage = new Homepageee(); 
 
             homepage.Show(); 
             this.Close();

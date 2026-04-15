@@ -146,6 +146,7 @@
             ClientSize = new Size(1040, 650);
             Controls.Add(panel1);
             Name = "UserLogin";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Pananom : User Login";
             FormClosing += Close_Form_After_Run;
             FormClosed += UserLogin_FormClosed;

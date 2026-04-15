@@ -142,7 +142,7 @@ namespace Fuentes_PrelimsP2
         private void logoutoptionPI_click(object sender, EventArgs e)
         {
             //made changes here (9) [4/6/2026 | 12:46 PM]
-            Homepage.Instance.Show();
+            Homepageee.Instance.Show();
             this.Hide();
         }
 

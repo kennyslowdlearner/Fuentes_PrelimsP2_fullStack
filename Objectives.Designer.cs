@@ -155,6 +155,7 @@
             ClientSize = new Size(1040, 650);
             Controls.Add(panel1);
             Name = "Objectives";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Pananom : Objectives";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

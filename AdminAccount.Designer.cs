@@ -211,7 +211,7 @@
             // toolStripMenuItem4
             // 
             toolStripMenuItem4.Name = "toolStripMenuItem4";
-            toolStripMenuItem4.Size = new Size(270, 34);
+            toolStripMenuItem4.Size = new Size(172, 34);
             toolStripMenuItem4.Text = "Logout";
             toolStripMenuItem4.Click += logoutAdmin;
             // 
@@ -223,7 +223,7 @@
             menuStrip2.Items.AddRange(new ToolStripItem[] { sssssToolStripMenuItem, accountSettingsToolStripMenuItem });
             menuStrip2.Location = new Point(669, 172);
             menuStrip2.Name = "menuStrip2";
-            menuStrip2.Size = new Size(523, 32);
+            menuStrip2.Size = new Size(343, 32);
             menuStrip2.TabIndex = 106;
             menuStrip2.Text = "menuStrip2";
             // 
@@ -241,6 +241,7 @@
             Controls.Add(panel1);
             Controls.Add(groupBox1);
             Name = "AdminAccount";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Pananom : Admin Dashboard";
             FormClosed += AdminAccount_FormClosed;
             groupBox1.ResumeLayout(false);

@@ -210,6 +210,7 @@
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "UserFinancialGoals";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Financial Goals";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

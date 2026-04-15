@@ -502,6 +502,7 @@
             Controls.Add(searchbuttonPI);
             Controls.Add(panel1);
             Name = "farmgateUSER";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Pananom : Farmgate Price";
             FormClosed += farmgateUSER_FormClosed;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

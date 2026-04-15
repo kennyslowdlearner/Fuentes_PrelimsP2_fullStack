@@ -174,6 +174,7 @@
             Controls.Add(pictureBox2);
             Controls.Add(label3);
             Name = "MessageUs";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Pananom : Message Us";
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel1.ResumeLayout(false);

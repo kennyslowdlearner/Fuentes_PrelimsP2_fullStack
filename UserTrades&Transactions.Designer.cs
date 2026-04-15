@@ -250,6 +250,7 @@
             Controls.Add(label1);
             Controls.Add(menuStrip1);
             Name = "UserTradesandTransactions";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form2";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

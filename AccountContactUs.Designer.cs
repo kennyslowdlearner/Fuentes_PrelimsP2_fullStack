@@ -207,6 +207,7 @@
             Controls.Add(pictureBox2);
             Controls.Add(label3);
             Name = "AccountContactUs";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Pananom : Contact Us";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

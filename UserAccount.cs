@@ -46,7 +46,7 @@ namespace Fuentes_PrelimsP2
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Homepage homepage = new Homepage();
+            Homepageee homepage = new Homepageee();
 
             homepage.Show();
 
@@ -188,7 +188,7 @@ namespace Fuentes_PrelimsP2
         {
             try
             {
-                Homepage.Instance.Show();
+                Homepageee.Instance.Show();
                 this.Hide();
             }
 

@@ -551,6 +551,7 @@
             Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(4);
             Name = "UserSignUp";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Pananom : User Sign Up";
             FormClosing += Close_Form_After_Run;
             FormClosed += UserSignUp_FormClosed;

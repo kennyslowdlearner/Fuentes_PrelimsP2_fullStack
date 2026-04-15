@@ -450,6 +450,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "Admin_TimeBasedSalesReport";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

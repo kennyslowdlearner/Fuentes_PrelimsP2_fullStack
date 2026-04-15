@@ -568,6 +568,7 @@
             Controls.Add(label9);
             Controls.Add(panel1);
             Name = "AdminTransportSchedule";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

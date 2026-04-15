@@ -280,6 +280,7 @@
             Controls.Add(menuStrip1);
             Controls.Add(Market_Forecast_Grid);
             Name = "User_MarketForecast";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += User_MarketForecast_Load;
             menuStrip1.ResumeLayout(false);

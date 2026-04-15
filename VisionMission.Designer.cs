@@ -121,6 +121,7 @@
             ClientSize = new Size(1040, 650);
             Controls.Add(panel1);
             Name = "VisionMission";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Pananom : Vission & Mission";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

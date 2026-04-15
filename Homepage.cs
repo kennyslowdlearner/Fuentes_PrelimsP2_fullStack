@@ -1,22 +1,22 @@
 namespace Fuentes_PrelimsP2
 {
-    public partial class Homepage : Form
+    public partial class Homepageee : Form
     {
-        private static Homepage instance;
+        private static Homepageee instance;
 
-        public Homepage()
+        public Homepageee()
         {
             InitializeComponent();
 
         }
 
-        internal static Homepage Instance
+        internal static Homepageee Instance
         {
             get
             {
                 if (instance == null || instance.IsDisposed)
                 {
-                    instance = new Homepage();
+                    instance = new Homepageee();
                 }
 
                 return instance;
@@ -40,14 +40,10 @@ namespace Fuentes_PrelimsP2
 
         }
 
-
-
         private void loginButton_Click(object sender, EventArgs e)
         {
-            LoginOptions loginOptions = new LoginOptions();
-
-            loginOptions.Show();
-
+           var login = LoginOptions.Instance;
+            login.Show();
             this.Hide();
         }
 

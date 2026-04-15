@@ -30,9 +30,9 @@
         {
             display_summary_panel = new Panel();
             display_bargraph_panel = new Panel();
-            panel3 = new Panel();
             panel4 = new Panel();
             panel5 = new Panel();
+            panel3 = new Panel();
             display_piechart_panel = new Panel();
             backButton = new Button();
             display_bargraph_panel.SuspendLayout();
@@ -55,13 +55,6 @@
             display_bargraph_panel.Size = new Size(667, 286);
             display_bargraph_panel.TabIndex = 0;
             // 
-            // panel3
-            // 
-            panel3.Location = new Point(673, -6);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(372, 295);
-            panel3.TabIndex = 0;
-            // 
             // panel4
             // 
             panel4.Controls.Add(panel5);
@@ -76,6 +69,13 @@
             panel5.Name = "panel5";
             panel5.Size = new Size(372, 295);
             panel5.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            panel3.Location = new Point(673, -6);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(372, 295);
+            panel3.TabIndex = 0;
             // 
             // display_piechart_panel
             // 
@@ -93,7 +93,7 @@
             backButton.Text = "button1";
             backButton.UseVisualStyleBackColor = true;
             // 
-            // UserProductInventory_AnalyticsForm
+            // UserProductInventory_Analytics
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -102,7 +102,8 @@
             Controls.Add(display_piechart_panel);
             Controls.Add(display_bargraph_panel);
             Controls.Add(display_summary_panel);
-            Name = "UserProductInventory_AnalyticsForm";
+            Name = "UserProductInventory_Analytics";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             display_bargraph_panel.ResumeLayout(false);
             panel4.ResumeLayout(false);

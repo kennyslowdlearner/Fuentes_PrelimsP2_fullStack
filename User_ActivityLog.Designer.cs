@@ -506,6 +506,7 @@
             Controls.Add(label1);
             Controls.Add(panel1);
             Name = "User_ActivityLog";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             FormClosed += endOperation;
             panel1.ResumeLayout(false);

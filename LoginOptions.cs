@@ -10,9 +10,23 @@ namespace Fuentes_PrelimsP2
 {
     public partial class LoginOptions : Form
     {
+
+        private static LoginOptions instance;
         public LoginOptions()
         {
             InitializeComponent();
+        }
+
+        internal static LoginOptions Instance
+        {
+            get
+            {
+                if (instance == null || instance.IsDisposed)
+                {
+                    instance = new LoginOptions();
+                }
+                return instance;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

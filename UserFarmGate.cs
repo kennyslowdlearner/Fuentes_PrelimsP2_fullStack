@@ -37,7 +37,7 @@ namespace Fuentes_PrelimsP2
 
         private void logoutoptionFPG_Click(object sender, EventArgs e)
         {
-            Homepage homepage = new Homepage();
+            Homepageee homepage = new Homepageee();
             homepage.Show();
             this.Hide();
 
@@ -57,7 +57,7 @@ namespace Fuentes_PrelimsP2
 
         private void logoutoptionFPG_Click_1(object sender, EventArgs e)
         {
-            Homepage homepage = new Homepage();
+            Homepageee homepage = new Homepageee();
             homepage.Show();
             this.Hide();
         }

@@ -75,6 +75,7 @@
             Controls.Add(display_summary_analyticsTandT);
             Controls.Add(display_piechart_analyticsTandT);
             Name = "User_TransactionSheetAnalytics";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += User_TransactionSheetAnalytics_Load;
             ResumeLayout(false);

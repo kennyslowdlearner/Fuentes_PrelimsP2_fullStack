@@ -645,6 +645,7 @@
             Controls.Add(label2);
             Controls.Add(flowLayoutPanel1);
             Name = "Admin_TotalSalesReport";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

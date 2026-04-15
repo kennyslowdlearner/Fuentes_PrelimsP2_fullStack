@@ -283,6 +283,7 @@
             Controls.Add(Weather_Information);
             Controls.Add(label6);
             Name = "User_WeatherForecast";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

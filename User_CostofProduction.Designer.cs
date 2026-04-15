@@ -601,6 +601,7 @@
             Controls.Add(panel1);
             MaximizeBox = false;
             Name = "User_CostofProduction";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Cost of Production";
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)Cost_Of_Production_Grid).EndInit();

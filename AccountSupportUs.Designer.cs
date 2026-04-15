@@ -108,6 +108,7 @@
             ClientSize = new Size(869, 619);
             Controls.Add(panel1);
             Name = "AccountSupportUs";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Pananom : Support Us";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

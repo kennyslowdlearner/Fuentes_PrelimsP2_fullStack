@@ -202,7 +202,7 @@
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(61, 4);
             // 
-            // ContactDeveloper
+            // ContactUs
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -211,7 +211,8 @@
             Controls.Add(panel1);
             Controls.Add(pictureBox2);
             Controls.Add(label3);
-            Name = "ContactDeveloper";
+            Name = "ContactUs";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Pananom : Contact Us";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

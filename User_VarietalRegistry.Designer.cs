@@ -465,6 +465,7 @@
             Controls.Add(panel1);
             ForeColor = Color.LawnGreen;
             Name = "User_VarietalRegistry";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             FormClosed += endoperation;
             panel1.ResumeLayout(false);

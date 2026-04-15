@@ -149,6 +149,7 @@
             Controls.Add(panel1);
             Controls.Add(button7);
             Name = "AdminSalesReport";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             panel1.ResumeLayout(false);
             ResumeLayout(false);

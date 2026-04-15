@@ -333,6 +333,7 @@
             Controls.Add(button4);
             Controls.Add(button8);
             Name = "AdminAccountControl";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

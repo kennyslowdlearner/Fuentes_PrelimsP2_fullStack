@@ -85,8 +85,8 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Name = "LoginOptions";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Pananom : Login Options";
-            FormClosed += LoginOptions_FormClosed;
             ResumeLayout(false);
         }
 

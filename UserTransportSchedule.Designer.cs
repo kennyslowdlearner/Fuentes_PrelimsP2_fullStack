@@ -158,6 +158,7 @@
             Controls.Add(button5);
             Controls.Add(panel1);
             Name = "UserTransportSchedule";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Transport Schedule";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

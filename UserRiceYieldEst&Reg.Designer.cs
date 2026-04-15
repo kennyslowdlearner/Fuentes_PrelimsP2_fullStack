@@ -265,6 +265,7 @@
             Controls.Add(label1);
             Controls.Add(menuStrip1);
             Name = "RiceYieldEstimationandRegistry";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form3";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

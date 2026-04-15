@@ -112,6 +112,7 @@
             Controls.Add(pictureBox1);
             Controls.Add(panel1);
             Name = "AboutUs";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Pananom : About Us";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

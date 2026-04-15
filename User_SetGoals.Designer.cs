@@ -331,6 +331,7 @@
             Controls.Add(button5);
             Controls.Add(display_savingstatus_usg_fg);
             Name = "User_SetGoals";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

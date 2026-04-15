@@ -353,6 +353,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "Admin_TotalTransactions";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             menuStrip2.ResumeLayout(false);
             menuStrip2.PerformLayout();

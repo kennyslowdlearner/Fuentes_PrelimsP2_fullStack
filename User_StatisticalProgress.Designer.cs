@@ -617,6 +617,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "User_StatisticalProgress";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

@@ -579,6 +579,7 @@
             Controls.Add(panel1);
             ForeColor = Color.LawnGreen;
             Name = "User_RiceYieldandEstimation";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
