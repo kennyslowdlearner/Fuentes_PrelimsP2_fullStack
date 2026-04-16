@@ -13,6 +13,19 @@ namespace Fuentes_PrelimsP2
 {
     public partial class UserSignUp : Form
     {
+        private static UserSignUp instance;
+
+        internal static UserSignUp Instance
+        {
+            get
+            {
+                if (instance == null || instance.IsDisposed)
+                {
+                    instance = new UserSignUp();
+                }
+                return instance;
+            }
+        }
 
         private string initialPassword, confirmPassword;
 

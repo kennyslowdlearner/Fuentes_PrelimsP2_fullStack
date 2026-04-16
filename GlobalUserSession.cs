@@ -10,6 +10,7 @@ namespace Fuentes_PrelimsP2
         internal static UserSession UserInstance => userinstance ?? (userinstance = new UserSession());
 
         //below are the properties recorded in user signup; to be used for user session singleton implementation
+        internal int ID { get; set; }
         internal string FirstName { get; set; }
         internal string MiddleName { get; set; }
         internal string LastName { get; set; }
@@ -25,6 +26,10 @@ namespace Fuentes_PrelimsP2
         internal string Email {get; set;}
         internal string Hotline { get; set; }
 
+        internal static void reset()
+        {
+            userinstance = null;
+        }
 
         private UserSession() { }
     }

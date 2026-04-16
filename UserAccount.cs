@@ -46,7 +46,7 @@ namespace Fuentes_PrelimsP2
         }
 
         private void display_name_and_date()
-        {   
+        {
             string name_in_session = UserSession.UserInstance.FirstName + " " + UserSession.UserInstance.MiddleName + " " + UserSession.UserInstance.LastName;
             profileName.Text = name_in_session;
             systemTimer.Start();
@@ -198,6 +198,37 @@ namespace Fuentes_PrelimsP2
         {
             try
             {
+                UserSession.reset();
+
+                if (User_ActivityLog.Instance != null) User_ActivityLog.Instance.Dispose();
+                if (User_CostofProduction.Instance != null) User_CostofProduction.Instance.Dispose();
+                if (User_DigitalReceiptVault.Instance != null) User_DigitalReceiptVault.Instance.Dispose();
+                if (User_MarketForecast.Instance != null) User_MarketForecast.Instance.Dispose();
+                if (User_RiceYieldandEstimation.Instance != null) User_RiceYieldandEstimation.Instance.Dispose();
+                if (User_SetGoals.Instance != null) User_SetGoals.Instance.Dispose();
+                if (User_SoilEvaluator.Instance != null) User_SoilEvaluator.Instance.Dispose();
+                if (User_StatisticalProgress.Instance != null) User_StatisticalProgress.Instance.Dispose();
+                if (User_TransactionSheet.Instance != null) User_TransactionSheet.Instance.Dispose();
+                if (User_TransactionSheetAnalytics.Instance != null) User_TransactionSheetAnalytics.Instance.Dispose();
+                if (User_VarietalRegistry.Instance != null) User_VarietalRegistry.Instance.Dispose();
+                if (User_WeatherForecast.Instance != null) User_WeatherForecast.Instance.Dispose();
+
+                if (farmgateUSER.Instance != null) farmgateUSER.Instance.Dispose();
+                if (UserFinancialGoals.Instance != null) UserFinancialGoals.Instance.Dispose();
+                if (UserLogin.Instance != null) UserLogin.Instance.Dispose();
+                if (productInventory.Instance != null) productInventory.Instance.Dispose();
+                if (UserProductInventory_Analytics.Instance != null) UserProductInventory_Analytics.Instance.Dispose();
+                if (UserSignUp.Instance != null) UserSignUp.Instance.Dispose();
+                if (UserTradesandTransactions.Instance != null) UserTradesandTransactions.Instance.Dispose();
+                if (UserTransportSchedule.Instance != null) UserTransportSchedule.Instance.Dispose();
+
+                if (LoginOptions.Instance != null) LoginOptions.Instance.Dispose();
+                if (MessageUs.Instance != null) MessageUs.Instance.Dispose();
+                if (Objectives.Instance != null) Objectives.Instance.Dispose();
+                if (SupportUs.Instance != null) SupportUs.Instance.Dispose();
+                if (VisionMission.Instance != null) VisionMission.Instance.Dispose();
+
+
                 Homepageee.Instance.Show();
                 this.Dispose();
             }
@@ -216,6 +247,11 @@ namespace Fuentes_PrelimsP2
             profileName.Text = name_in_session;
 
             display_datetime_Udashboard.Text = DateTime.Now.ToString("MMMM dd, yyyy | hh:mm:ss tt");
+        }
+
+        private void sendMessageOrFeedbackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageUs.Instance.Show();
         }
     }
 }

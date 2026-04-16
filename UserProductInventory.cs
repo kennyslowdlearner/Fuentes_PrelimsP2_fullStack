@@ -191,8 +191,9 @@ namespace Fuentes_PrelimsP2
         {
             //made changes here (13) [4/6/2026 | 12:46 PM]
             connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
-            adapter = new OleDbDataAdapter("SELECT * FROM [User PI Product Inventory]", connection);
+            adapter = new OleDbDataAdapter("SELECT * FROM [User PI Product Inventory] WHERE [User ID] = !A1", connection);
 
+            adapter.SelectCommand.Parameters.AddWithValue("A1", UserSession.UserInstance.ID);
 
             try
             {
@@ -212,6 +213,9 @@ namespace Fuentes_PrelimsP2
                 Product_Inventory_Grid.Columns["Product ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 Product_Inventory_Grid.Columns["Quantity in Kilograms"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
+                if (Product_Inventory_Grid.Columns.Contains("User ID"))
+                    Product_Inventory_Grid.Columns["User ID"].Visible = false;
+
             }
 
             catch (Exception ex)
@@ -225,13 +229,14 @@ namespace Fuentes_PrelimsP2
             //made changes here (14) [4/6/2026 | 12:46 PM]
             string referenceID = GenerateReferenceID();
             connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
-            string query = "INSERT INTO [User PI Product Inventory] ([Product Name], [Product ID], [Quantity in Kilograms], [Reference ID]) VALUES (@P1, @P2, @P3, @P4)";
+            string query = "INSERT INTO [User PI Product Inventory] ([Product Name], [Product ID], [Quantity in Kilograms], [Reference ID], [User ID]) VALUES (@P1, @P2, @P3, @P4, @P5)";
 
             command = new OleDbCommand(query, connection);
             command.Parameters.AddWithValue("@P1", fill_productname_pi.Text);
             command.Parameters.AddWithValue("@P2", fill_productid_pi.Text);
             command.Parameters.AddWithValue("@P3", Convert.ToInt32(fill_quantity_pi.Text));
             command.Parameters.AddWithValue("@P4", referenceID);
+            command.Parameters.AddWithValue("@P5", UserSession.UserInstance.ID);
 
             try
             {

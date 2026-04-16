@@ -11,6 +11,21 @@ namespace Fuentes_PrelimsP2
 {
     public partial class UserLogin : Form
     {
+        private static UserLogin instance;
+
+        internal static UserLogin Instance
+        {
+            get
+            {
+                if (instance == null || instance.IsDisposed)
+                {
+                    instance = new UserLogin();
+                }
+                return instance;
+            }
+        }
+
+
         Homepageee home;
 
         OleDbConnection? connection;
@@ -69,6 +84,7 @@ namespace Fuentes_PrelimsP2
                 {
                     if (row["Username"].ToString() == loggingUSN && row["Password"].ToString() == loggingPASS)
                     {
+                        UserSession.UserInstance.ID = Convert.ToInt32(row["User ID"]);
                         UserSession.UserInstance.Username = row["Username"].ToString();
                         UserSession.UserInstance.Password = row["Password"].ToString();
                         UserSession.UserInstance.FirstName = row["First Name"].ToString();

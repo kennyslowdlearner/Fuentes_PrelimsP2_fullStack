@@ -51,6 +51,7 @@
             button7 = new Button();
             panel1 = new Panel();
             systemTimer = new System.Windows.Forms.Timer(components);
+            sendMessageOrFeedbackToolStripMenuItem = new ToolStripMenuItem();
             groupBox1.SuspendLayout();
             menuStrip1.SuspendLayout();
             panel1.SuspendLayout();
@@ -169,14 +170,14 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, toolStripMenuItem2 });
             menuStrip1.Location = new Point(696, 246);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(316, 32);
+            menuStrip1.Size = new Size(496, 32);
             menuStrip1.TabIndex = 4;
             menuStrip1.Text = "menuStrip1";
             // 
             // toolStripMenuItem1
             // 
             toolStripMenuItem1.BackColor = Color.Transparent;
-            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { toolStripSeparator1, viewAccountToolStripMenuItem, contactDeveloperToolStripMenuItem, supportToolStripMenuItem });
+            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { toolStripSeparator1, viewAccountToolStripMenuItem, contactDeveloperToolStripMenuItem, supportToolStripMenuItem, sendMessageOrFeedbackToolStripMenuItem });
             toolStripMenuItem1.Font = new Font("Glacial Indifference", 10F);
             toolStripMenuItem1.Name = "toolStripMenuItem1";
             toolStripMenuItem1.Size = new Size(143, 28);
@@ -186,26 +187,26 @@
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(270, 6);
+            toolStripSeparator1.Size = new Size(342, 6);
             // 
             // viewAccountToolStripMenuItem
             // 
             viewAccountToolStripMenuItem.Name = "viewAccountToolStripMenuItem";
-            viewAccountToolStripMenuItem.Size = new Size(273, 34);
+            viewAccountToolStripMenuItem.Size = new Size(345, 34);
             viewAccountToolStripMenuItem.Text = "View Account";
             viewAccountToolStripMenuItem.Click += viewAccountToolStripMenuItem_Click;
             // 
             // contactDeveloperToolStripMenuItem
             // 
             contactDeveloperToolStripMenuItem.Name = "contactDeveloperToolStripMenuItem";
-            contactDeveloperToolStripMenuItem.Size = new Size(273, 34);
+            contactDeveloperToolStripMenuItem.Size = new Size(345, 34);
             contactDeveloperToolStripMenuItem.Text = "Contact Developer";
             contactDeveloperToolStripMenuItem.Click += contactDeveloperToolStripMenuItem_Click;
             // 
             // supportToolStripMenuItem
             // 
             supportToolStripMenuItem.Name = "supportToolStripMenuItem";
-            supportToolStripMenuItem.Size = new Size(273, 34);
+            supportToolStripMenuItem.Size = new Size(345, 34);
             supportToolStripMenuItem.Text = "Support ";
             supportToolStripMenuItem.Click += supportToolStripMenuItem_Click;
             // 
@@ -222,7 +223,7 @@
             // 
             logoutToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(172, 34);
+            logoutToolStripMenuItem.Size = new Size(270, 34);
             logoutToolStripMenuItem.Text = "Logout";
             logoutToolStripMenuItem.Click += logoutUser;
             // 
@@ -292,6 +293,13 @@
             systemTimer.Interval = 1000;
             systemTimer.Tick += timer1_Tick;
             // 
+            // sendMessageOrFeedbackToolStripMenuItem
+            // 
+            sendMessageOrFeedbackToolStripMenuItem.Name = "sendMessageOrFeedbackToolStripMenuItem";
+            sendMessageOrFeedbackToolStripMenuItem.Size = new Size(345, 34);
+            sendMessageOrFeedbackToolStripMenuItem.Text = "Send Message or Feedback";
+            sendMessageOrFeedbackToolStripMenuItem.Click += sendMessageOrFeedbackToolStripMenuItem_Click;
+            // 
             // UserAccount
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -339,5 +347,6 @@
         private Panel panel1;
         private ToolStripMenuItem supportToolStripMenuItem;
         private System.Windows.Forms.Timer systemTimer;
+        private ToolStripMenuItem sendMessageOrFeedbackToolStripMenuItem;
     }
 }
