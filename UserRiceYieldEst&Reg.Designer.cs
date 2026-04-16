@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RiceYieldEstimationandRegistry));
-            label2 = new Label();
-            label3 = new Label();
+            display_name_ryer = new Label();
+            display_datetime_ryer = new Label();
             label1 = new Label();
             menuStrip1 = new MenuStrip();
             sssssToolStripMenuItem = new ToolStripMenuItem();
@@ -47,32 +48,33 @@
             ActivityLog = new Button();
             label4 = new Label();
             button7 = new Button();
+            systemTimer = new System.Windows.Forms.Timer(components);
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
-            // label2
+            // display_name_ryer
             // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Glacial Indifference", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.LawnGreen;
-            label2.Location = new Point(196, 144);
-            label2.Name = "label2";
-            label2.Size = new Size(106, 34);
-            label2.TabIndex = 7;
-            label2.Text = "[USER]!";
+            display_name_ryer.AutoSize = true;
+            display_name_ryer.BackColor = Color.Transparent;
+            display_name_ryer.Font = new Font("Glacial Indifference", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            display_name_ryer.ForeColor = Color.LawnGreen;
+            display_name_ryer.Location = new Point(196, 144);
+            display_name_ryer.Name = "display_name_ryer";
+            display_name_ryer.Size = new Size(106, 34);
+            display_name_ryer.TabIndex = 7;
+            display_name_ryer.Text = "[USER]!";
             // 
-            // label3
+            // display_datetime_ryer
             // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.LawnGreen;
-            label3.Location = new Point(40, 181);
-            label3.Name = "label3";
-            label3.Size = new Size(167, 27);
-            label3.TabIndex = 8;
-            label3.Text = "[Time and Date]";
+            display_datetime_ryer.AutoSize = true;
+            display_datetime_ryer.BackColor = Color.Transparent;
+            display_datetime_ryer.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            display_datetime_ryer.ForeColor = Color.LawnGreen;
+            display_datetime_ryer.Location = new Point(40, 181);
+            display_datetime_ryer.Name = "display_datetime_ryer";
+            display_datetime_ryer.Size = new Size(167, 27);
+            display_datetime_ryer.TabIndex = 8;
+            display_datetime_ryer.Text = "[Time and Date]";
             // 
             // label1
             // 
@@ -94,7 +96,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { sssssToolStripMenuItem, accountSettingsToolStripMenuItem });
             menuStrip1.Location = new Point(708, 165);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(343, 32);
+            menuStrip1.Size = new Size(523, 32);
             menuStrip1.TabIndex = 6;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -117,8 +119,9 @@
             // learnMoreToolStripMenuItem
             // 
             learnMoreToolStripMenuItem.Name = "learnMoreToolStripMenuItem";
-            learnMoreToolStripMenuItem.Size = new Size(281, 34);
-            learnMoreToolStripMenuItem.Text = "Learn More";
+            learnMoreToolStripMenuItem.Size = new Size(346, 34);
+            learnMoreToolStripMenuItem.Text = "Send Message/Feedback";
+            learnMoreToolStripMenuItem.Click += SendMessageOrFeedbackToolStripMenuItem_Click;
             // 
             // contactDeveloperToolStripMenuItem
             // 
@@ -139,8 +142,9 @@
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(172, 34);
+            logoutToolStripMenuItem.Size = new Size(270, 34);
             logoutToolStripMenuItem.Text = "Logout";
+            logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
             // 
             // AddRiceYieldandEstimation
             // 
@@ -246,6 +250,12 @@
             button7.UseVisualStyleBackColor = false;
             button7.Click += button7_Click;
             // 
+            // systemTimer
+            // 
+            systemTimer.Enabled = true;
+            systemTimer.Interval = 1000;
+            systemTimer.Tick += systemTimer_Tick;
+            // 
             // RiceYieldEstimationandRegistry
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -259,9 +269,9 @@
             Controls.Add(ViewRiceYieldandEstimation);
             Controls.Add(WeatherForecasting);
             Controls.Add(AddRiceYieldandEstimation);
-            Controls.Add(label2);
+            Controls.Add(display_name_ryer);
             Controls.Add(label4);
-            Controls.Add(label3);
+            Controls.Add(display_datetime_ryer);
             Controls.Add(label1);
             Controls.Add(menuStrip1);
             Name = "RiceYieldEstimationandRegistry";
@@ -275,8 +285,8 @@
 
         #endregion
 
-        private Label label2;
-        private Label label3;
+        private Label display_name_ryer;
+        private Label display_datetime_ryer;
         private Label label1;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem sssssToolStripMenuItem;
@@ -293,5 +303,6 @@
         private Button ActivityLog;
         private Label label4;
         private Button button7;
+        private System.Windows.Forms.Timer systemTimer;
     }
 }

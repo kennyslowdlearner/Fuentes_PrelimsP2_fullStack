@@ -32,13 +32,6 @@
             panel1 = new Panel();
             printPreviewControl1 = new PrintPreviewControl();
             dataGridView1 = new DataGridView();
-            menuStrip1 = new MenuStrip();
-            sssssToolStripMenuItem = new ToolStripMenuItem();
-            reloadToolStripMenuItem = new ToolStripMenuItem();
-            learnMoreToolStripMenuItem = new ToolStripMenuItem();
-            contactDeveloperToolStripMenuItem = new ToolStripMenuItem();
-            accountSettingsToolStripMenuItem = new ToolStripMenuItem();
-            logoutToolStripMenuItem = new ToolStripMenuItem();
             button8 = new Button();
             label8 = new Label();
             button6 = new Button();
@@ -52,7 +45,6 @@
             label6 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -78,63 +70,6 @@
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.Size = new Size(550, 253);
             dataGridView1.TabIndex = 1;
-            // 
-            // menuStrip1
-            // 
-            menuStrip1.BackColor = Color.Transparent;
-            menuStrip1.Dock = DockStyle.None;
-            menuStrip1.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            menuStrip1.ImageScalingSize = new Size(24, 24);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { sssssToolStripMenuItem, accountSettingsToolStripMenuItem });
-            menuStrip1.Location = new Point(1094, 424);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(343, 32);
-            menuStrip1.TabIndex = 35;
-            menuStrip1.Text = "menuStrip1";
-            // 
-            // sssssToolStripMenuItem
-            // 
-            sssssToolStripMenuItem.BackColor = Color.Transparent;
-            sssssToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { reloadToolStripMenuItem, learnMoreToolStripMenuItem, contactDeveloperToolStripMenuItem });
-            sssssToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            sssssToolStripMenuItem.ForeColor = Color.LawnGreen;
-            sssssToolStripMenuItem.Name = "sssssToolStripMenuItem";
-            sssssToolStripMenuItem.Size = new Size(151, 28);
-            sssssToolStripMenuItem.Text = "More Options";
-            // 
-            // reloadToolStripMenuItem
-            // 
-            reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
-            reloadToolStripMenuItem.Size = new Size(281, 34);
-            reloadToolStripMenuItem.Text = "Reload";
-            // 
-            // learnMoreToolStripMenuItem
-            // 
-            learnMoreToolStripMenuItem.Name = "learnMoreToolStripMenuItem";
-            learnMoreToolStripMenuItem.Size = new Size(281, 34);
-            learnMoreToolStripMenuItem.Text = "Learn More";
-            // 
-            // contactDeveloperToolStripMenuItem
-            // 
-            contactDeveloperToolStripMenuItem.Name = "contactDeveloperToolStripMenuItem";
-            contactDeveloperToolStripMenuItem.Size = new Size(281, 34);
-            contactDeveloperToolStripMenuItem.Text = "Contact Developer";
-            // 
-            // accountSettingsToolStripMenuItem
-            // 
-            accountSettingsToolStripMenuItem.BackColor = Color.Transparent;
-            accountSettingsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { logoutToolStripMenuItem });
-            accountSettingsToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            accountSettingsToolStripMenuItem.ForeColor = Color.LawnGreen;
-            accountSettingsToolStripMenuItem.Name = "accountSettingsToolStripMenuItem";
-            accountSettingsToolStripMenuItem.Size = new Size(184, 28);
-            accountSettingsToolStripMenuItem.Text = "Account Settings";
-            // 
-            // logoutToolStripMenuItem
-            // 
-            logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(172, 34);
-            logoutToolStripMenuItem.Text = "Logout";
             // 
             // button8
             // 
@@ -294,15 +229,12 @@
             Controls.Add(button8);
             Controls.Add(label1);
             Controls.Add(label8);
-            Controls.Add(menuStrip1);
             Controls.Add(dataGridView1);
             Controls.Add(panel1);
             Name = "User_DigitalReceiptVault";
             StartPosition = FormStartPosition.CenterScreen;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -311,13 +243,6 @@
         private Panel panel1;
         private PrintPreviewControl printPreviewControl1;
         private DataGridView dataGridView1;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem sssssToolStripMenuItem;
-        private ToolStripMenuItem reloadToolStripMenuItem;
-        private ToolStripMenuItem learnMoreToolStripMenuItem;
-        private ToolStripMenuItem contactDeveloperToolStripMenuItem;
-        private ToolStripMenuItem accountSettingsToolStripMenuItem;
-        private ToolStripMenuItem logoutToolStripMenuItem;
         private Button button8;
         private Label label8;
         private Button button6;

@@ -14,6 +14,7 @@ namespace Fuentes_PrelimsP2
         public UserFinancialGoals()
         {
             InitializeComponent();
+            display_name_and_date();
         }
 
         //(Global User Session) Component
@@ -30,6 +31,12 @@ namespace Fuentes_PrelimsP2
             }
         }
 
+        private void display_name_and_date()
+        {
+            string name_in_session = UserSession.UserInstance.FirstName + " " + UserSession.UserInstance.MiddleName + " " + UserSession.UserInstance.LastName;
+            display_name_fg.Text = name_in_session;
+            systemTimer.Start();
+        }
         private void sssssToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -56,6 +63,27 @@ namespace Fuentes_PrelimsP2
         {
             UserAccount.Instance.Show();
             this.Hide();
+        }
+
+        private void systemTimer_Tick(object sender, EventArgs e)
+        {
+            string name_in_session = UserSession.UserInstance.FirstName + " " +
+                                     UserSession.UserInstance.MiddleName + " " +
+                                     UserSession.UserInstance.LastName;
+            display_name_fg.Text = name_in_session;
+
+            display_datetime_fg.Text = DateTime.Now.ToString("MMMM dd, yyyy | hh:mm:ss tt");
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Homepageee.Instance.Show();
+            this.Dispose();
+        }
+
+        private void learnMoreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageUs.Instance.Show();
         }
     }
 }

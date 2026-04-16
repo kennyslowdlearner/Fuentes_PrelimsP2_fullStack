@@ -33,13 +33,6 @@
             label8 = new Label();
             label6 = new Label();
             label9 = new Label();
-            logoutToolStripMenuItem = new ToolStripMenuItem();
-            accountSettingsToolStripMenuItem = new ToolStripMenuItem();
-            contactDeveloperToolStripMenuItem = new ToolStripMenuItem();
-            learnMoreToolStripMenuItem = new ToolStripMenuItem();
-            reloadToolStripMenuItem = new ToolStripMenuItem();
-            sssssToolStripMenuItem = new ToolStripMenuItem();
-            menuStrip1 = new MenuStrip();
             Market_Forecast_Grid = new DataGridView();
             button6 = new Button();
             button5 = new Button();
@@ -48,7 +41,6 @@
             searchBoxPI = new TextBox();
             searchbuttonPI = new Button();
             label1 = new Label();
-            menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Market_Forecast_Grid).BeginInit();
             SuspendLayout();
             // 
@@ -101,62 +93,6 @@
             label9.Size = new Size(182, 34);
             label9.TabIndex = 15;
             label9.Text = "Market Price";
-            // 
-            // logoutToolStripMenuItem
-            // 
-            logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(172, 34);
-            logoutToolStripMenuItem.Text = "Logout";
-            // 
-            // accountSettingsToolStripMenuItem
-            // 
-            accountSettingsToolStripMenuItem.BackColor = Color.Transparent;
-            accountSettingsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { logoutToolStripMenuItem });
-            accountSettingsToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            accountSettingsToolStripMenuItem.ForeColor = Color.LawnGreen;
-            accountSettingsToolStripMenuItem.Name = "accountSettingsToolStripMenuItem";
-            accountSettingsToolStripMenuItem.Size = new Size(184, 28);
-            accountSettingsToolStripMenuItem.Text = "Account Settings";
-            // 
-            // contactDeveloperToolStripMenuItem
-            // 
-            contactDeveloperToolStripMenuItem.Name = "contactDeveloperToolStripMenuItem";
-            contactDeveloperToolStripMenuItem.Size = new Size(281, 34);
-            contactDeveloperToolStripMenuItem.Text = "Contact Developer";
-            // 
-            // learnMoreToolStripMenuItem
-            // 
-            learnMoreToolStripMenuItem.Name = "learnMoreToolStripMenuItem";
-            learnMoreToolStripMenuItem.Size = new Size(281, 34);
-            learnMoreToolStripMenuItem.Text = "Learn More";
-            // 
-            // reloadToolStripMenuItem
-            // 
-            reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
-            reloadToolStripMenuItem.Size = new Size(281, 34);
-            reloadToolStripMenuItem.Text = "Reload";
-            // 
-            // sssssToolStripMenuItem
-            // 
-            sssssToolStripMenuItem.BackColor = Color.Transparent;
-            sssssToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { reloadToolStripMenuItem, learnMoreToolStripMenuItem, contactDeveloperToolStripMenuItem });
-            sssssToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            sssssToolStripMenuItem.ForeColor = Color.LawnGreen;
-            sssssToolStripMenuItem.Name = "sssssToolStripMenuItem";
-            sssssToolStripMenuItem.Size = new Size(151, 28);
-            sssssToolStripMenuItem.Text = "More Options";
-            // 
-            // menuStrip1
-            // 
-            menuStrip1.BackColor = Color.Transparent;
-            menuStrip1.Dock = DockStyle.None;
-            menuStrip1.ImageScalingSize = new Size(24, 24);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { sssssToolStripMenuItem, accountSettingsToolStripMenuItem });
-            menuStrip1.Location = new Point(579, 182);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(343, 32);
-            menuStrip1.TabIndex = 8;
-            menuStrip1.Text = "menuStrip1";
             // 
             // Market_Forecast_Grid
             // 
@@ -277,14 +213,11 @@
             Controls.Add(label8);
             Controls.Add(label6);
             Controls.Add(label9);
-            Controls.Add(menuStrip1);
             Controls.Add(Market_Forecast_Grid);
             Name = "User_MarketForecast";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += User_MarketForecast_Load;
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)Market_Forecast_Grid).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -295,13 +228,6 @@
         private Label label8;
         private Label label6;
         private Label label9;
-        private ToolStripMenuItem logoutToolStripMenuItem;
-        private ToolStripMenuItem accountSettingsToolStripMenuItem;
-        private ToolStripMenuItem contactDeveloperToolStripMenuItem;
-        private ToolStripMenuItem learnMoreToolStripMenuItem;
-        private ToolStripMenuItem reloadToolStripMenuItem;
-        private ToolStripMenuItem sssssToolStripMenuItem;
-        private MenuStrip menuStrip1;
         private DataGridView Market_Forecast_Grid;
         private Button button6;
         private Button button5;

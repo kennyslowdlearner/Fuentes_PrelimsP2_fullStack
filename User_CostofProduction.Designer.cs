@@ -54,13 +54,6 @@
             label15 = new Label();
             button4 = new Button();
             button5 = new Button();
-            menuStrip1 = new MenuStrip();
-            sssssToolStripMenuItem = new ToolStripMenuItem();
-            reloadToolStripMenuItem = new ToolStripMenuItem();
-            learnMoreToolStripMenuItem = new ToolStripMenuItem();
-            contactDeveloperToolStripMenuItem = new ToolStripMenuItem();
-            accountSettingsToolStripMenuItem = new ToolStripMenuItem();
-            logoutToolStripMenuItem = new ToolStripMenuItem();
             button7 = new Button();
             button9 = new Button();
             label17 = new Label();
@@ -73,7 +66,6 @@
             fill_unit_cop = new ComboBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Cost_Of_Production_Grid).BeginInit();
-            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -379,63 +371,6 @@
             button5.UseVisualStyleBackColor = false;
             button5.Click += shortcut_MarketForecasting;
             // 
-            // menuStrip1
-            // 
-            menuStrip1.BackColor = Color.Transparent;
-            menuStrip1.Dock = DockStyle.None;
-            menuStrip1.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            menuStrip1.ImageScalingSize = new Size(24, 24);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { sssssToolStripMenuItem, accountSettingsToolStripMenuItem });
-            menuStrip1.Location = new Point(635, 199);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(343, 32);
-            menuStrip1.TabIndex = 57;
-            menuStrip1.Text = "menuStrip1";
-            // 
-            // sssssToolStripMenuItem
-            // 
-            sssssToolStripMenuItem.BackColor = Color.Transparent;
-            sssssToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { reloadToolStripMenuItem, learnMoreToolStripMenuItem, contactDeveloperToolStripMenuItem });
-            sssssToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            sssssToolStripMenuItem.ForeColor = Color.LawnGreen;
-            sssssToolStripMenuItem.Name = "sssssToolStripMenuItem";
-            sssssToolStripMenuItem.Size = new Size(151, 28);
-            sssssToolStripMenuItem.Text = "More Options";
-            // 
-            // reloadToolStripMenuItem
-            // 
-            reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
-            reloadToolStripMenuItem.Size = new Size(281, 34);
-            reloadToolStripMenuItem.Text = "Reload";
-            // 
-            // learnMoreToolStripMenuItem
-            // 
-            learnMoreToolStripMenuItem.Name = "learnMoreToolStripMenuItem";
-            learnMoreToolStripMenuItem.Size = new Size(281, 34);
-            learnMoreToolStripMenuItem.Text = "Learn More";
-            // 
-            // contactDeveloperToolStripMenuItem
-            // 
-            contactDeveloperToolStripMenuItem.Name = "contactDeveloperToolStripMenuItem";
-            contactDeveloperToolStripMenuItem.Size = new Size(281, 34);
-            contactDeveloperToolStripMenuItem.Text = "Contact Developer";
-            // 
-            // accountSettingsToolStripMenuItem
-            // 
-            accountSettingsToolStripMenuItem.BackColor = Color.Transparent;
-            accountSettingsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { logoutToolStripMenuItem });
-            accountSettingsToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            accountSettingsToolStripMenuItem.ForeColor = Color.LawnGreen;
-            accountSettingsToolStripMenuItem.Name = "accountSettingsToolStripMenuItem";
-            accountSettingsToolStripMenuItem.Size = new Size(184, 28);
-            accountSettingsToolStripMenuItem.Text = "Account Settings";
-            // 
-            // logoutToolStripMenuItem
-            // 
-            logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(172, 34);
-            logoutToolStripMenuItem.Text = "Logout";
-            // 
             // button7
             // 
             button7.BackColor = Color.Transparent;
@@ -573,7 +508,6 @@
             Controls.Add(label19);
             Controls.Add(button7);
             Controls.Add(button9);
-            Controls.Add(menuStrip1);
             Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(button8);
@@ -605,8 +539,6 @@
             Text = "Cost of Production";
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)Cost_Of_Production_Grid).EndInit();
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -637,13 +569,6 @@
         private Label label15;
         private Button button4;
         private Button button5;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem sssssToolStripMenuItem;
-        private ToolStripMenuItem reloadToolStripMenuItem;
-        private ToolStripMenuItem learnMoreToolStripMenuItem;
-        private ToolStripMenuItem contactDeveloperToolStripMenuItem;
-        private ToolStripMenuItem accountSettingsToolStripMenuItem;
-        private ToolStripMenuItem logoutToolStripMenuItem;
         private Button button7;
         private Button button9;
         private DataGridView Cost_Of_Production_Grid;

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserAccount));
             ProductInventoryPage = new Button();
             farmgatePricePage = new Button();
@@ -44,11 +45,12 @@
             supportToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem2 = new ToolStripMenuItem();
             logoutToolStripMenuItem = new ToolStripMenuItem();
-            label1 = new Label();
+            display_datetime_Udashboard = new Label();
             label3 = new Label();
             profileName = new Label();
             button7 = new Button();
             panel1 = new Panel();
+            systemTimer = new System.Windows.Forms.Timer(components);
             groupBox1.SuspendLayout();
             menuStrip1.SuspendLayout();
             panel1.SuspendLayout();
@@ -224,17 +226,17 @@
             logoutToolStripMenuItem.Text = "Logout";
             logoutToolStripMenuItem.Click += logoutUser;
             // 
-            // label1
+            // display_datetime_Udashboard
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Glacial Indifference", 10F);
-            label1.ForeColor = Color.DarkOliveGreen;
-            label1.Location = new Point(39, 293);
-            label1.Name = "label1";
-            label1.Size = new Size(148, 24);
-            label1.TabIndex = 5;
-            label1.Text = "[Time and Date]";
+            display_datetime_Udashboard.AutoSize = true;
+            display_datetime_Udashboard.BackColor = Color.Transparent;
+            display_datetime_Udashboard.Font = new Font("Glacial Indifference", 10F);
+            display_datetime_Udashboard.ForeColor = Color.DarkOliveGreen;
+            display_datetime_Udashboard.Location = new Point(39, 293);
+            display_datetime_Udashboard.Name = "display_datetime_Udashboard";
+            display_datetime_Udashboard.Size = new Size(148, 24);
+            display_datetime_Udashboard.TabIndex = 5;
+            display_datetime_Udashboard.Text = "[Time and Date]";
             // 
             // label3
             // 
@@ -259,7 +261,6 @@
             profileName.Size = new Size(82, 34);
             profileName.TabIndex = 5;
             profileName.Text = "User!";
-            profileName.Click += profileName_Click;
             // 
             // button7
             // 
@@ -285,6 +286,12 @@
             panel1.Size = new Size(961, 187);
             panel1.TabIndex = 2;
             // 
+            // systemTimer
+            // 
+            systemTimer.Enabled = true;
+            systemTimer.Interval = 1000;
+            systemTimer.Tick += timer1_Tick;
+            // 
             // UserAccount
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -293,7 +300,7 @@
             ClientSize = new Size(1040, 650);
             Controls.Add(profileName);
             Controls.Add(label3);
-            Controls.Add(label1);
+            Controls.Add(display_datetime_Udashboard);
             Controls.Add(groupBox1);
             Controls.Add(panel1);
             Controls.Add(menuStrip1);
@@ -321,7 +328,7 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripMenuItem toolStripMenuItem2;
-        private Label label1;
+        private Label display_datetime_Udashboard;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem viewAccountToolStripMenuItem;
         private ToolStripMenuItem contactDeveloperToolStripMenuItem;
@@ -331,5 +338,6 @@
         private Button button7;
         private Panel panel1;
         private ToolStripMenuItem supportToolStripMenuItem;
+        private System.Windows.Forms.Timer systemTimer;
     }
 }

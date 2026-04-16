@@ -14,6 +14,18 @@ namespace Fuentes_PrelimsP2
 {
     public partial class MessageUs : Form
     {
+
+        private static MessageUs instance;
+
+        internal static MessageUs Instance
+        {
+            get
+            {
+                if (instance == null || instance.IsDisposed)
+                    instance = new MessageUs();
+                return instance;
+            }
+        }
         //this is for Firebase connection for feedback purposes
         IFirebaseConfig config = new FirebaseConfig
         {
@@ -74,7 +86,7 @@ namespace Fuentes_PrelimsP2
             var data = new UserFeedback
             {
                 FeedbackID = reverseTimestamp,
-                UserName = "Windows Forms User",
+                UserName = UserSession.UserInstance.FirstName + " " + UserSession.UserInstance.MiddleName + " " + UserSession.UserInstance.LastName,
                 Message = messageFeedback.Text,
                 Timestamp = DateTime.Now.ToString("MM dd, yyyy hh:mm tt"),
                 Status = "New",

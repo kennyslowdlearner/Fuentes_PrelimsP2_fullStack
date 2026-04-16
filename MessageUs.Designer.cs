@@ -36,7 +36,6 @@
             messageFeedback = new RichTextBox();
             label4 = new Label();
             label2 = new Label();
-            messageBack = new Button();
             messageSend = new Button();
             pictureBox1 = new PictureBox();
             label1 = new Label();
@@ -72,7 +71,6 @@
             panel1.Controls.Add(messageFeedback);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label2);
-            panel1.Controls.Add(messageBack);
             panel1.Controls.Add(messageSend);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label1);
@@ -109,27 +107,13 @@
             label2.TabIndex = 5;
             label2.Text = "Send us a message for inquiry or to report.";
             // 
-            // messageBack
-            // 
-            messageBack.BackColor = Color.LightGreen;
-            messageBack.FlatStyle = FlatStyle.Flat;
-            messageBack.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            messageBack.ForeColor = Color.DarkOliveGreen;
-            messageBack.Location = new Point(281, 475);
-            messageBack.Name = "messageBack";
-            messageBack.Size = new Size(112, 34);
-            messageBack.TabIndex = 2;
-            messageBack.Text = "Back";
-            messageBack.UseVisualStyleBackColor = false;
-            messageBack.Click += messageBack_Click;
-            // 
             // messageSend
             // 
             messageSend.BackColor = Color.LightGreen;
             messageSend.FlatStyle = FlatStyle.Flat;
             messageSend.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             messageSend.ForeColor = Color.DarkOliveGreen;
-            messageSend.Location = new Point(415, 475);
+            messageSend.Location = new Point(334, 469);
             messageSend.Name = "messageSend";
             messageSend.Size = new Size(112, 34);
             messageSend.TabIndex = 2;
@@ -196,6 +180,5 @@
         private ContextMenuStrip contextMenuStrip1;
         private RichTextBox messageFeedback;
         private Label label4;
-        private Button messageBack;
     }
 }

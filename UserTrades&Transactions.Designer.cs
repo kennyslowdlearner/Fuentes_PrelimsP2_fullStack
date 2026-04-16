@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserTradesandTransactions));
             menuStrip1 = new MenuStrip();
             sssssToolStripMenuItem = new ToolStripMenuItem();
@@ -36,8 +37,8 @@
             contactDeveloperToolStripMenuItem = new ToolStripMenuItem();
             accountSettingsToolStripMenuItem = new ToolStripMenuItem();
             logoutToolStripMenuItem = new ToolStripMenuItem();
-            label2 = new Label();
-            label3 = new Label();
+            display_name_TandT = new Label();
+            display_datetime_TandT = new Label();
             label1 = new Label();
             addTransaction = new Button();
             viewTransaction = new Button();
@@ -46,6 +47,7 @@
             marketForecasting = new Button();
             label4 = new Label();
             button6 = new Button();
+            systemTimer = new System.Windows.Forms.Timer(components);
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -57,7 +59,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { sssssToolStripMenuItem, accountSettingsToolStripMenuItem });
             menuStrip1.Location = new Point(703, 185);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(343, 32);
+            menuStrip1.Size = new Size(523, 32);
             menuStrip1.TabIndex = 2;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -74,19 +76,20 @@
             // reloadToolStripMenuItem
             // 
             reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
-            reloadToolStripMenuItem.Size = new Size(281, 34);
+            reloadToolStripMenuItem.Size = new Size(365, 34);
             reloadToolStripMenuItem.Text = "Reload";
             // 
             // learnMoreToolStripMenuItem
             // 
             learnMoreToolStripMenuItem.Name = "learnMoreToolStripMenuItem";
-            learnMoreToolStripMenuItem.Size = new Size(281, 34);
-            learnMoreToolStripMenuItem.Text = "Learn More";
+            learnMoreToolStripMenuItem.Size = new Size(365, 34);
+            learnMoreToolStripMenuItem.Text = "Send Message or Feedback";
+            learnMoreToolStripMenuItem.Click += learnMoreToolStripMenuItem_Click;
             // 
             // contactDeveloperToolStripMenuItem
             // 
             contactDeveloperToolStripMenuItem.Name = "contactDeveloperToolStripMenuItem";
-            contactDeveloperToolStripMenuItem.Size = new Size(281, 34);
+            contactDeveloperToolStripMenuItem.Size = new Size(365, 34);
             contactDeveloperToolStripMenuItem.Text = "Contact Developer";
             // 
             // accountSettingsToolStripMenuItem
@@ -102,32 +105,33 @@
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(172, 34);
+            logoutToolStripMenuItem.Size = new Size(270, 34);
             logoutToolStripMenuItem.Text = "Logout";
+            logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
             // 
-            // label2
+            // display_name_TandT
             // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Glacial Indifference", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.LawnGreen;
-            label2.Location = new Point(195, 149);
-            label2.Name = "label2";
-            label2.Size = new Size(106, 34);
-            label2.TabIndex = 3;
-            label2.Text = "[USER]!";
+            display_name_TandT.AutoSize = true;
+            display_name_TandT.BackColor = Color.Transparent;
+            display_name_TandT.Font = new Font("Glacial Indifference", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            display_name_TandT.ForeColor = Color.LawnGreen;
+            display_name_TandT.Location = new Point(195, 149);
+            display_name_TandT.Name = "display_name_TandT";
+            display_name_TandT.Size = new Size(106, 34);
+            display_name_TandT.TabIndex = 3;
+            display_name_TandT.Text = "[USER]!";
             // 
-            // label3
+            // display_datetime_TandT
             // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.LawnGreen;
-            label3.Location = new Point(39, 186);
-            label3.Name = "label3";
-            label3.Size = new Size(167, 27);
-            label3.TabIndex = 4;
-            label3.Text = "[Time and Date]";
+            display_datetime_TandT.AutoSize = true;
+            display_datetime_TandT.BackColor = Color.Transparent;
+            display_datetime_TandT.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            display_datetime_TandT.ForeColor = Color.LawnGreen;
+            display_datetime_TandT.Location = new Point(39, 186);
+            display_datetime_TandT.Name = "display_datetime_TandT";
+            display_datetime_TandT.Size = new Size(167, 27);
+            display_datetime_TandT.TabIndex = 4;
+            display_datetime_TandT.Text = "[Time and Date]";
             // 
             // label1
             // 
@@ -232,6 +236,12 @@
             button6.UseVisualStyleBackColor = false;
             button6.Click += back_Button;
             // 
+            // systemTimer
+            // 
+            systemTimer.Enabled = true;
+            systemTimer.Interval = 1000;
+            systemTimer.Tick += systemTimer_Tick;
+            // 
             // UserTradesandTransactions
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -245,8 +255,8 @@
             Controls.Add(viewTransaction);
             Controls.Add(digitalVaultReceipt);
             Controls.Add(addTransaction);
-            Controls.Add(label2);
-            Controls.Add(label3);
+            Controls.Add(display_name_TandT);
+            Controls.Add(display_datetime_TandT);
             Controls.Add(label1);
             Controls.Add(menuStrip1);
             Name = "UserTradesandTransactions";
@@ -267,8 +277,8 @@
         private ToolStripMenuItem contactDeveloperToolStripMenuItem;
         private ToolStripMenuItem accountSettingsToolStripMenuItem;
         private ToolStripMenuItem logoutToolStripMenuItem;
-        private Label label2;
-        private Label label3;
+        private Label display_name_TandT;
+        private Label display_datetime_TandT;
         private Label label1;
         private Button addTransaction;
         private Button viewTransaction;
@@ -277,5 +287,6 @@
         private Button marketForecasting;
         private Label label4;
         private Button button6;
+        private System.Windows.Forms.Timer systemTimer;
     }
 }

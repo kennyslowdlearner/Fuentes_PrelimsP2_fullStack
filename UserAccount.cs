@@ -16,6 +16,7 @@ namespace Fuentes_PrelimsP2
         public UserAccount()
         {
             InitializeComponent();
+            display_name_and_date();
         }
 
         internal static UserAccount Instance
@@ -40,8 +41,15 @@ namespace Fuentes_PrelimsP2
         private void profileName_Click(object sender, EventArgs e)
         {
             //made changes here (2) [4/1/2026 | 10:41 PM]
+            //string name_in_session = UserSession.UserInstance.FirstName + " " + UserSession.UserInstance.MiddleName + " " + UserSession.UserInstance.LastName;
+            //profileName.Text = name_in_session;
+        }
+
+        private void display_name_and_date()
+        {   
             string name_in_session = UserSession.UserInstance.FirstName + " " + UserSession.UserInstance.MiddleName + " " + UserSession.UserInstance.LastName;
             profileName.Text = name_in_session;
+            systemTimer.Start();
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -80,6 +88,8 @@ namespace Fuentes_PrelimsP2
 
         private void button2_Click(object sender, EventArgs e)
         {
+
+
             try
             {
                 productInventory.Instance.Show();
@@ -189,13 +199,23 @@ namespace Fuentes_PrelimsP2
             try
             {
                 Homepageee.Instance.Show();
-                this.Hide();
+                this.Dispose();
             }
 
             catch (Exception ex)
             {
                 MessageBox.Show("Failed to logging out:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            string name_in_session = UserSession.UserInstance.FirstName + " " +
+                                     UserSession.UserInstance.MiddleName + " " +
+                                     UserSession.UserInstance.LastName;
+            profileName.Text = name_in_session;
+
+            display_datetime_Udashboard.Text = DateTime.Now.ToString("MMMM dd, yyyy | hh:mm:ss tt");
         }
     }
 }

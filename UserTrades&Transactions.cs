@@ -17,6 +17,7 @@ namespace Fuentes_PrelimsP2
         public UserTradesandTransactions()
         {
             InitializeComponent();
+            display_name_and_date();
         }
 
         //(Global User Session) Component
@@ -31,6 +32,13 @@ namespace Fuentes_PrelimsP2
 
                 return instance;
             }
+        }
+
+        private void display_name_and_date()
+        {
+            string name_in_session = UserSession.UserInstance.FirstName + " " + UserSession.UserInstance.MiddleName + " " + UserSession.UserInstance.LastName;
+            display_name_TandT.Text = name_in_session;
+            systemTimer.Start();
         }
 
         private void back_Button(object sender, EventArgs e)
@@ -77,7 +85,7 @@ namespace Fuentes_PrelimsP2
             {
                 MessageBox.Show("Failed to open Digital Vault Receipt page:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }       
+        }
 
         private void GoToCostOfProduction(object sender, EventArgs e)
         {
@@ -105,6 +113,27 @@ namespace Fuentes_PrelimsP2
             {
                 MessageBox.Show("Failed to open Market Forecasting page:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void systemTimer_Tick(object sender, EventArgs e)
+        {
+            string name_in_session = UserSession.UserInstance.FirstName + " " +
+                                     UserSession.UserInstance.MiddleName + " " +
+                                     UserSession.UserInstance.LastName;
+            display_name_TandT.Text = name_in_session;
+
+            display_datetime_TandT.Text = DateTime.Now.ToString("MMMM dd, yyyy | hh:mm:ss tt");
+        }
+
+        private void learnMoreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageUs.Instance.Show();
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Homepageee.Instance.Show();
+            this.Dispose();
         }
     }
 }
