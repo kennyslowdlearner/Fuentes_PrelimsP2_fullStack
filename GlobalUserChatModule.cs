@@ -23,6 +23,7 @@ namespace Fuentes_PrelimsP2
         {
             InitializeComponent();
             BuildChat_Database();
+            LoadChatHistoryFromSQL();
             listento_Cloud();
         }
 
@@ -46,21 +47,23 @@ namespace Fuentes_PrelimsP2
              .Child("Conversation")
              .Child("Messages")
              .Child(username)
+             .Child("History")
              .AsObservable<dynamic>()
              .Subscribe(d => 
              {
-                 if (d.Object != null && d.Key == "Admin_Reply")
+                 if (d.Object != null)
                  {
-                     string text = d.Object.ToString();
+                     string sender = d.Object.sender;
+                     string text = d.Object.text;
 
-                     this.Invoke((MethodInvoker)delegate 
+                     if (sender == "Admin")
                      {
-                         if (!string.IsNullOrEmpty(text))
+                         this.Invoke((MethodInvoker)delegate
                          {
                              AddAdminBubbleToUI(text);
                              SaveToSQL(99, text, false);
-                         }
-                     });
+                         });
+                     }
                  }
              });
         }
@@ -81,6 +84,7 @@ namespace Fuentes_PrelimsP2
             display_conversation_chat.Controls.Add(adminBubble);
 
             display_conversation_chat.ScrollControlIntoView(adminBubble);
+            //display_conversation_chat.ScrollControlIntoView(bubbleContainer);
         }
         private void AddUserBubbleToUI(string text, string time)
         {
@@ -179,6 +183,33 @@ namespace Fuentes_PrelimsP2
             }
         }
 
+        private void LoadChatHistoryFromSQL()
+        {
+            display_conversation_chat.Controls.Clear(); // Clear the "Blank Canvas"
+
+            string chatConnection = @"Server=.\SQLEXPRESS;Database=PananomChatDB;Trusted_Connection=True;Encrypt=False;";
+            string query = "SELECT SenderID, MessageBody, Timestamp FROM tbl_ChatHistory ORDER BY Timestamp ASC";
+
+            using (SqlConnection connection = new SqlConnection(chatConnection))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int senderID = (int)reader["SenderID"];
+                    string message = reader["MessageBody"].ToString();
+                    string time = Convert.ToDateTime(reader["Timestamp"]).ToString("MMM dd, hh:mm tt");
+
+                    if (senderID == 1) // User
+                        AddUserBubbleToUI(message, time);
+                    else if (senderID == 99) // Admin
+                        AddAdminBubbleToUI(message); // You can update this method to accept 'time' too!
+                }
+            }
+        }
+
         private async void press_sendchat_chat(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(fill_message_chat.Text)) return;
@@ -196,13 +227,12 @@ namespace Fuentes_PrelimsP2
                     .Child("Conversation")
                     .Child("Messages")
                     .Child(username)
-                    .Child("User_Message")
-                    .PutAsync(new { User_Message = message, Timestamp = timestamp, Admin_Reply = ""});
+                    .Child("History")
+                    .PostAsync(new { sender = "User", text = message, timestamp = timestamp});
 
                 AddUserBubbleToUI(message, timestamp);
 
                 fill_message_chat.Clear();
-                MessageBox.Show("Message sent and recorded succesfully");
             }
 
             catch (Exception ex)

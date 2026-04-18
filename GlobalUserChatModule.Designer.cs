@@ -36,6 +36,7 @@
             // 
             // display_conversation_chat
             // 
+            display_conversation_chat.AutoScroll = true;
             display_conversation_chat.Location = new Point(18, 84);
             display_conversation_chat.Name = "display_conversation_chat";
             display_conversation_chat.Size = new Size(572, 360);
@@ -49,7 +50,7 @@
             button1.TabIndex = 1;
             button1.Text = "button1";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += this.press_sendchat_chat;
+            button1.Click += press_sendchat_chat;
             // 
             // fill_message_chat
             // 
