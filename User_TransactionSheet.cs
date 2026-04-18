@@ -118,42 +118,51 @@ namespace Fuentes_PrelimsP2
         {
             string ReferenceID = referenceID();
             connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
-            string query = "INSERT INTO [User T&T Transaction] ([Customer Name], [Rice Type], [Product ID], [Price per Kilogram], [Quantity in Kilogram], [Delivery Date], [Reference ID]) VALUES (@P1, @P2, @P3, @P4, @P5, @P6, @P7)";
+            string connect = @"Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb";
+            string query = "INSERT INTO [User T&T Transaction] ([Customer Name], [Rice Type], [Product ID], [Price per Kilogram], [Quantity in Kilogram], [Delivery Date], [Reference ID], [User ID]) VALUES (@P1, @P2, @P3, @P4, @P5, @P6, @P7, @P8)";
 
-            command = new OleDbCommand(query, connection);
-            command.Parameters.Add("@P1", OleDbType.VarWChar).Value = fill_customername_ts.Text;
-            command.Parameters.Add("@P2", OleDbType.VarWChar).Value = fill_ricetype_ts.Text;
-            command.Parameters.Add("@P3", OleDbType.VarWChar).Value = fill_productid_ts.Text;
-            command.Parameters.Add("@P4", OleDbType.Currency).Value = Convert.ToDecimal(fill_priceperkg_ts.Text);
-            command.Parameters.Add("@P5", OleDbType.Integer).Value = Convert.ToInt32(fill_quantity_ts.Text);
-            command.Parameters.Add("@P6", OleDbType.Date).Value = fill_date_ts.Text;
-            command.Parameters.Add("@P7", OleDbType.VarWChar).Value = ReferenceID;
-
-
-            try
+            using (OleDbConnection connected = new OleDbConnection(connect))
             {
-                connection.Open();
-                command.ExecuteNonQuery();
-                connection.Close();
-
-                MessageBox.Show("Product added successfully! Ref ID: " + referenceID);
-
-                fill_customername_ts.Clear();
-                fill_ricetype_ts.SelectedIndex = -1;
-                fill_productid_ts.Clear();
-                fill_quantity_ts.Clear();
-                fill_priceperkg_ts.Clear();
-                fill_date_ts.Value = DateTime.Now;
-
-                refreshreload();
+                using(OleDbCommand command = new OleDbCommand(query, connection))
+                {
+                    command.Parameters.Add("@P1", OleDbType.VarWChar).Value = fill_customername_ts.Text;
+                    command.Parameters.Add("@P2", OleDbType.VarWChar).Value = fill_ricetype_ts.Text;
+                    command.Parameters.Add("@P3", OleDbType.VarWChar).Value = fill_productid_ts.Text;
+                    command.Parameters.Add("@P4", OleDbType.Currency).Value = Convert.ToDecimal(fill_priceperkg_ts.Text);
+                    command.Parameters.Add("@P5", OleDbType.Integer).Value = Convert.ToInt32(fill_quantity_ts.Text);
+                    command.Parameters.Add("@P6", OleDbType.Date).Value = fill_date_ts.Text;
+                    command.Parameters.Add("@P7", OleDbType.VarWChar).Value = ReferenceID;
+                    command.Parameters.Add("@P5", OleDbType.Integer).Value = UserSession.UserInstance.ID;
 
 
+                    try
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+
+                        MessageBox.Show("Product added successfully! Ref ID: " + referenceID);
+
+                        fill_customername_ts.Clear();
+                        fill_ricetype_ts.SelectedIndex = -1;
+                        fill_productid_ts.Clear();
+                        fill_quantity_ts.Clear();
+                        fill_priceperkg_ts.Clear();
+                        fill_date_ts.Value = DateTime.Now;
+
+                        refreshreload();
+
+
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Failed to add product. Error: " + ex.Message);
+                    }
+                }
             }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failed to add product. Error: " + ex.Message);
-            }
+               
+            
         }
 
         private void press_deletets(object sender, EventArgs e)

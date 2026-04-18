@@ -229,36 +229,44 @@ namespace Fuentes_PrelimsP2
             //made changes here (14) [4/6/2026 | 12:46 PM]
             string referenceID = GenerateReferenceID();
             connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
+            string connect = @"Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb";
             string query = "INSERT INTO [User PI Product Inventory] ([Product Name], [Product ID], [Quantity in Kilograms], [Reference ID], [User ID]) VALUES (@P1, @P2, @P3, @P4, @P5)";
 
-            command = new OleDbCommand(query, connection);
-            command.Parameters.AddWithValue("@P1", fill_productname_pi.Text);
-            command.Parameters.AddWithValue("@P2", fill_productid_pi.Text);
-            command.Parameters.AddWithValue("@P3", Convert.ToInt32(fill_quantity_pi.Text));
-            command.Parameters.AddWithValue("@P4", referenceID);
-            command.Parameters.AddWithValue("@P5", UserSession.UserInstance.ID);
-
-            try
+            using (OleDbConnection connected = new OleDbConnection(connect))
             {
-                connection.Open();
-                command.ExecuteNonQuery();
-                connection.Close();
+                using (OleDbCommand command = new OleDbCommand(query, connection))
+                {
+                    command.Parameters.Add("@P1", OleDbType.VarChar).Value = fill_productname_pi.Text;
+                    command.Parameters.Add("@P2", OleDbType.VarChar).Value = fill_productid_pi.Text;
+                    command.Parameters.Add("@P3", OleDbType.Integer).Value = Convert.ToInt32(fill_quantity_pi.Text);
+                    command.Parameters.Add("@P4", OleDbType.VarChar).Value = referenceID;
+                    command.Parameters.Add("@P5", OleDbType.Integer).Value = UserSession.UserInstance.ID;
 
-                MessageBox.Show("Product added successfully! Ref ID: " + referenceID);
+                    try
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        //connection.Close();
 
-                fill_productname_pi.Clear();
-                fill_productid_pi.Clear();
-                fill_quantity_pi.Clear();
+                        MessageBox.Show("Product added successfully! Ref ID: " + referenceID);
 
-                press_loadpi(sender, e);
+                        fill_productname_pi.Clear();
+                        fill_productid_pi.Clear();
+                        fill_quantity_pi.Clear();
+
+                        press_loadpi(sender, e);
 
 
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Failed to add product. Error: " + ex.Message);
+                    }
+                }
             }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failed to add product. Error: " + ex.Message);
-            }
+            
+            
         }
 
         private void datagrid_cellclick(object sender, DataGridViewCellEventArgs e)
