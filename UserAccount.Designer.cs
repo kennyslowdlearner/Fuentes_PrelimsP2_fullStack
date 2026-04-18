@@ -43,6 +43,7 @@
             viewAccountToolStripMenuItem = new ToolStripMenuItem();
             contactDeveloperToolStripMenuItem = new ToolStripMenuItem();
             supportToolStripMenuItem = new ToolStripMenuItem();
+            sendMessageOrFeedbackToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem2 = new ToolStripMenuItem();
             logoutToolStripMenuItem = new ToolStripMenuItem();
             display_datetime_Udashboard = new Label();
@@ -51,7 +52,7 @@
             button7 = new Button();
             panel1 = new Panel();
             systemTimer = new System.Windows.Forms.Timer(components);
-            sendMessageOrFeedbackToolStripMenuItem = new ToolStripMenuItem();
+            chatWithAdminToolStripMenuItem = new ToolStripMenuItem();
             groupBox1.SuspendLayout();
             menuStrip1.SuspendLayout();
             panel1.SuspendLayout();
@@ -177,7 +178,7 @@
             // toolStripMenuItem1
             // 
             toolStripMenuItem1.BackColor = Color.Transparent;
-            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { toolStripSeparator1, viewAccountToolStripMenuItem, contactDeveloperToolStripMenuItem, supportToolStripMenuItem, sendMessageOrFeedbackToolStripMenuItem });
+            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { toolStripSeparator1, viewAccountToolStripMenuItem, contactDeveloperToolStripMenuItem, supportToolStripMenuItem, sendMessageOrFeedbackToolStripMenuItem, chatWithAdminToolStripMenuItem });
             toolStripMenuItem1.Font = new Font("Glacial Indifference", 10F);
             toolStripMenuItem1.Name = "toolStripMenuItem1";
             toolStripMenuItem1.Size = new Size(143, 28);
@@ -210,6 +211,13 @@
             supportToolStripMenuItem.Text = "Support ";
             supportToolStripMenuItem.Click += supportToolStripMenuItem_Click;
             // 
+            // sendMessageOrFeedbackToolStripMenuItem
+            // 
+            sendMessageOrFeedbackToolStripMenuItem.Name = "sendMessageOrFeedbackToolStripMenuItem";
+            sendMessageOrFeedbackToolStripMenuItem.Size = new Size(345, 34);
+            sendMessageOrFeedbackToolStripMenuItem.Text = "Send Message or Feedback";
+            sendMessageOrFeedbackToolStripMenuItem.Click += sendMessageOrFeedbackToolStripMenuItem_Click;
+            // 
             // toolStripMenuItem2
             // 
             toolStripMenuItem2.BackColor = Color.Transparent;
@@ -223,7 +231,7 @@
             // 
             logoutToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(270, 34);
+            logoutToolStripMenuItem.Size = new Size(172, 34);
             logoutToolStripMenuItem.Text = "Logout";
             logoutToolStripMenuItem.Click += logoutUser;
             // 
@@ -293,12 +301,12 @@
             systemTimer.Interval = 1000;
             systemTimer.Tick += timer1_Tick;
             // 
-            // sendMessageOrFeedbackToolStripMenuItem
+            // chatWithAdminToolStripMenuItem
             // 
-            sendMessageOrFeedbackToolStripMenuItem.Name = "sendMessageOrFeedbackToolStripMenuItem";
-            sendMessageOrFeedbackToolStripMenuItem.Size = new Size(345, 34);
-            sendMessageOrFeedbackToolStripMenuItem.Text = "Send Message or Feedback";
-            sendMessageOrFeedbackToolStripMenuItem.Click += sendMessageOrFeedbackToolStripMenuItem_Click;
+            chatWithAdminToolStripMenuItem.Name = "chatWithAdminToolStripMenuItem";
+            chatWithAdminToolStripMenuItem.Size = new Size(345, 34);
+            chatWithAdminToolStripMenuItem.Text = "Chat with Admin";
+            chatWithAdminToolStripMenuItem.Click += chatWithAdminToolStripMenuItem_Click;
             // 
             // UserAccount
             // 
@@ -348,5 +356,6 @@
         private ToolStripMenuItem supportToolStripMenuItem;
         private System.Windows.Forms.Timer systemTimer;
         private ToolStripMenuItem sendMessageOrFeedbackToolStripMenuItem;
+        private ToolStripMenuItem chatWithAdminToolStripMenuItem;
     }
 }

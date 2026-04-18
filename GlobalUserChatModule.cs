@@ -1,21 +1,120 @@
-﻿using System;
+﻿using Firebase.Database;
+using Firebase.Database.Query;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace Fuentes_PrelimsP2
 {
     public partial class GlobalUserChatModule : Form
     {
+        private static GlobalUserChatModule instance;
+
+
+        FirebaseClient userClient = new FirebaseClient("https://project-pananom-chat-support-default-rtdb.asia-southeast1.firebasedatabase.app/");
         public GlobalUserChatModule()
         {
             InitializeComponent();
+            BuildChat_Database();
+            listento_Cloud();
         }
 
+        internal static GlobalUserChatModule Instance
+        {
+            get
+            {
+                if (instance == null || instance.IsDisposed)
+                    instance = new GlobalUserChatModule();
+
+                return instance;
+            }
+        }
+
+        private void listento_Cloud()
+        {
+            string username = UserSession.UserInstance.FirstName + "_" + UserSession.UserInstance.MiddleName + "_" + UserSession.UserInstance.LastName;
+
+            var observable = userClient
+             .Child("Chat_Support_Room")
+             .Child("Conversation")
+             .Child("Messages")
+             .Child(username)
+             .AsObservable<dynamic>()
+             .Subscribe(d => 
+             {
+                 if (d.Object != null && d.Key == "Admin_Reply")
+                 {
+                     string text = d.Object.ToString();
+
+                     this.Invoke((MethodInvoker)delegate 
+                     {
+                         if (!string.IsNullOrEmpty(text))
+                         {
+                             AddAdminBubbleToUI(text);
+                             SaveToSQL(99, text, false);
+                         }
+                     });
+                 }
+             });
+        }
+
+        private void AddAdminBubbleToUI(string messageText)
+        {
+            // Create a new Label to act as the chat bubble
+            Label adminBubble = new Label();
+
+            adminBubble.Text = "Admin: " + messageText;
+            adminBubble.BackColor = Color.LightGray; // Admin is usually gray/white
+            adminBubble.ForeColor = Color.Black;
+            adminBubble.AutoSize = true;
+            adminBubble.Padding = new Padding(10);
+            adminBubble.Margin = new Padding(5, 5, 50, 5); // Keeps it on the left side
+            adminBubble.Font = new Font("Segoe UI", 10, FontStyle.Regular);
+
+            display_conversation_chat.Controls.Add(adminBubble);
+
+            display_conversation_chat.ScrollControlIntoView(adminBubble);
+        }
+        private void AddUserBubbleToUI(string text, string time)
+        {
+            // Create the container
+            Panel bubbleContainer = new Panel();
+            bubbleContainer.AutoSize = true;
+            bubbleContainer.Width = display_conversation_chat.Width - 40;
+
+            // The Message Bubble
+            Label userBubble = new Label();
+            userBubble.Text = text;
+            userBubble.BackColor = Color.LightGreen;
+            userBubble.AutoSize = true;
+            userBubble.MaximumSize = new Size(250, 0); // Prevents bubble from being too wide
+            userBubble.Padding = new Padding(10);
+            userBubble.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+
+            // The Date/Time Label
+            Label timeLabel = new Label();
+            timeLabel.Text = time;
+            timeLabel.Font = new Font("Segoe UI", 7, FontStyle.Italic);
+            timeLabel.ForeColor = Color.DimGray;
+            timeLabel.AutoSize = true;
+
+            // Positioning (Right Aligned)
+            userBubble.Location = new Point(bubbleContainer.Width - userBubble.PreferredWidth - 10, 0);
+            timeLabel.Location = new Point(bubbleContainer.Width - timeLabel.PreferredWidth - 10, userBubble.Height + 2);
+
+            bubbleContainer.Controls.Add(userBubble);
+            bubbleContainer.Controls.Add(timeLabel);
+
+            display_conversation_chat.Controls.Add(bubbleContainer);
+            display_conversation_chat.ScrollControlIntoView(bubbleContainer);
+        }
         private void BuildChat_Database()
         {
             string masterConnection = @"Server=.\SQLEXPRESS;Database=master;Trusted_Connection=True;Encrypt=False;";
@@ -26,14 +125,12 @@ namespace Fuentes_PrelimsP2
                 {
                     connectionOne.Open();
 
-                    // 1. Create the Database if it's missing
                     string sqlCreateDB = "IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'PananomChatDB') CREATE DATABASE PananomChatDB;";
                     SqlCommand commandDB = new SqlCommand(sqlCreateDB, connectionOne);
                     commandDB.ExecuteNonQuery();
                     connectionOne.Close();
 
-                    // 2. Now connect to the NEW database to create the table
-                    string chatConnection = @"Server=.\SQLEXPRESS;Database=PananomChatDB;Trusted_Connection=True;Encrypt=False;";
+                        string chatConnection = @"Server=.\SQLEXPRESS;Database=PananomChatDB;Trusted_Connection=True;Encrypt=False;";
                     using (SqlConnection connectionTwo = new SqlConnection(chatConnection))
                     {
                         connectionTwo.Open();
@@ -57,6 +154,60 @@ namespace Fuentes_PrelimsP2
                     MessageBox.Show("RDBMS Error: " + ex.Message);
                 }
 
+            }
+        }
+
+        private void SaveToSQL(int senderId, string message, bool isHardSend)
+        {
+            // Make sure this string matches the one you used in BuildChat_Database
+            string chatConnection= @"Server=.\SQLEXPRESS;Database=PananomChatDB;Trusted_Connection=True;Encrypt=False;";
+
+            string query = "INSERT INTO tbl_ChatHistory (SenderID, MessageBody, IsHardSend) VALUES (@sid, @body, @hard)";
+
+            using (SqlConnection connection = new SqlConnection(chatConnection))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // These parameters prevent "SQL Injection" - a core BSCpE security concept!
+                    command.Parameters.AddWithValue("@sid", senderId);
+                    command.Parameters.AddWithValue("@body", message);
+                    command.Parameters.AddWithValue("@hard", isHardSend);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private async void press_sendchat_chat(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(fill_message_chat.Text)) return;
+
+            string message = fill_message_chat.Text.Trim();
+
+            try
+            {
+                SaveToSQL(1, message, false);
+            
+                string username = UserSession.UserInstance.FirstName + "_" + UserSession.UserInstance.MiddleName + "_" + UserSession.UserInstance.LastName;
+                string timestamp = DateTime.Now.ToString("MMM dd, yyyy hh:mm tt");
+                await userClient
+                    .Child("Chat_Support_Room")
+                    .Child("Conversation")
+                    .Child("Messages")
+                    .Child(username)
+                    .Child("User_Message")
+                    .PutAsync(new { User_Message = message, Timestamp = timestamp, Admin_Reply = ""});
+
+                AddUserBubbleToUI(message, timestamp);
+
+                fill_message_chat.Clear();
+                MessageBox.Show("Message sent and recorded succesfully");
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured: " + ex.Message);
             }
         }
     }

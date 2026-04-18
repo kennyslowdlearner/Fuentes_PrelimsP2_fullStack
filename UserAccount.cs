@@ -253,5 +253,10 @@ namespace Fuentes_PrelimsP2
         {
             MessageUs.Instance.Show();
         }
+
+        private void chatWithAdminToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GlobalUserChatModule.Instance.Show();
+        }
     }
 }
