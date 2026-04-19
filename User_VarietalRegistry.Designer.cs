@@ -400,7 +400,7 @@
             ForeColor = Color.LawnGreen;
             Name = "User_VarietalRegistry";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Varietal Registry";
             FormClosed += endoperation;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)Varietal_Registry_Grid).EndInit();

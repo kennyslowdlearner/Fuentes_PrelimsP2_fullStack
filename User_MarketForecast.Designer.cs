@@ -216,7 +216,7 @@
             Controls.Add(Market_Forecast_Grid);
             Name = "User_MarketForecast";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Market Forecast";
             Load += User_MarketForecast_Load;
             ((System.ComponentModel.ISupportInitialize)Market_Forecast_Grid).EndInit();
             ResumeLayout(false);

@@ -194,7 +194,7 @@
             Controls.Add(label1);
             Name = "UserTradesandTransactions";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form2";
+            Text = "Trades and Transactions";
             ResumeLayout(false);
             PerformLayout();
         }

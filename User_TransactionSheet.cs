@@ -114,7 +114,7 @@ namespace Fuentes_PrelimsP2
             }
         }
 
-        private void press_insertts(object sender, EventArgs e)
+        private async void press_insertts(object sender, EventArgs e)
         {
             string ReferenceID = referenceID();
             connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
@@ -140,6 +140,10 @@ namespace Fuentes_PrelimsP2
                         connection.Open();
                         command.ExecuteNonQuery();
                         connection.Close();
+
+                        //both lines are used for email notifications
+                        string transaction_Details = "Transaction Successful! <br> Amount: " + Convert.ToDecimal(fill_priceperkg_ts.Text) + " was set to sold. Reference Number: " + ReferenceID;
+                        await GlobalEmailNotificationModule.send_Notification(UserSession.UserInstance.Email, "Transacion Confirmed!", transaction_Details);
 
                         MessageBox.Show("Product added successfully! Ref ID: " + referenceID);
 

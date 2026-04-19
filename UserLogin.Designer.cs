@@ -147,7 +147,7 @@
             Controls.Add(panel1);
             Name = "UserLogin";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Pananom : User Login";
+            Text = "Project Pananom : User Login";
             FormClosing += Close_Form_After_Run;
             FormClosed += UserLogin_FormClosed;
             panel1.ResumeLayout(false);

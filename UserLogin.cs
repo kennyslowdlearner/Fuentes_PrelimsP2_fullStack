@@ -69,7 +69,7 @@ namespace Fuentes_PrelimsP2
 
         }
 
-        private void loginUSER_Click(object sender, EventArgs e)
+        private async void loginUSER_Click(object sender, EventArgs e)
         {
             //Made changes here (3) on [4/1/2026 | 9:47 AM]
             //this is for logging in the user, it will check if the username and password matches the one in the session,
@@ -107,6 +107,24 @@ namespace Fuentes_PrelimsP2
 
                 if (userFound)
                 {
+                    //first 2 lines are used for email notification
+                    string login_Info = $@"
+                                        <h3>Security Alert: New Login Detected</h3>
+                                        <p>Hello <b>{UserSession.UserInstance.FirstName}</b>,</p>
+                                        <p>A new login was detected on your <b>Pananom</b> account. Contact the developer if it wasn't you. Thank you and have a nice day ahead!</p>
+                                        <p><b>Time:</b> {DateTime.Now.ToString("f")}<br>
+                                        <b>Location:</b> Cebu City, Philippines (Estimated)</p>
+                                        <p>If this was not you, please contact support immediately via the Hotline: 331-567.</p>
+                                        <hr>
+                                        <p style='color:gray; font-size:10px;'>
+                                            This is an automated message from the Project Pananom System. <br>
+                                            Cebu Institute of Technology – University | BS Computer Engineering
+                                        </p>";
+
+
+                    //apply decoupling here
+                    _ = GlobalEmailNotificationModule.send_Notification(UserSession.UserInstance.Email, "Security Alert: New Login", login_Info);
+                    
                     UserAccount.Instance.Show();
                     this.Hide();
                 }

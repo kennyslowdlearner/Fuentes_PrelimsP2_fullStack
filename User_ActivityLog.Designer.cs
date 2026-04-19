@@ -441,7 +441,7 @@
             Controls.Add(panel1);
             Name = "User_ActivityLog";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Activity Log";
             FormClosed += endOperation;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)Activity_Log_Grid).EndInit();

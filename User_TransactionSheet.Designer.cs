@@ -447,7 +447,7 @@
             ForeColor = Color.LawnGreen;
             Name = "User_TransactionSheet";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "User Transactions";
+            Text = "Transactions";
             ((System.ComponentModel.ISupportInitialize)Transaction_Sheet_Grid).EndInit();
             ((System.ComponentModel.ISupportInitialize)Product_Inventory_Grid).EndInit();
             ResumeLayout(false);

@@ -209,7 +209,7 @@
             Controls.Add(label1);
             Name = "RiceYieldEstimationandRegistry";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form3";
+            Text = "Rice Yield and Estimation";
             ResumeLayout(false);
             PerformLayout();
         }

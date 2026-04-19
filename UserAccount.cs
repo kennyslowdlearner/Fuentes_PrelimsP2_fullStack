@@ -128,14 +128,28 @@ namespace Fuentes_PrelimsP2
             }
         }
 
-        private void GoToFarmgatePricePage(object sender, EventArgs e)
+        //private void GoToFarmgatePricePage(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        farmgateUSER.Instance.Show();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Failed to open Farmgate page:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
+
+        private void JumpToFarmgateSection(object sender, EventArgs e)
         {
             try
             {
-                farmgateUSER.Instance.Show();
-                //this.Hide();
+                var farmgateprice_form = farmgateUSER.Instance;
+                farmgateprice_form.Show();
+                farmgateprice_form.BringToFront();
             }
-            catch (Exception ex)
+
+            catch(Exception ex)
             {
                 MessageBox.Show("Failed to open Farmgate page:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -227,6 +241,7 @@ namespace Fuentes_PrelimsP2
                 if (Objectives.Instance != null) Objectives.Instance.Dispose();
                 if (SupportUs.Instance != null) SupportUs.Instance.Dispose();
                 if (VisionMission.Instance != null) VisionMission.Instance.Dispose();
+                if (GlobalUserChatModule.Instance != null) GlobalUserChatModule.Instance.Dispose();
 
 
                 Homepageee.Instance.Show();

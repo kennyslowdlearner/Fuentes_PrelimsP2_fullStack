@@ -49,7 +49,7 @@ namespace Fuentes_PrelimsP2
              .Child(username)
              .Child("History")
              .AsObservable<dynamic>()
-             .Subscribe(d => 
+             .Subscribe(async d => 
              {
                  if (d.Object != null)
                  {
@@ -58,6 +58,12 @@ namespace Fuentes_PrelimsP2
 
                      if (sender == "Admin")
                      {
+                         //this section is for email notifications.
+                         string farmerEmail = UserSession.UserInstance.Email;
+                         string message = "The admin as replied to your chat: " + text;
+                         await GlobalEmailNotificationModule.send_Notification(farmerEmail, "New Chat Reply", message);
+
+
                          this.Invoke((MethodInvoker)delegate
                          {
                              AddAdminBubbleToUI(text);
@@ -70,30 +76,26 @@ namespace Fuentes_PrelimsP2
 
         private void AddAdminBubbleToUI(string messageText)
         {
-            // Create a new Label to act as the chat bubble
             Label adminBubble = new Label();
 
             adminBubble.Text = "Admin: " + messageText;
-            adminBubble.BackColor = Color.LightGray; // Admin is usually gray/white
+            adminBubble.BackColor = Color.LightGray;
             adminBubble.ForeColor = Color.Black;
             adminBubble.AutoSize = true;
             adminBubble.Padding = new Padding(10);
-            adminBubble.Margin = new Padding(5, 5, 50, 5); // Keeps it on the left side
+            adminBubble.Margin = new Padding(5, 5, 50, 5); 
             adminBubble.Font = new Font("Segoe UI", 10, FontStyle.Regular);
 
             display_conversation_chat.Controls.Add(adminBubble);
 
             display_conversation_chat.ScrollControlIntoView(adminBubble);
-            //display_conversation_chat.ScrollControlIntoView(bubbleContainer);
         }
         private void AddUserBubbleToUI(string text, string time)
         {
-            // Create the container
             Panel bubbleContainer = new Panel();
             bubbleContainer.AutoSize = true;
             bubbleContainer.Width = display_conversation_chat.Width - 40;
 
-            // The Message Bubble
             Label userBubble = new Label();
             userBubble.Text = text;
             userBubble.BackColor = Color.LightGreen;
@@ -102,14 +104,12 @@ namespace Fuentes_PrelimsP2
             userBubble.Padding = new Padding(10);
             userBubble.Font = new Font("Segoe UI", 10, FontStyle.Bold);
 
-            // The Date/Time Label
             Label timeLabel = new Label();
             timeLabel.Text = time;
             timeLabel.Font = new Font("Segoe UI", 7, FontStyle.Italic);
             timeLabel.ForeColor = Color.DimGray;
             timeLabel.AutoSize = true;
 
-            // Positioning (Right Aligned)
             userBubble.Location = new Point(bubbleContainer.Width - userBubble.PreferredWidth - 10, 0);
             timeLabel.Location = new Point(bubbleContainer.Width - timeLabel.PreferredWidth - 10, userBubble.Height + 2);
 

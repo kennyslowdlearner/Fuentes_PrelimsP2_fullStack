@@ -233,6 +233,7 @@
             Controls.Add(panel1);
             Name = "User_DigitalReceiptVault";
             StartPosition = FormStartPosition.CenterScreen;
+            Text = "Digital Vault Receipt";
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

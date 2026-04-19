@@ -44,18 +44,16 @@
             contactDeveloperToolStripMenuItem = new ToolStripMenuItem();
             supportToolStripMenuItem = new ToolStripMenuItem();
             sendMessageOrFeedbackToolStripMenuItem = new ToolStripMenuItem();
+            chatWithAdminToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem2 = new ToolStripMenuItem();
             logoutToolStripMenuItem = new ToolStripMenuItem();
             display_datetime_Udashboard = new Label();
             label3 = new Label();
             profileName = new Label();
-            button7 = new Button();
             panel1 = new Panel();
             systemTimer = new System.Windows.Forms.Timer(components);
-            chatWithAdminToolStripMenuItem = new ToolStripMenuItem();
             groupBox1.SuspendLayout();
             menuStrip1.SuspendLayout();
-            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // ProductInventoryPage
@@ -84,7 +82,7 @@
             farmgatePricePage.Size = new Size(151, 227);
             farmgatePricePage.TabIndex = 0;
             farmgatePricePage.UseVisualStyleBackColor = true;
-            farmgatePricePage.Click += GoToFarmgatePricePage;
+            farmgatePricePage.Click += JumpToFarmgateSection;
             // 
             // FinancialGoalsPage
             // 
@@ -171,7 +169,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, toolStripMenuItem2 });
             menuStrip1.Location = new Point(696, 246);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(496, 32);
+            menuStrip1.Size = new Size(316, 32);
             menuStrip1.TabIndex = 4;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -217,6 +215,13 @@
             sendMessageOrFeedbackToolStripMenuItem.Size = new Size(345, 34);
             sendMessageOrFeedbackToolStripMenuItem.Text = "Send Message or Feedback";
             sendMessageOrFeedbackToolStripMenuItem.Click += sendMessageOrFeedbackToolStripMenuItem_Click;
+            // 
+            // chatWithAdminToolStripMenuItem
+            // 
+            chatWithAdminToolStripMenuItem.Name = "chatWithAdminToolStripMenuItem";
+            chatWithAdminToolStripMenuItem.Size = new Size(345, 34);
+            chatWithAdminToolStripMenuItem.Text = "Chat with Admin";
+            chatWithAdminToolStripMenuItem.Click += chatWithAdminToolStripMenuItem_Click;
             // 
             // toolStripMenuItem2
             // 
@@ -271,24 +276,10 @@
             profileName.TabIndex = 5;
             profileName.Text = "User!";
             // 
-            // button7
-            // 
-            button7.BackColor = Color.LightGreen;
-            button7.FlatStyle = FlatStyle.Flat;
-            button7.Font = new Font("Glacial Indifference", 10F);
-            button7.ForeColor = Color.DarkOliveGreen;
-            button7.Location = new Point(420, 136);
-            button7.Name = "button7";
-            button7.Size = new Size(136, 30);
-            button7.TabIndex = 0;
-            button7.Text = "Learn More";
-            button7.UseVisualStyleBackColor = false;
-            // 
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
-            panel1.Controls.Add(button7);
             panel1.Font = new Font("Glacial Indifference", 10F);
             panel1.Location = new Point(39, 44);
             panel1.Name = "panel1";
@@ -300,13 +291,6 @@
             systemTimer.Enabled = true;
             systemTimer.Interval = 1000;
             systemTimer.Tick += timer1_Tick;
-            // 
-            // chatWithAdminToolStripMenuItem
-            // 
-            chatWithAdminToolStripMenuItem.Name = "chatWithAdminToolStripMenuItem";
-            chatWithAdminToolStripMenuItem.Size = new Size(345, 34);
-            chatWithAdminToolStripMenuItem.Text = "Chat with Admin";
-            chatWithAdminToolStripMenuItem.Click += chatWithAdminToolStripMenuItem_Click;
             // 
             // UserAccount
             // 
@@ -323,12 +307,11 @@
             MainMenuStrip = menuStrip1;
             Name = "UserAccount";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Pananom : User Dashboard";
+            Text = "Project Pananom: Dashboard";
             FormClosed += UserAccount_FormClosed;
             groupBox1.ResumeLayout(false);
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -351,7 +334,6 @@
         private ToolStripMenuItem logoutToolStripMenuItem;
         private Label label3;
         private Label profileName;
-        private Button button7;
         private Panel panel1;
         private ToolStripMenuItem supportToolStripMenuItem;
         private System.Windows.Forms.Timer systemTimer;

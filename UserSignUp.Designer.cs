@@ -552,7 +552,7 @@
             Margin = new Padding(4);
             Name = "UserSignUp";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Pananom : User Sign Up";
+            Text = "Project Pananom : User Sign Up";
             FormClosing += Close_Form_After_Run;
             FormClosed += UserSignUp_FormClosed;
             groupBox1.ResumeLayout(false);

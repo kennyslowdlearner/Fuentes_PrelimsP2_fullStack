@@ -28,31 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserProductInventory_Analytics));
             display_summary_panel = new Panel();
             display_bargraph_panel = new Panel();
             panel4 = new Panel();
             panel5 = new Panel();
             panel3 = new Panel();
             display_piechart_panel = new Panel();
-            backButton = new Button();
             display_bargraph_panel.SuspendLayout();
             panel4.SuspendLayout();
             SuspendLayout();
             // 
             // display_summary_panel
             // 
-            display_summary_panel.Location = new Point(12, 12);
+            display_summary_panel.Location = new Point(23, 50);
             display_summary_panel.Name = "display_summary_panel";
             display_summary_panel.Size = new Size(1045, 191);
             display_summary_panel.TabIndex = 0;
             // 
             // display_bargraph_panel
             // 
+            display_bargraph_panel.BackColor = Color.Transparent;
             display_bargraph_panel.Controls.Add(panel4);
             display_bargraph_panel.Controls.Add(panel3);
-            display_bargraph_panel.Location = new Point(12, 209);
+            display_bargraph_panel.Location = new Point(32, 268);
             display_bargraph_panel.Name = "display_bargraph_panel";
-            display_bargraph_panel.Size = new Size(667, 286);
+            display_bargraph_panel.Size = new Size(562, 275);
             display_bargraph_panel.TabIndex = 0;
             // 
             // panel4
@@ -79,32 +80,24 @@
             // 
             // display_piechart_panel
             // 
-            display_piechart_panel.Location = new Point(686, 209);
+            display_piechart_panel.BackColor = Color.Transparent;
+            display_piechart_panel.Location = new Point(600, 268);
             display_piechart_panel.Name = "display_piechart_panel";
-            display_piechart_panel.Size = new Size(371, 286);
+            display_piechart_panel.Size = new Size(457, 275);
             display_piechart_panel.TabIndex = 1;
-            // 
-            // backButton
-            // 
-            backButton.Location = new Point(461, 535);
-            backButton.Name = "backButton";
-            backButton.Size = new Size(151, 41);
-            backButton.TabIndex = 2;
-            backButton.Text = "button1";
-            backButton.UseVisualStyleBackColor = true;
             // 
             // UserProductInventory_Analytics
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1069, 588);
-            Controls.Add(backButton);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            ClientSize = new Size(1092, 566);
             Controls.Add(display_piechart_panel);
             Controls.Add(display_bargraph_panel);
             Controls.Add(display_summary_panel);
             Name = "UserProductInventory_Analytics";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Product Inventory: Analytics";
             display_bargraph_panel.ResumeLayout(false);
             panel4.ResumeLayout(false);
             ResumeLayout(false);
@@ -118,6 +111,5 @@
         private Panel panel4;
         private Panel panel5;
         private Panel display_piechart_panel;
-        private Button backButton;
     }
 }

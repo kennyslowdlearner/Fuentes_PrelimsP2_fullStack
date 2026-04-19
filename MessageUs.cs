@@ -98,7 +98,11 @@ namespace Fuentes_PrelimsP2
                 //UserFeedback result = response.ResultAs<UserFeedback>();
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                { 
+                {
+                    //both lines are used for email notifications
+                    string feedback_Confirmation = "Thank you for your feedback! Our team will review your message and reply as soon as we can.";
+                    await GlobalEmailNotificationModule.send_Notification(UserSession.UserInstance.Email, "Feedback Received",  feedback_Confirmation);
+
                     MessageBox.Show("Message sent to Project Pananom Developer's Cloud. Thank you!", "Sent", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     messageFeedback.Clear();
                 }

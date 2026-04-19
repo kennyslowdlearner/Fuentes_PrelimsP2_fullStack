@@ -218,7 +218,7 @@
             Controls.Add(label6);
             Name = "User_WeatherForecast";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Weather Forecast";
             ResumeLayout(false);
             PerformLayout();
         }

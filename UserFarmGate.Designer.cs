@@ -30,16 +30,9 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(farmgateUSER));
-            dataGridView1 = new DataGridView();
+            Farmgate_Prices_Grid = new DataGridView();
             label5 = new Label();
-            logoutToolStripMenuItem = new ToolStripMenuItem();
-            accountSettingsToolStripMenuItem = new ToolStripMenuItem();
-            contactDeveloperToolStripMenuItem = new ToolStripMenuItem();
-            learnMoreToolStripMenuItem = new ToolStripMenuItem();
-            reloadToolStripMenuItem = new ToolStripMenuItem();
-            sssssToolStripMenuItem = new ToolStripMenuItem();
             label6 = new Label();
-            menuStrip1 = new MenuStrip();
             button8 = new Button();
             button7 = new Button();
             button4 = new Button();
@@ -48,38 +41,37 @@
             button1 = new Button();
             label4 = new Label();
             label2 = new Label();
-            textBox1 = new TextBox();
             label3 = new Label();
             label8 = new Label();
             label1 = new Label();
-            textBox2 = new TextBox();
+            fill_productname_fgp = new TextBox();
             label9 = new Label();
             button6 = new Button();
             button5 = new Button();
             refreshToolStripMenuItem = new ToolStripMenuItem();
             contextMenuStrip1 = new ContextMenuStrip(components);
-            textBox3 = new TextBox();
-            searchBoxPI = new TextBox();
-            searchbuttonPI = new Button();
+            fill_quantity_fgp = new TextBox();
+            fill_search_fgp = new TextBox();
             panel1 = new Panel();
-            textBox4 = new TextBox();
+            fill_price_fgp = new TextBox();
             label7 = new Label();
             label10 = new Label();
             label17 = new Label();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            menuStrip1.SuspendLayout();
+            fill_productid_fgp = new ComboBox();
+            ((System.ComponentModel.ISupportInitialize)Farmgate_Prices_Grid).BeginInit();
             contextMenuStrip1.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // dataGridView1
+            // Farmgate_Prices_Grid
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(1368, 308);
-            dataGridView1.TabIndex = 0;
+            Farmgate_Prices_Grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Farmgate_Prices_Grid.Location = new Point(3, 3);
+            Farmgate_Prices_Grid.Name = "Farmgate_Prices_Grid";
+            Farmgate_Prices_Grid.RowHeadersWidth = 62;
+            Farmgate_Prices_Grid.Size = new Size(1368, 308);
+            Farmgate_Prices_Grid.TabIndex = 0;
+            Farmgate_Prices_Grid.CellClick += display_prices_fgp_CellContentClick;
             // 
             // label5
             // 
@@ -93,50 +85,6 @@
             label5.TabIndex = 107;
             label5.Text = "Product Name";
             // 
-            // logoutToolStripMenuItem
-            // 
-            logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(172, 34);
-            logoutToolStripMenuItem.Text = "Logout";
-            // 
-            // accountSettingsToolStripMenuItem
-            // 
-            accountSettingsToolStripMenuItem.BackColor = Color.Transparent;
-            accountSettingsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { logoutToolStripMenuItem });
-            accountSettingsToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            accountSettingsToolStripMenuItem.ForeColor = Color.LawnGreen;
-            accountSettingsToolStripMenuItem.Name = "accountSettingsToolStripMenuItem";
-            accountSettingsToolStripMenuItem.Size = new Size(184, 28);
-            accountSettingsToolStripMenuItem.Text = "Account Settings";
-            // 
-            // contactDeveloperToolStripMenuItem
-            // 
-            contactDeveloperToolStripMenuItem.Name = "contactDeveloperToolStripMenuItem";
-            contactDeveloperToolStripMenuItem.Size = new Size(281, 34);
-            contactDeveloperToolStripMenuItem.Text = "Contact Developer";
-            // 
-            // learnMoreToolStripMenuItem
-            // 
-            learnMoreToolStripMenuItem.Name = "learnMoreToolStripMenuItem";
-            learnMoreToolStripMenuItem.Size = new Size(281, 34);
-            learnMoreToolStripMenuItem.Text = "Learn More";
-            // 
-            // reloadToolStripMenuItem
-            // 
-            reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
-            reloadToolStripMenuItem.Size = new Size(281, 34);
-            reloadToolStripMenuItem.Text = "Reload";
-            // 
-            // sssssToolStripMenuItem
-            // 
-            sssssToolStripMenuItem.BackColor = Color.Transparent;
-            sssssToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { reloadToolStripMenuItem, learnMoreToolStripMenuItem, contactDeveloperToolStripMenuItem });
-            sssssToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            sssssToolStripMenuItem.ForeColor = Color.LawnGreen;
-            sssssToolStripMenuItem.Name = "sssssToolStripMenuItem";
-            sssssToolStripMenuItem.Size = new Size(151, 28);
-            sssssToolStripMenuItem.Text = "More Options";
-            // 
             // label6
             // 
             label6.AutoSize = true;
@@ -148,18 +96,6 @@
             label6.Size = new Size(15, 24);
             label6.TabIndex = 106;
             label6.Text = ":";
-            // 
-            // menuStrip1
-            // 
-            menuStrip1.BackColor = Color.Transparent;
-            menuStrip1.Dock = DockStyle.None;
-            menuStrip1.ImageScalingSize = new Size(24, 24);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { sssssToolStripMenuItem, accountSettingsToolStripMenuItem });
-            menuStrip1.Location = new Point(1117, 220);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(343, 32);
-            menuStrip1.TabIndex = 105;
-            menuStrip1.Text = "menuStrip1";
             // 
             // button8
             // 
@@ -190,6 +126,7 @@
             button7.TabIndex = 103;
             button7.Text = "Load";
             button7.UseVisualStyleBackColor = false;
+            button7.Click += press_loadfgp;
             // 
             // button4
             // 
@@ -257,7 +194,7 @@
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.LawnGreen;
-            label4.Location = new Point(80, 640);
+            label4.Location = new Point(80, 654);
             label4.Name = "label4";
             label4.Size = new Size(135, 27);
             label4.TabIndex = 96;
@@ -275,22 +212,13 @@
             label2.TabIndex = 98;
             label2.Text = "Product ID";
             // 
-            // textBox1
-            // 
-            textBox1.BackColor = Color.LightGreen;
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Location = new Point(283, 614);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(207, 24);
-            textBox1.TabIndex = 95;
-            // 
             // label3
             // 
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.LawnGreen;
-            label3.Location = new Point(262, 638);
+            label3.Location = new Point(262, 652);
             label3.Name = "label3";
             label3.Size = new Size(15, 24);
             label3.TabIndex = 92;
@@ -320,14 +248,14 @@
             label1.TabIndex = 91;
             label1.Text = ":";
             // 
-            // textBox2
+            // fill_productname_fgp
             // 
-            textBox2.BackColor = Color.LightGreen;
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Location = new Point(283, 587);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(207, 24);
-            textBox2.TabIndex = 94;
+            fill_productname_fgp.BackColor = Color.LightGreen;
+            fill_productname_fgp.BorderStyle = BorderStyle.None;
+            fill_productname_fgp.Location = new Point(283, 587);
+            fill_productname_fgp.Name = "fill_productname_fgp";
+            fill_productname_fgp.Size = new Size(207, 24);
+            fill_productname_fgp.TabIndex = 94;
             // 
             // label9
             // 
@@ -380,57 +308,44 @@
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(143, 36);
             // 
-            // textBox3
+            // fill_quantity_fgp
             // 
-            textBox3.BackColor = Color.LightGreen;
-            textBox3.BorderStyle = BorderStyle.None;
-            textBox3.Location = new Point(283, 641);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(207, 24);
-            textBox3.TabIndex = 93;
+            fill_quantity_fgp.BackColor = Color.LightGreen;
+            fill_quantity_fgp.BorderStyle = BorderStyle.None;
+            fill_quantity_fgp.Location = new Point(283, 655);
+            fill_quantity_fgp.Name = "fill_quantity_fgp";
+            fill_quantity_fgp.Size = new Size(207, 24);
+            fill_quantity_fgp.TabIndex = 93;
             // 
-            // searchBoxPI
+            // fill_search_fgp
             // 
-            searchBoxPI.BackColor = Color.Gainsboro;
-            searchBoxPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            searchBoxPI.Location = new Point(232, 214);
-            searchBoxPI.Name = "searchBoxPI";
-            searchBoxPI.Size = new Size(252, 29);
-            searchBoxPI.TabIndex = 87;
-            searchBoxPI.Text = "Search product name or id";
-            // 
-            // searchbuttonPI
-            // 
-            searchbuttonPI.BackColor = Color.Transparent;
-            searchbuttonPI.BackgroundImage = (Image)resources.GetObject("searchbuttonPI.BackgroundImage");
-            searchbuttonPI.FlatAppearance.BorderSize = 0;
-            searchbuttonPI.FlatStyle = FlatStyle.Flat;
-            searchbuttonPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            searchbuttonPI.ForeColor = Color.DarkOliveGreen;
-            searchbuttonPI.Location = new Point(490, 208);
-            searchbuttonPI.Name = "searchbuttonPI";
-            searchbuttonPI.Size = new Size(120, 41);
-            searchbuttonPI.TabIndex = 86;
-            searchbuttonPI.UseVisualStyleBackColor = false;
+            fill_search_fgp.BackColor = Color.Gainsboro;
+            fill_search_fgp.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            fill_search_fgp.Location = new Point(232, 214);
+            fill_search_fgp.Name = "fill_search_fgp";
+            fill_search_fgp.Size = new Size(252, 29);
+            fill_search_fgp.TabIndex = 87;
+            fill_search_fgp.Text = "Search product name or id";
+            fill_search_fgp.TextChanged += press_Searchfgp;
             // 
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
-            panel1.Controls.Add(dataGridView1);
+            panel1.Controls.Add(Farmgate_Prices_Grid);
             panel1.Font = new Font("Glacial Indifference", 10F);
             panel1.Location = new Point(71, 255);
             panel1.Name = "panel1";
             panel1.Size = new Size(1374, 314);
             panel1.TabIndex = 85;
             // 
-            // textBox4
+            // fill_price_fgp
             // 
-            textBox4.BackColor = Color.LightGreen;
-            textBox4.BorderStyle = BorderStyle.None;
-            textBox4.Location = new Point(308, 671);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(182, 24);
-            textBox4.TabIndex = 93;
+            fill_price_fgp.BackColor = Color.LightGreen;
+            fill_price_fgp.BorderStyle = BorderStyle.None;
+            fill_price_fgp.Location = new Point(308, 685);
+            fill_price_fgp.Name = "fill_price_fgp";
+            fill_price_fgp.Size = new Size(182, 24);
+            fill_price_fgp.TabIndex = 93;
             // 
             // label7
             // 
@@ -438,7 +353,7 @@
             label7.BackColor = Color.Transparent;
             label7.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.LawnGreen;
-            label7.Location = new Point(262, 668);
+            label7.Location = new Point(262, 682);
             label7.Name = "label7";
             label7.Size = new Size(15, 24);
             label7.TabIndex = 92;
@@ -450,7 +365,7 @@
             label10.BackColor = Color.Transparent;
             label10.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label10.ForeColor = Color.LawnGreen;
-            label10.Location = new Point(80, 670);
+            label10.Location = new Point(80, 684);
             label10.Name = "label10";
             label10.Size = new Size(126, 27);
             label10.TabIndex = 96;
@@ -462,11 +377,19 @@
             label17.BackColor = Color.Transparent;
             label17.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label17.ForeColor = Color.LawnGreen;
-            label17.Location = new Point(283, 670);
+            label17.Location = new Point(283, 684);
             label17.Name = "label17";
             label17.Size = new Size(28, 27);
             label17.TabIndex = 108;
             label17.Text = "₱";
+            // 
+            // fill_productid_fgp
+            // 
+            fill_productid_fgp.FormattingEnabled = true;
+            fill_productid_fgp.Location = new Point(283, 617);
+            fill_productid_fgp.Name = "fill_productid_fgp";
+            fill_productid_fgp.Size = new Size(207, 33);
+            fill_productid_fgp.TabIndex = 109;
             // 
             // farmgateUSER
             // 
@@ -474,10 +397,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
+            Controls.Add(fill_productid_fgp);
             Controls.Add(label17);
             Controls.Add(label5);
             Controls.Add(label6);
-            Controls.Add(menuStrip1);
             Controls.Add(button8);
             Controls.Add(button7);
             Controls.Add(button4);
@@ -487,27 +410,23 @@
             Controls.Add(label10);
             Controls.Add(label4);
             Controls.Add(label2);
-            Controls.Add(textBox1);
             Controls.Add(label7);
             Controls.Add(label3);
             Controls.Add(label8);
             Controls.Add(label1);
-            Controls.Add(textBox2);
+            Controls.Add(fill_productname_fgp);
             Controls.Add(label9);
             Controls.Add(button6);
             Controls.Add(button5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(searchBoxPI);
-            Controls.Add(searchbuttonPI);
+            Controls.Add(fill_price_fgp);
+            Controls.Add(fill_quantity_fgp);
+            Controls.Add(fill_search_fgp);
             Controls.Add(panel1);
             Name = "farmgateUSER";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Pananom : Farmgate Price";
+            Text = "Farmgate Price";
             FormClosed += farmgateUSER_FormClosed;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)Farmgate_Prices_Grid).EndInit();
             contextMenuStrip1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             ResumeLayout(false);
@@ -516,16 +435,9 @@
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView Farmgate_Prices_Grid;
         private Label label5;
-        private ToolStripMenuItem logoutToolStripMenuItem;
-        private ToolStripMenuItem accountSettingsToolStripMenuItem;
-        private ToolStripMenuItem contactDeveloperToolStripMenuItem;
-        private ToolStripMenuItem learnMoreToolStripMenuItem;
-        private ToolStripMenuItem reloadToolStripMenuItem;
-        private ToolStripMenuItem sssssToolStripMenuItem;
         private Label label6;
-        private MenuStrip menuStrip1;
         private Button button8;
         private Button button7;
         private Button button4;
@@ -534,23 +446,22 @@
         private Button button1;
         private Label label4;
         private Label label2;
-        private TextBox textBox1;
         private Label label3;
         private Label label8;
         private Label label1;
-        private TextBox textBox2;
+        private TextBox fill_productname_fgp;
         private Label label9;
         private Button button6;
         private Button button5;
         private ToolStripMenuItem refreshToolStripMenuItem;
         private ContextMenuStrip contextMenuStrip1;
-        private TextBox textBox3;
-        private TextBox searchBoxPI;
-        private Button searchbuttonPI;
+        private TextBox fill_quantity_fgp;
+        private TextBox fill_search_fgp;
         private Panel panel1;
-        private TextBox textBox4;
+        private TextBox fill_price_fgp;
         private Label label7;
         private Label label10;
         private Label label17;
+        private ComboBox fill_productid_fgp;
     }
 }

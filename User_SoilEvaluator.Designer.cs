@@ -987,7 +987,7 @@
             ForeColor = Color.LawnGreen;
             Name = "User_SoilEvaluator";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Soil Evaluator";
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)Soil_Evaluator_Grid).EndInit();
             ((System.ComponentModel.ISupportInitialize)fill_soilphlevels_se).EndInit();

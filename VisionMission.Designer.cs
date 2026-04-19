@@ -122,7 +122,7 @@
             Controls.Add(panel1);
             Name = "VisionMission";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Pananom : Vission & Mission";
+            Text = "Project Pananom : Vision & Mission";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

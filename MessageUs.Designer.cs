@@ -81,9 +81,9 @@
             // 
             // messageFeedback
             // 
-            messageFeedback.Location = new Point(174, 287);
+            messageFeedback.Location = new Point(174, 278);
             messageFeedback.Name = "messageFeedback";
-            messageFeedback.Size = new Size(425, 156);
+            messageFeedback.Size = new Size(425, 191);
             messageFeedback.TabIndex = 6;
             messageFeedback.Text = "";
             // 
@@ -109,15 +109,16 @@
             // 
             // messageSend
             // 
-            messageSend.BackColor = Color.LightGreen;
+            messageSend.BackColor = Color.Transparent;
+            messageSend.BackgroundImage = (Image)resources.GetObject("messageSend.BackgroundImage");
+            messageSend.FlatAppearance.BorderSize = 0;
             messageSend.FlatStyle = FlatStyle.Flat;
             messageSend.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             messageSend.ForeColor = Color.DarkOliveGreen;
-            messageSend.Location = new Point(334, 469);
+            messageSend.Location = new Point(328, 485);
             messageSend.Name = "messageSend";
-            messageSend.Size = new Size(112, 34);
+            messageSend.Size = new Size(121, 43);
             messageSend.TabIndex = 2;
-            messageSend.Text = "Send";
             messageSend.UseVisualStyleBackColor = false;
             messageSend.Click += MessageUs_Send;
             // 

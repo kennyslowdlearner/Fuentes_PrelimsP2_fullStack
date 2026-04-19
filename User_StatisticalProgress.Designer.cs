@@ -553,7 +553,7 @@
             Controls.Add(panel1);
             Name = "User_StatisticalProgress";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Statistical Progress";
             ResumeLayout(false);
             PerformLayout();
         }

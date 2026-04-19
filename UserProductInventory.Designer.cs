@@ -381,7 +381,7 @@
             Controls.Add(panel1);
             Name = "productInventory";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Pananom : Product Inventory";
+            Text = "Product Inventory";
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)Product_Inventory_Grid).EndInit();
             ResumeLayout(false);
