@@ -83,9 +83,9 @@ namespace Fuentes_PrelimsP2
 
             DataGridViewRow row = Farmgate_Prices_Grid.Rows[indexRow];
 
-            fill_productname_pi.Text = row.Cells[0].Value.ToString();
-            fill_productid_pi.Text = row.Cells[1].Value.ToString();
-            fill_quantity_pi.Text = row.Cells[2].Value.ToString();
+            //fill_productname_fgp.Text = row.Cells[0].Value.ToString();
+            //fill_.Text = row.Cells[1].Value.ToString();
+            //fill_quantity_pi.Text = row.Cells[2].Value.ToString();
         }
 
 

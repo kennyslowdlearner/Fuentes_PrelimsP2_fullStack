@@ -14,6 +14,7 @@ using LiveChartsCore.SkiaSharpView.Drawing;
 using LiveChartsCore.SkiaSharpView.WinForms;
 using LiveChartsCore.SkiaSharpView.Painting;
 using SkiaSharp;
+using System.Runtime.InteropServices.Marshalling;
 
 
 
@@ -28,6 +29,24 @@ namespace Fuentes_PrelimsP2
         public UserProductInventory_Analytics()
         {
             InitializeComponent();
+            
+            display_productquantities_summary.AutoSize = false;
+            display_totalKilograms_summary.AutoSize = false;
+            display_capacity_summary.AutoSize = false;
+
+            int sectionWidth = 350;
+            display_productquantities_summary.Width = sectionWidth;
+            display_totalKilograms_summary.Width = sectionWidth;
+            display_capacity_summary.Width = sectionWidth;
+
+            display_productquantities_summary.TextAlign = ContentAlignment.MiddleCenter;
+            display_totalKilograms_summary.TextAlign = ContentAlignment.MiddleCenter;
+            display_capacity_summary.TextAlign = ContentAlignment.MiddleCenter;
+
+            //display_productquantities_summary.Height = 60;
+            //display_totalKilograms_summary.Height = 60;
+            //display_capacity_summary.Height = 60;
+
             fetch_data_from_database();
         }
 
@@ -39,6 +58,7 @@ namespace Fuentes_PrelimsP2
                 {
                     instance = new UserProductInventory_Analytics();
                 }
+                else instance.fetch_data_from_database();
                 return instance;
             }
         }
@@ -46,6 +66,8 @@ namespace Fuentes_PrelimsP2
 
         private void fetch_data_from_database()
         {
+            int currentUser = UserSession.UserInstance.ID;
+
             string connection = "Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb";
 
             List<string> productName = new List<string>();
@@ -54,8 +76,10 @@ namespace Fuentes_PrelimsP2
             using (OleDbConnection reader = new OleDbConnection(connection))
             {
 
-                string query = "SELECT [Product Name], [Quantity in Kilograms] FROM [User PI Product Inventory]";
+                string query = "SELECT [Product Name], [Quantity in Kilograms] FROM [User PI Product Inventory] WHERE [User ID] = ?";
                 OleDbCommand command = new OleDbCommand(query, reader);
+
+                command.Parameters.AddWithValue("?", currentUser);
 
                 try
                 {
@@ -67,6 +91,11 @@ namespace Fuentes_PrelimsP2
                         productName.Add(scanner["Product Name"].ToString());
                         quantities.Add(Convert.ToDouble(scanner["Quantity in Kilograms"]));
                     }
+
+                    double totalWeight = 0;
+                    foreach (var q in quantities) totalWeight += q;
+
+                    _ = summaryAnimation(totalWeight, productName.Count);
                 }
                 catch (Exception ex)
                 {
@@ -75,6 +104,14 @@ namespace Fuentes_PrelimsP2
             }
 
             if (quantities.Count > 0) UpdateCharts(productName, quantities);
+            else
+            {
+                display_bargraph_panel.Controls.Clear();
+                display_piechart_panel.Controls.Clear();
+                MessageBox.Show("No inventory data found on your content. Start adding products to see analytics.");
+            }
+
+
         }
 
         private void UpdateCharts(List<string> productName, List<double> quantities)
@@ -82,6 +119,14 @@ namespace Fuentes_PrelimsP2
             var barChart = new CartesianChart
             {
                 Dock = DockStyle.Fill,
+                BackColor = Color.Transparent,
+                ZoomMode = LiveChartsCore.Measure.ZoomAndPanMode.Both,
+                ZoomingSpeed = 1.5,
+
+                DrawMarginFrame = new DrawMarginFrame
+                {
+                    Stroke = new SolidColorPaint(SKColors.Transparent)
+                },
 
                 Series = new ISeries[]
                 {
@@ -89,6 +134,7 @@ namespace Fuentes_PrelimsP2
                     {
                         Name = "Current Stock Level (Kg)",
                         Values = quantities.ToArray(),
+                        Padding = 2,
                         Fill = new SolidColorPaint(SKColors.ForestGreen.WithAlpha(150))
                     },
 
@@ -99,14 +145,26 @@ namespace Fuentes_PrelimsP2
                         new Axis
                         {
                             Labels = productName.ToArray(),
-                            LabelsRotation = 30
+                            LabelsRotation = 30,
+                            SeparatorsPaint = new SolidColorPaint(SKColors.Transparent),
 
+                            MinLimit = 0,
+                            MaxLimit = productName.Count > 5 ? 5 : (double?) null
+
+                        }
+                    },
+
+                 YAxes = new Axis[]
+                    {
+                        new Axis
+                        {
+                            SeparatorsPaint = new SolidColorPaint(SKColors.Transparent)
                         }
                     }
             };
 
             var pieSeries = new List<ISeries>();
-            for(int a = 0; a < productName.Count; a++)
+            for (int a = 0; a < productName.Count; a++)
             {
                 pieSeries.Add(new PieSeries<double>
                 {
@@ -118,6 +176,7 @@ namespace Fuentes_PrelimsP2
             var pieChart = new PieChart
             {
                 Dock = DockStyle.Fill,
+                BackColor = Color.Transparent,
                 Series = pieSeries.ToArray(),
                 LegendPosition = LiveChartsCore.Measure.LegendPosition.Right
             };
@@ -128,6 +187,58 @@ namespace Fuentes_PrelimsP2
 
             display_piechart_panel.Controls.Clear();
             display_piechart_panel.Controls.Add(pieChart);
+        }
+
+        private async Task summaryAnimation(double total_Kilograms, int product_Count)
+        {
+            double current_Kilogram = 0;
+            double current_count = 0;
+
+            int total_Frames = 30;
+            double kilogram_Step = total_Kilograms / total_Frames;
+            double count_Step = (double)product_Count / total_Frames;
+
+            for (int a = 0; a < total_Frames; a++)
+            {
+                display_totalKilograms_summary.Text = $"{current_Kilogram:N2}";
+                display_productquantities_summary.Text = $"{(int)current_count}";
+
+                current_Kilogram += kilogram_Step;
+                current_count += count_Step;
+
+                await Task.Delay(33);
+            }
+
+
+
+            display_totalKilograms_summary.Text = $"{total_Kilograms:N2} Kg";
+            display_productquantities_summary.Text = $"{product_Count}";
+
+            UpdateCapacityStatus(total_Kilograms);
+        }
+
+        private void UpdateCapacityStatus(double total_Kilograms)
+        {
+            if (total_Kilograms <= 1000)
+            {
+                display_capacity_summary.Text = "Low";
+                display_capacity_summary.ForeColor = Color.Red;
+            }
+            else if (total_Kilograms > 1000 && total_Kilograms <= 10000)
+            {
+                display_capacity_summary.Text = "Enough";
+                display_capacity_summary.ForeColor = Color.ForestGreen;
+            }
+            else if (total_Kilograms > 10000)
+            {
+                display_capacity_summary.Text = "Over";
+                display_capacity_summary.ForeColor = Color.Gold;
+            }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
