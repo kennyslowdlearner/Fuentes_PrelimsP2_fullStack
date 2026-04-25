@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminTransportSchedule));
             panel1 = new Panel();
-            dataGridView1 = new DataGridView();
+            Admin_Transport_Schedule_Grid = new DataGridView();
             label8 = new Label();
             textBox2 = new TextBox();
             label9 = new Label();
@@ -71,26 +71,26 @@
             accountSettingsToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem4 = new ToolStripMenuItem();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Admin_Transport_Schedule_Grid).BeginInit();
             menuStrip2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.Controls.Add(dataGridView1);
+            panel1.Controls.Add(Admin_Transport_Schedule_Grid);
             panel1.Location = new Point(62, 199);
             panel1.Name = "panel1";
             panel1.Size = new Size(1345, 288);
             panel1.TabIndex = 0;
             // 
-            // dataGridView1
+            // Admin_Transport_Schedule_Grid
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(1339, 282);
-            dataGridView1.TabIndex = 0;
+            Admin_Transport_Schedule_Grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Admin_Transport_Schedule_Grid.Location = new Point(3, 3);
+            Admin_Transport_Schedule_Grid.Name = "Admin_Transport_Schedule_Grid";
+            Admin_Transport_Schedule_Grid.RowHeadersWidth = 62;
+            Admin_Transport_Schedule_Grid.Size = new Size(1339, 282);
+            Admin_Transport_Schedule_Grid.TabIndex = 0;
             // 
             // label8
             // 
@@ -393,6 +393,7 @@
             button4.TabIndex = 83;
             button4.Text = "Refresh";
             button4.UseVisualStyleBackColor = false;
+            button4.Click += press_refresh_ts;
             // 
             // button3
             // 
@@ -571,7 +572,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Admin_Transport_Schedule_Grid).EndInit();
             menuStrip2.ResumeLayout(false);
             menuStrip2.PerformLayout();
             ResumeLayout(false);
@@ -620,6 +621,6 @@
         private ToolStripMenuItem viewAccountToolStripMenuItem1;
         private ToolStripMenuItem accountSettingsToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItem4;
-        private DataGridView dataGridView1;
+        private DataGridView Admin_Transport_Schedule_Grid;
     }
 }

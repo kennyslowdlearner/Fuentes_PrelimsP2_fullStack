@@ -33,6 +33,7 @@ namespace Fuentes_PrelimsP2
 
                 this.Hide();
             }
+            else MessageBox.Show("Kindly double check your credentials first. Try again later.");
         }
 
         private void AdminLogin_FormClosed(object sender, FormClosedEventArgs e)

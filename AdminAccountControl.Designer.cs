@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminAccountControl));
             panel1 = new Panel();
-            dataGridView1 = new DataGridView();
+            Account_Control_Grid = new DataGridView();
             button3 = new Button();
             button2 = new Button();
             button1 = new Button();
@@ -53,26 +53,26 @@
             accountSettingsToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem4 = new ToolStripMenuItem();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Account_Control_Grid).BeginInit();
             menuStrip2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.Controls.Add(dataGridView1);
+            panel1.Controls.Add(Account_Control_Grid);
             panel1.Location = new Point(63, 230);
             panel1.Name = "panel1";
             panel1.Size = new Size(1344, 399);
             panel1.TabIndex = 0;
             // 
-            // dataGridView1
+            // Account_Control_Grid
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(1338, 393);
-            dataGridView1.TabIndex = 0;
+            Account_Control_Grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Account_Control_Grid.Location = new Point(3, 3);
+            Account_Control_Grid.Name = "Account_Control_Grid";
+            Account_Control_Grid.RowHeadersWidth = 62;
+            Account_Control_Grid.Size = new Size(1338, 393);
+            Account_Control_Grid.TabIndex = 0;
             // 
             // button3
             // 
@@ -149,6 +149,7 @@
             button4.TabIndex = 88;
             button4.Text = "Refresh";
             button4.UseVisualStyleBackColor = false;
+            button4.Click += press_refresh_aa;
             // 
             // label26
             // 
@@ -336,7 +337,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Account_Control_Grid).EndInit();
             menuStrip2.ResumeLayout(false);
             menuStrip2.PerformLayout();
             ResumeLayout(false);
@@ -367,6 +368,6 @@
         private ToolStripMenuItem viewAccountToolStripMenuItem1;
         private ToolStripMenuItem accountSettingsToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItem4;
-        private DataGridView dataGridView1;
+        private DataGridView Account_Control_Grid;
     }
 }

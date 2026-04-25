@@ -49,27 +49,37 @@ namespace Fuentes_PrelimsP2
              .Child(username)
              .Child("History")
              .AsObservable<dynamic>()
-             .Subscribe(async d => 
+             .Subscribe(async d =>
              {
-                 if (d.Object != null)
+                 if (d?.Object == null) return;
+
+                 try
                  {
-                     string sender = d.Object.sender;
-                     string text = d.Object.text;
+                     string sender = d.Object.sender?.ToString();
+                     string text = d.Object.text?.ToString();
 
                      if (sender == "Admin")
                      {
-                         //this section is for email notifications.
-                         string farmerEmail = UserSession.UserInstance.Email;
-                         string message = "The admin as replied to your chat: " + text;
-                         await GlobalEmailNotificationModule.send_Notification(farmerEmail, "New Chat Reply", message);
+                         if (this.IsDisposed || !this.IsHandleCreated) return;
 
-
-                         this.Invoke((MethodInvoker)delegate
+                         this.Invoke((MethodInvoker)async delegate
                          {
                              AddAdminBubbleToUI(text);
                              SaveToSQL(99, text, false);
+
+                             if (Form.ActiveForm != this)
+                             {
+                                 string farmerEmail = UserSession.UserInstance.Email;
+                                 string emailMsg = "The admin replied: " + text;
+                                 await GlobalEmailNotificationModule.send_Notification(farmerEmail, "New Chat Reply", emailMsg);
+                             }
                          });
                      }
+                 }
+                 catch (Exception ex)
+                 {
+                     // This prevents the app from "disappearing"
+                     Console.WriteLine("Firebase Sync Error: " + ex.Message);
                  }
              });
         }

@@ -103,6 +103,12 @@ namespace Fuentes_PrelimsP2
         {
             // Implement delete/remove product flow here when needed
         }
+            // no-op
+        
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
 
         private void activityToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -110,11 +116,6 @@ namespace Fuentes_PrelimsP2
         }
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
-        {
-            // no-op
-        }
-
-        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // no-op
         }
