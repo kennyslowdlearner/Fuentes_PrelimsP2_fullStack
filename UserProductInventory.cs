@@ -26,6 +26,7 @@ namespace Fuentes_PrelimsP2
         DataSet? dataSet;
         int indexRow;
 
+        bool showingSeedlings = false;
         internal static productInventory Instance
         {
             //made changes here (5) [4/3/2026 | 12:24 PM]
@@ -103,8 +104,8 @@ namespace Fuentes_PrelimsP2
         {
             // Implement delete/remove product flow here when needed
         }
-            // no-op
-        
+        // no-op
+
 
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -153,10 +154,6 @@ namespace Fuentes_PrelimsP2
             //Application.Exit();
         }
 
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void backButton(object sender, EventArgs e)
         {
@@ -190,32 +187,53 @@ namespace Fuentes_PrelimsP2
 
         private void press_loadpi(object sender, EventArgs e)
         {
-            //made changes here (13) [4/6/2026 | 12:46 PM]
+            string tableName = showingSeedlings ? "[User PI Seedling Inventory]" : "[User PI Product Inventory]";
+
             connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
-            adapter = new OleDbDataAdapter("SELECT * FROM [User PI Product Inventory] WHERE [User ID] = !A1", connection);
+
+            string query = $"SELECT * FROM {tableName} WHERE [User ID] = @A1";
+            adapter = new OleDbDataAdapter(query, connection);
 
             adapter.SelectCommand.Parameters.AddWithValue("A1", UserSession.UserInstance.ID);
 
             try
             {
                 connection.Open();
-
                 dataSet = new DataSet();
-
-                adapter.Fill(dataSet, "[User PI Product Inventory]");
-
+                adapter.Fill(dataSet, tableName);
                 connection.Close();
 
-                Product_Inventory_Grid.DataSource = dataSet.Tables["[User PI Product Inventory]"];
+                Product_Inventory_Grid.DataSource = dataSet.Tables[tableName];
 
-                Product_Inventory_Grid.Columns["Roll Number"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Product_Inventory_Grid.Columns["Product Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                Product_Inventory_Grid.Columns["Reference ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                Product_Inventory_Grid.Columns["Product ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Product_Inventory_Grid.Columns["Quantity in Kilograms"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                if (showingSeedlings)
+                {
+                    if (Product_Inventory_Grid.Columns.Contains("Roll Number"))
+                        Product_Inventory_Grid.Columns["Roll Number"].Visible = false;
 
-                if (Product_Inventory_Grid.Columns.Contains("User ID"))
-                    Product_Inventory_Grid.Columns["User ID"].Visible = false;
+                    Product_Inventory_Grid.Columns["Variety Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    Product_Inventory_Grid.Columns["Seed ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    Product_Inventory_Grid.Columns["Quantity(Kg)"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                    Product_Inventory_Grid.Columns["Batch Source"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                    Product_Inventory_Grid.Columns["Date Received"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                    Product_Inventory_Grid.Columns["Germ Rate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+                    if (Product_Inventory_Grid.Columns.Contains("User ID"))
+                        Product_Inventory_Grid.Columns["User ID"].Visible = false;
+                }
+                else
+                {
+
+                    if (Product_Inventory_Grid.Columns.Contains("Roll Number"))
+                        Product_Inventory_Grid.Columns["Roll Number"].Visible = false;
+
+                    Product_Inventory_Grid.Columns["Product Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    Product_Inventory_Grid.Columns["Reference ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    Product_Inventory_Grid.Columns["Product ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                    Product_Inventory_Grid.Columns["Quantity in Kilograms"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+                    if (Product_Inventory_Grid.Columns.Contains("User ID"))
+                        Product_Inventory_Grid.Columns["User ID"].Visible = false;
+                }
 
             }
 
@@ -228,68 +246,73 @@ namespace Fuentes_PrelimsP2
         private void press_insertpi(object sender, EventArgs e)
         {
             //made changes here (14) [4/6/2026 | 12:46 PM]
-            string referenceID = GenerateReferenceID();
-            connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
-            string connect = @"Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb";
-            string query = "INSERT INTO [User PI Product Inventory] ([Product Name], [Product ID], [Quantity in Kilograms], [Reference ID], [User ID]) VALUES (@P1, @P2, @P3, @P4, @P5)";
+            string tableName = showingSeedlings ? "[User PI Seedling Inventory]" : "[User PI Product Inventory]";
+            string query;
 
-            using (OleDbConnection connected = new OleDbConnection(connect))
+            if (showingSeedlings)
             {
-                using (OleDbCommand command = new OleDbCommand(query, connection))
-                {
-                    command.Parameters.Add("@P1", OleDbType.VarChar).Value = fill_productname_pi.Text;
-                    command.Parameters.Add("@P2", OleDbType.VarChar).Value = fill_productid_pi.Text;
-                    command.Parameters.Add("@P3", OleDbType.Integer).Value = Convert.ToInt32(fill_quantity_pi.Text);
-                    command.Parameters.Add("@P4", OleDbType.VarChar).Value = referenceID;
-                    command.Parameters.Add("@P5", OleDbType.Integer).Value = UserSession.UserInstance.ID;
-
-                    try
-                    {
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                        //connection.Close();
-
-                        MessageBox.Show("Product added successfully! Ref ID: " + referenceID);
-
-                        fill_productname_pi.Clear();
-                        fill_productid_pi.Clear();
-                        fill_quantity_pi.Clear();
-
-                        press_loadpi(sender, e);
-
-
-                    }
-
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Failed to add product. Error: " + ex.Message);
-                    }
-                }
+                query = $"INSERT INTO {tableName} ([Variety Name], [Seed ID], [Quantity(Kg)], [User ID]) VALUES (@P1, @P2, @P3, @P5)";
             }
-            
-            
+            else
+            {
+                query = $"INSERT INTO {tableName} ([Product Name], [Product ID], [Quantity in Kilograms], [Reference ID], [User ID]) VALUES (@P1, @P2, @P3, @P4, @P5)";
+            }
+
+            using (OleDbConnection conn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb"))
+            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@P1", fill_productname_pi.Text);
+                cmd.Parameters.AddWithValue("@P2", fill_productid_pi.Text);
+                cmd.Parameters.AddWithValue("@P3", Convert.ToInt32(fill_quantity_pi.Text));
+
+                if (!showingSeedlings) cmd.Parameters.AddWithValue("@P4", GenerateReferenceID());
+
+                cmd.Parameters.AddWithValue("@P5", UserSession.UserInstance.ID);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Inventory Updated!");
+                press_loadpi(sender, e);
+            }
+
+
         }
 
         private void datagrid_cellclick(object sender, DataGridViewCellEventArgs e)
         {
             //made changes here (15) [4/6/2026 | 12:46 PM]
+            if (e.RowIndex < 0) return;
             indexRow = e.RowIndex;
-
             DataGridViewRow row = Product_Inventory_Grid.Rows[indexRow];
 
-            fill_productname_pi.Text = row.Cells[0].Value.ToString();
-            fill_productid_pi.Text = row.Cells[1].Value.ToString();
-            fill_quantity_pi.Text = row.Cells[2].Value.ToString();
+            if (showingSeedlings)
+            {
+                fill_productname_pi.Text = row.Cells["Variety Name"].Value.ToString();
+                fill_productid_pi.Text = row.Cells["Seed ID"].Value.ToString();
+                fill_quantity_pi.Text = row.Cells["Quantity(Kg)"].Value.ToString();
+            }
+            else
+            {
+                fill_productname_pi.Text = row.Cells["Product Name"].Value.ToString();
+                fill_productid_pi.Text = row.Cells["Product ID"].Value.ToString();
+                fill_quantity_pi.Text = row.Cells["Quantity in Kilograms"].Value.ToString();
+            }
         }
 
         private void press_deletepi(object sender, EventArgs e)
         {
             //made changes here (16) [4/6/2026 | 12:46 PM]
+            // Fix: Dynamic table name and column identification
+            string tableName = showingSeedlings ? "[User PI Seedling Inventory]" : "[User PI Product Inventory]";
+            string idColumn = showingSeedlings ? "Seed ID" : "Product ID";
+
             connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
-            string query = "DELETE FROM [User PI Product Inventory] WHERE [Product ID] = @P2";
+
+            // We use the column name directly from the grid to be safe
+            string query = $"DELETE FROM {tableName} WHERE [{idColumn}] = @P2";
 
             command = new OleDbCommand(query, connection);
-            command.Parameters.AddWithValue("@P2", Product_Inventory_Grid.CurrentRow.Cells[0].Value);
+            command.Parameters.AddWithValue("@P2", Product_Inventory_Grid.CurrentRow.Cells[idColumn].Value);
 
             try
             {
@@ -298,8 +321,8 @@ namespace Fuentes_PrelimsP2
                 connection.Close();
 
                 MessageBox.Show("Item deleted successfully!");
+                press_loadpi(sender, e); // Refresh grid
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show("Failed to delete item. Error: " + ex.Message);
@@ -309,12 +332,24 @@ namespace Fuentes_PrelimsP2
         private void press_updatepi(object sender, EventArgs e)
         {
             //made changes here (17) [4/6/2026 | 12:46 PM]
-            connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
-            string query = "UPDATE [Product PI Product Inventory] SET [Product Name] = @P1, [Quantity in Kilograms] = @P3 WHERE [Product ID] = @P2";
+            string tableName = showingSeedlings ? "[User PI Seedling Inventory]" : "[User PI Product Inventory]";
+            string query;
 
+            if (showingSeedlings)
+            {
+                query = $"UPDATE {tableName} SET [Variety Name] = @P1, [Quantity(Kg)] = @P3 WHERE [Seed ID] = @P2";
+            }
+            else
+            {
+                query = $"UPDATE {tableName} SET [Product Name] = @P1, [Quantity in Kilograms] = @P3 WHERE [Product ID] = @P2";
+            }
+
+            connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
             command = new OleDbCommand(query, connection);
-            command.Parameters.AddWithValue("[P1]", fill_productname_pi.Text);
-            command.Parameters.AddWithValue("[P3]", Convert.ToInt32(fill_quantity_pi.Text));
+
+            command.Parameters.AddWithValue("@P1", fill_productname_pi.Text);
+            command.Parameters.AddWithValue("@P3", Convert.ToInt32(fill_quantity_pi.Text));
+            command.Parameters.AddWithValue("@P2", fill_productid_pi.Text); // ID for the WHERE clause
 
             try
             {
@@ -323,8 +358,8 @@ namespace Fuentes_PrelimsP2
                 connection.Close();
 
                 MessageBox.Show("Item updated successfully!");
+                press_loadpi(sender, e); // Refresh grid
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show("Failed to update item. Error: " + ex.Message);
@@ -404,6 +439,41 @@ namespace Fuentes_PrelimsP2
             analytics.Show();
             //this.Hide();
 
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void press_switchpi(object sender, EventArgs e)
+        {
+            showingSeedlings = !showingSeedlings;
+
+            label_batchsource_pi.Visible = showingSeedlings;
+            label_datereceived_pi.Visible = showingSeedlings;
+            label_germrate_pi.Visible = showingSeedlings;
+            label_sc1_pi.Visible = showingSeedlings;
+            label_sc2_pi.Visible = showingSeedlings;
+            label_sc3_pi.Visible = showingSeedlings;
+            fill_batchcode_pi.Visible = showingSeedlings;
+            fill_datereceived_pi.Visible = showingSeedlings;
+            fill_germrate_pi.Visible = showingSeedlings;
+
+            // Fix: Display the name of the table the user is MOVING TO
+            display_indicator_pi.Text = showingSeedlings ? "Seedling Inventory" : "Rice Inventory";
+
+            press_loadpi(sender, e);
+
+            // Clear inputs to avoid mixing data from different tables
+            fill_productname_pi.Clear();
+            fill_productid_pi.Clear();
+            fill_quantity_pi.Clear();
         }
     }
 }

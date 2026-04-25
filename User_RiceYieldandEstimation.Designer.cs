@@ -33,10 +33,7 @@
             dataGridView1 = new DataGridView();
             flowLayoutPanel1 = new FlowLayoutPanel();
             label1 = new Label();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
             label2 = new Label();
-            textBox3 = new TextBox();
             label3 = new Label();
             textBox4 = new TextBox();
             label4 = new Label();
@@ -63,6 +60,9 @@
             label16 = new Label();
             label17 = new Label();
             label18 = new Label();
+            comboBox1 = new ComboBox();
+            comboBox2 = new ComboBox();
+            dateTimePicker1 = new DateTimePicker();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -105,24 +105,6 @@
             label1.TabIndex = 48;
             label1.Text = "Product ID";
             // 
-            // textBox2
-            // 
-            textBox2.BackColor = Color.LightGreen;
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Location = new Point(328, 466);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(259, 24);
-            textBox2.TabIndex = 47;
-            // 
-            // textBox1
-            // 
-            textBox1.BackColor = Color.LightGreen;
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Location = new Point(328, 503);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(259, 24);
-            textBox1.TabIndex = 47;
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -134,15 +116,6 @@
             label2.Size = new Size(109, 27);
             label2.TabIndex = 48;
             label2.Text = "Rice Type";
-            // 
-            // textBox3
-            // 
-            textBox3.BackColor = Color.LightGreen;
-            textBox3.BorderStyle = BorderStyle.None;
-            textBox3.Location = new Point(328, 539);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(259, 24);
-            textBox3.TabIndex = 47;
             // 
             // label3
             // 
@@ -160,7 +133,7 @@
             // 
             textBox4.BackColor = Color.LightGreen;
             textBox4.BorderStyle = BorderStyle.None;
-            textBox4.Location = new Point(328, 576);
+            textBox4.Location = new Point(328, 579);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(259, 24);
             textBox4.TabIndex = 47;
@@ -173,9 +146,9 @@
             label4.ForeColor = Color.LawnGreen;
             label4.Location = new Point(141, 576);
             label4.Name = "label4";
-            label4.Size = new Size(100, 27);
+            label4.Size = new Size(146, 27);
             label4.TabIndex = 48;
-            label4.Text = "Quantity";
+            label4.Text = "Quantity (Kg)";
             // 
             // label5
             // 
@@ -473,12 +446,41 @@
             label18.TabIndex = 48;
             label18.Text = ":";
             // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(328, 464);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(259, 33);
+            comboBox1.TabIndex = 54;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(328, 503);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(259, 33);
+            comboBox2.TabIndex = 54;
+            comboBox2.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new Point(329, 543);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(258, 31);
+            dateTimePicker1.TabIndex = 55;
+            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
+            // 
             // User_RiceYieldandEstimation
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
+            Controls.Add(dateTimePicker1);
+            Controls.Add(comboBox2);
+            Controls.Add(comboBox1);
             Controls.Add(button9);
             Controls.Add(button7);
             Controls.Add(button4);
@@ -491,12 +493,10 @@
             Controls.Add(button1);
             Controls.Add(label6);
             Controls.Add(label3);
-            Controls.Add(textBox3);
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label5);
             Controls.Add(label2);
-            Controls.Add(textBox1);
             Controls.Add(label4);
             Controls.Add(textBox4);
             Controls.Add(label18);
@@ -509,7 +509,6 @@
             Controls.Add(label13);
             Controls.Add(label10);
             Controls.Add(label1);
-            Controls.Add(textBox2);
             Controls.Add(panel1);
             ForeColor = Color.LawnGreen;
             Name = "User_RiceYieldandEstimation";
@@ -526,10 +525,7 @@
         private Panel panel1;
         private FlowLayoutPanel flowLayoutPanel1;
         private Label label1;
-        private TextBox textBox2;
-        private TextBox textBox1;
         private Label label2;
-        private TextBox textBox3;
         private Label label3;
         private TextBox textBox4;
         private Label label4;
@@ -557,5 +553,8 @@
         private Label label16;
         private Label label17;
         private Label label18;
+        private ComboBox comboBox1;
+        private ComboBox comboBox2;
+        private DateTimePicker dateTimePicker1;
     }
 }

@@ -46,12 +46,22 @@
             press_delete_pi = new Button();
             press_insert_pi = new Button();
             press_connect_pi = new Button();
-            press_load_pi = new Button();
+            press_switch_pi = new Button();
             press_refresh_pi = new Button();
             label6 = new Label();
             label5 = new Label();
             fill_search_pi = new TextBox();
             button1 = new Button();
+            label_sc1_pi = new Label();
+            fill_batchcode_pi = new TextBox();
+            label_batchsource_pi = new Label();
+            label_sc2_pi = new Label();
+            label_datereceived_pi = new Label();
+            label_sc3_pi = new Label();
+            fill_germrate_pi = new TextBox();
+            label_germrate_pi = new Label();
+            fill_datereceived_pi = new DateTimePicker();
+            display_indicator_pi = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Product_Inventory_Grid).BeginInit();
             SuspendLayout();
@@ -110,18 +120,17 @@
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.LawnGreen;
-            label8.Location = new Point(63, 566);
+            label8.Location = new Point(51, 561);
             label8.Name = "label8";
             label8.Size = new Size(146, 27);
             label8.TabIndex = 75;
             label8.Text = "Product Name";
-            label8.Click += label8_Click;
             // 
             // fill_productname_pi
             // 
             fill_productname_pi.BackColor = Color.LightGreen;
             fill_productname_pi.BorderStyle = BorderStyle.None;
-            fill_productname_pi.Location = new Point(266, 567);
+            fill_productname_pi.Location = new Point(224, 570);
             fill_productname_pi.Name = "fill_productname_pi";
             fill_productname_pi.Size = new Size(207, 24);
             fill_productname_pi.TabIndex = 74;
@@ -132,7 +141,7 @@
             label9.BackColor = Color.Transparent;
             label9.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.LawnGreen;
-            label9.Location = new Point(245, 564);
+            label9.Location = new Point(203, 567);
             label9.Name = "label9";
             label9.Size = new Size(15, 24);
             label9.TabIndex = 73;
@@ -144,7 +153,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.LawnGreen;
-            label1.Location = new Point(245, 591);
+            label1.Location = new Point(203, 594);
             label1.Name = "label1";
             label1.Size = new Size(15, 24);
             label1.TabIndex = 73;
@@ -154,7 +163,7 @@
             // 
             fill_productid_pi.BackColor = Color.LightGreen;
             fill_productid_pi.BorderStyle = BorderStyle.None;
-            fill_productid_pi.Location = new Point(266, 594);
+            fill_productid_pi.Location = new Point(224, 597);
             fill_productid_pi.Name = "fill_productid_pi";
             fill_productid_pi.Size = new Size(207, 24);
             fill_productid_pi.TabIndex = 74;
@@ -165,7 +174,7 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.LawnGreen;
-            label2.Location = new Point(63, 593);
+            label2.Location = new Point(51, 588);
             label2.Name = "label2";
             label2.Size = new Size(110, 27);
             label2.TabIndex = 75;
@@ -177,7 +186,7 @@
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.LawnGreen;
-            label3.Location = new Point(245, 618);
+            label3.Location = new Point(203, 621);
             label3.Name = "label3";
             label3.Size = new Size(15, 24);
             label3.TabIndex = 73;
@@ -187,7 +196,7 @@
             // 
             fill_quantity_pi.BackColor = Color.LightGreen;
             fill_quantity_pi.BorderStyle = BorderStyle.None;
-            fill_quantity_pi.Location = new Point(266, 621);
+            fill_quantity_pi.Location = new Point(224, 624);
             fill_quantity_pi.Name = "fill_quantity_pi";
             fill_quantity_pi.Size = new Size(207, 24);
             fill_quantity_pi.TabIndex = 74;
@@ -198,7 +207,7 @@
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.LawnGreen;
-            label4.Location = new Point(63, 620);
+            label4.Location = new Point(51, 615);
             label4.Name = "label4";
             label4.Size = new Size(135, 27);
             label4.TabIndex = 75;
@@ -248,7 +257,7 @@
             press_insert_pi.Name = "press_insert_pi";
             press_insert_pi.Size = new Size(143, 38);
             press_insert_pi.TabIndex = 78;
-            press_insert_pi.Text = "Insert";
+            press_insert_pi.Text = "Add";
             press_insert_pi.UseVisualStyleBackColor = false;
             press_insert_pi.Click += press_insertpi;
             // 
@@ -268,21 +277,21 @@
             press_connect_pi.UseVisualStyleBackColor = false;
             press_connect_pi.Click += press_connectpi;
             // 
-            // press_load_pi
+            // press_switch_pi
             // 
-            press_load_pi.BackColor = Color.Yellow;
-            press_load_pi.FlatAppearance.BorderColor = Color.Gold;
-            press_load_pi.FlatAppearance.BorderSize = 2;
-            press_load_pi.FlatStyle = FlatStyle.Flat;
-            press_load_pi.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            press_load_pi.ForeColor = Color.DarkGreen;
-            press_load_pi.Location = new Point(1138, 558);
-            press_load_pi.Name = "press_load_pi";
-            press_load_pi.Size = new Size(143, 38);
-            press_load_pi.TabIndex = 80;
-            press_load_pi.Text = "Load";
-            press_load_pi.UseVisualStyleBackColor = false;
-            press_load_pi.Click += press_loadpi;
+            press_switch_pi.BackColor = Color.Yellow;
+            press_switch_pi.FlatAppearance.BorderColor = Color.Gold;
+            press_switch_pi.FlatAppearance.BorderSize = 2;
+            press_switch_pi.FlatStyle = FlatStyle.Flat;
+            press_switch_pi.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            press_switch_pi.ForeColor = Color.DarkGreen;
+            press_switch_pi.Location = new Point(1138, 558);
+            press_switch_pi.Name = "press_switch_pi";
+            press_switch_pi.Size = new Size(143, 38);
+            press_switch_pi.TabIndex = 80;
+            press_switch_pi.Text = "Switch";
+            press_switch_pi.UseVisualStyleBackColor = false;
+            press_switch_pi.Click += press_switchpi;
             // 
             // press_refresh_pi
             // 
@@ -351,17 +360,132 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += press_viewanalytics_pi;
             // 
+            // label_sc1_pi
+            // 
+            label_sc1_pi.AutoSize = true;
+            label_sc1_pi.BackColor = Color.Transparent;
+            label_sc1_pi.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label_sc1_pi.ForeColor = Color.LawnGreen;
+            label_sc1_pi.Location = new Point(594, 571);
+            label_sc1_pi.Name = "label_sc1_pi";
+            label_sc1_pi.Size = new Size(15, 24);
+            label_sc1_pi.TabIndex = 73;
+            label_sc1_pi.Text = ":";
+            label_sc1_pi.Click += label7_Click;
+            // 
+            // fill_batchcode_pi
+            // 
+            fill_batchcode_pi.BackColor = Color.LightGreen;
+            fill_batchcode_pi.BorderStyle = BorderStyle.None;
+            fill_batchcode_pi.Location = new Point(615, 572);
+            fill_batchcode_pi.Name = "fill_batchcode_pi";
+            fill_batchcode_pi.Size = new Size(207, 24);
+            fill_batchcode_pi.TabIndex = 74;
+            fill_batchcode_pi.TextChanged += textBox1_TextChanged;
+            // 
+            // label_batchsource_pi
+            // 
+            label_batchsource_pi.AutoSize = true;
+            label_batchsource_pi.BackColor = Color.Transparent;
+            label_batchsource_pi.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label_batchsource_pi.ForeColor = Color.LawnGreen;
+            label_batchsource_pi.Location = new Point(437, 570);
+            label_batchsource_pi.Name = "label_batchsource_pi";
+            label_batchsource_pi.Size = new Size(138, 27);
+            label_batchsource_pi.TabIndex = 75;
+            label_batchsource_pi.Text = "Batch Source";
+            // 
+            // label_sc2_pi
+            // 
+            label_sc2_pi.AutoSize = true;
+            label_sc2_pi.BackColor = Color.Transparent;
+            label_sc2_pi.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label_sc2_pi.ForeColor = Color.LawnGreen;
+            label_sc2_pi.Location = new Point(594, 609);
+            label_sc2_pi.Name = "label_sc2_pi";
+            label_sc2_pi.Size = new Size(15, 24);
+            label_sc2_pi.TabIndex = 73;
+            label_sc2_pi.Text = ":";
+            label_sc2_pi.Click += label7_Click;
+            // 
+            // label_datereceived_pi
+            // 
+            label_datereceived_pi.AutoSize = true;
+            label_datereceived_pi.BackColor = Color.Transparent;
+            label_datereceived_pi.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label_datereceived_pi.ForeColor = Color.LawnGreen;
+            label_datereceived_pi.Location = new Point(437, 607);
+            label_datereceived_pi.Name = "label_datereceived_pi";
+            label_datereceived_pi.Size = new Size(150, 27);
+            label_datereceived_pi.TabIndex = 75;
+            label_datereceived_pi.Text = "Date Received";
+            // 
+            // label_sc3_pi
+            // 
+            label_sc3_pi.AutoSize = true;
+            label_sc3_pi.BackColor = Color.Transparent;
+            label_sc3_pi.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label_sc3_pi.ForeColor = Color.LawnGreen;
+            label_sc3_pi.Location = new Point(594, 640);
+            label_sc3_pi.Name = "label_sc3_pi";
+            label_sc3_pi.Size = new Size(15, 24);
+            label_sc3_pi.TabIndex = 73;
+            label_sc3_pi.Text = ":";
+            label_sc3_pi.Click += label7_Click;
+            // 
+            // fill_germrate_pi
+            // 
+            fill_germrate_pi.BackColor = Color.LightGreen;
+            fill_germrate_pi.BorderStyle = BorderStyle.None;
+            fill_germrate_pi.Location = new Point(615, 639);
+            fill_germrate_pi.Name = "fill_germrate_pi";
+            fill_germrate_pi.Size = new Size(207, 24);
+            fill_germrate_pi.TabIndex = 74;
+            fill_germrate_pi.TextChanged += textBox1_TextChanged;
+            // 
+            // label_germrate_pi
+            // 
+            label_germrate_pi.AutoSize = true;
+            label_germrate_pi.BackColor = Color.Transparent;
+            label_germrate_pi.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label_germrate_pi.ForeColor = Color.LawnGreen;
+            label_germrate_pi.Location = new Point(437, 638);
+            label_germrate_pi.Name = "label_germrate_pi";
+            label_germrate_pi.Size = new Size(115, 27);
+            label_germrate_pi.TabIndex = 75;
+            label_germrate_pi.Text = "Germ Rate";
+            // 
+            // fill_datereceived_pi
+            // 
+            fill_datereceived_pi.Location = new Point(615, 602);
+            fill_datereceived_pi.Name = "fill_datereceived_pi";
+            fill_datereceived_pi.Size = new Size(207, 31);
+            fill_datereceived_pi.TabIndex = 111;
+            // 
+            // display_indicator_pi
+            // 
+            display_indicator_pi.AutoSize = true;
+            display_indicator_pi.BackColor = Color.Transparent;
+            display_indicator_pi.Font = new Font("Glacial Indifference", 15.9999981F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            display_indicator_pi.ForeColor = Color.LawnGreen;
+            display_indicator_pi.Location = new Point(1211, 197);
+            display_indicator_pi.Name = "display_indicator_pi";
+            display_indicator_pi.Size = new Size(214, 38);
+            display_indicator_pi.TabIndex = 75;
+            display_indicator_pi.Text = "Batch Source";
+            // 
             // productInventory
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1478, 775);
+            Controls.Add(fill_datereceived_pi);
             Controls.Add(label5);
             Controls.Add(fill_search_pi);
             Controls.Add(label6);
             Controls.Add(press_connect_pi);
-            Controls.Add(press_load_pi);
+            Controls.Add(press_switch_pi);
             Controls.Add(button1);
             Controls.Add(press_refresh_pi);
             Controls.Add(press_update_pi);
@@ -372,8 +496,17 @@
             Controls.Add(label2);
             Controls.Add(fill_productid_pi);
             Controls.Add(label3);
+            Controls.Add(label_germrate_pi);
+            Controls.Add(label_datereceived_pi);
+            Controls.Add(display_indicator_pi);
+            Controls.Add(label_batchsource_pi);
+            Controls.Add(fill_germrate_pi);
             Controls.Add(label8);
+            Controls.Add(label_sc3_pi);
+            Controls.Add(fill_batchcode_pi);
+            Controls.Add(label_sc2_pi);
             Controls.Add(label1);
+            Controls.Add(label_sc1_pi);
             Controls.Add(fill_productname_pi);
             Controls.Add(label9);
             Controls.Add(button6);
@@ -406,12 +539,22 @@
         private Button press_delete_pi;
         private Button press_insert_pi;
         private Button press_connect_pi;
-        private Button press_load_pi;
+        private Button press_switch_pi;
         private Button press_refresh_pi;
         private DataGridView Product_Inventory_Grid;
         private Label label6;
         private Label label5;
         private TextBox fill_search_pi;
         private Button button1;
+        private Label label_sc1_pi;
+        private TextBox fill_batchcode_pi;
+        private Label label_batchsource_pi;
+        private Label label_sc2_pi;
+        private Label label_datereceived_pi;
+        private Label label_sc3_pi;
+        private TextBox fill_germrate_pi;
+        private Label label_germrate_pi;
+        private DateTimePicker fill_datereceived_pi;
+        private Label display_indicator_pi;
     }
 }
