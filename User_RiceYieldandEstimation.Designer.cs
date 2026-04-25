@@ -30,20 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(User_RiceYieldandEstimation));
             panel1 = new Panel();
-            dataGridView1 = new DataGridView();
+            Rice_Yield_And_Estimation_Grid = new DataGridView();
             flowLayoutPanel1 = new FlowLayoutPanel();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            textBox4 = new TextBox();
+            fill_quantity_rye = new TextBox();
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
-            label7 = new Label();
-            label8 = new Label();
+            display_yieldingdays_rye = new Label();
+            display_timeleft_rye = new Label();
             button6 = new Button();
             button5 = new Button();
             label9 = new Label();
@@ -60,16 +60,16 @@
             label16 = new Label();
             label17 = new Label();
             label18 = new Label();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
-            dateTimePicker1 = new DateTimePicker();
+            fill_productid_rye = new ComboBox();
+            fill_ricetype_rye = new ComboBox();
+            fill_date_rye = new DateTimePicker();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Rice_Yield_And_Estimation_Grid).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.Controls.Add(dataGridView1);
+            panel1.Controls.Add(Rice_Yield_And_Estimation_Grid);
             panel1.Controls.Add(flowLayoutPanel1);
             panel1.Location = new Point(72, 186);
             panel1.Name = "panel1";
@@ -77,14 +77,14 @@
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
-            // dataGridView1
+            // Rice_Yield_And_Estimation_Grid
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(1335, 236);
-            dataGridView1.TabIndex = 1;
+            Rice_Yield_And_Estimation_Grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Rice_Yield_And_Estimation_Grid.Location = new Point(3, 3);
+            Rice_Yield_And_Estimation_Grid.Name = "Rice_Yield_And_Estimation_Grid";
+            Rice_Yield_And_Estimation_Grid.RowHeadersWidth = 62;
+            Rice_Yield_And_Estimation_Grid.Size = new Size(1335, 236);
+            Rice_Yield_And_Estimation_Grid.TabIndex = 1;
             // 
             // flowLayoutPanel1
             // 
@@ -129,14 +129,14 @@
             label3.TabIndex = 48;
             label3.Text = "Date Planted";
             // 
-            // textBox4
+            // fill_quantity_rye
             // 
-            textBox4.BackColor = Color.LightGreen;
-            textBox4.BorderStyle = BorderStyle.None;
-            textBox4.Location = new Point(328, 579);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(259, 24);
-            textBox4.TabIndex = 47;
+            fill_quantity_rye.BackColor = Color.LightGreen;
+            fill_quantity_rye.BorderStyle = BorderStyle.None;
+            fill_quantity_rye.Location = new Point(328, 579);
+            fill_quantity_rye.Name = "fill_quantity_rye";
+            fill_quantity_rye.Size = new Size(259, 24);
+            fill_quantity_rye.TabIndex = 47;
             // 
             // label4
             // 
@@ -186,8 +186,9 @@
             button1.Name = "button1";
             button1.Size = new Size(154, 34);
             button1.TabIndex = 49;
-            button1.Text = "Insert";
+            button1.Text = "Add";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += press_insertrye;
             // 
             // button2
             // 
@@ -203,6 +204,7 @@
             button2.TabIndex = 49;
             button2.Text = "Update";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += press_updaterye;
             // 
             // button3
             // 
@@ -218,30 +220,31 @@
             button3.TabIndex = 49;
             button3.Text = "Delete";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += press_deleterye;
             // 
-            // label7
+            // display_yieldingdays_rye
             // 
-            label7.AutoSize = true;
-            label7.BackColor = Color.Transparent;
-            label7.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.ForeColor = Color.Gold;
-            label7.Location = new Point(328, 613);
-            label7.Name = "label7";
-            label7.Size = new Size(126, 27);
-            label7.TabIndex = 48;
-            label7.Text = "(Label Only)";
+            display_yieldingdays_rye.AutoSize = true;
+            display_yieldingdays_rye.BackColor = Color.Transparent;
+            display_yieldingdays_rye.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            display_yieldingdays_rye.ForeColor = Color.Gold;
+            display_yieldingdays_rye.Location = new Point(328, 613);
+            display_yieldingdays_rye.Name = "display_yieldingdays_rye";
+            display_yieldingdays_rye.Size = new Size(126, 27);
+            display_yieldingdays_rye.TabIndex = 48;
+            display_yieldingdays_rye.Text = "(Label Only)";
             // 
-            // label8
+            // display_timeleft_rye
             // 
-            label8.AutoSize = true;
-            label8.BackColor = Color.Transparent;
-            label8.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.ForeColor = Color.Gold;
-            label8.Location = new Point(328, 649);
-            label8.Name = "label8";
-            label8.Size = new Size(126, 27);
-            label8.TabIndex = 48;
-            label8.Text = "(Label Only)";
+            display_timeleft_rye.AutoSize = true;
+            display_timeleft_rye.BackColor = Color.Transparent;
+            display_timeleft_rye.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            display_timeleft_rye.ForeColor = Color.Gold;
+            display_timeleft_rye.Location = new Point(328, 649);
+            display_timeleft_rye.Name = "display_timeleft_rye";
+            display_timeleft_rye.Size = new Size(126, 27);
+            display_timeleft_rye.TabIndex = 48;
+            display_timeleft_rye.Text = "(Label Only)";
             // 
             // button6
             // 
@@ -446,31 +449,31 @@
             label18.TabIndex = 48;
             label18.Text = ":";
             // 
-            // comboBox1
+            // fill_productid_rye
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(328, 464);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(259, 33);
-            comboBox1.TabIndex = 54;
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            fill_productid_rye.FormattingEnabled = true;
+            fill_productid_rye.Location = new Point(328, 464);
+            fill_productid_rye.Name = "fill_productid_rye";
+            fill_productid_rye.Size = new Size(259, 33);
+            fill_productid_rye.TabIndex = 54;
+            fill_productid_rye.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
-            // comboBox2
+            // fill_ricetype_rye
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(328, 503);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(259, 33);
-            comboBox2.TabIndex = 54;
-            comboBox2.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            fill_ricetype_rye.FormattingEnabled = true;
+            fill_ricetype_rye.Location = new Point(328, 503);
+            fill_ricetype_rye.Name = "fill_ricetype_rye";
+            fill_ricetype_rye.Size = new Size(259, 33);
+            fill_ricetype_rye.TabIndex = 54;
+            fill_ricetype_rye.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
-            // dateTimePicker1
+            // fill_date_rye
             // 
-            dateTimePicker1.Location = new Point(329, 543);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(258, 31);
-            dateTimePicker1.TabIndex = 55;
-            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
+            fill_date_rye.Location = new Point(329, 543);
+            fill_date_rye.Name = "fill_date_rye";
+            fill_date_rye.Size = new Size(258, 31);
+            fill_date_rye.TabIndex = 55;
+            fill_date_rye.ValueChanged += dateTimePicker1_ValueChanged;
             // 
             // User_RiceYieldandEstimation
             // 
@@ -478,9 +481,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(comboBox2);
-            Controls.Add(comboBox1);
+            Controls.Add(fill_date_rye);
+            Controls.Add(fill_ricetype_rye);
+            Controls.Add(fill_productid_rye);
             Controls.Add(button9);
             Controls.Add(button7);
             Controls.Add(button4);
@@ -493,12 +496,12 @@
             Controls.Add(button1);
             Controls.Add(label6);
             Controls.Add(label3);
-            Controls.Add(label8);
-            Controls.Add(label7);
+            Controls.Add(display_timeleft_rye);
+            Controls.Add(display_yieldingdays_rye);
             Controls.Add(label5);
             Controls.Add(label2);
             Controls.Add(label4);
-            Controls.Add(textBox4);
+            Controls.Add(fill_quantity_rye);
             Controls.Add(label18);
             Controls.Add(label15);
             Controls.Add(label12);
@@ -515,7 +518,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Rice Yield and Estimation";
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Rice_Yield_And_Estimation_Grid).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -527,15 +530,15 @@
         private Label label1;
         private Label label2;
         private Label label3;
-        private TextBox textBox4;
+        private TextBox fill_quantity_rye;
         private Label label4;
         private Label label5;
         private Label label6;
         private Button button1;
         private Button button2;
         private Button button3;
-        private Label label7;
-        private Label label8;
+        private Label display_yieldingdays_rye;
+        private Label display_timeleft_rye;
         private Button button6;
         private Button button5;
         private Label label9;
@@ -543,7 +546,7 @@
         private Button button4;
         private Button button7;
         private Button button9;
-        private DataGridView dataGridView1;
+        private DataGridView Rice_Yield_And_Estimation_Grid;
         private Label label10;
         private Label label11;
         private Label label12;
@@ -553,8 +556,8 @@
         private Label label16;
         private Label label17;
         private Label label18;
-        private ComboBox comboBox1;
-        private ComboBox comboBox2;
-        private DateTimePicker dateTimePicker1;
+        private ComboBox fill_productid_rye;
+        private ComboBox fill_ricetype_rye;
+        private DateTimePicker fill_date_rye;
     }
 }
