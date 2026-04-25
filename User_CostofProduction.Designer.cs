@@ -59,7 +59,6 @@
             label17 = new Label();
             label18 = new Label();
             fill_search_cop = new TextBox();
-            searchbuttonPI = new Button();
             label19 = new Label();
             fill_date_cop = new DateTimePicker();
             fill_status_cop = new ComboBox();
@@ -433,20 +432,6 @@
             fill_search_cop.Text = "Search product name or id";
             fill_search_cop.TextChanged += searchcop;
             // 
-            // searchbuttonPI
-            // 
-            searchbuttonPI.BackColor = Color.Transparent;
-            searchbuttonPI.BackgroundImage = (Image)resources.GetObject("searchbuttonPI.BackgroundImage");
-            searchbuttonPI.FlatAppearance.BorderSize = 0;
-            searchbuttonPI.FlatStyle = FlatStyle.Flat;
-            searchbuttonPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            searchbuttonPI.ForeColor = Color.DarkOliveGreen;
-            searchbuttonPI.Location = new Point(504, 193);
-            searchbuttonPI.Name = "searchbuttonPI";
-            searchbuttonPI.Size = new Size(120, 41);
-            searchbuttonPI.TabIndex = 112;
-            searchbuttonPI.UseVisualStyleBackColor = false;
-            // 
             // label19
             // 
             label19.AutoSize = true;
@@ -504,7 +489,6 @@
             Controls.Add(fill_date_cop);
             Controls.Add(label18);
             Controls.Add(fill_search_cop);
-            Controls.Add(searchbuttonPI);
             Controls.Add(label19);
             Controls.Add(button7);
             Controls.Add(button9);
@@ -575,7 +559,6 @@
         private Label label17;
         private Label label18;
         private TextBox fill_search_cop;
-        private Button searchbuttonPI;
         private Label label19;
         private DateTimePicker fill_date_cop;
         private ComboBox fill_status_cop;

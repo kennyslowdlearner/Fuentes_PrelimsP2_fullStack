@@ -157,6 +157,7 @@
             button3.TabIndex = 99;
             button3.Text = "Update";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += press_update;
             // 
             // button2
             // 
@@ -172,6 +173,7 @@
             button2.TabIndex = 100;
             button2.Text = "Delete";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += press_delete;
             // 
             // button1
             // 
@@ -187,6 +189,7 @@
             button1.TabIndex = 101;
             button1.Text = "Insert";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += press_insert;
             // 
             // label4
             // 
@@ -281,6 +284,7 @@
             button6.Size = new Size(120, 41);
             button6.TabIndex = 88;
             button6.UseVisualStyleBackColor = false;
+            button6.Click += back;
             // 
             // button5
             // 
@@ -390,6 +394,7 @@
             fill_productid_fgp.Name = "fill_productid_fgp";
             fill_productid_fgp.Size = new Size(207, 33);
             fill_productid_fgp.TabIndex = 109;
+            fill_productid_fgp.SelectedIndexChanged += fill_productid_fgp_SelectedIndexChanged;
             // 
             // farmgateUSER
             // 

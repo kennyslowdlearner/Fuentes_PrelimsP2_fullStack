@@ -35,7 +35,6 @@
             label1 = new Label();
             addTransaction = new Button();
             viewTransaction = new Button();
-            digitalVaultReceipt = new Button();
             costOfProduction = new Button();
             marketForecasting = new Button();
             label4 = new Label();
@@ -85,7 +84,7 @@
             addTransaction.BackgroundImage = (Image)resources.GetObject("addTransaction.BackgroundImage");
             addTransaction.FlatAppearance.BorderSize = 0;
             addTransaction.FlatStyle = FlatStyle.Flat;
-            addTransaction.Location = new Point(78, 310);
+            addTransaction.Location = new Point(171, 310);
             addTransaction.Name = "addTransaction";
             addTransaction.Size = new Size(165, 285);
             addTransaction.TabIndex = 6;
@@ -98,25 +97,12 @@
             viewTransaction.BackgroundImage = (Image)resources.GetObject("viewTransaction.BackgroundImage");
             viewTransaction.FlatAppearance.BorderSize = 0;
             viewTransaction.FlatStyle = FlatStyle.Flat;
-            viewTransaction.Location = new Point(262, 310);
+            viewTransaction.Location = new Point(362, 310);
             viewTransaction.Name = "viewTransaction";
             viewTransaction.Size = new Size(165, 285);
             viewTransaction.TabIndex = 6;
             viewTransaction.UseVisualStyleBackColor = false;
             viewTransaction.Click += GoToViewTransaction;
-            // 
-            // digitalVaultReceipt
-            // 
-            digitalVaultReceipt.BackColor = Color.Transparent;
-            digitalVaultReceipt.BackgroundImage = (Image)resources.GetObject("digitalVaultReceipt.BackgroundImage");
-            digitalVaultReceipt.FlatAppearance.BorderSize = 0;
-            digitalVaultReceipt.FlatStyle = FlatStyle.Flat;
-            digitalVaultReceipt.Location = new Point(446, 310);
-            digitalVaultReceipt.Name = "digitalVaultReceipt";
-            digitalVaultReceipt.Size = new Size(165, 285);
-            digitalVaultReceipt.TabIndex = 6;
-            digitalVaultReceipt.UseVisualStyleBackColor = false;
-            digitalVaultReceipt.Click += GoToDigitalVaultReceipt;
             // 
             // costOfProduction
             // 
@@ -124,7 +110,7 @@
             costOfProduction.BackgroundImage = (Image)resources.GetObject("costOfProduction.BackgroundImage");
             costOfProduction.FlatAppearance.BorderSize = 0;
             costOfProduction.FlatStyle = FlatStyle.Flat;
-            costOfProduction.Location = new Point(630, 310);
+            costOfProduction.Location = new Point(550, 310);
             costOfProduction.Name = "costOfProduction";
             costOfProduction.Size = new Size(165, 285);
             costOfProduction.TabIndex = 6;
@@ -137,7 +123,7 @@
             marketForecasting.BackgroundImage = (Image)resources.GetObject("marketForecasting.BackgroundImage");
             marketForecasting.FlatAppearance.BorderSize = 0;
             marketForecasting.FlatStyle = FlatStyle.Flat;
-            marketForecasting.Location = new Point(815, 310);
+            marketForecasting.Location = new Point(743, 310);
             marketForecasting.Name = "marketForecasting";
             marketForecasting.Size = new Size(165, 285);
             marketForecasting.TabIndex = 6;
@@ -187,7 +173,6 @@
             Controls.Add(marketForecasting);
             Controls.Add(costOfProduction);
             Controls.Add(viewTransaction);
-            Controls.Add(digitalVaultReceipt);
             Controls.Add(addTransaction);
             Controls.Add(display_name_TandT);
             Controls.Add(display_datetime_TandT);
@@ -205,7 +190,6 @@
         private Label label1;
         private Button addTransaction;
         private Button viewTransaction;
-        private Button digitalVaultReceipt;
         private Button costOfProduction;
         private Button marketForecasting;
         private Label label4;

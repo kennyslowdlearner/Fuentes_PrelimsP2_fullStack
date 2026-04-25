@@ -18,6 +18,8 @@ namespace Fuentes_PrelimsP2
         public farmgateUSER()
         {
             InitializeComponent();
+            this.Load += (s, e) => { if (this.Visible) refreshreload(); };
+            LoadProductIDs();
         }
 
         internal static farmgateUSER Instance
@@ -38,6 +40,8 @@ namespace Fuentes_PrelimsP2
         OleDbCommand? command;
         DataSet? dataSet;
         int indexRow;
+
+        string currentSelectedRollNumber = " ";
 
         private void farmgateUser_Load(object sender, EventArgs e)
         {
@@ -79,20 +83,89 @@ namespace Fuentes_PrelimsP2
 
         private void display_prices_fgp_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            indexRow = e.RowIndex;
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = Farmgate_Prices_Grid.Rows[e.RowIndex];
 
-            DataGridViewRow row = Farmgate_Prices_Grid.Rows[indexRow];
+                // This links the Grid back to your 'currentSelectedRollNumber' variable
+                currentSelectedRollNumber = row.Cells["Roll Number"].Value?.ToString() ?? "";
 
-            //fill_productname_fgp.Text = row.Cells[0].Value.ToString();
-            //fill_.Text = row.Cells[1].Value.ToString();
-            //fill_quantity_pi.Text = row.Cells[2].Value.ToString();
+                fill_productid_fgp.Text = row.Cells["Product ID"].Value?.ToString();
+                fill_productname_fgp.Text = row.Cells["Product Name"].Value?.ToString();
+                fill_quantity_fgp.Text = row.Cells["Quantity (Kg)"].Value?.ToString();
+                fill_price_fgp.Text = row.Cells["Price per Kilogram"].Value?.ToString();
+            }
+        }
+
+        private void refreshreload()
+        {
+            string connectionString = @"Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Pananom Database\Prooject Pananom Data.accdb";
+
+            try
+            {
+                using (OleDbConnection connected = new OleDbConnection(connectionString))
+                {
+                    string query = "SELECT * FROM [User Farmgate Price] WHERE [User ID] = @UID";
+                    adapter = new OleDbDataAdapter(query, connected);
+                    adapter.SelectCommand.Parameters.AddWithValue("@UID", UserSession.UserInstance.ID);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    // 1. Force the grid to reset
+                    Farmgate_Prices_Grid.DataSource = null;
+                    Farmgate_Prices_Grid.AutoGenerateColumns = true;
+                    Farmgate_Prices_Grid.DataSource = dataTable;
+
+                    // 2. Allow the UI thread to process the new columns
+                    Application.DoEvents();
+                }
+
+                // 3. Apply formatting only if data was actually loaded
+                if (Farmgate_Prices_Grid.Columns.Count > 0)
+                {
+                    // Set all to None first to allow manual overrides
+                    foreach (DataGridViewColumn col in Farmgate_Prices_Grid.Columns)
+                    {
+                        col.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                    }
+
+                    // Fix for the "Item Name" invisibility:
+                    if (Farmgate_Prices_Grid.Columns.Contains("Product Name"))
+                    {
+                        Farmgate_Prices_Grid.Columns["Product Name"].Visible = true;
+                        Farmgate_Prices_Grid.Columns["Product Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                        Farmgate_Prices_Grid.Columns["Product Name"].MinimumWidth = 300; // Ensure it stays visible
+                    }
+
+                    // Hide the database ID
+                    if (Farmgate_Prices_Grid.Columns.Contains("Roll Number"))
+                        Farmgate_Prices_Grid.Columns["Roll Number"].Visible = false;
+
+                    if (Farmgate_Prices_Grid.Columns.Contains("User ID"))
+                        Farmgate_Prices_Grid.Columns["User ID"].Visible = false;
+
+                    // Batch update the rest of the cells
+                    string[] autoFields = { "Product ID", "Quantity (Kg)", "Price per Kilogram", "Reference ID" };
+                    foreach (string field in autoFields)
+                    {
+                        if (Farmgate_Prices_Grid.Columns.Contains(field))
+                        {
+                            Farmgate_Prices_Grid.Columns[field].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to load data. Error: " + ex.Message);
+            }
         }
 
 
         private void press_loadfgp(object sender, EventArgs e)
         {
             connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
-            adapter = new OleDbDataAdapter("SELECT * FROM [User Farmgate Price] WHERE [User ID] = !A1", connection);
+            adapter = new OleDbDataAdapter("SELECT * FROM [User Farmgate Price] WHERE [User ID] = @A1", connection);
 
             adapter.SelectCommand.Parameters.AddWithValue("A1", UserSession.UserInstance.ID);
 
@@ -108,12 +181,13 @@ namespace Fuentes_PrelimsP2
 
                 Farmgate_Prices_Grid.DataSource = dataSet.Tables["[User Farmgate Price]"];
 
-                Farmgate_Prices_Grid.Columns["Roll Number"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Farmgate_Prices_Grid.Columns["Product ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                Farmgate_Prices_Grid.Columns["Product Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                Farmgate_Prices_Grid.Columns["Price per Kilogram"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                Farmgate_Prices_Grid.Columns["User ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                if (Farmgate_Prices_Grid.Columns.Contains("Roll Number"))
+                    Farmgate_Prices_Grid.Columns["Roll Number"].Visible = false;
 
+                Farmgate_Prices_Grid.Columns["Product ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                Farmgate_Prices_Grid.Columns["Product Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                Farmgate_Prices_Grid.Columns["Price per Kilogram"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                Farmgate_Prices_Grid.Columns["Reference ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
                 if (Farmgate_Prices_Grid.Columns.Contains("User ID"))
                     Farmgate_Prices_Grid.Columns["User ID"].Visible = false;
@@ -130,7 +204,7 @@ namespace Fuentes_PrelimsP2
         {
             string connect = "Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb";
 
-            string query = "SELECT * FROM [User Farmgate Price Query] WHERE [Product Name] LIKE @S1 OR [Product ID] LIKE @S2 OR [Reference ID] LIKE @S3";
+            string query = "SELECT * FROM [User Farmgate Price] WHERE [Product Name] LIKE @S1 OR [Product ID] LIKE @S2 OR [Reference ID] LIKE @S3";
 
             using (OleDbConnection connected = new OleDbConnection(connect))
             {
@@ -146,14 +220,224 @@ namespace Fuentes_PrelimsP2
                 try
                 {
                     connected.Open();
-                    searchAdapter.Fill(searchNow, "[User PI Product Inventory]");
+                    searchAdapter.Fill(searchNow, "[User Farmgate Price]");
 
-                    Farmgate_Prices_Grid.DataSource = searchNow.Tables["[User PI Product Inventory]"];
+                    Farmgate_Prices_Grid.DataSource = searchNow.Tables["[User Farmgate Price]"];
                 }
 
                 catch (Exception ex)
                 {
                     MessageBox.Show("Search failed. Error: " + ex.Message);
+                }
+            }
+        }
+
+        private void press_insert(object sender, EventArgs e)
+        {
+            connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
+            string query = "INSERT INTO [User Farmgate Price] ([Product ID], [Product Name], [Quantity (Kg)], [Price per Kilogram], [Reference ID], [User ID]) VALUES (@P1, @P2, @P3, @P4, @P5, @P6)";
+
+            command = new OleDbCommand(query, connection);
+            command.Parameters.Add("@P1", OleDbType.VarWChar).Value = fill_productid_fgp.Text;
+            command.Parameters.Add("@P2", OleDbType.VarWChar).Value = fill_productname_fgp.Text;
+            command.Parameters.Add("@P3", OleDbType.Integer).Value = Convert.ToInt32(fill_quantity_fgp.Text);
+            command.Parameters.Add("@P4", OleDbType.Currency).Value = Convert.ToDecimal(fill_price_fgp.Text);
+            command.Parameters.Add("@P5", OleDbType.Currency).Value = serialIDgenerator();
+            command.Parameters.Add("@P6", OleDbType.Integer).Value = UserSession.UserInstance.ID;
+
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+
+                MessageBox.Show("Item added successfully!");
+
+                fill_productname_fgp.Clear();
+                fill_quantity_fgp.Clear();
+                fill_price_fgp.Clear();
+                fill_productid_fgp.SelectedIndex = -1;
+
+                refreshreload();
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to add product. Error: " + ex.Message);
+            }
+        }
+
+        private void press_update(object sender, EventArgs e)
+        {
+            connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
+
+            // SQL ORDER: 1:Item Name, 2:Unit, 3:Quantity, 4:Price, 5:Total, 6:Date, 7:Status WHERE 8:ID
+            string query = "UPDATE [User Farmgate Price] SET [Product ID] = @P1, [Product Name] = @P2, [Quantity (Kg)] = @P3, [Price per Kilogram] = @P4 WHERE [Roll Number] = @P5";
+
+            command = new OleDbCommand(query, connection);
+
+            // Use UNIQUE parameter names and follow the SQL order exactly
+            command.Parameters.Add("@P1", OleDbType.VarWChar).Value = fill_productid_fgp.Text;
+            command.Parameters.Add("@P2", OleDbType.VarWChar).Value = fill_productname_fgp.Text;
+            command.Parameters.Add("@P3", OleDbType.Integer).Value = Convert.ToInt32(fill_quantity_fgp.Text);
+            command.Parameters.Add("@P4", OleDbType.Currency).Value = Convert.ToDecimal(fill_price_fgp.Text);
+
+            // The WHERE clause parameter must be last
+            command.Parameters.Add("@P5", OleDbType.Integer).Value = Convert.ToInt32(currentSelectedRollNumber);
+
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+
+                MessageBox.Show("Item updated successfully!");
+                refreshreload();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to update item. Error: " + ex.Message);
+            }
+        }
+
+        private string serialIDgenerator()
+        {
+            Random reference = new Random();
+
+            string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            int size = 8;
+            string randomString = "";
+
+            for (int a = 0; a < size; a++)
+            {
+                int index = reference.Next(characters.Length);
+                randomString += characters[index];
+
+                if (a == 3)
+                {
+                    randomString += "-";
+                }
+
+            }
+
+            return "FRMGT-" + randomString;
+        }
+
+        private void press_delete(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(currentSelectedRollNumber))
+            {
+                MessageBox.Show("Please select an item to delete.");
+                return;
+            }
+
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this item?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
+                string query = "DELETE FROM [User Farmgate Price] WHERE [Roll Number] = @P1";
+
+                command = new OleDbCommand(query, connection);
+                command.Parameters.Add("@P1", OleDbType.Integer).Value = Convert.ToInt32(currentSelectedRollNumber);
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+
+                    MessageBox.Show("Item deleted successfully!");
+
+                    refreshreload();
+
+                    fill_productname_fgp.Clear();
+                    fill_productid_fgp.SelectedIndex = -1;
+                    fill_quantity_fgp.Clear();
+                    fill_price_fgp.Clear();
+
+                    currentSelectedRollNumber = " ";
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to delete item. Error: " + ex.Message);
+                }
+            }
+        }
+
+        private void LoadProductIDs()
+        {
+            string connectionString = @"Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Pananom Database\Prooject Pananom Data.accdb";
+
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            {
+                // We pull from the Inventory table, filtered by the current user
+                string query = "SELECT [Product ID] FROM [User PI Product Inventory] WHERE [User ID] = @UID";
+                OleDbCommand cmd = new OleDbCommand(query, conn);
+                cmd.Parameters.AddWithValue("@UID", UserSession.UserInstance.ID);
+
+                try
+                {
+                    conn.Open();
+                    OleDbDataReader reader = cmd.ExecuteReader();
+                    fill_productid_fgp.Items.Clear(); // Clear old items
+
+                    while (reader.Read())
+                    {
+                        fill_productid_fgp.Items.Add(reader["Product ID"].ToString());
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading Product IDs: " + ex.Message);
+                }
+            }
+        }
+
+        private void back(object sender, EventArgs e)
+        {
+            try
+            {
+                UserAccount.Instance.Show();
+                this.Hide();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to open page:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void fill_productid_fgp_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (fill_productid_fgp.SelectedIndex == -1) return;
+
+            string selectedID = fill_productid_fgp.SelectedItem.ToString();
+            string connectionString = @"Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Pananom Database\Prooject Pananom Data.accdb";
+
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            {
+                // Find the Name that matches the ID for this specific user
+                string query = "SELECT [Product Name] FROM [User PI Product Inventory] WHERE [Product ID] = @PID AND [User ID] = @UID";
+                OleDbCommand cmd = new OleDbCommand(query, conn);
+                cmd.Parameters.AddWithValue("@PID", selectedID);
+                cmd.Parameters.AddWithValue("@UID", UserSession.UserInstance.ID);
+
+                try
+                {
+                    conn.Open();
+                    object result = cmd.ExecuteScalar(); // ExecuteScalar is perfect for getting one single value
+
+                    if (result != null)
+                    {
+                        fill_productname_fgp.Text = result.ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error auto-filling product name: " + ex.Message);
                 }
             }
         }

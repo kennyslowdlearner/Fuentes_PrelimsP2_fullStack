@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LiteDB;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,14 @@ namespace Fuentes_PrelimsP2
         public User_CostofProduction()
         {
             InitializeComponent();
+            this.Load += (s, e) => refreshreload();
+            this.VisibleChanged += (s, e) =>
+            {
+                if (this.Visible)
+                {
+                    refreshreload();
+                }
+            };
         }
 
         //(Global User Session) Component
@@ -206,37 +215,57 @@ namespace Fuentes_PrelimsP2
 
         private void refreshreload()
         {
-            connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
-            adapter = new OleDbDataAdapter("SELECT * FROM [User T&T Cost of Production]", connection);
-
+            string connectionString = @"Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Pananom Database\Prooject Pananom Data.accdb";
 
             try
             {
-                //connection.Open();
+                using (OleDbConnection connected = new OleDbConnection(connectionString))
+                {
+                    adapter = new OleDbDataAdapter("SELECT * FROM [User T&T Cost of Production]", connected);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
 
-                dataSet = new DataSet();
+                    // 1. Force the grid to reset
+                    Cost_Of_Production_Grid.DataSource = null;
+                    Cost_Of_Production_Grid.AutoGenerateColumns = true;
+                    Cost_Of_Production_Grid.DataSource = dataTable;
 
-                adapter.Fill(dataSet, "[User T&T Cost of Production]");
+                    // 2. Allow the UI thread to process the new columns
+                    Application.DoEvents();
+                }
 
-                //connection.Close();
+                // 3. Apply formatting only if data was actually loaded
+                if (Cost_Of_Production_Grid.Columns.Count > 0)
+                {
+                    // Set all to None first to allow manual overrides
+                    foreach (DataGridViewColumn col in Cost_Of_Production_Grid.Columns)
+                    {
+                        col.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                    }
 
-                Cost_Of_Production_Grid.DataSource = dataSet.Tables["[User T&T Cost of Production]"];
-                Cost_Of_Production_Grid.AutoGenerateColumns = true;
+                    // Fix for the "Item Name" invisibility:
+                    if (Cost_Of_Production_Grid.Columns.Contains("Item Name"))
+                    {
+                        Cost_Of_Production_Grid.Columns["Item Name"].Visible = true;
+                        Cost_Of_Production_Grid.Columns["Item Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                        Cost_Of_Production_Grid.Columns["Item Name"].MinimumWidth = 300; // Ensure it stays visible
+                    }
 
-                foreach(DataGridViewColumn col in Cost_Of_Production_Grid.Columns) { col.AutoSizeMode = DataGridViewAutoSizeColumnMode.None; }
-                if (Cost_Of_Production_Grid.Columns.Contains("Item Number")) Cost_Of_Production_Grid.Columns["Item number"].Visible = false;
-                Cost_Of_Production_Grid.Columns["Item Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    // Hide the database ID
+                    if (Cost_Of_Production_Grid.Columns.Contains("Item Number"))
+                        Cost_Of_Production_Grid.Columns["Item Number"].Visible = false;
 
-                Cost_Of_Production_Grid.Columns["Unit"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Cost_Of_Production_Grid.Columns["Quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Cost_Of_Production_Grid.Columns["Status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Cost_Of_Production_Grid.Columns["Price per unit"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Cost_Of_Production_Grid.Columns["Total"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Cost_Of_Production_Grid.Columns["Date of purchase"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Cost_Of_Production_Grid.Columns["Serial Number"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
+                    // Batch update the rest of the cells
+                    string[] autoFields = { "Unit", "Quantity", "Status", "Price per unit", "Total", "Date of purchase", "Serial Number" };
+                    foreach (string field in autoFields)
+                    {
+                        if (Cost_Of_Production_Grid.Columns.Contains(field))
+                        {
+                            Cost_Of_Production_Grid.Columns[field].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                        }
+                    }
+                }
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show("Failed to load data. Error: " + ex.Message);
