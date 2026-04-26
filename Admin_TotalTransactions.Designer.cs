@@ -41,13 +41,13 @@
             button4 = new Button();
             button8 = new Button();
             panel2 = new Panel();
-            label13 = new Label();
+            display_pr_tt = new Label();
             label5 = new Label();
-            label11 = new Label();
+            display_tt_tt = new Label();
             label3 = new Label();
-            label9 = new Label();
+            display_lps_tt = new Label();
             label2 = new Label();
-            label40 = new Label();
+            display_tps_tt = new Label();
             label8 = new Label();
             label6 = new Label();
             label4 = new Label();
@@ -170,13 +170,13 @@
             // panel2
             // 
             panel2.BackColor = Color.Transparent;
-            panel2.Controls.Add(label13);
+            panel2.Controls.Add(display_pr_tt);
             panel2.Controls.Add(label5);
-            panel2.Controls.Add(label11);
+            panel2.Controls.Add(display_tt_tt);
             panel2.Controls.Add(label3);
-            panel2.Controls.Add(label9);
+            panel2.Controls.Add(display_lps_tt);
             panel2.Controls.Add(label2);
-            panel2.Controls.Add(label40);
+            panel2.Controls.Add(display_tps_tt);
             panel2.Controls.Add(label8);
             panel2.Controls.Add(label6);
             panel2.Controls.Add(label4);
@@ -187,17 +187,17 @@
             panel2.Size = new Size(437, 329);
             panel2.TabIndex = 119;
             // 
-            // label13
+            // display_pr_tt
             // 
-            label13.AutoSize = true;
-            label13.BackColor = Color.Transparent;
-            label13.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label13.ForeColor = Color.Gold;
-            label13.Location = new Point(271, 215);
-            label13.Name = "label13";
-            label13.Size = new Size(111, 24);
-            label13.TabIndex = 136;
-            label13.Text = "(Label Only)";
+            display_pr_tt.AutoSize = true;
+            display_pr_tt.BackColor = Color.Transparent;
+            display_pr_tt.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_pr_tt.ForeColor = Color.Gold;
+            display_pr_tt.Location = new Point(271, 215);
+            display_pr_tt.Name = "display_pr_tt";
+            display_pr_tt.Size = new Size(111, 24);
+            display_pr_tt.TabIndex = 136;
+            display_pr_tt.Text = "(Label Only)";
             // 
             // label5
             // 
@@ -210,17 +210,17 @@
             label5.TabIndex = 133;
             label5.Text = "Total Transactions";
             // 
-            // label11
+            // display_tt_tt
             // 
-            label11.AutoSize = true;
-            label11.BackColor = Color.Transparent;
-            label11.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label11.ForeColor = Color.Gold;
-            label11.Location = new Point(271, 137);
-            label11.Name = "label11";
-            label11.Size = new Size(111, 24);
-            label11.TabIndex = 137;
-            label11.Text = "(Label Only)";
+            display_tt_tt.AutoSize = true;
+            display_tt_tt.BackColor = Color.Transparent;
+            display_tt_tt.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_tt_tt.ForeColor = Color.Gold;
+            display_tt_tt.Location = new Point(271, 137);
+            display_tt_tt.Name = "display_tt_tt";
+            display_tt_tt.Size = new Size(111, 24);
+            display_tt_tt.TabIndex = 137;
+            display_tt_tt.Text = "(Label Only)";
             // 
             // label3
             // 
@@ -233,17 +233,17 @@
             label3.TabIndex = 131;
             label3.Text = ":";
             // 
-            // label9
+            // display_lps_tt
             // 
-            label9.AutoSize = true;
-            label9.BackColor = Color.Transparent;
-            label9.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label9.ForeColor = Color.Gold;
-            label9.Location = new Point(271, 107);
-            label9.Name = "label9";
-            label9.Size = new Size(111, 24);
-            label9.TabIndex = 138;
-            label9.Text = "(Label Only)";
+            display_lps_tt.AutoSize = true;
+            display_lps_tt.BackColor = Color.Transparent;
+            display_lps_tt.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_lps_tt.ForeColor = Color.Gold;
+            display_lps_tt.Location = new Point(271, 107);
+            display_lps_tt.Name = "display_lps_tt";
+            display_lps_tt.Size = new Size(111, 24);
+            display_lps_tt.TabIndex = 138;
+            display_lps_tt.Text = "(Label Only)";
             // 
             // label2
             // 
@@ -256,17 +256,17 @@
             label2.TabIndex = 135;
             label2.Text = "Top Performing Seller";
             // 
-            // label40
+            // display_tps_tt
             // 
-            label40.AutoSize = true;
-            label40.BackColor = Color.Transparent;
-            label40.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label40.ForeColor = Color.Gold;
-            label40.Location = new Point(271, 77);
-            label40.Name = "label40";
-            label40.Size = new Size(111, 24);
-            label40.TabIndex = 139;
-            label40.Text = "(Label Only)";
+            display_tps_tt.AutoSize = true;
+            display_tps_tt.BackColor = Color.Transparent;
+            display_tps_tt.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_tps_tt.ForeColor = Color.Gold;
+            display_tps_tt.Location = new Point(271, 77);
+            display_tps_tt.Name = "display_tps_tt";
+            display_tps_tt.Size = new Size(111, 24);
+            display_tps_tt.TabIndex = 139;
+            display_tps_tt.Text = "(Label Only)";
             // 
             // label8
             // 
@@ -380,13 +380,13 @@
         private Button button8;
         private Panel panel2;
         private Panel panel1;
-        private Label label13;
+        private Label display_pr_tt;
         private Label label5;
-        private Label label11;
+        private Label display_tt_tt;
         private Label label3;
-        private Label label9;
+        private Label display_lps_tt;
         private Label label2;
-        private Label label40;
+        private Label display_tps_tt;
         private Label label8;
         private Label label6;
         private Label label4;

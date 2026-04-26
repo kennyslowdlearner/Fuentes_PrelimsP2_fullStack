@@ -57,18 +57,18 @@
             label17 = new Label();
             label18 = new Label();
             label19 = new Label();
-            label40 = new Label();
-            label20 = new Label();
-            label21 = new Label();
-            label22 = new Label();
-            label23 = new Label();
+            display_totalrevenue_tsr = new Label();
+            display_totalcost_tsr = new Label();
+            display_netprofit_tsr = new Label();
+            display_atv_tsr = new Label();
+            display_salesgrowth_tsr = new Label();
             label24 = new Label();
-            label25 = new Label();
-            label26 = new Label();
-            label27 = new Label();
-            label31 = new Label();
-            label32 = new Label();
-            label33 = new Label();
+            display_tspOne_tsr = new Label();
+            display_tspTwo_tsr = new Label();
+            display_tspThree_tsr = new Label();
+            display_lspOne_tsr = new Label();
+            display_lspTwo_tsp = new Label();
+            display_lspThree_tsp = new Label();
             button4 = new Button();
             button8 = new Button();
             button6 = new Button();
@@ -375,65 +375,65 @@
             label19.TabIndex = 1;
             label19.Text = "3.";
             // 
-            // label40
+            // display_totalrevenue_tsr
             // 
-            label40.AutoSize = true;
-            label40.BackColor = Color.Transparent;
-            label40.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label40.ForeColor = Color.Gold;
-            label40.Location = new Point(270, 533);
-            label40.Name = "label40";
-            label40.Size = new Size(111, 24);
-            label40.TabIndex = 108;
-            label40.Text = "(Label Only)";
+            display_totalrevenue_tsr.AutoSize = true;
+            display_totalrevenue_tsr.BackColor = Color.Transparent;
+            display_totalrevenue_tsr.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_totalrevenue_tsr.ForeColor = Color.Gold;
+            display_totalrevenue_tsr.Location = new Point(270, 533);
+            display_totalrevenue_tsr.Name = "display_totalrevenue_tsr";
+            display_totalrevenue_tsr.Size = new Size(111, 24);
+            display_totalrevenue_tsr.TabIndex = 108;
+            display_totalrevenue_tsr.Text = "(Label Only)";
             // 
-            // label20
+            // display_totalcost_tsr
             // 
-            label20.AutoSize = true;
-            label20.BackColor = Color.Transparent;
-            label20.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label20.ForeColor = Color.Gold;
-            label20.Location = new Point(270, 569);
-            label20.Name = "label20";
-            label20.Size = new Size(111, 24);
-            label20.TabIndex = 108;
-            label20.Text = "(Label Only)";
+            display_totalcost_tsr.AutoSize = true;
+            display_totalcost_tsr.BackColor = Color.Transparent;
+            display_totalcost_tsr.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_totalcost_tsr.ForeColor = Color.Gold;
+            display_totalcost_tsr.Location = new Point(270, 569);
+            display_totalcost_tsr.Name = "display_totalcost_tsr";
+            display_totalcost_tsr.Size = new Size(111, 24);
+            display_totalcost_tsr.TabIndex = 108;
+            display_totalcost_tsr.Text = "(Label Only)";
             // 
-            // label21
+            // display_netprofit_tsr
             // 
-            label21.AutoSize = true;
-            label21.BackColor = Color.Transparent;
-            label21.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label21.ForeColor = Color.Gold;
-            label21.Location = new Point(270, 606);
-            label21.Name = "label21";
-            label21.Size = new Size(111, 24);
-            label21.TabIndex = 108;
-            label21.Text = "(Label Only)";
+            display_netprofit_tsr.AutoSize = true;
+            display_netprofit_tsr.BackColor = Color.Transparent;
+            display_netprofit_tsr.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_netprofit_tsr.ForeColor = Color.Gold;
+            display_netprofit_tsr.Location = new Point(270, 606);
+            display_netprofit_tsr.Name = "display_netprofit_tsr";
+            display_netprofit_tsr.Size = new Size(111, 24);
+            display_netprofit_tsr.TabIndex = 108;
+            display_netprofit_tsr.Text = "(Label Only)";
             // 
-            // label22
+            // display_atv_tsr
             // 
-            label22.AutoSize = true;
-            label22.BackColor = Color.Transparent;
-            label22.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label22.ForeColor = Color.Gold;
-            label22.Location = new Point(398, 645);
-            label22.Name = "label22";
-            label22.Size = new Size(111, 24);
-            label22.TabIndex = 108;
-            label22.Text = "(Label Only)";
+            display_atv_tsr.AutoSize = true;
+            display_atv_tsr.BackColor = Color.Transparent;
+            display_atv_tsr.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_atv_tsr.ForeColor = Color.Gold;
+            display_atv_tsr.Location = new Point(398, 645);
+            display_atv_tsr.Name = "display_atv_tsr";
+            display_atv_tsr.Size = new Size(111, 24);
+            display_atv_tsr.TabIndex = 108;
+            display_atv_tsr.Text = "(Label Only)";
             // 
-            // label23
+            // display_salesgrowth_tsr
             // 
-            label23.AutoSize = true;
-            label23.BackColor = Color.Transparent;
-            label23.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label23.ForeColor = Color.Gold;
-            label23.Location = new Point(295, 681);
-            label23.Name = "label23";
-            label23.Size = new Size(131, 24);
-            label23.TabIndex = 108;
-            label23.Text = "(Label Only) %";
+            display_salesgrowth_tsr.AutoSize = true;
+            display_salesgrowth_tsr.BackColor = Color.Transparent;
+            display_salesgrowth_tsr.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_salesgrowth_tsr.ForeColor = Color.Gold;
+            display_salesgrowth_tsr.Location = new Point(295, 681);
+            display_salesgrowth_tsr.Name = "display_salesgrowth_tsr";
+            display_salesgrowth_tsr.Size = new Size(131, 24);
+            display_salesgrowth_tsr.TabIndex = 108;
+            display_salesgrowth_tsr.Text = "(Label Only) %";
             // 
             // label24
             // 
@@ -447,77 +447,77 @@
             label24.TabIndex = 108;
             label24.Text = "(Label Only)";
             // 
-            // label25
+            // display_tspOne_tsr
             // 
-            label25.AutoSize = true;
-            label25.BackColor = Color.Transparent;
-            label25.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label25.ForeColor = Color.Gold;
-            label25.Location = new Point(596, 571);
-            label25.Name = "label25";
-            label25.Size = new Size(111, 24);
-            label25.TabIndex = 108;
-            label25.Text = "(Label Only)";
+            display_tspOne_tsr.AutoSize = true;
+            display_tspOne_tsr.BackColor = Color.Transparent;
+            display_tspOne_tsr.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_tspOne_tsr.ForeColor = Color.Gold;
+            display_tspOne_tsr.Location = new Point(596, 571);
+            display_tspOne_tsr.Name = "display_tspOne_tsr";
+            display_tspOne_tsr.Size = new Size(111, 24);
+            display_tspOne_tsr.TabIndex = 108;
+            display_tspOne_tsr.Text = "(Label Only)";
             // 
-            // label26
+            // display_tspTwo_tsr
             // 
-            label26.AutoSize = true;
-            label26.BackColor = Color.Transparent;
-            label26.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label26.ForeColor = Color.Gold;
-            label26.Location = new Point(596, 608);
-            label26.Name = "label26";
-            label26.Size = new Size(111, 24);
-            label26.TabIndex = 108;
-            label26.Text = "(Label Only)";
+            display_tspTwo_tsr.AutoSize = true;
+            display_tspTwo_tsr.BackColor = Color.Transparent;
+            display_tspTwo_tsr.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_tspTwo_tsr.ForeColor = Color.Gold;
+            display_tspTwo_tsr.Location = new Point(596, 608);
+            display_tspTwo_tsr.Name = "display_tspTwo_tsr";
+            display_tspTwo_tsr.Size = new Size(111, 24);
+            display_tspTwo_tsr.TabIndex = 108;
+            display_tspTwo_tsr.Text = "(Label Only)";
             // 
-            // label27
+            // display_tspThree_tsr
             // 
-            label27.AutoSize = true;
-            label27.BackColor = Color.Transparent;
-            label27.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label27.ForeColor = Color.Gold;
-            label27.Location = new Point(596, 644);
-            label27.Name = "label27";
-            label27.Size = new Size(111, 24);
-            label27.TabIndex = 108;
-            label27.Text = "(Label Only)";
+            display_tspThree_tsr.AutoSize = true;
+            display_tspThree_tsr.BackColor = Color.Transparent;
+            display_tspThree_tsr.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_tspThree_tsr.ForeColor = Color.Gold;
+            display_tspThree_tsr.Location = new Point(596, 644);
+            display_tspThree_tsr.Name = "display_tspThree_tsr";
+            display_tspThree_tsr.Size = new Size(111, 24);
+            display_tspThree_tsr.TabIndex = 108;
+            display_tspThree_tsr.Text = "(Label Only)";
             // 
-            // label31
+            // display_lspOne_tsr
             // 
-            label31.AutoSize = true;
-            label31.BackColor = Color.Transparent;
-            label31.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label31.ForeColor = Color.Gold;
-            label31.Location = new Point(915, 572);
-            label31.Name = "label31";
-            label31.Size = new Size(111, 24);
-            label31.TabIndex = 108;
-            label31.Text = "(Label Only)";
+            display_lspOne_tsr.AutoSize = true;
+            display_lspOne_tsr.BackColor = Color.Transparent;
+            display_lspOne_tsr.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_lspOne_tsr.ForeColor = Color.Gold;
+            display_lspOne_tsr.Location = new Point(915, 572);
+            display_lspOne_tsr.Name = "display_lspOne_tsr";
+            display_lspOne_tsr.Size = new Size(111, 24);
+            display_lspOne_tsr.TabIndex = 108;
+            display_lspOne_tsr.Text = "(Label Only)";
             // 
-            // label32
+            // display_lspTwo_tsp
             // 
-            label32.AutoSize = true;
-            label32.BackColor = Color.Transparent;
-            label32.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label32.ForeColor = Color.Gold;
-            label32.Location = new Point(915, 609);
-            label32.Name = "label32";
-            label32.Size = new Size(111, 24);
-            label32.TabIndex = 108;
-            label32.Text = "(Label Only)";
+            display_lspTwo_tsp.AutoSize = true;
+            display_lspTwo_tsp.BackColor = Color.Transparent;
+            display_lspTwo_tsp.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_lspTwo_tsp.ForeColor = Color.Gold;
+            display_lspTwo_tsp.Location = new Point(915, 609);
+            display_lspTwo_tsp.Name = "display_lspTwo_tsp";
+            display_lspTwo_tsp.Size = new Size(111, 24);
+            display_lspTwo_tsp.TabIndex = 108;
+            display_lspTwo_tsp.Text = "(Label Only)";
             // 
-            // label33
+            // display_lspThree_tsp
             // 
-            label33.AutoSize = true;
-            label33.BackColor = Color.Transparent;
-            label33.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label33.ForeColor = Color.Gold;
-            label33.Location = new Point(915, 645);
-            label33.Name = "label33";
-            label33.Size = new Size(111, 24);
-            label33.TabIndex = 108;
-            label33.Text = "(Label Only)";
+            display_lspThree_tsp.AutoSize = true;
+            display_lspThree_tsp.BackColor = Color.Transparent;
+            display_lspThree_tsp.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_lspThree_tsp.ForeColor = Color.Gold;
+            display_lspThree_tsp.Location = new Point(915, 645);
+            display_lspThree_tsp.Name = "display_lspThree_tsp";
+            display_lspThree_tsp.Size = new Size(111, 24);
+            display_lspThree_tsp.TabIndex = 108;
+            display_lspThree_tsp.Text = "(Label Only)";
             // 
             // button4
             // 
@@ -612,18 +612,18 @@
             Controls.Add(button6);
             Controls.Add(button4);
             Controls.Add(button8);
-            Controls.Add(label23);
-            Controls.Add(label22);
-            Controls.Add(label21);
-            Controls.Add(label20);
-            Controls.Add(label33);
-            Controls.Add(label32);
-            Controls.Add(label31);
-            Controls.Add(label27);
-            Controls.Add(label26);
-            Controls.Add(label25);
+            Controls.Add(display_salesgrowth_tsr);
+            Controls.Add(display_atv_tsr);
+            Controls.Add(display_netprofit_tsr);
+            Controls.Add(display_totalcost_tsr);
+            Controls.Add(display_lspThree_tsp);
+            Controls.Add(display_lspTwo_tsp);
+            Controls.Add(display_lspOne_tsr);
+            Controls.Add(display_tspThree_tsr);
+            Controls.Add(display_tspTwo_tsr);
+            Controls.Add(display_tspOne_tsr);
             Controls.Add(label24);
-            Controls.Add(label40);
+            Controls.Add(display_totalrevenue_tsr);
             Controls.Add(menuStrip2);
             Controls.Add(label11);
             Controls.Add(label10);
@@ -684,18 +684,18 @@
         private Label label17;
         private Label label18;
         private Label label19;
-        private Label label40;
-        private Label label20;
-        private Label label21;
-        private Label label22;
-        private Label label23;
+        private Label display_totalrevenue_tsr;
+        private Label display_totalcost_tsr;
+        private Label display_netprofit_tsr;
+        private Label display_atv_tsr;
+        private Label display_salesgrowth_tsr;
         private Label label24;
-        private Label label25;
-        private Label label26;
-        private Label label27;
-        private Label label31;
-        private Label label32;
-        private Label label33;
+        private Label display_tspOne_tsr;
+        private Label display_tspTwo_tsr;
+        private Label display_tspThree_tsr;
+        private Label display_lspOne_tsr;
+        private Label display_lspTwo_tsp;
+        private Label display_lspThree_tsp;
         private Button button4;
         private Button button8;
         private Button button6;

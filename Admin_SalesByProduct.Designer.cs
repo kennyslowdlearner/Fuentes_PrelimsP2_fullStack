@@ -32,11 +32,11 @@
             panel1 = new Panel();
             dataGridView1 = new DataGridView();
             panel2 = new Panel();
-            label15 = new Label();
-            label13 = new Label();
-            label11 = new Label();
-            label9 = new Label();
-            label40 = new Label();
+            display_pr_asp = new Label();
+            display_lr_asp = new Label();
+            display_ir_asp = new Label();
+            display_lsp_asp = new Label();
+            display_tps_asp = new Label();
             label7 = new Label();
             label14 = new Label();
             label6 = new Label();
@@ -87,11 +87,11 @@
             // panel2
             // 
             panel2.BackColor = Color.Transparent;
-            panel2.Controls.Add(label15);
-            panel2.Controls.Add(label13);
-            panel2.Controls.Add(label11);
-            panel2.Controls.Add(label9);
-            panel2.Controls.Add(label40);
+            panel2.Controls.Add(display_pr_asp);
+            panel2.Controls.Add(display_lr_asp);
+            panel2.Controls.Add(display_ir_asp);
+            panel2.Controls.Add(display_lsp_asp);
+            panel2.Controls.Add(display_tps_asp);
             panel2.Controls.Add(label7);
             panel2.Controls.Add(label14);
             panel2.Controls.Add(label6);
@@ -107,65 +107,65 @@
             panel2.Size = new Size(437, 329);
             panel2.TabIndex = 0;
             // 
-            // label15
+            // display_pr_asp
             // 
-            label15.AutoSize = true;
-            label15.BackColor = Color.Transparent;
-            label15.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label15.ForeColor = Color.Gold;
-            label15.Location = new Point(254, 238);
-            label15.Name = "label15";
-            label15.Size = new Size(111, 24);
-            label15.TabIndex = 121;
-            label15.Text = "(Label Only)";
+            display_pr_asp.AutoSize = true;
+            display_pr_asp.BackColor = Color.Transparent;
+            display_pr_asp.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_pr_asp.ForeColor = Color.Gold;
+            display_pr_asp.Location = new Point(254, 238);
+            display_pr_asp.Name = "display_pr_asp";
+            display_pr_asp.Size = new Size(111, 24);
+            display_pr_asp.TabIndex = 121;
+            display_pr_asp.Text = "(Label Only)";
             // 
-            // label13
+            // display_lr_asp
             // 
-            label13.AutoSize = true;
-            label13.BackColor = Color.Transparent;
-            label13.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label13.ForeColor = Color.Gold;
-            label13.Location = new Point(254, 168);
-            label13.Name = "label13";
-            label13.Size = new Size(111, 24);
-            label13.TabIndex = 121;
-            label13.Text = "(Label Only)";
+            display_lr_asp.AutoSize = true;
+            display_lr_asp.BackColor = Color.Transparent;
+            display_lr_asp.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_lr_asp.ForeColor = Color.Gold;
+            display_lr_asp.Location = new Point(254, 168);
+            display_lr_asp.Name = "display_lr_asp";
+            display_lr_asp.Size = new Size(111, 24);
+            display_lr_asp.TabIndex = 121;
+            display_lr_asp.Text = "(Label Only)";
             // 
-            // label11
+            // display_ir_asp
             // 
-            label11.AutoSize = true;
-            label11.BackColor = Color.Transparent;
-            label11.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label11.ForeColor = Color.Gold;
-            label11.Location = new Point(254, 136);
-            label11.Name = "label11";
-            label11.Size = new Size(111, 24);
-            label11.TabIndex = 121;
-            label11.Text = "(Label Only)";
+            display_ir_asp.AutoSize = true;
+            display_ir_asp.BackColor = Color.Transparent;
+            display_ir_asp.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_ir_asp.ForeColor = Color.Gold;
+            display_ir_asp.Location = new Point(254, 136);
+            display_ir_asp.Name = "display_ir_asp";
+            display_ir_asp.Size = new Size(111, 24);
+            display_ir_asp.TabIndex = 121;
+            display_ir_asp.Text = "(Label Only)";
             // 
-            // label9
+            // display_lsp_asp
             // 
-            label9.AutoSize = true;
-            label9.BackColor = Color.Transparent;
-            label9.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label9.ForeColor = Color.Gold;
-            label9.Location = new Point(254, 106);
-            label9.Name = "label9";
-            label9.Size = new Size(111, 24);
-            label9.TabIndex = 121;
-            label9.Text = "(Label Only)";
+            display_lsp_asp.AutoSize = true;
+            display_lsp_asp.BackColor = Color.Transparent;
+            display_lsp_asp.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_lsp_asp.ForeColor = Color.Gold;
+            display_lsp_asp.Location = new Point(254, 106);
+            display_lsp_asp.Name = "display_lsp_asp";
+            display_lsp_asp.Size = new Size(111, 24);
+            display_lsp_asp.TabIndex = 121;
+            display_lsp_asp.Text = "(Label Only)";
             // 
-            // label40
+            // display_tps_asp
             // 
-            label40.AutoSize = true;
-            label40.BackColor = Color.Transparent;
-            label40.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label40.ForeColor = Color.Gold;
-            label40.Location = new Point(254, 76);
-            label40.Name = "label40";
-            label40.Size = new Size(111, 24);
-            label40.TabIndex = 121;
-            label40.Text = "(Label Only)";
+            display_tps_asp.AutoSize = true;
+            display_tps_asp.BackColor = Color.Transparent;
+            display_tps_asp.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_tps_asp.ForeColor = Color.Gold;
+            display_tps_asp.Location = new Point(254, 76);
+            display_tps_asp.Name = "display_tps_asp";
+            display_tps_asp.Size = new Size(111, 24);
+            display_tps_asp.TabIndex = 121;
+            display_tps_asp.Text = "(Label Only)";
             // 
             // label7
             // 
@@ -463,17 +463,17 @@
         private ToolStripMenuItem viewAccountToolStripMenuItem1;
         private ToolStripMenuItem accountSettingsToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItem4;
-        private Label label40;
+        private Label display_tps_asp;
         private Label label7;
         private Label label6;
         private Label label5;
         private Label label4;
         private Label label2;
         private Label label3;
-        private Label label15;
-        private Label label13;
-        private Label label11;
-        private Label label9;
+        private Label display_pr_asp;
+        private Label display_lr_asp;
+        private Label display_ir_asp;
+        private Label display_lsp_asp;
         private Label label14;
         private Label label12;
         private Label label10;

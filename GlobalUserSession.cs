@@ -25,6 +25,9 @@ namespace Fuentes_PrelimsP2
         internal long ContactNumber { get; set; }
         internal string Email {get; set;}
         internal string Hotline { get; set; }
+        internal bool Active { get; set; }
+        internal int Attempt { get; set; }
+        internal bool Locked { get; set; }
 
         internal static void reset()
         {

@@ -34,10 +34,10 @@
             learnMoreToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem3 = new ToolStripMenuItem();
             viewAccountToolStripMenuItem1 = new ToolStripMenuItem();
-            label13 = new Label();
-            label11 = new Label();
-            label9 = new Label();
-            label40 = new Label();
+            display_pr_asup = new Label();
+            display_tt_asup = new Label();
+            display_lps_asup = new Label();
+            display_tps_asup = new Label();
             label6 = new Label();
             label12 = new Label();
             label5 = new Label();
@@ -98,53 +98,53 @@
             viewAccountToolStripMenuItem1.Size = new Size(281, 34);
             viewAccountToolStripMenuItem1.Text = "View Account";
             // 
-            // label13
+            // display_pr_asup
             // 
-            label13.AutoSize = true;
-            label13.BackColor = Color.Transparent;
-            label13.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label13.ForeColor = Color.Gold;
-            label13.Location = new Point(254, 214);
-            label13.Name = "label13";
-            label13.Size = new Size(111, 24);
-            label13.TabIndex = 121;
-            label13.Text = "(Label Only)";
+            display_pr_asup.AutoSize = true;
+            display_pr_asup.BackColor = Color.Transparent;
+            display_pr_asup.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_pr_asup.ForeColor = Color.Gold;
+            display_pr_asup.Location = new Point(254, 214);
+            display_pr_asup.Name = "display_pr_asup";
+            display_pr_asup.Size = new Size(111, 24);
+            display_pr_asup.TabIndex = 121;
+            display_pr_asup.Text = "(Label Only)";
             // 
-            // label11
+            // display_tt_asup
             // 
-            label11.AutoSize = true;
-            label11.BackColor = Color.Transparent;
-            label11.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label11.ForeColor = Color.Gold;
-            label11.Location = new Point(254, 136);
-            label11.Name = "label11";
-            label11.Size = new Size(111, 24);
-            label11.TabIndex = 121;
-            label11.Text = "(Label Only)";
+            display_tt_asup.AutoSize = true;
+            display_tt_asup.BackColor = Color.Transparent;
+            display_tt_asup.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_tt_asup.ForeColor = Color.Gold;
+            display_tt_asup.Location = new Point(254, 136);
+            display_tt_asup.Name = "display_tt_asup";
+            display_tt_asup.Size = new Size(111, 24);
+            display_tt_asup.TabIndex = 121;
+            display_tt_asup.Text = "(Label Only)";
             // 
-            // label9
+            // display_lps_asup
             // 
-            label9.AutoSize = true;
-            label9.BackColor = Color.Transparent;
-            label9.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label9.ForeColor = Color.Gold;
-            label9.Location = new Point(254, 106);
-            label9.Name = "label9";
-            label9.Size = new Size(111, 24);
-            label9.TabIndex = 121;
-            label9.Text = "(Label Only)";
+            display_lps_asup.AutoSize = true;
+            display_lps_asup.BackColor = Color.Transparent;
+            display_lps_asup.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_lps_asup.ForeColor = Color.Gold;
+            display_lps_asup.Location = new Point(254, 106);
+            display_lps_asup.Name = "display_lps_asup";
+            display_lps_asup.Size = new Size(111, 24);
+            display_lps_asup.TabIndex = 121;
+            display_lps_asup.Text = "(Label Only)";
             // 
-            // label40
+            // display_tps_asup
             // 
-            label40.AutoSize = true;
-            label40.BackColor = Color.Transparent;
-            label40.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label40.ForeColor = Color.Gold;
-            label40.Location = new Point(254, 76);
-            label40.Name = "label40";
-            label40.Size = new Size(111, 24);
-            label40.TabIndex = 121;
-            label40.Text = "(Label Only)";
+            display_tps_asup.AutoSize = true;
+            display_tps_asup.BackColor = Color.Transparent;
+            display_tps_asup.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_tps_asup.ForeColor = Color.Gold;
+            display_tps_asup.Location = new Point(254, 76);
+            display_tps_asup.Name = "display_tps_asup";
+            display_tps_asup.Size = new Size(111, 24);
+            display_tps_asup.TabIndex = 121;
+            display_tps_asup.Text = "(Label Only)";
             // 
             // label6
             // 
@@ -309,10 +309,10 @@
             // panel2
             // 
             panel2.BackColor = Color.Transparent;
-            panel2.Controls.Add(label13);
-            panel2.Controls.Add(label11);
-            panel2.Controls.Add(label9);
-            panel2.Controls.Add(label40);
+            panel2.Controls.Add(display_pr_asup);
+            panel2.Controls.Add(display_tt_asup);
+            panel2.Controls.Add(display_lps_asup);
+            panel2.Controls.Add(display_tps_asup);
             panel2.Controls.Add(label6);
             panel2.Controls.Add(label12);
             panel2.Controls.Add(label5);
@@ -414,10 +414,10 @@
         private ToolStripMenuItem learnMoreToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItem3;
         private ToolStripMenuItem viewAccountToolStripMenuItem1;
-        private Label label13;
-        private Label label11;
-        private Label label9;
-        private Label label40;
+        private Label display_pr_asup;
+        private Label display_tt_asup;
+        private Label display_lps_asup;
+        private Label display_tps_asup;
         private Label label6;
         private Label label12;
         private Label label5;

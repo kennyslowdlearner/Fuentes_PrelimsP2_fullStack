@@ -31,30 +31,20 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminAccountControl));
             panel1 = new Panel();
             Account_Control_Grid = new DataGridView();
-            button3 = new Button();
             button2 = new Button();
             button1 = new Button();
             button8 = new Button();
             button4 = new Button();
             label26 = new Label();
-            label40 = new Label();
+            display_users_aac = new Label();
             label2 = new Label();
-            label1 = new Label();
-            label4 = new Label();
+            display_actives_aac = new Label();
+            display_inactives_aac = new Label();
             label5 = new Label();
             button6 = new Button();
             button5 = new Button();
-            menuStrip2 = new MenuStrip();
-            sssssToolStripMenuItem = new ToolStripMenuItem();
-            reloadToolStripMenuItem = new ToolStripMenuItem();
-            learnMoreToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem3 = new ToolStripMenuItem();
-            viewAccountToolStripMenuItem1 = new ToolStripMenuItem();
-            accountSettingsToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem4 = new ToolStripMenuItem();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Account_Control_Grid).BeginInit();
-            menuStrip2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -74,21 +64,6 @@
             Account_Control_Grid.Size = new Size(1338, 393);
             Account_Control_Grid.TabIndex = 0;
             // 
-            // button3
-            // 
-            button3.BackColor = Color.Yellow;
-            button3.FlatAppearance.BorderColor = Color.Gold;
-            button3.FlatAppearance.BorderSize = 2;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.ForeColor = Color.DarkGreen;
-            button3.Location = new Point(358, 635);
-            button3.Name = "button3";
-            button3.Size = new Size(143, 38);
-            button3.TabIndex = 89;
-            button3.Text = "Update";
-            button3.UseVisualStyleBackColor = false;
-            // 
             // button2
             // 
             button2.BackColor = Color.Yellow;
@@ -97,12 +72,13 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.DarkGreen;
-            button2.Location = new Point(209, 635);
+            button2.Location = new Point(215, 638);
             button2.Name = "button2";
             button2.Size = new Size(143, 38);
             button2.TabIndex = 90;
-            button2.Text = "Delete";
+            button2.Text = "Unlock";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += press_unlock_aac;
             // 
             // button1
             // 
@@ -112,12 +88,13 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.DarkGreen;
-            button1.Location = new Point(60, 635);
+            button1.Location = new Point(66, 638);
             button1.Name = "button1";
             button1.Size = new Size(143, 38);
             button1.TabIndex = 91;
-            button1.Text = "Insert";
+            button1.Text = "Enable/Disable";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += press_enableDisable_aac;
             // 
             // button8
             // 
@@ -157,23 +134,23 @@
             label26.BackColor = Color.Transparent;
             label26.Font = new Font("Glacial Indifference", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label26.ForeColor = Color.LawnGreen;
-            label26.Location = new Point(507, 641);
+            label26.Location = new Point(382, 644);
             label26.Name = "label26";
             label26.Size = new Size(142, 29);
             label26.TabIndex = 93;
             label26.Text = "Total Users:";
             // 
-            // label40
+            // display_users_aac
             // 
-            label40.AutoSize = true;
-            label40.BackColor = Color.Transparent;
-            label40.Font = new Font("Glacial Indifference", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label40.ForeColor = Color.Gold;
-            label40.Location = new Point(646, 641);
-            label40.Name = "label40";
-            label40.Size = new Size(57, 29);
-            label40.TabIndex = 94;
-            label40.Text = "Num";
+            display_users_aac.AutoSize = true;
+            display_users_aac.BackColor = Color.Transparent;
+            display_users_aac.Font = new Font("Glacial Indifference", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            display_users_aac.ForeColor = Color.Gold;
+            display_users_aac.Location = new Point(521, 644);
+            display_users_aac.Name = "display_users_aac";
+            display_users_aac.Size = new Size(57, 29);
+            display_users_aac.TabIndex = 94;
+            display_users_aac.Text = "Num";
             // 
             // label2
             // 
@@ -181,35 +158,36 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Glacial Indifference", 12F, FontStyle.Bold);
             label2.ForeColor = Color.LawnGreen;
-            label2.Location = new Point(728, 641);
+            label2.Location = new Point(612, 647);
             label2.Name = "label2";
             label2.Size = new Size(91, 29);
             label2.TabIndex = 93;
             label2.Text = "Active:";
             // 
-            // label1
+            // display_actives_aac
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Glacial Indifference", 12F);
-            label1.ForeColor = Color.Gold;
-            label1.Location = new Point(816, 641);
-            label1.Name = "label1";
-            label1.Size = new Size(57, 29);
-            label1.TabIndex = 94;
-            label1.Text = "Num";
+            display_actives_aac.AutoSize = true;
+            display_actives_aac.BackColor = Color.Transparent;
+            display_actives_aac.Font = new Font("Glacial Indifference", 12F);
+            display_actives_aac.ForeColor = Color.Gold;
+            display_actives_aac.Location = new Point(700, 647);
+            display_actives_aac.Name = "display_actives_aac";
+            display_actives_aac.Size = new Size(57, 29);
+            display_actives_aac.TabIndex = 94;
+            display_actives_aac.Text = "Num";
             // 
-            // label4
+            // display_inactives_aac
             // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.Transparent;
-            label4.Font = new Font("Glacial Indifference", 12F);
-            label4.ForeColor = Color.Gold;
-            label4.Location = new Point(1016, 640);
-            label4.Name = "label4";
-            label4.Size = new Size(57, 29);
-            label4.TabIndex = 94;
-            label4.Text = "Num";
+            display_inactives_aac.AutoSize = true;
+            display_inactives_aac.BackColor = Color.Transparent;
+            display_inactives_aac.Font = new Font("Glacial Indifference", 12F);
+            display_inactives_aac.ForeColor = Color.Gold;
+            display_inactives_aac.Location = new Point(911, 649);
+            display_inactives_aac.Name = "display_inactives_aac";
+            display_inactives_aac.Size = new Size(57, 29);
+            display_inactives_aac.TabIndex = 94;
+            display_inactives_aac.Text = "Num";
+            display_inactives_aac.Click += label4_Click;
             // 
             // label5
             // 
@@ -217,7 +195,7 @@
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Glacial Indifference", 12F, FontStyle.Bold);
             label5.ForeColor = Color.LawnGreen;
-            label5.Location = new Point(902, 638);
+            label5.Location = new Point(797, 647);
             label5.Name = "label5";
             label5.Size = new Size(108, 29);
             label5.TabIndex = 93;
@@ -250,84 +228,20 @@
             button5.TabIndex = 96;
             button5.UseVisualStyleBackColor = false;
             // 
-            // menuStrip2
-            // 
-            menuStrip2.BackColor = Color.Transparent;
-            menuStrip2.Dock = DockStyle.None;
-            menuStrip2.ImageScalingSize = new Size(24, 24);
-            menuStrip2.Items.AddRange(new ToolStripItem[] { sssssToolStripMenuItem, accountSettingsToolStripMenuItem });
-            menuStrip2.Location = new Point(1072, 195);
-            menuStrip2.Name = "menuStrip2";
-            menuStrip2.Size = new Size(343, 32);
-            menuStrip2.TabIndex = 107;
-            menuStrip2.Text = "menuStrip2";
-            // 
-            // sssssToolStripMenuItem
-            // 
-            sssssToolStripMenuItem.BackColor = Color.Transparent;
-            sssssToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { reloadToolStripMenuItem, learnMoreToolStripMenuItem, toolStripMenuItem3, viewAccountToolStripMenuItem1 });
-            sssssToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            sssssToolStripMenuItem.ForeColor = Color.DarkOliveGreen;
-            sssssToolStripMenuItem.Name = "sssssToolStripMenuItem";
-            sssssToolStripMenuItem.Size = new Size(151, 28);
-            sssssToolStripMenuItem.Text = "More Options";
-            // 
-            // reloadToolStripMenuItem
-            // 
-            reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
-            reloadToolStripMenuItem.Size = new Size(281, 34);
-            reloadToolStripMenuItem.Text = "Reload";
-            // 
-            // learnMoreToolStripMenuItem
-            // 
-            learnMoreToolStripMenuItem.Name = "learnMoreToolStripMenuItem";
-            learnMoreToolStripMenuItem.Size = new Size(281, 34);
-            learnMoreToolStripMenuItem.Text = "Learn More";
-            // 
-            // toolStripMenuItem3
-            // 
-            toolStripMenuItem3.Name = "toolStripMenuItem3";
-            toolStripMenuItem3.Size = new Size(281, 34);
-            toolStripMenuItem3.Text = "Contact Developer";
-            // 
-            // viewAccountToolStripMenuItem1
-            // 
-            viewAccountToolStripMenuItem1.Name = "viewAccountToolStripMenuItem1";
-            viewAccountToolStripMenuItem1.Size = new Size(281, 34);
-            viewAccountToolStripMenuItem1.Text = "View Account";
-            // 
-            // accountSettingsToolStripMenuItem
-            // 
-            accountSettingsToolStripMenuItem.BackColor = Color.Transparent;
-            accountSettingsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem4 });
-            accountSettingsToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            accountSettingsToolStripMenuItem.ForeColor = Color.DarkOliveGreen;
-            accountSettingsToolStripMenuItem.Name = "accountSettingsToolStripMenuItem";
-            accountSettingsToolStripMenuItem.Size = new Size(184, 28);
-            accountSettingsToolStripMenuItem.Text = "Account Settings";
-            // 
-            // toolStripMenuItem4
-            // 
-            toolStripMenuItem4.Name = "toolStripMenuItem4";
-            toolStripMenuItem4.Size = new Size(172, 34);
-            toolStripMenuItem4.Text = "Logout";
-            // 
             // AdminAccountControl
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
-            Controls.Add(menuStrip2);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(label5);
             Controls.Add(label2);
-            Controls.Add(label4);
+            Controls.Add(display_inactives_aac);
             Controls.Add(label26);
-            Controls.Add(label1);
-            Controls.Add(label40);
-            Controls.Add(button3);
+            Controls.Add(display_actives_aac);
+            Controls.Add(display_users_aac);
             Controls.Add(button2);
             Controls.Add(panel1);
             Controls.Add(button1);
@@ -335,11 +249,9 @@
             Controls.Add(button8);
             Name = "AdminAccountControl";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Is";
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)Account_Control_Grid).EndInit();
-            menuStrip2.ResumeLayout(false);
-            menuStrip2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -347,27 +259,18 @@
         #endregion
 
         private Panel panel1;
-        private Button button3;
         private Button button2;
         private Button button1;
         private Button button8;
         private Button button4;
         private Label label26;
-        private Label label40;
+        private Label display_users_aac;
         private Label label2;
-        private Label label1;
-        private Label label4;
+        private Label display_actives_aac;
+        private Label display_inactives_aac;
         private Label label5;
         private Button button6;
         private Button button5;
-        private MenuStrip menuStrip2;
-        private ToolStripMenuItem sssssToolStripMenuItem;
-        private ToolStripMenuItem reloadToolStripMenuItem;
-        private ToolStripMenuItem learnMoreToolStripMenuItem;
-        private ToolStripMenuItem toolStripMenuItem3;
-        private ToolStripMenuItem viewAccountToolStripMenuItem1;
-        private ToolStripMenuItem accountSettingsToolStripMenuItem;
-        private ToolStripMenuItem toolStripMenuItem4;
         private DataGridView Account_Control_Grid;
     }
 }

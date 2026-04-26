@@ -181,6 +181,9 @@ namespace Fuentes_PrelimsP2
                 newRow["Contact Number"] = UserSession.UserInstance.ContactNumber;
                 newRow["Email Account"] = UserSession.UserInstance.Email;
                 newRow["Hotline"] = UserSession.UserInstance.Hotline;
+                newRow["Active"] = true;
+                newRow["Attempts"] = 0;
+                newRow["Locked"] = false;
 
                 dataSet.Tables["User Account Information"].Rows.Add(newRow);
 

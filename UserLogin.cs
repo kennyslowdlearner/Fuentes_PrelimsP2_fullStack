@@ -69,6 +69,19 @@ namespace Fuentes_PrelimsP2
 
         }
 
+        private void UpdateDatabase()
+        {
+            try
+            {
+                OleDbCommandBuilder builder = new OleDbCommandBuilder(adapter);
+                adapter.Update(dataSet, "User Account Information");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saving status to database: " + ex.Message);
+            }
+        }
+
         private async void loginUSER_Click(object sender, EventArgs e)
         {
             //Made changes here (3) on [4/1/2026 | 9:47 AM]
@@ -76,36 +89,78 @@ namespace Fuentes_PrelimsP2
             //if not it will show a message box, if yes it will show the farmgate form and hide this form
             string loggingUSN = USERusn.Text;
             string loggingPASS = USERpass.Text;
-            bool userFound = false;
+            bool userFound = false, password = false;
+            int attempt = 0, chance = 10;
 
             try
             {
                 foreach (DataRow row in dataSet.Tables["User Account Information"].Rows)
                 {
-                    if (row["Username"].ToString() == loggingUSN && row["Password"].ToString() == loggingPASS)
+                    if (row["Username"].ToString() == loggingUSN)
                     {
-                        UserSession.UserInstance.ID = Convert.ToInt32(row["User ID"]);
-                        UserSession.UserInstance.Username = row["Username"].ToString();
-                        UserSession.UserInstance.Password = row["Password"].ToString();
-                        UserSession.UserInstance.FirstName = row["First Name"].ToString();
-                        UserSession.UserInstance.MiddleName = row["Middle Name"].ToString();
-                        UserSession.UserInstance.LastName = row["Last Name"].ToString();
-                        UserSession.UserInstance.Birthdate = Convert.ToDateTime(row["Birthdate"]);
-                        UserSession.UserInstance.Address = row["Address"].ToString();
-                        UserSession.UserInstance.Age = Convert.ToInt32(row["Age"]);
-                        UserSession.UserInstance.Category = row["Category"].ToString();
-                        UserSession.UserInstance.Gender = row["Gender"].ToString();
-                        UserSession.UserInstance.ContactNumber = Convert.ToInt64(row["Contact Number"]);
-                        UserSession.UserInstance.Email = row["Email Account"].ToString();
-                        UserSession.UserInstance.Hotline = row["Hotline"].ToString();
-
-
                         userFound = true;
+
+                        if (Convert.ToBoolean(row["Locked"]) == true || Convert.ToBoolean(row["Active"]) == false)
+                        {
+                            MessageBox.Show("Your account is locked or disabled, please contact the system administrator/developer.");
+                            return;
+                        }
+
+                        if (row["Password"].ToString() == loggingPASS)
+                        {
+                            password = true;
+
+                            row["Attempts"] = 0;
+                            UpdateDatabase();
+
+                            UserSession.UserInstance.ID = Convert.ToInt32(row["User ID"]);
+                            UserSession.UserInstance.Username = row["Username"].ToString();
+                            UserSession.UserInstance.Password = row["Password"].ToString();
+                            UserSession.UserInstance.FirstName = row["First Name"].ToString();
+                            UserSession.UserInstance.MiddleName = row["Middle Name"].ToString();
+                            UserSession.UserInstance.LastName = row["Last Name"].ToString();
+                            UserSession.UserInstance.Birthdate = Convert.ToDateTime(row["Birthdate"]);
+                            UserSession.UserInstance.Address = row["Address"].ToString();
+                            UserSession.UserInstance.Age = Convert.ToInt32(row["Age"]);
+                            UserSession.UserInstance.Category = row["Category"].ToString();
+                            UserSession.UserInstance.Gender = row["Gender"].ToString();
+                            UserSession.UserInstance.ContactNumber = Convert.ToInt64(row["Contact Number"]);
+                            UserSession.UserInstance.Email = row["Email Account"].ToString();
+                            UserSession.UserInstance.Hotline = row["Hotline"].ToString();
+                            UserSession.UserInstance.Active = Convert.ToBoolean(row["Active"]);
+                            UserSession.UserInstance.Attempt = Convert.ToInt32(attempt);
+                            UserSession.UserInstance.Locked = false;
+                        }
+
                         break;
+                    }
+
+                    else
+                    {
+
+                        attempt = Convert.ToInt32(row["Attempts"]) + 1;
+                        row["Attempts"] = attempt;
+
+                        int remaining = chance - attempt;
+
+                        if(attempt >= chance)
+                        {
+                            row["Locked"] = true;
+                            UpdateDatabase();
+                            MessageBox.Show("Account LOCKED due to too many failed attempts.");
+                        }
+
+                        else
+                        {
+                            UpdateDatabase();
+                            MessageBox.Show($"Incorrect password! {remaining} attempts remaining.");
+                        }
+
+                        return;
                     }
                 }
 
-                if (userFound)
+                if (userFound && password)
                 {
                     //first 2 lines are used for email notification
                     string login_Info = $@"
@@ -129,7 +184,7 @@ namespace Fuentes_PrelimsP2
                     this.Hide();
                 }
 
-                else MessageBox.Show("Invalid Username or Password. Please try again.");
+                else if (!userFound) MessageBox.Show("Invalid Username. Please try again.");
                 //SAMPLE: USN = kennymeow PASS = kennymeow123
             }
 

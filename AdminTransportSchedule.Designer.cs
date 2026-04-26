@@ -32,27 +32,27 @@
             panel1 = new Panel();
             Admin_Transport_Schedule_Grid = new DataGridView();
             label8 = new Label();
-            textBox2 = new TextBox();
+            fill_transportname_ats = new TextBox();
             label9 = new Label();
             label1 = new Label();
-            textBox1 = new TextBox();
+            fill_driver_ats = new TextBox();
             label2 = new Label();
             label3 = new Label();
-            textBox3 = new TextBox();
+            fill_licensenumber_ats = new TextBox();
             label4 = new Label();
             label5 = new Label();
-            textBox4 = new TextBox();
+            fill_deliverycode_ats = new TextBox();
             label6 = new Label();
             label7 = new Label();
-            textBox5 = new TextBox();
+            fill_placefrom_ats = new TextBox();
             label10 = new Label();
             label11 = new Label();
-            textBox6 = new TextBox();
+            fill_placeto_ats = new TextBox();
             label12 = new Label();
             label24 = new Label();
             label26 = new Label();
-            label40 = new Label();
-            label13 = new Label();
+            display_estimatedtime_ats = new Label();
+            display_status_ats = new Label();
             label14 = new Label();
             label15 = new Label();
             button8 = new Button();
@@ -104,14 +104,14 @@
             label8.TabIndex = 78;
             label8.Text = "Transport Name";
             // 
-            // textBox2
+            // fill_transportname_ats
             // 
-            textBox2.BackColor = Color.LightGreen;
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Location = new Point(265, 512);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(207, 24);
-            textBox2.TabIndex = 77;
+            fill_transportname_ats.BackColor = Color.LightGreen;
+            fill_transportname_ats.BorderStyle = BorderStyle.None;
+            fill_transportname_ats.Location = new Point(265, 512);
+            fill_transportname_ats.Name = "fill_transportname_ats";
+            fill_transportname_ats.Size = new Size(207, 24);
+            fill_transportname_ats.TabIndex = 77;
             // 
             // label9
             // 
@@ -137,14 +137,14 @@
             label1.TabIndex = 76;
             label1.Text = ":";
             // 
-            // textBox1
+            // fill_driver_ats
             // 
-            textBox1.BackColor = Color.LightGreen;
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Location = new Point(265, 539);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(207, 24);
-            textBox1.TabIndex = 77;
+            fill_driver_ats.BackColor = Color.LightGreen;
+            fill_driver_ats.BorderStyle = BorderStyle.None;
+            fill_driver_ats.Location = new Point(265, 539);
+            fill_driver_ats.Name = "fill_driver_ats";
+            fill_driver_ats.Size = new Size(207, 24);
+            fill_driver_ats.TabIndex = 77;
             // 
             // label2
             // 
@@ -170,14 +170,14 @@
             label3.TabIndex = 76;
             label3.Text = ":";
             // 
-            // textBox3
+            // fill_licensenumber_ats
             // 
-            textBox3.BackColor = Color.LightGreen;
-            textBox3.BorderStyle = BorderStyle.None;
-            textBox3.Location = new Point(265, 566);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(207, 24);
-            textBox3.TabIndex = 77;
+            fill_licensenumber_ats.BackColor = Color.LightGreen;
+            fill_licensenumber_ats.BorderStyle = BorderStyle.None;
+            fill_licensenumber_ats.Location = new Point(265, 566);
+            fill_licensenumber_ats.Name = "fill_licensenumber_ats";
+            fill_licensenumber_ats.Size = new Size(207, 24);
+            fill_licensenumber_ats.TabIndex = 77;
             // 
             // label4
             // 
@@ -203,14 +203,14 @@
             label5.TabIndex = 76;
             label5.Text = ":";
             // 
-            // textBox4
+            // fill_deliverycode_ats
             // 
-            textBox4.BackColor = Color.LightGreen;
-            textBox4.BorderStyle = BorderStyle.None;
-            textBox4.Location = new Point(265, 593);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(207, 24);
-            textBox4.TabIndex = 77;
+            fill_deliverycode_ats.BackColor = Color.LightGreen;
+            fill_deliverycode_ats.BorderStyle = BorderStyle.None;
+            fill_deliverycode_ats.Location = new Point(265, 593);
+            fill_deliverycode_ats.Name = "fill_deliverycode_ats";
+            fill_deliverycode_ats.Size = new Size(207, 24);
+            fill_deliverycode_ats.TabIndex = 77;
             // 
             // label6
             // 
@@ -236,14 +236,14 @@
             label7.TabIndex = 76;
             label7.Text = ":";
             // 
-            // textBox5
+            // fill_placefrom_ats
             // 
-            textBox5.BackColor = Color.LightGreen;
-            textBox5.BorderStyle = BorderStyle.None;
-            textBox5.Location = new Point(699, 510);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(207, 24);
-            textBox5.TabIndex = 77;
+            fill_placefrom_ats.BackColor = Color.LightGreen;
+            fill_placefrom_ats.BorderStyle = BorderStyle.None;
+            fill_placefrom_ats.Location = new Point(699, 510);
+            fill_placefrom_ats.Name = "fill_placefrom_ats";
+            fill_placefrom_ats.Size = new Size(207, 24);
+            fill_placefrom_ats.TabIndex = 77;
             // 
             // label10
             // 
@@ -269,14 +269,14 @@
             label11.TabIndex = 76;
             label11.Text = ":";
             // 
-            // textBox6
+            // fill_placeto_ats
             // 
-            textBox6.BackColor = Color.LightGreen;
-            textBox6.BorderStyle = BorderStyle.None;
-            textBox6.Location = new Point(699, 540);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(207, 24);
-            textBox6.TabIndex = 77;
+            fill_placeto_ats.BackColor = Color.LightGreen;
+            fill_placeto_ats.BorderStyle = BorderStyle.None;
+            fill_placeto_ats.Location = new Point(699, 540);
+            fill_placeto_ats.Name = "fill_placeto_ats";
+            fill_placeto_ats.Size = new Size(207, 24);
+            fill_placeto_ats.TabIndex = 77;
             // 
             // label12
             // 
@@ -315,29 +315,29 @@
             label26.Text = "Estimated Time";
             label26.Click += label26_Click;
             // 
-            // label40
+            // display_estimatedtime_ats
             // 
-            label40.AutoSize = true;
-            label40.BackColor = Color.Transparent;
-            label40.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label40.ForeColor = Color.Gold;
-            label40.Location = new Point(699, 568);
-            label40.Name = "label40";
-            label40.Size = new Size(111, 24);
-            label40.TabIndex = 81;
-            label40.Text = "(Label Only)";
+            display_estimatedtime_ats.AutoSize = true;
+            display_estimatedtime_ats.BackColor = Color.Transparent;
+            display_estimatedtime_ats.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_estimatedtime_ats.ForeColor = Color.Gold;
+            display_estimatedtime_ats.Location = new Point(699, 568);
+            display_estimatedtime_ats.Name = "display_estimatedtime_ats";
+            display_estimatedtime_ats.Size = new Size(111, 24);
+            display_estimatedtime_ats.TabIndex = 81;
+            display_estimatedtime_ats.Text = "(Label Only)";
             // 
-            // label13
+            // display_status_ats
             // 
-            label13.AutoSize = true;
-            label13.BackColor = Color.Transparent;
-            label13.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label13.ForeColor = Color.Gold;
-            label13.Location = new Point(699, 592);
-            label13.Name = "label13";
-            label13.Size = new Size(111, 24);
-            label13.TabIndex = 81;
-            label13.Text = "(Label Only)";
+            display_status_ats.AutoSize = true;
+            display_status_ats.BackColor = Color.Transparent;
+            display_status_ats.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_status_ats.ForeColor = Color.Gold;
+            display_status_ats.Location = new Point(699, 592);
+            display_status_ats.Name = "display_status_ats";
+            display_status_ats.Size = new Size(111, 24);
+            display_status_ats.TabIndex = 81;
+            display_status_ats.Text = "(Label Only)";
             // 
             // label14
             // 
@@ -437,7 +437,7 @@
             button1.Name = "button1";
             button1.Size = new Size(143, 38);
             button1.TabIndex = 86;
-            button1.Text = "Insert";
+            button1.Text = "Add";
             button1.UseVisualStyleBackColor = false;
             // 
             // button6
@@ -546,26 +546,26 @@
             Controls.Add(label15);
             Controls.Add(label24);
             Controls.Add(label14);
-            Controls.Add(label13);
+            Controls.Add(display_status_ats);
             Controls.Add(label26);
-            Controls.Add(label40);
+            Controls.Add(display_estimatedtime_ats);
             Controls.Add(label12);
-            Controls.Add(textBox6);
+            Controls.Add(fill_placeto_ats);
             Controls.Add(label10);
-            Controls.Add(textBox5);
+            Controls.Add(fill_placefrom_ats);
             Controls.Add(label6);
-            Controls.Add(textBox4);
+            Controls.Add(fill_deliverycode_ats);
             Controls.Add(label4);
             Controls.Add(label11);
-            Controls.Add(textBox3);
+            Controls.Add(fill_licensenumber_ats);
             Controls.Add(label7);
             Controls.Add(label2);
             Controls.Add(label5);
-            Controls.Add(textBox1);
+            Controls.Add(fill_driver_ats);
             Controls.Add(label3);
             Controls.Add(label8);
             Controls.Add(label1);
-            Controls.Add(textBox2);
+            Controls.Add(fill_transportname_ats);
             Controls.Add(label9);
             Controls.Add(panel1);
             Name = "AdminTransportSchedule";
@@ -583,27 +583,27 @@
 
         private Panel panel1;
         private Label label8;
-        private TextBox textBox2;
+        private TextBox fill_transportname_ats;
         private Label label9;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox fill_driver_ats;
         private Label label2;
         private Label label3;
-        private TextBox textBox3;
+        private TextBox fill_licensenumber_ats;
         private Label label4;
         private Label label5;
-        private TextBox textBox4;
+        private TextBox fill_deliverycode_ats;
         private Label label6;
         private Label label7;
-        private TextBox textBox5;
+        private TextBox fill_placefrom_ats;
         private Label label10;
         private Label label11;
-        private TextBox textBox6;
+        private TextBox fill_placeto_ats;
         private Label label12;
         private Label label24;
         private Label label26;
-        private Label label40;
-        private Label label13;
+        private Label display_estimatedtime_ats;
+        private Label display_status_ats;
         private Label label14;
         private Label label15;
         private Button button8;

@@ -46,16 +46,16 @@
             button4 = new Button();
             button8 = new Button();
             button6 = new Button();
-            label40 = new Label();
+            display_tps_tbsr = new Label();
             label3 = new Label();
             label6 = new Label();
             label5 = new Label();
             label4 = new Label();
             label2 = new Label();
             label1 = new Label();
-            label7 = new Label();
-            label9 = new Label();
-            label11 = new Label();
+            display_lps_tbsr = new Label();
+            display_tt_tbsr = new Label();
+            display_pr_tbsr = new Label();
             label12 = new Label();
             label13 = new Label();
             label14 = new Label();
@@ -228,17 +228,17 @@
             button6.UseVisualStyleBackColor = false;
             button6.Click += backButton;
             // 
-            // label40
+            // display_tps_tbsr
             // 
-            label40.AutoSize = true;
-            label40.BackColor = Color.Transparent;
-            label40.Font = new Font("Glacial Indifference", 11F, FontStyle.Italic);
-            label40.ForeColor = Color.Gold;
-            label40.Location = new Point(1110, 439);
-            label40.Name = "label40";
-            label40.Size = new Size(126, 27);
-            label40.TabIndex = 125;
-            label40.Text = "(Label Only)";
+            display_tps_tbsr.AutoSize = true;
+            display_tps_tbsr.BackColor = Color.Transparent;
+            display_tps_tbsr.Font = new Font("Glacial Indifference", 11F, FontStyle.Italic);
+            display_tps_tbsr.ForeColor = Color.Gold;
+            display_tps_tbsr.Location = new Point(1110, 439);
+            display_tps_tbsr.Name = "display_tps_tbsr";
+            display_tps_tbsr.Size = new Size(126, 27);
+            display_tps_tbsr.TabIndex = 125;
+            display_tps_tbsr.Text = "(Label Only)";
             // 
             // label3
             // 
@@ -312,41 +312,41 @@
             label1.TabIndex = 123;
             label1.Text = ":";
             // 
-            // label7
+            // display_lps_tbsr
             // 
-            label7.AutoSize = true;
-            label7.BackColor = Color.Transparent;
-            label7.Font = new Font("Glacial Indifference", 11F, FontStyle.Italic);
-            label7.ForeColor = Color.Gold;
-            label7.Location = new Point(1110, 469);
-            label7.Name = "label7";
-            label7.Size = new Size(126, 27);
-            label7.TabIndex = 125;
-            label7.Text = "(Label Only)";
+            display_lps_tbsr.AutoSize = true;
+            display_lps_tbsr.BackColor = Color.Transparent;
+            display_lps_tbsr.Font = new Font("Glacial Indifference", 11F, FontStyle.Italic);
+            display_lps_tbsr.ForeColor = Color.Gold;
+            display_lps_tbsr.Location = new Point(1110, 469);
+            display_lps_tbsr.Name = "display_lps_tbsr";
+            display_lps_tbsr.Size = new Size(126, 27);
+            display_lps_tbsr.TabIndex = 125;
+            display_lps_tbsr.Text = "(Label Only)";
             // 
-            // label9
+            // display_tt_tbsr
             // 
-            label9.AutoSize = true;
-            label9.BackColor = Color.Transparent;
-            label9.Font = new Font("Glacial Indifference", 11F, FontStyle.Italic);
-            label9.ForeColor = Color.Gold;
-            label9.Location = new Point(1110, 499);
-            label9.Name = "label9";
-            label9.Size = new Size(126, 27);
-            label9.TabIndex = 125;
-            label9.Text = "(Label Only)";
+            display_tt_tbsr.AutoSize = true;
+            display_tt_tbsr.BackColor = Color.Transparent;
+            display_tt_tbsr.Font = new Font("Glacial Indifference", 11F, FontStyle.Italic);
+            display_tt_tbsr.ForeColor = Color.Gold;
+            display_tt_tbsr.Location = new Point(1110, 499);
+            display_tt_tbsr.Name = "display_tt_tbsr";
+            display_tt_tbsr.Size = new Size(126, 27);
+            display_tt_tbsr.TabIndex = 125;
+            display_tt_tbsr.Text = "(Label Only)";
             // 
-            // label11
+            // display_pr_tbsr
             // 
-            label11.AutoSize = true;
-            label11.BackColor = Color.Transparent;
-            label11.Font = new Font("Glacial Indifference", 11F, FontStyle.Italic);
-            label11.ForeColor = Color.Gold;
-            label11.Location = new Point(1110, 531);
-            label11.Name = "label11";
-            label11.Size = new Size(126, 27);
-            label11.TabIndex = 125;
-            label11.Text = "(Label Only)";
+            display_pr_tbsr.AutoSize = true;
+            display_pr_tbsr.BackColor = Color.Transparent;
+            display_pr_tbsr.Font = new Font("Glacial Indifference", 11F, FontStyle.Italic);
+            display_pr_tbsr.ForeColor = Color.Gold;
+            display_pr_tbsr.Location = new Point(1110, 531);
+            display_pr_tbsr.Name = "display_pr_tbsr";
+            display_pr_tbsr.Size = new Size(126, 27);
+            display_pr_tbsr.TabIndex = 125;
+            display_pr_tbsr.Text = "(Label Only)";
             // 
             // label12
             // 
@@ -433,11 +433,11 @@
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label2);
-            Controls.Add(label11);
-            Controls.Add(label9);
-            Controls.Add(label7);
+            Controls.Add(display_pr_tbsr);
+            Controls.Add(display_tt_tbsr);
+            Controls.Add(display_lps_tbsr);
             Controls.Add(label1);
-            Controls.Add(label40);
+            Controls.Add(display_tps_tbsr);
             Controls.Add(label17);
             Controls.Add(label16);
             Controls.Add(label15);
@@ -480,16 +480,16 @@
         private Button button4;
         private Button button8;
         private Button button6;
-        private Label label40;
+        private Label display_tps_tbsr;
         private Label label3;
         private Label label6;
         private Label label5;
         private Label label4;
         private Label label2;
         private Label label1;
-        private Label label7;
-        private Label label9;
-        private Label label11;
+        private Label display_lps_tbsr;
+        private Label display_tt_tbsr;
+        private Label display_pr_tbsr;
         private Label label12;
         private Label label13;
         private Label label14;

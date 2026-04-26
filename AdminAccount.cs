@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -15,6 +16,12 @@ namespace Fuentes_PrelimsP2
         {
             InitializeComponent();
         }
+
+        OleDbConnection? connection;
+        OleDbDataAdapter? adapter;
+        OleDbCommand? command;
+        DataSet? dataSet;
+        int indexRow;
 
         internal static AdminAccount Instance
         {
@@ -104,5 +111,7 @@ namespace Fuentes_PrelimsP2
                 MessageBox.Show("Failed to logging out:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+       
     }
 }
