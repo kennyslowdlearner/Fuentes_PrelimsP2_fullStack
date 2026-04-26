@@ -402,30 +402,51 @@ namespace Fuentes_PrelimsP2
 
         private void fill_searchpi(object sender, EventArgs e)
         {
-            //made changes here (20) [4/6/2026 | 12:46 PM]
             string connect = "Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb";
+            string query = "";
+            string tableName = "";
 
-            string query = "SELECT * FROM [User PI Product Inventory] WHERE [Product Name] LIKE @S1 OR [Product ID] LIKE @S2 OR [Reference ID] LIKE @S3";
+            // 1. Switch Query based on active inventory
+            if (showingSeedlings)
+            {
+                tableName = "User PI Seedling Inventory";
+                // Search by Variety Name or Seed ID
+                query = $"SELECT * FROM [{tableName}] WHERE ([Variety Name] LIKE @S1 OR [Seed ID] LIKE @S2) AND [User ID] = @User";
+            }
+            else
+            {
+                tableName = "User PI Product Inventory";
+                // Search by Product Name, Product ID, or Reference ID
+                query = $"SELECT * FROM [{tableName}] WHERE ([Product Name] LIKE @S1 OR [Product ID] LIKE @S2 OR [Reference ID] LIKE @S3) AND [User ID] = @User";
+            }
 
             using (OleDbConnection connected = new OleDbConnection(connect))
             {
                 OleDbDataAdapter searchAdapter = new OleDbDataAdapter(query, connected);
-
                 string searchTerm = "%" + fill_search_pi.Text + "%";
+
+                // 2. Add Parameters
                 searchAdapter.SelectCommand.Parameters.AddWithValue("@S1", searchTerm);
                 searchAdapter.SelectCommand.Parameters.AddWithValue("@S2", searchTerm);
-                searchAdapter.SelectCommand.Parameters.AddWithValue("@S3", searchTerm);
+
+                if (!showingSeedlings)
+                {
+                    searchAdapter.SelectCommand.Parameters.AddWithValue("@S3", searchTerm);
+                }
+
+                searchAdapter.SelectCommand.Parameters.AddWithValue("@User", UserSession.UserInstance.ID);
 
                 DataSet searchNow = new DataSet();
 
                 try
                 {
                     connected.Open();
-                    searchAdapter.Fill(searchNow, "[User PI Product Inventory]");
+                    searchAdapter.Fill(searchNow, tableName);
+                    Product_Inventory_Grid.DataSource = searchNow.Tables[tableName];
 
-                    Product_Inventory_Grid.DataSource = searchNow.Tables["[User PI Product Inventory]"];
+                    if (Product_Inventory_Grid.Columns.Contains("User ID"))
+                        Product_Inventory_Grid.Columns["User ID"].Visible = false;
                 }
-
                 catch (Exception ex)
                 {
                     MessageBox.Show("Search failed. Error: " + ex.Message);

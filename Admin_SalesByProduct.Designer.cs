@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin_SalesByProduct));
             panel1 = new Panel();
-            dataGridView1 = new DataGridView();
+            Sales_By_Product_Grid = new DataGridView();
             panel2 = new Panel();
             display_pr_asp = new Label();
             display_lr_asp = new Label();
@@ -50,39 +50,29 @@
             button6 = new Button();
             button4 = new Button();
             button8 = new Button();
-            menuStrip2 = new MenuStrip();
-            sssssToolStripMenuItem = new ToolStripMenuItem();
-            reloadToolStripMenuItem = new ToolStripMenuItem();
-            learnMoreToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem3 = new ToolStripMenuItem();
-            viewAccountToolStripMenuItem1 = new ToolStripMenuItem();
-            accountSettingsToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem4 = new ToolStripMenuItem();
             label1 = new Label();
-            searchBoxPI = new TextBox();
-            searchbuttonPI = new Button();
+            fill_search_sbp = new TextBox();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Sales_By_Product_Grid).BeginInit();
             panel2.SuspendLayout();
-            menuStrip2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.Controls.Add(dataGridView1);
+            panel1.Controls.Add(Sales_By_Product_Grid);
             panel1.Location = new Point(531, 244);
             panel1.Name = "panel1";
             panel1.Size = new Size(905, 429);
             panel1.TabIndex = 0;
             // 
-            // dataGridView1
+            // Sales_By_Product_Grid
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(899, 423);
-            dataGridView1.TabIndex = 0;
+            Sales_By_Product_Grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Sales_By_Product_Grid.Location = new Point(3, 3);
+            Sales_By_Product_Grid.Name = "Sales_By_Product_Grid";
+            Sales_By_Product_Grid.RowHeadersWidth = 62;
+            Sales_By_Product_Grid.Size = new Size(899, 423);
+            Sales_By_Product_Grid.TabIndex = 0;
             // 
             // panel2
             // 
@@ -321,68 +311,6 @@
             button8.Text = "Connect";
             button8.UseVisualStyleBackColor = false;
             // 
-            // menuStrip2
-            // 
-            menuStrip2.BackColor = Color.Transparent;
-            menuStrip2.Dock = DockStyle.None;
-            menuStrip2.ImageScalingSize = new Size(24, 24);
-            menuStrip2.Items.AddRange(new ToolStripItem[] { sssssToolStripMenuItem, accountSettingsToolStripMenuItem });
-            menuStrip2.Location = new Point(1107, 204);
-            menuStrip2.Name = "menuStrip2";
-            menuStrip2.Size = new Size(343, 32);
-            menuStrip2.TabIndex = 118;
-            menuStrip2.Text = "menuStrip2";
-            // 
-            // sssssToolStripMenuItem
-            // 
-            sssssToolStripMenuItem.BackColor = Color.Transparent;
-            sssssToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { reloadToolStripMenuItem, learnMoreToolStripMenuItem, toolStripMenuItem3, viewAccountToolStripMenuItem1 });
-            sssssToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            sssssToolStripMenuItem.ForeColor = Color.DarkOliveGreen;
-            sssssToolStripMenuItem.Name = "sssssToolStripMenuItem";
-            sssssToolStripMenuItem.Size = new Size(151, 28);
-            sssssToolStripMenuItem.Text = "More Options";
-            // 
-            // reloadToolStripMenuItem
-            // 
-            reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
-            reloadToolStripMenuItem.Size = new Size(281, 34);
-            reloadToolStripMenuItem.Text = "Reload";
-            // 
-            // learnMoreToolStripMenuItem
-            // 
-            learnMoreToolStripMenuItem.Name = "learnMoreToolStripMenuItem";
-            learnMoreToolStripMenuItem.Size = new Size(281, 34);
-            learnMoreToolStripMenuItem.Text = "Learn More";
-            // 
-            // toolStripMenuItem3
-            // 
-            toolStripMenuItem3.Name = "toolStripMenuItem3";
-            toolStripMenuItem3.Size = new Size(281, 34);
-            toolStripMenuItem3.Text = "Contact Developer";
-            // 
-            // viewAccountToolStripMenuItem1
-            // 
-            viewAccountToolStripMenuItem1.Name = "viewAccountToolStripMenuItem1";
-            viewAccountToolStripMenuItem1.Size = new Size(281, 34);
-            viewAccountToolStripMenuItem1.Text = "View Account";
-            // 
-            // accountSettingsToolStripMenuItem
-            // 
-            accountSettingsToolStripMenuItem.BackColor = Color.Transparent;
-            accountSettingsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem4 });
-            accountSettingsToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            accountSettingsToolStripMenuItem.ForeColor = Color.DarkOliveGreen;
-            accountSettingsToolStripMenuItem.Name = "accountSettingsToolStripMenuItem";
-            accountSettingsToolStripMenuItem.Size = new Size(184, 28);
-            accountSettingsToolStripMenuItem.Text = "Account Settings";
-            // 
-            // toolStripMenuItem4
-            // 
-            toolStripMenuItem4.Name = "toolStripMenuItem4";
-            toolStripMenuItem4.Size = new Size(172, 34);
-            toolStripMenuItem4.Text = "Logout";
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -395,30 +323,17 @@
             label1.TabIndex = 121;
             label1.Text = "Product Name";
             // 
-            // searchBoxPI
+            // fill_search_sbp
             // 
-            searchBoxPI.BackColor = Color.Gainsboro;
-            searchBoxPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            searchBoxPI.ForeColor = Color.SeaGreen;
-            searchBoxPI.Location = new Point(697, 210);
-            searchBoxPI.Name = "searchBoxPI";
-            searchBoxPI.Size = new Size(252, 29);
-            searchBoxPI.TabIndex = 120;
-            searchBoxPI.Text = "Search product name or id";
-            // 
-            // searchbuttonPI
-            // 
-            searchbuttonPI.BackColor = Color.Transparent;
-            searchbuttonPI.BackgroundImage = (Image)resources.GetObject("searchbuttonPI.BackgroundImage");
-            searchbuttonPI.FlatAppearance.BorderSize = 0;
-            searchbuttonPI.FlatStyle = FlatStyle.Flat;
-            searchbuttonPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            searchbuttonPI.ForeColor = Color.SeaGreen;
-            searchbuttonPI.Location = new Point(955, 204);
-            searchbuttonPI.Name = "searchbuttonPI";
-            searchbuttonPI.Size = new Size(120, 41);
-            searchbuttonPI.TabIndex = 119;
-            searchbuttonPI.UseVisualStyleBackColor = false;
+            fill_search_sbp.BackColor = Color.Gainsboro;
+            fill_search_sbp.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            fill_search_sbp.ForeColor = Color.SeaGreen;
+            fill_search_sbp.Location = new Point(697, 210);
+            fill_search_sbp.Name = "fill_search_sbp";
+            fill_search_sbp.Size = new Size(252, 29);
+            fill_search_sbp.TabIndex = 120;
+            fill_search_sbp.Text = "Search product name or id";
+            fill_search_sbp.TextChanged += press_search;
             // 
             // Admin_SalesByProduct
             // 
@@ -427,9 +342,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
             Controls.Add(label1);
-            Controls.Add(searchBoxPI);
-            Controls.Add(searchbuttonPI);
-            Controls.Add(menuStrip2);
+            Controls.Add(fill_search_sbp);
             Controls.Add(button6);
             Controls.Add(button4);
             Controls.Add(button8);
@@ -439,11 +352,9 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Sales_By_Product_Grid).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            menuStrip2.ResumeLayout(false);
-            menuStrip2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -478,9 +389,9 @@
         private Label label12;
         private Label label10;
         private Label label8;
-        private DataGridView dataGridView1;
+        private DataGridView Sales_By_Product_Grid;
         private Label label1;
-        private TextBox searchBoxPI;
+        private TextBox fill_search_sbp;
         private Button searchbuttonPI;
     }
 }

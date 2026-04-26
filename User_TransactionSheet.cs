@@ -119,7 +119,7 @@ namespace Fuentes_PrelimsP2
             string ReferenceID = referenceID();
             connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
             string connect = @"Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb";
-            string query = "INSERT INTO [User T&T Transaction] ([Customer Name], [Rice Type], [Product ID], [Price per Kilogram], [Quantity in Kilogram], [Delivery Date], [Reference ID], [User ID]) VALUES (@P1, @P2, @P3, @P4, @P5, @P6, @P7, @P8)";
+            string query = "INSERT INTO [User T&T Transaction] ([Customer Name], [Rice Type], [Product ID], [Price per Kilogram], [Quantity in Kilogram], [Delivery Date], [Reference ID], [User ID], [Destination], [Region]) VALUES (@P1, @P2, @P3, @P4, @P5, @P6, @P7, @P8, @P9, @P10)";
 
             using (OleDbConnection connected = new OleDbConnection(connect))
             {
@@ -132,7 +132,10 @@ namespace Fuentes_PrelimsP2
                     command.Parameters.Add("@P5", OleDbType.Integer).Value = Convert.ToInt32(fill_quantity_ts.Text);
                     command.Parameters.Add("@P6", OleDbType.Date).Value = fill_date_ts.Text;
                     command.Parameters.Add("@P7", OleDbType.VarWChar).Value = ReferenceID;
-                    command.Parameters.Add("@P5", OleDbType.Integer).Value = UserSession.UserInstance.ID;
+                    command.Parameters.Add("@P8", OleDbType.Integer).Value = UserSession.UserInstance.ID;
+                    command.Parameters.Add("@P9", OleDbType.VarWChar).Value = fill_destination_tr.Text;
+                    command.Parameters.Add("@P10", OleDbType.VarWChar).Value = fill_region_tr.Text;
+
 
 
                     try
@@ -153,6 +156,8 @@ namespace Fuentes_PrelimsP2
                         fill_quantity_ts.Clear();
                         fill_priceperkg_ts.Clear();
                         fill_date_ts.Value = DateTime.Now;
+                        fill_destination_tr.Clear();
+                        fill_region_tr.Clear();
 
                         refreshreload();
 
@@ -205,6 +210,8 @@ namespace Fuentes_PrelimsP2
                     fill_date_ts.Value = DateTime.Now;
                     display_referenceid_ts.Text = " ";
                     currentSelectedRollNumber = " ";
+                    fill_destination_tr.Clear();
+                    fill_region_tr.Clear();
                 }
 
                 catch (Exception ex)
@@ -219,7 +226,7 @@ namespace Fuentes_PrelimsP2
             connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
 
             // SQL ORDER: 1:Item Name, 2:Unit, 3:Quantity, 4:Price, 5:Total, 6:Date, 7:Status WHERE 8:ID
-            string query = "UPDATE [User T&T Transaction] SET [Customer Name] = @P1, [Rice Type] = @P2, [Product ID] = @P3, [Price per Kilogram] = @P4, [Quantity in Kilogram] = @P5, [Delivery Date] = @P6, [Reference ID] = @P7 WHERE [Item Number] = @P8";
+            string query = "UPDATE [User T&T Transaction] SET [Customer Name] = @P1, [Rice Type] = @P2, [Product ID] = @P3, [Price per Kilogram] = @P4, [Quantity in Kilogram] = @P5, [Delivery Date] = @P6, [Reference ID] = @P7, [Destination] = @P8, [Region] = @P9  WHERE [Item Number] = @P10";
 
 
             // Use UNIQUE parameter names and follow the SQL order exactly
@@ -229,6 +236,10 @@ namespace Fuentes_PrelimsP2
             command.Parameters.Add("@P4", OleDbType.Currency).Value = Convert.ToDecimal(fill_priceperkg_ts.Text);
             command.Parameters.Add("@P5", OleDbType.Integer).Value = Convert.ToInt32(fill_quantity_ts.Text);
             command.Parameters.Add("@P6", OleDbType.Date).Value = fill_date_ts.Value;
+            command.Parameters.Add("@P7", OleDbType.Date).Value = referenceID();
+            command.Parameters.Add("@P8", OleDbType.Date).Value = fill_destination_tr.Text;
+            command.Parameters.Add("@P9", OleDbType.Date).Value = fill_region_tr.Text;
+            command.Parameters.Add("@P10", OleDbType.Date).Value = UserSession.UserInstance.ID;
 
             try
             {
@@ -285,6 +296,8 @@ namespace Fuentes_PrelimsP2
                 Transaction_Sheet_Grid.Columns["Price per Kilogram"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 Transaction_Sheet_Grid.Columns["Quantity in Kilogram"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 Transaction_Sheet_Grid.Columns["Delivery Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                Transaction_Sheet_Grid.Columns["Destination"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                Transaction_Sheet_Grid.Columns["Region"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 Transaction_Sheet_Grid.Columns["Reference ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             }
