@@ -252,7 +252,77 @@ namespace Fuentes_PrelimsP2
 
         private void press_deleterye(object sender, EventArgs e)
         {
+            // Check if a row is actually selected in the Grid
+            if (Rice_Yield_And_Estimation_Grid.CurrentRow != null)
+            {
+                // Get the Item Number from the selected row
+                // Using "Item Number" because it's your unique ID in the database
+                string itemID = Rice_Yield_And_Estimation_Grid.CurrentRow.Cells["Item Number"].Value.ToString();
 
+                // Ask for confirmation before deleting
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this estimation record?",
+                    "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
+                    string query = "DELETE FROM [User RYR Rice Yield & Estimation] WHERE [Item Number] = @P1";
+
+                    command = new OleDbCommand(query, connection);
+                    command.Parameters.AddWithValue("@P1", itemID);
+
+                    try
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+
+                        MessageBox.Show("Record deleted successfully!");
+
+                        // Refresh the grid and stats
+                        refreshreload();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Failed to delete record. Error: " + ex.Message);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a record from the table first.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private string yieldingDays()
+        {
+            // These are standard days from planting to harvest for common PH rice types
+            switch (fill_ricetype_rye.Text)
+            {
+                case "Inbred Rice": return "120";
+                case "Hybrid Rice": return "110";
+                case "Sinandomeng": return "115";
+                case "Dinorado": return "125";
+                default: return "120"; // Default fallback
+            }
+        }
+
+        private string timeLeft()
+        {
+            if (int.TryParse(yieldingDays(), out int totalDays))
+            {
+                DateTime datePlanted = fill_date_rye.Value;
+                DateTime harvestDate = datePlanted.AddDays(totalDays);
+                TimeSpan difference = harvestDate - DateTime.Now;
+
+                int daysRemaining = (int)Math.Ceiling(difference.TotalDays);
+
+                if (daysRemaining <= 0)
+                    return "Ready for Harvest";
+
+                return daysRemaining.ToString() + " Days";
+            }
+            return "Unknown";
         }
     }
 }

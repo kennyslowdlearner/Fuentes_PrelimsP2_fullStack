@@ -55,7 +55,7 @@ namespace Fuentes_PrelimsP2
             connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
             adapter = new OleDbDataAdapter("SELECT * FROM [User T&T Transaction]", connection);
 
-            adapter.SelectCommand.Parameters.AddWithValue("A1", UserSession.UserInstance.ID);
+            adapter.SelectCommand.Parameters.AddWithValue("?", UserSession.UserInstance.ID);
 
             try
             {
@@ -95,6 +95,13 @@ namespace Fuentes_PrelimsP2
 
             string query = "SELECT * FROM [User T&T Transaction] WHERE [Customer Name] LIKE @S1 OR [Product Name] LIKE @S2 OR [Reference ID] LIKE @S3 OR [Rice Type] LIKE @S4 OR [Product ID] LIKE @S5 OR [Destination] LIKE @S6 OR [Region] LIKE @S7";
 
+
+            if (string.IsNullOrWhiteSpace(fill_search_sbp.Text))
+            {
+                auto_reload();
+                return;
+            }
+
             using (OleDbConnection connected = new OleDbConnection(connect))
             {
                 OleDbDataAdapter searchAdapter = new OleDbDataAdapter(query, connected);
@@ -122,6 +129,15 @@ namespace Fuentes_PrelimsP2
                 {
                     MessageBox.Show("Search failed. Error: " + ex.Message);
                 }
+            }
+        }
+
+        private void Sales_By_Product_Grid_VisibleChanged(object sender, EventArgs e)
+        {
+            base.OnVisibleChanged(e);
+            if (this.Visible)
+            {
+                auto_reload();
             }
         }
     }

@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin_SalesbyUserProfile));
-            sssssToolStripMenuItem = new ToolStripMenuItem();
-            reloadToolStripMenuItem = new ToolStripMenuItem();
-            learnMoreToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem3 = new ToolStripMenuItem();
-            viewAccountToolStripMenuItem1 = new ToolStripMenuItem();
             display_pr_asup = new Label();
             display_tt_asup = new Label();
             display_lps_asup = new Label();
@@ -43,60 +38,20 @@
             label5 = new Label();
             label10 = new Label();
             label8 = new Label();
-            menuStrip2 = new MenuStrip();
-            accountSettingsToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem4 = new ToolStripMenuItem();
             label4 = new Label();
             label2 = new Label();
             button6 = new Button();
             button4 = new Button();
-            button8 = new Button();
             label3 = new Label();
             panel2 = new Panel();
             panel1 = new Panel();
-            dataGridView1 = new DataGridView();
+            Sales_By_User_Profile_Grid = new DataGridView();
             label1 = new Label();
             searchBoxPI = new TextBox();
-            searchbuttonPI = new Button();
-            menuStrip2.SuspendLayout();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Sales_By_User_Profile_Grid).BeginInit();
             SuspendLayout();
-            // 
-            // sssssToolStripMenuItem
-            // 
-            sssssToolStripMenuItem.BackColor = Color.Transparent;
-            sssssToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { reloadToolStripMenuItem, learnMoreToolStripMenuItem, toolStripMenuItem3, viewAccountToolStripMenuItem1 });
-            sssssToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            sssssToolStripMenuItem.ForeColor = Color.Chartreuse;
-            sssssToolStripMenuItem.Name = "sssssToolStripMenuItem";
-            sssssToolStripMenuItem.Size = new Size(151, 28);
-            sssssToolStripMenuItem.Text = "More Options";
-            // 
-            // reloadToolStripMenuItem
-            // 
-            reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
-            reloadToolStripMenuItem.Size = new Size(281, 34);
-            reloadToolStripMenuItem.Text = "Reload";
-            // 
-            // learnMoreToolStripMenuItem
-            // 
-            learnMoreToolStripMenuItem.Name = "learnMoreToolStripMenuItem";
-            learnMoreToolStripMenuItem.Size = new Size(281, 34);
-            learnMoreToolStripMenuItem.Text = "Learn More";
-            // 
-            // toolStripMenuItem3
-            // 
-            toolStripMenuItem3.Name = "toolStripMenuItem3";
-            toolStripMenuItem3.Size = new Size(281, 34);
-            toolStripMenuItem3.Text = "Contact Developer";
-            // 
-            // viewAccountToolStripMenuItem1
-            // 
-            viewAccountToolStripMenuItem1.Name = "viewAccountToolStripMenuItem1";
-            viewAccountToolStripMenuItem1.Size = new Size(281, 34);
-            viewAccountToolStripMenuItem1.Text = "View Account";
             // 
             // display_pr_asup
             // 
@@ -104,7 +59,7 @@
             display_pr_asup.BackColor = Color.Transparent;
             display_pr_asup.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
             display_pr_asup.ForeColor = Color.Gold;
-            display_pr_asup.Location = new Point(254, 214);
+            display_pr_asup.Location = new Point(263, 251);
             display_pr_asup.Name = "display_pr_asup";
             display_pr_asup.Size = new Size(111, 24);
             display_pr_asup.TabIndex = 121;
@@ -116,7 +71,7 @@
             display_tt_asup.BackColor = Color.Transparent;
             display_tt_asup.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
             display_tt_asup.ForeColor = Color.Gold;
-            display_tt_asup.Location = new Point(254, 136);
+            display_tt_asup.Location = new Point(154, 214);
             display_tt_asup.Name = "display_tt_asup";
             display_tt_asup.Size = new Size(111, 24);
             display_tt_asup.TabIndex = 121;
@@ -128,7 +83,7 @@
             display_lps_asup.BackColor = Color.Transparent;
             display_lps_asup.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
             display_lps_asup.ForeColor = Color.Gold;
-            display_lps_asup.Location = new Point(254, 106);
+            display_lps_asup.Location = new Point(154, 151);
             display_lps_asup.Name = "display_lps_asup";
             display_lps_asup.Size = new Size(111, 24);
             display_lps_asup.TabIndex = 121;
@@ -140,7 +95,7 @@
             display_tps_asup.BackColor = Color.Transparent;
             display_tps_asup.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
             display_tps_asup.ForeColor = Color.Gold;
-            display_tps_asup.Location = new Point(254, 76);
+            display_tps_asup.Location = new Point(154, 79);
             display_tps_asup.Name = "display_tps_asup";
             display_tps_asup.Size = new Size(111, 24);
             display_tps_asup.TabIndex = 121;
@@ -151,7 +106,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.PaleGreen;
-            label6.Location = new Point(25, 216);
+            label6.Location = new Point(21, 254);
             label6.Name = "label6";
             label6.Size = new Size(187, 22);
             label6.TabIndex = 120;
@@ -162,7 +117,7 @@
             label12.AutoSize = true;
             label12.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label12.ForeColor = Color.PaleGreen;
-            label12.Location = new Point(229, 211);
+            label12.Location = new Point(225, 249);
             label12.Name = "label12";
             label12.Size = new Size(19, 27);
             label12.TabIndex = 119;
@@ -173,7 +128,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.PaleGreen;
-            label5.Location = new Point(25, 138);
+            label5.Location = new Point(21, 180);
             label5.Name = "label5";
             label5.Size = new Size(161, 22);
             label5.TabIndex = 120;
@@ -184,7 +139,7 @@
             label10.AutoSize = true;
             label10.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label10.ForeColor = Color.PaleGreen;
-            label10.Location = new Point(229, 133);
+            label10.Location = new Point(225, 175);
             label10.Name = "label10";
             label10.Size = new Size(19, 27);
             label10.TabIndex = 119;
@@ -195,46 +150,18 @@
             label8.AutoSize = true;
             label8.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.PaleGreen;
-            label8.Location = new Point(229, 103);
+            label8.Location = new Point(225, 112);
             label8.Name = "label8";
             label8.Size = new Size(19, 27);
             label8.TabIndex = 119;
             label8.Text = ":";
-            // 
-            // menuStrip2
-            // 
-            menuStrip2.BackColor = Color.Transparent;
-            menuStrip2.Dock = DockStyle.None;
-            menuStrip2.ImageScalingSize = new Size(24, 24);
-            menuStrip2.Items.AddRange(new ToolStripItem[] { sssssToolStripMenuItem, accountSettingsToolStripMenuItem });
-            menuStrip2.Location = new Point(1096, 203);
-            menuStrip2.Name = "menuStrip2";
-            menuStrip2.Size = new Size(343, 32);
-            menuStrip2.TabIndex = 127;
-            menuStrip2.Text = "menuStrip2";
-            // 
-            // accountSettingsToolStripMenuItem
-            // 
-            accountSettingsToolStripMenuItem.BackColor = Color.Transparent;
-            accountSettingsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem4 });
-            accountSettingsToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            accountSettingsToolStripMenuItem.ForeColor = Color.Chartreuse;
-            accountSettingsToolStripMenuItem.Name = "accountSettingsToolStripMenuItem";
-            accountSettingsToolStripMenuItem.Size = new Size(184, 28);
-            accountSettingsToolStripMenuItem.Text = "Account Settings";
-            // 
-            // toolStripMenuItem4
-            // 
-            toolStripMenuItem4.Name = "toolStripMenuItem4";
-            toolStripMenuItem4.Size = new Size(172, 34);
-            toolStripMenuItem4.Text = "Logout";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.PaleGreen;
-            label4.Location = new Point(25, 108);
+            label4.Location = new Point(21, 117);
             label4.Name = "label4";
             label4.Size = new Size(193, 22);
             label4.TabIndex = 120;
@@ -245,7 +172,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.PaleGreen;
-            label2.Location = new Point(25, 76);
+            label2.Location = new Point(25, 50);
             label2.Name = "label2";
             label2.Size = new Size(189, 22);
             label2.TabIndex = 120;
@@ -273,34 +200,19 @@
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button4.ForeColor = Color.DarkGreen;
-            button4.Location = new Point(1133, 680);
+            button4.Location = new Point(1285, 679);
             button4.Name = "button4";
             button4.Size = new Size(143, 38);
             button4.TabIndex = 122;
             button4.Text = "Refresh";
             button4.UseVisualStyleBackColor = false;
             // 
-            // button8
-            // 
-            button8.BackColor = Color.Yellow;
-            button8.FlatAppearance.BorderColor = Color.Gold;
-            button8.FlatAppearance.BorderSize = 2;
-            button8.FlatStyle = FlatStyle.Flat;
-            button8.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button8.ForeColor = Color.DarkGreen;
-            button8.Location = new Point(1282, 679);
-            button8.Name = "button8";
-            button8.Size = new Size(143, 38);
-            button8.TabIndex = 121;
-            button8.Text = "Connect";
-            button8.UseVisualStyleBackColor = false;
-            // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.PaleGreen;
-            label3.Location = new Point(229, 73);
+            label3.Location = new Point(229, 47);
             label3.Name = "label3";
             label3.Size = new Size(19, 27);
             label3.TabIndex = 119;
@@ -328,20 +240,20 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(dataGridView1);
+            panel1.Controls.Add(Sales_By_User_Profile_Grid);
             panel1.Location = new Point(481, 240);
             panel1.Name = "panel1";
             panel1.Size = new Size(947, 433);
             panel1.TabIndex = 120;
             // 
-            // dataGridView1
+            // Sales_By_User_Profile_Grid
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(941, 457);
-            dataGridView1.TabIndex = 0;
+            Sales_By_User_Profile_Grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Sales_By_User_Profile_Grid.Location = new Point(3, 3);
+            Sales_By_User_Profile_Grid.Name = "Sales_By_User_Profile_Grid";
+            Sales_By_User_Profile_Grid.RowHeadersWidth = 62;
+            Sales_By_User_Profile_Grid.Size = new Size(941, 427);
+            Sales_By_User_Profile_Grid.TabIndex = 0;
             // 
             // label1
             // 
@@ -364,21 +276,6 @@
             searchBoxPI.Name = "searchBoxPI";
             searchBoxPI.Size = new Size(252, 29);
             searchBoxPI.TabIndex = 129;
-            searchBoxPI.Text = "Search product name or id";
-            // 
-            // searchbuttonPI
-            // 
-            searchbuttonPI.BackColor = Color.Transparent;
-            searchbuttonPI.BackgroundImage = (Image)resources.GetObject("searchbuttonPI.BackgroundImage");
-            searchbuttonPI.FlatAppearance.BorderSize = 0;
-            searchbuttonPI.FlatStyle = FlatStyle.Flat;
-            searchbuttonPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            searchbuttonPI.ForeColor = Color.SeaGreen;
-            searchbuttonPI.Location = new Point(910, 189);
-            searchbuttonPI.Name = "searchbuttonPI";
-            searchbuttonPI.Size = new Size(120, 41);
-            searchbuttonPI.TabIndex = 128;
-            searchbuttonPI.UseVisualStyleBackColor = false;
             // 
             // Admin_SalesbyUserProfile
             // 
@@ -388,32 +285,22 @@
             ClientSize = new Size(1500, 785);
             Controls.Add(label1);
             Controls.Add(searchBoxPI);
-            Controls.Add(searchbuttonPI);
-            Controls.Add(menuStrip2);
             Controls.Add(button6);
             Controls.Add(button4);
-            Controls.Add(button8);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "Admin_SalesbyUserProfile";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
-            menuStrip2.ResumeLayout(false);
-            menuStrip2.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Sales_By_User_Profile_Grid).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private ToolStripMenuItem sssssToolStripMenuItem;
-        private ToolStripMenuItem reloadToolStripMenuItem;
-        private ToolStripMenuItem learnMoreToolStripMenuItem;
-        private ToolStripMenuItem toolStripMenuItem3;
-        private ToolStripMenuItem viewAccountToolStripMenuItem1;
         private Label display_pr_asup;
         private Label display_tt_asup;
         private Label display_lps_asup;
@@ -423,20 +310,15 @@
         private Label label5;
         private Label label10;
         private Label label8;
-        private MenuStrip menuStrip2;
-        private ToolStripMenuItem accountSettingsToolStripMenuItem;
-        private ToolStripMenuItem toolStripMenuItem4;
         private Label label4;
         private Label label2;
         private Button button6;
         private Button button4;
-        private Button button8;
         private Label label3;
         private Panel panel2;
         private Panel panel1;
-        private DataGridView dataGridView1;
+        private DataGridView Sales_By_User_Profile_Grid;
         private Label label1;
         private TextBox searchBoxPI;
-        private Button searchbuttonPI;
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -11,29 +12,68 @@ namespace Fuentes_PrelimsP2
     public partial class AdminLogin : Form
     {
         Homepageee home;
+        private static AdminLogin instance;
+
+        internal static AdminLogin Instance
+        {
+            get
+            {
+                if (instance == null || instance.IsDisposed)
+                {
+                    instance = new AdminLogin();
+                }
+
+                return instance;
+            }
+        }
         public AdminLogin()
         {
             InitializeComponent();
         }
 
+        OleDbConnection? connection;
+        OleDbDataAdapter? adapter;
+        OleDbCommand? command;
+        DataSet? dataSet;
+        int indexRow;
+
         private void loginADMIN_Click(object sender, EventArgs e)
         {
-            string sampleAdminUserName, sampleAdminPassword;
+            string connectionString = "Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb";
+            string query = "SELECT COUNT(*) FROM [Admin Account Information] WHERE [username] = @H1 AND [password] = @H2";
 
-            sampleAdminUserName = ADMINusn.Text;
-            sampleAdminPassword = ADMINpass.Text;
-
-            if (sampleAdminUserName == "admin123" && sampleAdminPassword == "admin123")
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
             {
-                AdminAccount adminAccount = new AdminAccount();
+                try
+                {
+                    conn.Open();
+                    OleDbCommand cmd = new OleDbCommand(query, conn);
 
-                MessageBox.Show("Login Successful!");
+                    // Using parameters prevents SQL Injection (a big plus for your grade!)
+                    cmd.Parameters.AddWithValue("@H1", ADMINusn.Text);
+                    cmd.Parameters.AddWithValue("@H2", ADMINpass.Text);
 
-                adminAccount.Show();
+                    int count = (int)cmd.ExecuteScalar();
 
-                this.Hide();
+                    if (count > 0)
+                    {
+                        MessageBox.Show("Login Successful!");
+                        AdminAccount.Instance.Show(); // Using your Singleton
+                        this.Hide();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid Username or Password. Please try again.");
+                        ADMINpass.Clear();
+                        ADMINusn.Focus();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Database Error: " + ex.Message);
+                }
             }
-            else MessageBox.Show("Kindly double check your credentials first. Try again later.");
         }
 
         private void AdminLogin_FormClosed(object sender, FormClosedEventArgs e)
@@ -47,5 +87,6 @@ namespace Fuentes_PrelimsP2
             this.Hide();
             home.Show();
         }
+
     }
 }

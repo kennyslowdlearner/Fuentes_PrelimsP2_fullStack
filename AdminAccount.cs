@@ -102,8 +102,22 @@ namespace Fuentes_PrelimsP2
         {
             try
             {
+                UserSession.reset();
+
+                if (Admin_InventoryManagement.Instance != null) Admin_InventoryManagement.Instance.Dispose();
+                if (Admin_SalesByProduct.Instance != null) Admin_SalesByProduct.Instance.Dispose();
+                if (Admin_SalesbyUserProfile.Instance != null) Admin_SalesbyUserProfile.Instance.Dispose();
+                if (Admin_TimeBasedSalesReport.Instance != null) Admin_TimeBasedSalesReport.Instance.Dispose();
+                if (Admin_TotalSalesReport.Instance != null) Admin_TotalSalesReport.Instance.Dispose();
+                if (Admin_TotalTransactions.Instance != null) Admin_TotalTransactions.Instance.Dispose();
+                if (AdminAccount.Instance != null) AdminAccount.Instance.Dispose();
+                if (AdminAccountControl.Instance != null) AdminAccountControl.Instance.Dispose();
+                if (AdminSalesReport.Instance != null) AdminSalesReport.Instance.Dispose();
+                if (AdminTransportSchedule.Instance != null) AdminTransportSchedule.Instance.Dispose();
+                
+
                 Homepageee.Instance.Show();
-                this.Hide();
+                this.Dispose();
             }
 
             catch (Exception ex)
@@ -112,6 +126,6 @@ namespace Fuentes_PrelimsP2
             }
         }
 
-       
+
     }
 }

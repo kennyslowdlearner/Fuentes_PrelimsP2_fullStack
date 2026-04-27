@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -14,6 +15,7 @@ namespace Fuentes_PrelimsP2
         public Admin_SalesbyUserProfile()
         {
             InitializeComponent();
+            auto_reload();
         }
 
         internal static Admin_SalesbyUserProfile Instance
@@ -40,5 +42,107 @@ namespace Fuentes_PrelimsP2
                 MessageBox.Show("Failed to open page:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void auto_reload()
+        {
+            string connString = "Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb";
+
+            // Simply use the Query Name exactly as it appears in Access
+            string query = "SELECT * FROM [Admin - Sales by User Profile]";
+
+            using (OleDbConnection connection = new OleDbConnection(connString))
+            {
+                try
+                {
+                    connection.Open();
+                    OleDbDataAdapter adapter = new OleDbDataAdapter(query, connection);
+                    DataTable dataSet = new DataTable();
+                    adapter.Fill(dataSet);
+                    Sales_By_User_Profile_Grid.DataSource = dataSet;
+
+                    LoadSellerPerformance(connection);
+
+                    Sales_By_User_Profile_Grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    if (Sales_By_User_Profile_Grid.Columns.Contains("TotalIncome"))
+                    {
+                        Sales_By_User_Profile_Grid.Columns["TotalIncome"].DefaultCellStyle.Format = "₱#,##0.00";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to load query data: " + ex.Message);
+                }
+            }
+        }
+
+        private void LoadSellerPerformance(OleDbConnection conn)
+        {
+            try
+            {
+                // 1. TOP PERFORMING SELLER (Highest total income)
+                string topSellerQuery = @"SELECT TOP 1 A.[First Name] & ' ' & A.[Last Name] 
+                          FROM [User Account Information] AS A
+                          INNER JOIN [User T&T Transaction] AS T ON A.[User ID] = T.[User ID]
+                          GROUP BY A.[First Name], A.[Last Name] 
+                          ORDER BY SUM(T.[Price per Kilogram] * T.[Quantity in Kilogram]) DESC";
+
+                OleDbCommand cmdTop = new OleDbCommand(topSellerQuery, conn);
+                object topName = cmdTop.ExecuteScalar();
+                display_tps_asup.Text = topName != null ? topName.ToString() : "N/A";
+
+                // 2. LOW PERFORMING SELLER (Lowest total income)
+                string lowSellerQuery = @"SELECT TOP 1 A.[First Name] & ' ' & A.[Last Name] 
+                          FROM [User Account Information] AS A
+                          INNER JOIN [User T&T Transaction] AS T ON A.[User ID] = T.[User ID]
+                          GROUP BY A.[First Name], A.[Last Name] 
+                          ORDER BY SUM(T.[Price per Kilogram] * T.[Quantity in Kilogram]) ASC";
+
+                OleDbCommand cmdLow = new OleDbCommand(lowSellerQuery, conn);
+                object lowName = cmdLow.ExecuteScalar();
+                display_lps_asup.Text = lowName != null ? lowName.ToString() : "N/A";
+
+                // 3. TOTAL TRANSACTIONS (Count of all rows)
+                string totalTransQuery = "SELECT COUNT(*) FROM [User T&T Transaction]";
+                OleDbCommand cmdCount = new OleDbCommand(totalTransQuery, conn);
+                int totalTransactions = (int)cmdCount.ExecuteScalar();
+                display_tt_asup.Text = totalTransactions.ToString();
+
+                // 4. PERFORMANCE RATE (%) 
+                // Logic: (Current Month Transactions / Previous Month Transactions) * 100
+                // For a simple demo, you can calculate: (Top Seller Sales / Total Sales) * 100
+                CalculatePerformanceRate(conn, totalTransactions);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading performance stats: " + ex.Message);
+            }
+        }
+
+        private void CalculatePerformanceRate(OleDbConnection conn, int totalTrans)
+        {
+            string sumAllQuery = "SELECT SUM([Price per Kilogram] * [Quantity in Kilogram]) FROM [User T&T Transaction]";
+            string sumTopQuery = @"SELECT TOP 1 SUM([Price per Kilogram] * [Quantity in Kilogram]) 
+                       FROM [User T&T Transaction] 
+                       GROUP BY [User ID] 
+                       ORDER BY SUM([Price per Kilogram] * [Quantity in Kilogram]) DESC";
+
+            OleDbCommand cmdAll = new OleDbCommand(sumAllQuery, conn);
+            OleDbCommand cmdTop = new OleDbCommand(sumTopQuery, conn);
+
+            double allSales = Convert.ToDouble(cmdAll.ExecuteScalar() ?? 0);
+            double topSales = Convert.ToDouble(cmdTop.ExecuteScalar() ?? 0);
+
+            if (allSales > 0)
+            {
+                double rate = (topSales / allSales) * 100;
+                display_pr_asup.Text = rate.ToString("N2") + "%";
+            }
+            else
+            {
+                display_pr_asup.Text = "0.00%";
+            }
+        }
     }
+
+
 }
