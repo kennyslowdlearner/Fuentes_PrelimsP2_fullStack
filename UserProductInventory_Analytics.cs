@@ -29,23 +29,9 @@ namespace Fuentes_PrelimsP2
         public UserProductInventory_Analytics()
         {
             InitializeComponent();
-            
-            display_productquantities_summary.AutoSize = false;
-            display_totalKilograms_summary.AutoSize = false;
-            display_capacity_summary.AutoSize = false;
 
-            int sectionWidth = 350;
-            display_productquantities_summary.Width = sectionWidth;
-            display_totalKilograms_summary.Width = sectionWidth;
-            display_capacity_summary.Width = sectionWidth;
-
-            display_productquantities_summary.TextAlign = ContentAlignment.MiddleCenter;
-            display_totalKilograms_summary.TextAlign = ContentAlignment.MiddleCenter;
-            display_capacity_summary.TextAlign = ContentAlignment.MiddleCenter;
-
-            //display_productquantities_summary.Height = 60;
-            //display_totalKilograms_summary.Height = 60;
-            //display_capacity_summary.Height = 60;
+            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            display_piechart_panel.BackColor = Color.Transparent;
 
             fetch_data_from_database();
         }
@@ -119,48 +105,39 @@ namespace Fuentes_PrelimsP2
             var barChart = new CartesianChart
             {
                 Dock = DockStyle.Fill,
-                BackColor = Color.Transparent,
+                BackColor = Color.Transparent, 
                 ZoomMode = LiveChartsCore.Measure.ZoomAndPanMode.Both,
                 ZoomingSpeed = 1.5,
-
-                DrawMarginFrame = new DrawMarginFrame
-                {
-                    Stroke = new SolidColorPaint(SKColors.Transparent)
-                },
+                DrawMarginFrame = new DrawMarginFrame { Stroke = new SolidColorPaint(SKColors.Transparent) },
 
                 Series = new ISeries[]
                 {
-                    new ColumnSeries<double>
-                    {
-                        Name = "Current Stock Level (Kg)",
-                        Values = quantities.ToArray(),
-                        Padding = 2,
-                        Fill = new SolidColorPaint(SKColors.ForestGreen.WithAlpha(150))
-                    },
-
+            new ColumnSeries<double>
+            {
+                Name = "Current Stock Level (Kg)",
+                Values = quantities.ToArray(),
+                Padding = 2,
+                Fill = new SolidColorPaint(SKColors.ForestGreen.WithAlpha(150)),
+                YToolTipLabelFormatter = point => $"{point.Coordinate.PrimaryValue} kg"
+            },
                 },
 
                 XAxes = new Axis[]
-                    {
-                        new Axis
-                        {
-                            Labels = productName.ToArray(),
-                            LabelsRotation = 30,
-                            SeparatorsPaint = new SolidColorPaint(SKColors.Transparent),
+                {
+            new Axis
+            {
+                Labels = productName.ToArray(),
+                LabelsRotation = 30,
+                SeparatorsPaint = new SolidColorPaint(SKColors.Transparent),
+                MinLimit = 0,
+                MaxLimit = productName.Count > 5 ? 5 : (double?)null
+            }
+                },
 
-                            MinLimit = 0,
-                            MaxLimit = productName.Count > 5 ? 5 : (double?) null
-
-                        }
-                    },
-
-                 YAxes = new Axis[]
-                    {
-                        new Axis
-                        {
-                            SeparatorsPaint = new SolidColorPaint(SKColors.Transparent)
-                        }
-                    }
+                YAxes = new Axis[]
+                {
+            new Axis { SeparatorsPaint = new SolidColorPaint(SKColors.Transparent) }
+                }
             };
 
             var pieSeries = new List<ISeries>();
@@ -170,18 +147,24 @@ namespace Fuentes_PrelimsP2
                 {
                     Name = productName[a],
                     Values = new double[] { quantities[a] },
+
+                    DataLabelsPaint = null,
+
+                    DataLabelsFormatter = point => $"{point.Context.Series.Name}: {point.Coordinate.PrimaryValue} kg ({point.StackedValue:P2})"
                 });
             }
 
             var pieChart = new PieChart
             {
                 Dock = DockStyle.Fill,
-                BackColor = Color.Transparent,
+                // Match your panel's color here instead of using Transparent
+                BackColor = Color.FromArgb(242, 242, 242),
                 Series = pieSeries.ToArray(),
-                LegendPosition = LiveChartsCore.Measure.LegendPosition.Right
+                LegendPosition = LiveChartsCore.Measure.LegendPosition.Hidden,
+                TooltipPosition = LiveChartsCore.Measure.TooltipPosition.Top
             };
 
-
+            // UI Updates
             display_bargraph_panel.Controls.Clear();
             display_bargraph_panel.Controls.Add(barChart);
 
@@ -200,41 +183,16 @@ namespace Fuentes_PrelimsP2
 
             for (int a = 0; a < total_Frames; a++)
             {
-                display_totalKilograms_summary.Text = $"{current_Kilogram:N2}";
-                display_productquantities_summary.Text = $"{(int)current_count}";
-
+                
                 current_Kilogram += kilogram_Step;
                 current_count += count_Step;
 
                 await Task.Delay(33);
             }
-
-
-
-            display_totalKilograms_summary.Text = $"{total_Kilograms:N2} Kg";
-            display_productquantities_summary.Text = $"{product_Count}";
-
-            UpdateCapacityStatus(total_Kilograms);
+                       
         }
 
-        private void UpdateCapacityStatus(double total_Kilograms)
-        {
-            if (total_Kilograms <= 1000)
-            {
-                display_capacity_summary.Text = "Low";
-                display_capacity_summary.ForeColor = Color.Red;
-            }
-            else if (total_Kilograms > 1000 && total_Kilograms <= 10000)
-            {
-                display_capacity_summary.Text = "Enough";
-                display_capacity_summary.ForeColor = Color.ForestGreen;
-            }
-            else if (total_Kilograms > 10000)
-            {
-                display_capacity_summary.Text = "Over";
-                display_capacity_summary.ForeColor = Color.Gold;
-            }
-        }
+        
 
         private void label4_Click(object sender, EventArgs e)
         {

@@ -29,20 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin_TimeBasedSalesReport));
-            panel1 = new Panel();
-            dataGridView1 = new DataGridView();
-            panel2 = new Panel();
-            dataGridView2 = new DataGridView();
-            panel3 = new Panel();
-            dataGridView3 = new DataGridView();
-            menuStrip2 = new MenuStrip();
-            sssssToolStripMenuItem = new ToolStripMenuItem();
-            reloadToolStripMenuItem = new ToolStripMenuItem();
-            learnMoreToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem3 = new ToolStripMenuItem();
-            viewAccountToolStripMenuItem1 = new ToolStripMenuItem();
-            accountSettingsToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem4 = new ToolStripMenuItem();
+            display_permonth_analytics = new Panel();
+            Per_Month_Grid = new DataGridView();
+            display_perweek_analytics = new Panel();
+            Per_Week_Grid = new DataGridView();
+            display_peryear_analytics = new Panel();
+            Per_Year_Grid = new DataGridView();
             button4 = new Button();
             button8 = new Button();
             button6 = new Button();
@@ -62,127 +54,64 @@
             label15 = new Label();
             label16 = new Label();
             label17 = new Label();
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
-            panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
-            menuStrip2.SuspendLayout();
+            label7 = new Label();
+            fill_search_tbsr = new TextBox();
+            label8 = new Label();
+            ((System.ComponentModel.ISupportInitialize)Per_Month_Grid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Per_Week_Grid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Per_Year_Grid).BeginInit();
             SuspendLayout();
             // 
-            // panel1
+            // display_permonth_analytics
             // 
-            panel1.Controls.Add(dataGridView1);
-            panel1.Location = new Point(48, 242);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(671, 179);
-            panel1.TabIndex = 0;
+            display_permonth_analytics.Location = new Point(48, 242);
+            display_permonth_analytics.Name = "display_permonth_analytics";
+            display_permonth_analytics.Size = new Size(671, 211);
+            display_permonth_analytics.TabIndex = 0;
+            display_permonth_analytics.Visible = false;
             // 
-            // dataGridView1
+            // Per_Month_Grid
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(665, 173);
-            dataGridView1.TabIndex = 0;
+            Per_Month_Grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Per_Month_Grid.Location = new Point(48, 242);
+            Per_Month_Grid.Name = "Per_Month_Grid";
+            Per_Month_Grid.RowHeadersWidth = 62;
+            Per_Month_Grid.Size = new Size(671, 211);
+            Per_Month_Grid.TabIndex = 0;
             // 
-            // panel2
+            // display_perweek_analytics
             // 
-            panel2.Controls.Add(dataGridView2);
-            panel2.Location = new Point(48, 483);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(671, 179);
-            panel2.TabIndex = 0;
+            display_perweek_analytics.Location = new Point(48, 483);
+            display_perweek_analytics.Name = "display_perweek_analytics";
+            display_perweek_analytics.Size = new Size(671, 179);
+            display_perweek_analytics.TabIndex = 0;
+            display_perweek_analytics.Visible = false;
             // 
-            // dataGridView2
+            // Per_Week_Grid
             // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(3, 3);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowHeadersWidth = 62;
-            dataGridView2.Size = new Size(665, 173);
-            dataGridView2.TabIndex = 0;
+            Per_Week_Grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Per_Week_Grid.Location = new Point(49, 483);
+            Per_Week_Grid.Name = "Per_Week_Grid";
+            Per_Week_Grid.RowHeadersWidth = 62;
+            Per_Week_Grid.Size = new Size(670, 180);
+            Per_Week_Grid.TabIndex = 0;
             // 
-            // panel3
+            // display_peryear_analytics
             // 
-            panel3.Controls.Add(dataGridView3);
-            panel3.Location = new Point(742, 245);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(711, 152);
-            panel3.TabIndex = 0;
+            display_peryear_analytics.Location = new Point(742, 245);
+            display_peryear_analytics.Name = "display_peryear_analytics";
+            display_peryear_analytics.Size = new Size(711, 208);
+            display_peryear_analytics.TabIndex = 0;
+            display_peryear_analytics.Visible = false;
             // 
-            // dataGridView3
+            // Per_Year_Grid
             // 
-            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Location = new Point(3, 3);
-            dataGridView3.Name = "dataGridView3";
-            dataGridView3.RowHeadersWidth = 62;
-            dataGridView3.Size = new Size(705, 146);
-            dataGridView3.TabIndex = 0;
-            // 
-            // menuStrip2
-            // 
-            menuStrip2.BackColor = Color.Transparent;
-            menuStrip2.Dock = DockStyle.None;
-            menuStrip2.ImageScalingSize = new Size(24, 24);
-            menuStrip2.Items.AddRange(new ToolStripItem[] { sssssToolStripMenuItem, accountSettingsToolStripMenuItem });
-            menuStrip2.Location = new Point(1110, 153);
-            menuStrip2.Name = "menuStrip2";
-            menuStrip2.Size = new Size(343, 32);
-            menuStrip2.TabIndex = 121;
-            menuStrip2.Text = "menuStrip2";
-            // 
-            // sssssToolStripMenuItem
-            // 
-            sssssToolStripMenuItem.BackColor = Color.Transparent;
-            sssssToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { reloadToolStripMenuItem, learnMoreToolStripMenuItem, toolStripMenuItem3, viewAccountToolStripMenuItem1 });
-            sssssToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            sssssToolStripMenuItem.ForeColor = Color.DarkOliveGreen;
-            sssssToolStripMenuItem.Name = "sssssToolStripMenuItem";
-            sssssToolStripMenuItem.Size = new Size(151, 28);
-            sssssToolStripMenuItem.Text = "More Options";
-            // 
-            // reloadToolStripMenuItem
-            // 
-            reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
-            reloadToolStripMenuItem.Size = new Size(281, 34);
-            reloadToolStripMenuItem.Text = "Reload";
-            // 
-            // learnMoreToolStripMenuItem
-            // 
-            learnMoreToolStripMenuItem.Name = "learnMoreToolStripMenuItem";
-            learnMoreToolStripMenuItem.Size = new Size(281, 34);
-            learnMoreToolStripMenuItem.Text = "Learn More";
-            // 
-            // toolStripMenuItem3
-            // 
-            toolStripMenuItem3.Name = "toolStripMenuItem3";
-            toolStripMenuItem3.Size = new Size(281, 34);
-            toolStripMenuItem3.Text = "Contact Developer";
-            // 
-            // viewAccountToolStripMenuItem1
-            // 
-            viewAccountToolStripMenuItem1.Name = "viewAccountToolStripMenuItem1";
-            viewAccountToolStripMenuItem1.Size = new Size(281, 34);
-            viewAccountToolStripMenuItem1.Text = "View Account";
-            // 
-            // accountSettingsToolStripMenuItem
-            // 
-            accountSettingsToolStripMenuItem.BackColor = Color.Transparent;
-            accountSettingsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem4 });
-            accountSettingsToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            accountSettingsToolStripMenuItem.ForeColor = Color.DarkOliveGreen;
-            accountSettingsToolStripMenuItem.Name = "accountSettingsToolStripMenuItem";
-            accountSettingsToolStripMenuItem.Size = new Size(184, 28);
-            accountSettingsToolStripMenuItem.Text = "Account Settings";
-            // 
-            // toolStripMenuItem4
-            // 
-            toolStripMenuItem4.Name = "toolStripMenuItem4";
-            toolStripMenuItem4.Size = new Size(172, 34);
-            toolStripMenuItem4.Text = "Logout";
+            Per_Year_Grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Per_Year_Grid.Location = new Point(742, 242);
+            Per_Year_Grid.Name = "Per_Year_Grid";
+            Per_Year_Grid.RowHeadersWidth = 62;
+            Per_Year_Grid.Size = new Size(711, 211);
+            Per_Year_Grid.TabIndex = 0;
             // 
             // button4
             // 
@@ -211,8 +140,9 @@
             button8.Name = "button8";
             button8.Size = new Size(143, 38);
             button8.TabIndex = 119;
-            button8.Text = "Connect";
+            button8.Text = "Switch View";
             button8.UseVisualStyleBackColor = false;
+            button8.Click += press_switchview;
             // 
             // button6
             // 
@@ -234,7 +164,7 @@
             display_tps_tbsr.BackColor = Color.Transparent;
             display_tps_tbsr.Font = new Font("Glacial Indifference", 11F, FontStyle.Italic);
             display_tps_tbsr.ForeColor = Color.Gold;
-            display_tps_tbsr.Location = new Point(1110, 439);
+            display_tps_tbsr.Location = new Point(1110, 501);
             display_tps_tbsr.Name = "display_tps_tbsr";
             display_tps_tbsr.Size = new Size(126, 27);
             display_tps_tbsr.TabIndex = 125;
@@ -246,7 +176,7 @@
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.PaleGreen;
-            label3.Location = new Point(1035, 439);
+            label3.Location = new Point(1035, 501);
             label3.Name = "label3";
             label3.Size = new Size(19, 27);
             label3.TabIndex = 123;
@@ -258,11 +188,11 @@
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold);
             label6.ForeColor = Color.PaleGreen;
-            label6.Location = new Point(742, 531);
+            label6.Location = new Point(742, 593);
             label6.Name = "label6";
-            label6.Size = new Size(231, 27);
+            label6.Size = new Size(210, 27);
             label6.TabIndex = 126;
-            label6.Text = "Performance Rate (%)";
+            label6.Text = "Economic Rating(%)";
             // 
             // label5
             // 
@@ -270,11 +200,11 @@
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold);
             label5.ForeColor = Color.PaleGreen;
-            label5.Location = new Point(742, 499);
+            label5.Location = new Point(742, 561);
             label5.Name = "label5";
-            label5.Size = new Size(199, 27);
+            label5.Size = new Size(223, 27);
             label5.TabIndex = 127;
-            label5.Text = "Total Transactions";
+            label5.Text = "Overall Transactions";
             // 
             // label4
             // 
@@ -282,11 +212,11 @@
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold);
             label4.ForeColor = Color.PaleGreen;
-            label4.Location = new Point(742, 469);
+            label4.Location = new Point(742, 531);
             label4.Name = "label4";
-            label4.Size = new Size(270, 27);
+            label4.Size = new Size(171, 27);
             label4.TabIndex = 128;
-            label4.Text = "Lowest Performing Seller";
+            label4.Text = "Least Sold Rice";
             // 
             // label2
             // 
@@ -294,11 +224,11 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold);
             label2.ForeColor = Color.PaleGreen;
-            label2.Location = new Point(742, 437);
+            label2.Location = new Point(742, 499);
             label2.Name = "label2";
-            label2.Size = new Size(234, 27);
+            label2.Size = new Size(151, 27);
             label2.TabIndex = 129;
-            label2.Text = "Top Performing Seller";
+            label2.Text = "Top Sold Rice";
             // 
             // label1
             // 
@@ -306,7 +236,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.PaleGreen;
-            label1.Location = new Point(987, 464);
+            label1.Location = new Point(987, 526);
             label1.Name = "label1";
             label1.Size = new Size(19, 27);
             label1.TabIndex = 123;
@@ -318,7 +248,7 @@
             display_lps_tbsr.BackColor = Color.Transparent;
             display_lps_tbsr.Font = new Font("Glacial Indifference", 11F, FontStyle.Italic);
             display_lps_tbsr.ForeColor = Color.Gold;
-            display_lps_tbsr.Location = new Point(1110, 469);
+            display_lps_tbsr.Location = new Point(1110, 531);
             display_lps_tbsr.Name = "display_lps_tbsr";
             display_lps_tbsr.Size = new Size(126, 27);
             display_lps_tbsr.TabIndex = 125;
@@ -330,7 +260,7 @@
             display_tt_tbsr.BackColor = Color.Transparent;
             display_tt_tbsr.Font = new Font("Glacial Indifference", 11F, FontStyle.Italic);
             display_tt_tbsr.ForeColor = Color.Gold;
-            display_tt_tbsr.Location = new Point(1110, 499);
+            display_tt_tbsr.Location = new Point(1110, 561);
             display_tt_tbsr.Name = "display_tt_tbsr";
             display_tt_tbsr.Size = new Size(126, 27);
             display_tt_tbsr.TabIndex = 125;
@@ -342,7 +272,7 @@
             display_pr_tbsr.BackColor = Color.Transparent;
             display_pr_tbsr.Font = new Font("Glacial Indifference", 11F, FontStyle.Italic);
             display_pr_tbsr.ForeColor = Color.Gold;
-            display_pr_tbsr.Location = new Point(1110, 531);
+            display_pr_tbsr.Location = new Point(1110, 593);
             display_pr_tbsr.Name = "display_pr_tbsr";
             display_pr_tbsr.Size = new Size(126, 27);
             display_pr_tbsr.TabIndex = 125;
@@ -390,7 +320,7 @@
             label15.BackColor = Color.Transparent;
             label15.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label15.ForeColor = Color.PaleGreen;
-            label15.Location = new Point(1035, 469);
+            label15.Location = new Point(1035, 531);
             label15.Name = "label15";
             label15.Size = new Size(19, 27);
             label15.TabIndex = 123;
@@ -402,7 +332,7 @@
             label16.BackColor = Color.Transparent;
             label16.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label16.ForeColor = Color.PaleGreen;
-            label16.Location = new Point(1035, 501);
+            label16.Location = new Point(1035, 563);
             label16.Name = "label16";
             label16.Size = new Size(19, 27);
             label16.TabIndex = 123;
@@ -414,11 +344,45 @@
             label17.BackColor = Color.Transparent;
             label17.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label17.ForeColor = Color.PaleGreen;
-            label17.Location = new Point(1035, 531);
+            label17.Location = new Point(1035, 593);
             label17.Name = "label17";
             label17.Size = new Size(19, 27);
             label17.TabIndex = 123;
             label17.Text = ":";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.BackColor = Color.Transparent;
+            label7.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold);
+            label7.ForeColor = Color.DarkOliveGreen;
+            label7.Location = new Point(922, 209);
+            label7.Name = "label7";
+            label7.Size = new Size(254, 24);
+            label7.TabIndex = 133;
+            label7.Text = "Customer Name/Rice Type";
+            // 
+            // fill_search_tbsr
+            // 
+            fill_search_tbsr.BackColor = Color.Gainsboro;
+            fill_search_tbsr.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            fill_search_tbsr.Location = new Point(1203, 204);
+            fill_search_tbsr.Name = "fill_search_tbsr";
+            fill_search_tbsr.Size = new Size(252, 29);
+            fill_search_tbsr.TabIndex = 132;
+            fill_search_tbsr.TextChanged += press_search;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.BackColor = Color.Transparent;
+            label8.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold);
+            label8.ForeColor = Color.DarkOliveGreen;
+            label8.Location = new Point(1182, 205);
+            label8.Name = "label8";
+            label8.Size = new Size(16, 24);
+            label8.TabIndex = 131;
+            label8.Text = ":";
             // 
             // Admin_TimeBasedSalesReport
             // 
@@ -426,6 +390,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
+            Controls.Add(label7);
+            Controls.Add(fill_search_tbsr);
+            Controls.Add(label8);
+            Controls.Add(Per_Week_Grid);
+            Controls.Add(Per_Year_Grid);
+            Controls.Add(Per_Month_Grid);
             Controls.Add(label14);
             Controls.Add(label13);
             Controls.Add(label12);
@@ -443,32 +413,26 @@
             Controls.Add(label15);
             Controls.Add(label3);
             Controls.Add(button6);
-            Controls.Add(menuStrip2);
             Controls.Add(button4);
-            Controls.Add(panel3);
+            Controls.Add(display_peryear_analytics);
             Controls.Add(button8);
-            Controls.Add(panel2);
-            Controls.Add(panel1);
+            Controls.Add(display_perweek_analytics);
+            Controls.Add(display_permonth_analytics);
             Name = "Admin_TimeBasedSalesReport";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
-            panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
-            panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
-            menuStrip2.ResumeLayout(false);
-            menuStrip2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)Per_Month_Grid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Per_Week_Grid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Per_Year_Grid).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Panel panel1;
-        private Panel panel2;
-        private Panel panel3;
+        private Panel display_permonth_analytics;
+        private Panel display_perweek_analytics;
+        private Panel display_peryear_analytics;
         private MenuStrip menuStrip2;
         private ToolStripMenuItem sssssToolStripMenuItem;
         private ToolStripMenuItem reloadToolStripMenuItem;
@@ -493,11 +457,14 @@
         private Label label12;
         private Label label13;
         private Label label14;
-        private DataGridView dataGridView1;
-        private DataGridView dataGridView2;
-        private DataGridView dataGridView3;
+        private DataGridView Per_Month_Grid;
         private Label label15;
         private Label label16;
         private Label label17;
+        private DataGridView Per_Week_Grid;
+        private DataGridView Per_Year_Grid;
+        private Label label7;
+        private TextBox fill_search_tbsr;
+        private Label label8;
     }
 }

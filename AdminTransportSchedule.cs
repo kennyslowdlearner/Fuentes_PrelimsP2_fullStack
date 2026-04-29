@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
+using System.Security.AccessControl;
 using System.Text;
 using System.Windows.Forms;
 
@@ -15,6 +17,7 @@ namespace Fuentes_PrelimsP2
         public AdminTransportSchedule()
         {
             InitializeComponent();
+            auto_reload();
         }
 
         internal static AdminTransportSchedule Instance
@@ -55,40 +58,282 @@ namespace Fuentes_PrelimsP2
             }
         }
 
-        private void press_refresh_ts(object sender, EventArgs e)
+        private void auto_reload()
         {
-            connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
-            adapter = new OleDbDataAdapter("SELECT * FROM [Admin - User Transport Schedule] WHERE [User ID] = !A1", connection);
+            try
+            {
+                // 1. Setup Connection - Pull all records
+                connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
+                string query = "SELECT * FROM [Admin - User Transport Schedule]"; // Simple query
 
-            adapter.SelectCommand.Parameters.AddWithValue("A1", UserSession.UserInstance.ID);
+                adapter = new OleDbDataAdapter(query, connection);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                // 2. Process Status Updates
+                foreach (DataRow row in dt.Rows)
+                {
+                    if (row["Date Made"] != DBNull.Value && row["Trip Number"] != DBNull.Value)
+                    {
+                        int tripId = Convert.ToInt32(row["Trip Number"]);
+                        DateTime dateMade = Convert.ToDateTime(row["Date Made"]);
+
+                        // Use a safe check for the Status column
+                        string currentStatus = row["Status"] != DBNull.Value ? row["Status"].ToString() : "";
+                        string calculatedStatus = GetStatusByTime(dateMade);
+
+                        // Update if it's not "Recognized" and not already the right status
+                        if (currentStatus != "Recognized" && currentStatus != "Arrived at Consumer" && currentStatus != calculatedStatus)
+                        {
+                            UpdateStatusSilently(tripId, calculatedStatus);
+                            row["Status"] = calculatedStatus;
+                        }
+                    }
+                }
+
+                // 3. Filter and Sort using DataView
+                DataView dv = dt.DefaultView;
+
+                // This filters out rows where you've set the status to "Recognized" manually
+                dv.RowFilter = "Status <> 'Recognized' OR Status IS NULL";
+
+                // Sort: We'll just sort by Date Made for now to keep it stable
+                dv.Sort = "[Date Made] DESC";
+
+                // 4. Bind the DataView (This fixes the Red X)
+                Admin_Transport_Schedule_Grid.DataSource = null;
+                Admin_Transport_Schedule_Grid.DataSource = dv;
+
+                // UI Cleanup
+                Admin_Transport_Schedule_Grid.RowHeadersVisible = false;
+                Admin_Transport_Schedule_Grid.ClearSelection();
+
+                // 4. Bind the DataView
+                Admin_Transport_Schedule_Grid.DataSource = null;
+                Admin_Transport_Schedule_Grid.DataSource = dv;
+
+                // --- START OF COLUMN ADJUSTMENTS ---
+
+                // 1. Set mode to None to allow manual pixel widths
+                Admin_Transport_Schedule_Grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+
+                // 2. Adjust individual widths (Adjust the numbers to fit your design)
+                if (Admin_Transport_Schedule_Grid.Columns.Count > 0)
+                {
+                    // These names must match your Access Database field names exactly
+                    Admin_Transport_Schedule_Grid.Columns["Trip Number"].Width = 60;
+                    Admin_Transport_Schedule_Grid.Columns["Transport Name"].Width = 300;
+                    Admin_Transport_Schedule_Grid.Columns["Driver"].Width = 250;
+                    Admin_Transport_Schedule_Grid.Columns["License Number"].Width = 270;
+                    Admin_Transport_Schedule_Grid.Columns["Delivery Code"].Width = 270;
+                    Admin_Transport_Schedule_Grid.Columns["Place From"].Width = 400;
+                    Admin_Transport_Schedule_Grid.Columns["Place To"].Width = 400;
+                    Admin_Transport_Schedule_Grid.Columns["Estimated Time"].Width = 300;
+                    Admin_Transport_Schedule_Grid.Columns["Status"].Width = 500;
+                    Admin_Transport_Schedule_Grid.Columns["Date Made"].Width = 200;
+                }
+
+                // 3. Optional: Make them look cleaner
+                Admin_Transport_Schedule_Grid.Columns["Date Made"].DefaultCellStyle.Format = "MM/dd/yyyy HH:mm";
+                Admin_Transport_Schedule_Grid.Columns["Estimated Time"].DefaultCellStyle.Format = "t"; // Shows just the time (e.g. 2:30 PM)
+
+                // --- END OF COLUMN ADJUSTMENTS ---
+
+                Admin_Transport_Schedule_Grid.RowHeadersVisible = false;
+                Admin_Transport_Schedule_Grid.ClearSelection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Reload Error: " + ex.Message);
+            }
+        }
+
+        private void UpdateStatusSilently(int tripId, string newStatus)
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb"))
+                {
+                    conn.Open();
+                    string sql = "UPDATE [Admin - User Transport Schedule] SET [Status] = @status WHERE [Trip Number] = @id";
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        cmd.Parameters.Add("@status", OleDbType.VarWChar).Value = newStatus;
+                        cmd.Parameters.Add("@id", OleDbType.Integer).Value = tripId;
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch { /* Fail silently during background updates */ }
+        }
+
+        private void press_add(object sender, EventArgs e)
+        {
 
             try
             {
-                connection.Open();
+                using (OleDbConnection conn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb"))
+                {
+                    conn.Open();
 
-                dataSet = new DataSet();
+                    string query = "INSERT INTO [Admin - User Transport Schedule] ([Transport Name], [Driver], [License Number], [Delivery Code], [Place From], [Place To], [Estimated Time], [Status], [Date Made]) " +
+                                   "VALUES (@P1, @P2, @P3, @P4, @P5, @P6, @P7, @P8, @P9)";
 
-                adapter.Fill(dataSet, "[Admin - User Transport Schedule]");
+                    using (OleDbCommand command = new OleDbCommand(query, conn))
+                    {
+                        // Add parameters in the EXACT order they appear in the query
+                        command.Parameters.Add("@P1", OleDbType.VarWChar).Value = fill_transportname_ats.Text;
+                        command.Parameters.Add("@P2", OleDbType.VarWChar).Value = fill_driver_ats.Text;
+                        command.Parameters.Add("@P3", OleDbType.VarWChar).Value = fill_licensenumber_ats.Text;
+                        command.Parameters.Add("@P4", OleDbType.VarWChar).Value = fill_deliverycode_ats.Text;
+                        command.Parameters.Add("@P5", OleDbType.VarWChar).Value = fill_placefrom_ats.Text;
+                        command.Parameters.Add("@P6", OleDbType.VarWChar).Value = fill_placeto_ats.Text;
 
-                connection.Close();
 
-                Admin_Transport_Schedule_Grid.DataSource = dataSet.Tables["[Admin - User Transport Schedule]"];
+                        DateTime eta = DateTime.Now.AddHours(2);
+                        command.Parameters.Add("@P7", OleDbType.Date).Value = eta;
 
-                Admin_Transport_Schedule_Grid.Columns["Trip Number"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Admin_Transport_Schedule_Grid.Columns["From"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                Admin_Transport_Schedule_Grid.Columns["To"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Admin_Transport_Schedule_Grid.Columns["Estimated Time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                Admin_Transport_Schedule_Grid.Columns["Time Left"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Admin_Transport_Schedule_Grid.Columns["Status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                        // METHOD: Initial Status
+                        command.Parameters.Add("@P8", OleDbType.VarWChar).Value = "Courier is preparing to pick up rice";
 
-                //if (Admin_Transport_Schedule_Grid.Columns.Contains("User ID"))
-                //    Admin_Transport_Schedule_Grid.Columns["User ID"].Visible = false;
+                        // SYNTAX CHECK: DateTime.Now is perfect here
+                        command.Parameters.Add("@P9", OleDbType.Date).Value = DateTime.Now;
+
+
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Transportation saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+
+                // Refresh your grids so the new data shows up in the rankings
+                auto_reload();
 
             }
-
             catch (Exception ex)
             {
-                MessageBox.Show("Failed to load data. Error: " + ex.Message);
+                MessageBox.Show("Error saving data: " + ex.Message);
+            }
+        }
+
+        private void UpdateCourierStatus(int tripId, string newStatus)
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb"))
+                {
+                    conn.Open();
+                    string sql = "UPDATE [Admin - User Transport Schedule] SET [Status] = @status WHERE [Trip Number] = @id";
+
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        cmd.Parameters.Add("@status", OleDbType.VarWChar).Value = newStatus;
+                        cmd.Parameters.Add("@id", OleDbType.Integer).Value = tripId;
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                auto_reload(); // Refresh to reflect changes (and hide 'Recognized' items)
+            }
+            catch (Exception ex) { MessageBox.Show("Update Error: " + ex.Message); }
+        }
+
+        private void press_recognized(object sender, EventArgs e)
+        {
+            if (Admin_Transport_Schedule_Grid.SelectedRows.Count > 0)
+            {
+                // Get the ID from the selected row
+                int tripId = Convert.ToInt32(Admin_Transport_Schedule_Grid.SelectedRows[0].Cells["Trip Number"].Value);
+
+                // Update the STATUS value to "Recognized"
+                UpdateStatusSilently(tripId, "Recognized");
+
+                // Reload to hide it
+                auto_reload();
+            }
+        }
+
+        private void dynamic_cellformatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // 1. Safety checks to prevent the Red X
+            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+            if (Admin_Transport_Schedule_Grid.Columns[e.ColumnIndex].Name != "Status") return;
+            if (e.Value == null || e.Value == DBNull.Value) return;
+
+            string status = e.Value.ToString();
+
+            // 2. Apply Colors
+            if (status == "Courier Arrived for Pickup")
+            {
+                e.CellStyle.BackColor = Color.Yellow;
+                e.CellStyle.ForeColor = Color.Black;
+            }
+            else if (status == "Arrived at Consumer")
+            {
+                e.CellStyle.BackColor = Color.DeepSkyBlue;
+                e.CellStyle.ForeColor = Color.White;
+            }
+        }
+
+        // Optional: Logic to determine status based on elapsed time
+        private string GetStatusByTime(DateTime dateMade)
+        {
+            TimeSpan elapsed = DateTime.Now - dateMade;
+            if (elapsed.TotalMinutes > 60) return "Arrived at Consumer";
+            if (elapsed.TotalMinutes > 30) return "In Transit - Courier is heading to destination.";
+            if (elapsed.TotalMinutes > 15) return "Courier Arrived for Pickup"; // Turns Yellow
+            return "Courier is preparing to pick up rice";
+        }
+
+        private void press_Delete(object sender, EventArgs e)
+        {
+            if (Admin_Transport_Schedule_Grid.SelectedRows.Count > 0)
+            {
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this trip record?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    // Get ID from the selected row
+                    int tripId = Convert.ToInt32(Admin_Transport_Schedule_Grid.SelectedRows[0].Cells["Trip Number"].Value);
+
+                    // Now 'ExecuteSql' exists!
+                    ExecuteSql($"DELETE FROM [Admin - User Transport Schedule] WHERE [Trip Number] = {tripId}");
+
+                    auto_reload(); // Refresh the list
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a full row to delete.");
+            }
+        }
+
+        private void ExecuteSql(string sql)
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb"))
+                {
+                    conn.Open();
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Database Error: " + ex.Message);
+            }
+        }
+
+        private void press_update(object sender, EventArgs e)
+        {
+            // This typically pulls data from textboxes back into the selected row
+            if (Admin_Transport_Schedule_Grid.SelectedRows.Count > 0)
+            {
+                int tripId = Convert.ToInt32(Admin_Transport_Schedule_Grid.SelectedRows[0].Cells["Trip Number"].Value);
+                // Example: Update the Driver name manually
+                string sql = "UPDATE [Admin - User Transport Schedule] SET [Driver] = @d WHERE [Trip Number] = @id";
+                // ... (Execute with parameters from your fill_driver_ats.Text)
             }
         }
     }

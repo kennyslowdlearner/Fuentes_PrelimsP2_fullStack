@@ -32,7 +32,6 @@
             panel1 = new Panel();
             Product_Inventory_Grid = new DataGridView();
             button6 = new Button();
-            button5 = new Button();
             label8 = new Label();
             fill_productname_pi = new TextBox();
             label9 = new Label();
@@ -94,25 +93,12 @@
             button6.FlatAppearance.BorderSize = 0;
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button6.Location = new Point(605, 712);
+            button6.Location = new Point(724, 722);
             button6.Name = "button6";
             button6.Size = new Size(120, 41);
             button6.TabIndex = 54;
             button6.UseVisualStyleBackColor = false;
             button6.Click += backButton;
-            // 
-            // button5
-            // 
-            button5.BackColor = Color.Transparent;
-            button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.Location = new Point(737, 712);
-            button5.Name = "button5";
-            button5.Size = new Size(120, 41);
-            button5.TabIndex = 55;
-            button5.UseVisualStyleBackColor = false;
             // 
             // label8
             // 
@@ -468,7 +454,7 @@
             display_indicator_pi.BackColor = Color.Transparent;
             display_indicator_pi.Font = new Font("Glacial Indifference", 15.9999981F, FontStyle.Bold, GraphicsUnit.Point, 0);
             display_indicator_pi.ForeColor = Color.LawnGreen;
-            display_indicator_pi.Location = new Point(1211, 197);
+            display_indicator_pi.Location = new Point(1090, 197);
             display_indicator_pi.Name = "display_indicator_pi";
             display_indicator_pi.Size = new Size(214, 38);
             display_indicator_pi.TabIndex = 75;
@@ -510,7 +496,6 @@
             Controls.Add(fill_productname_pi);
             Controls.Add(label9);
             Controls.Add(button6);
-            Controls.Add(button5);
             Controls.Add(panel1);
             Name = "productInventory";
             StartPosition = FormStartPosition.CenterScreen;
@@ -525,7 +510,6 @@
 
         private Panel panel1;
         private Button button6;
-        private Button button5;
         private Label label8;
         private TextBox fill_productname_pi;
         private Label label9;

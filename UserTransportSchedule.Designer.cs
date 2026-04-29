@@ -33,10 +33,14 @@
             button6 = new Button();
             button5 = new Button();
             label1 = new Label();
+            Transport_Schedule_Grid = new DataGridView();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Transport_Schedule_Grid).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(Transport_Schedule_Grid);
             panel1.Location = new Point(65, 253);
             panel1.Name = "panel1";
             panel1.Size = new Size(1364, 394);
@@ -81,6 +85,15 @@
             label1.TabIndex = 44;
             label1.Text = "Current Transport Schedule";
             // 
+            // Transport_Schedule_Grid
+            // 
+            Transport_Schedule_Grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Transport_Schedule_Grid.Location = new Point(3, 3);
+            Transport_Schedule_Grid.Name = "Transport_Schedule_Grid";
+            Transport_Schedule_Grid.RowHeadersWidth = 62;
+            Transport_Schedule_Grid.Size = new Size(1358, 388);
+            Transport_Schedule_Grid.TabIndex = 0;
+            // 
             // UserTransportSchedule
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -94,6 +107,8 @@
             Name = "UserTransportSchedule";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Transport Schedule";
+            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)Transport_Schedule_Grid).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -104,5 +119,6 @@
         private Button button6;
         private Button button5;
         private Label label1;
+        private DataGridView Transport_Schedule_Grid;
     }
 }

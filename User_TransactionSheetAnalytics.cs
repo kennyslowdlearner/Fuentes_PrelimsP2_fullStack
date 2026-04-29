@@ -23,14 +23,6 @@ namespace Fuentes_PrelimsP2
         {
             InitializeComponent();
 
-            // UI Centering Fix
-            display_transactions_summary.AutoSize = false;
-            display_rate_summary.AutoSize = false;
-            display_transactions_summary.TextAlign = ContentAlignment.MiddleCenter;
-            display_rate_summary.TextAlign = ContentAlignment.MiddleCenter;
-            display_transactions_summary.Width = 300; // Adjust based on your panel
-            display_rate_summary.Width = 300;
-
             this.Load += new EventHandler(User_TransactionSheetAnalytics_Load);
         }
 
@@ -136,13 +128,17 @@ namespace Fuentes_PrelimsP2
 
         private void initialize_AllCharts(List<string> productName, List<double> quantity, List<string> riceType, List<double> quantitySold, List<DateTime> date_Transaction)
         {
+            // 1. Inventory Pie Chart
             var inventorySeries = new List<ISeries>();
-            for (int a = 0; a < productName.Count(); a++)
+            for (int a = 0; a < productName.Count; a++)
             {
                 inventorySeries.Add(new PieSeries<double>
                 {
                     Name = productName[a],
                     Values = new double[] { quantity[a] },
+                    // Using the DataLabelsFormatter which is highly stable across versions
+                    DataLabelsFormatter = point => $"{point.Context.Series.Name}: {point.Coordinate.PrimaryValue} kg ({point.StackedValue:P2})",
+                    DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle
                 });
             }
 
@@ -150,9 +146,12 @@ namespace Fuentes_PrelimsP2
             {
                 Dock = DockStyle.Fill,
                 Series = inventorySeries.ToArray(),
-                LegendPosition = LiveChartsCore.Measure.LegendPosition.Right
+                // REMOVE LEGEND as requested by instructor
+                LegendPosition = LiveChartsCore.Measure.LegendPosition.Hidden,
+                TooltipPosition = LiveChartsCore.Measure.TooltipPosition.Top
             };
 
+            // 2. Transaction Pie Chart
             var transactionSeries = new List<ISeries>();
             for (int b = 0; b < riceType.Count; b++)
             {
@@ -160,20 +159,20 @@ namespace Fuentes_PrelimsP2
                 {
                     Name = riceType[b],
                     Values = new double[] { quantitySold[b] },
+                    DataLabelsFormatter = point => $"{point.Context.Series.Name}: {point.Coordinate.PrimaryValue} kg ({point.StackedValue:P2})",
+                    DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle
                 });
             }
-            ;
 
             var pieChart_Transaction = new PieChart
             {
                 Dock = DockStyle.Fill,
                 Series = transactionSeries.ToArray(),
-                LegendPosition = LiveChartsCore.Measure.LegendPosition.Right
-
+                LegendPosition = LiveChartsCore.Measure.LegendPosition.Hidden,
+                TooltipPosition = LiveChartsCore.Measure.TooltipPosition.Top
             };
 
-            //scatterplot
-
+            // 3. Scatterplot (Cartesian Chart)
             var scatterplot = new List<ObservablePoint>();
             for (int c = 0; c < date_Transaction.Count; c++)
             {
@@ -185,32 +184,20 @@ namespace Fuentes_PrelimsP2
                 Dock = DockStyle.Fill,
                 Series = new ISeries[]
                 {
-                    new ScatterSeries<ObservablePoint>
-                    {
-                        Name = "Sales Transactions",
-                        Values = scatterplot.ToArray(),
-                        GeometrySize = 15,
-                        Fill = new SolidColorPaint(SKColors.DarkGreen.WithAlpha(150)),
-                    }
-                },
-
-                XAxes = new Axis[]
-                {
-                    new Axis
-                    {
-                        Name = "Delivery Dates"
-                    }
-                },
-
-                YAxes = new Axis[]
-                {
-                    new Axis
-                    {
-                        Name = "Quantity Sold (Kg)"
-                    }
+            new ScatterSeries<ObservablePoint>
+            {
+                Name = "Sales Transactions",
+                Values = scatterplot.ToArray(),
+                GeometrySize = 15,
+                Fill = new SolidColorPaint(SKColors.DarkGreen.WithAlpha(150)),
+                // Cartesian charts use YToolTipLabelFormatter
+                YToolTipLabelFormatter = point => $"{point.Coordinate.PrimaryValue} kg",
+                XToolTipLabelFormatter = point => $"Day {point.Coordinate.SecondaryValue}"
+            }
                 }
             };
 
+            // UI Panel Updates
             display_piechart_analyticsTandT.Controls.Clear();
             display_piechart_analyticsTandT.Controls.Add(pieChart_Inventory);
 
@@ -219,7 +206,6 @@ namespace Fuentes_PrelimsP2
 
             display_scatterplot_analyticsTandT.Controls.Clear();
             display_scatterplot_analyticsTandT.Controls.Add(scatterChart);
-
         }
 
         private async Task summaryAnimation(double total_Sales, double final_rate)
@@ -233,16 +219,12 @@ namespace Fuentes_PrelimsP2
 
             for (int a = 0; a < total_Frames; a++)
             {
-                display_transactions_summary.Text = $"{current_Sales:N2} Kg";
-                display_rate_summary.Text = $"{current_rate:N1}%";
 
                 current_Sales += sales_Step;
                 current_rate += rate_Step;
                 await Task.Delay(33);
             }
 
-            display_transactions_summary.Text = $"{total_Sales:N2} Kg";
-            display_rate_summary.Text = $"{final_rate:N1}%";
         }
         private void label1_Click(object sender, EventArgs e)
         {

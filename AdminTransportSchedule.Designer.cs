@@ -62,17 +62,8 @@
             button1 = new Button();
             button6 = new Button();
             button5 = new Button();
-            menuStrip2 = new MenuStrip();
-            sssssToolStripMenuItem = new ToolStripMenuItem();
-            reloadToolStripMenuItem = new ToolStripMenuItem();
-            learnMoreToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem3 = new ToolStripMenuItem();
-            viewAccountToolStripMenuItem1 = new ToolStripMenuItem();
-            accountSettingsToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem4 = new ToolStripMenuItem();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Admin_Transport_Schedule_Grid).BeginInit();
-            menuStrip2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -91,6 +82,7 @@
             Admin_Transport_Schedule_Grid.RowHeadersWidth = 62;
             Admin_Transport_Schedule_Grid.Size = new Size(1339, 282);
             Admin_Transport_Schedule_Grid.TabIndex = 0;
+            Admin_Transport_Schedule_Grid.CellFormatting += dynamic_cellformatting;
             // 
             // label8
             // 
@@ -376,8 +368,9 @@
             button8.Name = "button8";
             button8.Size = new Size(143, 38);
             button8.TabIndex = 82;
-            button8.Text = "Connect";
+            button8.Text = "Recognized";
             button8.UseVisualStyleBackColor = false;
+            button8.Click += press_recognized;
             // 
             // button4
             // 
@@ -393,7 +386,6 @@
             button4.TabIndex = 83;
             button4.Text = "Refresh";
             button4.UseVisualStyleBackColor = false;
-            button4.Click += press_refresh_ts;
             // 
             // button3
             // 
@@ -409,6 +401,7 @@
             button3.TabIndex = 84;
             button3.Text = "Update";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += press_update;
             // 
             // button2
             // 
@@ -424,6 +417,7 @@
             button2.TabIndex = 85;
             button2.Text = "Delete";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += press_Delete;
             // 
             // button1
             // 
@@ -439,6 +433,7 @@
             button1.TabIndex = 86;
             button1.Text = "Add";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += press_add;
             // 
             // button6
             // 
@@ -467,75 +462,12 @@
             button5.TabIndex = 88;
             button5.UseVisualStyleBackColor = false;
             // 
-            // menuStrip2
-            // 
-            menuStrip2.BackColor = Color.Transparent;
-            menuStrip2.Dock = DockStyle.None;
-            menuStrip2.ImageScalingSize = new Size(24, 24);
-            menuStrip2.Items.AddRange(new ToolStripItem[] { sssssToolStripMenuItem, accountSettingsToolStripMenuItem });
-            menuStrip2.Location = new Point(1076, 164);
-            menuStrip2.Name = "menuStrip2";
-            menuStrip2.Size = new Size(343, 32);
-            menuStrip2.TabIndex = 107;
-            menuStrip2.Text = "menuStrip2";
-            // 
-            // sssssToolStripMenuItem
-            // 
-            sssssToolStripMenuItem.BackColor = Color.Transparent;
-            sssssToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { reloadToolStripMenuItem, learnMoreToolStripMenuItem, toolStripMenuItem3, viewAccountToolStripMenuItem1 });
-            sssssToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            sssssToolStripMenuItem.ForeColor = Color.DarkOliveGreen;
-            sssssToolStripMenuItem.Name = "sssssToolStripMenuItem";
-            sssssToolStripMenuItem.Size = new Size(151, 28);
-            sssssToolStripMenuItem.Text = "More Options";
-            // 
-            // reloadToolStripMenuItem
-            // 
-            reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
-            reloadToolStripMenuItem.Size = new Size(281, 34);
-            reloadToolStripMenuItem.Text = "Reload";
-            // 
-            // learnMoreToolStripMenuItem
-            // 
-            learnMoreToolStripMenuItem.Name = "learnMoreToolStripMenuItem";
-            learnMoreToolStripMenuItem.Size = new Size(281, 34);
-            learnMoreToolStripMenuItem.Text = "Learn More";
-            // 
-            // toolStripMenuItem3
-            // 
-            toolStripMenuItem3.Name = "toolStripMenuItem3";
-            toolStripMenuItem3.Size = new Size(281, 34);
-            toolStripMenuItem3.Text = "Contact Developer";
-            // 
-            // viewAccountToolStripMenuItem1
-            // 
-            viewAccountToolStripMenuItem1.Name = "viewAccountToolStripMenuItem1";
-            viewAccountToolStripMenuItem1.Size = new Size(281, 34);
-            viewAccountToolStripMenuItem1.Text = "View Account";
-            // 
-            // accountSettingsToolStripMenuItem
-            // 
-            accountSettingsToolStripMenuItem.BackColor = Color.Transparent;
-            accountSettingsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem4 });
-            accountSettingsToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            accountSettingsToolStripMenuItem.ForeColor = Color.DarkOliveGreen;
-            accountSettingsToolStripMenuItem.Name = "accountSettingsToolStripMenuItem";
-            accountSettingsToolStripMenuItem.Size = new Size(184, 28);
-            accountSettingsToolStripMenuItem.Text = "Account Settings";
-            // 
-            // toolStripMenuItem4
-            // 
-            toolStripMenuItem4.Name = "toolStripMenuItem4";
-            toolStripMenuItem4.Size = new Size(172, 34);
-            toolStripMenuItem4.Text = "Logout";
-            // 
             // AdminTransportSchedule
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
-            Controls.Add(menuStrip2);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(button3);
@@ -573,8 +505,6 @@
             Text = "Form1";
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)Admin_Transport_Schedule_Grid).EndInit();
-            menuStrip2.ResumeLayout(false);
-            menuStrip2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -613,14 +543,6 @@
         private Button button1;
         private Button button6;
         private Button button5;
-        private MenuStrip menuStrip2;
-        private ToolStripMenuItem sssssToolStripMenuItem;
-        private ToolStripMenuItem reloadToolStripMenuItem;
-        private ToolStripMenuItem learnMoreToolStripMenuItem;
-        private ToolStripMenuItem toolStripMenuItem3;
-        private ToolStripMenuItem viewAccountToolStripMenuItem1;
-        private ToolStripMenuItem accountSettingsToolStripMenuItem;
-        private ToolStripMenuItem toolStripMenuItem4;
         private DataGridView Admin_Transport_Schedule_Grid;
     }
 }

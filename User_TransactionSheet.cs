@@ -119,7 +119,7 @@ namespace Fuentes_PrelimsP2
             string ReferenceID = referenceID();
             connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
             string connect = @"Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb";
-            string query = "INSERT INTO [User T&T Transaction] ([Customer Name], [Rice Type], [Product ID], [Price per Kilogram], [Quantity in Kilogram], [Delivery Date], [Reference ID], [User ID], [Destination], [Region]) VALUES (@P1, @P2, @P3, @P4, @P5, @P6, @P7, @P8, @P9, @P10)";
+            string query = "INSERT INTO [User T&T Transaction] ([Customer Name], [Rice Type], [Product ID], [Price per Kilogram], [Quantity in Kilogram], [Delivery Date], [Reference ID], [User ID], [Destination], [Region], [Date Made]) VALUES (@P1, @P2, @P3, @P4, @P5, @P6, @P7, @P8, @P9, @P10, @P11)";
 
             using (OleDbConnection connected = new OleDbConnection(connect))
             {
@@ -130,11 +130,12 @@ namespace Fuentes_PrelimsP2
                     command.Parameters.Add("@P3", OleDbType.VarWChar).Value = fill_productid_ts.Text;
                     command.Parameters.Add("@P4", OleDbType.Currency).Value = Convert.ToDecimal(fill_priceperkg_ts.Text);
                     command.Parameters.Add("@P5", OleDbType.Integer).Value = Convert.ToInt32(fill_quantity_ts.Text);
-                    command.Parameters.Add("@P6", OleDbType.Date).Value = fill_date_ts.Text;
+                    command.Parameters.Add("@P6", OleDbType.Date).Value = fill_date_ts.Value;
                     command.Parameters.Add("@P7", OleDbType.VarWChar).Value = ReferenceID;
                     command.Parameters.Add("@P8", OleDbType.Integer).Value = UserSession.UserInstance.ID;
                     command.Parameters.Add("@P9", OleDbType.VarWChar).Value = fill_destination_tr.Text;
                     command.Parameters.Add("@P10", OleDbType.VarWChar).Value = fill_region_tr.Text;
+                    command.Parameters.Add("@P11", OleDbType.Date).Value = DateTime.Now;
 
 
 

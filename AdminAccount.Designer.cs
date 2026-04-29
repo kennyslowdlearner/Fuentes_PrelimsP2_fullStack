@@ -34,8 +34,6 @@
             groupBox1 = new GroupBox();
             button3 = new Button();
             button1 = new Button();
-            richTextBox1 = new RichTextBox();
-            richTextBox2 = new RichTextBox();
             label7 = new Label();
             label8 = new Label();
             sssssToolStripMenuItem = new ToolStripMenuItem();
@@ -46,8 +44,12 @@
             accountSettingsToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem4 = new ToolStripMenuItem();
             menuStrip2 = new MenuStrip();
+            Top_Selling_Product_Grid = new DataGridView();
+            Top_Seller_Grid = new DataGridView();
             groupBox1.SuspendLayout();
             menuStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Top_Selling_Product_Grid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Top_Seller_Grid).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -119,26 +121,6 @@
             button1.TabIndex = 0;
             button1.UseVisualStyleBackColor = true;
             button1.Click += GoToAccountControl;
-            // 
-            // richTextBox1
-            // 
-            richTextBox1.BackColor = Color.Silver;
-            richTextBox1.Font = new Font("Glacial Indifference", 10F);
-            richTextBox1.Location = new Point(350, 285);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(312, 353);
-            richTextBox1.TabIndex = 10;
-            richTextBox1.Text = "";
-            // 
-            // richTextBox2
-            // 
-            richTextBox2.BackColor = Color.Silver;
-            richTextBox2.Font = new Font("Glacial Indifference", 10F);
-            richTextBox2.Location = new Point(691, 285);
-            richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new Size(312, 353);
-            richTextBox2.TabIndex = 10;
-            richTextBox2.Text = "";
             // 
             // label7
             // 
@@ -227,17 +209,39 @@
             menuStrip2.TabIndex = 106;
             menuStrip2.Text = "menuStrip2";
             // 
+            // Top_Selling_Product_Grid
+            // 
+            Top_Selling_Product_Grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Top_Selling_Product_Grid.Location = new Point(355, 283);
+            Top_Selling_Product_Grid.Name = "Top_Selling_Product_Grid";
+            Top_Selling_Product_Grid.RowHeadersWidth = 62;
+            Top_Selling_Product_Grid.Size = new Size(299, 344);
+            Top_Selling_Product_Grid.TabIndex = 107;
+            Top_Selling_Product_Grid.CellMouseEnter += Top_Selling_Product_Grid_CellMouseEnter;
+            Top_Selling_Product_Grid.CellMouseLeave += Top_Selling_Product_Grid_CellMouseLeave;
+            // 
+            // Top_Seller_Grid
+            // 
+            Top_Seller_Grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Top_Seller_Grid.Location = new Point(691, 283);
+            Top_Seller_Grid.Name = "Top_Seller_Grid";
+            Top_Seller_Grid.RowHeadersWidth = 62;
+            Top_Seller_Grid.Size = new Size(299, 344);
+            Top_Seller_Grid.TabIndex = 107;
+            Top_Seller_Grid.CellMouseEnter += Top_Seller_Grid_CellMouseEnter;
+            Top_Seller_Grid.CellMouseLeave += Top_Seller_Grid_CellMouseLeave;
+            // 
             // AdminAccount
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1040, 650);
+            Controls.Add(Top_Seller_Grid);
+            Controls.Add(Top_Selling_Product_Grid);
             Controls.Add(menuStrip2);
             Controls.Add(label8);
             Controls.Add(label7);
-            Controls.Add(richTextBox2);
-            Controls.Add(richTextBox1);
             Controls.Add(panel1);
             Controls.Add(groupBox1);
             Name = "AdminAccount";
@@ -247,6 +251,8 @@
             groupBox1.ResumeLayout(false);
             menuStrip2.ResumeLayout(false);
             menuStrip2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)Top_Selling_Product_Grid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Top_Seller_Grid).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -258,8 +264,6 @@
         private GroupBox groupBox1;
         private Button button3;
         private Button button1;
-        private RichTextBox richTextBox1;
-        private RichTextBox richTextBox2;
         private Label label7;
         private Label label8;
         private ToolStripMenuItem sssssToolStripMenuItem;
@@ -270,5 +274,7 @@
         private ToolStripMenuItem accountSettingsToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItem4;
         private MenuStrip menuStrip2;
+        private DataGridView Top_Selling_Product_Grid;
+        private DataGridView Top_Seller_Grid;
     }
 }
