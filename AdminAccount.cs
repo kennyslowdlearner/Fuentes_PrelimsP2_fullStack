@@ -99,7 +99,6 @@ namespace Fuentes_PrelimsP2
         {
             try
             {
-                // Note: Fixed the typo 'Prooject' if that matches your folder name
                 connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
 
                 string query = "SELECT [Rice Type], SUM([Quantity in Kilogram]) AS TotalQuantity " +
@@ -121,17 +120,18 @@ namespace Fuentes_PrelimsP2
                 Top_Selling_Product_Grid.DataSource = null;
                 Top_Selling_Product_Grid.DataSource = rankedData;
 
-                // UI Cleanup
-                Top_Selling_Product_Grid.CellBorderStyle = DataGridViewCellBorderStyle.None;
+                // --- GRID STYLING ---
+                Top_Selling_Product_Grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                Top_Selling_Product_Grid.ScrollBars = ScrollBars.Both;
                 Top_Selling_Product_Grid.RowHeadersVisible = false;
                 Top_Selling_Product_Grid.AllowUserToAddRows = false;
                 Top_Selling_Product_Grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                Top_Selling_Product_Grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                Top_Selling_Product_Grid.CellBorderStyle = DataGridViewCellBorderStyle.None;
 
                 if (Top_Selling_Product_Grid.Columns["Rank"] != null)
                 {
-                    Top_Selling_Product_Grid.Columns["Rank"].Width = 70;
-                    Top_Selling_Product_Grid.Columns["Product"].Width = 200;
+                    Top_Selling_Product_Grid.Columns["Rank"].Width = 50;
+                    Top_Selling_Product_Grid.Columns["Product"].Width = 180;
                     Top_Selling_Product_Grid.Columns["Quantity"].Width = 100;
                     Top_Selling_Product_Grid.Columns["Quantity"].HeaderText = "Qty (kg)";
                     Top_Selling_Product_Grid.Columns["Quantity"].DefaultCellStyle.Format = "N2";
@@ -139,10 +139,7 @@ namespace Fuentes_PrelimsP2
 
                 Top_Selling_Product_Grid.ClearSelection();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
+            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
             finally { connection?.Close(); }
         }
 
@@ -163,11 +160,13 @@ namespace Fuentes_PrelimsP2
             {
                 connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
 
-                string query = "SELECT U.[First Name], U.[Middle Name], U.[Last Name], SUM(T.[Quantity in Kilogram]) AS TotalSold " +
-                               "FROM [User Account Information] AS U " +
-                               "INNER JOIN [User T&T Transaction] AS T ON U.[User ID] = T.[User ID] " +
-                               "GROUP BY U.[First Name], U.[Middle Name], U.[Last Name] " +
-                               "ORDER BY SUM(T.[Quantity in Kilogram]) DESC";
+                string query = @"SELECT U.[First Name], U.[Middle Name], U.[Last Name], 
+                        SUM(T.[Quantity in Kilogram]) AS TotalSold, 
+                        SUM(T.[Quantity in Kilogram] * T.[Price Per Kilogram]) AS TotalEarnings
+                        FROM [User Account Information] AS U 
+                        INNER JOIN [User T&T Transaction] AS T ON U.[User ID] = T.[User ID] 
+                        GROUP BY U.[First Name], U.[Middle Name], U.[Last Name] 
+                        ORDER BY SUM(T.[Quantity in Kilogram] * T.[Price Per Kilogram]) DESC";
 
                 adapter = new OleDbDataAdapter(query, connection);
                 DataTable dt = new DataTable();
@@ -176,13 +175,18 @@ namespace Fuentes_PrelimsP2
                 var rankedSellers = dt.AsEnumerable()
                     .Select((row, index) => new {
                         Rank = index + 1,
-                        FullName = $"{row.Field<string>("First Name")} {row.Field<string>("Middle Name")} {row.Field<string>("Last Name")}",
-                        TotalKg = Convert.ToDouble(row["TotalSold"])
+                        Seller = $"{row.Field<string>("First Name")} {row.Field<string>("Middle Name")} {row.Field<string>("Last Name")}",
+                        Quantity = Convert.ToDouble(row["TotalSold"]),
+                        Earnings = Convert.ToDouble(row["TotalEarnings"])
                     }).ToList();
 
                 Top_Seller_Grid.DataSource = null;
                 Top_Seller_Grid.DataSource = rankedSellers;
 
+                // --- GRID STYLING ---
+                // CRITICAL: We use 'None' so we can set manual widths that trigger a scrollbar
+                Top_Seller_Grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                Top_Seller_Grid.ScrollBars = ScrollBars.Both;
                 Top_Seller_Grid.RowHeadersVisible = false;
                 Top_Seller_Grid.CellBorderStyle = DataGridViewCellBorderStyle.None;
                 Top_Seller_Grid.AllowUserToAddRows = false;
@@ -190,20 +194,19 @@ namespace Fuentes_PrelimsP2
 
                 if (Top_Seller_Grid.Columns["Rank"] != null)
                 {
-                    Top_Seller_Grid.Columns["Rank"].Width = 50;
-                    Top_Seller_Grid.Columns["FullName"].Width = 300;
-                    Top_Seller_Grid.Columns["FullName"].HeaderText = "Seller Name";
-                    Top_Seller_Grid.Columns["TotalKg"].Width = 100;
-                    Top_Seller_Grid.Columns["TotalKg"].HeaderText = "Total (kg)";
-                    Top_Seller_Grid.Columns["TotalKg"].DefaultCellStyle.Format = "N2";
+                    Top_Seller_Grid.Columns["Rank"].Width = 45;
+                    Top_Seller_Grid.Columns["Seller"].Width = 180;
+                    Top_Seller_Grid.Columns["Quantity"].Width = 90;
+                    Top_Seller_Grid.Columns["Quantity"].HeaderText = "Qty (kg)";
+                    Top_Seller_Grid.Columns["Quantity"].DefaultCellStyle.Format = "N2";
+                    Top_Seller_Grid.Columns["Earnings"].Width = 110;
+                    Top_Seller_Grid.Columns["Earnings"].HeaderText = "Earnings (PHP)";
+                    Top_Seller_Grid.Columns["Earnings"].DefaultCellStyle.Format = "N2";
                 }
 
                 Top_Seller_Grid.ClearSelection();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading top sellers: " + ex.Message);
-            }
+            catch (Exception ex) { MessageBox.Show("Error loading top sellers: " + ex.Message); }
             finally { connection?.Close(); }
         }
 
@@ -217,15 +220,19 @@ namespace Fuentes_PrelimsP2
             ApplyPodiumFormatting(Top_Seller_Grid, e);
         }
 
-        
+
         private void ApplyPodiumFormatting(DataGridView grid, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex < 0) return;
 
+            // Standard for all rows: Black text
+            e.CellStyle.ForeColor = Color.Black;
+            e.CellStyle.SelectionForeColor = Color.Black;
+
             if (e.RowIndex == 0) // Gold
             {
                 e.CellStyle.BackColor = Color.Gold;
-                e.CellStyle.SelectionBackColor = Color.Gold;
+                e.CellStyle.SelectionBackColor = Color.Gold; // Force highlight to be Gold too
                 e.CellStyle.Font = new Font(fontName, 10, FontStyle.Bold);
             }
             else if (e.RowIndex == 1) // Silver
@@ -243,11 +250,8 @@ namespace Fuentes_PrelimsP2
             else
             {
                 e.CellStyle.BackColor = Color.White;
-                e.CellStyle.SelectionBackColor = Color.LightGray;
+                e.CellStyle.SelectionBackColor = Color.LightBlue; // Normal rows get blue highlight
             }
-
-            e.CellStyle.ForeColor = Color.Black;
-            e.CellStyle.SelectionForeColor = Color.Black;
         }
 
         // When the mouse enters a cell
@@ -293,12 +297,14 @@ namespace Fuentes_PrelimsP2
         // Use this for both grids (linked via Designer)
         private void HandleZoomEnter(DataGridView grid, DataGridViewCellEventArgs e)
         {
-            // Fix: Only zoom if the mouse is actually over a data row (index 0 or higher)
-            // This prevents zooming when hovering over the Rank/Product header
             if (e.RowIndex >= 0)
             {
+                // Smooth zoom effect
                 grid.Rows[e.RowIndex].Height = 45;
                 grid.Rows[e.RowIndex].DefaultCellStyle.Font = new Font(fontName, 12, FontStyle.Bold);
+
+                // Highlight the hovered row slightly differently to distinguish from the selection
+                grid.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.LightCyan;
             }
         }
 
@@ -306,11 +312,16 @@ namespace Fuentes_PrelimsP2
         {
             if (e.RowIndex >= 0)
             {
-                grid.Rows[e.RowIndex].Height = 25; // Match your default height
+                grid.Rows[e.RowIndex].Height = 25; // Reset to your design-time height
 
-                // Return to 10pt (Bold for top 3, Regular for others)
+                // Determine if this row should be Bold (Top 3) or Regular
                 FontStyle style = (e.RowIndex <= 2) ? FontStyle.Bold : FontStyle.Regular;
                 grid.Rows[e.RowIndex].DefaultCellStyle.Font = new Font(fontName, 10, style);
+
+                // This is the "Secret Sauce": 
+                // We trigger a refresh of the CellFormatting to make sure the Gold/Silver/Bronze colors 
+                // don't disappear after the mouse leaves.
+                grid.InvalidateRow(e.RowIndex);
             }
         }
 
