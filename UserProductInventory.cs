@@ -17,6 +17,7 @@ namespace Fuentes_PrelimsP2
         public productInventory()
         {
             InitializeComponent();
+            press_connectpi(null, null);
         }
 
         //made changes here (8) [4/6/2026 | 12:46 PM]
@@ -188,12 +189,11 @@ namespace Fuentes_PrelimsP2
         private void press_loadpi(object sender, EventArgs e)
         {
             string tableName = showingSeedlings ? "[User PI Seedling Inventory]" : "[User PI Product Inventory]";
+            string dbPath = "Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb";
 
-            connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
-
+            connection = new OleDbConnection(dbPath);
             string query = $"SELECT * FROM {tableName} WHERE [User ID] = @A1";
             adapter = new OleDbDataAdapter(query, connection);
-
             adapter.SelectCommand.Parameters.AddWithValue("A1", UserSession.UserInstance.ID);
 
             try
@@ -205,38 +205,32 @@ namespace Fuentes_PrelimsP2
 
                 Product_Inventory_Grid.DataSource = dataSet.Tables[tableName];
 
+                // Ensure text is black
+                Product_Inventory_Grid.DefaultCellStyle.ForeColor = Color.Black;
+                Product_Inventory_Grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+
+                // Hide sensitive/system columns
+                if (Product_Inventory_Grid.Columns.Contains("Roll Number"))
+                    Product_Inventory_Grid.Columns["Roll Number"].Visible = false;
+
+                if (Product_Inventory_Grid.Columns.Contains("User ID"))
+                    Product_Inventory_Grid.Columns["User ID"].Visible = false;
+
+                // Adjust Widths
                 if (showingSeedlings)
                 {
-                    if (Product_Inventory_Grid.Columns.Contains("Roll Number"))
-                        Product_Inventory_Grid.Columns["Roll Number"].Visible = false;
-
                     Product_Inventory_Grid.Columns["Variety Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     Product_Inventory_Grid.Columns["Seed ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     Product_Inventory_Grid.Columns["Quantity(Kg)"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                    Product_Inventory_Grid.Columns["Batch Source"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                    Product_Inventory_Grid.Columns["Date Received"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                    Product_Inventory_Grid.Columns["Germ Rate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
-                    if (Product_Inventory_Grid.Columns.Contains("User ID"))
-                        Product_Inventory_Grid.Columns["User ID"].Visible = false;
                 }
                 else
                 {
-
-                    if (Product_Inventory_Grid.Columns.Contains("Roll Number"))
-                        Product_Inventory_Grid.Columns["Roll Number"].Visible = false;
-
                     Product_Inventory_Grid.Columns["Product Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     Product_Inventory_Grid.Columns["Reference ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     Product_Inventory_Grid.Columns["Product ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                     Product_Inventory_Grid.Columns["Quantity in Kilograms"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
-                    if (Product_Inventory_Grid.Columns.Contains("User ID"))
-                        Product_Inventory_Grid.Columns["User ID"].Visible = false;
                 }
-
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show("Failed to load data. Error: " + ex.Message);
@@ -495,6 +489,11 @@ namespace Fuentes_PrelimsP2
             fill_productname_pi.Clear();
             fill_productid_pi.Clear();
             fill_quantity_pi.Clear();
+        }
+
+        private void display_indicator_pi_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

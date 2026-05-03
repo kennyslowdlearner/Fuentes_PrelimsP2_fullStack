@@ -41,7 +41,6 @@
             button1 = new Button();
             button2 = new Button();
             button6 = new Button();
-            button5 = new Button();
             button9 = new Button();
             button7 = new Button();
             button4 = new Button();
@@ -145,7 +144,7 @@
             button3.Name = "button3";
             button3.Size = new Size(154, 34);
             button3.TabIndex = 51;
-            button3.Text = "Insert";
+            button3.Text = "Add";
             button3.UseVisualStyleBackColor = false;
             button3.Click += press_insertvr;
             // 
@@ -188,25 +187,12 @@
             button6.FlatAppearance.BorderSize = 0;
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button6.Location = new Point(343, 678);
+            button6.Location = new Point(430, 676);
             button6.Name = "button6";
             button6.Size = new Size(120, 41);
             button6.TabIndex = 52;
             button6.UseVisualStyleBackColor = false;
             button6.Click += backButton;
-            // 
-            // button5
-            // 
-            button5.BackColor = Color.Transparent;
-            button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.Location = new Point(475, 678);
-            button5.Name = "button5";
-            button5.Size = new Size(120, 41);
-            button5.TabIndex = 53;
-            button5.UseVisualStyleBackColor = false;
             // 
             // button9
             // 
@@ -332,7 +318,6 @@
             fill_search_vr.Name = "fill_search_vr";
             fill_search_vr.Size = new Size(252, 29);
             fill_search_vr.TabIndex = 112;
-            fill_search_vr.Text = "Search product name or id";
             fill_search_vr.TextChanged += searchvr;
             // 
             // label8
@@ -384,7 +369,6 @@
             Controls.Add(button8);
             Controls.Add(label9);
             Controls.Add(button6);
-            Controls.Add(button5);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(button3);
@@ -421,7 +405,6 @@
         private Button button1;
         private Button button2;
         private Button button6;
-        private Button button5;
         private Button button9;
         private Button button7;
         private Button button4;

@@ -50,12 +50,10 @@
             button3 = new Button();
             button2 = new Button();
             button1 = new Button();
-            button8 = new Button();
             label15 = new Label();
             button4 = new Button();
             button5 = new Button();
             button7 = new Button();
-            button9 = new Button();
             label17 = new Label();
             label18 = new Label();
             fill_search_cop = new TextBox();
@@ -312,23 +310,9 @@
             button1.Name = "button1";
             button1.Size = new Size(154, 34);
             button1.TabIndex = 54;
-            button1.Text = "Insert";
+            button1.Text = "Add";
             button1.UseVisualStyleBackColor = false;
             button1.Click += press_insertcop;
-            // 
-            // button8
-            // 
-            button8.BackColor = Color.Transparent;
-            button8.BackgroundImage = (Image)resources.GetObject("button8.BackgroundImage");
-            button8.FlatAppearance.BorderSize = 0;
-            button8.FlatStyle = FlatStyle.Flat;
-            button8.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button8.Location = new Point(1004, 550);
-            button8.Name = "button8";
-            button8.Size = new Size(418, 64);
-            button8.TabIndex = 56;
-            button8.UseVisualStyleBackColor = false;
-            button8.Click += shortcut_DigitalReceiptVault;
             // 
             // label15
             // 
@@ -349,7 +333,7 @@
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button4.Location = new Point(1004, 620);
+            button4.Location = new Point(1004, 569);
             button4.Name = "button4";
             button4.Size = new Size(418, 64);
             button4.TabIndex = 56;
@@ -363,7 +347,7 @@
             button5.FlatAppearance.BorderSize = 0;
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.Location = new Point(1004, 690);
+            button5.Location = new Point(1004, 639);
             button5.Name = "button5";
             button5.Size = new Size(418, 64);
             button5.TabIndex = 56;
@@ -377,25 +361,12 @@
             button7.FlatAppearance.BorderSize = 0;
             button7.FlatStyle = FlatStyle.Flat;
             button7.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button7.Location = new Point(721, 712);
+            button7.Location = new Point(859, 722);
             button7.Name = "button7";
             button7.Size = new Size(120, 41);
             button7.TabIndex = 61;
             button7.UseVisualStyleBackColor = false;
             button7.Click += backButton;
-            // 
-            // button9
-            // 
-            button9.BackColor = Color.Transparent;
-            button9.BackgroundImage = (Image)resources.GetObject("button9.BackgroundImage");
-            button9.FlatAppearance.BorderSize = 0;
-            button9.FlatStyle = FlatStyle.Flat;
-            button9.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button9.Location = new Point(858, 712);
-            button9.Name = "button9";
-            button9.Size = new Size(120, 41);
-            button9.TabIndex = 62;
-            button9.UseVisualStyleBackColor = false;
             // 
             // label17
             // 
@@ -429,7 +400,6 @@
             fill_search_cop.Name = "fill_search_cop";
             fill_search_cop.Size = new Size(252, 29);
             fill_search_cop.TabIndex = 113;
-            fill_search_cop.Text = "Search product name or id";
             fill_search_cop.TextChanged += searchcop;
             // 
             // label19
@@ -491,10 +461,8 @@
             Controls.Add(fill_search_cop);
             Controls.Add(label19);
             Controls.Add(button7);
-            Controls.Add(button9);
             Controls.Add(button5);
             Controls.Add(button4);
-            Controls.Add(button8);
             Controls.Add(label15);
             Controls.Add(button3);
             Controls.Add(button2);
@@ -549,12 +517,10 @@
         private Button button3;
         private Button button2;
         private Button button1;
-        private Button button8;
         private Label label15;
         private Button button4;
         private Button button5;
         private Button button7;
-        private Button button9;
         private DataGridView Cost_Of_Production_Grid;
         private Label label17;
         private Label label18;

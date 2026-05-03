@@ -16,6 +16,7 @@ namespace Fuentes_PrelimsP2
         public User_ActivityLog()
         {
             InitializeComponent();
+            press_refreshreloadal(null, null);
         }
 
         OleDbConnection? connection;

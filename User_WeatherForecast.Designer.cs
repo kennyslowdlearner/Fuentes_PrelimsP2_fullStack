@@ -36,12 +36,10 @@
             button8 = new Button();
             label9 = new Label();
             button6 = new Button();
-            button5 = new Button();
             button1 = new Button();
             button2 = new Button();
             button4 = new Button();
             fill_search_wf = new TextBox();
-            searchbuttonPI = new Button();
             function_timer_wf = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
@@ -105,25 +103,12 @@
             button6.FlatAppearance.BorderSize = 0;
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button6.Location = new Point(636, 720);
+            button6.Location = new Point(757, 718);
             button6.Name = "button6";
             button6.Size = new Size(120, 41);
             button6.TabIndex = 89;
             button6.UseVisualStyleBackColor = false;
             button6.Click += backButton;
-            // 
-            // button5
-            // 
-            button5.BackColor = Color.Transparent;
-            button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.Location = new Point(768, 720);
-            button5.Name = "button5";
-            button5.Size = new Size(120, 41);
-            button5.TabIndex = 90;
-            button5.UseVisualStyleBackColor = false;
             // 
             // button1
             // 
@@ -177,22 +162,7 @@
             fill_search_wf.Name = "fill_search_wf";
             fill_search_wf.Size = new Size(252, 29);
             fill_search_wf.TabIndex = 113;
-            fill_search_wf.Text = "Search product name or id";
             fill_search_wf.TextChanged += fill_search_wf_TextChanged;
-            // 
-            // searchbuttonPI
-            // 
-            searchbuttonPI.BackColor = Color.Transparent;
-            searchbuttonPI.BackgroundImage = (Image)resources.GetObject("searchbuttonPI.BackgroundImage");
-            searchbuttonPI.FlatAppearance.BorderSize = 0;
-            searchbuttonPI.FlatStyle = FlatStyle.Flat;
-            searchbuttonPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            searchbuttonPI.ForeColor = Color.DarkOliveGreen;
-            searchbuttonPI.Location = new Point(426, 167);
-            searchbuttonPI.Name = "searchbuttonPI";
-            searchbuttonPI.Size = new Size(120, 41);
-            searchbuttonPI.TabIndex = 112;
-            searchbuttonPI.UseVisualStyleBackColor = false;
             // 
             // function_timer_wf
             // 
@@ -205,9 +175,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
             Controls.Add(fill_search_wf);
-            Controls.Add(searchbuttonPI);
             Controls.Add(button6);
-            Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -230,12 +198,10 @@
         private Button button8;
         private Label label9;
         private Button button6;
-        private Button button5;
         private Button button1;
         private Button button2;
         private Button button4;
         private TextBox fill_search_wf;
-        private Button searchbuttonPI;
         private System.Windows.Forms.Timer function_timer_wf;
     }
 }

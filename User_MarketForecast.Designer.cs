@@ -29,34 +29,17 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(User_MarketForecast));
-            button8 = new Button();
             label8 = new Label();
             label6 = new Label();
             label9 = new Label();
             Market_Forecast_Grid = new DataGridView();
             button6 = new Button();
-            button5 = new Button();
             button1 = new Button();
             button2 = new Button();
             searchBoxPI = new TextBox();
-            searchbuttonPI = new Button();
             label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)Market_Forecast_Grid).BeginInit();
             SuspendLayout();
-            // 
-            // button8
-            // 
-            button8.BackColor = Color.Transparent;
-            button8.BackgroundImage = (Image)resources.GetObject("button8.BackgroundImage");
-            button8.FlatAppearance.BorderSize = 0;
-            button8.FlatStyle = FlatStyle.Flat;
-            button8.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button8.Location = new Point(961, 398);
-            button8.Name = "button8";
-            button8.Size = new Size(418, 64);
-            button8.TabIndex = 28;
-            button8.UseVisualStyleBackColor = false;
-            button8.Click += shortcut_DigitalReceiptVault;
             // 
             // label8
             // 
@@ -105,31 +88,18 @@
             // 
             // button6
             // 
+            button6.BackColor = Color.Transparent;
             button6.BackgroundImage = (Image)resources.GetObject("button6.BackgroundImage");
             button6.FlatAppearance.BorderSize = 0;
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button6.ForeColor = Color.Transparent;
-            button6.Location = new Point(1076, 694);
+            button6.Location = new Point(1132, 682);
             button6.Name = "button6";
             button6.Size = new Size(120, 41);
             button6.TabIndex = 32;
-            button6.UseVisualStyleBackColor = true;
+            button6.UseVisualStyleBackColor = false;
             button6.Click += backbutton;
-            // 
-            // button5
-            // 
-            button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.ForeColor = Color.Transparent;
-            button5.Location = new Point(1227, 694);
-            button5.Name = "button5";
-            button5.Size = new Size(120, 41);
-            button5.TabIndex = 33;
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += button5_Click;
             // 
             // button1
             // 
@@ -138,7 +108,7 @@
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(961, 468);
+            button1.Location = new Point(961, 428);
             button1.Name = "button1";
             button1.Size = new Size(418, 64);
             button1.TabIndex = 28;
@@ -152,7 +122,7 @@
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.Location = new Point(961, 538);
+            button2.Location = new Point(961, 498);
             button2.Name = "button2";
             button2.Size = new Size(418, 64);
             button2.TabIndex = 28;
@@ -167,22 +137,7 @@
             searchBoxPI.Name = "searchBoxPI";
             searchBoxPI.Size = new Size(252, 29);
             searchBoxPI.TabIndex = 113;
-            searchBoxPI.Text = "Search product name or id";
             searchBoxPI.TextChanged += fillSearchBox_TextChanged;
-            // 
-            // searchbuttonPI
-            // 
-            searchbuttonPI.BackColor = Color.Transparent;
-            searchbuttonPI.BackgroundImage = (Image)resources.GetObject("searchbuttonPI.BackgroundImage");
-            searchbuttonPI.FlatAppearance.BorderSize = 0;
-            searchbuttonPI.FlatStyle = FlatStyle.Flat;
-            searchbuttonPI.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            searchbuttonPI.ForeColor = Color.DarkOliveGreen;
-            searchbuttonPI.Location = new Point(1353, 284);
-            searchbuttonPI.Name = "searchbuttonPI";
-            searchbuttonPI.Size = new Size(120, 41);
-            searchbuttonPI.TabIndex = 112;
-            searchbuttonPI.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -203,13 +158,10 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
             Controls.Add(searchBoxPI);
-            Controls.Add(searchbuttonPI);
             Controls.Add(label1);
             Controls.Add(button6);
-            Controls.Add(button5);
             Controls.Add(button2);
             Controls.Add(button1);
-            Controls.Add(button8);
             Controls.Add(label8);
             Controls.Add(label6);
             Controls.Add(label9);
@@ -224,17 +176,14 @@
         }
 
         #endregion
-        private Button button8;
         private Label label8;
         private Label label6;
         private Label label9;
         private DataGridView Market_Forecast_Grid;
         private Button button6;
-        private Button button5;
         private Button button1;
         private Button button2;
         private TextBox searchBoxPI;
-        private Button searchbuttonPI;
         private Label label1;
     }
 }

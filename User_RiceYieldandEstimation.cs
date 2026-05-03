@@ -15,6 +15,7 @@ namespace Fuentes_PrelimsP2
         public User_RiceYieldandEstimation()
         {
             InitializeComponent();
+            refreshreload();
         }
 
         //(Global User Session) Component
@@ -99,7 +100,7 @@ namespace Fuentes_PrelimsP2
         {
             try
             {
-                UserTradesandTransactions.Instance.Show();
+                RiceYieldEstimationandRegistry.Instance.Show();
                 this.Hide();
             }
 

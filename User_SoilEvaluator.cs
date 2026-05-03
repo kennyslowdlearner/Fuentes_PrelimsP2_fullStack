@@ -19,6 +19,8 @@ namespace Fuentes_PrelimsP2
 
             autosaveTimer.Interval = 5000;
             autosaveTimer.Tick += autosaveTimer_tick;
+
+            auto_refreshreload();
         }
 
         //(Global User Session) Component
@@ -122,7 +124,7 @@ namespace Fuentes_PrelimsP2
         {
             try
             {
-                UserTradesandTransactions.Instance.Show();
+                RiceYieldEstimationandRegistry.Instance.Show();
                 this.Hide();
             }
 
@@ -264,6 +266,7 @@ namespace Fuentes_PrelimsP2
                     Soil_Evaluator_Grid.Columns["Date and Time"].DisplayIndex = 0; // Move it to the first column so it's easy to see
                 }
 
+                Soil_Evaluator_Grid.Columns["Overall Result"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 Soil_Evaluator_Grid.Columns["Nitrogen Levels"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 Soil_Evaluator_Grid.Columns["Nitrogen Levels Result"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 Soil_Evaluator_Grid.Columns["Phosphorus Levels"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -278,7 +281,7 @@ namespace Fuentes_PrelimsP2
                 Soil_Evaluator_Grid.Columns["Soil Consistency Result"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 Soil_Evaluator_Grid.Columns["Water Depth"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 Soil_Evaluator_Grid.Columns["Water Depth Result"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Soil_Evaluator_Grid.Columns["Overall Result"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                
 
                 if (Soil_Evaluator_Grid.Columns.Contains("Roll Number")) Soil_Evaluator_Grid.Columns["Roll Number"].Visible = false;
 

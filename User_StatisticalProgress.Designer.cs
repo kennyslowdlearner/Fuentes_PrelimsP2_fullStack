@@ -56,7 +56,6 @@
             button2 = new Button();
             button1 = new Button();
             button6 = new Button();
-            button5 = new Button();
             button4 = new Button();
             button7 = new Button();
             button8 = new Button();
@@ -339,7 +338,7 @@
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button3.ForeColor = Color.DarkGreen;
-            button3.Location = new Point(331, 572);
+            button3.Location = new Point(182, 572);
             button3.Name = "button3";
             button3.Size = new Size(143, 38);
             button3.TabIndex = 73;
@@ -354,7 +353,7 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.DarkGreen;
-            button2.Location = new Point(182, 572);
+            button2.Location = new Point(331, 572);
             button2.Name = "button2";
             button2.Size = new Size(143, 38);
             button2.TabIndex = 74;
@@ -373,7 +372,7 @@
             button1.Name = "button1";
             button1.Size = new Size(143, 38);
             button1.TabIndex = 75;
-            button1.Text = "Insert";
+            button1.Text = "Add";
             button1.UseVisualStyleBackColor = false;
             // 
             // button6
@@ -383,25 +382,12 @@
             button6.FlatAppearance.BorderSize = 0;
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button6.Location = new Point(112, 709);
+            button6.Location = new Point(182, 712);
             button6.Name = "button6";
             button6.Size = new Size(120, 41);
             button6.TabIndex = 34;
             button6.UseVisualStyleBackColor = false;
             button6.Click += bbackButton;
-            // 
-            // button5
-            // 
-            button5.BackColor = Color.Transparent;
-            button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.Location = new Point(238, 709);
-            button5.Name = "button5";
-            button5.Size = new Size(120, 41);
-            button5.TabIndex = 35;
-            button5.UseVisualStyleBackColor = false;
             // 
             // button4
             // 
@@ -518,7 +504,6 @@
             Controls.Add(button8);
             Controls.Add(button3);
             Controls.Add(button7);
-            Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -554,6 +539,7 @@
             Name = "User_StatisticalProgress";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Statistical Progress";
+            Load += User_StatisticalProgress_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -587,7 +573,6 @@
         private Button button2;
         private Button button1;
         private Button button6;
-        private Button button5;
         private Button button4;
         private Button button7;
         private Button button8;

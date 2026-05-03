@@ -41,5 +41,10 @@ namespace Fuentes_PrelimsP2
                 MessageBox.Show("Failed to open page:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void User_StatisticalProgress_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

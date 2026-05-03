@@ -45,7 +45,6 @@
             button2 = new Button();
             button3 = new Button();
             button6 = new Button();
-            button8 = new Button();
             label8 = new Label();
             button9 = new Button();
             button10 = new Button();
@@ -56,8 +55,8 @@
             button11 = new Button();
             fill_destination_tr = new TextBox();
             label9 = new Label();
-            fill_region_tr = new TextBox();
             label10 = new Label();
+            fill_region_tr = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)Transaction_Sheet_Grid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Product_Inventory_Grid).BeginInit();
             SuspendLayout();
@@ -203,11 +202,11 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.DarkGreen;
-            button1.Location = new Point(95, 482);
+            button1.Location = new Point(143, 482);
             button1.Name = "button1";
             button1.Size = new Size(143, 38);
             button1.TabIndex = 5;
-            button1.Text = "Insert";
+            button1.Text = "Add";
             button1.UseVisualStyleBackColor = false;
             button1.Click += press_insertts;
             // 
@@ -219,7 +218,7 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.DarkGreen;
-            button2.Location = new Point(244, 482);
+            button2.Location = new Point(441, 482);
             button2.Name = "button2";
             button2.Size = new Size(143, 38);
             button2.TabIndex = 5;
@@ -235,7 +234,7 @@
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button3.ForeColor = Color.DarkGreen;
-            button3.Location = new Point(393, 482);
+            button3.Location = new Point(292, 482);
             button3.Name = "button3";
             button3.Size = new Size(143, 38);
             button3.TabIndex = 5;
@@ -259,27 +258,13 @@
             button6.UseVisualStyleBackColor = false;
             button6.Click += backButton;
             // 
-            // button8
-            // 
-            button8.BackColor = Color.Transparent;
-            button8.BackgroundImage = (Image)resources.GetObject("button8.BackgroundImage");
-            button8.FlatAppearance.BorderSize = 0;
-            button8.FlatStyle = FlatStyle.Flat;
-            button8.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button8.Location = new Point(983, 495);
-            button8.Name = "button8";
-            button8.Size = new Size(418, 64);
-            button8.TabIndex = 5;
-            button8.UseVisualStyleBackColor = false;
-            button8.Click += shortcut_DigitalReceiptVault;
-            // 
             // label8
             // 
             label8.AutoSize = true;
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.GreenYellow;
-            label8.Location = new Point(983, 465);
+            label8.Location = new Point(983, 526);
             label8.Name = "label8";
             label8.Size = new Size(164, 27);
             label8.TabIndex = 4;
@@ -348,6 +333,7 @@
             fill_ricetype_ts.Name = "fill_ricetype_ts";
             fill_ricetype_ts.Size = new Size(259, 33);
             fill_ricetype_ts.TabIndex = 7;
+            fill_ricetype_ts.SelectedIndexChanged += fill_ricetype_ts_SelectedIndexChanged;
             // 
             // button11
             // 
@@ -357,7 +343,7 @@
             button11.FlatStyle = FlatStyle.Flat;
             button11.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button11.ForeColor = Color.DarkGreen;
-            button11.Location = new Point(542, 479);
+            button11.Location = new Point(1296, 454);
             button11.Name = "button11";
             button11.Size = new Size(151, 41);
             button11.TabIndex = 5;
@@ -386,15 +372,6 @@
             label9.TabIndex = 4;
             label9.Text = "Destination";
             // 
-            // fill_region_tr
-            // 
-            fill_region_tr.BackColor = Color.LightGreen;
-            fill_region_tr.BorderStyle = BorderStyle.None;
-            fill_region_tr.Location = new Point(320, 436);
-            fill_region_tr.Name = "fill_region_tr";
-            fill_region_tr.Size = new Size(259, 24);
-            fill_region_tr.TabIndex = 3;
-            // 
             // label10
             // 
             label10.AutoSize = true;
@@ -407,19 +384,29 @@
             label10.TabIndex = 4;
             label10.Text = "Region";
             // 
+            // fill_region_tr
+            // 
+            fill_region_tr.BackColor = Color.LightGreen;
+            fill_region_tr.FormattingEnabled = true;
+            fill_region_tr.Items.AddRange(new object[] { "NCR (National Capital Region)", "CAR (Cordillera Administrative Region)", "REGION I (Ilocos Region)", "REGION II (Cagayan Valley)", "REGION III (Central Luzon)", "REGION IV-A (CALABARZON) ", "MIMAROPA (Southwestern Tagalog Region)", "REGION V (Bicol Region)", "REGION VI (Western Visayas)", "REGION VII (Central Visayas)", "REGION VIII (Eastern Visayas)", "NIR (Negros Island Region)", "REGION IX (Zamboanga Peninsula)", "REGION X (Northern Mindanao)", "REGION XI (Davao Region)", "REGION XII (SOCCSKSARGEN)", "REGION XIII (Caraga)", "BARMM (Bangsamoro Autonomous Region in Muslim Mindanao)" });
+            fill_region_tr.Location = new Point(321, 443);
+            fill_region_tr.Name = "fill_region_tr";
+            fill_region_tr.Size = new Size(256, 33);
+            fill_region_tr.TabIndex = 8;
+            // 
             // User_TransactionSheet
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
+            Controls.Add(fill_region_tr);
             Controls.Add(fill_ricetype_ts);
             Controls.Add(fill_date_ts);
             Controls.Add(button11);
             Controls.Add(button6);
             Controls.Add(button10);
             Controls.Add(button9);
-            Controls.Add(button8);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -434,7 +421,6 @@
             Controls.Add(label2);
             Controls.Add(label7);
             Controls.Add(label1);
-            Controls.Add(fill_region_tr);
             Controls.Add(fill_customername_ts);
             Controls.Add(fill_destination_tr);
             Controls.Add(fill_priceperkg_ts);
@@ -470,7 +456,6 @@
         private Button button2;
         private Button button3;
         private Button button6;
-        private Button button8;
         private Label label8;
         private Button button9;
         private Button button10;
@@ -481,7 +466,7 @@
         private Button button11;
         private TextBox fill_destination_tr;
         private Label label9;
-        private TextBox fill_region_tr;
         private Label label10;
+        private ComboBox fill_region_tr;
     }
 }

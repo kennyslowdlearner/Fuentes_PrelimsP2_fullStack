@@ -17,6 +17,7 @@ namespace Fuentes_PrelimsP2
         public User_VarietalRegistry()
         {
             InitializeComponent();
+            refreshreload();
         }
 
         //(Global User Session) Component
@@ -273,27 +274,44 @@ namespace Fuentes_PrelimsP2
 
         private void refreshreload()
         {
-            connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
+            string dbPath = @"Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Pananom Database\Prooject Pananom Data.accdb";
 
-            adapter = new OleDbDataAdapter("SELECT * FROM [User RYR Varietal Registry]", connection);
+            // Using a simple query for now to ensure data displays
+            string query = "SELECT * FROM [User RYR Varietal Registry]";
 
             try
             {
-                dataSet = new DataSet();
-                
-                adapter.Fill(dataSet, "VarietalRegistry");
+                using (OleDbConnection connected = new OleDbConnection(dbPath))
+                {
+                    adapter = new OleDbDataAdapter(query, connected);
+                    dataSet = new DataSet();
 
-                Varietal_Registry_Grid.DataSource = dataSet.Tables["VarietalRegistry"];
-                Varietal_Registry_Grid.AutoGenerateColumns = true;
+                    connected.Open();
+                    adapter.Fill(dataSet, "VarietalRegistry");
+                    connected.Close();
 
-                if (Varietal_Registry_Grid.Columns.Contains("Roll Number"))
-                    Varietal_Registry_Grid.Columns["Roll Number"].Visible = false;
+                    Varietal_Registry_Grid.DataSource = dataSet.Tables["VarietalRegistry"];
 
-                Varietal_Registry_Grid.Columns["Rice Type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    Varietal_Registry_Grid.DefaultCellStyle.ForeColor = Color.Black;
+                    Varietal_Registry_Grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+
+                    if (Varietal_Registry_Grid.Columns.Contains("Roll Number"))
+                        Varietal_Registry_Grid.Columns["Roll Number"].Visible = false;
+
+                    foreach (DataGridViewColumn col in Varietal_Registry_Grid.Columns)
+                    {
+                        col.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                    }
+
+                    if (Varietal_Registry_Grid.Columns.Contains("Rice Type"))
+                    {
+                        Varietal_Registry_Grid.Columns["Rice Type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    }
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Failed to load data. Error: " + ex.Message);
+                MessageBox.Show("Display Error: " + ex.Message);
             }
         }
 

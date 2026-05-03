@@ -49,7 +49,6 @@
             label12 = new Label();
             label13 = new Label();
             button6 = new Button();
-            button5 = new Button();
             panel1 = new Panel();
             display_savingstatus_usg_fg = new Label();
             panel1.SuspendLayout();
@@ -261,25 +260,12 @@
             button6.FlatAppearance.BorderSize = 0;
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button6.Location = new Point(254, 726);
+            button6.Location = new Point(321, 722);
             button6.Name = "button6";
             button6.Size = new Size(120, 41);
             button6.TabIndex = 75;
             button6.UseVisualStyleBackColor = false;
             button6.Click += backButton;
-            // 
-            // button5
-            // 
-            button5.BackColor = Color.Transparent;
-            button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.Location = new Point(379, 724);
-            button5.Name = "button5";
-            button5.Size = new Size(120, 41);
-            button5.TabIndex = 76;
-            button5.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
@@ -328,7 +314,6 @@
             ClientSize = new Size(753, 787);
             Controls.Add(panel1);
             Controls.Add(button6);
-            Controls.Add(button5);
             Controls.Add(display_savingstatus_usg_fg);
             Name = "User_SetGoals";
             StartPosition = FormStartPosition.CenterScreen;
@@ -360,7 +345,6 @@
         private Label label12;
         private Label label13;
         private Button button6;
-        private Button button5;
         private Panel panel1;
         private Label display_savingstatus_usg_fg;
     }

@@ -48,7 +48,6 @@
             press_update_al = new Button();
             press_insert_al = new Button();
             back = new Button();
-            button5 = new Button();
             button9 = new Button();
             button7 = new Button();
             button4 = new Button();
@@ -270,7 +269,7 @@
             press_insert_al.Name = "press_insert_al";
             press_insert_al.Size = new Size(154, 34);
             press_insert_al.TabIndex = 56;
-            press_insert_al.Text = "Insert";
+            press_insert_al.Text = "Add";
             press_insert_al.UseVisualStyleBackColor = false;
             press_insert_al.Click += press_insertal;
             // 
@@ -281,25 +280,12 @@
             back.FlatAppearance.BorderSize = 0;
             back.FlatStyle = FlatStyle.Flat;
             back.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            back.Location = new Point(227, 723);
+            back.Location = new Point(340, 719);
             back.Name = "back";
             back.Size = new Size(120, 41);
             back.TabIndex = 75;
             back.UseVisualStyleBackColor = false;
             back.Click += backButton;
-            // 
-            // button5
-            // 
-            button5.BackColor = Color.Transparent;
-            button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.Location = new Point(359, 723);
-            button5.Name = "button5";
-            button5.Size = new Size(120, 41);
-            button5.TabIndex = 76;
-            button5.UseVisualStyleBackColor = false;
             // 
             // button9
             // 
@@ -420,7 +406,6 @@
             Controls.Add(button8);
             Controls.Add(label9);
             Controls.Add(back);
-            Controls.Add(button5);
             Controls.Add(press_refreshreload_al);
             Controls.Add(press_delete_al);
             Controls.Add(press_update_al);
@@ -469,7 +454,6 @@
         private Button press_update_al;
         private Button press_insert_al;
         private Button back;
-        private Button button5;
         private Button button9;
         private Button button7;
         private Button button4;

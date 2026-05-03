@@ -45,7 +45,6 @@
             display_yieldingdays_rye = new Label();
             display_timeleft_rye = new Label();
             button6 = new Button();
-            button5 = new Button();
             label9 = new Label();
             button8 = new Button();
             button4 = new Button();
@@ -253,25 +252,12 @@
             button6.FlatAppearance.BorderSize = 0;
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button6.Location = new Point(293, 710);
+            button6.Location = new Point(360, 711);
             button6.Name = "button6";
             button6.Size = new Size(120, 41);
             button6.TabIndex = 50;
             button6.UseVisualStyleBackColor = false;
             button6.Click += backButton;
-            // 
-            // button5
-            // 
-            button5.BackColor = Color.Transparent;
-            button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.Location = new Point(425, 710);
-            button5.Name = "button5";
-            button5.Size = new Size(120, 41);
-            button5.TabIndex = 51;
-            button5.UseVisualStyleBackColor = false;
             // 
             // label9
             // 
@@ -490,7 +476,6 @@
             Controls.Add(button8);
             Controls.Add(label9);
             Controls.Add(button6);
-            Controls.Add(button5);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -540,7 +525,6 @@
         private Label display_yieldingdays_rye;
         private Label display_timeleft_rye;
         private Button button6;
-        private Button button5;
         private Label label9;
         private Button button8;
         private Button button4;

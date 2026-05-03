@@ -207,7 +207,7 @@
             press_update_pi.FlatStyle = FlatStyle.Flat;
             press_update_pi.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             press_update_pi.ForeColor = Color.DarkGreen;
-            press_update_pi.Location = new Point(348, 669);
+            press_update_pi.Location = new Point(199, 669);
             press_update_pi.Name = "press_update_pi";
             press_update_pi.Size = new Size(143, 38);
             press_update_pi.TabIndex = 76;
@@ -223,7 +223,7 @@
             press_delete_pi.FlatStyle = FlatStyle.Flat;
             press_delete_pi.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             press_delete_pi.ForeColor = Color.DarkGreen;
-            press_delete_pi.Location = new Point(199, 669);
+            press_delete_pi.Location = new Point(348, 669);
             press_delete_pi.Name = "press_delete_pi";
             press_delete_pi.Size = new Size(143, 38);
             press_delete_pi.TabIndex = 77;
@@ -327,7 +327,6 @@
             fill_search_pi.Name = "fill_search_pi";
             fill_search_pi.Size = new Size(252, 29);
             fill_search_pi.TabIndex = 109;
-            fill_search_pi.Text = "Search product name or id";
             fill_search_pi.TextChanged += fill_searchpi;
             // 
             // button1
@@ -456,9 +455,9 @@
             display_indicator_pi.ForeColor = Color.LawnGreen;
             display_indicator_pi.Location = new Point(1090, 197);
             display_indicator_pi.Name = "display_indicator_pi";
-            display_indicator_pi.Size = new Size(214, 38);
+            display_indicator_pi.Size = new Size(0, 38);
             display_indicator_pi.TabIndex = 75;
-            display_indicator_pi.Text = "Batch Source";
+            display_indicator_pi.Click += display_indicator_pi_Click;
             // 
             // productInventory
             // 

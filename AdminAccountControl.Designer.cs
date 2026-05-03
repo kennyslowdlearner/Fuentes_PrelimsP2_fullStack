@@ -42,7 +42,6 @@
             display_inactives_aac = new Label();
             label5 = new Label();
             button6 = new Button();
-            button5 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Account_Control_Grid).BeginInit();
             SuspendLayout();
@@ -208,25 +207,12 @@
             button6.FlatAppearance.BorderSize = 0;
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button6.Location = new Point(609, 732);
+            button6.Location = new Point(718, 732);
             button6.Name = "button6";
             button6.Size = new Size(120, 41);
             button6.TabIndex = 95;
             button6.UseVisualStyleBackColor = false;
             button6.Click += backButton;
-            // 
-            // button5
-            // 
-            button5.BackColor = Color.Transparent;
-            button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.Location = new Point(741, 732);
-            button5.Name = "button5";
-            button5.Size = new Size(120, 41);
-            button5.TabIndex = 96;
-            button5.UseVisualStyleBackColor = false;
             // 
             // AdminAccountControl
             // 
@@ -235,7 +221,6 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
             Controls.Add(button6);
-            Controls.Add(button5);
             Controls.Add(label5);
             Controls.Add(label2);
             Controls.Add(display_inactives_aac);
@@ -270,7 +255,6 @@
         private Label display_inactives_aac;
         private Label label5;
         private Button button6;
-        private Button button5;
         private DataGridView Account_Control_Grid;
     }
 }

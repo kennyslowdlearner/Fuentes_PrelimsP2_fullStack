@@ -91,7 +91,6 @@
             display_soilconsistencyresult_se = new Label();
             display_waterdepthresult_se = new Label();
             button6 = new Button();
-            button5 = new Button();
             display_watermeasure_se = new Label();
             fill_waterdepth_se = new TrackBar();
             display_savingstatus_se = new Label();
@@ -833,25 +832,12 @@
             button6.FlatAppearance.BorderSize = 0;
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button6.Location = new Point(1036, 733);
+            button6.Location = new Point(1090, 733);
             button6.Name = "button6";
             button6.Size = new Size(120, 41);
             button6.TabIndex = 73;
             button6.UseVisualStyleBackColor = false;
             button6.Click += backButton;
-            // 
-            // button5
-            // 
-            button5.BackColor = Color.Transparent;
-            button5.BackgroundImage = (Image)resources.GetObject("button5.BackgroundImage");
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.Location = new Point(1161, 731);
-            button5.Name = "button5";
-            button5.Size = new Size(120, 41);
-            button5.TabIndex = 74;
-            button5.UseVisualStyleBackColor = false;
             // 
             // display_watermeasure_se
             // 
@@ -919,7 +905,6 @@
             ClientSize = new Size(1500, 789);
             Controls.Add(fill_waterdepth_se);
             Controls.Add(button6);
-            Controls.Add(button5);
             Controls.Add(label20);
             Controls.Add(fill_ec_se);
             Controls.Add(fill_potassiumlevels_se);
@@ -1063,7 +1048,6 @@
         private Label display_soilconsistencyresult_se;
         private Label display_waterdepthresult_se;
         private Button button6;
-        private Button button5;
         private DataGridView Soil_Evaluator_Grid;
         private Label display_watermeasure_se;
         private TrackBar fill_waterdepth_se;
