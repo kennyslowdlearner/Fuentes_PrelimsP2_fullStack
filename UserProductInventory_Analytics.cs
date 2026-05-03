@@ -102,44 +102,57 @@ namespace Fuentes_PrelimsP2
 
         private void UpdateCharts(List<string> productName, List<double> quantities)
         {
+            double totalWeight = 0;
+            foreach (var q in quantities) totalWeight += q;
+
+            // --- BAR CHART (With Zoom & Animation) ---
             var barChart = new CartesianChart
             {
                 Dock = DockStyle.Fill,
-                BackColor = Color.Transparent, 
-                ZoomMode = LiveChartsCore.Measure.ZoomAndPanMode.Both,
-                ZoomingSpeed = 1.5,
-                DrawMarginFrame = new DrawMarginFrame { Stroke = new SolidColorPaint(SKColors.Transparent) },
+                BackColor = Color.Transparent,
+                LegendPosition = LiveChartsCore.Measure.LegendPosition.Hidden,
+
+                // ZOOM & PAN (Standard for Cartesian Charts)
+                ZoomMode = LiveChartsCore.Measure.ZoomAndPanMode.X,
+
+                // OPENING ANIMATION
+                AnimationsSpeed = TimeSpan.FromMilliseconds(1000),
+                EasingFunction = LiveChartsCore.EasingFunctions.ExponentialOut,
 
                 Series = new ISeries[]
                 {
             new ColumnSeries<double>
             {
-                Name = "Current Stock Level (Kg)",
+                Name = "Stock Level",
                 Values = quantities.ToArray(),
-                Padding = 2,
-                Fill = new SolidColorPaint(SKColors.ForestGreen.WithAlpha(150)),
-                YToolTipLabelFormatter = point => $"{point.Coordinate.PrimaryValue} kg"
+                Fill = new SolidColorPaint(SKColors.ForestGreen.WithAlpha(180)),
+                YToolTipLabelFormatter = point =>
+                    $"{productName[(int)point.Index]}: {point.Coordinate.PrimaryValue} kg ({(point.Coordinate.PrimaryValue / totalWeight):P1})"
             },
                 },
-
                 XAxes = new Axis[]
                 {
             new Axis
             {
                 Labels = productName.ToArray(),
-                LabelsRotation = 30,
-                SeparatorsPaint = new SolidColorPaint(SKColors.Transparent),
+                LabelsRotation = 15,
+                TextSize = 10,
                 MinLimit = 0,
-                MaxLimit = productName.Count > 5 ? 5 : (double?)null
+                MaxLimit = productName.Count > 5 ? 4.5 : (double?)null
             }
                 },
-
                 YAxes = new Axis[]
                 {
-            new Axis { SeparatorsPaint = new SolidColorPaint(SKColors.Transparent) }
+            new Axis
+            {
+                Labeler = value => $"{value}kg",
+                TextSize = 10,
+                MinLimit = 0
+            }
                 }
             };
 
+            // --- PIE CHART (With Opening Animation) ---
             var pieSeries = new List<ISeries>();
             for (int a = 0; a < productName.Count; a++)
             {
@@ -147,21 +160,22 @@ namespace Fuentes_PrelimsP2
                 {
                     Name = productName[a],
                     Values = new double[] { quantities[a] },
-
-                    DataLabelsPaint = null,
-
-                    DataLabelsFormatter = point => $"{point.Context.Series.Name}: {point.Coordinate.PrimaryValue} kg ({point.StackedValue:P2})"
+                    ToolTipLabelFormatter = point =>
+                        $"{point.Context.Series.Name}: {point.Coordinate.PrimaryValue} kg ({point.StackedValue.Share:P2})"
                 });
             }
 
             var pieChart = new PieChart
             {
                 Dock = DockStyle.Fill,
-                // Match your panel's color here instead of using Transparent
                 BackColor = Color.FromArgb(242, 242, 242),
                 Series = pieSeries.ToArray(),
                 LegendPosition = LiveChartsCore.Measure.LegendPosition.Hidden,
-                TooltipPosition = LiveChartsCore.Measure.TooltipPosition.Top
+                TooltipPosition = LiveChartsCore.Measure.TooltipPosition.Top,
+
+                // ANIMATION (Using a standard easing function that exists in the Core)
+                AnimationsSpeed = TimeSpan.FromMilliseconds(1200),
+                EasingFunction = LiveChartsCore.EasingFunctions.ExponentialOut
             };
 
             // UI Updates

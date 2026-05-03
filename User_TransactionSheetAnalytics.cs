@@ -128,7 +128,13 @@ namespace Fuentes_PrelimsP2
 
         private void initialize_AllCharts(List<string> productName, List<double> quantity, List<string> riceType, List<double> quantitySold, List<DateTime> date_Transaction)
         {
-            // 1. Inventory Pie Chart
+            // Global Styling Constants
+            var labelPaint = new SolidColorPaint(SKColors.Black);
+            var separatorPaint = new SolidColorPaint(SKColors.LightGray.WithAlpha(80));
+            var animationDuration = TimeSpan.FromMilliseconds(1200);
+            var easing = LiveChartsCore.EasingFunctions.ExponentialOut;
+
+            // 1. Inventory Pie Chart (Current Stock)
             var inventorySeries = new List<ISeries>();
             for (int a = 0; a < productName.Count; a++)
             {
@@ -136,22 +142,25 @@ namespace Fuentes_PrelimsP2
                 {
                     Name = productName[a],
                     Values = new double[] { quantity[a] },
-                    // Using the DataLabelsFormatter which is highly stable across versions
-                    DataLabelsFormatter = point => $"{point.Context.Series.Name}: {point.Coordinate.PrimaryValue} kg ({point.StackedValue:P2})",
-                    DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle
+                    DataLabelsPaint = null, // Clean look: No permanent labels
+                    ToolTipLabelFormatter = point => $"{point.Context.Series.Name}: {point.Coordinate.PrimaryValue} kg ({point.StackedValue.Share:P2})",
+                    AnimationsSpeed = animationDuration,
+                    EasingFunction = easing
                 });
             }
 
             var pieChart_Inventory = new PieChart
             {
                 Dock = DockStyle.Fill,
+                BackColor = Color.FromArgb(242, 242, 242),
                 Series = inventorySeries.ToArray(),
-                // REMOVE LEGEND as requested by instructor
                 LegendPosition = LiveChartsCore.Measure.LegendPosition.Hidden,
-                TooltipPosition = LiveChartsCore.Measure.TooltipPosition.Top
+                TooltipPosition = LiveChartsCore.Measure.TooltipPosition.Top,
+                AnimationsSpeed = animationDuration,
+                EasingFunction = easing
             };
 
-            // 2. Transaction Pie Chart
+            // 2. Transaction Pie Chart (Sales Distribution)
             var transactionSeries = new List<ISeries>();
             for (int b = 0; b < riceType.Count; b++)
             {
@@ -159,40 +168,83 @@ namespace Fuentes_PrelimsP2
                 {
                     Name = riceType[b],
                     Values = new double[] { quantitySold[b] },
-                    DataLabelsFormatter = point => $"{point.Context.Series.Name}: {point.Coordinate.PrimaryValue} kg ({point.StackedValue:P2})",
-                    DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle
+                    DataLabelsPaint = null,
+                    ToolTipLabelFormatter = point => $"{point.Context.Series.Name}: {point.Coordinate.PrimaryValue} kg ({point.StackedValue.Share:P2})",
+                    AnimationsSpeed = animationDuration,
+                    EasingFunction = easing
                 });
             }
 
             var pieChart_Transaction = new PieChart
             {
                 Dock = DockStyle.Fill,
+                BackColor = Color.FromArgb(242, 242, 242),
                 Series = transactionSeries.ToArray(),
                 LegendPosition = LiveChartsCore.Measure.LegendPosition.Hidden,
-                TooltipPosition = LiveChartsCore.Measure.TooltipPosition.Top
+                TooltipPosition = LiveChartsCore.Measure.TooltipPosition.Top,
+                AnimationsSpeed = animationDuration,
+                EasingFunction = easing
             };
 
-            // 3. Scatterplot (Cartesian Chart)
-            var scatterplot = new List<ObservablePoint>();
+            // 3. Scatter Plot (Sales Over Time)
+            var scatterPoints = new List<ObservablePoint>();
             for (int c = 0; c < date_Transaction.Count; c++)
             {
-                scatterplot.Add(new ObservablePoint(date_Transaction[c].Day, quantitySold[c]));
+                // X = Day of Month, Y = Quantity Sold
+                scatterPoints.Add(new ObservablePoint(date_Transaction[c].Day, quantitySold[c]));
             }
 
             var scatterChart = new CartesianChart
             {
                 Dock = DockStyle.Fill,
+                BackColor = Color.Transparent,
+                LegendPosition = LiveChartsCore.Measure.LegendPosition.Hidden,
+
+                // ZOOM & PAN (Standard for X-Y analysis)
+                ZoomMode = LiveChartsCore.Measure.ZoomAndPanMode.X,
+
+                // OPENING ANIMATION
+                AnimationsSpeed = animationDuration,
+                EasingFunction = easing,
+
                 Series = new ISeries[]
                 {
             new ScatterSeries<ObservablePoint>
             {
-                Name = "Sales Transactions",
-                Values = scatterplot.ToArray(),
-                GeometrySize = 15,
-                Fill = new SolidColorPaint(SKColors.DarkGreen.WithAlpha(150)),
-                // Cartesian charts use YToolTipLabelFormatter
-                YToolTipLabelFormatter = point => $"{point.Coordinate.PrimaryValue} kg",
-                XToolTipLabelFormatter = point => $"Day {point.Coordinate.SecondaryValue}"
+                Name = "Transactions",
+                Values = scatterPoints.ToArray(),
+                GeometrySize = 12,
+                Fill = new SolidColorPaint(SKColors.ForestGreen.WithAlpha(180)),
+                
+                // HOVER FORMATTER
+                YToolTipLabelFormatter = point => $"Sold: {point.Coordinate.PrimaryValue} kg",
+                XToolTipLabelFormatter = point => $"Day: {point.Coordinate.SecondaryValue}"
+            }
+                },
+
+                // COORDINATE SYSTEM (X and Y Axes)
+                XAxes = new Axis[]
+                {
+            new Axis
+            {
+                Name = "Day of Month",
+                NamePaint = labelPaint,
+                LabelsPaint = labelPaint,
+                SeparatorsPaint = separatorPaint,
+                MinLimit = 0,
+                MaxLimit = 31 // Standard month view
+            }
+                },
+                YAxes = new Axis[]
+                {
+            new Axis
+            {
+                Name = "Quantity (kg)",
+                NamePaint = labelPaint,
+                LabelsPaint = labelPaint,
+                SeparatorsPaint = separatorPaint,
+                Labeler = value => $"{value}kg",
+                MinLimit = 0
             }
                 }
             };

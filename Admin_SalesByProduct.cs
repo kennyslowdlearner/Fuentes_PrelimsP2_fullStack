@@ -53,36 +53,24 @@ namespace Fuentes_PrelimsP2
         private void auto_reload()
         {
             connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
-            adapter = new OleDbDataAdapter("SELECT * FROM [User T&T Transaction]", connection);
 
+            // ADD A WHERE CLAUSE so the parameter actually has a place to go
+            string sql = "SELECT * FROM [User T&T Transaction] WHERE [User ID] = ?";
+            adapter = new OleDbDataAdapter(sql, connection);
+
+            // This matches the '?' in the query above
             adapter.SelectCommand.Parameters.AddWithValue("?", UserSession.UserInstance.ID);
 
             try
             {
                 connection.Open();
-
                 dataSet = new DataSet();
-
                 adapter.Fill(dataSet, "User T&T Transaction");
-
                 connection.Close();
 
                 Sales_By_Product_Grid.DataSource = dataSet.Tables["User T&T Transaction"];
-
-                if (Sales_By_Product_Grid.Columns.Contains("Item Number"))
-                    Sales_By_Product_Grid.Columns["Item Number"].Visible = false;
-
-                Sales_By_Product_Grid.Columns["Customer Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Sales_By_Product_Grid.Columns["Rice Type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Sales_By_Product_Grid.Columns["Product ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Sales_By_Product_Grid.Columns["Price per Kilogram"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Sales_By_Product_Grid.Columns["Quantity in Kilogram"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Sales_By_Product_Grid.Columns["Delivery Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Sales_By_Product_Grid.Columns["Reference ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Sales_By_Product_Grid.Columns["User ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
+                // ... (rest of your column styling)
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show("Failed to load data. Error: " + ex.Message);
@@ -132,13 +120,6 @@ namespace Fuentes_PrelimsP2
             }
         }
 
-        private void Sales_By_Product_Grid_VisibleChanged(object sender, EventArgs e)
-        {
-            base.OnVisibleChanged(e);
-            if (this.Visible)
-            {
-                auto_reload();
-            }
-        }
+      
     }
 }

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminLogin));
             panel1 = new Panel();
+            press_check = new CheckBox();
             ADMINpass = new TextBox();
             ADMINusn = new TextBox();
             label4 = new Label();
@@ -44,6 +45,7 @@
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
+            panel1.Controls.Add(press_check);
             panel1.Controls.Add(ADMINpass);
             panel1.Controls.Add(ADMINusn);
             panel1.Controls.Add(label4);
@@ -57,6 +59,19 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(873, 589);
             panel1.TabIndex = 1;
+            // 
+            // press_check
+            // 
+            press_check.AutoSize = true;
+            press_check.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            press_check.ForeColor = Color.DarkGreen;
+            press_check.Location = new Point(493, 414);
+            press_check.Name = "press_check";
+            press_check.Size = new Size(167, 28);
+            press_check.TabIndex = 5;
+            press_check.Text = "Show Password";
+            press_check.UseVisualStyleBackColor = true;
+            press_check.CheckedChanged += press_sowpassword;
             // 
             // ADMINpass
             // 
@@ -175,5 +190,6 @@
         private Button loginADMIN;
         private Label label1;
         private Button button1;
+        private CheckBox press_check;
     }
 }

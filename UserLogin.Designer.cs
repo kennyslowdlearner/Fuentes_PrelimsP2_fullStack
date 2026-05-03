@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserLogin));
             panel1 = new Panel();
+            press_check = new CheckBox();
             label1 = new Label();
             label2 = new Label();
             USERpass = new TextBox();
@@ -43,6 +44,7 @@
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
+            panel1.Controls.Add(press_check);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(USERpass);
@@ -55,6 +57,19 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(855, 589);
             panel1.TabIndex = 0;
+            // 
+            // press_check
+            // 
+            press_check.AutoSize = true;
+            press_check.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            press_check.ForeColor = Color.DarkGreen;
+            press_check.Location = new Point(506, 402);
+            press_check.Name = "press_check";
+            press_check.Size = new Size(167, 28);
+            press_check.TabIndex = 7;
+            press_check.Text = "Show Password";
+            press_check.UseVisualStyleBackColor = true;
+            press_check.CheckedChanged += press_showpassword;
             // 
             // label1
             // 
@@ -165,5 +180,6 @@
         private Label label1;
         private Label label2;
         private Button button1;
+        private CheckBox press_check;
     }
 }

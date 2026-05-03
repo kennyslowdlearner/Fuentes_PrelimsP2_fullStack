@@ -37,7 +37,7 @@ namespace Fuentes_PrelimsP2
         public UserLogin()
         {
             InitializeComponent();
-
+            USERpass.UseSystemPasswordChar = true;
 
             //made changes here (4) [4/3/2026 | 11:11 AM]
             string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Pananom Database\Prooject Pananom Data.accdb";
@@ -74,6 +74,11 @@ namespace Fuentes_PrelimsP2
             try
             {
                 OleDbCommandBuilder builder = new OleDbCommandBuilder(adapter);
+
+                // This automatically adds [ ] around your column names in the SQL query
+                builder.QuotePrefix = "[";
+                builder.QuoteSuffix = "]";
+
                 adapter.Update(dataSet, "User Account Information");
             }
             catch (Exception ex)
@@ -84,116 +89,80 @@ namespace Fuentes_PrelimsP2
 
         private async void loginUSER_Click(object sender, EventArgs e)
         {
-            //Made changes here (3) on [4/1/2026 | 9:47 AM]
-            //this is for logging in the user, it will check if the username and password matches the one in the session,
-            //if not it will show a message box, if yes it will show the farmgate form and hide this form
             string loggingUSN = USERusn.Text;
             string loggingPASS = USERpass.Text;
-            bool userFound = false, password = false;
-            int attempt = 0, chance = 10;
 
-            try
+            DataRow[] foundRows = dataSet.Tables["User Account Information"].Select($"Username = '{loggingUSN}'");
+
+            if (foundRows.Length > 0)
             {
-                foreach (DataRow row in dataSet.Tables["User Account Information"].Rows)
+                DataRow row = foundRows[0]; // We found the user
+
+                if (Convert.ToBoolean(row["Locked"]) == true || Convert.ToBoolean(row["Active"]) == false)
                 {
-                    if (row["Username"].ToString() == loggingUSN)
-                    {
-                        userFound = true;
-
-                        if (Convert.ToBoolean(row["Locked"]) == true || Convert.ToBoolean(row["Active"]) == false)
-                        {
-                            MessageBox.Show("Your account is locked or disabled, please contact the system administrator/developer.");
-                            return;
-                        }
-
-                        if (row["Password"].ToString() == loggingPASS)
-                        {
-                            password = true;
-
-                            row["Attempts"] = 0;
-                            UpdateDatabase();
-
-                            UserSession.UserInstance.ID = Convert.ToInt32(row["User ID"]);
-                            UserSession.UserInstance.Username = row["Username"].ToString();
-                            UserSession.UserInstance.Password = row["Password"].ToString();
-                            UserSession.UserInstance.FirstName = row["First Name"].ToString();
-                            UserSession.UserInstance.MiddleName = row["Middle Name"].ToString();
-                            UserSession.UserInstance.LastName = row["Last Name"].ToString();
-                            UserSession.UserInstance.Birthdate = Convert.ToDateTime(row["Birthdate"]);
-                            UserSession.UserInstance.Address = row["Address"].ToString();
-                            UserSession.UserInstance.Age = Convert.ToInt32(row["Age"]);
-                            UserSession.UserInstance.Category = row["Category"].ToString();
-                            UserSession.UserInstance.Gender = row["Gender"].ToString();
-                            UserSession.UserInstance.ContactNumber = Convert.ToInt64(row["Contact Number"]);
-                            UserSession.UserInstance.Email = row["Email Account"].ToString();
-                            UserSession.UserInstance.Hotline = row["Hotline"].ToString();
-                            UserSession.UserInstance.Active = Convert.ToBoolean(row["Active"]);
-                            UserSession.UserInstance.Attempt = Convert.ToInt32(attempt);
-                            UserSession.UserInstance.Locked = false;
-                        }
-
-                        break;
-                    }
-
-                    else
-                    {
-
-                        attempt = Convert.ToInt32(row["Attempts"]) + 1;
-                        row["Attempts"] = attempt;
-
-                        int remaining = chance - attempt;
-
-                        if(attempt >= chance)
-                        {
-                            row["Locked"] = true;
-                            UpdateDatabase();
-                            MessageBox.Show("Account LOCKED due to too many failed attempts.");
-                        }
-
-                        else
-                        {
-                            UpdateDatabase();
-                            MessageBox.Show($"Incorrect password! {remaining} attempts remaining.");
-                        }
-
-                        return;
-                    }
+                    MessageBox.Show("Your account is locked or disabled.");
+                    return;
                 }
 
-                if (userFound && password)
+                if (row["Password"].ToString() == loggingPASS)
                 {
-                    //first 2 lines are used for email notification
-                    string login_Info = $@"
-                                        <h3>Security Alert: New Login Detected</h3>
-                                        <p>Hello <b>{UserSession.UserInstance.FirstName}</b>,</p>
-                                        <p>A new login was detected on your <b>Pananom</b> account. Contact the developer if it wasn't you. Thank you and have a nice day ahead!</p>
-                                        <p><b>Time:</b> {DateTime.Now.ToString("f")}<br>
-                                        <b>Location:</b> Cebu City, Philippines (Estimated)</p>
-                                        <p>If this was not you, please contact support immediately via the Hotline: 331-567.</p>
-                                        <hr>
-                                        <p style='color:gray; font-size:10px;'>
-                                            This is an automated message from the Project Pananom System. <br>
-                                            Cebu Institute of Technology – University | BS Computer Engineering
-                                        </p>";
+                    row["Attempts"] = 0;
+                    UpdateDatabase();
 
+                    MapUserSession(row);
 
-                    //apply decoupling here
+                    string login_Info = $@"<h3>Security Alert: New Login Detected</h3>..."; // your email string
                     _ = GlobalEmailNotificationModule.send_Notification(UserSession.UserInstance.Email, "Security Alert: New Login", login_Info);
-                    
+
                     UserAccount.Instance.Show();
                     this.Hide();
                 }
+                else
+                {
+                    int attempts = Convert.ToInt32(row["Attempts"]) + 1;
+                    row["Attempts"] = attempts;
+                    int remaining = 10 - attempts;
 
-                else if (!userFound) MessageBox.Show("Invalid Username. Please try again.");
-                //SAMPLE: USN = kennymeow PASS = kennymeow123
+                    if (attempts >= 10)
+                    {
+                        row["Locked"] = true;
+                        MessageBox.Show("Account LOCKED due to too many failed attempts.");
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Incorrect password! {remaining} attempts remaining.");
+                    }
+                    UpdateDatabase();
+                }
             }
-
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("An error occurred while logging in: " + ex.Message);
+                MessageBox.Show("Invalid Username. Please try again.");
             }
         }
 
+        private void MapUserSession (DataRow row)
+        {
+            UserSession.UserInstance.ID = Convert.ToInt32(row["User ID"]);
+            UserSession.UserInstance.Username = row["Username"].ToString();
+            UserSession.UserInstance.Password = row["Password"].ToString();
+            UserSession.UserInstance.FirstName = row["First Name"].ToString();
+            UserSession.UserInstance.MiddleName = row["Middle Name"].ToString();
+            UserSession.UserInstance.LastName = row["Last Name"].ToString();
+            UserSession.UserInstance.Birthdate = Convert.ToDateTime(row["Birthdate"]);
+            UserSession.UserInstance.Address = row["Address"].ToString();
+            UserSession.UserInstance.Age = Convert.ToInt32(row["Age"]);
+            UserSession.UserInstance.Category = row["Category"].ToString();
+            UserSession.UserInstance.Gender = row["Gender"].ToString();
+            UserSession.UserInstance.ContactNumber = Convert.ToInt64(row["Contact Number"]);
+            UserSession.UserInstance.Email = row["Email Account"].ToString();
+            UserSession.UserInstance.Hotline = row["Hotline"].ToString();
+            UserSession.UserInstance.Active = Convert.ToBoolean(row["Active"]);
+            UserSession.UserInstance.Locked = Convert.ToBoolean(row["Locked"]);
+
+            UserSession.UserInstance.Attempt = Convert.ToInt32(row["Attempts"]);
+            UserSession.UserInstance.Locked = false;
+        }
         private void UserLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
@@ -221,6 +190,18 @@ namespace Fuentes_PrelimsP2
 
             // Force the entire environment to shut down
             Environment.Exit(0);
+        }
+
+        private void press_showpassword(object sender, EventArgs e)
+        {
+            if (press_check.Checked)
+            {
+                USERpass.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                USERpass.UseSystemPasswordChar = true;
+            }
         }
     }
 }

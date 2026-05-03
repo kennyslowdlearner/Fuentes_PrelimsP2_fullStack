@@ -135,55 +135,94 @@ namespace Fuentes_PrelimsP2
 
         private void LoadDashboardStats(OleDbConnection conn)
         {
-            // --- TOTAL REVENUE ---
-            // Access uses brackets for spaces. Formula: Price * Quantity
+            
             string revQuery = "SELECT SUM([Price per Kilogram] * [Quantity in Kilogram]) FROM [User T&T Transaction]";
             OleDbCommand cmdRev = new OleDbCommand(revQuery, conn);
             object revObj = cmdRev.ExecuteScalar();
             double totalRevenue = (revObj != null && revObj != DBNull.Value) ? Convert.ToDouble(revObj) : 0;
 
-            // --- TOTAL COST ---
-            // Pulling from your separate Cost of Production table
-            string costQuery = "SELECT SUM([Amount]) FROM [User T&T Cost of Production]";
+            string costQuery = "SELECT SUM([Total]) FROM [User T&T Cost of Production]";
             OleDbCommand cmdCost = new OleDbCommand(costQuery, conn);
             object costObj = cmdCost.ExecuteScalar();
             double totalCost = (costObj != null && costObj != DBNull.Value) ? Convert.ToDouble(costObj) : 0;
-
-            // --- CALCULATIONS ---
-            double netProfit = totalRevenue - totalCost;
 
             string avgQuery = "SELECT AVG([Price per Kilogram] * [Quantity in Kilogram]) FROM [User T&T Transaction]";
             OleDbCommand cmdAvg = new OleDbCommand(avgQuery, conn);
             object avgObj = cmdAvg.ExecuteScalar();
             double avgValue = (avgObj != null && avgObj != DBNull.Value) ? Convert.ToDouble(avgObj) : 0;
 
-            // --- UPDATE LABELS ---
-            // Replace these names with your actual Label control names
+            
+            double netProfit = totalRevenue - totalCost;
+            double growthPercent = CalculateSalesGrowth(conn);
+
+            
+            var boldItalicFont = new Font(display_totalrevenue_tsr.Font, FontStyle.Bold | FontStyle.Italic);
+
+          
             display_totalrevenue_tsr.Text = "₱" + totalRevenue.ToString("N2");
             display_totalcost_tsr.Text = "₱" + totalCost.ToString("N2");
             display_netprofit_tsr.Text = "₱" + netProfit.ToString("N2");
             display_atv_tsr.Text = "₱" + avgValue.ToString("N2");
+            display_salesgrowth_tsr.Text = growthPercent.ToString("N2") + "%";
 
-            // --- TOP SELLING PRODUCTS ---
-            try
-            {
-                LoadProductRankings(conn);
-            }
-            catch
-            {
-                // Ensure dashboard still shows revenue/cost even if rankings fail
-                display_tspOne_tsr.Text = "N/A";
-                display_tspTwo_tsr.Text = "N/A";
-                display_tspThree_tsr.Text = "N/A";
-                display_lspOne_tsr.Text = "N/A";
-                display_lspTwo_tsr.Text = "N/A";
-                display_lspThree_tsr.Text = "N/A";
-            }
+            display_totalrevenue_tsr.Font = boldItalicFont;
+            display_totalcost_tsr.Font = boldItalicFont;
+            display_netprofit_tsr.Font = boldItalicFont;
+            display_atv_tsr.Font = boldItalicFont;
+            display_salesgrowth_tsr.Font = boldItalicFont;
+
+            display_totalcost_tsr.ForeColor = Color.Gold;
+            display_salesgrowth_tsr.ForeColor = Color.Gold;
+
+            var boldItalicFontt = new Font(display_totalrevenue_tsr.Font, FontStyle.Bold | FontStyle.Italic);
+            Color solidGold = Color.FromArgb(255, 215, 0);
+
+            display_totalcost_tsr.Enabled = true; 
+            display_totalcost_tsr.ForeColor = solidGold;
+            display_totalcost_tsr.Font = boldItalicFontt;
+            display_totalcost_tsr.BackColor = Color.Transparent; 
+            display_totalcost_tsr.Refresh(); 
+
+            display_salesgrowth_tsr.Enabled = true;
+            display_salesgrowth_tsr.ForeColor = solidGold;
+            display_salesgrowth_tsr.Font = boldItalicFontt;
+            display_salesgrowth_tsr.BackColor = Color.Transparent;
+            display_salesgrowth_tsr.Refresh();
+
+            try { LoadProductRankings(conn); }
+            catch { }
+        }
+
+        private double CalculateSalesGrowth(OleDbConnection conn)
+        {
+            string currentQuery = "SELECT SUM([Price per Kilogram] * [Quantity in Kilogram]) FROM [User T&T Transaction] " +
+                                  "WHERE [Delivery Date] > DateAdd('d', -30, Date())";
+
+            string previousQuery = "SELECT SUM([Price per Kilogram] * [Quantity in Kilogram]) FROM [User T&T Transaction] " +
+                                   "WHERE [Delivery Date] BETWEEN DateAdd('d', -60, Date()) AND DateAdd('d', -31, Date())";
+
+            OleDbCommand cmdCurr = new OleDbCommand(currentQuery, conn);
+            OleDbCommand cmdPrev = new OleDbCommand(previousQuery, conn);
+
+            double currentSales = Convert.ToDouble(cmdCurr.ExecuteScalar() != DBNull.Value ? cmdCurr.ExecuteScalar() : 0);
+            double previousSales = Convert.ToDouble(cmdPrev.ExecuteScalar() != DBNull.Value ? cmdPrev.ExecuteScalar() : 0);
+
+            if (previousSales == 0) return currentSales > 0 ? 100 : 0;
+
+            return ((currentSales - previousSales) / previousSales) * 100;
         }
 
         private void LoadProductRankings(OleDbConnection conn)
         {
-            // Top 3 Products
+            var boldItalicFont = new Font(display_tspOne_tsr.Font, FontStyle.Bold | FontStyle.Italic);
+
+            Label[] rankingLabels = {
+                                        display_tspOne_tsr, display_tspTwo_tsr, display_tspThree_tsr,
+                                        display_lspOne_tsr, display_lspTwo_tsr, display_lspThree_tsr
+                                    };
+
+            foreach (var lbl in rankingLabels) lbl.Font = boldItalicFont;
+
             string topQuery = "SELECT TOP 3 [Rice Type] FROM [User T&T Transaction] GROUP BY [Rice Type] ORDER BY SUM([Quantity in Kilogram]) DESC";
             OleDbCommand cmdTop = new OleDbCommand(topQuery, conn);
             using (OleDbDataReader reader = cmdTop.ExecuteReader())
@@ -197,14 +236,13 @@ namespace Fuentes_PrelimsP2
                 }
                 while (reader.Read())
                 {
-                    if (rank == 1) display_tspOne_tsr.Text = "1. " + reader[0].ToString();
-                    if (rank == 2) display_tspTwo_tsr.Text = "2. " + reader[0].ToString();
-                    if (rank == 3) display_tspThree_tsr.Text = "3. " + reader[0].ToString();
+                    if (rank == 1) display_tspOne_tsr.Text = reader[0].ToString();
+                    if (rank == 2) display_tspTwo_tsr.Text = reader[0].ToString();
+                    if (rank == 3) display_tspThree_tsr.Text = reader[0].ToString();
                     rank++;
                 }
             }
 
-            // Low Selling (Switch DESC to ASC)
             string lowQuery = "SELECT TOP 3 [Rice Type] FROM [User T&T Transaction] GROUP BY [Rice Type] ORDER BY SUM([Quantity in Kilogram]) ASC";
             OleDbCommand cmdLow = new OleDbCommand(lowQuery, conn);
             using (OleDbDataReader reader = cmdLow.ExecuteReader())
@@ -218,9 +256,9 @@ namespace Fuentes_PrelimsP2
                 }
                 while (reader.Read())
                 {
-                    if (rank == 1) display_lspOne_tsr.Text = "1. " + reader[0].ToString();
-                    if (rank == 2) display_lspTwo_tsr.Text = "2. " + reader[0].ToString();
-                    if (rank == 3) display_lspThree_tsr.Text = "3. " + reader[0].ToString();
+                    if (rank == 1) display_lspOne_tsr.Text = reader[0].ToString();
+                    if (rank == 2) display_lspTwo_tsr.Text = reader[0].ToString();
+                    if (rank == 3) display_lspThree_tsr.Text = reader[0].ToString();
                     rank++;
                 }
             }

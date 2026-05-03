@@ -62,6 +62,7 @@
             Account_Control_Grid.RowHeadersWidth = 62;
             Account_Control_Grid.Size = new Size(1338, 393);
             Account_Control_Grid.TabIndex = 0;
+            Account_Control_Grid.CellFormatting += enabledisable_changcolor;
             // 
             // button2
             // 

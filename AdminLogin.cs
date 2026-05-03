@@ -29,6 +29,7 @@ namespace Fuentes_PrelimsP2
         public AdminLogin()
         {
             InitializeComponent();
+            ADMINpass.UseSystemPasswordChar = true;
         }
 
         OleDbConnection? connection;
@@ -88,5 +89,16 @@ namespace Fuentes_PrelimsP2
             home.Show();
         }
 
+        private void press_sowpassword(object sender, EventArgs e)
+        {
+            if (press_check.Checked)
+            {
+                ADMINpass.UseSystemPasswordChar = false; 
+            }
+            else
+            {
+                ADMINpass.UseSystemPasswordChar = true; 
+            }
+        }
     }
 }

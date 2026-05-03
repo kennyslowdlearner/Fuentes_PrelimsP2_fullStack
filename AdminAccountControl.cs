@@ -16,6 +16,7 @@ namespace Fuentes_PrelimsP2
         {
             InitializeComponent();
             auto_reload();
+            Account_Control_Grid.CellFormatting += enabledisable_changcolor;
         }
 
         internal static AdminAccountControl Instance
@@ -66,11 +67,11 @@ namespace Fuentes_PrelimsP2
 
                 dataSet = new DataSet();
 
-                adapter.Fill(dataSet, "[User Account Information]");
+                adapter.Fill(dataSet, "User Account Information");
 
                 connection.Close();
 
-                Account_Control_Grid.DataSource = dataSet.Tables["[User Account Information]"];
+                Account_Control_Grid.DataSource = dataSet.Tables["User Account Information"];
 
                 Account_Control_Grid.Columns["Username"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 Account_Control_Grid.Columns["First Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -104,7 +105,12 @@ namespace Fuentes_PrelimsP2
             try
             {
                 OleDbCommandBuilder builder = new OleDbCommandBuilder(adapter);
-                adapter.Update(dataSet, "[User Account Information]");
+
+                builder.QuotePrefix = "[";
+                builder.QuoteSuffix = "]";
+
+                adapter.Update(dataSet, "User Account Information");
+
                 MessageBox.Show("Account updated successfully!");
                 auto_reload();
             }
@@ -130,6 +136,7 @@ namespace Fuentes_PrelimsP2
                 connection.Close();
 
                 Account_Control_Grid.DataSource = dataSet.Tables["User Account Information"];
+                UpdateSummaryLabels();
 
                 Account_Control_Grid.Columns["Username"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 Account_Control_Grid.Columns["First Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -188,6 +195,45 @@ namespace Fuentes_PrelimsP2
             row["Attempts"] = 0;
 
             save_changes_to_db();
+        }
+
+        private void UpdateSummaryLabels()
+        {
+            if (dataSet == null || dataSet.Tables["User Account Information"] == null) return;
+
+            DataTable dt = dataSet.Tables["User Account Information"];
+
+            int totalUsers = dt.Rows.Count;
+
+            int activeUsers = dt.AsEnumerable().Count(row => row.Field<bool>("Active") == true);
+
+            int inactiveUsers = totalUsers - activeUsers;
+
+            display_users_aac.Text = Convert.ToString(totalUsers);
+            display_actives_aac.Text = Convert.ToString(activeUsers);
+            display_inactives_aac.Text = Convert.ToString(inactiveUsers);
+        }
+
+        private void enabledisable_changcolor(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.RowIndex == Account_Control_Grid.NewRowIndex) return;
+
+            DataRowView rowView = (DataRowView)Account_Control_Grid.Rows[e.RowIndex].DataBoundItem;
+            if (rowView == null) return;
+
+            bool isActive = Convert.ToBoolean(rowView.Row["Active"]);
+
+            if (!isActive) 
+            {
+                e.CellStyle.BackColor = Color.LightCoral;
+                e.CellStyle.ForeColor = Color.White;
+                e.CellStyle.SelectionBackColor = Color.Red;
+            }
+            else 
+            {
+                e.CellStyle.BackColor = Color.White;
+                e.CellStyle.ForeColor = Color.Black;
+            }
         }
     }
 }
