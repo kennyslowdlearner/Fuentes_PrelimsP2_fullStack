@@ -111,47 +111,84 @@ namespace Fuentes_PrelimsP2
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
 
-                    // 1. Force the grid to reset
-                    Farmgate_Prices_Grid.DataSource = null;
-                    Farmgate_Prices_Grid.AutoGenerateColumns = true;
-                    Farmgate_Prices_Grid.DataSource = dataTable;
+                    // 1. Add Calculated Column for Sacks in the Grid
+                    if (!dataTable.Columns.Contains("Estimated Sacks"))
+                    {
+                        dataTable.Columns.Add("Estimated Sacks", typeof(string));
+                    }
 
-                    // 2. Allow the UI thread to process the new columns
+                    // Variables for Dashboard Totals
+                    double totalKgSum = 0;
+
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        if (row["Quantity (Kg)"] != DBNull.Value)
+                        {
+                            double kgs = Convert.ToDouble(row["Quantity (Kg)"]);
+                            totalKgSum += kgs; // Accumulate for total KG
+
+                            double sacks = kgs / 50.0;
+                            row["Estimated Sacks"] = sacks.ToString("N2") + " sacks";
+                        }
+                    }
+
+                    // 2. Update Dashboard Summary Labels
+                    double totalSacksSum = totalKgSum / 50.0;
+
+                    display_kg_gg.Text = totalKgSum.ToString("N2") + " kg";
+                    display_sack_gg.Text = totalSacksSum.ToString("N2") + " sacks";
+
+                    // Apply consistent Bold Italic Gold styling
+                    var boldItalicFont = new Font(display_kg_gg.Font, FontStyle.Bold | FontStyle.Italic);
+                    display_kg_gg.Font = boldItalicFont;
+                    display_sack_gg.Font = boldItalicFont;
+                    display_sack_gg.ForeColor = Color.Gold;
+
+                    // 3. Reset and Bind Grid
+                    Farmgate_Prices_Grid.DataSource = null;
+                    Farmgate_Prices_Grid.DataSource = dataTable;
                     Application.DoEvents();
                 }
 
-                // 3. Apply formatting only if data was actually loaded
+                // 4. Formatting the DataGrid Columns
                 if (Farmgate_Prices_Grid.Columns.Count > 0)
                 {
-                    // Set all to None first to allow manual overrides
                     foreach (DataGridViewColumn col in Farmgate_Prices_Grid.Columns)
                     {
                         col.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
                     }
 
-                    // Fix for the "Item Name" invisibility:
+                    // Position Estimated Sacks beside Quantity
+                    if (Farmgate_Prices_Grid.Columns.Contains("Estimated Sacks"))
+                    {
+                        Farmgate_Prices_Grid.Columns["Estimated Sacks"].DisplayIndex = Farmgate_Prices_Grid.Columns["Quantity (Kg)"].DisplayIndex + 1;
+                        Farmgate_Prices_Grid.Columns["Estimated Sacks"].HeaderText = "Est. Sacks (50kg)";
+                        Farmgate_Prices_Grid.Columns["Estimated Sacks"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                        Farmgate_Prices_Grid.Columns["Estimated Sacks"].DefaultCellStyle.ForeColor = Color.DarkBlue;
+                    }
+
                     if (Farmgate_Prices_Grid.Columns.Contains("Product Name"))
                     {
                         Farmgate_Prices_Grid.Columns["Product Name"].Visible = true;
                         Farmgate_Prices_Grid.Columns["Product Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                        Farmgate_Prices_Grid.Columns["Product Name"].MinimumWidth = 300; // Ensure it stays visible
+                        Farmgate_Prices_Grid.Columns["Product Name"].MinimumWidth = 300;
                     }
 
-                    // Hide the database ID
                     if (Farmgate_Prices_Grid.Columns.Contains("Roll Number"))
                         Farmgate_Prices_Grid.Columns["Roll Number"].Visible = false;
 
                     if (Farmgate_Prices_Grid.Columns.Contains("User ID"))
                         Farmgate_Prices_Grid.Columns["User ID"].Visible = false;
 
-                    // Batch update the rest of the cells
+                    // Apply formatting to currency and numeric fields
+                    if (Farmgate_Prices_Grid.Columns.Contains("Price per Kilogram"))
+                        Farmgate_Prices_Grid.Columns["Price per Kilogram"].DefaultCellStyle.Format = "₱#,##0.00";
+
                     string[] autoFields = { "Product ID", "Quantity (Kg)", "Price per Kilogram", "Reference ID" };
                     foreach (string field in autoFields)
                     {
                         if (Farmgate_Prices_Grid.Columns.Contains(field))
-                        {
                             Farmgate_Prices_Grid.Columns[field].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                        }
                     }
                 }
             }

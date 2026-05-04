@@ -54,9 +54,10 @@ namespace Fuentes_PrelimsP2
         {
             string connString = "Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb";
 
-            // SQL Logic: [Total Sales] is placed beside [Quantity in Kilogram]
+            // SQL Logic: Changed [Est. Sacks] to [Estimated Sacks] to avoid bracketing errors
             string query = @"SELECT T.[Customer Name], T.[Rice Type], T.[Price per Kilogram], 
                     T.[Quantity in Kilogram], 
+                    (T.[Quantity in Kilogram] / 50.0) as [Estimated Sacks],
                     (T.[Price per Kilogram] * T.[Quantity in Kilogram]) as [Total Sales],
                     T.[Date Made], T.[Reference ID], 
                     T.Destination, (U.[First Name] + ' ' + U.[Last Name]) as [Seller Name]
@@ -82,7 +83,14 @@ namespace Fuentes_PrelimsP2
 
                     foreach (DataGridViewColumn col in Total_Transactions_Grid.Columns) col.Width = 180;
 
-                    // Formatting the new column
+                    // Update formatting to match the new column name
+                    if (Total_Transactions_Grid.Columns.Contains("Estimated Sacks"))
+                    {
+                        Total_Transactions_Grid.Columns["Estimated Sacks"].DefaultCellStyle.Format = "N2";
+                        Total_Transactions_Grid.Columns["Estimated Sacks"].HeaderText = "Est. Sacks (50kg)";
+                        Total_Transactions_Grid.Columns["Estimated Sacks"].DefaultCellStyle.ForeColor = Color.DarkBlue;
+                    }
+
                     if (Total_Transactions_Grid.Columns.Contains("Total Sales"))
                     {
                         Total_Transactions_Grid.Columns["Total Sales"].DefaultCellStyle.Format = "₱#,##0.00";

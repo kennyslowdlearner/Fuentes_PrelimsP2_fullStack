@@ -203,25 +203,71 @@ namespace Fuentes_PrelimsP2
                 adapter.Fill(dataSet, tableName);
                 connection.Close();
 
-                Product_Inventory_Grid.DataSource = dataSet.Tables[tableName];
+                DataTable dt = dataSet.Tables[tableName];
 
-                // Ensure text is black
+                // 1. Add calculated column for the Grid
+                if (!dt.Columns.Contains("Estimated Sacks"))
+                {
+                    dt.Columns.Add("Estimated Sacks", typeof(string));
+                }
+
+                // 2. Identify the correct Quantity column based on current view
+                string qtyCol = showingSeedlings ? "Quantity(Kg)" : "Quantity in Kilograms";
+
+                // Variables to store grand totals for the labels
+                double totalKgSum = 0;
+
+                // 3. Process Rows: Calculate Grid Values and Sum for Labels
+                foreach (DataRow row in dt.Rows)
+                {
+                    if (row[qtyCol] != DBNull.Value)
+                    {
+                        double kgs = Convert.ToDouble(row[qtyCol]);
+                        totalKgSum += kgs; // Accumulate total for dashboard
+
+                        double sacks = kgs / 50.0;
+                        row["Estimated Sacks"] = sacks.ToString("N2") + " sacks";
+                    }
+                }
+
+                // 4. Update Dashboard Labels (display_kg_gg and display_sack_gg)
+                double totalSacksSum = totalKgSum / 50.0;
+
+                display_kg_gg.Text = totalKgSum.ToString("N2") + " kg";
+                display_sack_gg.Text = totalSacksSum.ToString("N2") + " sacks";
+
+                // Apply visual styling (consistent with your other forms)
+                var boldItalicFont = new Font(display_kg_gg.Font, FontStyle.Bold | FontStyle.Italic);
+                display_kg_gg.Font = boldItalicFont;
+                display_sack_gg.Font = boldItalicFont;
+                display_sack_gg.ForeColor = Color.Gold; // Using Gold for sack emphasis
+
+                // 5. Grid Binding and Formatting
+                Product_Inventory_Grid.DataSource = dt;
+
                 Product_Inventory_Grid.DefaultCellStyle.ForeColor = Color.Black;
                 Product_Inventory_Grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
 
-                // Hide sensitive/system columns
                 if (Product_Inventory_Grid.Columns.Contains("Roll Number"))
                     Product_Inventory_Grid.Columns["Roll Number"].Visible = false;
 
                 if (Product_Inventory_Grid.Columns.Contains("User ID"))
                     Product_Inventory_Grid.Columns["User ID"].Visible = false;
 
-                // Adjust Widths
+                // Position the new column next to the Quantity column in the grid
+                if (Product_Inventory_Grid.Columns.Contains("Estimated Sacks"))
+                {
+                    Product_Inventory_Grid.Columns["Estimated Sacks"].DisplayIndex = Product_Inventory_Grid.Columns[qtyCol].DisplayIndex + 1;
+                    Product_Inventory_Grid.Columns["Estimated Sacks"].HeaderText = "Est. Sacks (50kg)";
+                }
+
+                // AutoSize adjustments
                 if (showingSeedlings)
                 {
                     Product_Inventory_Grid.Columns["Variety Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     Product_Inventory_Grid.Columns["Seed ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     Product_Inventory_Grid.Columns["Quantity(Kg)"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                    Product_Inventory_Grid.Columns["Estimated Sacks"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 }
                 else
                 {
@@ -229,6 +275,7 @@ namespace Fuentes_PrelimsP2
                     Product_Inventory_Grid.Columns["Reference ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     Product_Inventory_Grid.Columns["Product ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                     Product_Inventory_Grid.Columns["Quantity in Kilograms"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                    Product_Inventory_Grid.Columns["Estimated Sacks"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 }
             }
             catch (Exception ex)

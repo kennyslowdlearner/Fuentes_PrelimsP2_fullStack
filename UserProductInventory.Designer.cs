@@ -61,6 +61,12 @@
             label_germrate_pi = new Label();
             fill_datereceived_pi = new DateTimePicker();
             display_indicator_pi = new Label();
+            label7 = new Label();
+            label10 = new Label();
+            display_sack_gg = new Label();
+            label12 = new Label();
+            label13 = new Label();
+            display_kg_gg = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Product_Inventory_Grid).BeginInit();
             SuspendLayout();
@@ -459,6 +465,80 @@
             display_indicator_pi.TabIndex = 75;
             display_indicator_pi.Click += display_indicator_pi_Click;
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.BackColor = Color.Transparent;
+            label7.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.LawnGreen;
+            label7.Location = new Point(1056, 639);
+            label7.Name = "label7";
+            label7.Size = new Size(15, 24);
+            label7.TabIndex = 73;
+            label7.Text = ":";
+            label7.Click += label7_Click;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.BackColor = Color.Transparent;
+            label10.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label10.ForeColor = Color.LawnGreen;
+            label10.Location = new Point(840, 640);
+            label10.Name = "label10";
+            label10.Size = new Size(209, 27);
+            label10.TabIndex = 75;
+            label10.Text = "Total Quantity (Sack)";
+            // 
+            // display_sack_gg
+            // 
+            display_sack_gg.AutoSize = true;
+            display_sack_gg.BackColor = Color.Transparent;
+            display_sack_gg.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold | FontStyle.Italic);
+            display_sack_gg.ForeColor = Color.Gold;
+            display_sack_gg.Location = new Point(1077, 640);
+            display_sack_gg.Name = "display_sack_gg";
+            display_sack_gg.Size = new Size(33, 27);
+            display_sack_gg.TabIndex = 75;
+            display_sack_gg.Text = "---";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.BackColor = Color.Transparent;
+            label12.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label12.ForeColor = Color.LawnGreen;
+            label12.Location = new Point(1056, 605);
+            label12.Name = "label12";
+            label12.Size = new Size(15, 24);
+            label12.TabIndex = 73;
+            label12.Text = ":";
+            label12.Click += label7_Click;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.BackColor = Color.Transparent;
+            label13.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label13.ForeColor = Color.LawnGreen;
+            label13.Location = new Point(840, 606);
+            label13.Name = "label13";
+            label13.Size = new Size(186, 27);
+            label13.TabIndex = 75;
+            label13.Text = "Total Quantity (Kg)";
+            // 
+            // display_kg_gg
+            // 
+            display_kg_gg.AutoSize = true;
+            display_kg_gg.BackColor = Color.Transparent;
+            display_kg_gg.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold | FontStyle.Italic);
+            display_kg_gg.ForeColor = Color.Gold;
+            display_kg_gg.Location = new Point(1077, 606);
+            display_kg_gg.Name = "display_kg_gg";
+            display_kg_gg.Size = new Size(33, 27);
+            display_kg_gg.TabIndex = 75;
+            display_kg_gg.Text = "---";
+            // 
             // productInventory
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -481,11 +561,17 @@
             Controls.Add(label2);
             Controls.Add(fill_productid_pi);
             Controls.Add(label3);
+            Controls.Add(display_kg_gg);
+            Controls.Add(display_sack_gg);
+            Controls.Add(label13);
+            Controls.Add(label10);
             Controls.Add(label_germrate_pi);
             Controls.Add(label_datereceived_pi);
             Controls.Add(display_indicator_pi);
             Controls.Add(label_batchsource_pi);
+            Controls.Add(label12);
             Controls.Add(fill_germrate_pi);
+            Controls.Add(label7);
             Controls.Add(label8);
             Controls.Add(label_sc3_pi);
             Controls.Add(fill_batchcode_pi);
@@ -539,5 +625,11 @@
         private Label label_germrate_pi;
         private DateTimePicker fill_datereceived_pi;
         private Label display_indicator_pi;
+        private Label label7;
+        private Label label10;
+        private Label display_sack_gg;
+        private Label label12;
+        private Label label13;
+        private Label display_kg_gg;
     }
 }

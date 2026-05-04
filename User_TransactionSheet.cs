@@ -344,7 +344,6 @@ namespace Fuentes_PrelimsP2
             string dbPath = "Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb";
             connection = new OleDbConnection(dbPath);
 
-            // 1. Filter by User ID directly in the SQL query
             string inventoryQuery = "SELECT * FROM [User PI Product Inventory] WHERE [User ID] = @UserID";
             string transactionQuery = "SELECT * FROM [User T&T Transaction] WHERE [User ID] = @UserID";
 
@@ -362,47 +361,77 @@ namespace Fuentes_PrelimsP2
                 adapterTwo.Fill(dataSet, "Transactions");
                 connection.Close();
 
-                Product_Inventory_Grid.DataSource = dataSet.Tables["Inventory"];
-                Transaction_Sheet_Grid.DataSource = dataSet.Tables["Transactions"];
+                DataTable dtInv = dataSet.Tables["Inventory"];
+                DataTable dtTrans = dataSet.Tables["Transactions"];
 
-                if (Product_Inventory_Grid.Columns.Contains("User ID"))
-                    Product_Inventory_Grid.Columns["User ID"].Visible = false;
+                // --- 1. PROCESS INVENTORY GRID ---
+                if (!dtInv.Columns.Contains("Estimated Sacks")) dtInv.Columns.Add("Estimated Sacks", typeof(string));
+                foreach (DataRow row in dtInv.Rows)
+                {
+                    if (row["Quantity in Kilograms"] != DBNull.Value)
+                    {
+                        double kgs = Convert.ToDouble(row["Quantity in Kilograms"]);
+                        row["Estimated Sacks"] = (kgs / 50.0).ToString("N2") + " sacks";
+                    }
+                }
+                Product_Inventory_Grid.DataSource = dtInv;
 
-                if (Transaction_Sheet_Grid.Columns.Contains("User ID"))
-                    Transaction_Sheet_Grid.Columns["User ID"].Visible = false;
+                // --- 2. PROCESS TRANSACTION GRID & DASHBOARD TOTALS ---
+                if (!dtTrans.Columns.Contains("Estimated Sacks")) dtTrans.Columns.Add("Estimated Sacks", typeof(string));
 
-                Product_Inventory_Grid.DefaultCellStyle.ForeColor = Color.Black;
-                Transaction_Sheet_Grid.DefaultCellStyle.ForeColor = Color.Black;
+                double totalKgSum = 0;
+                foreach (DataRow row in dtTrans.Rows)
+                {
+                    if (row["Quantity in Kilogram"] != DBNull.Value)
+                    {
+                        double kgs = Convert.ToDouble(row["Quantity in Kilogram"]);
+                        totalKgSum += kgs; // Summing for dashboard
+                        row["Estimated Sacks"] = (kgs / 50.0).ToString("N2") + " sacks";
+                    }
+                }
+                Transaction_Sheet_Grid.DataSource = dtTrans;
 
-                if (Product_Inventory_Grid.Columns.Contains("Roll Number"))
-                    Product_Inventory_Grid.Columns["Roll Number"].Visible = false;
+                // --- 3. UPDATE DASHBOARD LABELS ---
+                display_kg_gg.Text = totalKgSum.ToString("N2") + " kg";
+                display_sack_gg.Text = (totalKgSum / 50.0).ToString("N2") + " sacks";
 
-                Product_Inventory_Grid.Columns["Roll Number"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Product_Inventory_Grid.Columns["Product Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Product_Inventory_Grid.Columns["Reference ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Product_Inventory_Grid.Columns["Product ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Product_Inventory_Grid.Columns["Quantity in Kilograms"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                // Apply Gold Bold Italic Styling
+                var boldItalicFont = new Font(display_kg_gg.Font, FontStyle.Bold | FontStyle.Italic);
+                display_kg_gg.Font = boldItalicFont;
+                display_sack_gg.Font = boldItalicFont;
+                display_sack_gg.ForeColor = Color.Gold;
 
-
-                if (Transaction_Sheet_Grid.Columns.Contains("Item Number"))
-                    Transaction_Sheet_Grid.Columns["Item Number"].Visible = false;
-
-                Transaction_Sheet_Grid.Columns["Item Number"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Transaction_Sheet_Grid.Columns["Customer Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Transaction_Sheet_Grid.Columns["Rice Type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Transaction_Sheet_Grid.Columns["Product ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Transaction_Sheet_Grid.Columns["Price per Kilogram"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Transaction_Sheet_Grid.Columns["Quantity in Kilogram"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Transaction_Sheet_Grid.Columns["Delivery Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Transaction_Sheet_Grid.Columns["Destination"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Transaction_Sheet_Grid.Columns["Region"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Transaction_Sheet_Grid.Columns["Reference ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                // --- 4. GRID FORMATTING AND COLUMN POSITIONING ---
+                FormatGrid(Product_Inventory_Grid, "Quantity in Kilograms");
+                FormatGrid(Transaction_Sheet_Grid, "Quantity in Kilogram");
 
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show("Failed to load data. Error: " + ex.Message);
+            }
+        }
+
+        // Helper method to keep the code clean and handle positioning
+        private void FormatGrid(DataGridView grid, string qtyColumnName)
+        {
+            grid.DefaultCellStyle.ForeColor = Color.Black;
+
+            if (grid.Columns.Contains("User ID")) grid.Columns["User ID"].Visible = false;
+            if (grid.Columns.Contains("Roll Number")) grid.Columns["Roll Number"].Visible = false;
+            if (grid.Columns.Contains("Item Number")) grid.Columns["Item Number"].Visible = false;
+
+            if (grid.Columns.Contains("Estimated Sacks"))
+            {
+                // Move Estimated Sacks beside the Kilogram column
+                grid.Columns["Estimated Sacks"].DisplayIndex = grid.Columns[qtyColumnName].DisplayIndex + 1;
+                grid.Columns["Estimated Sacks"].HeaderText = "Est. Sacks (50kg)";
+                grid.Columns["Estimated Sacks"].DefaultCellStyle.ForeColor = Color.DarkBlue;
+            }
+
+            foreach (DataGridViewColumn col in grid.Columns)
+            {
+                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
         }
 

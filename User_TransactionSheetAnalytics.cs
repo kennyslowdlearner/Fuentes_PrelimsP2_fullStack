@@ -138,12 +138,20 @@ namespace Fuentes_PrelimsP2
             var inventorySeries = new List<ISeries>();
             for (int a = 0; a < productName.Count; a++)
             {
+                double currentQty = quantity[a];
+                double estSacks = currentQty / 50.0; // Calculate sacks for hover
+
                 inventorySeries.Add(new PieSeries<double>
                 {
                     Name = productName[a],
-                    Values = new double[] { quantity[a] },
-                    DataLabelsPaint = null, // Clean look: No permanent labels
-                    ToolTipLabelFormatter = point => $"{point.Context.Series.Name}: {point.Coordinate.PrimaryValue} kg ({point.StackedValue.Share:P2})",
+                    Values = new double[] { currentQty },
+                    DataLabelsPaint = null,
+                    // UPDATED TOOLTIP: Added Est. Sacks
+                    ToolTipLabelFormatter = point =>
+                        $"{point.Context.Series.Name}\n" +
+                        $"Weight: {point.Coordinate.PrimaryValue:N2} kg\n" +
+                        $"Est. Sacks: {estSacks:N2} sacks\n" +
+                        $"Share: {point.StackedValue.Share:P2}",
                     AnimationsSpeed = animationDuration,
                     EasingFunction = easing
                 });
@@ -164,12 +172,20 @@ namespace Fuentes_PrelimsP2
             var transactionSeries = new List<ISeries>();
             for (int b = 0; b < riceType.Count; b++)
             {
+                double soldQty = quantitySold[b];
+                double estSacksSold = soldQty / 50.0; // Calculate sacks for hover
+
                 transactionSeries.Add(new PieSeries<double>
                 {
                     Name = riceType[b],
-                    Values = new double[] { quantitySold[b] },
+                    Values = new double[] { soldQty },
                     DataLabelsPaint = null,
-                    ToolTipLabelFormatter = point => $"{point.Context.Series.Name}: {point.Coordinate.PrimaryValue} kg ({point.StackedValue.Share:P2})",
+                    // UPDATED TOOLTIP: Added Est. Sacks
+                    ToolTipLabelFormatter = point =>
+                        $"{point.Context.Series.Name}\n" +
+                        $"Sold: {point.Coordinate.PrimaryValue:N2} kg\n" +
+                        $"Est. Sacks: {estSacksSold:N2} sacks\n" +
+                        $"Share: {point.StackedValue.Share:P2}",
                     AnimationsSpeed = animationDuration,
                     EasingFunction = easing
                 });
@@ -190,7 +206,6 @@ namespace Fuentes_PrelimsP2
             var scatterPoints = new List<ObservablePoint>();
             for (int c = 0; c < date_Transaction.Count; c++)
             {
-                // X = Day of Month, Y = Quantity Sold
                 scatterPoints.Add(new ObservablePoint(date_Transaction[c].Day, quantitySold[c]));
             }
 
@@ -199,14 +214,9 @@ namespace Fuentes_PrelimsP2
                 Dock = DockStyle.Fill,
                 BackColor = Color.Transparent,
                 LegendPosition = LiveChartsCore.Measure.LegendPosition.Hidden,
-
-                // ZOOM & PAN (Standard for X-Y analysis)
                 ZoomMode = LiveChartsCore.Measure.ZoomAndPanMode.X,
-
-                // OPENING ANIMATION
                 AnimationsSpeed = animationDuration,
                 EasingFunction = easing,
-
                 Series = new ISeries[]
                 {
             new ScatterSeries<ObservablePoint>
@@ -216,13 +226,13 @@ namespace Fuentes_PrelimsP2
                 GeometrySize = 12,
                 Fill = new SolidColorPaint(SKColors.ForestGreen.WithAlpha(180)),
                 
-                // HOVER FORMATTER
-                YToolTipLabelFormatter = point => $"Sold: {point.Coordinate.PrimaryValue} kg",
+                // UPDATED TOOLTIP: Added Est. Sacks calculation directly in the formatter
+                YToolTipLabelFormatter = point =>
+                    $"Sold: {point.Coordinate.PrimaryValue:N2} kg\n" +
+                    $"Est. Sacks: {(point.Coordinate.PrimaryValue / 50.0):N2} sacks",
                 XToolTipLabelFormatter = point => $"Day: {point.Coordinate.SecondaryValue}"
             }
                 },
-
-                // COORDINATE SYSTEM (X and Y Axes)
                 XAxes = new Axis[]
                 {
             new Axis
@@ -232,7 +242,7 @@ namespace Fuentes_PrelimsP2
                 LabelsPaint = labelPaint,
                 SeparatorsPaint = separatorPaint,
                 MinLimit = 0,
-                MaxLimit = 31 // Standard month view
+                MaxLimit = 31
             }
                 },
                 YAxes = new Axis[]

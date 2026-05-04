@@ -56,6 +56,12 @@
             label10 = new Label();
             label17 = new Label();
             fill_productid_fgp = new ComboBox();
+            display_kg_gg = new Label();
+            display_sack_gg = new Label();
+            label13 = new Label();
+            label11 = new Label();
+            label12 = new Label();
+            label14 = new Label();
             ((System.ComponentModel.ISupportInitialize)Farmgate_Prices_Grid).BeginInit();
             contextMenuStrip1.SuspendLayout();
             panel1.SuspendLayout();
@@ -365,12 +371,90 @@
             fill_productid_fgp.TabIndex = 109;
             fill_productid_fgp.SelectedIndexChanged += fill_productid_fgp_SelectedIndexChanged;
             // 
+            // display_kg_gg
+            // 
+            display_kg_gg.AutoSize = true;
+            display_kg_gg.BackColor = Color.Transparent;
+            display_kg_gg.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold | FontStyle.Italic);
+            display_kg_gg.ForeColor = Color.Gold;
+            display_kg_gg.Location = new Point(788, 589);
+            display_kg_gg.Name = "display_kg_gg";
+            display_kg_gg.Size = new Size(122, 27);
+            display_kg_gg.TabIndex = 112;
+            display_kg_gg.Text = "Germ Rate";
+            // 
+            // display_sack_gg
+            // 
+            display_sack_gg.AutoSize = true;
+            display_sack_gg.BackColor = Color.Transparent;
+            display_sack_gg.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold | FontStyle.Italic);
+            display_sack_gg.ForeColor = Color.Gold;
+            display_sack_gg.Location = new Point(788, 623);
+            display_sack_gg.Name = "display_sack_gg";
+            display_sack_gg.Size = new Size(122, 27);
+            display_sack_gg.TabIndex = 113;
+            display_sack_gg.Text = "Germ Rate";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.BackColor = Color.Transparent;
+            label13.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label13.ForeColor = Color.LawnGreen;
+            label13.Location = new Point(551, 589);
+            label13.Name = "label13";
+            label13.Size = new Size(186, 27);
+            label13.TabIndex = 114;
+            label13.Text = "Total Quantity (Kg)";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.BackColor = Color.Transparent;
+            label11.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label11.ForeColor = Color.LawnGreen;
+            label11.Location = new Point(551, 623);
+            label11.Name = "label11";
+            label11.Size = new Size(209, 27);
+            label11.TabIndex = 115;
+            label11.Text = "Total Quantity (Sack)";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.BackColor = Color.Transparent;
+            label12.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label12.ForeColor = Color.LawnGreen;
+            label12.Location = new Point(767, 588);
+            label12.Name = "label12";
+            label12.Size = new Size(15, 24);
+            label12.TabIndex = 110;
+            label12.Text = ":";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.BackColor = Color.Transparent;
+            label14.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label14.ForeColor = Color.LawnGreen;
+            label14.Location = new Point(767, 622);
+            label14.Name = "label14";
+            label14.Size = new Size(15, 24);
+            label14.TabIndex = 111;
+            label14.Text = ":";
+            // 
             // farmgateUSER
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
+            Controls.Add(display_kg_gg);
+            Controls.Add(display_sack_gg);
+            Controls.Add(label13);
+            Controls.Add(label11);
+            Controls.Add(label12);
+            Controls.Add(label14);
             Controls.Add(fill_productid_fgp);
             Controls.Add(label17);
             Controls.Add(label5);
@@ -433,5 +517,11 @@
         private Label label10;
         private Label label17;
         private ComboBox fill_productid_fgp;
+        private Label display_kg_gg;
+        private Label display_sack_gg;
+        private Label label13;
+        private Label label11;
+        private Label label12;
+        private Label label14;
     }
 }

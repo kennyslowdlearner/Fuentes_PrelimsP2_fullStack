@@ -57,6 +57,12 @@
             label9 = new Label();
             label10 = new Label();
             fill_region_tr = new ComboBox();
+            display_kg_gg = new Label();
+            display_sack_gg = new Label();
+            label13 = new Label();
+            label11 = new Label();
+            label12 = new Label();
+            label14 = new Label();
             ((System.ComponentModel.ISupportInitialize)Transaction_Sheet_Grid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Product_Inventory_Grid).BeginInit();
             SuspendLayout();
@@ -394,12 +400,90 @@
             fill_region_tr.Size = new Size(256, 33);
             fill_region_tr.TabIndex = 8;
             // 
+            // display_kg_gg
+            // 
+            display_kg_gg.AutoSize = true;
+            display_kg_gg.BackColor = Color.Transparent;
+            display_kg_gg.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold | FontStyle.Italic);
+            display_kg_gg.ForeColor = Color.Gold;
+            display_kg_gg.Location = new Point(839, 462);
+            display_kg_gg.Name = "display_kg_gg";
+            display_kg_gg.Size = new Size(33, 27);
+            display_kg_gg.TabIndex = 78;
+            display_kg_gg.Text = "---";
+            // 
+            // display_sack_gg
+            // 
+            display_sack_gg.AutoSize = true;
+            display_sack_gg.BackColor = Color.Transparent;
+            display_sack_gg.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold | FontStyle.Italic);
+            display_sack_gg.ForeColor = Color.Gold;
+            display_sack_gg.Location = new Point(859, 489);
+            display_sack_gg.Name = "display_sack_gg";
+            display_sack_gg.Size = new Size(33, 27);
+            display_sack_gg.TabIndex = 79;
+            display_sack_gg.Text = "---";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.BackColor = Color.Transparent;
+            label13.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label13.ForeColor = Color.LawnGreen;
+            label13.Location = new Point(633, 462);
+            label13.Name = "label13";
+            label13.Size = new Size(186, 27);
+            label13.TabIndex = 80;
+            label13.Text = "Total Quantity (Kg)";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.BackColor = Color.Transparent;
+            label11.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label11.ForeColor = Color.LawnGreen;
+            label11.Location = new Point(633, 489);
+            label11.Name = "label11";
+            label11.Size = new Size(209, 27);
+            label11.TabIndex = 81;
+            label11.Text = "Total Quantity (Sack)";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.BackColor = Color.Transparent;
+            label12.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label12.ForeColor = Color.LawnGreen;
+            label12.Location = new Point(818, 461);
+            label12.Name = "label12";
+            label12.Size = new Size(15, 24);
+            label12.TabIndex = 76;
+            label12.Text = ":";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.BackColor = Color.Transparent;
+            label14.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label14.ForeColor = Color.LawnGreen;
+            label14.Location = new Point(839, 492);
+            label14.Name = "label14";
+            label14.Size = new Size(15, 24);
+            label14.TabIndex = 77;
+            label14.Text = ":";
+            // 
             // User_TransactionSheet
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
+            Controls.Add(display_kg_gg);
+            Controls.Add(display_sack_gg);
+            Controls.Add(label13);
+            Controls.Add(label11);
+            Controls.Add(label12);
+            Controls.Add(label14);
             Controls.Add(fill_region_tr);
             Controls.Add(fill_ricetype_ts);
             Controls.Add(fill_date_ts);
@@ -468,5 +552,11 @@
         private Label label9;
         private Label label10;
         private ComboBox fill_region_tr;
+        private Label display_kg_gg;
+        private Label display_sack_gg;
+        private Label label13;
+        private Label label11;
+        private Label label12;
+        private Label label14;
     }
 }

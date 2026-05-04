@@ -111,11 +111,7 @@ namespace Fuentes_PrelimsP2
                 Dock = DockStyle.Fill,
                 BackColor = Color.Transparent,
                 LegendPosition = LiveChartsCore.Measure.LegendPosition.Hidden,
-
-                // ZOOM & PAN (Standard for Cartesian Charts)
                 ZoomMode = LiveChartsCore.Measure.ZoomAndPanMode.X,
-
-                // OPENING ANIMATION
                 AnimationsSpeed = TimeSpan.FromMilliseconds(1000),
                 EasingFunction = LiveChartsCore.EasingFunctions.ExponentialOut,
 
@@ -126,8 +122,15 @@ namespace Fuentes_PrelimsP2
                 Name = "Stock Level",
                 Values = quantities.ToArray(),
                 Fill = new SolidColorPaint(SKColors.ForestGreen.WithAlpha(180)),
+                // UPDATED TOOLTIP: Added Est. Sacks calculation (\n creates a new line)
                 YToolTipLabelFormatter = point =>
-                    $"{productName[(int)point.Index]}: {point.Coordinate.PrimaryValue} kg ({(point.Coordinate.PrimaryValue / totalWeight):P1})"
+                {
+                    double val = point.Coordinate.PrimaryValue;
+                    return $"{productName[(int)point.Index]}\n" +
+                           $"Weight: {val:N2} kg\n" +
+                           $"Est. Sacks: {(val / 50.0):N2} sacks\n" +
+                           $"Share: {(val / totalWeight):P1}";
+                }
             },
                 },
                 XAxes = new Axis[]
@@ -156,12 +159,17 @@ namespace Fuentes_PrelimsP2
             var pieSeries = new List<ISeries>();
             for (int a = 0; a < productName.Count; a++)
             {
+                double currentVal = quantities[a];
                 pieSeries.Add(new PieSeries<double>
                 {
                     Name = productName[a],
-                    Values = new double[] { quantities[a] },
+                    Values = new double[] { currentVal },
+                    // UPDATED TOOLTIP: Added Est. Sacks calculation
                     ToolTipLabelFormatter = point =>
-                        $"{point.Context.Series.Name}: {point.Coordinate.PrimaryValue} kg ({point.StackedValue.Share:P2})"
+                        $"{point.Context.Series.Name}\n" +
+                        $"Weight: {point.Coordinate.PrimaryValue:N2} kg\n" +
+                        $"Est. Sacks: {(currentVal / 50.0):N2} sacks\n" +
+                        $"Share: {point.StackedValue.Share:P2}"
                 });
             }
 
@@ -172,8 +180,6 @@ namespace Fuentes_PrelimsP2
                 Series = pieSeries.ToArray(),
                 LegendPosition = LiveChartsCore.Measure.LegendPosition.Hidden,
                 TooltipPosition = LiveChartsCore.Measure.TooltipPosition.Top,
-
-                // ANIMATION (Using a standard easing function that exists in the Core)
                 AnimationsSpeed = TimeSpan.FromMilliseconds(1200),
                 EasingFunction = LiveChartsCore.EasingFunctions.ExponentialOut
             };
