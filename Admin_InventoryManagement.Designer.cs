@@ -69,7 +69,6 @@
             button4.TabIndex = 121;
             button4.Text = "Refresh";
             button4.UseVisualStyleBackColor = false;
-            button4.Click += auto_Reload;
             // 
             // button8
             // 
@@ -103,6 +102,7 @@
             Inventory_Management_Grid.RowHeadersWidth = 62;
             Inventory_Management_Grid.Size = new Size(1428, 501);
             Inventory_Management_Grid.TabIndex = 0;
+            Inventory_Management_Grid.CellFormatting += Inventory_Management_Grid_CellFormatting;
             // 
             // label5
             // 

@@ -66,6 +66,9 @@
             button6 = new Button();
             label1 = new Label();
             fill_search_tsr = new TextBox();
+            label20 = new Label();
+            label21 = new Label();
+            display_es_gg = new Label();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Total_Sales_Report_Grid).BeginInit();
             SuspendLayout();
@@ -515,6 +518,42 @@
             fill_search_tsr.TabIndex = 123;
             fill_search_tsr.TextChanged += press_search;
             // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.BackColor = Color.Transparent;
+            label20.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label20.ForeColor = Color.Ivory;
+            label20.Location = new Point(79, 713);
+            label20.Name = "label20";
+            label20.Size = new Size(184, 27);
+            label20.TabIndex = 1;
+            label20.Text = "Est. Sack (50 Kg)";
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.BackColor = Color.Transparent;
+            label21.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label21.ForeColor = Color.Ivory;
+            label21.Location = new Point(270, 713);
+            label21.Name = "label21";
+            label21.Size = new Size(19, 27);
+            label21.TabIndex = 1;
+            label21.Text = ":";
+            // 
+            // display_es_gg
+            // 
+            display_es_gg.AutoSize = true;
+            display_es_gg.BackColor = Color.Transparent;
+            display_es_gg.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_es_gg.ForeColor = Color.Gold;
+            display_es_gg.Location = new Point(295, 716);
+            display_es_gg.Name = "display_es_gg";
+            display_es_gg.Size = new Size(131, 24);
+            display_es_gg.TabIndex = 108;
+            display_es_gg.Text = "(Label Only) %";
+            // 
             // Admin_TotalSalesReport
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -526,6 +565,7 @@
             Controls.Add(button6);
             Controls.Add(button4);
             Controls.Add(button8);
+            Controls.Add(display_es_gg);
             Controls.Add(display_salesgrowth_tsr);
             Controls.Add(display_atv_tsr);
             Controls.Add(display_netprofit_tsr);
@@ -537,6 +577,7 @@
             Controls.Add(display_tspTwo_tsr);
             Controls.Add(display_tspOne_tsr);
             Controls.Add(label24);
+            Controls.Add(label21);
             Controls.Add(display_totalrevenue_tsr);
             Controls.Add(label11);
             Controls.Add(label10);
@@ -548,6 +589,7 @@
             Controls.Add(label17);
             Controls.Add(label15);
             Controls.Add(label14);
+            Controls.Add(label20);
             Controls.Add(label3);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -614,5 +656,8 @@
         private Label label1;
         private TextBox fill_search_tsr;
         private Button searchbuttonPI;
+        private Label label20;
+        private Label label21;
+        private Label display_es_gg;
     }
 }

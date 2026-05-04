@@ -79,7 +79,7 @@ namespace Fuentes_PrelimsP2
 
         private void press_search(object sender, EventArgs e)
         {
-            string connect = "Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb";
+            string connect = "Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom D atabase\\Prooject Pananom Data.accdb";
 
             string query = "SELECT * FROM [User T&T Transaction] WHERE [Customer Name] LIKE @S1 OR [Product Name] LIKE @S2 OR [Reference ID] LIKE @S3 OR [Rice Type] LIKE @S4 OR [Product ID] LIKE @S5 OR [Destination] LIKE @S6 OR [Region] LIKE @S7";
 

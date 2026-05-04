@@ -44,7 +44,6 @@
             label5 = new Label();
             label4 = new Label();
             label2 = new Label();
-            label1 = new Label();
             display_lps_tbsr = new Label();
             display_tt_tbsr = new Label();
             display_pr_tbsr = new Label();
@@ -57,6 +56,9 @@
             label7 = new Label();
             fill_search_tbsr = new TextBox();
             label8 = new Label();
+            label1 = new Label();
+            display_es_gg = new Label();
+            label10 = new Label();
             ((System.ComponentModel.ISupportInitialize)Per_Month_Grid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Per_Week_Grid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Per_Year_Grid).BeginInit();
@@ -164,7 +166,7 @@
             display_tps_tbsr.BackColor = Color.Transparent;
             display_tps_tbsr.Font = new Font("Glacial Indifference", 11F, FontStyle.Italic);
             display_tps_tbsr.ForeColor = Color.Gold;
-            display_tps_tbsr.Location = new Point(1110, 501);
+            display_tps_tbsr.Location = new Point(1060, 501);
             display_tps_tbsr.Name = "display_tps_tbsr";
             display_tps_tbsr.Size = new Size(126, 27);
             display_tps_tbsr.TabIndex = 125;
@@ -230,25 +232,13 @@
             label2.TabIndex = 129;
             label2.Text = "Top Sold Rice";
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.PaleGreen;
-            label1.Location = new Point(987, 526);
-            label1.Name = "label1";
-            label1.Size = new Size(19, 27);
-            label1.TabIndex = 123;
-            label1.Text = ":";
-            // 
             // display_lps_tbsr
             // 
             display_lps_tbsr.AutoSize = true;
             display_lps_tbsr.BackColor = Color.Transparent;
             display_lps_tbsr.Font = new Font("Glacial Indifference", 11F, FontStyle.Italic);
             display_lps_tbsr.ForeColor = Color.Gold;
-            display_lps_tbsr.Location = new Point(1110, 531);
+            display_lps_tbsr.Location = new Point(1060, 531);
             display_lps_tbsr.Name = "display_lps_tbsr";
             display_lps_tbsr.Size = new Size(126, 27);
             display_lps_tbsr.TabIndex = 125;
@@ -260,7 +250,7 @@
             display_tt_tbsr.BackColor = Color.Transparent;
             display_tt_tbsr.Font = new Font("Glacial Indifference", 11F, FontStyle.Italic);
             display_tt_tbsr.ForeColor = Color.Gold;
-            display_tt_tbsr.Location = new Point(1110, 561);
+            display_tt_tbsr.Location = new Point(1060, 561);
             display_tt_tbsr.Name = "display_tt_tbsr";
             display_tt_tbsr.Size = new Size(126, 27);
             display_tt_tbsr.TabIndex = 125;
@@ -272,7 +262,7 @@
             display_pr_tbsr.BackColor = Color.Transparent;
             display_pr_tbsr.Font = new Font("Glacial Indifference", 11F, FontStyle.Italic);
             display_pr_tbsr.ForeColor = Color.Gold;
-            display_pr_tbsr.Location = new Point(1110, 593);
+            display_pr_tbsr.Location = new Point(1060, 593);
             display_pr_tbsr.Name = "display_pr_tbsr";
             display_pr_tbsr.Size = new Size(126, 27);
             display_pr_tbsr.TabIndex = 125;
@@ -384,6 +374,42 @@
             label8.TabIndex = 131;
             label8.Text = ":";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.PaleGreen;
+            label1.Location = new Point(1035, 635);
+            label1.Name = "label1";
+            label1.Size = new Size(19, 27);
+            label1.TabIndex = 123;
+            label1.Text = ":";
+            // 
+            // display_es_gg
+            // 
+            display_es_gg.AutoSize = true;
+            display_es_gg.BackColor = Color.Transparent;
+            display_es_gg.Font = new Font("Glacial Indifference", 11F, FontStyle.Italic);
+            display_es_gg.ForeColor = Color.Gold;
+            display_es_gg.Location = new Point(1060, 635);
+            display_es_gg.Name = "display_es_gg";
+            display_es_gg.Size = new Size(126, 27);
+            display_es_gg.TabIndex = 125;
+            display_es_gg.Text = "(Label Only)";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.BackColor = Color.Transparent;
+            label10.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold);
+            label10.ForeColor = Color.PaleGreen;
+            label10.Location = new Point(742, 635);
+            label10.Name = "label10";
+            label10.Size = new Size(178, 27);
+            label10.TabIndex = 126;
+            label10.Text = "Est. Sack(50 Kg)";
+            // 
             // Admin_TimeBasedSalesReport
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -399,9 +425,11 @@
             Controls.Add(label14);
             Controls.Add(label13);
             Controls.Add(label12);
+            Controls.Add(label10);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
+            Controls.Add(display_es_gg);
             Controls.Add(label2);
             Controls.Add(display_pr_tbsr);
             Controls.Add(display_tt_tbsr);
@@ -450,7 +478,6 @@
         private Label label5;
         private Label label4;
         private Label label2;
-        private Label label1;
         private Label display_lps_tbsr;
         private Label display_tt_tbsr;
         private Label display_pr_tbsr;
@@ -466,5 +493,8 @@
         private Label label7;
         private TextBox fill_search_tbsr;
         private Label label8;
+        private Label label1;
+        private Label display_es_gg;
+        private Label label10;
     }
 }

@@ -59,32 +59,49 @@ namespace Fuentes_PrelimsP2
                 connection.Open();
 
                 adapter = new OleDbDataAdapter("SELECT * FROM [User T&T Transaction]", connection);
-                dataSet = new DataSet();
-                adapter.Fill(dataSet, "User T&T Transaction");
-                Total_Sales_Report_Grid.DataSource = dataSet.Tables["User T&T Transaction"];
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
 
+                // 1. Calculate the Estimated Sacks Column (50kg per sack)
+                dt.Columns.Add("Estimated Sacks", typeof(string));
+                foreach (DataRow row in dt.Rows)
+                {
+                    if (row["Quantity in Kilogram"] != DBNull.Value)
+                    {
+                        double kgs = Convert.ToDouble(row["Quantity in Kilogram"]);
+                        double sacks = kgs / 50.0;
+                        // Updated suffix from "sck" to "sacks"
+                        row["Estimated Sacks"] = sacks.ToString("N2") + " sacks";
+                    }
+                }
+
+                // 2. Bind the data to your grid
+                Total_Sales_Report_Grid.DataSource = dt;
+
+                // 3. Update Dashboard Labels
                 LoadDashboardStats(connection);
 
                 connection.Close();
 
-                Total_Sales_Report_Grid.DataSource = dataSet.Tables["User T&T Transaction"];
-
+                // 4. Grid Formatting for the 14-inch display
                 if (Total_Sales_Report_Grid.Columns.Contains("Item Number"))
                     Total_Sales_Report_Grid.Columns["Item Number"].Visible = false;
 
-                Total_Sales_Report_Grid.Columns["Customer Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Total_Sales_Report_Grid.Columns["Rice Type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Total_Sales_Report_Grid.Columns["Product ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Total_Sales_Report_Grid.Columns["Price per Kilogram"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Total_Sales_Report_Grid.Columns["Quantity in Kilogram"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Total_Sales_Report_Grid.Columns["Delivery Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Total_Sales_Report_Grid.Columns["Reference ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Total_Sales_Report_Grid.Columns["User ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Total_Sales_Report_Grid.Columns["Destination"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                Total_Sales_Report_Grid.Columns["Region"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                if (Total_Sales_Report_Grid.Columns.Contains("Estimated Sacks"))
+                {
+                    Total_Sales_Report_Grid.Columns["Estimated Sacks"].DisplayIndex = Total_Sales_Report_Grid.Columns["Quantity in Kilogram"].DisplayIndex + 1;
+                }
 
+                string[] columnsToSize = { "Customer Name", "Rice Type", "Product ID", "Price per Kilogram",
+                                   "Quantity in Kilogram", "Estimated Sacks", "Delivery Date",
+                                   "Reference ID", "User ID", "Destination", "Region" };
+
+                foreach (string col in columnsToSize)
+                {
+                    if (Total_Sales_Report_Grid.Columns.Contains(col))
+                        Total_Sales_Report_Grid.Columns[col].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                }
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show("Failed to load data. Error: " + ex.Message);
@@ -135,62 +152,61 @@ namespace Fuentes_PrelimsP2
 
         private void LoadDashboardStats(OleDbConnection conn)
         {
-            
+            // 1. Core Calculations
             string revQuery = "SELECT SUM([Price per Kilogram] * [Quantity in Kilogram]) FROM [User T&T Transaction]";
             OleDbCommand cmdRev = new OleDbCommand(revQuery, conn);
-            object revObj = cmdRev.ExecuteScalar();
-            double totalRevenue = (revObj != null && revObj != DBNull.Value) ? Convert.ToDouble(revObj) : 0;
+            double totalRevenue = Convert.ToDouble(cmdRev.ExecuteScalar() != DBNull.Value ? cmdRev.ExecuteScalar() : 0);
 
             string costQuery = "SELECT SUM([Total]) FROM [User T&T Cost of Production]";
             OleDbCommand cmdCost = new OleDbCommand(costQuery, conn);
-            object costObj = cmdCost.ExecuteScalar();
-            double totalCost = (costObj != null && costObj != DBNull.Value) ? Convert.ToDouble(costObj) : 0;
+            double totalCost = Convert.ToDouble(cmdCost.ExecuteScalar() != DBNull.Value ? cmdCost.ExecuteScalar() : 0);
 
-            string avgQuery = "SELECT AVG([Price per Kilogram] * [Quantity in Kilogram]) FROM [User T&T Transaction]";
-            OleDbCommand cmdAvg = new OleDbCommand(avgQuery, conn);
-            object avgObj = cmdAvg.ExecuteScalar();
-            double avgValue = (avgObj != null && avgObj != DBNull.Value) ? Convert.ToDouble(avgObj) : 0;
+            string sackQuery = "SELECT SUM([Quantity in Kilogram]) FROM [User T&T Transaction]";
+            OleDbCommand cmdSack = new OleDbCommand(sackQuery, conn);
+            double totalKgs = Convert.ToDouble(cmdSack.ExecuteScalar() != DBNull.Value ? cmdSack.ExecuteScalar() : 0);
+            double totalSacks = totalKgs / 50.0;
 
-            
             double netProfit = totalRevenue - totalCost;
             double growthPercent = CalculateSalesGrowth(conn);
 
-            
+            // 2. Styling Definitions
             var boldItalicFont = new Font(display_totalrevenue_tsr.Font, FontStyle.Bold | FontStyle.Italic);
-
-          
-            display_totalrevenue_tsr.Text = "₱" + totalRevenue.ToString("N2");
-            display_totalcost_tsr.Text = "₱" + totalCost.ToString("N2");
-            display_netprofit_tsr.Text = "₱" + netProfit.ToString("N2");
-            display_atv_tsr.Text = "₱" + avgValue.ToString("N2");
-            display_salesgrowth_tsr.Text = growthPercent.ToString("N2") + "%";
-
-            display_totalrevenue_tsr.Font = boldItalicFont;
-            display_totalcost_tsr.Font = boldItalicFont;
-            display_netprofit_tsr.Font = boldItalicFont;
-            display_atv_tsr.Font = boldItalicFont;
-            display_salesgrowth_tsr.Font = boldItalicFont;
-
-            display_totalcost_tsr.ForeColor = Color.Gold;
-            display_salesgrowth_tsr.ForeColor = Color.Gold;
-
-            var boldItalicFontt = new Font(display_totalrevenue_tsr.Font, FontStyle.Bold | FontStyle.Italic);
             Color solidGold = Color.FromArgb(255, 215, 0);
 
-            display_totalcost_tsr.Enabled = true; 
-            display_totalcost_tsr.ForeColor = solidGold;
-            display_totalcost_tsr.Font = boldItalicFontt;
-            display_totalcost_tsr.BackColor = Color.Transparent; 
-            display_totalcost_tsr.Refresh(); 
-
+            // 3. Force Enabled State (Prevents the "Gray Out" effect)
+            display_totalcost_tsr.Enabled = true;
             display_salesgrowth_tsr.Enabled = true;
-            display_salesgrowth_tsr.ForeColor = solidGold;
-            display_salesgrowth_tsr.Font = boldItalicFontt;
-            display_salesgrowth_tsr.BackColor = Color.Transparent;
-            display_salesgrowth_tsr.Refresh();
+            display_es_gg.Enabled = true;
 
-            try { LoadProductRankings(conn); }
-            catch { }
+            // 4. Set Values
+            display_totalrevenue_tsr.Text = "₱" + totalRevenue.ToString("N2");
+            display_netprofit_tsr.Text = "₱" + netProfit.ToString("N2");
+            display_atv_tsr.Text = "₱" + (totalRevenue / Math.Max(1, totalSacks)).ToString("N2");
+
+            // Set Gold Values with "sacks" suffix
+            display_totalcost_tsr.Text = "₱" + totalCost.ToString("N2");
+            display_salesgrowth_tsr.Text = growthPercent.ToString("N2") + "%";
+            display_es_gg.Text = totalSacks.ToString("N2") + " sacks"; // Updated to "sacks"
+
+            // 5. Apply Color and Refresh
+            Label[] goldLabels = { display_totalcost_tsr, display_salesgrowth_tsr, display_es_gg };
+            Label[] standardLabels = { display_totalrevenue_tsr, display_netprofit_tsr, display_atv_tsr };
+
+            foreach (var lbl in goldLabels)
+            {
+                lbl.Font = boldItalicFont;
+                lbl.ForeColor = solidGold;
+                lbl.BackColor = Color.Transparent;
+                lbl.Refresh();
+            }
+
+            foreach (var lbl in standardLabels)
+            {
+                lbl.Font = boldItalicFont;
+                lbl.Refresh();
+            }
+
+            try { LoadProductRankings(conn); } catch { }
         }
 
         private double CalculateSalesGrowth(OleDbConnection conn)

@@ -29,57 +29,46 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(User_StatisticalProgress));
-            panel1 = new Panel();
-            panel2 = new Panel();
+            display_graph_sp = new Panel();
             label1 = new Label();
             label24 = new Label();
             label26 = new Label();
-            label40 = new Label();
-            label2 = new Label();
+            display_accountowner_sp = new Label();
+            display_accountnumber_sp = new Label();
             label3 = new Label();
             label4 = new Label();
-            label5 = new Label();
+            display_accountstatus_sp = new Label();
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
-            textBox2 = new TextBox();
+            fill_sales_sp = new TextBox();
             label9 = new Label();
             label10 = new Label();
             label11 = new Label();
             label12 = new Label();
             label13 = new Label();
-            label14 = new Label();
-            label15 = new Label();
             label16 = new Label();
             label17 = new Label();
-            button3 = new Button();
-            button2 = new Button();
-            button1 = new Button();
+            press_update_sp = new Button();
+            press_delete_sp = new Button();
+            press_add_sp = new Button();
             button6 = new Button();
             button4 = new Button();
-            button7 = new Button();
-            button8 = new Button();
             label18 = new Label();
             label19 = new Label();
-            textBox1 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
+            fill_savings_sp = new TextBox();
+            fill_income_sp = new TextBox();
+            display_currentdata_sp = new DataGridView();
+            display_status_sp = new Label();
+            ((System.ComponentModel.ISupportInitialize)display_currentdata_sp).BeginInit();
             SuspendLayout();
             // 
-            // panel1
+            // display_graph_sp
             // 
-            panel1.Location = new Point(493, 225);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(501, 481);
-            panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            panel2.Location = new Point(1000, 225);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(424, 481);
-            panel2.TabIndex = 0;
+            display_graph_sp.Location = new Point(1000, 225);
+            display_graph_sp.Name = "display_graph_sp";
+            display_graph_sp.Size = new Size(424, 481);
+            display_graph_sp.TabIndex = 0;
             // 
             // label1
             // 
@@ -117,29 +106,29 @@
             label26.TabIndex = 69;
             label26.Text = "Account Owner";
             // 
-            // label40
+            // display_accountowner_sp
             // 
-            label40.AutoSize = true;
-            label40.BackColor = Color.Transparent;
-            label40.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label40.ForeColor = Color.Gold;
-            label40.Location = new Point(270, 225);
-            label40.Name = "label40";
-            label40.Size = new Size(111, 24);
-            label40.TabIndex = 70;
-            label40.Text = "(Label Only)";
+            display_accountowner_sp.AutoSize = true;
+            display_accountowner_sp.BackColor = Color.Transparent;
+            display_accountowner_sp.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_accountowner_sp.ForeColor = Color.Gold;
+            display_accountowner_sp.Location = new Point(270, 225);
+            display_accountowner_sp.Name = "display_accountowner_sp";
+            display_accountowner_sp.Size = new Size(111, 24);
+            display_accountowner_sp.TabIndex = 70;
+            display_accountowner_sp.Text = "(Label Only)";
             // 
-            // label2
+            // display_accountnumber_sp
             // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.Gold;
-            label2.Location = new Point(270, 258);
-            label2.Name = "label2";
-            label2.Size = new Size(111, 24);
-            label2.TabIndex = 70;
-            label2.Text = "(Label Only)";
+            display_accountnumber_sp.AutoSize = true;
+            display_accountnumber_sp.BackColor = Color.Transparent;
+            display_accountnumber_sp.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_accountnumber_sp.ForeColor = Color.Gold;
+            display_accountnumber_sp.Location = new Point(270, 258);
+            display_accountnumber_sp.Name = "display_accountnumber_sp";
+            display_accountnumber_sp.Size = new Size(111, 24);
+            display_accountnumber_sp.TabIndex = 70;
+            display_accountnumber_sp.Text = "(Label Only)";
             // 
             // label3
             // 
@@ -165,17 +154,17 @@
             label4.TabIndex = 68;
             label4.Text = ":";
             // 
-            // label5
+            // display_accountstatus_sp
             // 
-            label5.AutoSize = true;
-            label5.BackColor = Color.Transparent;
-            label5.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label5.ForeColor = Color.Gold;
-            label5.Location = new Point(270, 291);
-            label5.Name = "label5";
-            label5.Size = new Size(111, 24);
-            label5.TabIndex = 70;
-            label5.Text = "(Label Only)";
+            display_accountstatus_sp.AutoSize = true;
+            display_accountstatus_sp.BackColor = Color.Transparent;
+            display_accountstatus_sp.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_accountstatus_sp.ForeColor = Color.Gold;
+            display_accountstatus_sp.Location = new Point(270, 291);
+            display_accountstatus_sp.Name = "display_accountstatus_sp";
+            display_accountstatus_sp.Size = new Size(111, 24);
+            display_accountstatus_sp.TabIndex = 70;
+            display_accountstatus_sp.Text = "(Label Only)";
             // 
             // label6
             // 
@@ -209,18 +198,18 @@
             label8.ForeColor = Color.LawnGreen;
             label8.Location = new Point(66, 367);
             label8.Name = "label8";
-            label8.Size = new Size(155, 27);
+            label8.Size = new Size(135, 27);
             label8.TabIndex = 72;
-            label8.Text = "Targeted Sales";
+            label8.Text = "Add to Sales";
             // 
-            // textBox2
+            // fill_sales_sp
             // 
-            textBox2.BackColor = Color.LightGreen;
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Location = new Point(269, 368);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(157, 24);
-            textBox2.TabIndex = 71;
+            fill_sales_sp.BackColor = Color.LightGreen;
+            fill_sales_sp.BorderStyle = BorderStyle.None;
+            fill_sales_sp.Location = new Point(269, 368);
+            fill_sales_sp.Name = "fill_sales_sp";
+            fill_sales_sp.Size = new Size(157, 24);
+            fill_sales_sp.TabIndex = 71;
             // 
             // label9
             // 
@@ -254,9 +243,9 @@
             label11.ForeColor = Color.LawnGreen;
             label11.Location = new Point(66, 403);
             label11.Name = "label11";
-            label11.Size = new Size(176, 27);
+            label11.Size = new Size(156, 27);
             label11.TabIndex = 72;
-            label11.Text = "Targeted Savings";
+            label11.Text = "Add to Savings";
             // 
             // label12
             // 
@@ -278,33 +267,9 @@
             label13.ForeColor = Color.LawnGreen;
             label13.Location = new Point(66, 440);
             label13.Name = "label13";
-            label13.Size = new Size(171, 27);
+            label13.Size = new Size(151, 27);
             label13.TabIndex = 72;
-            label13.Text = "Targeted Income";
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.BackColor = Color.Transparent;
-            label14.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label14.ForeColor = Color.LawnGreen;
-            label14.Location = new Point(248, 478);
-            label14.Name = "label14";
-            label14.Size = new Size(15, 24);
-            label14.TabIndex = 68;
-            label14.Text = ":";
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.BackColor = Color.Transparent;
-            label15.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label15.ForeColor = Color.LawnGreen;
-            label15.Location = new Point(66, 480);
-            label15.Name = "label15";
-            label15.Size = new Size(93, 27);
-            label15.TabIndex = 72;
-            label15.Text = "Progress";
+            label13.Text = "Add to Income";
             // 
             // label16
             // 
@@ -312,7 +277,7 @@
             label16.BackColor = Color.Transparent;
             label16.Font = new Font("Glacial Indifference", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label16.ForeColor = Color.LawnGreen;
-            label16.Location = new Point(248, 515);
+            label16.Location = new Point(248, 483);
             label16.Name = "label16";
             label16.Size = new Size(15, 24);
             label16.TabIndex = 68;
@@ -324,56 +289,59 @@
             label17.BackColor = Color.Transparent;
             label17.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label17.ForeColor = Color.LawnGreen;
-            label17.Location = new Point(66, 517);
+            label17.Location = new Point(66, 485);
             label17.Name = "label17";
             label17.Size = new Size(72, 27);
             label17.TabIndex = 72;
             label17.Text = "Status";
             // 
-            // button3
+            // press_update_sp
             // 
-            button3.BackColor = Color.Yellow;
-            button3.FlatAppearance.BorderColor = Color.Gold;
-            button3.FlatAppearance.BorderSize = 2;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.ForeColor = Color.DarkGreen;
-            button3.Location = new Point(182, 572);
-            button3.Name = "button3";
-            button3.Size = new Size(143, 38);
-            button3.TabIndex = 73;
-            button3.Text = "Update";
-            button3.UseVisualStyleBackColor = false;
+            press_update_sp.BackColor = Color.Yellow;
+            press_update_sp.FlatAppearance.BorderColor = Color.Gold;
+            press_update_sp.FlatAppearance.BorderSize = 2;
+            press_update_sp.FlatStyle = FlatStyle.Flat;
+            press_update_sp.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            press_update_sp.ForeColor = Color.DarkGreen;
+            press_update_sp.Location = new Point(182, 572);
+            press_update_sp.Name = "press_update_sp";
+            press_update_sp.Size = new Size(143, 38);
+            press_update_sp.TabIndex = 73;
+            press_update_sp.Text = "Update";
+            press_update_sp.UseVisualStyleBackColor = false;
+            press_update_sp.Click += press_update;
             // 
-            // button2
+            // press_delete_sp
             // 
-            button2.BackColor = Color.Yellow;
-            button2.FlatAppearance.BorderColor = Color.Gold;
-            button2.FlatAppearance.BorderSize = 2;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.DarkGreen;
-            button2.Location = new Point(331, 572);
-            button2.Name = "button2";
-            button2.Size = new Size(143, 38);
-            button2.TabIndex = 74;
-            button2.Text = "Delete";
-            button2.UseVisualStyleBackColor = false;
+            press_delete_sp.BackColor = Color.Yellow;
+            press_delete_sp.FlatAppearance.BorderColor = Color.Gold;
+            press_delete_sp.FlatAppearance.BorderSize = 2;
+            press_delete_sp.FlatStyle = FlatStyle.Flat;
+            press_delete_sp.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            press_delete_sp.ForeColor = Color.DarkGreen;
+            press_delete_sp.Location = new Point(331, 572);
+            press_delete_sp.Name = "press_delete_sp";
+            press_delete_sp.Size = new Size(143, 38);
+            press_delete_sp.TabIndex = 74;
+            press_delete_sp.Text = "Delete";
+            press_delete_sp.UseVisualStyleBackColor = false;
+            press_delete_sp.Click += press_delete;
             // 
-            // button1
+            // press_add_sp
             // 
-            button1.BackColor = Color.Yellow;
-            button1.FlatAppearance.BorderColor = Color.Gold;
-            button1.FlatAppearance.BorderSize = 2;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.DarkGreen;
-            button1.Location = new Point(33, 572);
-            button1.Name = "button1";
-            button1.Size = new Size(143, 38);
-            button1.TabIndex = 75;
-            button1.Text = "Add";
-            button1.UseVisualStyleBackColor = false;
+            press_add_sp.BackColor = Color.Yellow;
+            press_add_sp.FlatAppearance.BorderColor = Color.Gold;
+            press_add_sp.FlatAppearance.BorderSize = 2;
+            press_add_sp.FlatStyle = FlatStyle.Flat;
+            press_add_sp.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            press_add_sp.ForeColor = Color.DarkGreen;
+            press_add_sp.Location = new Point(33, 572);
+            press_add_sp.Name = "press_add_sp";
+            press_add_sp.Size = new Size(143, 38);
+            press_add_sp.TabIndex = 75;
+            press_add_sp.Text = "Add";
+            press_add_sp.UseVisualStyleBackColor = false;
+            press_add_sp.Click += press_add;
             // 
             // button6
             // 
@@ -397,42 +365,13 @@
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button4.ForeColor = Color.DarkGreen;
-            button4.Location = new Point(492, 712);
+            button4.Location = new Point(501, 712);
             button4.Name = "button4";
             button4.Size = new Size(143, 38);
             button4.TabIndex = 75;
             button4.Text = "Refresh";
             button4.UseVisualStyleBackColor = false;
-            // 
-            // button7
-            // 
-            button7.BackColor = Color.Yellow;
-            button7.FlatAppearance.BorderColor = Color.Gold;
-            button7.FlatAppearance.BorderSize = 2;
-            button7.FlatStyle = FlatStyle.Flat;
-            button7.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button7.ForeColor = Color.DarkGreen;
-            button7.Location = new Point(641, 712);
-            button7.Name = "button7";
-            button7.Size = new Size(143, 38);
-            button7.TabIndex = 74;
-            button7.Text = "Load";
-            button7.UseVisualStyleBackColor = false;
-            // 
-            // button8
-            // 
-            button8.BackColor = Color.Yellow;
-            button8.FlatAppearance.BorderColor = Color.Gold;
-            button8.FlatAppearance.BorderSize = 2;
-            button8.FlatStyle = FlatStyle.Flat;
-            button8.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button8.ForeColor = Color.DarkGreen;
-            button8.Location = new Point(790, 712);
-            button8.Name = "button8";
-            button8.Size = new Size(143, 38);
-            button8.TabIndex = 73;
-            button8.Text = "Connect";
-            button8.UseVisualStyleBackColor = false;
+            //button4.Click += this.LoadGoalData;
             // 
             // label18
             // 
@@ -458,41 +397,46 @@
             label19.TabIndex = 67;
             label19.Text = "Graph";
             // 
-            // textBox1
+            // fill_savings_sp
             // 
-            textBox1.BackColor = Color.LightGreen;
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Location = new Point(269, 404);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(157, 24);
-            textBox1.TabIndex = 71;
+            fill_savings_sp.BackColor = Color.LightGreen;
+            fill_savings_sp.BorderStyle = BorderStyle.None;
+            fill_savings_sp.Location = new Point(269, 404);
+            fill_savings_sp.Name = "fill_savings_sp";
+            fill_savings_sp.Size = new Size(157, 24);
+            fill_savings_sp.TabIndex = 71;
             // 
-            // textBox3
+            // fill_income_sp
             // 
-            textBox3.BackColor = Color.LightGreen;
-            textBox3.BorderStyle = BorderStyle.None;
-            textBox3.Location = new Point(269, 441);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(157, 24);
-            textBox3.TabIndex = 71;
+            fill_income_sp.BackColor = Color.LightGreen;
+            fill_income_sp.BorderStyle = BorderStyle.None;
+            fill_income_sp.Location = new Point(269, 441);
+            fill_income_sp.Name = "fill_income_sp";
+            fill_income_sp.Size = new Size(157, 24);
+            fill_income_sp.TabIndex = 71;
             // 
-            // textBox4
+            // display_currentdata_sp
             // 
-            textBox4.BackColor = Color.LightGreen;
-            textBox4.BorderStyle = BorderStyle.None;
-            textBox4.Location = new Point(270, 478);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(157, 24);
-            textBox4.TabIndex = 71;
+            display_currentdata_sp.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            display_currentdata_sp.Location = new Point(501, 225);
+            display_currentdata_sp.Name = "display_currentdata_sp";
+            display_currentdata_sp.RowHeadersWidth = 62;
+            display_currentdata_sp.Size = new Size(486, 481);
+            display_currentdata_sp.TabIndex = 76;
+            display_currentdata_sp.DataBindingComplete += row_highlight;
+            display_currentdata_sp.SelectionChanged += press_select;
             // 
-            // textBox5
+            // display_status_sp
             // 
-            textBox5.BackColor = Color.LightGreen;
-            textBox5.BorderStyle = BorderStyle.None;
-            textBox5.Location = new Point(269, 514);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(157, 24);
-            textBox5.TabIndex = 71;
+            display_status_sp.AutoSize = true;
+            display_status_sp.BackColor = Color.Transparent;
+            display_status_sp.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_status_sp.ForeColor = Color.Gold;
+            display_status_sp.Location = new Point(269, 483);
+            display_status_sp.Name = "display_status_sp";
+            display_status_sp.Size = new Size(111, 24);
+            display_status_sp.TabIndex = 70;
+            display_status_sp.Text = "(Label Only)";
             // 
             // User_StatisticalProgress
             // 
@@ -500,87 +444,77 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 785);
+            Controls.Add(display_currentdata_sp);
             Controls.Add(button6);
-            Controls.Add(button8);
-            Controls.Add(button3);
-            Controls.Add(button7);
+            Controls.Add(press_update_sp);
             Controls.Add(button4);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(press_delete_sp);
+            Controls.Add(press_add_sp);
             Controls.Add(label17);
-            Controls.Add(label15);
             Controls.Add(label13);
             Controls.Add(label16);
             Controls.Add(label11);
-            Controls.Add(label14);
             Controls.Add(label12);
             Controls.Add(label8);
             Controls.Add(label10);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox1);
-            Controls.Add(textBox2);
+            Controls.Add(fill_income_sp);
+            Controls.Add(fill_savings_sp);
+            Controls.Add(fill_sales_sp);
             Controls.Add(label9);
             Controls.Add(label7);
             Controls.Add(label4);
             Controls.Add(label24);
             Controls.Add(label6);
-            Controls.Add(label5);
+            Controls.Add(display_status_sp);
+            Controls.Add(display_accountstatus_sp);
             Controls.Add(label3);
-            Controls.Add(label2);
+            Controls.Add(display_accountnumber_sp);
             Controls.Add(label26);
-            Controls.Add(label40);
+            Controls.Add(display_accountowner_sp);
             Controls.Add(label19);
             Controls.Add(label18);
             Controls.Add(label1);
-            Controls.Add(panel2);
-            Controls.Add(panel1);
+            Controls.Add(display_graph_sp);
             Name = "User_StatisticalProgress";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Statistical Progress";
             Load += User_StatisticalProgress_Load;
+            ((System.ComponentModel.ISupportInitialize)display_currentdata_sp).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Panel panel1;
-        private Panel panel2;
+        private Panel display_graph_sp;
         private Label label1;
         private Label label24;
         private Label label26;
-        private Label label40;
-        private Label label2;
+        private Label display_accountowner_sp;
+        private Label display_accountnumber_sp;
         private Label label3;
         private Label label4;
-        private Label label5;
+        private Label display_accountstatus_sp;
         private Label label6;
         private Label label7;
         private Label label8;
-        private TextBox textBox2;
+        private TextBox fill_sales_sp;
         private Label label9;
         private Label label10;
         private Label label11;
         private Label label12;
         private Label label13;
-        private Label label14;
-        private Label label15;
         private Label label16;
         private Label label17;
-        private Button button3;
-        private Button button2;
-        private Button button1;
+        private Button press_update_sp;
+        private Button press_delete_sp;
+        private Button press_add_sp;
         private Button button6;
         private Button button4;
-        private Button button7;
-        private Button button8;
         private Label label18;
         private Label label19;
-        private TextBox textBox1;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
+        private TextBox fill_savings_sp;
+        private TextBox fill_income_sp;
+        private DataGridView display_currentdata_sp;
+        private Label display_status_sp;
     }
 }

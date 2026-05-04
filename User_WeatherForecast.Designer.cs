@@ -82,7 +82,7 @@
             button8.Size = new Size(254, 99);
             button8.TabIndex = 88;
             button8.UseVisualStyleBackColor = false;
-            button8.Click += shortcut_SoilEvaluator;
+            button8.Click += button8_Click;
             // 
             // label9
             // 
@@ -123,12 +123,11 @@
             button1.Size = new Size(254, 99);
             button1.TabIndex = 88;
             button1.UseVisualStyleBackColor = false;
-            button1.Click += shortcut_ActivityLog;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
             button2.BackColor = Color.Transparent;
-            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -138,6 +137,7 @@
             button2.Size = new Size(254, 99);
             button2.TabIndex = 88;
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // button4
             // 
@@ -152,7 +152,7 @@
             button4.Size = new Size(254, 99);
             button4.TabIndex = 88;
             button4.UseVisualStyleBackColor = false;
-            button4.Click += shortcut_RiceYieldandEstimation;
+            button4.Click += button4_Click;
             // 
             // fill_search_wf
             // 
@@ -166,7 +166,8 @@
             // 
             // function_timer_wf
             // 
-            function_timer_wf.Interval = 1000;
+            function_timer_wf.Interval = 500;
+            function_timer_wf.Tick += searchTimer_Tick;
             // 
             // User_WeatherForecast
             // 

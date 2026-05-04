@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(User_MarketForecast));
             label8 = new Label();
             label6 = new Label();
@@ -38,6 +39,7 @@
             button2 = new Button();
             searchBoxPI = new TextBox();
             label1 = new Label();
+            function_timer_mf = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)Market_Forecast_Grid).BeginInit();
             SuspendLayout();
             // 
@@ -185,5 +187,6 @@
         private Button button2;
         private TextBox searchBoxPI;
         private Label label1;
+        private System.Windows.Forms.Timer function_timer_mf;
     }
 }

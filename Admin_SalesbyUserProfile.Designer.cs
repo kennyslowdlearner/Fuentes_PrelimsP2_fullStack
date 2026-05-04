@@ -44,6 +44,9 @@
             button4 = new Button();
             label3 = new Label();
             panel2 = new Panel();
+            display_riceavail_gg = new Label();
+            label9 = new Label();
+            label7 = new Label();
             panel1 = new Panel();
             Sales_By_User_Profile_Grid = new DataGridView();
             label1 = new Label();
@@ -59,7 +62,7 @@
             display_pr_asup.BackColor = Color.Transparent;
             display_pr_asup.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
             display_pr_asup.ForeColor = Color.Gold;
-            display_pr_asup.Location = new Point(263, 251);
+            display_pr_asup.Location = new Point(238, 234);
             display_pr_asup.Name = "display_pr_asup";
             display_pr_asup.Size = new Size(111, 24);
             display_pr_asup.TabIndex = 121;
@@ -71,7 +74,7 @@
             display_tt_asup.BackColor = Color.Transparent;
             display_tt_asup.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
             display_tt_asup.ForeColor = Color.Gold;
-            display_tt_asup.Location = new Point(154, 214);
+            display_tt_asup.Location = new Point(154, 196);
             display_tt_asup.Name = "display_tt_asup";
             display_tt_asup.Size = new Size(111, 24);
             display_tt_asup.TabIndex = 121;
@@ -83,7 +86,7 @@
             display_lps_asup.BackColor = Color.Transparent;
             display_lps_asup.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
             display_lps_asup.ForeColor = Color.Gold;
-            display_lps_asup.Location = new Point(154, 151);
+            display_lps_asup.Location = new Point(154, 133);
             display_lps_asup.Name = "display_lps_asup";
             display_lps_asup.Size = new Size(111, 24);
             display_lps_asup.TabIndex = 121;
@@ -95,7 +98,7 @@
             display_tps_asup.BackColor = Color.Transparent;
             display_tps_asup.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
             display_tps_asup.ForeColor = Color.Gold;
-            display_tps_asup.Location = new Point(154, 79);
+            display_tps_asup.Location = new Point(154, 61);
             display_tps_asup.Name = "display_tps_asup";
             display_tps_asup.Size = new Size(111, 24);
             display_tps_asup.TabIndex = 121;
@@ -106,7 +109,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.PaleGreen;
-            label6.Location = new Point(21, 254);
+            label6.Location = new Point(21, 236);
             label6.Name = "label6";
             label6.Size = new Size(187, 22);
             label6.TabIndex = 120;
@@ -117,7 +120,7 @@
             label12.AutoSize = true;
             label12.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label12.ForeColor = Color.PaleGreen;
-            label12.Location = new Point(225, 249);
+            label12.Location = new Point(225, 231);
             label12.Name = "label12";
             label12.Size = new Size(19, 27);
             label12.TabIndex = 119;
@@ -128,7 +131,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.PaleGreen;
-            label5.Location = new Point(21, 180);
+            label5.Location = new Point(21, 162);
             label5.Name = "label5";
             label5.Size = new Size(161, 22);
             label5.TabIndex = 120;
@@ -139,7 +142,7 @@
             label10.AutoSize = true;
             label10.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label10.ForeColor = Color.PaleGreen;
-            label10.Location = new Point(225, 175);
+            label10.Location = new Point(225, 157);
             label10.Name = "label10";
             label10.Size = new Size(19, 27);
             label10.TabIndex = 119;
@@ -150,7 +153,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.PaleGreen;
-            label8.Location = new Point(225, 112);
+            label8.Location = new Point(225, 94);
             label8.Name = "label8";
             label8.Size = new Size(19, 27);
             label8.TabIndex = 119;
@@ -161,7 +164,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.PaleGreen;
-            label4.Location = new Point(21, 117);
+            label4.Location = new Point(21, 99);
             label4.Name = "label4";
             label4.Size = new Size(193, 22);
             label4.TabIndex = 120;
@@ -172,7 +175,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.PaleGreen;
-            label2.Location = new Point(25, 50);
+            label2.Location = new Point(25, 32);
             label2.Name = "label2";
             label2.Size = new Size(189, 22);
             label2.TabIndex = 120;
@@ -212,7 +215,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.PaleGreen;
-            label3.Location = new Point(229, 47);
+            label3.Location = new Point(229, 29);
             label3.Name = "label3";
             label3.Size = new Size(19, 27);
             label3.TabIndex = 119;
@@ -221,10 +224,13 @@
             // panel2
             // 
             panel2.BackColor = Color.Transparent;
+            panel2.Controls.Add(display_riceavail_gg);
             panel2.Controls.Add(display_pr_asup);
             panel2.Controls.Add(display_tt_asup);
             panel2.Controls.Add(display_lps_asup);
             panel2.Controls.Add(display_tps_asup);
+            panel2.Controls.Add(label9);
+            panel2.Controls.Add(label7);
             panel2.Controls.Add(label6);
             panel2.Controls.Add(label12);
             panel2.Controls.Add(label5);
@@ -237,6 +243,40 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(409, 329);
             panel2.TabIndex = 119;
+            // 
+            // display_riceavail_gg
+            // 
+            display_riceavail_gg.AutoSize = true;
+            display_riceavail_gg.BackColor = Color.Transparent;
+            display_riceavail_gg.Font = new Font("Glacial Indifference", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            display_riceavail_gg.ForeColor = Color.Gold;
+            display_riceavail_gg.Location = new Point(238, 271);
+            display_riceavail_gg.Name = "display_riceavail_gg";
+            display_riceavail_gg.Size = new Size(111, 24);
+            display_riceavail_gg.TabIndex = 121;
+            display_riceavail_gg.Text = "(Label Only)";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.ForeColor = Color.PaleGreen;
+            label9.Location = new Point(21, 273);
+            label9.Name = "label9";
+            label9.Size = new Size(124, 22);
+            label9.TabIndex = 120;
+            label9.Text = "Total Revenue";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.PaleGreen;
+            label7.Location = new Point(225, 268);
+            label7.Name = "label7";
+            label7.Size = new Size(19, 27);
+            label7.TabIndex = 119;
+            label7.Text = ":";
             // 
             // panel1
             // 
@@ -320,5 +360,8 @@
         private DataGridView Sales_By_User_Profile_Grid;
         private Label label1;
         private TextBox searchBoxPI;
+        private Label display_riceavail_gg;
+        private Label label9;
+        private Label label7;
     }
 }

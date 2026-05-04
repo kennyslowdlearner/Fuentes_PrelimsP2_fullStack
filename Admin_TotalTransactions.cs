@@ -54,14 +54,15 @@ namespace Fuentes_PrelimsP2
         {
             string connString = "Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb";
 
-            // This query pulls Customer Name first, and the Farmer (Seller) Name last.
-            // It joins your Transaction table with your Account Information table.
+            // SQL Logic: [Total Sales] is placed beside [Quantity in Kilogram]
             string query = @"SELECT T.[Customer Name], T.[Rice Type], T.[Price per Kilogram], 
-                            T.[Quantity in Kilogram], T.[Date Made], T.[Reference ID], 
-                            T.Destination, (U.[First Name] + ' ' + U.[Last Name]) as [Seller Name]
-                     FROM [User T&T Transaction] as T
-                     INNER JOIN [User Account Information] as U ON T.[User ID] = U.[User ID]
-                     ORDER BY T.[Date Made] DESC";
+                    T.[Quantity in Kilogram], 
+                    (T.[Price per Kilogram] * T.[Quantity in Kilogram]) as [Total Sales],
+                    T.[Date Made], T.[Reference ID], 
+                    T.Destination, (U.[First Name] + ' ' + U.[Last Name]) as [Seller Name]
+             FROM [User T&T Transaction] as T
+             INNER JOIN [User Account Information] as U ON T.[User ID] = U.[User ID]
+             ORDER BY T.[Date Made] DESC";
 
             using (OleDbConnection conn = new OleDbConnection(connString))
             {
@@ -74,44 +75,26 @@ namespace Fuentes_PrelimsP2
 
                     Total_Transactions_Grid.DataSource = dt;
 
-                    // --- GRID FORMATTING ---
-
-                    // 1. Enable Scrolling
+                    // --- GRID STYLING ---
                     Total_Transactions_Grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                     Total_Transactions_Grid.ScrollBars = ScrollBars.Both;
-
-                    // 2. Set Row Height for readability
                     Total_Transactions_Grid.RowTemplate.Height = 40;
 
-                    // 3. Set Base Column Width
-                    foreach (DataGridViewColumn col in Total_Transactions_Grid.Columns)
+                    foreach (DataGridViewColumn col in Total_Transactions_Grid.Columns) col.Width = 180;
+
+                    // Formatting the new column
+                    if (Total_Transactions_Grid.Columns.Contains("Total Sales"))
                     {
-                        col.Width = 180;
+                        Total_Transactions_Grid.Columns["Total Sales"].DefaultCellStyle.Format = "₱#,##0.00";
+                        Total_Transactions_Grid.Columns["Total Sales"].DefaultCellStyle.Font = new Font(Total_Transactions_Grid.Font, FontStyle.Bold);
+                        Total_Transactions_Grid.Columns["Total Sales"].DefaultCellStyle.ForeColor = Color.DarkGreen;
                     }
 
-                    // 4. Specific Column Adjustments
-                    if (Total_Transactions_Grid.Columns.Contains("Reference ID"))
-                    {
-                        Total_Transactions_Grid.Columns["Reference ID"].Width = 350;
-                    }
-                    if (Total_Transactions_Grid.Columns.Contains("Destination"))
-                    {
-                        Total_Transactions_Grid.Columns["Destination"].Width = 450;
-                    }
-                    if (Total_Transactions_Grid.Columns.Contains("Customer Name"))
-                    {
-                        Total_Transactions_Grid.Columns["Customer Name"].Width = 220;
-                    }
-
-                    // 5. Currency Formatting
                     if (Total_Transactions_Grid.Columns.Contains("Price per Kilogram"))
                         Total_Transactions_Grid.Columns["Price per Kilogram"].DefaultCellStyle.Format = "₱#,##0.00";
 
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error loading transactions: " + ex.Message);
-                }
+                catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
             }
         }
 
@@ -125,35 +108,67 @@ namespace Fuentes_PrelimsP2
                 {
                     conn.Open();
 
-                    // 1. TOP PERFORMING SELLER
+                    // 1. TOP PERFORMING SELLER (Highest total revenue)
                     string topSellerQuery = @"SELECT TOP 1 A.[First Name] & ' ' & A.[Last Name] 
-                                      FROM [User Account Information] AS A
-                                      INNER JOIN [User T&T Transaction] AS T ON A.[User ID] = T.[User ID]
-                                      GROUP BY A.[First Name], A.[Last Name] 
-                                      ORDER BY SUM(T.[Price per Kilogram] * T.[Quantity in Kilogram]) DESC";
+                              FROM [User Account Information] AS A
+                              INNER JOIN [User T&T Transaction] AS T ON A.[User ID] = T.[User ID]
+                              GROUP BY A.[First Name], A.[Last Name] 
+                              ORDER BY SUM(T.[Price per Kilogram] * T.[Quantity in Kilogram]) DESC";
 
                     OleDbCommand cmdTop = new OleDbCommand(topSellerQuery, conn);
                     object topResult = cmdTop.ExecuteScalar();
                     display_tps_tt.Text = topResult != null ? topResult.ToString() : "N/A";
 
-                    // 2. LOW PERFORMING SELLER
+                    // 2. LOW PERFORMING SELLER (Lowest total revenue)
                     string lowSellerQuery = @"SELECT TOP 1 A.[First Name] & ' ' & A.[Last Name] 
-                                      FROM [User Account Information] AS A
-                                      INNER JOIN [User T&T Transaction] AS T ON A.[User ID] = T.[User ID]
-                                      GROUP BY A.[First Name], A.[Last Name] 
-                                      ORDER BY SUM(T.[Price per Kilogram] * T.[Quantity in Kilogram]) ASC";
+                              FROM [User Account Information] AS A
+                              INNER JOIN [User T&T Transaction] AS T ON A.[User ID] = T.[User ID]
+                              GROUP BY A.[First Name], A.[Last Name] 
+                              ORDER BY SUM(T.[Price per Kilogram] * T.[Quantity in Kilogram]) ASC";
 
                     OleDbCommand cmdLow = new OleDbCommand(lowSellerQuery, conn);
                     object lowResult = cmdLow.ExecuteScalar();
                     display_lps_tt.Text = lowResult != null ? lowResult.ToString() : "N/A";
 
-                    // 3. TOTAL TRANSACTIONS
+                    // 3. TOTAL TRANSACTIONS (Count of all successful logs)
                     string countQuery = "SELECT COUNT(*) FROM [User T&T Transaction]";
                     OleDbCommand cmdCount = new OleDbCommand(countQuery, conn);
                     display_tt_tt.Text = cmdCount.ExecuteScalar().ToString();
 
-                    // 4. PERFORMANCE RATE (%)
-                    // Access fix: Using a subquery because COUNT(DISTINCT) is not supported
+                    // 4. TOTAL INCOME (Sum of all Price * Quantity)
+                    string incomeQuery = "SELECT SUM([Price per Kilogram] * [Quantity in Kilogram]) FROM [User T&T Transaction]";
+                    OleDbCommand cmdIncome = new OleDbCommand(incomeQuery, conn);
+                    object incomeResult = cmdIncome.ExecuteScalar();
+                    double totalIncome = (incomeResult != null && incomeResult != DBNull.Value) ? Convert.ToDouble(incomeResult) : 0;
+
+                    // 5. TOTAL QUANTITY SOLD (kg)
+                    string sumQtyQuery = "SELECT SUM([Quantity in Kilogram]) FROM [User T&T Transaction]";
+                    OleDbCommand cmdSumQty = new OleDbCommand(sumQtyQuery, conn);
+                    object qtyResult = cmdSumQty.ExecuteScalar();
+                    double totalKg = (qtyResult != null && qtyResult != DBNull.Value) ? Convert.ToDouble(qtyResult) : 0;
+
+                    // 6. ESTIMATED SACKS (Standardized 50kg per sack)
+                    double estimatedSacks = totalKg / 50.0;
+
+                    // --- UI STYLING AND DISPLAY ---
+                    // Applying Bold + Italic style for high-capacity reporting
+                    var boldItalicFont = new Font(display_ti_gg.Font, FontStyle.Bold | FontStyle.Italic);
+
+                    // Total Income (using Gold for financial emphasis)
+                    display_ti_gg.Text = "₱" + totalIncome.ToString("N2");
+                    display_ti_gg.Font = boldItalicFont;
+                    display_ti_gg.ForeColor = Color.Gold;
+
+                    // Quantity sold with kg suffix
+                    display_tqs_gg.Text = totalKg.ToString("N2") + " kg";
+                    display_tqs_gg.Font = boldItalicFont;
+
+                    // Estimated Sacks with sck suffix
+                    display_es_gg.Text = estimatedSacks.ToString("N2") + " sck";
+                    display_es_gg.Font = boldItalicFont;
+
+                    // 7. PERFORMANCE RATE (%)
+                    // Ratio of Active Sellers vs. Total Registered Users
                     string totalUsersQuery = "SELECT COUNT(*) FROM [User Account Information]";
                     string activeSellersQuery = "SELECT COUNT(*) FROM (SELECT DISTINCT [User ID] FROM [User T&T Transaction])";
 
@@ -175,9 +190,9 @@ namespace Fuentes_PrelimsP2
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error loading performance stats: " + ex.Message);
+                    MessageBox.Show("Error loading performance stats: " + ex.Message, "Stats Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-            } // conn is closed and disposed here automatically
+            }
         }
 
         private void press_search(object sender, EventArgs e)

@@ -154,8 +154,41 @@ namespace Fuentes_PrelimsP2
                 OleDbCommand cmdCount = new OleDbCommand(totalTransQuery, conn);
                 display_tt_tbsr.Text = cmdCount.ExecuteScalar().ToString();
 
-                // 4. ECONOMIC RATING (Performance Rate)
+                // 4. TOTAL ESTIMATED SACKS (Updated Suffix to 'sacks')
+                string totalQtyQuery = "SELECT SUM([Quantity in Kilogram]) FROM [User T&T Transaction]";
+                OleDbCommand cmdSum = new OleDbCommand(totalQtyQuery, conn);
+                object totalQtyObj = cmdSum.ExecuteScalar();
+                double totalKgs = (totalQtyObj != null && totalQtyObj != DBNull.Value) ? Convert.ToDouble(totalQtyObj) : 0;
+                double totalSacks = totalKgs / 50.0;
+
+                // Apply the new 'sacks' suffix
+                display_es_gg.Text = totalSacks.ToString("N2") + " sacks";
+
+                // 5. ECONOMIC RATING (Performance Rate)
                 CalculateEconomicRating(conn);
+
+                // --- UI STYLING & COLOR CORRECTION ---
+
+                // Defining the Pananom Gold Theme
+                Color solidGold = Color.FromArgb(255, 215, 0);
+                var boldItalicFont = new Font(display_tt_tbsr.Font, FontStyle.Bold | FontStyle.Italic);
+
+                // List of labels that must stay Gold and Bold/Italic
+                Label[] goldLabels = {
+            display_es_gg,
+            display_tps_tbsr,
+            display_lps_tbsr,
+            display_pr_tbsr
+        };
+
+                foreach (Label lbl in goldLabels)
+                {
+                    lbl.Enabled = true;           // Force enabled to prevent gray-out effect
+                    lbl.ForeColor = solidGold;    // Apply perfect gold color
+                    lbl.Font = boldItalicFont;    // Apply Bold Italic style
+                    lbl.BackColor = Color.Transparent;
+                    lbl.Refresh();                // Force immediate UI redraw
+                }
             }
             catch (Exception ex)
             {
@@ -195,34 +228,46 @@ namespace Fuentes_PrelimsP2
             OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn);
             DataTable dataset = new DataTable();
             adapter.Fill(dataset);
+
+            // PROJECT PANANOM: Add Calculated Column for Estimated Sacks
+            dataset.Columns.Add("Estimated Sacks", typeof(string));
+            foreach (DataRow row in dataset.Rows)
+            {
+                if (row["Quantity in Kilogram"] != DBNull.Value)
+                {
+                    double kgs = Convert.ToDouble(row["Quantity in Kilogram"]);
+                    double sacks = kgs / 50.0;
+                    row["Estimated Sacks"] = sacks.ToString("N2") + " sck";
+                }
+            }
+
             grid.DataSource = dataset;
 
-            // Add this inside FillGrid after setting the DataSource
+            // Header Text Formatting
             if (grid.Columns.Contains("Customer Name")) grid.Columns["Customer Name"].HeaderText = "Customer";
             if (grid.Columns.Contains("Rice Type")) grid.Columns["Rice Type"].HeaderText = "Rice Variety";
             if (grid.Columns.Contains("Quantity in Kilogram")) grid.Columns["Quantity in Kilogram"].HeaderText = "Qty (Kg)";
 
-            // 1. Enable Horizontal Scrollbars by allowing columns to be wider than the grid
+            // Layout and Visibility
             grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
             grid.ScrollBars = ScrollBars.Both;
 
-            // 2. Hide the Item Number column (Assuming the column name is "Item Number")
-            if (grid.Columns.Contains("Item Number"))
-            {
-                grid.Columns["Item Number"].Visible = false;
-            }
-
-            // 3. Optional: Hide other technical columns to keep it clean
+            if (grid.Columns.Contains("Item Number")) grid.Columns["Item Number"].Visible = false;
             if (grid.Columns.Contains("User ID")) grid.Columns["User ID"].Visible = false;
             if (grid.Columns.Contains("Product ID")) grid.Columns["Product ID"].Visible = false;
 
-            // 4. Set a manual width for the important columns so they "spread out"
-            foreach (DataGridViewColumn col in grid.Columns)
+            // Position "Estimated Sacks" next to "Quantity in Kilogram"
+            if (grid.Columns.Contains("Estimated Sacks") && grid.Columns.Contains("Quantity in Kilogram"))
             {
-                col.Width = 300; // Adjust this number until it feels right
+                grid.Columns["Estimated Sacks"].DisplayIndex = grid.Columns["Quantity in Kilogram"].DisplayIndex + 1;
+                grid.Columns["Estimated Sacks"].HeaderText = "Est. Sacks (50kg)";
             }
 
-            // 5. Formatting for currency
+            foreach (DataGridViewColumn col in grid.Columns)
+            {
+                col.Width = 150; // Adjusted for better fit on Acer Swift SF314-54 screen
+            }
+
             if (grid.Columns.Contains("Price per Kilogram"))
                 grid.Columns["Price per Kilogram"].DefaultCellStyle.Format = "₱#,##0.00";
         }
@@ -303,103 +348,117 @@ namespace Fuentes_PrelimsP2
         private void CreateRiceTypeBarGraph(Panel targetPanel, string sqlQuery, string xAxisName)
         {
             string dbPath = "Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb";
-
             var allSeries = new List<ISeries>();
-            var riceNames = new List<string>();
 
-            // Professional color palette
-            var colors = new[] { SKColors.LimeGreen, SKColors.DodgerBlue, SKColors.OrangeRed, SKColors.MediumPurple, SKColors.Gold, SKColors.DeepPink, SKColors.Cyan };
+            // Professional color palette for the Pananom Dashboard
+            var colors = new[] {
+        SKColors.LimeGreen, SKColors.DodgerBlue, SKColors.OrangeRed,
+        SKColors.MediumPurple, SKColors.Gold, SKColors.DeepPink, SKColors.Cyan
+    };
 
             using (OleDbConnection conn = new OleDbConnection(dbPath))
             {
                 try
                 {
                     conn.Open();
-
-                    // 1. Load the aggregated data (Total Qty per Rice Type)
                     DataTable dataDt = new DataTable();
-                    using (OleDbDataAdapter da = new OleDbDataAdapter(sqlQuery, conn))
+                    using (OleDbDataAdapter da = new OleDbDataAdapter(sqlQuery, conn)) { da.Fill(dataDt); }
+
+                    if (dataDt.Rows.Count == 0)
                     {
-                        da.Fill(dataDt);
+                        targetPanel.Controls.Clear();
+                        targetPanel.Controls.Add(new Label
+                        {
+                            Text = "No data found for this period.",
+                            Dock = DockStyle.Fill,
+                            TextAlign = ContentAlignment.MiddleCenter,
+                            ForeColor = Color.White,
+                            Font = new Font("Segoe UI", 12, FontStyle.Italic)
+                        });
+                        return;
                     }
 
+                    double grandTotal = dataDt.AsEnumerable().Sum(r => Convert.ToDouble(r["TotalQty"]));
                     int colorIndex = 0;
+
                     foreach (DataRow row in dataDt.Rows)
                     {
                         string type = row["Rice Type"].ToString();
                         double totalQty = Convert.ToDouble(row["TotalQty"]);
-
-                        // We calculate percentage relative to the total of ALL rice in this view
-                        double grandTotal = dataDt.AsEnumerable().Sum(r => Convert.ToDouble(r["TotalQty"]));
                         double percentage = (totalQty / grandTotal);
 
-                        // Add each Rice Type as its own Series to get different colors
+                        // Project Pananom Logic: Calculate estimated sacks (50kg per sack)
+                        double estimatedSacks = totalQty / 50.0;
+
                         allSeries.Add(new ColumnSeries<double>
                         {
                             Values = new double[] { totalQty },
                             Name = type,
                             Stroke = new SolidColorPaint(colors[colorIndex % colors.Length]) { StrokeThickness = 2 },
-                            Fill = new SolidColorPaint(colors[colorIndex % colors.Length].WithAlpha(200)),
-                            Padding = 20,
+                            Fill = new SolidColorPaint(colors[colorIndex % colors.Length].WithAlpha(180)),
+                            Padding = 25,
 
-                            // THE FIX: Modern LiveCharts2 Formatter Syntax
-                            // This shows the Rice Type name
+                            // CUSTOM TOOLTIP: Shows Name, Kg, Sacks, and Percentage
                             XToolTipLabelFormatter = point => $"{type}",
-
-                            // This shows the Qty and the calculated Percentage Share
-                            YToolTipLabelFormatter = point => $"Qty: {totalQty}kg ({percentage:P1})"
+                            YToolTipLabelFormatter = point =>
+                                $"Available: {totalQty:N2} kg\n" +
+                                $"Est. Sacks: {estimatedSacks:N2} (50kg/ea)\n" +
+                                $"Share: {percentage:P1}"
                         });
-
-                        riceNames.Add(type);
                         colorIndex++;
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Bar Graph Error: " + ex.Message);
+                    MessageBox.Show("Analytics Error: " + ex.Message);
                     return;
                 }
             }
 
-            // 2. Handle Empty State
-            if (allSeries.Count == 0)
-            {
-                targetPanel.Controls.Clear();
-                Label lbl = new Label { Text = "No data found.", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter };
-                targetPanel.Controls.Add(lbl);
-                return;
-            }
-
-            // 3. Render the Chart
+            // Initialize the Chart with Precision Zooming and Magnetic Tooltips
             var chart = new LiveChartsCore.SkiaSharpView.WinForms.CartesianChart
             {
                 Series = allSeries,
-                // The X-Axis shows the Varieties
+
+                // Axis Styling for White/Green Theme
                 XAxes = new Axis[] {
             new Axis {
                 Name = xAxisName,
-                Labels = new string[] { "Varieties" }, // Grouped under one category or empty
-                TextSize = 14
+                Labels = new string[] { "Rice Varieties" },
+                LabelsPaint = new SolidColorPaint(SKColors.White),
+                NamePaint = new SolidColorPaint(SKColors.White),
+                MinLimit = 0
             }
         },
                 YAxes = new Axis[] {
             new Axis {
-                Name = "Total Sold (kg)",
-                Labeler = v => $"{v}kg",
-                TextSize = 14
+                Name = "Total Quantity (kg)",
+                Labeler = v => $"{v:N0} kg",
+                LabelsPaint = new SolidColorPaint(SKColors.White),
+                NamePaint = new SolidColorPaint(SKColors.White)
             }
         },
-                LegendPosition = LiveChartsCore.Measure.LegendPosition.Hidden,
-                TooltipPosition = LiveChartsCore.Measure.TooltipPosition.Top,
 
-                // Sizing for Scrollbars (150px per Rice Type bar)
-                Width = Math.Max(targetPanel.Width - 10, allSeries.Count * 150),
-                Height = Math.Max(100, targetPanel.Height - 30),
-                Left = 0,
-                Top = 0
+                // SMOOTH ZOOMING & NAVIGATION
+                ZoomMode = LiveChartsCore.Measure.ZoomAndPanMode.X,
+                ZoomingSpeed = 0.1, // Controlled zoom for laptop touchpads/mice
+
+                // MAGNETIC HOVER: Automatically snaps to the closest bar
+                FindingStrategy = LiveChartsCore.Measure.FindingStrategy.CompareAllTakeClosest,
+
+                // TOOLTIP STYLING
+                TooltipPosition = LiveChartsCore.Measure.TooltipPosition.Top,
+                TooltipBackgroundPaint = new SolidColorPaint(new SKColor(35, 35, 35, 230)),
+                TooltipTextPaint = new SolidColorPaint(SKColors.White),
+
+                // Layout
+                Dock = DockStyle.Fill,
+                BackColor = Color.Transparent
             };
 
-            targetPanel.AutoScroll = true;
+            // Ensure the chart receives focus for immediate mouse-wheel zooming
+            chart.MouseEnter += (s, e) => { chart.Focus(); };
+
             targetPanel.Controls.Clear();
             targetPanel.Controls.Add(chart);
         }

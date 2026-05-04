@@ -73,7 +73,7 @@
             Sales_By_Product_Grid.RowHeadersWidth = 62;
             Sales_By_Product_Grid.Size = new Size(899, 423);
             Sales_By_Product_Grid.TabIndex = 0;
-            Sales_By_Product_Grid.VisibleChanged += Sales_By_Product_Grid_VisibleChanged;
+            //Sales_By_Product_Grid.VisibleChanged += Sales_By_Product_Grid_VisibleChanged;
             // 
             // panel2
             // 
