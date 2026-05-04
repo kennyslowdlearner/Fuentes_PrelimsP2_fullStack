@@ -279,5 +279,10 @@ namespace Fuentes_PrelimsP2
                 }
             }
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Admin_TotalTransactionsAnalytics.Instance.Show();
+        }
     }
 }

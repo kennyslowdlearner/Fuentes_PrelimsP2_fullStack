@@ -478,8 +478,9 @@
             button8.Name = "button8";
             button8.Size = new Size(143, 38);
             button8.TabIndex = 109;
-            button8.Text = "Connect";
+            button8.Text = "Analytics";
             button8.UseVisualStyleBackColor = false;
+            button8.Click += button8_Click;
             // 
             // button6
             // 

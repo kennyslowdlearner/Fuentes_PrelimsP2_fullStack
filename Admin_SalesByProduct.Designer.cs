@@ -352,8 +352,9 @@
             button8.Name = "button8";
             button8.Size = new Size(143, 38);
             button8.TabIndex = 112;
-            button8.Text = "Connect";
+            button8.Text = "Analytics";
             button8.UseVisualStyleBackColor = false;
+            button8.Click += button8_Click;
             // 
             // label1
             // 
@@ -376,7 +377,6 @@
             fill_search_sbp.Name = "fill_search_sbp";
             fill_search_sbp.Size = new Size(252, 29);
             fill_search_sbp.TabIndex = 120;
-            fill_search_sbp.Text = "Search product name or id";
             fill_search_sbp.TextChanged += press_search;
             // 
             // Admin_SalesByProduct

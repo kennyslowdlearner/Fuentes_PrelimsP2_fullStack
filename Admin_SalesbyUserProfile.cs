@@ -157,6 +157,11 @@ namespace Fuentes_PrelimsP2
                 display_pr_asup.Text = "0.00%";
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Admin_TotalTransactionsAnalytics.Instance.Show();
+        }
     }
 
 

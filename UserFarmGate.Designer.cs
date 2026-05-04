@@ -33,7 +33,6 @@
             Farmgate_Prices_Grid = new DataGridView();
             label5 = new Label();
             label6 = new Label();
-            button7 = new Button();
             button4 = new Button();
             button3 = new Button();
             button2 = new Button();
@@ -101,22 +100,6 @@
             label6.TabIndex = 106;
             label6.Text = ":";
             // 
-            // button7
-            // 
-            button7.BackColor = Color.Yellow;
-            button7.FlatAppearance.BorderColor = Color.Gold;
-            button7.FlatAppearance.BorderSize = 2;
-            button7.FlatStyle = FlatStyle.Flat;
-            button7.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button7.ForeColor = Color.DarkGreen;
-            button7.Location = new Point(1302, 578);
-            button7.Name = "button7";
-            button7.Size = new Size(143, 38);
-            button7.TabIndex = 103;
-            button7.Text = "Load";
-            button7.UseVisualStyleBackColor = false;
-            button7.Click += press_loadfgp;
-            // 
             // button4
             // 
             button4.BackColor = Color.Yellow;
@@ -125,7 +108,7 @@
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button4.ForeColor = Color.DarkGreen;
-            button4.Location = new Point(1153, 578);
+            button4.Location = new Point(1299, 574);
             button4.Name = "button4";
             button4.Size = new Size(143, 38);
             button4.TabIndex = 104;
@@ -459,7 +442,6 @@
             Controls.Add(label17);
             Controls.Add(label5);
             Controls.Add(label6);
-            Controls.Add(button7);
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
@@ -494,7 +476,6 @@
         private DataGridView Farmgate_Prices_Grid;
         private Label label5;
         private Label label6;
-        private Button button7;
         private Button button4;
         private Button button3;
         private Button button2;

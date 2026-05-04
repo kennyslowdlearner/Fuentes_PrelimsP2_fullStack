@@ -128,81 +128,66 @@ namespace Fuentes_PrelimsP2
 
         private void initialize_AllCharts(List<string> productName, List<double> quantity, List<string> riceType, List<double> quantitySold, List<DateTime> date_Transaction)
         {
-            // Global Styling Constants
+            // FIX: Define the specific green color to match your UI
+            Color pananomGreen = Color.FromArgb(118, 186, 27);
+
             var labelPaint = new SolidColorPaint(SKColors.Black);
-            var separatorPaint = new SolidColorPaint(SKColors.LightGray.WithAlpha(80));
             var animationDuration = TimeSpan.FromMilliseconds(1200);
             var easing = LiveChartsCore.EasingFunctions.ExponentialOut;
 
-            // 1. Inventory Pie Chart (Current Stock)
+            // 1. Inventory Pie Chart
             var inventorySeries = new List<ISeries>();
             for (int a = 0; a < productName.Count; a++)
             {
                 double currentQty = quantity[a];
-                double estSacks = currentQty / 50.0; // Calculate sacks for hover
-
                 inventorySeries.Add(new PieSeries<double>
                 {
                     Name = productName[a],
                     Values = new double[] { currentQty },
-                    DataLabelsPaint = null,
-                    // UPDATED TOOLTIP: Added Est. Sacks
                     ToolTipLabelFormatter = point =>
                         $"{point.Context.Series.Name}\n" +
                         $"Weight: {point.Coordinate.PrimaryValue:N2} kg\n" +
-                        $"Est. Sacks: {estSacks:N2} sacks\n" +
-                        $"Share: {point.StackedValue.Share:P2}",
-                    AnimationsSpeed = animationDuration,
-                    EasingFunction = easing
+                        $"Est. Sacks: {(currentQty / 50.0):N2} sacks\n" +
+                        $"Share: {point.StackedValue.Share:P2}"
                 });
             }
 
             var pieChart_Inventory = new PieChart
             {
                 Dock = DockStyle.Fill,
-                BackColor = Color.FromArgb(242, 242, 242),
+                BackColor = pananomGreen, // FORCE GREEN BACKGROUND
                 Series = inventorySeries.ToArray(),
                 LegendPosition = LiveChartsCore.Measure.LegendPosition.Hidden,
-                TooltipPosition = LiveChartsCore.Measure.TooltipPosition.Top,
-                AnimationsSpeed = animationDuration,
-                EasingFunction = easing
+                TooltipPosition = LiveChartsCore.Measure.TooltipPosition.Top
             };
 
-            // 2. Transaction Pie Chart (Sales Distribution)
+            // 2. Transaction Pie Chart
             var transactionSeries = new List<ISeries>();
             for (int b = 0; b < riceType.Count; b++)
             {
                 double soldQty = quantitySold[b];
-                double estSacksSold = soldQty / 50.0; // Calculate sacks for hover
-
                 transactionSeries.Add(new PieSeries<double>
                 {
                     Name = riceType[b],
                     Values = new double[] { soldQty },
-                    DataLabelsPaint = null,
-                    // UPDATED TOOLTIP: Added Est. Sacks
                     ToolTipLabelFormatter = point =>
                         $"{point.Context.Series.Name}\n" +
                         $"Sold: {point.Coordinate.PrimaryValue:N2} kg\n" +
-                        $"Est. Sacks: {estSacksSold:N2} sacks\n" +
-                        $"Share: {point.StackedValue.Share:P2}",
-                    AnimationsSpeed = animationDuration,
-                    EasingFunction = easing
+                        $"Est. Sacks: {(soldQty / 50.0):N2} sacks\n" +
+                        $"Share: {point.StackedValue.Share:P2}"
                 });
             }
 
             var pieChart_Transaction = new PieChart
             {
                 Dock = DockStyle.Fill,
-                BackColor = Color.FromArgb(242, 242, 242),
+                BackColor = pananomGreen, // FORCE GREEN BACKGROUND
                 Series = transactionSeries.ToArray(),
                 LegendPosition = LiveChartsCore.Measure.LegendPosition.Hidden,
-                TooltipPosition = LiveChartsCore.Measure.TooltipPosition.Top,
-                AnimationsSpeed = animationDuration,
-                EasingFunction = easing
+                TooltipPosition = LiveChartsCore.Measure.TooltipPosition.Top
             };
 
-            // 3. Scatter Plot (Sales Over Time)
+            // 3. Scatter Plot
             var scatterPoints = new List<ObservablePoint>();
             for (int c = 0; c < date_Transaction.Count; c++)
             {
@@ -212,63 +197,39 @@ namespace Fuentes_PrelimsP2
             var scatterChart = new CartesianChart
             {
                 Dock = DockStyle.Fill,
-                BackColor = Color.Transparent,
+                BackColor = pananomGreen, // FORCE GREEN BACKGROUND
                 LegendPosition = LiveChartsCore.Measure.LegendPosition.Hidden,
-                ZoomMode = LiveChartsCore.Measure.ZoomAndPanMode.X,
-                AnimationsSpeed = animationDuration,
-                EasingFunction = easing,
                 Series = new ISeries[]
                 {
             new ScatterSeries<ObservablePoint>
             {
                 Name = "Transactions",
                 Values = scatterPoints.ToArray(),
-                GeometrySize = 12,
-                Fill = new SolidColorPaint(SKColors.ForestGreen.WithAlpha(180)),
-                
-                // UPDATED TOOLTIP: Added Est. Sacks calculation directly in the formatter
+                Fill = new SolidColorPaint(SKColors.ForestGreen.WithAlpha(200)),
                 YToolTipLabelFormatter = point =>
                     $"Sold: {point.Coordinate.PrimaryValue:N2} kg\n" +
-                    $"Est. Sacks: {(point.Coordinate.PrimaryValue / 50.0):N2} sacks",
-                XToolTipLabelFormatter = point => $"Day: {point.Coordinate.SecondaryValue}"
+                    $"Est. Sacks: {(point.Coordinate.PrimaryValue / 50.0):N2} sacks"
             }
                 },
-                XAxes = new Axis[]
-                {
-            new Axis
-            {
-                Name = "Day of Month",
-                NamePaint = labelPaint,
-                LabelsPaint = labelPaint,
-                SeparatorsPaint = separatorPaint,
-                MinLimit = 0,
-                MaxLimit = 31
-            }
-                },
-                YAxes = new Axis[]
-                {
-            new Axis
-            {
-                Name = "Quantity (kg)",
-                NamePaint = labelPaint,
-                LabelsPaint = labelPaint,
-                SeparatorsPaint = separatorPaint,
-                Labeler = value => $"{value}kg",
-                MinLimit = 0
-            }
-                }
+                XAxes = new Axis[] { new Axis { Name = "Day of Month", LabelsPaint = labelPaint } },
+                YAxes = new Axis[] { new Axis { Name = "Quantity (kg)", LabelsPaint = labelPaint } }
             };
 
-            // UI Panel Updates
+            // --- APPLY GREEN TO PANELS AND ADD CHARTS ---
+            display_piechart_analyticsTandT.BackColor = pananomGreen;
             display_piechart_analyticsTandT.Controls.Clear();
             display_piechart_analyticsTandT.Controls.Add(pieChart_Inventory);
 
+            display_piechartt_analyticsTandT.BackColor = pananomGreen;
             display_piechartt_analyticsTandT.Controls.Clear();
             display_piechartt_analyticsTandT.Controls.Add(pieChart_Transaction);
 
+            display_scatterplot_analyticsTandT.BackColor = pananomGreen;
             display_scatterplot_analyticsTandT.Controls.Clear();
             display_scatterplot_analyticsTandT.Controls.Add(scatterChart);
         }
+
+
 
         private async Task summaryAnimation(double total_Sales, double final_rate)
         {

@@ -245,5 +245,10 @@ namespace Fuentes_PrelimsP2
                 Console.WriteLine("Filter Error: " + ex.Message);
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Admin_TotalTransactionsAnalytics.Instance.Show();
+        }
     }
 }
