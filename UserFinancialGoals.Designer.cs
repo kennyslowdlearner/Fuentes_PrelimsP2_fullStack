@@ -103,7 +103,6 @@
             display_name_fg.Size = new Size(123, 38);
             display_name_fg.TabIndex = 2;
             display_name_fg.Text = "[USER]!";
-            display_name_fg.Click += label1_Click;
             // 
             // display_datetime_fg
             // 
@@ -116,7 +115,6 @@
             display_datetime_fg.Size = new Size(179, 29);
             display_datetime_fg.TabIndex = 2;
             display_datetime_fg.Text = "[Time and Date]";
-            display_datetime_fg.Click += label1_Click;
             // 
             // label1
             // 
@@ -129,7 +127,6 @@
             label1.Size = new Size(172, 38);
             label1.TabIndex = 2;
             label1.Text = "Hello there,";
-            label1.Click += label1_Click;
             // 
             // systemTimer
             // 

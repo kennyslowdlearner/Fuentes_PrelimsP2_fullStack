@@ -80,7 +80,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1374, 314);
             panel1.TabIndex = 1;
-            panel1.Paint += panel1_Paint;
             // 
             // Product_Inventory_Grid
             // 
@@ -362,7 +361,6 @@
             label_sc1_pi.Size = new Size(15, 24);
             label_sc1_pi.TabIndex = 73;
             label_sc1_pi.Text = ":";
-            label_sc1_pi.Click += label7_Click;
             // 
             // fill_batchcode_pi
             // 
@@ -372,7 +370,6 @@
             fill_batchcode_pi.Name = "fill_batchcode_pi";
             fill_batchcode_pi.Size = new Size(207, 24);
             fill_batchcode_pi.TabIndex = 74;
-            fill_batchcode_pi.TextChanged += textBox1_TextChanged;
             // 
             // label_batchsource_pi
             // 
@@ -397,7 +394,6 @@
             label_sc2_pi.Size = new Size(15, 24);
             label_sc2_pi.TabIndex = 73;
             label_sc2_pi.Text = ":";
-            label_sc2_pi.Click += label7_Click;
             // 
             // label_datereceived_pi
             // 
@@ -422,7 +418,6 @@
             label_sc3_pi.Size = new Size(15, 24);
             label_sc3_pi.TabIndex = 73;
             label_sc3_pi.Text = ":";
-            label_sc3_pi.Click += label7_Click;
             // 
             // fill_germrate_pi
             // 
@@ -432,7 +427,6 @@
             fill_germrate_pi.Name = "fill_germrate_pi";
             fill_germrate_pi.Size = new Size(207, 24);
             fill_germrate_pi.TabIndex = 74;
-            fill_germrate_pi.TextChanged += textBox1_TextChanged;
             // 
             // label_germrate_pi
             // 
@@ -463,7 +457,6 @@
             display_indicator_pi.Name = "display_indicator_pi";
             display_indicator_pi.Size = new Size(0, 38);
             display_indicator_pi.TabIndex = 75;
-            display_indicator_pi.Click += display_indicator_pi_Click;
             // 
             // label7
             // 
@@ -476,7 +469,6 @@
             label7.Size = new Size(15, 24);
             label7.TabIndex = 73;
             label7.Text = ":";
-            label7.Click += label7_Click;
             // 
             // label10
             // 
@@ -513,8 +505,6 @@
             label12.Size = new Size(15, 24);
             label12.TabIndex = 73;
             label12.Text = ":";
-            label12.Click += label7_Click;
-            // 
             // label13
             // 
             label13.AutoSize = true;

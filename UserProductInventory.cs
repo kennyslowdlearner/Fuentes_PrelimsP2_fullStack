@@ -47,100 +47,8 @@ namespace Fuentes_PrelimsP2
         {
 
         }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
-
-        private void InitializeTableAndBind()
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-            // no-op
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            // no-op
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-            // no-op
-        }
-
-        private void searchBoxPI_TextChanged(object sender, EventArgs e)
-        {
-            // no-op
-        }
-
-        private void searchbuttonPI_Click(object sender, EventArgs e)
-        {
-            // no-op
-        }
-
-        private void usermenuPI_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-            // no-op
-        }
-
-        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // no-op
-        }
-
-        private void addProductToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void updatePrToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // Implement update product flow here when needed
-        }
-
-        private void deleteRemoveProductToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // Implement delete/remove product flow here when needed
-        }
-        // no-op
-
-
-        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void activityToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // no-op
-        }
-
-        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
-        {
-            // no-op
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-            // no-op
-        }
-
-        private void profileName_Click(object sender, EventArgs e)
-        {
-            // no-op
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-            // no-op
-        }
-
-        private void backoptionPI_click(object sender, EventArgs e)
-        {
-
-        }
+   
+        
 
         private void logoutoptionPI_click(object sender, EventArgs e)
         {
@@ -163,10 +71,7 @@ namespace Fuentes_PrelimsP2
             this.Hide();
         }
 
-        private void Close_Form_After_Run(object sender, FormClosingEventArgs e)
-        {
-
-        }
+       
 
         private void press_connectpi(object sender, EventArgs e)
         {
@@ -503,16 +408,7 @@ namespace Fuentes_PrelimsP2
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
+      
         private void press_switchpi(object sender, EventArgs e)
         {
             showingSeedlings = !showingSeedlings;
@@ -538,9 +434,6 @@ namespace Fuentes_PrelimsP2
             fill_quantity_pi.Clear();
         }
 
-        private void display_indicator_pi_Click(object sender, EventArgs e)
-        {
-
-        }
+      
     }
 }

@@ -40,11 +40,7 @@ namespace Fuentes_PrelimsP2
         int indexRow;
 
 
-        private void label26_Click(object sender, EventArgs e)
-        {
-
-        }
-
+      
         private void backButton(object sender, EventArgs e)
         {
             try

@@ -40,7 +40,6 @@
             menuStrip1 = new MenuStrip();
             toolStripMenuItem1 = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
-            viewAccountToolStripMenuItem = new ToolStripMenuItem();
             contactDeveloperToolStripMenuItem = new ToolStripMenuItem();
             supportToolStripMenuItem = new ToolStripMenuItem();
             sendMessageOrFeedbackToolStripMenuItem = new ToolStripMenuItem();
@@ -169,14 +168,14 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, toolStripMenuItem2 });
             menuStrip1.Location = new Point(696, 246);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(316, 32);
+            menuStrip1.Size = new Size(496, 32);
             menuStrip1.TabIndex = 4;
             menuStrip1.Text = "menuStrip1";
             // 
             // toolStripMenuItem1
             // 
             toolStripMenuItem1.BackColor = Color.Transparent;
-            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { toolStripSeparator1, viewAccountToolStripMenuItem, contactDeveloperToolStripMenuItem, supportToolStripMenuItem, sendMessageOrFeedbackToolStripMenuItem, chatWithAdminToolStripMenuItem });
+            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { toolStripSeparator1, contactDeveloperToolStripMenuItem, supportToolStripMenuItem, sendMessageOrFeedbackToolStripMenuItem, chatWithAdminToolStripMenuItem });
             toolStripMenuItem1.Font = new Font("Glacial Indifference", 10F);
             toolStripMenuItem1.Name = "toolStripMenuItem1";
             toolStripMenuItem1.Size = new Size(143, 28);
@@ -187,13 +186,6 @@
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
             toolStripSeparator1.Size = new Size(342, 6);
-            // 
-            // viewAccountToolStripMenuItem
-            // 
-            viewAccountToolStripMenuItem.Name = "viewAccountToolStripMenuItem";
-            viewAccountToolStripMenuItem.Size = new Size(345, 34);
-            viewAccountToolStripMenuItem.Text = "View Account";
-            viewAccountToolStripMenuItem.Click += viewAccountToolStripMenuItem_Click;
             // 
             // contactDeveloperToolStripMenuItem
             // 
@@ -329,7 +321,6 @@
         private ToolStripMenuItem toolStripMenuItem2;
         private Label display_datetime_Udashboard;
         private ToolStripSeparator toolStripSeparator1;
-        private ToolStripMenuItem viewAccountToolStripMenuItem;
         private ToolStripMenuItem contactDeveloperToolStripMenuItem;
         private ToolStripMenuItem logoutToolStripMenuItem;
         private Label label3;

@@ -41,7 +41,7 @@ namespace Fuentes_PrelimsP2
         DataSet? dataSet;
         int indexRow;
 
-        string currentSelectedRollNumber = " ";
+        internal string currentSelectedRollNumber = " ";
 
         private void farmgateUser_Load(object sender, EventArgs e)
         {

@@ -37,10 +37,7 @@
             label7 = new Label();
             label8 = new Label();
             sssssToolStripMenuItem = new ToolStripMenuItem();
-            reloadToolStripMenuItem = new ToolStripMenuItem();
-            learnMoreToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem3 = new ToolStripMenuItem();
-            viewAccountToolStripMenuItem1 = new ToolStripMenuItem();
             accountSettingsToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem4 = new ToolStripMenuItem();
             menuStrip2 = new MenuStrip();
@@ -149,36 +146,19 @@
             // sssssToolStripMenuItem
             // 
             sssssToolStripMenuItem.BackColor = Color.Transparent;
-            sssssToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { reloadToolStripMenuItem, learnMoreToolStripMenuItem, toolStripMenuItem3, viewAccountToolStripMenuItem1 });
+            sssssToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem3 });
             sssssToolStripMenuItem.Font = new Font("Glacial Indifference", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             sssssToolStripMenuItem.ForeColor = Color.DarkOliveGreen;
             sssssToolStripMenuItem.Name = "sssssToolStripMenuItem";
             sssssToolStripMenuItem.Size = new Size(151, 28);
             sssssToolStripMenuItem.Text = "More Options";
             // 
-            // reloadToolStripMenuItem
-            // 
-            reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
-            reloadToolStripMenuItem.Size = new Size(281, 34);
-            reloadToolStripMenuItem.Text = "Reload";
-            // 
-            // learnMoreToolStripMenuItem
-            // 
-            learnMoreToolStripMenuItem.Name = "learnMoreToolStripMenuItem";
-            learnMoreToolStripMenuItem.Size = new Size(281, 34);
-            learnMoreToolStripMenuItem.Text = "Learn More";
-            // 
             // toolStripMenuItem3
             // 
             toolStripMenuItem3.Name = "toolStripMenuItem3";
             toolStripMenuItem3.Size = new Size(281, 34);
             toolStripMenuItem3.Text = "Contact Developer";
-            // 
-            // viewAccountToolStripMenuItem1
-            // 
-            viewAccountToolStripMenuItem1.Name = "viewAccountToolStripMenuItem1";
-            viewAccountToolStripMenuItem1.Size = new Size(281, 34);
-            viewAccountToolStripMenuItem1.Text = "View Account";
+            toolStripMenuItem3.Click += toolStripMenuItem3_Click;
             // 
             // accountSettingsToolStripMenuItem
             // 
@@ -193,7 +173,7 @@
             // toolStripMenuItem4
             // 
             toolStripMenuItem4.Name = "toolStripMenuItem4";
-            toolStripMenuItem4.Size = new Size(172, 34);
+            toolStripMenuItem4.Size = new Size(270, 34);
             toolStripMenuItem4.Text = "Logout";
             toolStripMenuItem4.Click += logoutAdmin;
             // 
@@ -205,7 +185,7 @@
             menuStrip2.Items.AddRange(new ToolStripItem[] { sssssToolStripMenuItem, accountSettingsToolStripMenuItem });
             menuStrip2.Location = new Point(669, 172);
             menuStrip2.Name = "menuStrip2";
-            menuStrip2.Size = new Size(343, 32);
+            menuStrip2.Size = new Size(523, 32);
             menuStrip2.TabIndex = 106;
             menuStrip2.Text = "menuStrip2";
             // 
@@ -248,6 +228,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Pananom : Admin Dashboard";
             FormClosed += AdminAccount_FormClosed;
+            Load += AdminAccount_Load;
             groupBox1.ResumeLayout(false);
             menuStrip2.ResumeLayout(false);
             menuStrip2.PerformLayout();
@@ -267,10 +248,7 @@
         private Label label7;
         private Label label8;
         private ToolStripMenuItem sssssToolStripMenuItem;
-        private ToolStripMenuItem reloadToolStripMenuItem;
-        private ToolStripMenuItem learnMoreToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItem3;
-        private ToolStripMenuItem viewAccountToolStripMenuItem1;
         private ToolStripMenuItem accountSettingsToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItem4;
         private MenuStrip menuStrip2;

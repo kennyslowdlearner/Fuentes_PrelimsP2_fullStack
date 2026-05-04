@@ -239,16 +239,6 @@ namespace Fuentes_PrelimsP2
             FormatCebuStyleGrid();
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void shortcut_DigitalReceiptVault(object sender, EventArgs e)
         {
             try

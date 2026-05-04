@@ -37,15 +37,8 @@ namespace Fuentes_PrelimsP2
             display_name_fg.Text = name_in_session;
             systemTimer.Start();
         }
-        private void sssssToolStripMenuItem_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+   
 
         private void GoToSetGoals(object sender, EventArgs e)
         {

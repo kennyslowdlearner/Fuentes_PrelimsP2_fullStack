@@ -305,7 +305,6 @@
             label26.Size = new Size(141, 24);
             label26.TabIndex = 80;
             label26.Text = "Estimated Time";
-            label26.Click += label26_Click;
             // 
             // display_estimatedtime_ats
             // 
@@ -342,7 +341,6 @@
             label14.Size = new Size(64, 24);
             label14.TabIndex = 80;
             label14.Text = "Status";
-            label14.Click += label26_Click;
             // 
             // label15
             // 

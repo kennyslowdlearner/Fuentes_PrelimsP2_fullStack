@@ -110,7 +110,7 @@
             button8.TabIndex = 87;
             button8.Text = "Connect";
             button8.UseVisualStyleBackColor = false;
-            button8.Click += button8_Click;
+            //button8.Click += button8_Click;
             // 
             // button4
             // 
@@ -187,7 +187,6 @@
             display_inactives_aac.Size = new Size(57, 29);
             display_inactives_aac.TabIndex = 94;
             display_inactives_aac.Text = "Num";
-            display_inactives_aac.Click += label4_Click;
             // 
             // label5
             // 

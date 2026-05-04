@@ -111,7 +111,8 @@ namespace Fuentes_PrelimsP2
                 adapter.Fill(dt);
 
                 var rankedData = dt.AsEnumerable()
-                    .Select((row, index) => new {
+                    .Select((row, index) => new
+                    {
                         Rank = index + 1,
                         Product = row.Field<string>("Rice Type"),
                         Quantity = Convert.ToDouble(row["TotalQuantity"])
@@ -173,7 +174,8 @@ namespace Fuentes_PrelimsP2
                 adapter.Fill(dt);
 
                 var rankedSellers = dt.AsEnumerable()
-                    .Select((row, index) => new {
+                    .Select((row, index) => new
+                    {
                         Rank = index + 1,
                         Seller = $"{row.Field<string>("First Name")} {row.Field<string>("Middle Name")} {row.Field<string>("Last Name")}",
                         Quantity = Convert.ToDouble(row["TotalSold"]),
@@ -282,7 +284,7 @@ namespace Fuentes_PrelimsP2
             }
         }
 
-       
+
 
         private void Top_Seller_Grid_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
@@ -338,7 +340,7 @@ namespace Fuentes_PrelimsP2
             }
         }
 
-        private void logoutAdmin (object sender, EventArgs e)
+        private void logoutAdmin(object sender, EventArgs e)
         {
             try
             {
@@ -354,7 +356,7 @@ namespace Fuentes_PrelimsP2
                 if (AdminAccountControl.Instance != null) AdminAccountControl.Instance.Dispose();
                 if (AdminSalesReport.Instance != null) AdminSalesReport.Instance.Dispose();
                 if (AdminTransportSchedule.Instance != null) AdminTransportSchedule.Instance.Dispose();
-                
+
 
                 Homepageee.Instance.Show();
                 this.Dispose();
@@ -366,6 +368,9 @@ namespace Fuentes_PrelimsP2
             }
         }
 
-      
+         private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            MessageUs.Instance.Show();
+        }
     }
 }

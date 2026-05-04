@@ -37,11 +37,7 @@ namespace Fuentes_PrelimsP2
         OleDbCommand? command;
         DataSet? dataSet;
         int indexRow;
-        private void button8_Click(object sender, EventArgs e)
-        {
-
-        }
-
+      
         private void backButton(object sender, EventArgs e)
         {
             try
@@ -165,10 +161,7 @@ namespace Fuentes_PrelimsP2
             }
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void press_enableDisable_aac(object sender, EventArgs e)
         {

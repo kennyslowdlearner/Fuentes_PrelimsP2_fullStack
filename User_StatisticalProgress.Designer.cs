@@ -51,7 +51,6 @@
             label17 = new Label();
             press_update_sp = new Button();
             press_delete_sp = new Button();
-            press_add_sp = new Button();
             button6 = new Button();
             button4 = new Button();
             label18 = new Label();
@@ -303,7 +302,7 @@
             press_update_sp.FlatStyle = FlatStyle.Flat;
             press_update_sp.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             press_update_sp.ForeColor = Color.DarkGreen;
-            press_update_sp.Location = new Point(182, 572);
+            press_update_sp.Location = new Point(106, 549);
             press_update_sp.Name = "press_update_sp";
             press_update_sp.Size = new Size(143, 38);
             press_update_sp.TabIndex = 73;
@@ -319,29 +318,13 @@
             press_delete_sp.FlatStyle = FlatStyle.Flat;
             press_delete_sp.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             press_delete_sp.ForeColor = Color.DarkGreen;
-            press_delete_sp.Location = new Point(331, 572);
+            press_delete_sp.Location = new Point(255, 549);
             press_delete_sp.Name = "press_delete_sp";
             press_delete_sp.Size = new Size(143, 38);
             press_delete_sp.TabIndex = 74;
             press_delete_sp.Text = "Delete";
             press_delete_sp.UseVisualStyleBackColor = false;
             press_delete_sp.Click += press_delete;
-            // 
-            // press_add_sp
-            // 
-            press_add_sp.BackColor = Color.Yellow;
-            press_add_sp.FlatAppearance.BorderColor = Color.Gold;
-            press_add_sp.FlatAppearance.BorderSize = 2;
-            press_add_sp.FlatStyle = FlatStyle.Flat;
-            press_add_sp.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            press_add_sp.ForeColor = Color.DarkGreen;
-            press_add_sp.Location = new Point(33, 572);
-            press_add_sp.Name = "press_add_sp";
-            press_add_sp.Size = new Size(143, 38);
-            press_add_sp.TabIndex = 75;
-            press_add_sp.Text = "Add";
-            press_add_sp.UseVisualStyleBackColor = false;
-            press_add_sp.Click += press_add;
             // 
             // button6
             // 
@@ -371,7 +354,6 @@
             button4.TabIndex = 75;
             button4.Text = "Refresh";
             button4.UseVisualStyleBackColor = false;
-            //button4.Click += this.LoadGoalData;
             // 
             // label18
             // 
@@ -449,7 +431,6 @@
             Controls.Add(press_update_sp);
             Controls.Add(button4);
             Controls.Add(press_delete_sp);
-            Controls.Add(press_add_sp);
             Controls.Add(label17);
             Controls.Add(label13);
             Controls.Add(label16);
@@ -507,7 +488,6 @@
         private Label label17;
         private Button press_update_sp;
         private Button press_delete_sp;
-        private Button press_add_sp;
         private Button button6;
         private Button button4;
         private Label label18;

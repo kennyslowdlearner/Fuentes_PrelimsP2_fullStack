@@ -297,14 +297,36 @@ namespace Fuentes_PrelimsP2
 
         private string yieldingDays()
         {
-            // These are standard days from planting to harvest for common PH rice types
-            switch (fill_ricetype_rye.Text)
+            // Convert to lowercase to ensure the switch case matches regardless of user input casing
+            string riceType = fill_ricetype_rye.Text.ToLower().Trim();
+
+            // Standard days from planting to harvest for common Philippine rice varieties
+            switch (riceType)
             {
-                case "Inbred Rice": return "120";
-                case "Hybrid Rice": return "110";
-                case "Sinandomeng": return "115";
-                case "Dinorado": return "125";
-                default: return "120"; // Default fallback
+                case "hybrid rice":
+                case "sl-8h":
+                    return "110";
+                case "inbred rice":
+                case "rc160":
+                    return "120";
+                case "sinandomeng":
+                    return "115";
+                case "dinorado":
+                    return "125";
+                case "jasmine rice":
+                    return "130";
+                case "angelica":
+                    return "115";
+                case "rc222": // Known as "Triple 2"
+                    return "114";
+                case "nsic rc216":
+                    return "112";
+                case "malagkit":
+                    return "135";
+                case "brown rice":
+                    return "150";
+                default:
+                    return "120"; // Standard fallback for unspecified types
             }
         }
 

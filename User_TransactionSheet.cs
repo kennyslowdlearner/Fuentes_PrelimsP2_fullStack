@@ -13,7 +13,7 @@ namespace Fuentes_PrelimsP2
     public partial class User_TransactionSheet : Form
     {
         private static User_TransactionSheet instance;
-        int originalQtyFromCell;
+        internal int originalQtyFromCell;
         public User_TransactionSheet()
         {
             InitializeComponent();
