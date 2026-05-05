@@ -16,6 +16,7 @@ namespace Fuentes_PrelimsP2
         {
             InitializeComponent();
             refreshreload();
+            LoadInventoryToComboBoxes();
         }
 
         //(Global User Session) Component
@@ -35,6 +36,9 @@ namespace Fuentes_PrelimsP2
         OleDbCommand? command;
         DataSet? dataSet;
         int indexRow;
+
+        // Near your other declarations
+        string currentSelectedItemNumber = "";
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
@@ -112,7 +116,11 @@ namespace Fuentes_PrelimsP2
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (fill_productid_rye.Focused && fill_productid_rye.SelectedIndex != -1)
+            {
+                // SelectedValue contains the "Product Name" because of our ValueMember setting
+                fill_ricetype_rye.Text = fill_productid_rye.SelectedValue.ToString();
+            }
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -122,20 +130,26 @@ namespace Fuentes_PrelimsP2
 
         private void press_insertrye(object sender, EventArgs e)
         {
+            // Check if fields are empty before proceeding
+            if (fill_ricetype_rye.SelectedIndex == -1 || string.IsNullOrEmpty(fill_quantity_rye.Text))
+            {
+                MessageBox.Show("Please select a rice variety and enter quantity.");
+                return;
+            }
+
             connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
             string query = "INSERT INTO [User RYR Rice Yield & Estimation] ([Rice Type], [Product ID], [Date Planted], [Quantity (Kg)], [Yielding Days], [Time Left], [User ID]) VALUES (@P1, @P2, @P3, @P4, @P5, @P6, @P7)";
 
-
             command = new OleDbCommand(query, connection);
+
+            // Fetch values from the auto-filled ComboBoxes
             command.Parameters.Add("@P1", OleDbType.VarWChar).Value = fill_ricetype_rye.Text;
             command.Parameters.Add("@P2", OleDbType.VarWChar).Value = fill_productid_rye.Text;
-            command.Parameters.Add("@P3", OleDbType.Date).Value = fill_date_rye.Text;
+            command.Parameters.Add("@P3", OleDbType.Date).Value = fill_date_rye.Value;
             command.Parameters.Add("@P4", OleDbType.Integer).Value = Convert.ToInt32(fill_quantity_rye.Text);
             command.Parameters.Add("@P5", OleDbType.VarWChar).Value = yieldingDays();
             command.Parameters.Add("@P6", OleDbType.VarWChar).Value = timeLeft();
-
             command.Parameters.Add("@P7", OleDbType.Integer).Value = UserSession.UserInstance.ID;
-
 
             try
             {
@@ -143,21 +157,24 @@ namespace Fuentes_PrelimsP2
                 command.ExecuteNonQuery();
                 connection.Close();
 
-                MessageBox.Show("Item added successfully!");
+                MessageBox.Show("Plant logged successfully!");
 
+                // Clear input fields for next entry
                 fill_ricetype_rye.SelectedIndex = -1;
                 fill_productid_rye.SelectedIndex = -1;
                 fill_date_rye.Value = DateTime.Now;
                 fill_quantity_rye.Clear();
-                display_yieldingdays_rye.Text = " ";
-                display_timeleft_rye.Text = " ";
-            }
 
+
+                // CRITICAL: Refresh the grid to show the new record
+                refreshreload();
+            }
             catch (Exception ex)
             {
-                MessageBox.Show("Failed to add product. Error: " + ex.Message);
+                MessageBox.Show("Failed to log plant. Error: " + ex.Message);
             }
         }
+
 
         internal void refreshreload()
         {
@@ -165,89 +182,134 @@ namespace Fuentes_PrelimsP2
 
             try
             {
+                int currentUserID = UserSession.UserInstance.ID;
+
                 using (OleDbConnection connected = new OleDbConnection(connectionString))
                 {
-                    adapter = new OleDbDataAdapter("SELECT * FROM [User RYR Rice Yield & Estimation]", connected);
+                    // SYNCED: Using [Roll Number] instead of [Item Number]
+                    string query = "SELECT [Roll Number], [Rice Type], [Product ID], [Date Planted], [Quantity (Kg)], [Yielding Days], [Time Left], [User ID] " +
+                                   "FROM [User RYR Rice Yield & Estimation] WHERE [User ID] = @uid";
+
+                    adapter = new OleDbDataAdapter(query, connected);
+                    adapter.SelectCommand.Parameters.Clear();
+                    adapter.SelectCommand.Parameters.AddWithValue("@uid", currentUserID);
+
                     DataTable dataTable = new DataTable();
+                    connected.Open();
                     adapter.Fill(dataTable);
+                    connected.Close();
 
-                    // 1. Force the grid to reset
                     Rice_Yield_And_Estimation_Grid.DataSource = null;
-                    Rice_Yield_And_Estimation_Grid.AutoGenerateColumns = true;
                     Rice_Yield_And_Estimation_Grid.DataSource = dataTable;
-
-                    // 2. Allow the UI thread to process the new columns
-                    Application.DoEvents();
                 }
 
-                // 3. Apply formatting only if data was actually loaded
                 if (Rice_Yield_And_Estimation_Grid.Columns.Count > 0)
                 {
-                    // Set all to None first to allow manual overrides
-                    foreach (DataGridViewColumn col in Rice_Yield_And_Estimation_Grid.Columns)
-                    {
-                        col.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                    }
+                    Rice_Yield_And_Estimation_Grid.DefaultCellStyle.ForeColor = Color.Black;
+                    Rice_Yield_And_Estimation_Grid.DefaultCellStyle.BackColor = Color.White;
+                    Rice_Yield_And_Estimation_Grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-                    // Fix for the "Item Name" invisibility:
-                    if (Rice_Yield_And_Estimation_Grid.Columns.Contains("Item Name"))
-                    {
-                        Rice_Yield_And_Estimation_Grid.Columns["Item Name"].Visible = true;
-                        Rice_Yield_And_Estimation_Grid.Columns["Item Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                        Rice_Yield_And_Estimation_Grid.Columns["Item Name"].MinimumWidth = 300; // Ensure it stays visible
-                    }
+                    // Hiding primary keys from the UI
+                    if (Rice_Yield_And_Estimation_Grid.Columns.Contains("Roll Number"))
+                        Rice_Yield_And_Estimation_Grid.Columns["Roll Number"].Visible = false;
 
-                    // Hide the database ID
-                    if (Rice_Yield_And_Estimation_Grid.Columns.Contains("Item Number"))
-                        Rice_Yield_And_Estimation_Grid.Columns["Item Number"].Visible = false;
-
-                    // Batch update the rest of the cells
-                    string[] autoFields = { "Unit", "Quantity", "Status", "Price per unit", "Total", "Date of purchase", "Serial Number" };
-                    foreach (string field in autoFields)
-                    {
-                        if (Rice_Yield_And_Estimation_Grid.Columns.Contains(field))
-                        {
-                            Rice_Yield_And_Estimation_Grid.Columns[field].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                        }
-                    }
+                    if (Rice_Yield_And_Estimation_Grid.Columns.Contains("User ID"))
+                        Rice_Yield_And_Estimation_Grid.Columns["User ID"].Visible = false;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Failed to load data. Error: " + ex.Message);
+                MessageBox.Show("Display Error: " + ex.Message);
             }
         }
 
+        private void LoadInventoryToComboBoxes()
+        {
+            // 1. Ensure the path to your Access database is correct
+            string connectionString = @"Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Pananom Database\Prooject Pananom Data.accdb";
+
+            // 2. Your SQL defines the available columns
+            string query = "SELECT [Variety Name], [Seed ID] FROM [User PI Seedling Inventory] WHERE [User ID] = ?";
+
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            {
+                try
+                {
+                    OleDbCommand cmd = new OleDbCommand(query, conn);
+                    cmd.Parameters.AddWithValue("?", UserSession.UserInstance.ID); // Filters by current user
+
+                    OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    // 3. Bind fill_productid_rye
+                    // Display: What the user sees (Seed ID)
+                    // Value: What the code uses to update the other box (Variety Name)
+                    fill_productid_rye.DataSource = dt.Copy();
+                    fill_productid_rye.DisplayMember = "Seed ID";     // MUST match SQL
+                    fill_productid_rye.ValueMember = "Variety Name";  // MUST match SQL
+
+                    // 4. Bind fill_ricetype_rye
+                    // Display: What the user sees (Variety Name)
+                    // Value: What the code uses to update the other box (Seed ID)
+                    fill_ricetype_rye.DataSource = dt.Copy();
+                    fill_ricetype_rye.DisplayMember = "Variety Name"; // MUST match SQL
+                    fill_ricetype_rye.ValueMember = "Seed ID";        // MUST match SQL
+
+                    // Reset selections to avoid accidental triggers
+                    fill_productid_rye.SelectedIndex = -1;
+                    fill_ricetype_rye.SelectedIndex = -1;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading inventory: " + ex.Message);
+                }
+            }
+        }
         private void press_updaterye(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(currentSelectedItemNumber))
+            {
+                MessageBox.Show("Please select a record from the table first.");
+                return;
+            }
+
             connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
 
-            // SQL ORDER: 1:Item Name, 2:Unit, 3:Quantity, 4:Price, 5:Total, 6:Date, 7:Status WHERE 8:ID
-            string query = "UPDATE [User RYR Rice Yield & Estimation] SET [Rice Type] = @P1, [Product ID] = @P2, [Date Planted] = @P3, [Quantity (Kg)] = @P4, [Yielding Days] = @P5, [Time Left] = @P6 WHERE [User ID] = @P8";
+            // SYNCED: Targeting [Roll Number]
+            string query = "UPDATE [User RYR Rice Yield & Estimation] SET " +
+                           "[Rice Type] = @p1, [Product ID] = @p2, [Date Planted] = @p3, " +
+                           "[Quantity (Kg)] = @p4, [Yielding Days] = @p5, [Time Left] = @p6 " +
+                           "WHERE [Roll Number] = @p7 AND [User ID] = @p8";
 
             command = new OleDbCommand(query, connection);
 
-            // Use UNIQUE parameter names and follow the SQL order exactly
-            command.Parameters.Add("@P1", OleDbType.VarWChar).Value = fill_ricetype_rye.Text;
-            command.Parameters.Add("@P2", OleDbType.VarWChar).Value = fill_productid_rye.Text;
-            command.Parameters.Add("@P6", OleDbType.Date).Value = fill_date_rye.Value;
-            command.Parameters.Add("@P3", OleDbType.Integer).Value = Convert.ToInt32(fill_quantity_rye.Text);
-            command.Parameters.Add("@P2", OleDbType.VarWChar).Value = yieldingDays();
-            command.Parameters.Add("@P2", OleDbType.VarWChar).Value = timeLeft();
-            command.Parameters.Add("@P3", OleDbType.Integer).Value = UserSession.UserInstance.ID;
+            // OLEDB parameters order: @p1 to @p8
+            command.Parameters.Add("@p1", OleDbType.VarWChar).Value = fill_ricetype_rye.Text;
+            command.Parameters.Add("@p2", OleDbType.VarWChar).Value = fill_productid_rye.Text;
+            command.Parameters.Add("@p3", OleDbType.Date).Value = fill_date_rye.Value;
+            command.Parameters.Add("@p4", OleDbType.Integer).Value = Convert.ToInt32(fill_quantity_rye.Text);
+            command.Parameters.Add("@p5", OleDbType.VarWChar).Value = yieldingDays();
+            command.Parameters.Add("@p6", OleDbType.VarWChar).Value = timeLeft();
+            command.Parameters.Add("@p7", OleDbType.Integer).Value = Convert.ToInt32(currentSelectedItemNumber);
+            command.Parameters.Add("@p8", OleDbType.Integer).Value = UserSession.UserInstance.ID;
 
             try
             {
                 connection.Open();
-                command.ExecuteNonQuery();
+                int result = command.ExecuteNonQuery();
                 connection.Close();
 
-                MessageBox.Show("Item updated successfully!");
-                refreshreload();
+                if (result > 0)
+                {
+                    MessageBox.Show("Record updated successfully!");
+                    refreshreload();
+                    currentSelectedItemNumber = "";
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Failed to update item. Error: " + ex.Message);
+                MessageBox.Show("Update Failed: " + ex.Message);
             }
         }
 
@@ -346,6 +408,36 @@ namespace Fuentes_PrelimsP2
                 return daysRemaining.ToString() + " Days";
             }
             return "Unknown";
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (fill_ricetype_rye.Focused && fill_ricetype_rye.SelectedIndex != -1)
+            {
+                // SelectedValue contains the "Product ID" because of our ValueMember setting
+                fill_productid_rye.Text = fill_ricetype_rye.SelectedValue.ToString();
+            }
+        }
+
+        private void Rice_Yield_And_Estimation_Grid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = Rice_Yield_And_Estimation_Grid.Rows[e.RowIndex];
+
+                // SYNCED: Using "Roll Number"
+                currentSelectedItemNumber = row.Cells["Roll Number"].Value?.ToString() ?? "";
+
+                // Filling the input controls
+                fill_ricetype_rye.Text = row.Cells["Rice Type"].Value?.ToString();
+                fill_productid_rye.Text = row.Cells["Product ID"].Value?.ToString();
+                fill_quantity_rye.Text = row.Cells["Quantity (Kg)"].Value?.ToString();
+
+                if (DateTime.TryParse(row.Cells["Date Planted"].Value?.ToString(), out DateTime plantedDate))
+                {
+                    fill_date_rye.Value = plantedDate;
+                }
+            }
         }
     }
 }

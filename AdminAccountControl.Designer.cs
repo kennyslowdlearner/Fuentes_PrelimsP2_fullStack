@@ -108,9 +108,9 @@
             button8.Name = "button8";
             button8.Size = new Size(143, 38);
             button8.TabIndex = 87;
-            button8.Text = "Connect";
+            button8.Text = "Delete Account";
             button8.UseVisualStyleBackColor = false;
-            //button8.Click += button8_Click;
+            button8.Click += delete_Account;
             // 
             // button4
             // 

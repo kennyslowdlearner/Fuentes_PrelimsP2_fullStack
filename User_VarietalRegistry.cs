@@ -7,7 +7,6 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Fuentes_PrelimsP2
 {
@@ -20,7 +19,7 @@ namespace Fuentes_PrelimsP2
             refreshreload();
         }
 
-        //(Global User Session) Component
+        // Global User Session Component
         internal static User_VarietalRegistry Instance
         {
             get
@@ -30,19 +29,17 @@ namespace Fuentes_PrelimsP2
 
                 return instance;
             }
-
-
         }
-
 
         OleDbConnection? connection;
         OleDbDataAdapter? adapter;
         OleDbCommand? command;
         DataSet? dataSet;
-        int indexRow;
 
-        string currentSelectedRollNumber;
+        // Tracks the Roll Number of the selected record for updates
+        string currentSelectedRollNumber = "";
 
+        #region Navigation Shortcuts
         private void shortcut_RiceYieldandEstimation(object sender, EventArgs e)
         {
             try
@@ -50,10 +47,9 @@ namespace Fuentes_PrelimsP2
                 User_RiceYieldandEstimation.Instance.Show();
                 this.Hide();
             }
-
             catch (Exception ex)
             {
-                MessageBox.Show("Failed to open Rice Yield/Estimation page:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to open Rice Yield/Estimation page:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -64,10 +60,9 @@ namespace Fuentes_PrelimsP2
                 User_WeatherForecast.Instance.Show();
                 this.Hide();
             }
-
             catch (Exception ex)
             {
-                MessageBox.Show("Failed to open Weather Forecast page:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to open Weather Forecast page:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -78,10 +73,9 @@ namespace Fuentes_PrelimsP2
                 User_ActivityLog.Instance.Show();
                 this.Hide();
             }
-
             catch (Exception ex)
             {
-                MessageBox.Show("Failed to open Activity Log page:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to open Activity Log page:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -92,10 +86,9 @@ namespace Fuentes_PrelimsP2
                 User_SoilEvaluator.Instance.Show();
                 this.Hide();
             }
-
             catch (Exception ex)
             {
-                MessageBox.Show("Failed to open Soil Evaluator page:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to open Soil Evaluator page:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -106,150 +99,99 @@ namespace Fuentes_PrelimsP2
                 RiceYieldEstimationandRegistry.Instance.Show();
                 this.Hide();
             }
-
             catch (Exception ex)
             {
-                MessageBox.Show("Failed to open page:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        private void press_insertvr(object sender, EventArgs e)
-        {
-            connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
-            string query = "INSERT INTO [User RYR Varietal Registry] ([Rice Type], [Date Stored], [Quantity in Kilograms], [Serial Number]) VALUES (@P1, @P2, @P3, @P4)";
-
-            command = new OleDbCommand(query, connection);
-            command.Parameters.Add("@P1", OleDbType.VarWChar).Value = fill_ricetype_vr.Text;
-            command.Parameters.Add("@P2", OleDbType.Date).Value = fill_date_vr.Text;
-            command.Parameters.Add("@P3", OleDbType.Integer).Value = Convert.ToInt32(fill_quantity_vr.Text);
-            command.Parameters.Add("@P4", OleDbType.VarWChar).Value = serialIDgenerator();
-
-
-            try
-            {
-                connection.Open();
-                command.ExecuteNonQuery();
-                connection.Close();
-
-                MessageBox.Show("Item added successfully!");
-
-                fill_ricetype_vr.Clear();
-                fill_date_vr.Value = DateTime.Now;
-                fill_quantity_vr.Clear();
-
-                refreshreload();
-
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failed to add product. Error: " + ex.Message);
+                MessageBox.Show("Failed to open page:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        #endregion
 
+        // UPDATE Logic: Targets the specific Roll Number
         private void press_updatevr(object sender, EventArgs e)
         {
-            connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
+            // Check if the ID is valid (it must be a number, not "we")
+            if (string.IsNullOrEmpty(currentSelectedRollNumber) || !int.TryParse(currentSelectedRollNumber, out int rollId))
+            {
+                MessageBox.Show("Please select a valid record from the table. The current ID is invalid.");
+                return;
+            }
 
-            // SQL ORDER: 1:Item Name, 2:Unit, 3:Quantity, 4:Price, 5:Total, 6:Date, 7:Status WHERE 8:ID
-            string query = "UPDATE [User RYR Varietal Registry] SET [Rice Type] = @P1, [Date Stored] = @P2, [Quantity in Kilograms] = @P3 WHERE [Roll Number] = @P4";
-
-            command = new OleDbCommand(query, connection);
-
-            // Use UNIQUE parameter names and follow the SQL order exactly
-            command.Parameters.Add("@P1", OleDbType.VarWChar).Value = fill_ricetype_vr.Text;
-            command.Parameters.Add("@P2", OleDbType.Date).Value = fill_date_vr.Value;
-            command.Parameters.Add("@P3", OleDbType.Integer).Value = Convert.ToInt32(fill_quantity_vr.Text);
-
-
-            // The WHERE clause parameter must be last
-            command.Parameters.Add("@P4", OleDbType.Integer).Value = Convert.ToInt32(currentSelectedRollNumber);
+            string dbPath = @"Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Pananom Database\Prooject Pananom Data.accdb";
+            string query = @"UPDATE [User RYR Varietal Registry] 
+                     SET [Maturity Period] = @mp, [Expected Yield] = @ey, [Resistance] = @res, [Grain Type] = @gt 
+                     WHERE [Roll Number] = @roll AND [User ID] = @uid";
 
             try
             {
-                connection.Open();
-                command.ExecuteNonQuery();
-                connection.Close();
+                using (OleDbConnection conn = new OleDbConnection(dbPath))
+                {
+                    using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                    {
+                        int mpValue, eyValue;
+                        int.TryParse(fill_mp_vr.Text, out mpValue);
+                        int.TryParse(fill_ey_vr.Text, out eyValue);
 
-                MessageBox.Show("Local Registry updated successfully!");
-                refreshreload();
+                        cmd.Parameters.AddWithValue("@mp", mpValue);
+                        cmd.Parameters.AddWithValue("@ey", eyValue);
+                        cmd.Parameters.AddWithValue("@res", fill_r_vr.Text);
+                        cmd.Parameters.AddWithValue("@gt", fill_gt_vr.Text);
+                        cmd.Parameters.AddWithValue("@roll", rollId); // Uses the safely parsed ID
+                        cmd.Parameters.AddWithValue("@uid", UserSession.UserInstance.ID);
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+
+                        MessageBox.Show("Record updated successfully!");
+                        refreshreload();
+                    }
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Failed to update item. Error: " + ex.Message);
+                MessageBox.Show("Update Failed: " + ex.Message);
             }
         }
 
         private void press_deletevr(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(currentSelectedRollNumber))
+            // Use the safely parsed ID from your previous code
+            if (string.IsNullOrEmpty(currentSelectedRollNumber) || !int.TryParse(currentSelectedRollNumber, out int rollId))
             {
-                MessageBox.Show("Please select an item to delete.");
+                MessageBox.Show("Please click the row in the table first so the system knows which record to delete!");
                 return;
             }
 
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this item?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult confirm = MessageBox.Show($"Are you sure you want to PERMANENTLY delete record #{rollId}?",
+                "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            if (dialogResult == DialogResult.Yes)
+            if (confirm == DialogResult.Yes)
             {
-                connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
-                string query = "DELETE FROM [User RYR Varietal Registry] WHERE [Roll Number] = @P1";
-
-                command = new OleDbCommand(query, connection);
-                command.Parameters.Add("@P1", OleDbType.Integer).Value = Convert.ToInt32(currentSelectedRollNumber);
+                string dbPath = @"Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Pananom Database\Prooject Pananom Data.accdb";
+                string query = "DELETE FROM [User RYR Varietal Registry] WHERE [Roll Number] = @roll";
 
                 try
                 {
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                    connection.Close();
+                    using (OleDbConnection conn = new OleDbConnection(dbPath))
+                    {
+                        using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@roll", rollId);
+                            conn.Open();
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
 
-                    MessageBox.Show("Item deleted successfully!");
+                            MessageBox.Show("Record deleted successfully.");
 
-                    refreshreload();
-
-                    fill_ricetype_vr.Clear();
-                    fill_quantity_vr.Clear();
-                    fill_date_vr.Value = DateTime.Now;
-                    currentSelectedRollNumber = " ";
+                            // Reset the ID so you don't accidentally delete the next row
+                            currentSelectedRollNumber = "";
+                            refreshreload();
+                        }
+                    }
                 }
-
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Failed to delete item. Error: " + ex.Message);
-                }
-            }
-        }
-
-        private void searchvr(object sender, EventArgs e)
-        {
-            string connect = "Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb";
-
-            string query = "SELECT * FROM [User RYR Varietal Registry] WHERE [Rice Type] LIKE @S1 OR [Date Stored] LIKE @S2 OR [Serial Number] LIKE @S3";
-
-            using (OleDbConnection connected = new OleDbConnection(connect))
-            {
-                OleDbDataAdapter searchAdapter = new OleDbDataAdapter(query, connected);
-
-                string searchTerm = "%" + fill_search_vr.Text + "%";
-                searchAdapter.SelectCommand.Parameters.AddWithValue("@S1", searchTerm);
-                searchAdapter.SelectCommand.Parameters.AddWithValue("@S2", searchTerm);
-                searchAdapter.SelectCommand.Parameters.AddWithValue("@S3", searchTerm);
-
-                DataSet searchNow = new DataSet();
-
-                try
-                {
-                    connected.Open();
-                    searchAdapter.Fill(searchNow, "[User RYR Varietal Registry]");
-
-                    Varietal_Registry_Grid.DataSource = searchNow.Tables["[User RYR Varietal Registry]"];
-                }
-
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Search failed. Error: " + ex.Message);
+                    MessageBox.Show("Delete Error: " + ex.Message);
                 }
             }
         }
@@ -260,87 +202,73 @@ namespace Fuentes_PrelimsP2
             {
                 DataGridViewRow row = Varietal_Registry_Grid.Rows[e.RowIndex];
 
-                currentSelectedRollNumber = row.Cells["Roll Number"].Value?.ToString() ?? "";
+                // 1. Try to find the exact column name
+                if (Varietal_Registry_Grid.Columns.Contains("Roll Number"))
+                {
+                    currentSelectedRollNumber = row.Cells["Roll Number"].Value?.ToString() ?? "";
+                }
+                else
+                {
+                    // 2. EMERGENCY FALLBACK: If name fails, grab the first column (Index 0)
+                    // Make sure Roll Number is the very FIRST column in your Access Query!
+                    currentSelectedRollNumber = row.Cells[0].Value?.ToString() ?? "";
 
-                fill_ricetype_vr.Text = row.Cells["Rice Type"].Value?.ToString();
-                fill_quantity_vr.Text = row.Cells["Quantity"].Value?.ToString();
+                    // If the value is "PNMIC" or "wew", you'll know Index 0 is the wrong column.
+                    if (!int.TryParse(currentSelectedRollNumber, out _))
+                    {
+                        MessageBox.Show("Selection Error: Grabbed '" + currentSelectedRollNumber +
+                                        "' instead of a Number. Move Roll Number to the first column in Access!");
+                    }
+                }
 
-                if (row.Cells["Date Stored"].Value != DBNull.Value)
-                    fill_date_vr.Value = Convert.ToDateTime(row.Cells["Date Stored"].Value);
-
-                else fill_date_vr.Value = DateTime.Now;
+                fill_mp_vr.Text = GetCellValue(row, "Maturity Period");
+                fill_ey_vr.Text = GetCellValue(row, "Expected Yield");
+                fill_r_vr.Text = GetCellValue(row, "Resistance");
+                fill_gt_vr.Text = GetCellValue(row, "Grain Type");
             }
         }
 
-        private void refreshreload()
+        // KEEP ONLY THIS ONE VERSION OF GetCellValue
+        private string GetCellValue(DataGridViewRow row, string columnName)
+        {
+            if (Varietal_Registry_Grid.Columns.Contains(columnName))
+            {
+                return row.Cells[columnName].Value?.ToString() ?? "";
+            }
+            return "";
+        }
+
+        internal void refreshreload()
         {
             string dbPath = @"Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Pananom Database\Prooject Pananom Data.accdb";
-
-            // Using a simple query for now to ensure data displays
-            string query = "SELECT * FROM [User RYR Varietal Registry]";
+            string query = "SELECT * FROM [Varietal Registry Query] WHERE [User ID] = @uid";
 
             try
             {
                 using (OleDbConnection connected = new OleDbConnection(dbPath))
                 {
                     adapter = new OleDbDataAdapter(query, connected);
-                    dataSet = new DataSet();
+                    adapter.SelectCommand.Parameters.Clear();
+                    adapter.SelectCommand.Parameters.AddWithValue("@uid", UserSession.UserInstance.ID);
 
+                    DataTable dt = new DataTable();
                     connected.Open();
-                    adapter.Fill(dataSet, "VarietalRegistry");
+                    adapter.Fill(dt);
                     connected.Close();
 
-                    Varietal_Registry_Grid.DataSource = dataSet.Tables["VarietalRegistry"];
+                    Varietal_Registry_Grid.DataSource = dt;
 
+                    // STYLING: Make text black so it's readable
                     Varietal_Registry_Grid.DefaultCellStyle.ForeColor = Color.Black;
                     Varietal_Registry_Grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
 
                     if (Varietal_Registry_Grid.Columns.Contains("Roll Number"))
                         Varietal_Registry_Grid.Columns["Roll Number"].Visible = false;
 
-                    foreach (DataGridViewColumn col in Varietal_Registry_Grid.Columns)
-                    {
-                        col.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                    }
-
-                    if (Varietal_Registry_Grid.Columns.Contains("Rice Type"))
-                    {
-                        Varietal_Registry_Grid.Columns["Rice Type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    }
+                    Varietal_Registry_Grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Display Error: " + ex.Message);
-            }
-        }
-
-        private string serialIDgenerator()
-        {
-            Random reference = new Random();
-
-            string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            int size = 8;
-            string randomString = "";
-
-            for (int a = 0; a < size; a++)
-            {
-                int index = reference.Next(characters.Length);
-                randomString += characters[index];
-
-                if (a == 3)
-                {
-                    randomString += "-";
-                }
-
-            }
-
-            return "VRSN-" + randomString;
-        }
-
-        private void Refresh_Opening(object sender, CancelEventArgs e)
-        {
-            refreshreload();
+            catch (Exception ex) { MessageBox.Show("Load Error: " + ex.Message); }
         }
 
         private void refresh(object sender, EventArgs e)
@@ -350,7 +278,7 @@ namespace Fuentes_PrelimsP2
 
         private void endoperation(object sender, FormClosedEventArgs e)
         {
-           
+            // Clean up if necessary
         }
     }
 }

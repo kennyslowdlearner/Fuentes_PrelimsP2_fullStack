@@ -37,7 +37,6 @@
             WeatherForecasting = new Button();
             SoilEvaluator = new Button();
             ViewRiceYieldandEstimation = new Button();
-            VarietalRegistry = new Button();
             ActivityLog = new Button();
             label4 = new Label();
             button7 = new Button();
@@ -112,7 +111,7 @@
             SoilEvaluator.BackgroundImage = (Image)resources.GetObject("SoilEvaluator.BackgroundImage");
             SoilEvaluator.FlatAppearance.BorderSize = 0;
             SoilEvaluator.FlatStyle = FlatStyle.Flat;
-            SoilEvaluator.Location = new Point(283, 497);
+            SoilEvaluator.Location = new Point(417, 497);
             SoilEvaluator.Name = "SoilEvaluator";
             SoilEvaluator.Size = new Size(245, 104);
             SoilEvaluator.TabIndex = 10;
@@ -132,26 +131,13 @@
             ViewRiceYieldandEstimation.UseVisualStyleBackColor = false;
             ViewRiceYieldandEstimation.Click += GoToViewRiceYieldandEstimation;
             // 
-            // VarietalRegistry
-            // 
-            VarietalRegistry.BackColor = Color.Transparent;
-            VarietalRegistry.BackgroundImage = (Image)resources.GetObject("VarietalRegistry.BackgroundImage");
-            VarietalRegistry.FlatAppearance.BorderSize = 0;
-            VarietalRegistry.FlatStyle = FlatStyle.Flat;
-            VarietalRegistry.Location = new Point(546, 387);
-            VarietalRegistry.Name = "VarietalRegistry";
-            VarietalRegistry.Size = new Size(245, 104);
-            VarietalRegistry.TabIndex = 10;
-            VarietalRegistry.UseVisualStyleBackColor = false;
-            VarietalRegistry.Click += GoToVarietalRegistry;
-            // 
             // ActivityLog
             // 
             ActivityLog.BackColor = Color.Transparent;
             ActivityLog.BackgroundImage = (Image)resources.GetObject("ActivityLog.BackgroundImage");
             ActivityLog.FlatAppearance.BorderSize = 0;
             ActivityLog.FlatStyle = FlatStyle.Flat;
-            ActivityLog.Location = new Point(546, 497);
+            ActivityLog.Location = new Point(546, 387);
             ActivityLog.Name = "ActivityLog";
             ActivityLog.Size = new Size(245, 104);
             ActivityLog.TabIndex = 10;
@@ -198,7 +184,6 @@
             ClientSize = new Size(1061, 704);
             Controls.Add(button7);
             Controls.Add(ActivityLog);
-            Controls.Add(VarietalRegistry);
             Controls.Add(SoilEvaluator);
             Controls.Add(ViewRiceYieldandEstimation);
             Controls.Add(WeatherForecasting);
@@ -223,7 +208,6 @@
         private Button WeatherForecasting;
         private Button SoilEvaluator;
         private Button ViewRiceYieldandEstimation;
-        private Button VarietalRegistry;
         private Button ActivityLog;
         private Label label4;
         private Button button7;

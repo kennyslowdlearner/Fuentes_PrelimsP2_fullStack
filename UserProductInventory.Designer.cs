@@ -89,7 +89,7 @@
             Product_Inventory_Grid.RowHeadersWidth = 62;
             Product_Inventory_Grid.Size = new Size(1368, 308);
             Product_Inventory_Grid.TabIndex = 0;
-            Product_Inventory_Grid.CellClick += datagrid_cellclick;
+            Product_Inventory_Grid.CellClick += Product_Inventory_Grid_CellClick;
             // 
             // button6
             // 
@@ -505,6 +505,7 @@
             label12.Size = new Size(15, 24);
             label12.TabIndex = 73;
             label12.Text = ":";
+            // 
             // label13
             // 
             label13.AutoSize = true;

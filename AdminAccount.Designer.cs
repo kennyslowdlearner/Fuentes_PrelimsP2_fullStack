@@ -228,7 +228,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Pananom : Admin Dashboard";
             FormClosed += AdminAccount_FormClosed;
-            Load += AdminAccount_Load;
+            //Load += AdminAccount_Load;
             groupBox1.ResumeLayout(false);
             menuStrip2.ResumeLayout(false);
             menuStrip2.PerformLayout();

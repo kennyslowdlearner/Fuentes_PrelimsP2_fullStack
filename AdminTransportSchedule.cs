@@ -18,6 +18,8 @@ namespace Fuentes_PrelimsP2
         {
             InitializeComponent();
             auto_reload();
+
+            Admin_Transport_Schedule_Grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         internal static AdminTransportSchedule Instance
@@ -40,7 +42,7 @@ namespace Fuentes_PrelimsP2
         int indexRow;
 
 
-      
+
         private void backButton(object sender, EventArgs e)
         {
             try
@@ -281,24 +283,27 @@ namespace Fuentes_PrelimsP2
 
         private void press_Delete(object sender, EventArgs e)
         {
-            if (Admin_Transport_Schedule_Grid.SelectedRows.Count > 0)
+            // Check if there is a current row selected via CellClick
+            if (Admin_Transport_Schedule_Grid.CurrentRow != null)
             {
-                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this trip record?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                int tripId = Convert.ToInt32(Admin_Transport_Schedule_Grid.CurrentRow.Cells["Trip Number"].Value);
 
-                if (dialogResult == DialogResult.Yes)
+                DialogResult confirm = MessageBox.Show("Delete this trip record permanently?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (confirm == DialogResult.Yes)
                 {
-                    // Get ID from the selected row
-                    int tripId = Convert.ToInt32(Admin_Transport_Schedule_Grid.SelectedRows[0].Cells["Trip Number"].Value);
-
-                    // Now 'ExecuteSql' exists!
                     ExecuteSql($"DELETE FROM [Admin - User Transport Schedule] WHERE [Trip Number] = {tripId}");
 
-                    auto_reload(); // Refresh the list
+                    // Clear textboxes after deletion
+                    fill_transportname_ats.Clear();
+                    fill_driver_ats.Clear();
+
+                    auto_reload();
                 }
             }
             else
             {
-                MessageBox.Show("Please select a full row to delete.");
+                MessageBox.Show("Please click on a row first.");
             }
         }
 
@@ -323,13 +328,66 @@ namespace Fuentes_PrelimsP2
 
         private void press_update(object sender, EventArgs e)
         {
-            // This typically pulls data from textboxes back into the selected row
-            if (Admin_Transport_Schedule_Grid.SelectedRows.Count > 0)
+            if (Admin_Transport_Schedule_Grid.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please click a row in the table first.");
+                return;
+            }
+
+            try
             {
                 int tripId = Convert.ToInt32(Admin_Transport_Schedule_Grid.SelectedRows[0].Cells["Trip Number"].Value);
-                // Example: Update the Driver name manually
-                string sql = "UPDATE [Admin - User Transport Schedule] SET [Driver] = @d WHERE [Trip Number] = @id";
-                // ... (Execute with parameters from your fill_driver_ats.Text)
+
+                using (OleDbConnection conn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb"))
+                {
+                    conn.Open();
+                    string sql = "UPDATE [Admin - User Transport Schedule] SET " +
+                                 "[Transport Name] = @name, [Driver] = @driver, [License Number] = @lic, " +
+                                 "[Delivery Code] = @code, [Place From] = @from, [Place To] = @to " +
+                                 "WHERE [Trip Number] = @id";
+
+                    using (OleDbCommand cmd = new OleDbCommand(sql, conn))
+                    {
+                        cmd.Parameters.Add("@name", OleDbType.VarWChar).Value = fill_transportname_ats.Text;
+                        cmd.Parameters.Add("@driver", OleDbType.VarWChar).Value = fill_driver_ats.Text;
+                        cmd.Parameters.Add("@lic", OleDbType.VarWChar).Value = fill_licensenumber_ats.Text;
+                        cmd.Parameters.Add("@code", OleDbType.VarWChar).Value = fill_deliverycode_ats.Text;
+                        cmd.Parameters.Add("@from", OleDbType.VarWChar).Value = fill_placefrom_ats.Text;
+                        cmd.Parameters.Add("@to", OleDbType.VarWChar).Value = fill_placeto_ats.Text;
+                        cmd.Parameters.Add("@id", OleDbType.Integer).Value = tripId;
+
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Trip updated successfully!", "Success");
+                    }
+                }
+                auto_reload(); // Refresh the grid to show changes
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Update Error: " + ex.Message);
+            }
+        }
+
+        private void Admin_Transport_Schedule_Grid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = Admin_Transport_Schedule_Grid.Rows[e.RowIndex];
+
+                // 1. Store the ID for Update/Delete operations
+                // Trip Number is our Primary Key
+                int tripId = Convert.ToInt32(row.Cells["Trip Number"].Value);
+
+                // 2. Fill the TextBoxes
+                fill_transportname_ats.Text = row.Cells["Transport Name"].Value?.ToString();
+                fill_driver_ats.Text = row.Cells["Driver"].Value?.ToString();
+                fill_licensenumber_ats.Text = row.Cells["License Number"].Value?.ToString();
+                fill_deliverycode_ats.Text = row.Cells["Delivery Code"].Value?.ToString();
+                fill_placefrom_ats.Text = row.Cells["Place From"].Value?.ToString();
+                fill_placeto_ats.Text = row.Cells["Place To"].Value?.ToString();
+
+                // Note: Status and Date are usually managed by the system, 
+                // but you can add textboxes for them if needed.
             }
         }
     }

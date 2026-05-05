@@ -82,6 +82,7 @@
             Admin_Transport_Schedule_Grid.RowHeadersWidth = 62;
             Admin_Transport_Schedule_Grid.Size = new Size(1339, 282);
             Admin_Transport_Schedule_Grid.TabIndex = 0;
+            Admin_Transport_Schedule_Grid.CellClick += Admin_Transport_Schedule_Grid_CellClick;
             Admin_Transport_Schedule_Grid.CellFormatting += dynamic_cellformatting;
             // 
             // label8

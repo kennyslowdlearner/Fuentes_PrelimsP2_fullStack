@@ -33,11 +33,9 @@
             panel1 = new Panel();
             Varietal_Registry_Grid = new DataGridView();
             label1 = new Label();
-            fill_ricetype_vr = new TextBox();
+            fill_mp_vr = new TextBox();
             label2 = new Label();
-            fill_quantity_vr = new TextBox();
             label3 = new Label();
-            button3 = new Button();
             button1 = new Button();
             button2 = new Button();
             button6 = new Button();
@@ -52,9 +50,13 @@
             label7 = new Label();
             fill_search_vr = new TextBox();
             label8 = new Label();
-            fill_date_vr = new DateTimePicker();
             Refresh = new ContextMenuStrip(components);
             toolStripComboBox1 = new ToolStripComboBox();
+            fill_ey_vr = new TextBox();
+            label10 = new Label();
+            label11 = new Label();
+            fill_r_vr = new ComboBox();
+            fill_gt_vr = new ComboBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Varietal_Registry_Grid).BeginInit();
             Refresh.SuspendLayout();
@@ -86,18 +88,18 @@
             label1.ForeColor = Color.LawnGreen;
             label1.Location = new Point(149, 521);
             label1.Name = "label1";
-            label1.Size = new Size(109, 27);
+            label1.Size = new Size(171, 27);
             label1.TabIndex = 50;
-            label1.Text = "Rice Type";
+            label1.Text = "Maturity Period";
             // 
-            // fill_ricetype_vr
+            // fill_mp_vr
             // 
-            fill_ricetype_vr.BackColor = Color.LightGreen;
-            fill_ricetype_vr.BorderStyle = BorderStyle.None;
-            fill_ricetype_vr.Location = new Point(336, 524);
-            fill_ricetype_vr.Name = "fill_ricetype_vr";
-            fill_ricetype_vr.Size = new Size(259, 24);
-            fill_ricetype_vr.TabIndex = 49;
+            fill_mp_vr.BackColor = Color.LightGreen;
+            fill_mp_vr.BorderStyle = BorderStyle.None;
+            fill_mp_vr.Location = new Point(336, 524);
+            fill_mp_vr.Name = "fill_mp_vr";
+            fill_mp_vr.Size = new Size(259, 24);
+            fill_mp_vr.TabIndex = 49;
             // 
             // label2
             // 
@@ -107,18 +109,9 @@
             label2.ForeColor = Color.LawnGreen;
             label2.Location = new Point(149, 560);
             label2.Name = "label2";
-            label2.Size = new Size(137, 27);
+            label2.Size = new Size(114, 27);
             label2.TabIndex = 50;
-            label2.Text = "Date Stored";
-            // 
-            // fill_quantity_vr
-            // 
-            fill_quantity_vr.BackColor = Color.LightGreen;
-            fill_quantity_vr.BorderStyle = BorderStyle.None;
-            fill_quantity_vr.Location = new Point(336, 603);
-            fill_quantity_vr.Name = "fill_quantity_vr";
-            fill_quantity_vr.Size = new Size(259, 24);
-            fill_quantity_vr.TabIndex = 49;
+            label2.Text = "Exp. Yield";
             // 
             // label3
             // 
@@ -128,25 +121,9 @@
             label3.ForeColor = Color.LawnGreen;
             label3.Location = new Point(149, 597);
             label3.Name = "label3";
-            label3.Size = new Size(158, 27);
+            label3.Size = new Size(124, 27);
             label3.TabIndex = 50;
-            label3.Text = "Quantity in Kg";
-            // 
-            // button3
-            // 
-            button3.BackColor = Color.Yellow;
-            button3.FlatAppearance.BorderColor = Color.Gold;
-            button3.FlatAppearance.BorderSize = 2;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.ForeColor = Color.DarkGreen;
-            button3.Location = new Point(615, 521);
-            button3.Name = "button3";
-            button3.Size = new Size(154, 34);
-            button3.TabIndex = 51;
-            button3.Text = "Add";
-            button3.UseVisualStyleBackColor = false;
-            button3.Click += press_insertvr;
+            label3.Text = "Resistance";
             // 
             // button1
             // 
@@ -156,7 +133,7 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.DarkGreen;
-            button1.Location = new Point(615, 560);
+            button1.Location = new Point(601, 522);
             button1.Name = "button1";
             button1.Size = new Size(154, 34);
             button1.TabIndex = 51;
@@ -172,7 +149,7 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.DarkGreen;
-            button2.Location = new Point(615, 600);
+            button2.Location = new Point(601, 562);
             button2.Name = "button2";
             button2.Size = new Size(154, 34);
             button2.TabIndex = 51;
@@ -187,7 +164,7 @@
             button6.FlatAppearance.BorderSize = 0;
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Glacial Indifference", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button6.Location = new Point(430, 676);
+            button6.Location = new Point(419, 715);
             button6.Name = "button6";
             button6.Size = new Size(120, 41);
             button6.TabIndex = 52;
@@ -318,7 +295,6 @@
             fill_search_vr.Name = "fill_search_vr";
             fill_search_vr.Size = new Size(252, 29);
             fill_search_vr.TabIndex = 112;
-            fill_search_vr.TextChanged += searchvr;
             // 
             // label8
             // 
@@ -332,20 +308,12 @@
             label8.TabIndex = 111;
             label8.Text = ":";
             // 
-            // fill_date_vr
-            // 
-            fill_date_vr.Location = new Point(336, 562);
-            fill_date_vr.Name = "fill_date_vr";
-            fill_date_vr.Size = new Size(259, 31);
-            fill_date_vr.TabIndex = 114;
-            // 
             // Refresh
             // 
             Refresh.ImageScalingSize = new Size(24, 24);
             Refresh.Items.AddRange(new ToolStripItem[] { toolStripComboBox1 });
             Refresh.Name = "Refresh";
             Refresh.Size = new Size(182, 43);
-            Refresh.Opening += Refresh_Opening;
             // 
             // toolStripComboBox1
             // 
@@ -353,13 +321,65 @@
             toolStripComboBox1.Size = new Size(121, 33);
             toolStripComboBox1.Click += refresh;
             // 
+            // fill_ey_vr
+            // 
+            fill_ey_vr.BackColor = Color.LightGreen;
+            fill_ey_vr.BorderStyle = BorderStyle.None;
+            fill_ey_vr.Location = new Point(336, 562);
+            fill_ey_vr.Name = "fill_ey_vr";
+            fill_ey_vr.Size = new Size(259, 24);
+            fill_ey_vr.TabIndex = 49;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.BackColor = Color.Transparent;
+            label10.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label10.ForeColor = Color.LawnGreen;
+            label10.Location = new Point(149, 640);
+            label10.Name = "label10";
+            label10.Size = new Size(123, 27);
+            label10.TabIndex = 50;
+            label10.Text = "Grain Type";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.BackColor = Color.Transparent;
+            label11.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label11.ForeColor = Color.LawnGreen;
+            label11.Location = new Point(311, 643);
+            label11.Name = "label11";
+            label11.Size = new Size(19, 27);
+            label11.TabIndex = 50;
+            label11.Text = ":";
+            // 
+            // fill_r_vr
+            // 
+            fill_r_vr.FormattingEnabled = true;
+            fill_r_vr.Items.AddRange(new object[] { "Host Resistance", "Inbuilt Defense", "Pest Shielding" });
+            fill_r_vr.Location = new Point(336, 598);
+            fill_r_vr.Name = "fill_r_vr";
+            fill_r_vr.Size = new Size(257, 33);
+            fill_r_vr.TabIndex = 114;
+            // 
+            // fill_gt_vr
+            // 
+            fill_gt_vr.FormattingEnabled = true;
+            fill_gt_vr.Items.AddRange(new object[] { "Long Grain", "Medium Grain", "Short Grain" });
+            fill_gt_vr.Location = new Point(336, 641);
+            fill_gt_vr.Name = "fill_gt_vr";
+            fill_gt_vr.Size = new Size(257, 33);
+            fill_gt_vr.TabIndex = 114;
+            // 
             // User_VarietalRegistry
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1500, 775);
-            Controls.Add(fill_date_vr);
+            Controls.Add(fill_gt_vr);
+            Controls.Add(fill_r_vr);
             Controls.Add(label7);
             Controls.Add(fill_search_vr);
             Controls.Add(label8);
@@ -371,15 +391,16 @@
             Controls.Add(button6);
             Controls.Add(button2);
             Controls.Add(button1);
-            Controls.Add(button3);
+            Controls.Add(label11);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
+            Controls.Add(label10);
             Controls.Add(label3);
-            Controls.Add(fill_quantity_vr);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(fill_ricetype_vr);
+            Controls.Add(fill_ey_vr);
+            Controls.Add(fill_mp_vr);
             Controls.Add(panel1);
             ForeColor = Color.LawnGreen;
             Name = "User_VarietalRegistry";
@@ -397,11 +418,9 @@
 
         private Panel panel1;
         private Label label1;
-        private TextBox fill_ricetype_vr;
+        private TextBox fill_mp_vr;
         private Label label2;
-        private TextBox fill_quantity_vr;
         private Label label3;
-        private Button button3;
         private Button button1;
         private Button button2;
         private Button button6;
@@ -417,8 +436,12 @@
         private Label label7;
         private TextBox fill_search_vr;
         private Label label8;
-        private DateTimePicker fill_date_vr;
         private ContextMenuStrip Refresh;
         private ToolStripComboBox toolStripComboBox1;
+        private TextBox fill_ey_vr;
+        private Label label10;
+        private Label label11;
+        private ComboBox fill_r_vr;
+        private ComboBox fill_gt_vr;
     }
 }

@@ -37,7 +37,7 @@ namespace Fuentes_PrelimsP2
         OleDbCommand? command;
         DataSet? dataSet;
         int indexRow;
-      
+
         private void backButton(object sender, EventArgs e)
         {
             try
@@ -161,7 +161,7 @@ namespace Fuentes_PrelimsP2
             }
         }
 
-      
+
 
         private void press_enableDisable_aac(object sender, EventArgs e)
         {
@@ -216,16 +216,69 @@ namespace Fuentes_PrelimsP2
 
             bool isActive = Convert.ToBoolean(rowView.Row["Active"]);
 
-            if (!isActive) 
+            if (!isActive)
             {
                 e.CellStyle.BackColor = Color.LightCoral;
                 e.CellStyle.ForeColor = Color.White;
                 e.CellStyle.SelectionBackColor = Color.Red;
             }
-            else 
+            else
             {
                 e.CellStyle.BackColor = Color.White;
                 e.CellStyle.ForeColor = Color.Black;
+            }
+        }
+
+        private void delete_Account(object sender, EventArgs e)
+        {
+            // 1. Check if a row is selected
+            if (Account_Control_Grid.CurrentRow != null)
+            {
+                // Get the unique ID of the account (Ensure the column name matches your DB, e.g., "User ID")
+                string userID = Account_Control_Grid.CurrentRow.Cells["User ID"].Value.ToString();
+                string username = Account_Control_Grid.CurrentRow.Cells["Username"].Value.ToString();
+
+                // 2. Ask for Confirmation
+                DialogResult dialogResult = MessageBox.Show(
+                    $"Are you sure you want to permanently DELETE the account for '{username}'?\nThis action cannot be undone.",
+                    "Confirm Permanent Deletion",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    // 3. Execution
+                    string dbPath = @"Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Pananom Database\Prooject Pananom Data.accdb";
+                    string query = "DELETE FROM [User Account Information] WHERE [User ID] = @uid";
+
+                    try
+                    {
+                        using (OleDbConnection conn = new OleDbConnection(dbPath))
+                        {
+                            using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("@uid", userID);
+
+                                conn.Open();
+                                cmd.ExecuteNonQuery();
+                                conn.Close();
+
+                                MessageBox.Show("Account has been permanently deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                // 4. Refresh everything
+                                auto_reload();
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Failed to delete account. Error: " + ex.Message);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an account from the table first.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

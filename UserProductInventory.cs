@@ -47,8 +47,8 @@ namespace Fuentes_PrelimsP2
         {
 
         }
-   
-        
+
+
 
         private void logoutoptionPI_click(object sender, EventArgs e)
         {
@@ -71,7 +71,7 @@ namespace Fuentes_PrelimsP2
             this.Hide();
         }
 
-       
+
 
         private void press_connectpi(object sender, EventArgs e)
         {
@@ -110,78 +110,59 @@ namespace Fuentes_PrelimsP2
 
                 DataTable dt = dataSet.Tables[tableName];
 
-                // 1. Add calculated column for the Grid
+                // 1. Reset the Grid to prevent column memory leaks
+                Product_Inventory_Grid.DataSource = null;
+                Product_Inventory_Grid.Columns.Clear();
+                Product_Inventory_Grid.AutoGenerateColumns = true;
+
+                // 2. Add calculated column
                 if (!dt.Columns.Contains("Estimated Sacks"))
                 {
                     dt.Columns.Add("Estimated Sacks", typeof(string));
                 }
 
-                // 2. Identify the correct Quantity column based on current view
+                // 3. Identification and Calculation Logic
                 string qtyCol = showingSeedlings ? "Quantity(Kg)" : "Quantity in Kilograms";
-
-                // Variables to store grand totals for the labels
                 double totalKgSum = 0;
 
-                // 3. Process Rows: Calculate Grid Values and Sum for Labels
                 foreach (DataRow row in dt.Rows)
                 {
-                    if (row[qtyCol] != DBNull.Value)
+                    if (row[qtyCol] != DBNull.Value && double.TryParse(row[qtyCol].ToString(), out double kgs))
                     {
-                        double kgs = Convert.ToDouble(row[qtyCol]);
-                        totalKgSum += kgs; // Accumulate total for dashboard
-
+                        totalKgSum += kgs;
                         double sacks = kgs / 50.0;
                         row["Estimated Sacks"] = sacks.ToString("N2") + " sacks";
                     }
+                    else
+                    {
+                        row["Estimated Sacks"] = "0.00 sacks";
+                    }
                 }
 
-                // 4. Update Dashboard Labels (display_kg_gg and display_sack_gg)
+                // 4. Update Dashboard Labels
                 double totalSacksSum = totalKgSum / 50.0;
-
                 display_kg_gg.Text = totalKgSum.ToString("N2") + " kg";
                 display_sack_gg.Text = totalSacksSum.ToString("N2") + " sacks";
 
-                // Apply visual styling (consistent with your other forms)
-                var boldItalicFont = new Font(display_kg_gg.Font, FontStyle.Bold | FontStyle.Italic);
-                display_kg_gg.Font = boldItalicFont;
-                display_sack_gg.Font = boldItalicFont;
-                display_sack_gg.ForeColor = Color.Gold; // Using Gold for sack emphasis
-
-                // 5. Grid Binding and Formatting
+                // 5. Bind Data and Format Visuals
                 Product_Inventory_Grid.DataSource = dt;
-
                 Product_Inventory_Grid.DefaultCellStyle.ForeColor = Color.Black;
                 Product_Inventory_Grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
 
+                // Hide Technical Columns
                 if (Product_Inventory_Grid.Columns.Contains("Roll Number"))
                     Product_Inventory_Grid.Columns["Roll Number"].Visible = false;
-
                 if (Product_Inventory_Grid.Columns.Contains("User ID"))
                     Product_Inventory_Grid.Columns["User ID"].Visible = false;
 
-                // Position the new column next to the Quantity column in the grid
-                if (Product_Inventory_Grid.Columns.Contains("Estimated Sacks"))
+                // Position "Estimated Sacks" next to Quantity
+                if (Product_Inventory_Grid.Columns.Contains(qtyCol) && Product_Inventory_Grid.Columns.Contains("Estimated Sacks"))
                 {
                     Product_Inventory_Grid.Columns["Estimated Sacks"].DisplayIndex = Product_Inventory_Grid.Columns[qtyCol].DisplayIndex + 1;
                     Product_Inventory_Grid.Columns["Estimated Sacks"].HeaderText = "Est. Sacks (50kg)";
                 }
 
-                // AutoSize adjustments
-                if (showingSeedlings)
-                {
-                    Product_Inventory_Grid.Columns["Variety Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    Product_Inventory_Grid.Columns["Seed ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    Product_Inventory_Grid.Columns["Quantity(Kg)"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                    Product_Inventory_Grid.Columns["Estimated Sacks"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                }
-                else
-                {
-                    Product_Inventory_Grid.Columns["Product Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    Product_Inventory_Grid.Columns["Reference ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    Product_Inventory_Grid.Columns["Product ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                    Product_Inventory_Grid.Columns["Quantity in Kilograms"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                    Product_Inventory_Grid.Columns["Estimated Sacks"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                }
+                Product_Inventory_Grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch (Exception ex)
             {
@@ -191,13 +172,13 @@ namespace Fuentes_PrelimsP2
 
         private void press_insertpi(object sender, EventArgs e)
         {
-            //made changes here (14) [4/6/2026 | 12:46 PM]
             string tableName = showingSeedlings ? "[User PI Seedling Inventory]" : "[User PI Product Inventory]";
             string query;
 
             if (showingSeedlings)
             {
-                query = $"INSERT INTO {tableName} ([Variety Name], [Seed ID], [Quantity(Kg)], [User ID]) VALUES (@P1, @P2, @P3, @P5)";
+                // Added the three specific seedling columns to the query
+                query = $"INSERT INTO {tableName} ([Variety Name], [Seed ID], [Quantity(Kg)], [Batch Source], [Date Received], [Germ Rate], [User ID]) VALUES (@P1, @P2, @P3, @BS, @DR, @GR, @P5)";
             }
             else
             {
@@ -211,7 +192,17 @@ namespace Fuentes_PrelimsP2
                 cmd.Parameters.AddWithValue("@P2", fill_productid_pi.Text);
                 cmd.Parameters.AddWithValue("@P3", Convert.ToInt32(fill_quantity_pi.Text));
 
-                if (!showingSeedlings) cmd.Parameters.AddWithValue("@P4", GenerateReferenceID());
+                if (showingSeedlings)
+                {
+                    // NEW: Mapping the seedling-specific textboxes to the database
+                    cmd.Parameters.AddWithValue("@BS", fill_batchcode_pi.Text);
+                    cmd.Parameters.AddWithValue("@DR", fill_datereceived_pi.Value.ToShortDateString());
+                    cmd.Parameters.AddWithValue("@GR", fill_germrate_pi.Text);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@P4", GenerateReferenceID());
+                }
 
                 cmd.Parameters.AddWithValue("@P5", UserSession.UserInstance.ID);
 
@@ -220,30 +211,9 @@ namespace Fuentes_PrelimsP2
                 MessageBox.Show("Inventory Updated!");
                 press_loadpi(sender, e);
             }
-
-
         }
 
-        private void datagrid_cellclick(object sender, DataGridViewCellEventArgs e)
-        {
-            //made changes here (15) [4/6/2026 | 12:46 PM]
-            if (e.RowIndex < 0) return;
-            indexRow = e.RowIndex;
-            DataGridViewRow row = Product_Inventory_Grid.Rows[indexRow];
 
-            if (showingSeedlings)
-            {
-                fill_productname_pi.Text = row.Cells["Variety Name"].Value.ToString();
-                fill_productid_pi.Text = row.Cells["Seed ID"].Value.ToString();
-                fill_quantity_pi.Text = row.Cells["Quantity(Kg)"].Value.ToString();
-            }
-            else
-            {
-                fill_productname_pi.Text = row.Cells["Product Name"].Value.ToString();
-                fill_productid_pi.Text = row.Cells["Product ID"].Value.ToString();
-                fill_quantity_pi.Text = row.Cells["Quantity in Kilograms"].Value.ToString();
-            }
-        }
 
         private void press_deletepi(object sender, EventArgs e)
         {
@@ -277,13 +247,13 @@ namespace Fuentes_PrelimsP2
 
         private void press_updatepi(object sender, EventArgs e)
         {
-            //made changes here (17) [4/6/2026 | 12:46 PM]
             string tableName = showingSeedlings ? "[User PI Seedling Inventory]" : "[User PI Product Inventory]";
             string query;
 
+            // Use ONE if/else block to set the query correctly
             if (showingSeedlings)
             {
-                query = $"UPDATE {tableName} SET [Variety Name] = @P1, [Quantity(Kg)] = @P3 WHERE [Seed ID] = @P2";
+                query = $"UPDATE {tableName} SET [Variety Name] = @P1, [Quantity(Kg)] = @P3, [Batch Source] = @BS, [Germ Rate] = @GR, [Date Received] = @DR WHERE [Seed ID] = @P2";
             }
             else
             {
@@ -293,9 +263,19 @@ namespace Fuentes_PrelimsP2
             connection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Pananom Database\\Prooject Pananom Data.accdb");
             command = new OleDbCommand(query, connection);
 
+            // PARAMETERS MUST BE IN THE EXACT ORDER THEY APPEAR IN THE SQL STRING
             command.Parameters.AddWithValue("@P1", fill_productname_pi.Text);
             command.Parameters.AddWithValue("@P3", Convert.ToInt32(fill_quantity_pi.Text));
-            command.Parameters.AddWithValue("@P2", fill_productid_pi.Text); // ID for the WHERE clause
+
+            if (showingSeedlings)
+            {
+                command.Parameters.AddWithValue("@BS", fill_batchcode_pi.Text);
+                command.Parameters.AddWithValue("@GR", fill_germrate_pi.Text);
+                command.Parameters.AddWithValue("@DR", fill_datereceived_pi.Value.ToShortDateString());
+            }
+
+            // The WHERE clause ID always comes last in this specific SQL structure
+            command.Parameters.AddWithValue("@P2", fill_productid_pi.Text);
 
             try
             {
@@ -303,12 +283,12 @@ namespace Fuentes_PrelimsP2
                 command.ExecuteNonQuery();
                 connection.Close();
 
-                MessageBox.Show("Item updated successfully!");
-                press_loadpi(sender, e); // Refresh grid
+                MessageBox.Show("Inventory updated successfully!");
+                press_loadpi(sender, e); // Refresh the grid on your Acer Swift
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Failed to update item. Error: " + ex.Message);
+                MessageBox.Show("Update failed. Error: " + ex.Message);
             }
         }
 
@@ -408,7 +388,7 @@ namespace Fuentes_PrelimsP2
 
         }
 
-      
+
         private void press_switchpi(object sender, EventArgs e)
         {
             showingSeedlings = !showingSeedlings;
@@ -428,12 +408,37 @@ namespace Fuentes_PrelimsP2
 
             press_loadpi(sender, e);
 
-            // Clear inputs to avoid mixing data from different tables
+
             fill_productname_pi.Clear();
             fill_productid_pi.Clear();
             fill_quantity_pi.Clear();
         }
 
-      
+        private void Product_Inventory_Grid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            indexRow = e.RowIndex;
+            DataGridViewRow row = Product_Inventory_Grid.Rows[indexRow];
+
+            if (showingSeedlings)
+            {
+                fill_productname_pi.Text = row.Cells["Variety Name"].Value?.ToString();
+                fill_productid_pi.Text = row.Cells["Seed ID"].Value?.ToString();
+                fill_quantity_pi.Text = row.Cells["Quantity(Kg)"].Value?.ToString();
+
+                // Load the seedling-specific data back into textboxes
+                fill_batchcode_pi.Text = row.Cells["Batch Source"].Value?.ToString();
+                fill_germrate_pi.Text = row.Cells["Germ Rate"].Value?.ToString();
+
+                if (row.Cells["Date Received"].Value != DBNull.Value)
+                    fill_datereceived_pi.Value = Convert.ToDateTime(row.Cells["Date Received"].Value);
+            }
+            else
+            {
+                fill_productname_pi.Text = row.Cells["Product Name"].Value?.ToString();
+                fill_productid_pi.Text = row.Cells["Product ID"].Value?.ToString();
+                fill_quantity_pi.Text = row.Cells["Quantity in Kilograms"].Value?.ToString();
+            }
+        }
     }
 }

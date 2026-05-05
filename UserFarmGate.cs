@@ -278,8 +278,13 @@ namespace Fuentes_PrelimsP2
             command.Parameters.Add("@P1", OleDbType.VarWChar).Value = fill_productid_fgp.Text;
             command.Parameters.Add("@P2", OleDbType.VarWChar).Value = fill_productname_fgp.Text;
             command.Parameters.Add("@P3", OleDbType.Integer).Value = Convert.ToInt32(fill_quantity_fgp.Text);
+
+            // This is correct as Currency because it's a price
             command.Parameters.Add("@P4", OleDbType.Currency).Value = Convert.ToDecimal(fill_price_fgp.Text);
-            command.Parameters.Add("@P5", OleDbType.Currency).Value = serialIDgenerator();
+
+            // CHANGE THIS LINE: Reference ID is a String (FRMGT-XXXX), not Currency
+            command.Parameters.Add("@P5", OleDbType.VarWChar).Value = serialIDgenerator();
+
             command.Parameters.Add("@P6", OleDbType.Integer).Value = UserSession.UserInstance.ID;
 
             try
@@ -290,15 +295,14 @@ namespace Fuentes_PrelimsP2
 
                 MessageBox.Show("Item added successfully!");
 
+                // Clear fields
                 fill_productname_fgp.Clear();
                 fill_quantity_fgp.Clear();
                 fill_price_fgp.Clear();
                 fill_productid_fgp.SelectedIndex = -1;
 
                 refreshreload();
-
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show("Failed to add product. Error: " + ex.Message);

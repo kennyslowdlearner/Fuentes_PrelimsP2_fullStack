@@ -37,13 +37,9 @@
             label3 = new Label();
             fill_quantity_rye = new TextBox();
             label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
-            display_yieldingdays_rye = new Label();
-            display_timeleft_rye = new Label();
             button6 = new Button();
             label9 = new Label();
             button8 = new Button();
@@ -54,11 +50,7 @@
             label11 = new Label();
             label12 = new Label();
             label13 = new Label();
-            label14 = new Label();
-            label15 = new Label();
             label16 = new Label();
-            label17 = new Label();
-            label18 = new Label();
             fill_productid_rye = new ComboBox();
             fill_ricetype_rye = new ComboBox();
             fill_date_rye = new DateTimePicker();
@@ -84,6 +76,7 @@
             Rice_Yield_And_Estimation_Grid.RowHeadersWidth = 62;
             Rice_Yield_And_Estimation_Grid.Size = new Size(1335, 236);
             Rice_Yield_And_Estimation_Grid.TabIndex = 1;
+            Rice_Yield_And_Estimation_Grid.CellClick += Rice_Yield_And_Estimation_Grid_CellClick;
             // 
             // flowLayoutPanel1
             // 
@@ -149,30 +142,6 @@
             label4.TabIndex = 48;
             label4.Text = "Quantity (Kg)";
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.BackColor = Color.Transparent;
-            label5.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.ForeColor = Color.LawnGreen;
-            label5.Location = new Point(141, 613);
-            label5.Name = "label5";
-            label5.Size = new Size(154, 27);
-            label5.TabIndex = 48;
-            label5.Text = "Yielding Days";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.BackColor = Color.Transparent;
-            label6.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.ForeColor = Color.LawnGreen;
-            label6.Location = new Point(141, 649);
-            label6.Name = "label6";
-            label6.Size = new Size(108, 27);
-            label6.TabIndex = 48;
-            label6.Text = "Time Left";
-            // 
             // button1
             // 
             button1.BackColor = Color.Yellow;
@@ -220,30 +189,6 @@
             button3.Text = "Delete";
             button3.UseVisualStyleBackColor = false;
             button3.Click += press_deleterye;
-            // 
-            // display_yieldingdays_rye
-            // 
-            display_yieldingdays_rye.AutoSize = true;
-            display_yieldingdays_rye.BackColor = Color.Transparent;
-            display_yieldingdays_rye.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            display_yieldingdays_rye.ForeColor = Color.Gold;
-            display_yieldingdays_rye.Location = new Point(328, 613);
-            display_yieldingdays_rye.Name = "display_yieldingdays_rye";
-            display_yieldingdays_rye.Size = new Size(126, 27);
-            display_yieldingdays_rye.TabIndex = 48;
-            display_yieldingdays_rye.Text = "(Label Only)";
-            // 
-            // display_timeleft_rye
-            // 
-            display_timeleft_rye.AutoSize = true;
-            display_timeleft_rye.BackColor = Color.Transparent;
-            display_timeleft_rye.Font = new Font("Glacial Indifference", 10.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            display_timeleft_rye.ForeColor = Color.Gold;
-            display_timeleft_rye.Location = new Point(328, 649);
-            display_timeleft_rye.Name = "display_timeleft_rye";
-            display_timeleft_rye.Size = new Size(126, 27);
-            display_timeleft_rye.TabIndex = 48;
-            display_timeleft_rye.Text = "(Label Only)";
             // 
             // button6
             // 
@@ -375,30 +320,6 @@
             label13.TabIndex = 48;
             label13.Text = ":";
             // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.BackColor = Color.Transparent;
-            label14.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label14.ForeColor = SystemColors.ActiveCaptionText;
-            label14.Location = new Point(303, 603);
-            label14.Name = "label14";
-            label14.Size = new Size(19, 27);
-            label14.TabIndex = 48;
-            label14.Text = ":";
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.BackColor = Color.Transparent;
-            label15.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label15.ForeColor = SystemColors.ActiveCaptionText;
-            label15.Location = new Point(303, 639);
-            label15.Name = "label15";
-            label15.Size = new Size(19, 27);
-            label15.TabIndex = 48;
-            label15.Text = ":";
-            // 
             // label16
             // 
             label16.AutoSize = true;
@@ -410,30 +331,6 @@
             label16.Size = new Size(19, 27);
             label16.TabIndex = 48;
             label16.Text = ":";
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.BackColor = Color.Transparent;
-            label17.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label17.ForeColor = Color.LawnGreen;
-            label17.Location = new Point(303, 613);
-            label17.Name = "label17";
-            label17.Size = new Size(19, 27);
-            label17.TabIndex = 48;
-            label17.Text = ":";
-            // 
-            // label18
-            // 
-            label18.AutoSize = true;
-            label18.BackColor = Color.Transparent;
-            label18.Font = new Font("Glacial Indifference", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label18.ForeColor = Color.LawnGreen;
-            label18.Location = new Point(303, 649);
-            label18.Name = "label18";
-            label18.Size = new Size(19, 27);
-            label18.TabIndex = 48;
-            label18.Text = ":";
             // 
             // fill_productid_rye
             // 
@@ -451,7 +348,7 @@
             fill_ricetype_rye.Name = "fill_ricetype_rye";
             fill_ricetype_rye.Size = new Size(259, 33);
             fill_ricetype_rye.TabIndex = 54;
-            fill_ricetype_rye.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            fill_ricetype_rye.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
             // 
             // fill_date_rye
             // 
@@ -479,19 +376,11 @@
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
-            Controls.Add(label6);
             Controls.Add(label3);
-            Controls.Add(display_timeleft_rye);
-            Controls.Add(display_yieldingdays_rye);
-            Controls.Add(label5);
             Controls.Add(label2);
             Controls.Add(label4);
             Controls.Add(fill_quantity_rye);
-            Controls.Add(label18);
-            Controls.Add(label15);
             Controls.Add(label12);
-            Controls.Add(label17);
-            Controls.Add(label14);
             Controls.Add(label11);
             Controls.Add(label16);
             Controls.Add(label13);
@@ -517,13 +406,9 @@
         private Label label3;
         private TextBox fill_quantity_rye;
         private Label label4;
-        private Label label5;
-        private Label label6;
         private Button button1;
         private Button button2;
         private Button button3;
-        private Label display_yieldingdays_rye;
-        private Label display_timeleft_rye;
         private Button button6;
         private Label label9;
         private Button button8;
@@ -535,11 +420,7 @@
         private Label label11;
         private Label label12;
         private Label label13;
-        private Label label14;
-        private Label label15;
         private Label label16;
-        private Label label17;
-        private Label label18;
         private ComboBox fill_productid_rye;
         private ComboBox fill_ricetype_rye;
         private DateTimePicker fill_date_rye;
